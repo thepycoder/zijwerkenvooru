@@ -1,6 +1,6 @@
 <div align="center">
 
-# `🗳️ zijwerkenvooru`
+# `🗳️ zijwerkenvooru (they work for you)`
 
 **How does the Belgian parliament vote?**
 
@@ -163,7 +163,6 @@ Only bug-fixes and some ad-hoc development is done for this project. Below is a 
 **Improvements:**
 
 - [ ] summarize dossier contents using Mistral
-- [ ] add a data link to the menu on mobile
 - [ ] add parties between brackets for attendance
 - [ ] check attendance calculation
 - [ ] add link to data.gov dataset
