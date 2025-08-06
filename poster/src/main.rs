@@ -151,7 +151,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let username = std::env::var("BSKY_USERNAME").expect("Missing BSKY_USERNAME");
     let password = std::env::var("BSKY_PASSWORD").expect("Missing BSKY_PASSWORD");
     let meeting_id_path = Path::new(env!("CARGO_MANIFEST_DIR"))
-        .join("../scraper/current_meeting_id.txt");
+        .join("../scraper/current_plenary_id.txt");
     let last_meeting_id = fs::read_to_string(&meeting_id_path)?;
     let target_meeting_id = last_meeting_id.trim();
 
