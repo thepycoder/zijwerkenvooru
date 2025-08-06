@@ -88,7 +88,8 @@ The `parquet` files are published under the `web/src/data` directory. They inclu
 
 ### Disclaimer
 
-The data is collected on a best-effort basis. Completeness and correctness can not be guaranteed.
+1. The data is collected on a best-effort basis. Completeness and correctness can not be guaranteed.
+2. The data currently only covers the current session 56 (2024-2029). The scraper is capable of scraping older data as well, but this is currently not enabled. It's planned to enable this in the near future.
 
 ### Updates
 
