@@ -1,0 +1,100 @@
+{%- from "./vote-card-proposition.njk" import voteCardProposition -%}
+
+{% macro propositionCard(params) %}
+<!-- TITLE CARD -->
+<div class="card rounded-top">
+    <div class="title" style="flex-direction: column;">
+        {% if params.proposition.document_type %}
+        <div class="category">
+            {{ params.translations[params.proposition.document_type] }}
+        </div>
+        {% endif %}
+        <div class="padding flex column gap">
+            <p class="bold">
+                {% if params.language === "nl" %}
+                <span class="full">{{ params.proposition.title_nl }}</span>
+                <span class="summarized highlight" style="display: none;">{{ params.proposition.title_summary_nl }}</span>
+                {% else %}
+                <span class="full">{{ params.proposition.title_fr }}</span>
+                <span class="summarized highlight" style="display: none;">{{ params.proposition.title_summary_fr }}</span>
+                {% endif %}
+            </p>
+            {% if params.hideAuthors === "false" %}
+            <div class="flex column">
+                {% if (params.proposition.authors | length) > 1 %}
+                <p>Ingediend door</p>
+                <p>
+                    <span class="submitters">
+                    {% for author in params.proposition.authors %}
+                    {% set party = author.party | lower %}
+                    {% set primaryColor = params.partyColors[party].primary or '#95a5a6' %}
+                    {% set secondaryColor = params.partyColors[party].secondary or '#95a5a6' %}
+                    <span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span>
+                    <span class="submitter"><a href="/{{params.language}}/members/{{ author.name | slugify }}/">{{ author.name }}</a></span><br>
+                    {% endfor %}
+                    </span>
+                </p>
+                {% else %}
+                <p>Ingediend door</p>
+                <p>
+                    {% set party = params.proposition.authors[0].party | lower %}
+                    {% set primaryColor = params.partyColors[party].primary or '#95a5a6' %}
+                    {% set secondaryColor = params.partyColors[party].secondary or '#95a5a6' %}
+                    <span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ params.proposition.authors[0].party }}</span>
+                    <span class="submitter"><a href="/{{params.language}}/members/{{ params.proposition.authors[0].name | slugify }}/">{{ params.proposition.authors[0].name }}</a></span><br>
+                </p>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- VOTES TOGGLE CARD -->
+{% if params.proposition.votes and params.proposition.votes.length > 0 %}
+<div class="card padding straight" style="border-top: none;">
+    <div style="display: flex; gap: 1rem;">
+        {% if (params.proposition.votes.length | int) > 1 %}
+        <p>{{ params.proposition.votes.length }} stemmingen</p>
+        {% else %}
+        <p>{{ params.proposition.votes.length }} stemming</p>
+        {% endif %}
+        <button class="toggle-votes" data-proposition="{{ loop.index }}">
+            {% lucide "chevron-down" %}
+        </button>
+    </div>
+</div>
+{% endif %}
+
+<!-- VOTES CARDS -->
+{% if params.proposition.votes and params.proposition.votes.length > 0 %}
+<div class="proposition-votes">
+    {% for vote in params.proposition.votes %}
+    <div>
+    {% set isLast = loop.last %}
+    {{ voteCardProposition({proposition: params.proposition, vote: vote, translations: params.translations, language: params.language, last: isLast }) }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- STATUS CARD -->
+{% if params.proposition.status %}
+<a href="/{{ params.language }}/sessions/{{ params.proposition.session_id }}/dossiers/{{ params.proposition.dossier_id }}/" class="proposition-status card rounded-bottom padding">
+    <div>
+        <p>{{ params.translations[params.proposition.document_type] }}
+            {% if params.proposition.status == "Aangenomen" %}
+            <span class="topic" style="background-color: #28a745; color: white;">{{ params.translations.passed }}</span>
+            {% elseif params.proposition.status == "Verworpen" %}
+            <span class="topic" style="background-color: #dc3545; color: white;">{{ params.translations.failed }}</span>
+            {% elseif params.proposition.status == "ZonderVoorwerp" %}
+            <span class="topic" style="background-color: orange; color: white;">{{ params.translations.withoutSubject }}</span>
+            {% endif%}
+            {% if params.proposition.vote_date %}op {{ params.proposition.vote_date | date }}{% endif%}
+        </p>
+    </div>
+    {% lucide "chevron-right" %}
+</a>
+{% endif%}
+
+{% endmacro %}

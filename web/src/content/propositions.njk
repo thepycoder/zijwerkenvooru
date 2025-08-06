@@ -1,0 +1,82 @@
+---
+layout: layouts/page
+pagination:
+    data: languages
+    size: 1
+    alias: lang
+permalink: "{{ lang }}/propositions/"
+eleventyComputed:
+    title: "Wetsvoorstellen en initiatieven in de Kamer"
+    description: "Volg alle ingediende wetsvoorstellen en resoluties in de Kamer. Van indiening tot stemming met info over initiatiefnemers."
+---
+
+<!-- COMPONENTS -->
+{%- from "components/proposition-card-tiny.njk" import propositionCardTiny -%}
+
+<p><a href="/{{page.lang}}/" class="uppercase"><- {{ languages[page.lang].home }}</a></p>
+
+<h1>Alle Voorstellen</h1>
+
+<p>Bekijk recente voorstellen of zoek op onderwerp.</p>
+
+<!-- FILTER -->
+<select id="topicFilter" style="margin-bottom: 2rem;">
+    <option value="">Alle onderwerpen</option>
+    {% for key in topics | keys %}
+    <option value="{{ key }}">{{ key }}</option>
+    {% for subtopic in topics[key].subtopics | keys %}
+    <option value="{{ subtopic }}">– {{ subtopic }}</option>
+    {% endfor %}
+    {% endfor %}
+</select>
+
+<!-- ITEM COUNT -->
+<div class="flex space-between">
+    <span id="propositionCount">{{ propositions.propositions | length }} vragen</span>
+</div>
+
+<!-- ITEM LIST -->
+{% for meeting in meetings.meetings | sort(attribute='date', true) %}
+<div class="meeting-group">
+    <h3>{{ meeting.date | date }}</h3>
+    <div id="proposition-list">
+        {% for proposition in meeting.propositions %}
+        {% set allTopics = proposition.title_nl | getMatchedTopics(topics) %}
+        <div class="proposition-card-wrapper" data-topics="{{ allTopics | join(',') }}">
+            {{ propositionCardTiny({ proposition: proposition, topic: allTopics[0], topics: topics, functions: functions, translations: languages[page.lang], language: page.lang, showCategory: "true" }) }}
+        </div>
+        {% endfor %}
+    </div>
+    <hr>
+</div>
+{% endfor %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const filterSelect = document.getElementById("topicFilter");
+        const cards = document.querySelectorAll(".proposition-card-wrapper");
+
+        filterSelect.addEventListener("change", () => {
+            const selectedTopic = filterSelect.value;
+            cards.forEach(card => {
+                const topics = card.dataset.topics.split(',').map(t => t.trim());
+                const shouldShow = !selectedTopic || topics.includes(selectedTopic);
+                card.style.display = shouldShow ? "block" : "none";
+            });
+
+            // Update question count
+            const visibleCount = Array.from(cards).filter(card => card.style.display !== "none").length;
+            const countText = `${visibleCount} ${visibleCount === 1 ? 'vraag' : 'vragen'}`;
+            document.getElementById("propositionCount").textContent = countText;
+
+            // Hide meetings with no visible questions
+            const meetingGroups = document.querySelectorAll(".meeting-group");
+            meetingGroups.forEach(group => {
+                const propositionCards = group.querySelectorAll(".proposition-card-wrapper");
+                const anyVisible = Array.from(propositionCards).some(card => card.style.display !== "none");
+                group.style.display = anyVisible ? "block" : "none";
+            });
+        });
+    });
+
+</script>

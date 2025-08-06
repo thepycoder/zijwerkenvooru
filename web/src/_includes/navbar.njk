@@ -1,0 +1,150 @@
+<nav class="flex column">
+  <div class="flex row space-between align-center" style="width: 100%; position: relative;">
+
+    <!-- LEFT SIDE: LOGO -->
+    <p style="margin: 0; display: flex; align-items: center;">
+      <img
+        src="../assets/img/vote.svg"
+        alt="Icon description"
+        style="margin-left: 0; margin-bottom: 0; margin-top: 0.2rem; margin-right: 0.8rem; padding: 0;"/>
+      <a href="/{{ page.lang }}/" style="text-decoration: none; color: black;">{{ languages[page.lang].title }}
+        <span
+          style="padding: 0.1rem 0.2rem; margin-left: 0.2rem; border-radius: 6px; background: #8dcbff;">.be</span>
+      </a>
+    </p>
+
+    <!-- RIGHT SIDE: CONTROLS -->
+    <div style="display: flex; align-items: center;">
+      <div class="flex align-center" style="gap: 1rem;">
+
+        <!-- SEARCH DESKTOP -->
+        <section id="search">
+          <button
+            class="flex"
+            role="button"
+            data-a11y-dialog-show="search-dialog"
+            id="search-button"
+            type="button">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="100%"
+              fill="none"
+              viewBox="0 0 16 17"
+              style="width: 1rem; height: 1rem;"
+              aria-hidden="true">
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="1.25"
+                d="m14.667 15.333-3.768-3.768m1.546-4.01a5.556 5.556 0 1 1-11.112 0 5.556 5.556 0 0 1 11.112 0z"></path>
+            </svg>
+            <span>Waar ben je naar op zoek?</span>
+            <span style="margin-left: 2rem;" class="meta-key-symbol">⌘K</span>
+          </button>
+        </section>
+      </div>
+
+      <!-- MENU -->
+      <button
+        id="menu-toggle"
+        class="menu-toggle-button"
+        type="button"
+        aria-controls="site-menu"
+        aria-expanded="false"
+        aria-label="Toggle menu"
+        data-text-show="Menu"
+        data-text-hide="Menu">
+        <h2 style="margin: 0; padding: 0; text-decoration: none;" class="menu-toggle-button-inner">Menu</h2>
+      </button>
+
+      <!-- SEARCH MOBILE -->
+      <div id="search-mobile">
+        <button class="flex" role="button" data-a11y-dialog-show="search-dialog" id="search-button" type="button">
+          <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="100%"
+                fill="none"
+                viewBox="0 0 16 17"
+                style="width: 1rem; height: 1rem;"
+                aria-hidden="true">
+            <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-width="1.25"
+                    d="m14.667 15.333-3.768-3.768m1.546-4.01a5.556 5.556 0 1 1-11.112 0 5.556 5.556 0 0 1 11.112 0z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- MENU -->
+<div id="site-menu" class="site-menu" hidden>
+  <div class="site-menu__content" role="dialog" aria-label="Main menu">
+    <div class="menu-columns">
+
+      <!--   Column 1  -->
+      <div class="menu-column">
+        <h3 class="menu-column__header">De Kamer</h3>
+        <ul class="menu-column__links">
+          <li style="margin: 0;">
+            <a href="/{{ page.lang }}/members" style="text-decoration: underline;">Kamerleden</a>
+          </li>
+          <li style="margin: 0;">
+            <a href="/{{ page.lang }}/parties" style="text-decoration: underline;">Partijen</a>
+          </li>
+        </ul>
+      </div>
+
+      <!--   Column 2  -->
+      <div class="menu-column">
+        <h3 class="menu-column__header">Werk</h3>
+        <ul class="menu-column__links">
+          <li style="margin: 0;">
+            <a href="/{{ page.lang }}/sessions/56/meetings" style="text-decoration: underline;">Vergaderingen</a>
+          </li>
+          <li style="margin: 0;">
+            <a href="/{{ page.lang }}/questions" style="text-decoration: underline;">Vragen</a>
+          </li>
+          <li style="margin: 0;">
+            <a href="/{{ page.lang }}/topics" style="text-decoration: underline;">Onderwerpen</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('menu-toggle');
+  const menu = document.getElementById('site-menu');
+
+  function toggleMenu() {
+    const open = toggleBtn.getAttribute('aria-expanded') === 'true';
+    if (open) {
+      menu
+        .classList
+        .remove('is-open');
+      menu.hidden = true;
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      toggleBtn
+        .querySelector('.menu-toggle-button-inner')
+        .textContent = toggleBtn.dataset.textShow || 'Menu';
+    } else {
+      menu.hidden = false;
+      menu
+        .classList
+        .add('is-open');
+      toggleBtn.setAttribute('aria-expanded', 'true');
+      toggleBtn
+        .querySelector('.menu-toggle-button-inner')
+        .textContent = toggleBtn.dataset.textHide || 'Close';
+      menu
+          .querySelector('a')?.focus();
+    }
+  }
+  toggleBtn.addEventListener('click', toggleMenu);
+</script>

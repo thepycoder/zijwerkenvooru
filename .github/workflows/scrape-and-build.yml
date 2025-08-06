@@ -1,0 +1,97 @@
+name: Scrape, build, deploy and post
+
+on:
+  schedule:
+    # Every weekday (Mon–Fri) at 10PM Belgian time = 8PM UTC
+    - cron: "0 20 * * 1-5"
+
+    # Thursday hourly from 5PM to 10PM Belgian time = 15:00 to 20:00 UTC
+    - cron: "0 15 * * 4"
+    - cron: "0 16 * * 4"
+    - cron: "0 17 * * 4"
+    - cron: "0 18 * * 4"
+    - cron: "0 19 * * 4"
+    - cron: "0 20 * * 4"
+  workflow_dispatch:
+
+jobs:
+  scrape-and-build:
+    runs-on: ubuntu-latest
+    env:
+      BSKY_USERNAME: ${{ secrets.BSKY_USERNAME }}
+      BSKY_PASSWORD: ${{ secrets.BSKY_PASSWORD }}
+      MISTRAL_API_TOKEN: ${{ secrets.MISTRAL_API_TOKEN }}
+      CARGO_TARGET_DIR: target
+
+    steps:
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v3
+
+      - name: ⚙️ Set up Rust
+        uses: dtolnay/rust-toolchain@1.85.0
+
+      - name: ⚙️ Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: ⚙️ Set up Chrome and ChromeDriver
+        uses: browser-actions/setup-chrome@v1
+        with:
+          install-chromedriver: true
+          install-dependencies: true
+
+      - name: 📦 Cache Rust build
+        uses: actions/cache@v3
+        with:
+          path: |
+            target
+            ~/.cargo/registry
+            ~/.cargo/git
+          key: ${{ runner.os }}-cargo-1.85.0-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-1.85.0-
+            ${{ runner.os }}-cargo-
+
+      - name: 🔨 Build tools
+        run: cargo build --release
+
+      - name: 🕷️ Run plenary scraper
+        run: ./target/release/plenary-scraper
+
+      - name: 🕷️ Run commission scraper
+        run: ./target/release/commission-scraper
+
+      - name: 🤖 Run summarizer
+        run: ./target/release/summarizer
+
+      - name: ⚙️ Install packages
+        run: |
+          cd web
+          npm install
+
+      - name: 🔨 Build zijwerkenvooru.be
+        run: |
+          cd web
+          npm run build
+
+      - name: 🚀 Deploy zijwerkenvooru.be
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          command: pages deploy web/_site --project-name=zijwerkenvooru
+
+      - name: 🦋 Run bsky poster
+        run: ./target/release/poster
+        continue-on-error: true
+
+      - name: 📤 Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add scraper/current_commission_id.txt scraper/current_plenary_id.txt poster/posts.json web/src/data/dossiers.parquet web/src/data/meetings.parquet web/src/data/propositions.parquet web/src/data/questions.parquet web/src/data/subdocuments.parquet web/src/data/summaries.parquet web/src/data/votes.parquet
+          git commit -m "chore: update posted logs [skip ci]" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

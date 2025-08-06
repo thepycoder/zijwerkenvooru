@@ -1,0 +1,222 @@
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcatap: <http://data.europa.eu/r5r/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix admsp: <http://purl.org/adms/publishertype/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+
+<https://zijwerkenvooru.be/catalog>
+  a dcat:Catalog ;
+  dct:title "Zijwerkenvooru.be - parlementaire data"@nl ;
+  dct:issued "2025-07-11"^^xsd:date ;
+  dct:publisher <https://zijwerkenvooru.be#org> ;
+  foaf:homepage <https://zijwerkenvooru.be> ;
+  dcat:dataset <https://zijwerkenvooru.be/dataset/federaal_parlement> .
+  
+<https://zijwerkenvooru.be/dataset/federaal_parlement>
+  a dcat:Dataset ;
+  dct:title "Parlementaire Data – Kamer van Volksvertegenwoordigers"@nl ;
+  dct:identifier "data_federaal_parlement" ;
+  dct:description "Deze dataset bevat uitgebreide informatie over de Belgische Kamer van Volksvertegenwoordigers, inclusief kamerleden, dossiers, vergaderingen, vragen, stemmingen en parlementaire documenten. De data is gelimiteerd tot de huidige zittingsperiode (sessie 56) van De Kamer (2024-2029)."@nl ;
+  dcat:keyword "parlement"@nl, "wet"@nl ;
+  dct:publisher <https://zijwerkenvooru.be#org> ;
+  dct:language <http://publications.europa.eu/resource/authority/language/NLD> ;
+  dct:issued "2025-07-11"^^xsd:date ;
+  dct:temporal [
+    a dct:PeriodOfTime ;
+	dcat:startDate "2024-07-04"^^xsd:date ; 
+	dcat:endDate "2029-06-09"^^xsd:date ;
+  ] ;
+  dct:spatial <https://sws.geonames.org/2802361/> ;
+  dct:accrualPeriodicity <http://publications.europa.eu/resource/authority/frequency/WEEKLY> ;
+  dct:accessRights <http://publications.europa.eu/resource/authority/access-right/PUBLIC> ;
+  dcat:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> ;
+  dcat:landingPage <https://zijwerkenvooru.be/data/> ;
+  dcat:contactPoint [
+    a vcard:Kind ;
+	a vcard:Organization ;
+    vcard:fn "zijwerkenvooru"@nl ;
+	vcard:hasEmail <mailto:info@zijwerkenvooru.be> ;
+  ];
+  dcat:distribution
+    <https://zijwerkenvooru.be/distribution/members> ,
+    <https://zijwerkenvooru.be/distribution/dossiers> ,
+    <https://zijwerkenvooru.be/distribution/subdocuments> ,
+    <https://zijwerkenvooru.be/distribution/lobby> ,
+    <https://zijwerkenvooru.be/distribution/meetings> ,
+    <https://zijwerkenvooru.be/distribution/propositions> ,
+    <https://zijwerkenvooru.be/distribution/questions> ,
+    <https://zijwerkenvooru.be/distribution/votes> .
+
+<https://zijwerkenvooru.be/distribution/members>
+  a dcat:Distribution ;
+  dct:title "Kamerleden"@nl ;
+  dct:description "Bevat naam, geboortedatum, geboorteplaats, taal, kieskring, partij, fractie, email van alle kamerleden die actief zijn geweest tijdens sessie 56 van De Kamer (2024-2029)."@nl ;
+  dcat:accessURL <https://zijwerkenvooru.be/nl/data/> ;
+  dcat:downloadURL <https://zijwerkenvooru.be/data/members.parquet> ;
+  dcat:mediaType <https://www.iana.org/assignments/media-types/application/parquet> ;
+  dct:format <http://publications.europa.eu/resource/authority/file-type/PARQUET> ;
+  dct:license <http://publications.europa.eu/resource/authority/licence/CC0> ;
+  dcatap:availability <http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE> .
+
+<https://zijwerkenvooru.be/distribution/dossiers>
+  a dcat:Distribution ;
+  dct:title "Dossiers"@nl ;
+  dct:description "Bevat dossiers (verslagen, wetsontwerpen, wetsvoorstellen, etc.) uit sessie 56 van De Kamer (2024-2029)."@nl ;
+  dcat:accessURL <https://zijwerkenvooru.be/nl/data/> ;
+  dcat:downloadURL <https://zijwerkenvooru.be/data/dossiers.parquet> ;
+  dcat:mediaType <https://www.iana.org/assignments/media-types/application/parquet> ;
+  dct:format <http://publications.europa.eu/resource/authority/file-type/PARQUET> ;
+  dct:license <http://publications.europa.eu/resource/authority/licence/CC0> ;
+  dcatap:availability <http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE> .
+
+<https://zijwerkenvooru.be/distribution/subdocuments>
+  a dcat:Distribution ;
+  dct:title "Subdocumenten"@nl ;
+  dct:description "Bevat subdocumenten horend bij dossiers (verslagen, amendementen, aangenomen teksten, etc.)."@nl ;
+  dcat:accessURL <https://zijwerkenvooru.be/nl/data/> ;
+  dcat:downloadURL <https://zijwerkenvooru.be/data/subdocuments.parquet> ;
+  dcat:mediaType <https://www.iana.org/assignments/media-types/application/parquet> ;
+  dct:format <http://publications.europa.eu/resource/authority/file-type/PARQUET> ;
+  dct:license <http://publications.europa.eu/resource/authority/licence/CC0> ;
+  dcatap:availability <http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE> .
+
+<https://zijwerkenvooru.be/distribution/lobby>
+  a dcat:Distribution ;
+  dct:title "Lobbyregister"@nl ;
+  dct:description "Bevat alle leden uit het lobbyregister van De Kamer (naam, contactpersoon, interesses, url)."@nl ;
+  dcat:accessURL <https://zijwerkenvooru.be/nl/data/> ;
+  dcat:downloadURL <https://zijwerkenvooru.be/data/lobby.parquet> ;
+  dcat:mediaType <https://www.iana.org/assignments/media-types/application/parquet> ;
+  dct:format <http://publications.europa.eu/resource/authority/file-type/PARQUET> ;
+  dct:license <http://publications.europa.eu/resource/authority/licence/CC0> ;
+  dcatap:availability <http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE> .
+
+<https://zijwerkenvooru.be/distribution/meetings>
+  a dcat:Distribution ;
+  dct:title "Plenaire Vergaderingen"@nl ;
+  dct:description "Bevat alle plenaire vergaderingen (datum, voormiddag/nammidag/avond, start tijd, eind tijd)."@nl ;
+  dcat:accessURL <https://zijwerkenvooru.be/nl/data/> ;
+  dcat:downloadURL <https://zijwerkenvooru.be/data/meetings.parquet> ;
+  dcat:mediaType <https://www.iana.org/assignments/media-types/application/parquet> ;
+  dct:format <http://publications.europa.eu/resource/authority/file-type/PARQUET> ;
+  dct:license <http://publications.europa.eu/resource/authority/licence/CC0> ;
+  dcatap:availability <http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE> .
+
+<https://zijwerkenvooru.be/distribution/commissions>
+  a dcat:Distribution ;
+  dct:title "Commissievergaderingen"@nl ;
+  dct:description "Bevat alle commissievergaderingen (datum, voormiddag/nammidag/avond, start tijd, eind tijd, commissie, voorzitter)."@nl ;
+  dcat:accessURL <https://zijwerkenvooru.be/nl/data/> ;
+  dcat:downloadURL <https://zijwerkenvooru.be/data/commissions.parquet> ;
+  dcat:mediaType <https://www.iana.org/assignments/media-types/application/parquet> ;
+  dct:format <http://publications.europa.eu/resource/authority/file-type/PARQUET> ;
+  dct:license <http://publications.europa.eu/resource/authority/licence/CC0> ;
+  dcatap:availability <http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE> .
+
+<https://zijwerkenvooru.be/distribution/propositions>
+  a dcat:Distribution ;
+  dct:title "Voorstellen"@nl ;
+  dct:description "Bevat alle voorstellen (titel NL, titel FR, bijbehorende plenaire vergadering/dossier/subdocument)."@nl ;
+  dcat:accessURL <https://zijwerkenvooru.be/nl/data/> ;
+  dcat:downloadURL <https://zijwerkenvooru.be/data/propositions.parquet> ;
+  dcat:mediaType <https://www.iana.org/assignments/media-types/application/parquet> ;
+  dct:format <http://publications.europa.eu/resource/authority/file-type/PARQUET> ;
+  dct:license <http://publications.europa.eu/resource/authority/licence/CC0> ;
+  dcatap:availability <http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE> .
+
+<https://zijwerkenvooru.be/distribution/questions>
+  a dcat:Distribution ;
+  dct:title "Plenaire Vragen"@nl ;
+  dct:description "Bevat alle vragen van tijdens de plenaire vergaderingen (vraagstellers, antwoorders, onderwerpen NL, onderwerpen FR, volledige vragen/antwoorden, bijbehorende dossiers)."@nl ;
+  dcat:accessURL <https://zijwerkenvooru.be/nl/data/> ;
+  dcat:downloadURL <https://zijwerkenvooru.be/data/questions.parquet> ;
+  dcat:mediaType <https://www.iana.org/assignments/media-types/application/parquet> ;
+  dct:format <http://publications.europa.eu/resource/authority/file-type/PARQUET> ;
+  dct:license <http://publications.europa.eu/resource/authority/licence/CC0> ;
+  dcatap:availability <http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE> .
+
+<https://zijwerkenvooru.be/distribution/commission_questions>
+  a dcat:Distribution ;
+  dct:title "Commissie Vragen"@nl ;
+  dct:description "Bevat alle vragen van tijdens de commissievergaderingen (vraagstellers, antwoorders, onderwerpen NL, onderwerpen FR, volledige vragen/antwoorden, bijbehorende dossiers)."@nl ;
+  dcat:accessURL <https://zijwerkenvooru.be/nl/data/> ;
+  dcat:downloadURL <https://zijwerkenvooru.be/data/commission_questions.parquet> ;
+  dcat:mediaType <https://www.iana.org/assignments/media-types/application/parquet> ;
+  dct:format <http://publications.europa.eu/resource/authority/file-type/PARQUET> ;
+  dct:license <http://publications.europa.eu/resource/authority/licence/CC0> ;
+  dcatap:availability <http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE> .
+
+<https://zijwerkenvooru.be/distribution/votes>
+  a dcat:Distribution ;
+  dct:title "Stemmingen"@nl ;
+  dct:description "Bevat alle stemmingen van tijdens de plenaire vergaderingen (datum, bijbehorende vergadering, titel NL, titel FR, aantal ja/nee/onthouding, kamerleden ja/nee/onthouding)."@nl ;
+  dcat:accessURL <https://zijwerkenvooru.be/nl/data/> ;
+  dcat:downloadURL <https://zijwerkenvooru.be/data/votes.parquet> ;
+  dcat:mediaType <https://www.iana.org/assignments/media-types/application/parquet> ;
+  dct:format <http://publications.europa.eu/resource/authority/file-type/PARQUET> ;
+  dct:license <http://publications.europa.eu/resource/authority/licence/CC0> ;
+  dcatap:availability <http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE> .
+
+
+<https://zijwerkenvooru.be#org>
+  a foaf:Agent ;  
+  a foaf:Group ;
+  foaf:name "zijwerkenvooru"@nl ;
+  dct:type admsp:PrivateIndividual%28s%29 .
+
+
+<http://publications.europa.eu/resource/authority/planned-availability/AVAILABLE>
+  a skos:Concept ;
+  skos:inScheme <http://publications.europa.eu/resource/authority/planned-availability> ;
+  skos:prefLabel "beschikbaar"@nl .
+ 
+<http://publications.europa.eu/resource/authority/language/NLD>
+  a skos:Concept ;
+  a dct:LinguisticSystem ;
+  skos:inScheme <http://publications.europa.eu/resource/authority/language> ;
+  skos:prefLabel "beschikbaar"@nl .
+	
+<http://publications.europa.eu/resource/authority/access-right/PUBLIC> 
+  a skos:Concept ;
+  a dct:RightsStatement ;
+  skos:inScheme <http://publications.europa.eu/resource/authority/access-right> ;
+  skos:prefLabel "openbaar"@nl .
+ 
+<http://publications.europa.eu/resource/authority/file-type/PARQUET>
+  a skos:Concept;
+  a dct:MediaTypeOrExtent ;
+  skos:inScheme <http://publications.europa.eu/resource/authority/file-type> ;
+  skos:prefLabel "Parquet" .
+
+<https://www.iana.org/assignments/media-types/application/parquet>
+  a skos:Concept ;
+  a dct:MediaType ;
+  skos:prefLabel "Parquet" .
+
+<http://publications.europa.eu/resource/authority/licence/CC0>
+  a skos:Concept ;
+  a dct:LicenseDocument ;
+  dct:type <http://purl.org/adms/licencetype/PublicDomain> ;
+  skos:inScheme <http://publications.europa.eu/resource/authority/licence> ;
+  skos:prefLabel "CC-Zero" .
+
+<http://publications.europa.eu/resource/authority/data-theme/GOVE> 
+  a skos:Concept ;
+  skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
+  skos:prefLabel "Overheid en publieke sector"@nl .
+
+<http://publications.europa.eu/resource/authority/frequency/WEEKLY>
+  a skos:Concept ;
+  a dct:Frequency ;
+  skos:inScheme <http://publications.europa.eu/resource/authority/frequency> ;
+  skos:prefLabel "wekelijks"@nl .	
+	
+<https://sws.geonames.org/2802361/>
+  a skos:Concept;
+  a dct:Location ;
+  skos:prefLabel "België"@nl ;
+  dcat:bbox "POLYGON((2.54 51.51,6.41 51.51,6.41 49.49,2.54 49.49,2.54 51.51))"^^geo:wktLiteral .

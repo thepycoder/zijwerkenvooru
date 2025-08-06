@@ -1,0 +1,158 @@
+<div id="question-side-pane" class="side-pane">
+    <div class="side-pane-content">
+        <h1>Mondelinge vraag</h1>
+        <p id="question-questioners"></p>
+        <p id="question-respondent"></p>
+        <h4>Onderwerpen</h4>
+        <p id="question-topics"></p>
+        <h4>Vragen en antwoorden</h4>
+        <p id="question-discussion"></p>
+    </div>
+</div>
+
+<script>
+    function openQuestionSidePane(element) {
+        const question = JSON.parse(element.getAttribute('data-question'));
+
+        const questionersContainer = document.getElementById("question-questioners");
+        const respondentContainer = document.getElementById("question-respondent");
+
+        questionersContainer.innerHTML = ''; // Clear existing content
+        respondentContainer.innerHTML = ''; // Clear existing content
+
+// Create "van" label
+        const vanLabel = document.createElement('span');
+        vanLabel.classList.add('label');
+        vanLabel.textContent = "van";
+        questionersContainer.appendChild(vanLabel);
+
+// Create questioners list
+        const questionersSpan = document.createElement('span');
+        questionersSpan.classList.add('questioners');
+
+        question.questioners.forEach((questioner, index) => {
+            const questionerLink = document.createElement('a');
+            questionerLink.classList.add('questioner');
+            questionerLink.href = `../../../members/${slugify(questioner)}`;
+            questionerLink.textContent = questioner;
+
+            questionersSpan.appendChild(questionerLink);
+
+            if (index < question.questioners.length - 1) {
+                questionersSpan.appendChild(document.createTextNode(', ')); // Add comma separator
+            }
+        });
+
+        questionersContainer.appendChild(questionersSpan);
+
+// Line breaks for spacing
+        questionersContainer.appendChild(document.createElement('br'));
+        questionersContainer.appendChild(document.createElement('br'));
+
+// Create "aan" label
+        const aanLabel = document.createElement('span');
+        aanLabel.classList.add('label');
+        aanLabel.textContent = "aan";
+        respondentContainer.appendChild(aanLabel);
+
+// Create respondent link
+        const respondentLink = document.createElement('a');
+        respondentLink.classList.add('respondent');
+        respondentLink.href = `../../../members/${slugify(question.respondent)}`;
+        respondentLink.textContent = question.respondent;
+
+        respondentContainer.appendChild(respondentLink);
+
+// Helper function to slugify names (simulates the Django slugify filter)
+        function slugify(text) {
+            return text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]+/g, '');
+        }
+
+
+        const topicsContainer = document.getElementById("question-topics");
+        topicsContainer.innerHTML = ''; // Clear any existing content
+
+        const ulElement = document.createElement('ul'); // Create a <ul> element
+
+        question.topics.forEach(topic => {
+            const topicItem = document.createElement('li');
+            topicItem.textContent = topic.trim(); // Set topic text
+            ulElement.appendChild(topicItem); // Append <li> to <ul>
+        });
+
+        topicsContainer.appendChild(ulElement);
+
+        const discussionContainer = document.getElementById("question-discussion");
+        discussionContainer.innerHTML = '';  // Clear previous content
+
+        question.discussion.forEach(x => {
+            // Create a container for each message
+            const messageContainer = document.createElement('div');
+            messageContainer.classList.add('message-container');
+
+            // Create the speech bubble
+            const speech = document.createElement('div');
+            speech.classList.add('speech');
+
+            if (x.speaker.trim() === question.respondent.trim()) {
+                speech.classList.add('response');
+            } else if(x.speaker.trim() === 'Voorzitter') {
+                speech.classList.add('moderator');
+            }else {
+                speech.classList.add('question');
+            }
+
+            // Create the speaker name inside the speech bubble and make it bold
+            const speaker = document.createElement('p');
+            speaker.textContent = `${x.speaker.trim()}: `;
+            speaker.style.fontWeight = 'bold'; // Make it bold
+            speaker.style.margin = 0;
+
+            // const speaker = document.createElement('strong');
+            // speaker.textContent = `${x.speaker.trim()}: `;
+
+            // Split text by "NEWPARAGRAPH" and create separate paragraphs
+            const messageParts = x.text.trim().split("NEWPARAGRAPH");
+            const messageContent = document.createElement('div'); // Wrapper for paragraphs
+
+            messageParts.forEach(part => {
+                const paragraph = document.createElement('p');
+                paragraph.textContent = part.trim();
+                messageContent.appendChild(paragraph);
+            });
+
+            // Append the speaker name and message content to the speech bubble
+            speech.appendChild(speaker);
+            speech.appendChild(messageContent);
+
+            // Append the speech bubble to the message container
+            messageContainer.appendChild(speech);
+
+            // Append the message container to the discussion container
+            discussionContainer.appendChild(messageContainer);
+        });
+
+
+
+        document.getElementById("question-side-pane").classList.add("open");
+    }
+
+    document.addEventListener('click', function(event) {
+
+        var questionList = document.getElementById("question-list");
+        var questionSidePane = document.getElementById("question-side-pane");
+
+
+        if(questionSidePane != null && questionList != null) {
+
+            if (!questionSidePane.contains(event.target) && !questionList.contains(event.target)) {
+                document.getElementById("question-side-pane").classList.remove("open"); // Hide the side pane
+            }
+
+        }
+
+
+
+    });
+
+</script>

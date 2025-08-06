@@ -1,0 +1,74 @@
+{% macro questionCard(params) %}
+<!-- TITLE -->
+<div class="meeting-item card rounded-top">
+    {% if params.topic and params.showCategory !== "false" %}
+    <div class="category">
+        {# {{ params.topics[params.topic].icon or '' }}  #}
+        {{ params.topic }}
+    </div>
+    {% endif %}
+
+    <div class="padding flex column gap">
+        <p class="bold">
+            {% if params.language === "nl" %}
+           <span class="full">
+            {% for topic in params.question.topics_nl %}
+                {{ topic }}<br>
+            {% endfor %}
+            </span>
+            <span class="summarized highlight" style="display: none;">{{ params.question.topics_summary_nl }}</span>
+            {% else %}
+            <span class="full">{{ params.question.topics_fr }}</span>
+            <span class="summarized highlight" style="display: none;">{{ params.question.topics_summary_fr }}</span>
+            {% endif %}
+        </p>
+        {% if params.hideAuthors !== "true"%}
+        <div class="flex column full">
+            {% if (params.question.questioners | length) > 1 %}
+            <p>Gesteld door</p>
+            <p>
+                <span class="questioners">
+                    {% for questioner in params.question.questioners %}
+                    {% set party = questioner.party | lower %}
+                    {% set primaryColor = params.partyColors[party].primary or '#95a5a6' %}
+                    {% set secondaryColor = params.partyColors[party].secondary or '#95a5a6' %}
+                    <span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ questioner.party }}</span>
+                    <span class="questioner"><a href="/{{params.language}}/members/{{ questioner.name | slugify }}/">{{ questioner.name }}</a></span><br>
+                    {% endfor %}
+                </span>
+            </p>
+            {% else %}
+            <p>Gesteld door</p>
+            <p>
+                {% set party = params.question.questioners[0].party | lower %}
+                {% set primaryColor = params.partyColors[party].primary or '#95a5a6' %}
+                {% set secondaryColor = params.partyColors[party].secondary or '#95a5a6' %}
+                <span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ params.question.questioners[0].party }}</span>
+                <span class="questioner"><a href="/{{params.language}}/members/{{ params.question.questioners[0].name | slugify }}/">{{ params.question.questioners[0].name }}</a></span><br>
+            </p>
+            {% endif %}
+        </div>
+        <div class="summarized" style="display: none;">
+            <p>Gesteld door {% for questioner in params.question.questioners %}{{ questioner.name }}, {% endfor %}</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- RESPONDENTS -->
+<a href="/{{ params.language }}/sessions/{{ params.question.session_id }}/meetings/{{ params.question.type }}/{{ params.question.meeting_id }}/questions/{{ params.question.question_id }}/"
+   class="question-respondent card rounded-bottom padding">
+    <div style="display: flex; flex-direction: column">
+        <p>Gesteld aan</p>
+        <p>
+            {% for respondent in params.question.respondents %}
+            {% set function = params.functions[respondent.name] | getActive(params.question.date) %}
+            <span class="respondent">{{ respondent.name }}{% if function %} ({{ function.function }}){% endif %}</span>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+        <p>op {{ params.question.date | date }}</p>
+    </div>
+    {% lucide "chevron-right" %}
+</a>
+
+{% endmacro %}

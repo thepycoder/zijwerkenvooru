@@ -1,0 +1,82 @@
+---
+layout: layouts/page
+pagination:
+    data: languages
+    size: 1
+    alias: lang
+permalink: "{{ lang }}/votes/"
+eleventyComputed:
+    title: "Stemresultaten in de Kamer van Volksvertegenwoordigers"
+    description: "Bekijk alle stemmingen in het Belgische federaal parlement. Wie stemde voor, tegen of onthield zich? Transparante stemanalyses."
+---
+
+<!-- COMPONENTS -->
+{%- from "components/vote-card-tiny.njk" import voteCardTiny -%}
+
+<h1>Alle Stemmingen</h1>
+
+<p>Bekijk recente stemmingen of zoek op onderwerp.</p>
+
+<!-- FILTER -->
+<select id="topicFilter" style="margin-bottom: 2rem;">
+    <option value="">Alle onderwerpen</option>
+    {% for key in topics | keys %}
+    <option value="{{ key }}">{{ key }}</option>
+    {% for subtopic in topics[key].subtopics | keys %}
+    <option value="{{ subtopic }}">– {{ subtopic }}</option>
+    {% endfor %}
+    {% endfor %}
+</select>
+
+<!-- ITEM COUNT -->
+<div class="flex space-between">
+    <span id="voteCount">{{ meetings.meetings | countItems("allVotes") }} stemmingen</span>
+</div>
+
+<!-- ITEM LIST -->
+{% for meeting in meetings.meetings | sort(attribute='date', true) %}
+<div class="meeting-group">
+    {% if meeting.allVotes | length > 0 %}
+    <h3>{{ meeting.date | date }}</h3>
+    <div class="card-list">
+        {% for vote in meeting.allVotes %}
+        {% set allTopics = vote.title_nl | getMatchedTopics(topics) %}
+        <div class="vote-card-wrapper" data-topics="{{ allTopics | join(',') }}">
+            {{ voteCardTiny({ vote: vote, topic: allTopics[0], topics: topics, functions: functions, translations: languages[page.lang], language: page.lang, showCategory: "true" }) }}
+        </div>
+        {% endfor %}
+    </div>
+    <hr>
+    {% endif %}
+</div>
+{% endfor %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const filterSelect = document.getElementById("topicFilter");
+        const cards = document.querySelectorAll(".vote-card-wrapper");
+
+        filterSelect.addEventListener("change", () => {
+            const selectedTopic = filterSelect.value;
+            cards.forEach(card => {
+                const topics = card.dataset.topics.split(',').map(t => t.trim());
+                const shouldShow = !selectedTopic || topics.includes(selectedTopic);
+                card.style.display = shouldShow ? "block" : "none";
+            });
+
+            // Update vote count
+            const visibleCount = Array.from(cards).filter(card => card.style.display !== "none").length;
+            const countText = `${visibleCount} ${visibleCount === 1 ? 'vraag' : 'vragen'}`;
+            document.getElementById("voteCount").textContent = countText;
+
+            // Hide meetings with no visible votes
+            const meetingGroups = document.querySelectorAll(".meeting-group");
+            meetingGroups.forEach(group => {
+                const voteCards = group.querySelectorAll(".vote-card-wrapper");
+                const anyVisible = Array.from(voteCards).some(card => card.style.display !== "none");
+                group.style.display = anyVisible ? "block" : "none";
+            });
+        });
+    });
+
+</script>

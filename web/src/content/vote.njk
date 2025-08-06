@@ -1,0 +1,232 @@
+---
+layout: layouts/page
+pagination:
+    data: collections.localizedPlenaryVotes
+    size: 1
+    alias: vote
+    addAllPagesToCollections: true
+permalink: "{{ vote.permalink }}"
+eleventyComputed:
+    title: "Parlementaire stemming van {{ vote.date | date }}"
+    canonical: "nl/sessions/{{ vote.session_id }}/meetings/plenary/{{ vote.meeting_id }}/votes/{{ vote.vote_id }}/"
+    redirect_from: "/nl/votes/{{ vote.session_id }}/{{ vote.meeting_id }}/{{ vote.vote_id }}"
+---
+
+<!-- PAGEFIND EXCERPT -->
+<span style="display: none" data-pagefind-meta="title">Stemming op {{ vote.date | date }} over {{ vote.title_nl }}</span>
+<span style="display: none" data-pagefind-body>Vraag van {% for questioner in question.questioners %}{{ questioner.name }}{% if not loop.last %}, {% endif %}{% endfor %} over {% if question.topics_summary_nl %}{{ question.topics_summary_nl }}{% else %}{{ question.topics_nl }}{% endif %}: {% for discussion in question.discussion %}{{ discussion.text | replace("NEWPARAGRAPH", " ") }}{% endfor %}</span>
+
+<h1>{{ languages[page.lang].Vote }}</h1>
+
+{% if page.lang === "nl" %}
+<h3 style="font-weight: normal; margin-top: 0;">{{ vote.title_nl }}.</h3>
+{% else %}
+<h3 style="font-weight: normal; margin-top: 0;">>{{ vote.title_fr }}.</h3>
+{% endif %}
+
+<!-- VOTE OVERVIEW -->
+<div class="card padding info-list" style="margin-bottom: 0.2rem;">
+    <div class="info-item">
+        <span class="icon-padded">{% icon "lucide:vote" %}</span>
+        <p>
+            {% if (vote.yes_count | int) > ((vote.no_count | int) + (vote.abstain_count | int)) %}
+            <span class="topic" style="background-color: #28a745; color: white;">{{ languages[page.lang].passed }}</span>
+            {% else %}
+            <span class="topic" style="background-color: #dc3545; color: white;">{{ languages[page.lang].failed }}</span>
+            {% endif %} tijdens <a href="/{{ page.lang }}/sessions/{{ vote.session_id }}/meetings/plenary/{{ vote.meeting_id }}" target="_blank">vergadering van {{ vote.date | date }}</a></p>
+        </p>
+    </div>
+    {% if vote.dossier_id %}
+    <div class="info-item">
+        <span class="icon-padded">{% icon "lucide:file-digit" %}</span>
+        <p>Stemming over dossier <a
+                href="/{{ page.lang }}/sessions/{{ vote.session_id }}/dossiers/{{ vote.dossier_id }}"
+                target="_blank">{{ vote.dossier_id }}</a></p>
+    </div>
+    {% endif %}
+</div>
+
+<!-- VOTE CONTENTS -->
+<h2>Waarover gaat dit</h2>
+
+ {% if vote.dossier_id %}
+<p>Deze stemming ging over dossier <a
+                href="/{{ page.lang }}/sessions/{{ vote.session_id }}/dossiers/{{ vote.dossier_id }}"
+                target="_blank">{{ vote.dossier_id }}</a>.</p>
+                {% else %}
+                Deze stemming kon niet gelinkt worden aan een dossier.
+{% endif %}
+
+<div id="screenshot-target">
+
+<!-- VOTE RESULTS -->
+<h2>{{ languages[page.lang].Results }}</h2>
+
+<p>Deze stemming werd {% if (vote.yes_count | int) > ((vote.no_count | int) + (vote.abstain_count | int)) %}{{ languages[page.lang].passed }}{% else %}{{ languages[page.lang].failed }}{% endif %}.</p>
+
+<div class="vote-bar">
+    <div class="bar-segment yes"
+            style="width: {{ (vote.yes_count / ((vote.yes_count | int) + (vote.no_count | int) + (vote.abstain_count | int)) * 100).toFixed(1) }}%">
+        {% if vote.yes_count > 0 %}
+        <span class="bar-label">{{ (vote.yes_count / ((vote.yes_count | int) + (vote.no_count | int) + (vote.abstain_count | int)) * 100).toFixed(1) }}%</span>
+        {% endif %}
+    </div>
+    <div class="bar-segment no"
+            style="width: {{ (vote.no_count / ((vote.yes_count | int) + (vote.no_count | int) + (vote.abstain_count | int)) * 100).toFixed(1) }}%">
+        {% if vote.no_count > 0 %}
+        <span class="bar-label">{{ (vote.no_count / ((vote.yes_count | int) + (vote.no_count | int) + (vote.abstain_count | int)) * 100).toFixed(1) }}%</span>
+        {% endif %}
+    </div>
+    <div class="bar-segment abstain"
+            style="width: {{ (vote.abstain_count / ((vote.yes_count | int) + (vote.no_count | int) + (vote.abstain_count | int)) * 100).toFixed(1) }}%">
+        {% if vote.abstain_count > 0 %}
+        <span class="bar-label">{{ (vote.abstain_count / ((vote.yes_count | int) + (vote.no_count | int) + (vote.abstain_count | int)) * 100).toFixed(1) }}%</span>
+        {% endif %}
+    </div>
+</div>
+ <p class="vote-numbers">
+        <span class="vote-dot yes"></span><span>{{ translations.yes }} ({{ vote.yes_count }})</span>
+        <span class="vote-dot no"></span><span>{{ translations.no }} ({{ vote.no_count }})</span>
+        <span class="vote-dot abstain"></span><span>{{ translations.abstain }} ({{ vote.abstain_count }})</span>
+    </p>
+<p>Bekijk hieronder de resultaten in detail.</p>
+
+<div class="tabbed" style="margin-top: 1rem;">
+    <input type="radio" name="tabset" id="per-partij" checked>
+    <input type="radio" name="tabset" id="per-kamerlid">
+    <input type="radio" name="tabset" id="per-optie">
+
+    <ul class="tabs">
+        <li><label for="per-partij">Partij</label></li>
+        <li><label for="per-kamerlid">Kamerlid</label></li>
+        <li><label for="per-optie">Stempoptie</label></li>
+    </ul>
+
+    <!-- PER PARTIJ -->
+    <div id="content1" class="tab-content">
+        <div class="padding">
+            <p>De stemmingsresultaten per partij.</p>
+            {% for party, counts in vote.votes_by_party %}
+            {% set total = counts.yes + counts.no + counts.abstain %}
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.4rem;">
+                <div style="width:40%;text-align: end;">
+                    {% if federalGovernment | contains(party) %}
+                    <p class="flex federal-government-after" style="align-items: center; margin: 0;">{{ party }}</p>
+                    {% else %}
+                    <p class="flex" style="margin: 0; align-items: center;">{{ party }}</p>
+                    {% endif %}
+                </div>
+                <div class="vote-bar" style="width: 60%;">
+                    <div class="bar-segment yes" style="width: {{ (counts.yes / total * 100).toFixed(1) }}%">
+                        {% if counts.yes > 0 %}<span
+                            class="bar-label">{{ (counts.yes / total * 100).toFixed(1) }}%</span>{% endif %}
+                    </div>
+                    <div class="bar-segment no" style="width: {{ (counts.no / total * 100).toFixed(1) }}%">
+                        {% if counts.no > 0 %}<span class="bar-label">{{ (counts.no / total * 100).toFixed(1) }}%</span>{%
+                        endif %}
+                    </div>
+                    <div class="bar-segment abstain" style="width: {{ (counts.abstain / total * 100).toFixed(1) }}%">
+                        {% if counts.abstain > 0 %}<span class="bar-label">{{ (counts.abstain / total * 100).toFixed(1) }}%</span>{%
+                        endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <p class="federal-government-before" style="margin-top: 2rem;">= lid van de huidige federale regering</p>
+        </div>
+    </div>
+
+    <!-- PER KAMERLID -->
+    <div id="content2" class="tab-content">
+        <div class="padding">
+            <p>De stemmingsresultaten per kamerlid.</p>
+        </div>
+        <div class="votes-table-container" style="border-top: 1px solid #dddddd;">
+            <table class="votes-table">
+                <thead>
+                <tr>
+                    <th>Partij</th>
+                    <th>Kamerlid</th>
+                    <th style="text-align: end;">Stemming</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for member in vote.yes_members %}
+                {% set primaryColor = partyColors[member.party | lower].primary or '#95a5a6' %}
+                {% set secondaryColor = partyColors[member.party | lower].secondary or '#95a5a6' %}
+
+                <tr>
+                    <td><span class="party"
+                              style="font-weight: bold; color: {{primaryColor}};background-color: {{ secondaryColor }};">{{ member.party }}</span>
+                    </td>
+                    <td><a href="/{{page.lang}}/members/{{member.name | slugify }}">{{ member.name }}</a></td>
+                    <td style="text-align: end;">
+                        <span class="vote-dot yes"></span>ja
+                    </td>
+                </tr>
+                {% endfor %}
+                {% for member in vote.no_members %}
+                {% set primaryColor = partyColors[member.party | lower].primary or '#95a5a6' %}
+                {% set secondaryColor = partyColors[member.party | lower].secondary or '#95a5a6' %}
+
+                <tr>
+                    <td><span class="party"
+                              style="font-weight: bold; color: {{primaryColor}};background-color: {{ secondaryColor }};">{{ member.party }}</span>
+                    </td>
+                    <td><a href="/{{page.lang}}/members/{{member.name | slugify }}">{{ member.name }}</a></td>
+                    <td style="text-align: end;">
+                        <span class="vote-dot no"></span>nee
+                    </td>
+                </tr>
+                {% endfor %}
+                {% for member in vote.abstain_members %}
+                {% set primaryColor = partyColors[member.party | lower].primary or '#95a5a6' %}
+                {% set secondaryColor = partyColors[member.party | lower].secondary or '#95a5a6' %}
+
+                <tr>
+                    <td><span class="party"
+                              style="font-weight: bold; color: {{primaryColor}};background-color: {{ secondaryColor }};">{{ member.party }}</span>
+                    </td>
+                    <td><a href="/{{page.lang}}/members/{{member.name | slugify }}">{{ member.name }}</a></td>
+                    <td style="text-align: end;">
+                        <span class="vote-dot abstain"></span>onthouding
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- PER PARTIJ -->
+    <div id="content3" class="tab-content">
+        <div class="padding">
+            <p>De stemmingsresultaten per optie.</p>
+            {% set voteTypes = ["yes", "no", "abstain"] %}
+            {% for type in voteTypes %}
+            <h4 style="margin-bottom: 1rem;">
+                {% if type == "yes" %}Ja
+                {% elif type == "no" %}Nee
+                {% else %}Onthouding
+                {% endif %}
+            </h4>
+
+            <div style="margin-bottom: 1rem;">
+            {% set members = [] %}
+            {% for party, group in vote.grouped_votes_by_party %}
+            {% for member in group[type] %}
+            {% set members = members.concat([{ name: member.name, party: member.party }]) %}
+            {% endfor %}
+            {% endfor %}
+
+            {% set sortedMembers = members | sort(attribute='party') %}
+
+            {% for member in sortedMembers %}
+            <span class="dot {{ type }}" style="background: {{ partyColors[member.party | lower].primary or '#aaa' }}" title="{{ member.name }} ({{ member.party }})"></span>
+            {% endfor %}
+            </div>
+
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</div>

@@ -1,0 +1,128 @@
+---
+layout: layouts/meeting
+pagination:
+    data: collections.localizedCommissions
+    size: 1
+    alias: commission
+    addAllPagesToCollections: true
+permalink: "{{ commission.lang }}/sessions/{{ commission.session_id }}/meetings/commission/{{ commission.meeting_id }}/"
+canonical: "nl/sessions/{{ commission.session_id }}/meetings/commission/{{ commission.meeting_id }}/"
+eleventyComputed:
+    title: "Verslag commissievergadering {{ commission.date | date }}"
+    description: "Details van de commissievergadering op {{ commission.date | date }}, met besproken agendapunten, vragen en stemmingen."
+---
+
+<!-- PAGEFIND EXCERPTS -->
+<span style="display: none" data-pagefind-body>
+  {% for question in commission.questions %}
+     {% for topic in question.topics_nl %}
+      {{ topic }}
+    {% endfor %}
+    {% for discussion in question.discussion %}
+      {{ discussion.text | replace("NEWPARAGRAPH", " ") }}
+    {% endfor %}
+  {% endfor %}
+</span>
+
+<!-- COMPONENTS -->
+{%- from "components/question-card-complete.njk" import questionCardComplete -%}
+
+<h1 data-pagefind-meta="title" class="capitalize-first">Commissievergadering op {{ commission.date | date }}</h1>
+
+<div class="flex column gap">
+    <div class="card info-list" style="gap: 0;">
+        {% set ctype = commission.commission_type | default('', true) %}
+        {% set c = commissions[ctype] or {} %}
+
+
+            <div class="category" style="    align-self: flex-start; max-width:80%;
+                                         background-color: {{ c.background or '#555' }};
+                                         color: {{ c.color or '#fff' }};">
+              {{ c.icon or '' }} {{ c.name or ctype }}
+            </div>
+
+            <div class="padding info-list">
+
+
+        <div class="info-item">
+             <span class="icon-padded">{% icon "lucide:clock" %}</span>
+            <p>{{ languages[page.lang].From }} {{ commission.start_time }} {{ languages[page.lang].until }} {{ commission.end_time }} ({{ commission.start_time | duration(commission.end_time)
+                }})</p>
+        </div>
+
+
+                <div class="info-item">
+                    <span class="icon-padded">{% icon "lucide:user" %}</span>
+                    <div>
+                        <p><span>Voorgezeten door </span></p>
+                        <p>
+                            {% for chair in commission.chairs %}
+                                {% set party = chair.party | lower %}
+                                {% set primaryColor = partyColors[party].primary or '#95a5a6' %}
+                                {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
+                                <span>
+                                    <span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ chair.party }}</span>
+                                    <a href="/nl/members/{{ chair.name | slugify }}/">{{ chair.name }}</a>
+                                </span>
+                            {% endfor %}
+                        </p>
+                     </div>
+                </div>
+
+        <div class="info-item">
+              <span class="icon-padded">{% icon "lucide:file-digit" %}</span>
+            <p>{{ languages[page.lang].source }} <a
+                    href="https://www.dekamer.be/doc/CCRI/html/{{ commission.session_id }}/ic{{ commission.meeting_id | padLeft(3, '0') }}x.html"
+                    target="_blank">dekamer.be</a></p>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- SHARE BUTTON -->
+<button id="share-button">{{ languages[page.lang].shareMeeting }}</button>
+
+<!-- QUESTIONS -->
+<h2>{{ languages[page.lang].Questions }}</h2>
+{% if commission.questions.length == 0 %}
+<p>{{ languages[page.lang].noQuestions }}</p>
+{% else %}
+<p>De volgende vragen werden gesteld tijdens deze commissievergadering.</p>
+<div id="question-list">
+    {% for question in commission.questions %}
+    {% set topicCounts = [question] | countTopics(topics) %}
+    {% set topic = topicCounts[0][0] %}
+    <div class="question-container">
+        {{ questionCardComplete({
+        question: question,
+        topic: topic,
+        topics: topics,
+        functions: functions,
+        partyColors: partyColors,
+        translations: languages[page.lang],
+        language: page.lang,
+        nolink: true,
+        showCategory: 'false'
+        }) }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".toggle-discussion").forEach(button => {
+            button.addEventListener("click", () => {
+                const container = button.closest(".question-container");
+                const discussion = container.querySelector(".discussion");
+
+                if (!discussion) return;
+
+                const isOpen = discussion.classList.toggle("open");
+
+                // Toggle class on the button or svg for rotation
+                button.classList.toggle("rotated", isOpen);
+            });
+        });
+    });
+</script>

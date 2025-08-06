@@ -1,0 +1,73 @@
+---
+layout: layouts/page
+pagination:
+    data: languages
+    size: 1
+    alias: lang
+permalink: "{{ lang }}/lobby/"
+title: "zwvu | lobbyregister"
+eleventyComputed:
+    description: "{{ languages[page.lang].lobbyDescription }}"
+---
+
+{# <p><a href="/{{page.lang}}/" class="uppercase"><- {{ languages[page.lang].home }}</a></p> #}
+
+<h1>Het Lobbyregister</h1>
+
+<p>
+    Het lobby register bestaat uit personen en organisaties die graag rechtstreeks of onrechtstreeks invloed willen uitoefenen op het wetgevingsproces, op de uitvoering van het overheidsbeleid, of op de besluitvormingsprocessen in de Kamer.
+</p>
+
+<!-- KEY STATISTICS -->
+<div id="lobby-statistics">
+    <div style=" display: flex; gap: 0.4rem; flex-direction: column;">
+        <div style="display: flex; width: 100%; gap: 0.4rem;">
+            <div class="card padding metric">
+                <h2>{{ lobby.lobby | length }}</h2>
+                <p>{{ languages[page.lang].lobbyists }}</p>
+            </div>
+            <div class="card padding metric">
+                <h2>{{ sectors | keys | length }}</h2>
+                <p>{{ languages[page.lang].sectors }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{# 
+<div class="card padding embed" style="margin-top: 0.4rem;">
+    <a href="https://www.vrt.be/vrtnws/nl/2019/11/02/lobbyen-in-kamer-en-regering-voor-je-het-weet-ben-je-bezoedel/" target="_blank">
+    <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+            <div>
+                <div class="vrt"></div>
+                <p class="title">Lobbyen in de Kamer en de regering</p>
+                <p>In de Wetstraat zijn lobbyisten erg aanwezig. Regels zijn er amper, ondanks de gevaren.</p>
+            </div>
+
+        {% icon "lucide:chevron-right" %}
+    </div>
+    </a>
+</div> #}
+
+<!-- OVERVIEW -->
+<h2>Alle lobbyisten</h2>
+<table class="lobby-table">
+    <tr>
+        <th style="width: 40%;">Organisatie</th>
+        <th>Sector</th>
+    </tr>
+{% for member in lobby.lobby %}
+
+    <tr>
+
+        <td>
+            <p><a href="https://{{member.url}}" target="_blank">{{ member.name }}</a></p>
+        </td>
+        <td>
+<!--            <p> {{ member.interests }}</p>-->
+            <p>
+                {{sectors[lobbyists[member.name].sector].icon }} {{sectors[lobbyists[member.name].sector].name }}
+            </p>
+        </td>
+    </tr>
+{% endfor %}
+</table>

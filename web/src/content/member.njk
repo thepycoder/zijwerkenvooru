@@ -1,0 +1,771 @@
+---
+layout: layouts/page
+pagination:
+    data: collections.localizedMembers
+    size: 1
+    alias: member
+    addAllPagesToCollections: true
+permalink: "{{ member.permalink }}"
+canonical: "nl/members/"
+eleventyComputed:
+    title: "Parlementslid {{ member.first_name }} {{ member.last_name }}"
+    description: "Profiel van {{ member.first_name }} {{ member.last_name }}, lid van het federaal parlement. Bekijk stemgedrag, ingediende vragen, wetsvoorstellen en partij."
+---
+
+<!-- PAGEFIND EXCERPT -->
+<span style="display: none" data-pagefind-meta="title">{{ member.first_name }} {{ member.last_name }}</span>
+<span style="display: none" data-pagefind-body>Alles over kamerlid {{ member.first_name }} {{ member.last_name }}.</span>
+
+<!-- COMPONENTS -->
+{%- from "components/proposition-card.njk" import propositionCard -%}
+{%- from "components/question-card.njk" import questionCard -%}
+
+<!-- VARIABLES -->
+{% set imgSrc = "../content/members/img/" + (member.first_name | slugify) + "-" + (member.last_name | slugify) + ".jpg" %}
+{% set name = member.first_name + " " + member.last_name %}
+{%- set has_image = imgSrc | imageExists %}
+{% set primaryColor = partyColors[member.parties[0] | lower].primary or '#95a5a6' %}
+{% set secondaryColor = partyColors[member.parties[0] | lower].secondary or '#95a5a6' %}
+
+<!-- MEMBER ID CARD -->
+<div id="member-header" style="margin-top: 2rem;">
+ 
+    <div class="card">
+           <div class="category" style="font-weight: bold; background-color: {{ secondaryColor }}; color: {{ primaryColor }};">
+                {{ member.parties[0] }}
+            </div>
+            <div  style="display: flex; flex-direction: row; gap:1rem;" class="padding">
+
+        {%- if has_image -%}
+        <img style="object-fit: cover; width: 4rem; height: 4rem; border-radius: 50%;" src="{{ imgSrc }}"
+             alt="A picture of {{ member.first_name }} {{ member.last_name }}" data-pagefind-meta="image[src]">
+        {%- endif -%}
+
+        <div id="member-details">
+            <!-- NAME -->
+            <h1 style="margin-top: 0; margin-bottom: 0.4rem;">{{ member.first_name }} {{ member.last_name }}</h1>
+            
+            <!-- ATTENDANCE -->
+            <span>
+                {% set attendance = member.attendance %}
+                {% set attendanceColor = "#ff5252" %}
+                {% if attendance >= 0.90 %}
+                    {% set attendanceColor = "#4da74d" %}
+                {% elif attendance >= 0.80 %}
+                    {% set attendanceColor = "#ffc760" %}
+                {% endif %}
+                <p>Aanwezigheid ({{ (attendance * 100) | round(0, 'floor') }}%)</p>
+                <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden; width: 14rem;">
+                    <div style=" width: {{ (attendance * 100) | round(0, 'floor') }}%; height: 100%; background-color: {{ attendanceColor }}; "></div>
+                </span>
+        </div>
+        </div>
+    </div>
+
+    <!-- ATTENDANCE INFO -->
+    <div class="card padding" style="display: flex; flex-direction: column;">
+        <details>
+            <summary>Hoe wordt aanwezigheid berekend?</summary>
+            <p style="padding-top: 1rem; padding-bottom: 1rem;">De Kamer publiceert geen aanwezigheden. Daarom wordt het
+                aanwezigheidspercentage berekend als het aantal stemmingen waaraan het kamerlid heeft deelgenomen, gedeeld door het
+                totaal aantal stemmingen waaraan het kamerlid had kunnen deelnemen. Vergaderingen zonder stemmingen tellen dus niet mee.</p>
+            <p style="padding-top: 1rem; padding-bottom: 1rem;">Een fout gezien? Laat dit weten via :
+                <a href="mailto:info@zijwerkenvooru.be" target="_blank">info@zijwerkenvooru.be</a>
+            </p>
+        </details>
+    </div>
+
+    <div class="card padding info-list">
+        {%- if member.date_of_birth -%}
+        <div class="info-item">
+             <span class="icon-padded">{% icon "lucide:cake" %}</span>
+
+            <p> {{ member.place_of_birth }}, {{ member.date_of_birth | date }} ({{ member.date_of_birth | age }}
+            jaar)</p>
+        </div>
+        {%- endif -%}
+
+        {% if member.language == 'nl' %}
+        <div class="info-item">
+            <span class="icon-padded">{% icon "lucide:vote" %}</span>
+
+            <p> {{ member.constituency }}, Nederlands</p>
+        </div>
+        {% elseif member.language == 'fr' %}
+        <div class="info-item">
+            <span class="icon-padded">{% icon "lucide:vote" %}</span>
+
+            <p> {{ member.constituency }}, Frans</p>
+        </div>
+        {% else %}
+        <div class="info-item">
+            <span class="icon-padded">{% icon "lucide:vote" %}</span>
+
+            <p> {{ member.constituency }}</p>
+        </div>
+        {% endif %}
+
+    {% if member.start_date != "NA" %}
+         <div class="info-item">
+            <span class="icon-padded">{% icon "lucide:calendar-1" %}</span>
+
+            <p>Parlementslid sinds {{ member.start_date | date }}</p>
+        </div>
+    {% endif %}
+
+        <!--    <p>{{ member.sessions }} </p>-->
+        {% if member.email %}
+        <div class="info-item">
+            <span class="icon-padded">{% icon "lucide:at-sign" %}</span>
+
+            <p><a href="mailto:{{ member.email }}">{{ member.email }}</a></p>
+        </div>
+        {% endif %}
+
+        {% if functions[name] %}
+        <div class="info-item">
+            <span class="icon-padded">{% icon "lucide:briefcase-business" %}</span>
+            <ul>
+            {% for func in functions[name] %}
+            <li><p>{{ func.function }} ({{ func.start_date | date }} - {{ func.end_date }})</p></li>
+            {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div style="display: flex; width: 100%; gap: 0.4rem;">
+    <div class="card padding metric">
+        <h2>{{ member.questions | asQuestioner | length }}</h2>
+        <p>vragen</p>
+    </div>
+      {# <div class="card padding metric">
+        <h2>{{ member.questions | asRespondent | length }}</h2>
+        <p>antwoorden</p>
+    </div> #}
+    <div class="card padding metric">
+        <h2>{{ member.propositions | length }}</h2>
+        <p>voorstellen</p>
+    </div>
+    <div class="card padding metric">
+        <h2>{{ member.votes | length }}</h2>
+        <p>stemmingen</p>
+    </div>
+</div>
+
+<!-- SHARE BUTTON -->
+<button id="share-button">{{ languages[page.lang].sharePage }}</button>
+
+<!-- ACTIVITIES -->
+<h2>Activiteit in De Kamer</h2>
+
+<div class="tabbed">
+    <input type="radio" name="tabset" id="tab-1" checked>
+    {# <input type="radio" name="tabset" id="tab-2"> #}
+    <input type="radio" name="tabset" id="tab-3">
+    <input type="radio" name="tabset" id="tab-4">
+
+    <ul class="tabs">
+        <li><label for="tab-1">Vragen</label></li>
+          {# <li><label for="tab-2">Antwoorden</label></li> #}
+        <li><label for="tab-3">Voorstellen</label></li>
+        <li><label for="tab-4">Stemmingen</label></li>
+    </ul>
+
+    <!-- QUESTIONS -->
+<div id="tab-1-content" class="tab-content padding">
+    {% set questions = member.questions | asQuestioner %}
+
+{% if questions | length > 0 %}
+  <p>Een overzicht van de vragen die {{ member.first_name }} {{ member.last_name }} heeft gesteld in de kamer.</p>
+  <div id="member-questions">
+    <div id="question-list">
+      {% for question in questions | sort(attribute='date', reverse=true) %}
+        {% set topicCounts = [question] | countTopics(topics) %}
+        {% set topic = topicCounts[0][0] %}
+        <div>
+          {{ questionCard({
+            question: question,
+            topic: topic,
+            topics: topics,
+            functions: functions,
+            translations: languages[page.lang],
+            language: page.lang,
+            hideAuthors: "true"
+          }) }}
+        </div>
+      {% endfor %}
+    </div>
+    <div id="question-topics-list">
+      <div class="card padding">
+        <svg id="topicStellarChart"></svg>
+      </div>
+    </div>
+  </div>
+{% else %}
+  <p>{{ member.first_name }} {{ member.last_name }} heeft nog geen vragen gesteld in de kamer.</p>
+{% endif %}
+
+</div>
+
+     <!-- ANSWERS -->
+{# <div id="tab-2-content" class="tab-content padding">
+    {% set questions = member.questions | asRespondent %}
+
+{% if questions | length > 0 %}
+  <p>Een overzicht van de vragen die {{ member.first_name }} {{ member.last_name }} heeft beantwoord in de kamer.</p>
+  <div id="member-questions">
+    <div id="question-list">
+      {% for question in questions | sort(attribute='date', reverse=true) %}
+        {% set topicCounts = [question] | countTopics(topics) %}
+        {% set topic = topicCounts[0][0] %}
+        <div>
+          {{ questionCard({
+            question: question,
+            topic: topic,
+            topics: topics,
+            functions: functions,
+            translations: languages[page.lang],
+            language: page.lang,
+            hideAuthors: "true"
+          }) }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% else %}
+  <p>{{ member.first_name }} {{ member.last_name }} heeft nog geen vragen beantwoord in de kamer.</p>
+{% endif %}
+
+</div> #}
+
+    <!-- PROPOSITIONS -->
+    <div id="tab-3-content" class="tab-content padding">
+
+        {% if member.propositions | length > 0 %}
+          <p>Een overzicht van de voorstellen die {{ member.first_name}} {{ member.last_name }} heeft gedaan als hoofdauteur.</p>
+            <div id="proposition-list">
+            {% for proposition in member.propositions | sort(attribute='date', true) %}
+                <div>
+                    {{ propositionCard({proposition: proposition, translations: languages[page.lang], language: page.lang, hideAuthors: "true" }) }}
+                </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <p>{{ member.first_name }} {{ member.last_name }} heeft nog geen voorstellen ingediend als hoofdauteur.</p>
+        {% endif %}
+
+        {# <p class="bold">Als mede-auteur</p>
+        {% if member.subdocuments | length > 0 %}
+        {% for subdocument in member.subdocuments  %}
+        <p>{{subdocument.type}}</p>
+        {% endfor %}
+        {% else %}
+        <p>{{ member.first_name }} {{ member.last_name }} heeft nog geen voorstellen ingediend als mede-auteur.</p>
+        {% endif %} #}
+    </div>
+
+    <!-- VOTES -->
+    <div id="tab-4-content" class="tab-content">
+        <div class="padding">
+        {% if member.votes | length > 0 %}
+        <p>Een overzicht van hoe {{ member.first_name}} {{ member.last_name }} heeft gestemd in de kamer.</p>
+
+        {% set total_votes = member.votes | length %}
+        {% set outlier_votes = member.votes | selectattr('outlier') | list | length %}
+        {% set outlier_percentage = (outlier_votes / total_votes * 100) | round(1) %}
+
+        <div style="display: flex; width: 100%; gap: 0.4rem;">
+            <div class="card padding metric">
+                <h3 style="margin: 0;">{{ (((member.votes | length) / (meetings.meetings | countItems("allVotes"))) * 100.0) | round }}%</h3>
+                <p>aanwezigheid bij stemmingen</p>
+            </div>
+            <div class="card padding metric">
+                <h3 style="margin: 0;">{{ 100 - (outlier_percentage | int) }}%</h3>
+                <p>overeenkomst met meerderheid partij</p>
+            </div>
+        </div>
+        </div>
+
+        <div class="votes-table-container" style="margin-top: 0.4rem;">
+            <table class="votes-table">
+                <thead>
+                <tr>
+                    <!--            <th class="date-column">Datum</th>-->
+                    <th class="title-column">Onderwerp</th>
+                    <th class="vote-column">Stemming</th>
+                    <!--            <th class="link-column"></th> &lt;!&ndash; For the link &ndash;&gt;-->
+                </tr>
+                </thead>
+                <tbody>
+                {% for vote in member.votes | sort(attribute='date', true) %}
+                <tr>
+                    <!--            <td>{{ vote.date | shortDate }}</td>-->
+                    <td>
+                        <div style="display: flex; flex-direction: column; align-items: start; gap: 0.4rem;">
+                            <p style="margin: 0;">
+                            {% if page.lang === "nl" %}
+                            {{ vote.title_nl }}
+                            {% else %}
+                            {{ vote.title_fr }}
+                            {% endif %}
+                            </p>
+                            <a target="_blank" href="/{{page.lang}}/votes/{{vote.session_id}}/{{vote.meeting_id}}/{{ vote.vote_id }}/">Bekijk details</a>
+                        </div>
+                    </td>
+
+                    <td>
+                        {% set vote_label = {
+                        'yes': 'ja',
+                        'no': 'nee',
+                        'abstain': 'onthouding'
+                        }[vote.vote] %}
+
+                        {% if vote.outlier %}
+                        <span class="vote-dot {{ vote.vote }}"></span><span
+                            style="font-weight: bold; text-decoration: underline black wavy;">{{ vote_label }}</span>
+                        {% else %}
+                        <span class="vote-dot {{ vote.vote }}"></span>{{ vote_label }}
+                        {% endif %}
+                    </td>
+                    <!--            <td>-->
+
+                    <!--                <p style="margin: 0;"><a target="_blank"-->
+                    <!--                                         href="../../meetings/{{ vote.session_id }}/{{ vote.meeting_id }}">details-->
+                    <!--                    -></a></p>-->
+
+                    <!--            </td>-->
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% else %}
+        <p>{{ member.first_name }} {{ member.last_name }} heeft nog niet gestemd in de kamer.</p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- REMUNERATIONS -->
+<h2>Ambten en Vergoedingen</h2>
+{% if member.remunerations[2023] %}
+<p>Een overzicht van de mandaten, ambten en beroepen uitgeoefend door {{ member.first_name}} {{ member.last_name }} en
+    welke vergoedingen die hiervoor kreeg.</p>
+
+<div id="member-remunerations">
+    <div style="display: flex; flex-direction: column;">
+    <div class="card" style="padding: 0.4rem;">
+        <svg id="remunerationChart"></svg>
+    </div>
+{# 
+    <div class="card padding embed" style="margin-top: 0.4rem;">
+        <a href="https://www.vrt.be/vrtnws/nl/2020/02/14/mandatenlijst-rekenhof/" target="_blank">
+            <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                <div>
+                    <div class="vrt"></div>
+                    <p class="title">Hoeveel verdienen bekende politici met hun verschillende jobs?</p>
+                    <p>Rekenhof geeft cijfers vrij (al blijven die vaag)</p>
+                </div>
+
+                {% icon "lucide:chevron-right" %}
+            </div>
+        </a>
+    </div> #}
+        </div>
+
+   {% set years = member.remunerations | keys %}
+{% set years = years | sort(reverse=true) %}
+
+<div class="tabbed">
+    {% for year in years %}
+    <input type="radio" id="remuneration-tab-{{ loop.index }}" name="css-tabs" {% if loop.first %}checked{% endif %}>
+    {% endfor %}
+
+    <ul class="tabs">
+        {% for year in years %}
+        <li class="tab">
+            <label for="remuneration-tab-{{ loop.index }}" style="padding-left: 0.5rem; padding-right: 0.5rem;">
+                {{ year }}
+            </label>
+        </li>
+        {% endfor %}
+    </ul>
+
+    {% for year in years %}
+    {% set remunerationData = member.remunerations[year] %}
+    {% set remunerations = remunerationData.entries %}
+    {% set total_max = remunerationData.total_max / 100 %}
+
+    <div class="tab-content">
+        <div class="padding">
+            <p><strong>Totale vergoeding in {{ year }}:</strong> {{ total_max | formatCurrency }}</p>
+        </div>
+
+        <table id="remunerations-table">
+            <thead>
+            <tr>
+                <th style="width: 30%;">Functie</th>
+                <th style="width: 30%; text-align: end;">Vergoeding</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for remuneration in remunerations %}
+            <tr>
+                <td style="vertical-align: top;">
+                    <p>{{ remuneration.mandate }}</p>
+                    <p>{{ remuneration.institute }}</p>
+                </td>
+                <td style="vertical-align: top; text-align: end;">
+                    {% if remuneration.remuneration_min == remuneration.remuneration_max %}
+                    {{ (remuneration.remuneration_min / 100) | formatCurrency }}
+                    {% else %}
+                    {{ (remuneration.remuneration_min / 100) | formatCurrency }} -
+                    {{ (remuneration.remuneration_max / 100) | formatCurrency }}
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endfor %}
+</div>
+
+</div>
+{% else %}
+<p>Geen vergoedingen beschikbaar voor deze persoon.</p>
+{% endif %}
+
+
+<!-- SCRIPTS -->
+{% set js %} {% include "d3.js" %} {% endset %}
+<script>
+{{ js | safe}}
+// | jsmin | safe }}
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+
+        const rawData = {{ member.remunerations | dump | safe }};
+
+
+        const formattedDataRaw = Object.entries(rawData).map(([year, remunerationData]) => {
+            const total = remunerationData.total_max / 100; // Convert cents to euros
+            return { year: parseInt(year, 10), total };
+        });
+
+
+        const years = formattedDataRaw.map(d => d.year);
+        const minYear = 2018
+        const maxYear = 2023
+        const allYears = d3.range(minYear, maxYear + 1);
+
+
+        const dataMap = new Map(formattedDataRaw.map(d => [d.year, d.total]));
+        const formattedData = allYears.map(year => ({
+            year: year.toString(),
+            total: dataMap.get(year) || 0
+        })).sort((a, b) => b.year - a.year); // sort descending
+
+
+        const margin = {top: 0, right: 100, bottom: 0, left: 0};
+        const container = document.getElementById("remunerationChart").parentNode;
+        const width = container.clientWidth;
+        const height = formattedData.length * 30;
+
+
+        const svg = d3.select("#remunerationChart")
+            .attr("viewBox", `0 0 ${width} ${height}`)
+            .attr("preserveAspectRatio", "xMidYMid meet")
+            .style("width", "100%")
+            .style("height", "auto");
+
+
+        const tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+
+
+        svg.attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom);
+
+        const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+        const x = d3.scaleLinear()
+            .domain([0, d3.max(formattedData, d => d.total)])
+            .range([0, width]);
+
+        const y = d3.scaleBand()
+            .domain(formattedData.map(d => d.year))
+            .range([0, height])
+            .padding(0.3);
+
+        // 1. Get min and max from your dataset
+        const values = formattedData.map(d => d.total); // assuming each item is like { year: "2023", value: 123456 }
+        const minValue = d3.min(values);
+        const maxValue = d3.max(values);
+
+// 2. Create a linear color scale (interpolates based on value)
+        const color = d3.scaleLinear()
+            .domain([minValue, maxValue])
+            .range(["#c6e48b", "#1b4d1f"]);
+
+        g.append("g")
+            .call(d3.axisLeft(y))
+            .call(g => g.select(".domain").remove())
+                .call(g => g.selectAll("text")
+            .style("font-size", "0.8rem") // 🔍 Change font size here
+            .style("font-family", "monospace") // optional: customize font
+            .style("fill", "#444"));
+
+        g.selectAll("rect")
+            .data(formattedData)
+            .enter()
+            .append("rect")
+            .attr("y", d => y(d.year))
+            .attr("x", 0)
+            .attr("height", y.bandwidth())
+            .attr("width", 0) // start at 0
+            .attr("fill", d => color(d.total))
+            .attr("rx", 6)
+            .attr("ry", 6)
+            .on("mouseover", function (event, d) {
+                tooltip.transition().duration(200).style("opacity", 1);
+                tooltip.html(`<strong>${d.year}</strong><br/>€ ${d.total.toLocaleString()}`)
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 20) + "px");
+            })
+            .on("mousemove", function (event) {
+                tooltip
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 20) + "px");
+            })
+            .on("mouseout", function () {
+                tooltip.transition().duration(200).style("opacity", 0);
+            })
+            .transition()
+            .duration(800)
+            .attr("width", d => x(d.total)); // animate to final width
+
+
+
+
+
+
+        // Add value labels next to each bar
+        g.selectAll("text.label")
+            .data(formattedData)
+            .enter()
+            .append("text")
+            .attr("class", "label")
+            .attr("x", d => x(d.total) + 8) // position to the right of the bar
+            .attr("y", d => y(d.year) + y.bandwidth() / 2 + 4) // vertically center the text
+            .text(d => {
+                const value = d.total;
+                if (value >= 1000000) return "€" + (value / 1000000).toFixed(1) + "M";
+                if (value >= 1000) return "€" + Math.round(value / 1000) + "K";
+                return value;
+            })
+            .style("font-size", "0.8rem")
+            .style("fill", "#444");
+
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const topicData = {{ member.questions | countTopics(topics) | dump | safe }};
+        const allTopics = {{ topics | dump | safe }};
+
+        const topicCounts = Object.fromEntries(topicData);
+
+        const maxCount = Math.max(...Object.values(topicCounts), 1);
+        const data = Object.keys(allTopics).map(topic => ({
+            icon: allTopics[topic].icon,
+            topic,
+            value: (topicCounts[topic] || 0) / maxCount
+        }));
+
+        //    const width = 400, height = 350;
+
+        const container = document.getElementById("topicStellarChart").parentNode;
+        const width = container.clientWidth;
+        const height = width * 1; // maintain aspect ratio
+
+        const svg = d3.select("#topicStellarChart")
+            .attr("viewBox", `0 0 ${width} ${height}`)
+            .attr("preserveAspectRatio", "xMidYMid meet")
+            .style("width", "100%")
+            .style("height", "auto");
+        //
+        // const svg = d3.select("#topicStellarChart")
+        //     .attr("width", width)
+        //     .attr("height", height);
+
+        const centerX = width / 2;
+        const centerY = height / 2;
+        const outerRadius = 70;
+        const angleSlice = (2 * Math.PI) / data.length;
+
+        const scale = d3.scaleLinear().domain([0, 1]).range([0, outerRadius]);
+
+        // Topics.
+        // Function to split long text into two lines
+        // Function to split long text into two lines
+        // Function to split long text into two lines
+        function wrapText(text, maxLength) {
+            const words = text.split(" ");
+            let line = "";
+            let lines = [];
+
+            words.forEach((word) => {
+                if (line.length + word.length + 1 <= maxLength) {
+                    line += (line.length ? " " : "") + word;
+                } else {
+                    lines.push(line);
+                    line = word;
+                }
+            });
+
+            if (line.length) {
+                lines.push(line);
+            }
+
+            return lines;
+        }
+
+        svg.selectAll(".axis-label")
+            .data(data)
+            .enter()
+            .append("text")
+            .attr("class", "axis-label")
+            .attr("x", (d, i) => centerX + (outerRadius + 70) * Math.cos(angleSlice * i - Math.PI / 2)) // Adjust to give more space
+            .attr("y", (d, i) => centerY + (outerRadius + 70) * Math.sin(angleSlice * i - Math.PI / 2)) // Adjust to give more space
+            .attr("text-anchor", "middle")
+            .style("font-size", "8px")
+            .each(function (d, i) {
+                const maxLength = 20; // Maximum number of characters per line
+                const lines = wrapText(d.topic, maxLength); // Split text into lines
+                const lineHeight = 12; // Space between lines
+                const totalHeight = lines.length * lineHeight; // Total height needed to fit the lines
+                const yOffset = -totalHeight / 2; // Offset to center the text vertically
+
+                // Append each line of the topic
+                lines.forEach((line, index) => {
+                    const angle = angleSlice * i - Math.PI / 2;
+                    d3.select(this)
+                        .append("tspan")
+                        .attr("x", (d, i) => centerX + (outerRadius + 60) * Math.cos(angle)) // Adjust based on radial angle
+                        .attr("y", (d, i) => centerY + (outerRadius + 60) * Math.sin(angle) + yOffset + lineHeight * index) // Adjust for vertical spacing
+                        .attr("text-anchor", "middle")
+                        .text(index == 0 ? d.icon + ' ' + line : line)
+                        .style("font-size", "10px"); // Set the font size for each line
+                });
+            });
+
+        // Axes.
+        svg.selectAll(".axis-line")
+            .data(data)
+            .enter()
+            .append("line")
+            .attr("x1", centerX)
+            .attr("y1", centerY)
+            .attr("x2", (d, i) => centerX + scale(1.4) * Math.cos(angleSlice * i - Math.PI / 2))
+            .attr("y2", (d, i) => centerY + scale(1.4) * Math.sin(angleSlice * i - Math.PI / 2))
+            .attr("stroke", "#cecfcc")
+
+        // Level lines.
+        const levels = [0.25, 0.5, 0.75, 1.0, 1.25];
+        // levels.forEach(level => {
+        //     const points = data.map((d, i) => {
+        //         const angle = angleSlice * i - Math.PI / 2;
+        //         const r = scale(level);
+        //         const x = centerX + r * Math.cos(angle);
+        //         const y = centerY + r * Math.sin(angle);
+        //         return [x, y];
+        //     });
+        //     svg.append("polygon")
+        //         .attr("points", points.map(p => p.join(",")).join(" "))
+        //         .attr("stroke", "#cecfcc")
+        //         .attr("fill", "none")
+        // });
+        levels.forEach(level => {
+            svg.append("circle")
+                .attr("cx", centerX)
+                .attr("cy", centerY)
+                .attr("r", scale(level))
+                .attr("stroke", "#cecfcc")
+                .attr("stroke-dasharray", "4, 4")
+                .attr("fill", "none");
+        });
+
+        const innerRadius = 0;  // Inner radius for the star points
+
+        const points = [];
+        for (let i = 0; i < data.length; i++) {
+            const angle = angleSlice * i - Math.PI / 2;
+
+            // Outer point
+            const outerRadiusVal = scale(data[i].value);  // Use topic value to determine the radial distance
+            const outerX = centerX + outerRadiusVal * Math.cos(angle);
+            const outerY = centerY + outerRadiusVal * Math.sin(angle);
+
+            // Inner point
+            const innerX = centerX + innerRadius * Math.cos(angle);
+            const innerY = centerY + innerRadius * Math.sin(angle);
+
+            // Add both outer and inner points
+            points.push([innerX, innerY], [outerX, outerY]);
+        }
+        svg.append("polygon")
+            .attr("points", points.map(p => p.join(",")).join(" "))  // Join points into a string for polygon
+            .attr("stroke", "#7bc96f")
+            .attr("fill", "none")
+            .attr("stroke-width", 14)
+            .style("opacity", 0.8);
+
+        // const barBaseRadius = 0;
+        // const barWidth = 12;
+        // svg.selectAll(".bar")
+        //     .data(data)
+        //     .enter()
+        //     .append("line")
+        //     .attr("x1", (d, i) => centerX + scale(barBaseRadius / outerRadius) * Math.cos(angleSlice * i - Math.PI / 2))
+        //     .attr("y1", (d, i) => centerY + scale(barBaseRadius / outerRadius) * Math.sin(angleSlice * i - Math.PI / 2))
+        //     .attr("x2", (d, i) => centerX + scale(d.value) * Math.cos(angleSlice * i - Math.PI / 2))
+        //     .attr("y2", (d, i) => centerY + scale(d.value) * Math.sin(angleSlice * i - Math.PI / 2))
+        //     .attr("stroke", "black")
+        //     .attr("stroke-width", barWidth)
+        //     .style("opacity", 1.0);
+
+        const labelOffset = 12;
+
+        svg.selectAll(".bar-label")
+            .data(data)
+            .enter()
+            .append("text")
+            .attr("class", "bar-label")
+            .attr("x", (d, i) => {
+                const angle = angleSlice * i - Math.PI / 2;
+                const radius = scale(d.value) + labelOffset;
+                return centerX + radius * Math.cos(angle);
+            })
+            .attr("y", (d, i) => {
+                const angle = angleSlice * i - Math.PI / 2;
+                const radius = scale(d.value) + labelOffset;
+                return centerY + radius * Math.sin(angle);
+            })
+            .attr("dx", width * 0.5)
+            .attr("fill", "black")
+            .attr("text-anchor", "middle")
+            .attr("font-size", "10px")
+            .text((d) => topicCounts[d.topic] || "");
+
+
+
+    });
+</script>

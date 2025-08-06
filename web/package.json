@@ -1,0 +1,33 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "eleventy --serve --watch",
+    "build": "eleventy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-img": "^6.0.1",
+    "@11ty/eleventy-plugin-rss": "^2.0.3",
+    "@duckdb/duckdb-wasm": "^1.29.0",
+    "@duckdb/node-api": "^1.2.1-alpha.16",
+    "@grimlink/eleventy-plugin-lucide-icons": "^2.1.4",
+    "clean-css": "^5.3.3",
+            "pagefind": "^1.2.0",
+    "d3-parliament-chart": "^0.0.6",
+    "date-fns": "^4.1.0",
+    "eleventy-plugin-icons": "^4.5.3",
+    "html-minifier": "^4.0.0",
+    "lucide-static": "^0.487.0",
+    "luxon": "^3.2.1",
+    "terser": "^5.39.0"
+  },
+  "devDependencies": {
+    "eleventy-plugin-og-image": "^4.0.1"
+  }
+}

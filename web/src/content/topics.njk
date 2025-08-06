@@ -1,0 +1,41 @@
+---
+layout: layouts/page
+pagination:
+    data: languages
+    size: 1
+    alias: lang
+permalink: "{{ lang }}/topics/"
+eleventyComputed:
+    title: "Parlementaire onderwerpen en thema’s"
+    description: "Verken thema’s zoals klimaat, economie, justitie en meer. Zie welke onderwerpen besproken worden in de Kamer."
+---
+
+{# <p><a href="javascript:history.back()"><- TERUG</a></p> #}
+
+<h1>{{ languages[page.lang].allTopics }}</h1>
+
+<p>{{ languages[page.lang].topicsExplanation }}</p>
+
+{% for key in topics | keys %}
+<h2 class="capitalize-first" style="margin-top: 2rem;">{{ key }}</h2>
+<p>Alle onderwerpen gerelateerd aan {{ key }}.</p>
+<ul id="topics-list" style="margin: 0;">
+    <li style="width: 100%;">
+        <a href="/{{ page.lang }}/topics/{{ key | slugify }}">
+            {{ topics[key].icon or '' }} {{ key }}
+        </a>
+
+        {% if topics[key].subtopics %}
+        <ul style="margin-top: 0.4rem; margin-bottom: 0rem;">
+            {% for subtopicName in topics[key].subtopics | keys %}
+            <li style="padding-bottom: 0.4rem;">
+                <a href="/{{ page.lang }}/topics/{{ key | slugify }}/{{ subtopicName | slugify }}">
+                    {{ subtopicName }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </li>
+</ul>
+{% endfor %}

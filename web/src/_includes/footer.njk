@@ -1,0 +1,42 @@
+<footer class="flex column" style="gap: 1rem; padding: 1rem 2rem;">
+    <div class="mobile-column" style="justify-content: space-between; align-items: start;">
+        <!-- LINKS -->
+        <div class="flex column links" style="gap: 1rem; margin-bottom: 2rem;">
+            <h1>zijwerkenvooru</h1>
+            <h3>
+                <a href="/{{page.lang}}/about">Over zijwerkenvooru.be</a>
+            </h3>
+            <h3>
+                <a href="/{{page.lang}}/data">Open Data</a>
+            </h3>
+            <h3>
+                <a href="/{{page.lang}}/sessions/56/meetings">Alle Vergaderingen</a>
+            </h3>
+            <p>{{ languages[page.lang].sources }}:
+                <a href="https://dekamer.be" target="_blank">dekamer.be</a>,
+                <a href="https://public.regimand.be" target="_blank">public.regimand.be</a>
+            </p>
+            <p>Contact:
+                <a href="mailto:info@zijwerkenvooru.be" target="_blank">info@zijwerkenvooru.be</a>
+            </p>
+        </div>
+        <!-- SOCIALS -->
+        <div class="flex column links" style="gap: 1rem; margin-bottom: 2rem;">
+            <h2>Wil je updates ontvangen?</h2>
+            <div
+                style="display: flex; gap: 1rem; align-items: center;">
+                <p>Volg ons op</p>
+                <!-- TWITTER -->
+                <a href="https://x.com/zwvubot" target="_blank" aria-label="Twitter" class="icon-link">
+                    <img src="../assets/img/x.svg" alt="Twitter">
+                </a>
+                <!-- BLUESKY -->
+                <a href="https://bsky.app/profile/zijwerkenvooru.be" target="_blank" aria-label="Bluesky" class="icon-link">
+                    <img src="../assets/img/bsky.svg" alt="Bluesky">
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="wcb" class="carbonbadge"></div>
+    <script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
+</footer>

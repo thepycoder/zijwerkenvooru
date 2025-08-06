@@ -1,0 +1,136 @@
+---
+layout: layouts/page
+pagination:
+    data: collections.localizedParties
+    size: 1
+    alias: party
+    addAllPagesToCollections: true
+permalink: "{{ party.permalink }}/{{ party.name | slugify }}/"
+eleventyComputed:
+    title: "zwvu | {{ party.name | slugify }}"
+    description: "Hoe stemt de partij {{ party.name }} in de Belgische Kamer van Volksvertegenwoordigers en welke vragen stellen zij?"
+---
+
+<!-- PAGEFIND EXCERPT -->
+<span style="display: none" data-pagefind-meta="title">{{ party.name }}</span>
+<span style="display: none" data-pagefind-body>Hoe stemt de partij {{ party.name }} in de Belgische Kamer van Volksvertegenwoordigers en welke vragen stellen zij?</span>
+
+<!-- COMPONENTS -->
+{%- from "components/proposition-card.njk" import propositionCard -%}
+{%- from "components/question-card.njk" import questionCard -%}
+
+<h1>{{ party.name }}</h1>
+
+<p>Ontdek hoe de partij {{ party.name }} u vertegenwoordigt in het federaal parlement.</p>
+
+<!-- STATISTICS -->
+<div class="gap flex column">
+    <div class="gap flex" style="width: 100%;">
+        <div class="card padding metric">
+            <h2>{{ party.questions | length }}</h2>
+            <p>vragen</p>
+        </div>
+        <div class="card padding metric">
+            <h2>{{ party.propositions | length }}</h2>
+            <p>voorstellen</p>
+        </div>
+        <div class="card padding metric">
+            <h2>{{ party.votes | length }}</h2>
+            <p>stemmingen</p>
+        </div>
+    </div>
+
+    <!-- PARTY MEMBERS -->
+    <div class="card padding info-list" style="margin-bottom: 0.5rem;">
+        <h3 style="margin: 0;">Leden</h3>
+        <div class="flex column" style="gap: 0.1rem;">
+        {% for member in party.members %}
+        {% set imgSrc = "../content/members/img/" + (member.first_name | slugify) + "-" + (member.last_name | slugify) +
+        ".jpg" %}
+        {% set has_image = imgSrc | imageExists %}
+        <div class="flex row gap align-center">
+            <img src="{{ imgSrc if has_image else 'https://placehold.co/100x120?text=not+found' }}"
+                    alt="A picture of {{ member.first_name }} {{ member.last_name }}"
+                    style="width: 1.2rem; height: 1.2rem; object-fit: cover; border-radius: 50%;
+                {% if member.active != 'true' %} filter: grayscale(100%); {% endif %}">
+            <p><a class="member" href="/{{page.lang}}/members/{{ member.first_name | slugify }}-{{ member.last_name | slugify }}/">{{ member.first_name }} {{ member.last_name }}</a> ({{ member.date_of_birth | age }})</p>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- SHARE BUTTON -->
+<button id="share-button">{{ languages[page.lang].sharePage }}</button>
+
+<!-- ACTIVITIES PER TOPIC -->
+<h2>Activiteit in De Kamer</h2>
+
+<p>Bekijk hoe {{ party.name}} denkt over </p>
+
+<select id="topicFilter" style="margin-bottom: 2rem;">
+  <option value="">Alle onderwerpen</option>
+  {% for key in topics | keys %}
+    <option value="{{ key }}">{{ key }}</option>
+    {% for subtopic in topics[key].subtopics | keys %}
+      <option value="{{ subtopic }}">– {{ subtopic }}</option>
+    {% endfor %}
+  {% endfor %}
+</select>
+
+<div class="tabbed">
+    <input type="radio" name="tabset" id="tab-1" checked>
+    <input type="radio" name="tabset" id="tab-2">
+    <input type="radio" name="tabset" id="tab-3">
+    <input type="radio" name="tabset" id="tab-4">
+
+    <ul class="tabs">
+        <li><label for="tab-1">Vragen</label></li>
+        <li><label for="tab-2">Voorstellen</label></li>
+        <li><label for="tab-3">Stemmingen</label></li>
+    </ul>
+
+    <!-- QUESTIONS -->
+    <div id="tab-1-content" class="tab-content padding">
+        <div id="member-questions">
+            <div id="question-list">
+            {% for question in party.questions | sort(attribute='date', true) %}
+            {% set allTopics = question.topics_nl | getMatchedTopics(topics) %}
+            <div class="question-card-wrapper" data-topics="{{ allTopics | join(',') }}">
+            {{ questionCard({ question: question, topic: allTopics[0], topics: topics, functions: functions, translations: languages[page.lang], language: page.lang, hideAuthors: "true", showCategory: "true" }) }}
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- PROPOSITIONS -->
+    <div id="tab-2-content" class="tab-content padding">
+        <p>Propositions</p>
+    </div>
+
+    <!-- VOTES -->
+    <div id="tab-3-content" class="tab-content">
+       <p>Votes</p>
+    </div>
+</div>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const filterSelect = document.getElementById("topicFilter");
+  const cards = document.querySelectorAll(".question-card-wrapper");
+
+  filterSelect.addEventListener("change", () => {
+    const selectedTopic = filterSelect.value;
+    cards.forEach(card => {
+      const topics = card.dataset.topics.split(',').map(t => t.trim());
+      console.log(topics);
+      const shouldShow = !selectedTopic || topics.includes(selectedTopic);
+      card.style.display = shouldShow ? "block" : "none";
+    });
+  });
+});
+</script>
+

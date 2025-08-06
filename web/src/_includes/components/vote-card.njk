@@ -1,0 +1,53 @@
+{% macro voteCard(params) %}
+<div class="card padding rounded-top">
+    <p class="title">
+        {% if params.language == "nl" %}
+        <span>
+            {{ (params.vote.title_nl
+                | replace(params.proposition.title_nl, params.translations[params.proposition.document_type] | toLowerCase))
+                | highlightWord("verwerping") | safe }}.
+             {% if params.vote.dossier_id and params.vote.document_id %}
+            ({{ params.vote.dossier_id }}/{{ params.vote.document_id }})
+                     {% endif %}
+        </span>
+                {% elseif params.language == "fr" %}
+                <span>
+            {{ (params.vote.title_fr
+                | replace(params.proposition.title_fr, params.translations[params.proposition.document_type] | toLowerCase))
+                | highlightWord("verwerping") | safe }}.
+                    {% if params.vote.dossier_id and params.vote.document_id %}
+            ({{ params.vote.dossier_id }}/{{ params.vote.document_id }})
+                     {% endif %}
+        </span>
+        {% endif %}
+
+    </p>
+    <div class="vote-bar">
+        <div class="bar-segment yes"
+             style="width: {{ (params.vote.yes_count / ((params.vote.yes_count | int) + (params.vote.no_count | int) + (params.vote.abstain_count | int)) * 100).toFixed(1) }}%">
+            {% if params.vote.yes_count > 0 %}
+            <span class="bar-label">{{ (params.vote.yes_count / ((params.vote.yes_count | int) + (params.vote.no_count | int) + (params.vote.abstain_count | int)) * 100).toFixed(1) }}%</span>
+            {% endif %}
+        </div>
+        <div class="bar-segment no"
+             style="width: {{ (params.vote.no_count / ((params.vote.yes_count | int) + (params.vote.no_count | int) + (params.vote.abstain_count | int)) * 100).toFixed(1) }}%">
+            {% if params.vote.no_count > 0 %}
+            <span class="bar-label">{{ (params.vote.no_count / ((params.vote.yes_count | int) + (params.vote.no_count | int) + (params.vote.abstain_count | int)) * 100).toFixed(1) }}%</span>
+            {% endif %}
+        </div>
+        <div class="bar-segment abstain"
+             style="width: {{ (params.vote.abstain_count / ((params.vote.yes_count | int) + (params.vote.no_count | int) + (params.vote.abstain_count | int)) * 100).toFixed(1) }}%">
+            {% if params.vote.abstain_count > 0 %}
+            <span class="bar-label">{{ (params.vote.abstain_count / ((params.vote.yes_count | int) + (params.vote.no_count | int) + (params.vote.abstain_count | int)) * 100).toFixed(1) }}%</span>
+            {% endif %}
+        </div>
+    </div>
+
+    <p class="vote-numbers">
+        <span class="vote-dot yes"></span><span>{{ params.translations.yes }} ({{ params.vote.yes_count }})</span>
+        <span class="vote-dot no"></span><span>{{ params.translations.no }} ({{ params.vote.no_count }})</span>
+        <span class="vote-dot abstain"></span><span>{{ params.translations.abstain }} ({{ params.vote.abstain_count }})</span>
+    </p>
+<!--    <span id="total-votes">{{ params.translations.totalVotes }}: {{ (params.vote.yes_count | int) + (params.vote.no_count | int) + (params.vote.abstain_count | int)}}/150</span>-->
+</div>
+{% endmacro %}

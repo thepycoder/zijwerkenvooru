@@ -1,0 +1,67 @@
+---
+layout: layouts/page
+pagination:
+    data: languages
+    size: 1
+    alias: lang
+permalink: "{{ lang }}/data/"
+redirect_from: "/data"
+---
+
+{# <p><a href="javascript:history.back()"><- {{ languages[page.lang].BACK }}</a></p> #}
+
+<h1>Open Data</h1>
+
+<p>
+    Vrij beschikbare politieke informatie is essentieel voor transparantie, verantwoordingsplicht en het versterken van de democratie. 
+    <strong>zijwerkenvooru.be</strong> is opgezet omdat het Federaal Parlement zelf geen toegankelijke en gebruiksvriendelijke middelen biedt om data over haar werking te raadplegen. Wij willen dit toegankelijk maken voor iedereen die geïnteresseerd is in het parlementaire proces.
+</p>
+
+<h2>Data-aggregatie</h2>
+
+<p><strong>zijwerkenvooru.be</strong> werkt als volgt:</p>
+
+<ol style="padding-left: 1rem;">
+    <li><p style="margin: 0;">De Kamer stelt data beschikbaar via <a href="https://dekamer.be" target="_blank">dekamer.be</a></p></li>
+    <li><p style="margin: 0;">zijwerkenvooru.be verzamelt deze data (eenmalig of periodiek naargelang de inhoud)</p></li>
+    <li><p style="margin: 0;">De website wordt automatisch gegenereerd op basis van de verzamelde data, zodat de informatie altijd up-to-date en gemakkelijk toegankelijk is.</p></li>
+</ol>
+
+<h2>Verzamelde data</h2>
+
+<p>Momenteel verzamelen en publiceren we de volgende datasets als .parquet bestanden:</p>
+
+<ul>
+    <li><p style="margin: 0;"><a href="/data/members.parquet" target="_blank">members.parquet</a> (kamerleden)</p></li>
+    <li><p style="margin: 0;"><a href="/data/meetings.parquet" target="_blank">meetings.parquet</a> (plenaire vergaderingen)</p></li>
+    <li><p style="margin: 0;"><a href="/data/questions.parquet" target="_blank">questions.parquet</a> (mondelinge vragen)</p></li>
+    <li><p style="margin: 0;"><a href="/data/propositions.parquet" target="_blank">propositions.parquet</a> (voorstellen)</p></li>
+    <li><p style="margin: 0;"><a href="/data/votes.parquet" target="_blank">votes.parquet</a> (naamstemmingen)</p></li>
+    <li><p style="margin: 0;"><a href="/data/remunerations.parquet" target="_blank">remunerations.parquet</a> (vergoedingen)</p></li>
+</ul>
+
+<p>
+    Hoewel we streven naar volledigheid en juistheid, kunnen we geen garantie geven over de volledigheid of nauwkeurigheid van deze data. Het formaat kan in de toekomst aangepast worden. De data is afkomstig van <a href="https://dekamer.be" target="_blank" rel="noopener noreferrer">dekamer.be</a> en <a href="https://public.regimand.be" target="_blank" rel="noopener noreferrer">public.regimand.be</a>.
+</p>
+
+<h2>Data- en gebruiksvoorwaarden</h2>
+
+Het grootste deel van de data op deze website is afkomstig van de website van de kamer. De volgende gebruiksvoorwaarden zijn te vinden op <a href="https://dekamer.be" target="_blank">dekamer.be</a>.
+
+<p style="font-style: italic;">
+    Overeenkomstig artikel XI.172, § 2, van het Wetboek Economisch Recht bestaat er geen auteursrecht op de officiële akten van de overheid. Parlementaire documenten die officiële akten uitmaken — zoals wetten, wetsontwerpen, wetsvoorstellen en rondgedeelde verslagen — mogen vrij gereproduceerd worden. Wij raden aan om altijd de website van de Kamer te vermelden om gebruikers zo goed mogelijk te informeren over de herkomst van de data.
+</p>
+
+<p style="font-style: italic;">
+    Publicaties van de Kamer, zoals infobrochures en de website zelf, worden niet beschouwd als officiële akten en mogen niet zonder toestemming van de Kamer gereproduceerd worden. Dit geldt ook voor werken die de Kamer bij derden bestelt of van derden verkrijgt.
+</p>
+
+<p style="font-style: italic;">
+    Daarnaast mogen redevoeringen tijdens vergaderingen en zittingen van de Kamer vrij worden gereproduceerd en aan het publiek worden medegedeeld. Echter, alleen de spreker heeft het exclusieve recht om deze redevoeringen afzonderlijk uit te geven; daarvoor is zijn of haar toestemming vereist.
+</p>
+
+<hr>
+
+<p style="margin-bottom: 4rem; font-style: italic;">
+    Open data over politieke processen is een krachtige manier om burgers te betrekken en het vertrouwen in onze democratische instellingen te versterken. Wij ondersteunen dan ook de openheid en toegankelijkheid van deze informatie voor iedereen.
+</p>

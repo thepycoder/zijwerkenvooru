@@ -1,0 +1,273 @@
+---
+layout: layouts/page
+pagination:
+    data: languages
+    size: 1
+    alias: lang
+permalink: "{{ lang }}/sessions/56/meetings/"
+eleventyComputed:
+    title: "Parlementaire vergaderingen in de Kamer"
+    description: "Alle plenaire en commissievergaderingen van de Belgische Kamer, met agenda, deelnemers en besproken thema’s."
+---
+
+<h1>Alle Vergaderingen</h1>
+
+<!-- KEY STATISTICS -->
+<div id="meetings-statistics">
+    <div style=" display: flex; gap: 0.4rem; flex-direction: column;">
+        <div class="mobile-column gap">
+        <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+        <div style="display: flex; width: 100%; gap: 0.4rem;">
+            <div class="card padding metric" style="width: 100%;">
+                <h2>{{ meetings.meetings | length }}</h2>
+                <p>vergaderingen</p>
+            </div>
+
+        </div>
+
+        <div style="display: flex; width: 100%;">
+            <div class="card padding metric" style="width: 100%;">
+                <h3 style="margin: 0;">Duur van de vergadering</h3>
+                <svg id="durationHistogram"></svg>
+            </div>
+        </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- SHARE BUTTON -->
+<button id="share-button">{{ languages[page.lang].sharePage }}</button>
+
+<!-- OVERVIEW -->
+<h2>Alle vergaderingen</h2>
+<!-- INFO -->
+<div class="card padding" style="margin-bottom: 0.5rem; display: flex; flex-direction: column;">
+    <details>
+        <summary>Wat zijn plenaire vergaderingen?</summary>
+        <p style="padding-top: 1rem; padding-bottom: 1rem;">Tijdens de plenaire vergaderingen komen de 150 kamerleden samen om vragen te stellen aan ministers, te debatteren over wetsontwerpen en te stemmen over wetsvoorstellen.</p>
+    </details>
+</div>
+<div class="card padding" style="margin-bottom: 0.5rem; display: flex; flex-direction: column;">
+    <details>
+        <summary>Wat zijn commissievergaderingen?</summary>
+        <p style="padding-top: 1rem;">De commissies bereiden het werk van de plenaire vergadering voor, zodat die sneller en efficiënter kan werken.</p>
+        <p>Ze behandelen wetsontwerpen en voorstellen, bespreken en stemmen over eventuele wijzigingen. Het eindverslag gaat daarna naar de plenaire vergadering.</p>
+        <p style="padding-bottom: 1rem;">Daarnaast controleren commissies de regering via interpellaties en mondelinge vragen.</p>
+    </details>
+</div>
+<div class="card padding" style="margin-bottom: 0.5rem; display: flex; flex-direction: column;">
+    <details>
+        <summary>Hoe wordt aanwezigheid berekend?</summary>
+        <p style="padding-top: 1rem; padding-bottom: 1rem;">De Kamer publiceert geen aanwezigheden. Daarom wordt aanwezigheid berekend op basis van de eerste stemming van een vergadering. Als een kamerlid daaraan deelneemt, geldt het als aanwezig. Latere binnenkomst telt niet mee, en vertrek na de eerste stemming verandert de status niet. Vergaderingen zonder stemmingen tellen niet mee voor aanwezigheid.</p>
+    </details>
+</div>
+
+
+
+    <div id="meetings-grid" class="no-links">
+    {% for meeting in meetings.meetings %}
+
+    <!-- SET PROPERTIES -->
+        {% set isEmpty = meeting.type == 'plenary' and meeting.questions.length == 0 and meeting.propositions.length == 0 and meeting.allVotes.length == 0 %}
+    {% set attendance = meeting.attendance %}
+    {% set attendanceColor = "red" %}
+    {% if attendance.ratio >= 0.9 %}
+    {% set attendanceColor = "green" %}
+    {% elif attendance.ratio >= 0.8 %}
+    {% set attendanceColor = "orange" %}
+    {% endif %}
+
+
+    <div
+            {% if not isEmpty %}
+                {% if meeting.type == 'plenary' %}
+            onclick="window.location.href='/{{ page.lang }}/sessions/{{ meeting.session_id }}/meetings/plenary/{{ meeting.meeting_id }}'"
+               {% elseif meeting.type == 'commission' %}
+               onclick="window.location.href='/{{ page.lang }}/sessions/{{ meeting.session_id }}/meetings/commission/{{ meeting.meeting_id }}'"
+                     {% endif %}
+            {% endif %}
+            class="card"
+            style="
+      {% if isEmpty %}
+        cursor: default;
+        opacity: 0.5;
+      {% else %}
+        cursor: pointer;
+        opacity: 1;
+      {% endif %}
+    "
+    >
+
+
+    {% set ctype = meeting.commission_type | default('', true) %}
+    {% set c = commissions[ctype] or {} %}
+
+        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 0; margin: 0; align-items: flex-start;">
+            {% if meeting.type == 'plenary' %}
+               <div class="category" style="max-width:50%;">
+                 Plenaire
+               </div>
+             {% else %}
+               <div class="category" style="    color: black;
+               background-color: white;
+               border-bottom: 2px solid black;
+               border-right: 2px solid black;max-width:60%;">
+                 {{ c.icon or '' }} Commissie
+               </div>
+             {% endif %}
+
+
+        <div class="flex column" style="align-items: end; padding: 0.4rem; padding-bottom: 0;">
+          <p class="bold" style="margin: 0;">{{ meeting.date | date }}</p>
+            <p style="margin: 0;">{{ meeting.start_time }}</p>
+            </div>
+        </div>
+
+                  <div  style="display: flex; flex-direction: row; gap:1rem; justify-content: space-between;
+                  align-items: center; padding-left: 0.8rem; padding-right: 0.8rem; padding-bottom: 0.8rem; padding-top: 0;">
+
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+           <div>
+             {% if meeting.type == 'commission' %}
+           <p>{{ c.name or ctype }}</p>
+            {% endif %}
+
+             {% if meeting.type == 'plenary' %}
+            <p>{{ meeting.questions.length }} vragen, {{ meeting.propositions.length }} voorstellen, {{ meeting.allVotes.length }} stemmingen </p>
+            {% elseif meeting.type == 'commission' %}
+            <p>{{ meeting.questions.length }} vragen</p>
+
+              {% endif %}
+            </div>
+
+            {% if meeting.type == 'plenary' %}
+            <div>
+                {% if  meeting.allVotes.length > 0 %}
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <p class="bold">{{ languages[page.lang].attendance }}</p>
+                    <p>{{ attendance.count }}/150 ({{ (attendance.ratio * 100) | round(0, 'floor') }}%)</p>
+                </div>
+                {% else %}
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <p class="bold">{{ languages[page.lang].attendance }}</p>
+                    <p>onbekend</p>
+                </div>
+                {% endif %}
+
+                <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden;">
+                    <div style="
+                    width: {{ (attendance.ratio * 100) | round(0, 'floor') }}%;
+                    height: 100%;
+                    background-color: {{ attendanceColor }};
+                "></div>
+                </div>
+            </div>
+             {% endif %}
+
+        </div>
+        {% if not isEmpty %}
+        {% icon "lucide:chevron-right" %}
+        {% endif %}
+    </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const durations = {{ meetings.durations | dump | safe }};
+
+        console.log(durations);
+
+        const margin = {top: 20, right: 0, bottom: 30, left: 30};
+        const container = document.getElementById("durationHistogram").parentNode;
+        const width = container.clientWidth - margin.left - margin.right;
+        const height = 150;
+
+        const svg = d3.select("#durationHistogram")
+            .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+            .attr("preserveAspectRatio", "xMidYMid meet")
+            .style("width", "100%")
+            .style("height", "auto");
+
+        const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+        const binGenerator = d3.bin()
+            .domain([0, d3.max(durations) + 50])  // Based on actual range
+            .thresholds(10); // Adjust bin count as needed
+
+        const bins = binGenerator(durations);
+
+        const y = d3.scaleLinear()
+            .domain([0, d3.max(bins, d => d.length) + 1])
+            .range([height, 0]);
+
+        const color = d3.scaleLinear()
+            .domain([0, d3.max(bins, d => d.length)])
+            .range(["#ffe6cc", "#ff6600"]);
+
+        const x = d3.scaleBand()
+            .domain(bins.map(d => d.x0))
+            .range([0, width])
+            .padding(0.1);
+
+        g.append("g")
+            .attr("transform", `translate(0, ${height})`)
+            .call(d3.axisBottom(x)
+                .tickValues(bins.map(d => d.x0))
+                .tickFormat(d => `${Math.round(d / 60)}h`)
+            )
+            .call(g => g.select(".domain").remove())  // Re
+            .call(g => g.selectAll("text").style("font-size", "0.75rem").style("fill", "#333"));
+
+        g.append("g")
+            .call(d3.axisLeft(y)
+                .ticks(10)
+                .tickSize(-width)
+                .tickFormat(d => d) // optional, in case you want to format
+            )
+            .call(g => g.select(".domain").remove()) // Re
+            .call(g => g.selectAll("text")
+                .style("font-size", "0.75rem")
+                .style("font-family", "sans-serif")
+                .style("fill", "#333"))
+            .call(g => g.selectAll(".tick line")
+                .attr("stroke", "#ddd")
+                .attr("stroke-dasharray", "2,2"));
+
+        const tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+
+        const bars = g.selectAll(".bar")
+            .data(bins)
+            .enter()
+            .append("rect")
+            .attr("class", "bar")
+            .attr("x", d => x(d.x0) + x.bandwidth() * 0.5)
+            .attr("width", x.bandwidth())
+            .attr("y", y(0))
+            .attr("height", 0)
+            .attr("rx", 4)
+            .attr("ry", 4)
+            .attr("fill", d => color(d.length));
+
+        bars.transition()
+            .duration(800)
+            .attr("y", d => y(d.length))
+            .attr("height", d => height - y(d.length));
+
+        bars.on("mouseover", function (event, d) {
+            tooltip.transition().duration(200).style("opacity", 1);
+            tooltip.html(`<strong>${d.length}</strong> vergaderingen<br/>Duur: ${Math.round(d.x0)} - ${Math.round(d.x1)} min`)
+                .style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 30) + "px");
+            d3.select(this).attr("fill", "#cc5200");
+        }).on("mouseout", function (event, d) {
+            tooltip.transition().duration(200).style("opacity", 0);
+            d3.select(this).attr("fill", color(d.length));
+        });
+    });
+</script>

@@ -1,0 +1,283 @@
+---
+layout: layouts/page
+pagination:
+    data: collections.localizedTopics
+    size: 1
+    alias: topic
+    addAllPagesToCollections: true
+permalink: "{{ topic.lang }}/topics/{% if topic.type == 'subtopic' %}{{ topic.parent | slugify }}/{% endif %}{{ topic.name | slugify }}/index.html"
+eleventyComputed:
+    title: "Thema: {{ topic.name }}"
+    description: "Alles rond het parlementair thema {{ topic.name }}: relevante vragen, wetsvoorstellen en stemmingen in de federale Kamer."
+---
+
+<!-- COMPONENTS -->
+{%- from "components/proposition-card.njk" import propositionCard -%}
+{%- from "components/question-card.njk" import questionCard -%}
+
+{% set topicQuestions = questions.questions | filterQuestionsByTopic(topic, topics) %}
+{% set topicPropositions = propositions.propositions | filterPropositionsByTopic(topic, topics) %}
+
+{# <p><a href="javascript:history.back()"><- TERUG</a></p> #}
+
+<h1>Over {{ topic.name }}</h1>
+
+<ul id="topics-list" style="margin-bottom: 1rem; margin-top: 1rem;">
+    <li>
+        <a href="/{{page.lang}}/topics/{{topic.name | slugify}}">{{ topics[topic.name].icon or '' }} {{ topic.name }}</a>
+        
+        {% if topics[topic.name].subtopics %}
+        <ul style="margin-top: 0.4rem; margin-bottom: 0.4rem;">
+            {% for subtopicName in topics[topic.name].subtopics | keys %}
+            <li style="padding-bottom: 0.4rem;">
+                <a href="/{{ page.lang }}/topics/{{ topic.name | slugify }}/{{ subtopicName | slugify }}">
+                    {{ subtopicName }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </li>
+</ul>
+
+{# <p>Een overzicht van het werk geleverd door de leden van de Belgische Kamer van Volksvertegenwoordigers rond het onderwerp {{ topic.name }}. Dit werk bestaat uit mondelinge vragen gesteld aan de bevoegde ministers, of het maken van wetsvoorstellen en wetsontwerpen.</p> #}
+
+<div style="display: flex; width: 100%; gap: 0.4rem;">
+    <div class="card padding metric">
+        <h2>{{ topicQuestions | length }}</h2>
+        <p>vragen</p>
+    </div>
+    <div class="card padding metric">
+        <h2>{{ topicPropositions | length }}</h2>
+        <p>voorstellen</p>
+    </div>
+    <div class="card padding metric">
+        <h2>{{ member.votes | length }}</h2>
+        <p>stemmingen</p>
+    </div>
+</div>
+
+ <div style="display: flex; width: 100%; margin-top: 0.4rem;">
+    <div class="card padding metric" style="width: 100%;">
+        <h3 style="margin: 0;" class="capitalize-first">{{ languages[page.lang].mostContributions }}</h3>
+        <svg id="topMembersChart"></svg>
+    </div>
+</div>
+
+<div class="tabbed" style="margin-top: 2rem;">
+    <input type="radio" name="tabset" id="tab-1" checked>
+    <input type="radio" name="tabset" id="tab-2">
+
+    <ul class="tabs">
+        <li><label for="tab-1">Vragen</label></li>
+        <li><label for="tab-2">Voorstellen</label></li>
+    </ul>
+
+    <!-- QUESTIONS -->
+    <div id="tab-1-content" class="tab-content padding">
+        <div id="question-list">
+            <!-- SUMMARIZED VERSION -->
+            <div class="card padding flex column gap">
+                <div style="margin-top: 0.2rem; margin-bottom: 0.2rem; display: flex; justify-content: space-between; align-items: center;">
+                    <p>{{ languages[page.lang].summarizedVersion }}</p>
+                    <label class="switch">
+                        <input type="checkbox" id="summaryToggle" />
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <details id="summaryExplanation" style="display: none;">
+                    <summary>Hoe werkt dit?</summary>
+                    <p>{{ languages[page.lang].summaryExplanation }} <span class="highlight">{{ languages[page.lang].underlined }}</span>.</p>
+                </details>
+            </div>
+            {% for question in topicQuestions | sort(attribute='date', true) %}
+                <div>
+                    {{ questionCard({question: question, functions: functions, partyColors: partyColors, translations: languages[page.lang], language: page.lang }) }}
+                </div>
+            {%- endfor %}
+        </div>
+    </div>
+
+    <!-- PROPOSITIONS -->
+    <div id="tab-2-content" class="tab-content padding">
+       <div id="proposition-list">
+            {% for proposition in topicPropositions| sort(attribute='date', true) %}
+                <div>
+                    {{ propositionCard({proposition: proposition, partyColors: partyColors, translations: languages[page.lang], language: page.lang }) }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+
+        const data = {{ members.topContributorsByTopic[topic.name] | dump | safe }};
+        
+        // Expected format: [{ name: "Alice", count: 5 }, ...]
+
+        // Create a temporary SVG to measure text width
+        const tempSvg = d3.select("body")
+            .append("svg")
+            .style("visibility", "hidden")
+            .style("position", "absolute");
+
+        const tempText = tempSvg.selectAll("text")
+            .data(data)
+            .enter()
+            .append("text")
+            .text(d => d.name + " (" + d.party + ")")
+            .style("font-size", "0.75rem")
+            .style("font-family", "sans-serif");
+
+        const maxLabelWidth = Array.from(tempText.nodes())
+            .reduce((max, node) => Math.max(max, node.getBBox().width), 0);
+
+        tempSvg.remove();
+
+// Adjust margin.left based on text width with a bit of padding
+        const margin = { top: 10, right: 20, bottom: 40, left: maxLabelWidth + 10 };
+
+        const container = document.getElementById("topMembersChart").parentNode;
+        const width = container.clientWidth - margin.left - margin.right;
+        const height = data.length * 25 + margin.top + margin.bottom;
+
+        const svg = d3.select("#topMembersChart")
+            .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height}`)
+            .attr("preserveAspectRatio", "xMidYMid meet")
+            .style("width", "100%")
+            .style("height", "auto");
+
+        const g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+
+        const y = d3.scaleBand()
+            .domain(data.map(d => d.name + " (" + d.party + ")"))
+            .range([0, height - margin.top - margin.bottom])
+            .padding(0.2);
+
+        const x = d3.scaleLinear()
+            .domain([0, d3.max(data, d => d.questions + d.propositions) + 1])
+                .range([0, width]);
+
+        const color = d3.scaleLinear()
+            .domain([0, d3.max(data, d => d.questions + d.propositions)])
+            .range(["#cce5ff", "#004085"]);
+
+
+        // Y-axis (names)
+        g.append("g")
+            .call(d3.axisLeft(y))
+            .call(g => g.selectAll("text")
+                .style("font-size", "0.75rem")
+                .style("fill", "#333"))
+            .call(g => g.select(".domain").remove());
+
+        g.append("g")
+            .attr("transform", `translate(0, ${height - margin.top - margin.bottom})`)
+            .call(
+                d3.axisBottom(x)
+                    .ticks(5) // adjust tick count if needed
+                    .tickSize(-height) // grid lines go upward
+                    .tickFormat(d => d)
+            )
+            .call(g => g.select(".domain").remove()) // remove axis line
+            .call(g => g.selectAll("text")
+                .style("font-size", "0.75rem")
+                .style("font-family", "sans-serif")
+                .style("fill", "#333"))
+            .call(g => g.selectAll(".tick line")
+                .attr("stroke", "#ddd")
+                .attr("stroke-dasharray", "2,2")); // optional dashed lines
+
+
+
+
+        // Tooltip
+        const tooltip = d3.select("body").append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+
+        // Bars
+        const bars = g.selectAll(".bar")
+            .data(data)
+            .enter()
+            .append("rect")
+            .attr("class", "bar")
+            .attr("x", 0)
+            .attr("y", d => y(d.name + " (" + d.party + ")"))
+            .attr("width", 0) // Animate width from 0
+            .attr("height", y.bandwidth())
+            .attr("rx", 4)
+            .attr("ry", 4)
+            .attr("fill", d => color(d.questions + d.propositions));
+
+        bars.transition()
+            .duration(800)
+            .attr("width", d => x(d.questions + d.propositions))
+
+        // Tooltip behavior
+        bars.on("mouseover", function (event, d) {
+            tooltip.transition().duration(200).style("opacity", 1);
+            tooltip.html(`<strong>${d.name}</strong><br/>${d.questions} vragen, ${d.propositions} voorstellen`)
+                .style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 30) + "px");
+
+            d3.select(this).attr("fill", "#0056b3");
+        })
+            .on("mouseout", function (event, d) {
+                tooltip.transition().duration(200).style("opacity", 0);
+                d3.select(this).attr("fill", color(d.questions + d.propositions));
+            });
+
+        // Add labels at the end of each bar
+        // g.selectAll(".label")
+        //     .data(data)
+        //     .enter()
+        //     .append("text")
+        //     .attr("x", d => x(d.questions + d.propositions) + 5) // position just to the right of the bar
+        //     .attr("y", d => y(d.name) + y.bandwidth() / 2)
+        //     .attr("dy", "0.35em")
+        //     .text(d => d.questions + d.propositions)
+        //     .style("font-size", "0.7rem")
+        //     .style("fill", "#333")
+        //     .style("font-family", "sans-serif");
+
+    });
+</script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.getElementById('summaryToggle');
+
+        const fullElements = document.querySelectorAll('.full');
+        const summarizedElements = document.querySelectorAll('.summarized');
+        const summaryExplanation = document.querySelector('#summaryExplanation');
+
+        toggle.addEventListener('change', function () {
+            const showSummary = this.checked;
+
+            if (showSummary) {
+                summaryExplanation.style.display = 'inline';
+            } else {
+                summaryExplanation.style.display = 'none';
+            }
+
+            fullElements.forEach(function (el, index) {
+                const summaryEl = summarizedElements[index];
+
+                if (showSummary && summaryEl && summaryEl.textContent.trim() !== '') {
+                    el.style.display = 'none';
+                    summaryEl.style.display = 'inline';
+                } else {
+                    el.style.display = 'inline';
+                    if (summaryEl) summaryEl.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>

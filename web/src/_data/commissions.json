@@ -1,0 +1,80 @@
+{
+  "Justitie": {
+    "name": "Commissie Justitie",
+    "background": "#caeaff",
+    "color": "#1f77b4",
+    "icon": "⚖️"
+  },
+  "Landsverdediging": {
+    "name": "Commissie Landsverdediging",
+    "background": "#ffe0e0",
+    "color": "#d62728",
+    "icon": "🪖"
+  },
+  "BuitenlandseBetrekkingen": {
+    "name": "Commissie Buitenlandse Betrekkingen",
+    "background": "#e0f7ff",
+    "color": "#17becf",
+    "icon": "🌐"
+  },
+  "FinancienEnBegroting": {
+    "name": "Commissie Financiën en Begroting",
+    "background": "#fff0d0",
+    "color": "#bcbd22",
+    "icon": "💰"
+  },
+  "SocialeZakenWerkEnPensioenen": {
+    "name": "Commissie Sociale Zaken, Werk en Pensioenen",
+    "background": "#f0e6ff",
+    "color": "#9467bd",
+    "icon": "👥"
+  },
+  "GrondwetEnInstitutioneleVernieuwing": {
+    "name": "Commissie Grondwet en Institutionele Vernieuwing",
+    "background": "#fef9e7",
+    "color": "#ff7f0e",
+    "icon": "📜"
+  },
+  "BinnenlandseZakenVeiligheidMigratieEnBestuurszaken": {
+    "name": "Commissie Binnenlandse Zaken, Veiligheid, Migratie en Bestuurszaken",
+    "background": "#e8f5e9",
+    "color": "#2ca02c",
+    "icon": "🏛️"
+  },
+  "EconomieConsumentenBeschermingEnDigitalisering": {
+    "name": "Commissie Economie, Consumentenbescherming en Digitalisering",
+    "background": "#f3e5f5",
+    "color": "#8e44ad",
+    "icon": "💻"
+  },
+  "MobiliteitOverheidsbedrijvenEnFederaleInstellingen": {
+    "name": "Commissie Mobiliteit, Overheidsbedrijven en Federale Instellingen",
+    "background": "#e3f2fd",
+    "color": "#1e88e5",
+    "icon": "🚆"
+  },
+  "GezondheidEnGelijkeKansen": {
+    "name": "Commissie Gezondheid en Gelijke Kansen",
+    "background": "#e8f5e9",
+    "color": "#43a047",
+    "icon": "🏥"
+  },
+  "EnergieLeefmilieuEnKlimaat": {
+    "name": "Commissie Energie, Leefmilieu en Klimaat",
+    "background": "#f1f8e9",
+    "color": "#388e3c",
+    "icon": "🌱"
+  },
+  "InterparlementaireKlimaatdialoog": {
+    "name": "Interparlementaire Klimaatdialoog",
+    "background": "#e0f2f1",
+    "color": "#009688",
+    "icon": "🌍"
+  },
+  "Onbekend": {
+    "name": "Onbekende Commissie",
+    "background": "#eeeeee",
+    "color": "#757575",
+    "icon": "❓"
+  }
+}

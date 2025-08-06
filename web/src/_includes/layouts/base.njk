@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="{{ metadata.language }}">
+    <!-- HEAD -->
+    <head>
+        {% include "head.njk" %}
+    </head>
+
+    <!-- BODY -->
+	<body>
+        <span style="display: none" data-pagefind-meta="title">{{ page.fileSlug }}</span>
+
+        <!-- NAVBAR -->
+        {% include "navbar.njk" %}
+
+        <!-- CONTENT -->
+		{{ content | safe }}
+
+        <!-- FOOTER -->
+        {% include "footer.njk" %}
+
+        <div
+            id="search-modal"
+            class="aria-hidden:hidden page"
+            style="height: 0;"
+            tabindex="-1"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="title"
+            aria-hidden="false"
+            data-a11y-dialog="search-dialog">
+            <div
+                style="opacity: 0.5; background-color: rgba(0, 0, 0, 0.4); width: 100%; position: fixed; inset: 0;"
+                data-a11y-dialog-hide></div>
+            <div
+                id="modal_content" class="outline border rounded">
+                <!-- SEARCH BOX -->
+                <div id="search-box"></div>
+                <!-- INSTRUCTIONS -->
+                <div class="touchscreen:hidden" style="padding: 0.6rem; border-top: 2px solid #314837;">
+                    <p style="padding: 0; margin: 0; font-size: x-small;">Typ
+                        <kbd>/</kbd>
+                        of
+                        <kbd>
+                            <span class="meta-key-symbol">⌘K</span>
+                        </kbd>
+                        om te openen,
+                        <kbd>esc</kbd>
+                        om te sluiten.</p>
+                </div>
+            </div>
+        </div>
+        <script src="/assets/js/search.js"></script>
+	</body>
+</html>

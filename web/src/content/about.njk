@@ -1,0 +1,137 @@
+---
+layout: layouts/page
+pagination:
+    data: languages
+    size: 1
+    alias: lang
+permalink: "{{ lang }}/about/"
+title: Over zijwerkenvooru
+description: zijwerkenvooru.be is een site die informatie over de werking van de Belgische Kamer van Volksvertegenwoordigers verzamelt en publiceert.
+---
+{#
+<p><a href="/{{page.lang}}/" class="uppercase"><- {{ languages[page.lang].home }}</a></p> #}
+
+<h1>Over deze website</h1>
+
+<p><span class="bold">zijwerkenvooru.be</span> verzamelt en publiceert informatie over de Belgische Kamer van Volksvertegenwoordigers.</p>
+
+<!-- KEY STATISTICS -->
+<div style="display: flex; flex-direction: column; gap: 0.4rem">
+    <div style="display: flex; width: 100%; gap: 0.4rem;">
+        <div class="card padding metric" style="width: 50%">
+            <h2>{{ meetings.meetings | length }}</h2>
+            <p>vergaderingen</p>
+        </div>
+        <div class="card padding metric">
+            <h2>{{ members.members | length }}</h2>
+            <p>kamerleden</p>
+        </div>
+    </div>
+    <div style="display: flex; width: 100%; gap: 0.4rem;">
+        <div class="card padding metric">
+            <h2>{{ meetings.meetings | countItems("propositions") }}</h2>
+            <p>voorstellen</p>
+        </div>
+        <div class="card padding metric">
+            <h2>{{ meetings.meetings | countItems("questions") }}</h2>
+            <p>vragen</p>
+        </div>
+        <div class="card padding metric">
+            <h2>{{ meetings.meetings | countItems("votes") }}</h2>
+            <p>stemmingen</p>
+        </div>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<p>
+    De Belgische Kamer van Volksvertegenwoordigers is een belangrijk orgaan in de Belgische democratie. Ze vertegenwoordigt de bevolking en speelt een centrale rol in het wetgevingsproces.</p>
+<p>
+    Hoewel de Kamer informatie publiceert, is het niet altijd duidelijk hoe parlementsleden stemmen of hoe stemmingen verlopen.</p>
+</p>
+
+<p>
+    Deze website bundelt gegevens uit officiële bronnen en biedt helder inzicht in de werking van de Kamer en haar leden.
+</p>
+
+<div id="faq-container">
+    <h2>Vraag en Antwoord</h2>
+
+    <details>
+        <summary>Wat is zijwerkenvooru.be</summary>
+        <p>zijwerkenvooru heeft als doel om de werking van de Belgische kamer te verduidelijken en overzichtelijker te maken.</p>
+    </details>
+
+        <details>
+        <summary>Hoe kan ik dit project steunen?</summary>
+        <p>Je kan dit project steunen door deze pagina zoveel mogelijk te delen met anderen. Het verbeteren van dit project vraagt veel tijd, maar het kost weinig geld. Financiële steun is daarom niet nodig.</p>
+    </details>
+
+    <details>
+        <summary>Is dit een site van de overheid?</summary>
+        <p>Neen. Dit is een onafhankelijke website.</p>
+    </details>
+
+    <details>
+        <summary>Waar komt de info op zijwerkenvooru.be vandaan?</summary>
+        <p>De website <a href="https://dekamer.be" target="_blank">dekamer.be</a> van de overheid publiceert info in verband met de werking van de Belgische Kamer van Volksvertegenwoordigers.</p>
+        <p>Dit is informatie zoals:</p>
+        <ul>
+            <li>Wie de kamerleden zijn</li>
+            <li>Verslagen van de plenaire vergaderingen</li>
+        </ul>
+        <p>Deze info is vaak verspreid over meerdere pagina's, moeilijk te lezen en/of onoverzichtelijk.</p>
+        <p>Om de werking van de kamer transparanter te maken, verzamelt zijwerkenvooru deze info op de site waar u nu op bent.</p>
+    </details>
+
+    <details>
+        <summary>Waar komt de naam zijwerkenvooru vandaan?</summary>
+        <p>'zij werken voor u' verwijst naar het feit dat kamerleden</p>
+        <ul>
+            <li>rechtstreeks verkozen worden door Belgische burgers</li>
+            <li>betaald worden met belastingsgeld</li>
+            <li>een representatie zijn van de Belgische burgers</li>
+            <li>wetten maken die invloed hebben op Belgische burgers</li>
+        </ul>
+        <p>De kamerleden werken dus namens u, en deze werking zou zo transparant mogelijk moeten zijn.</p>
+        <p>zijwerkenvooru.be toont u waar de kamerleden mee bezig zijn en hoe u een rol kan spelen in dit proces.</p>
+    </details>
+
+    <details>
+        <summary>Welke info bevat deze website?</summary>
+        <p>Deze site bevat info over de 56e zittingsperiode van de kamer (2024-2029). Informatie uit vorige zittingsperiodes wordt niet getoond.</p>
+    </details>
+
+    <details>
+        <summary>Hoe kan ik de achterliggende data raadplegen?</summary>
+        <p>Zie <a href="/{{page.lang}}/data">/data</a> voor informatie over de data die gebruikt wordt bij het genereren van deze website.</p>
+    </details>
+
+    <details>
+        <summary>Ik heb een fout gezien op zijwerkenvooru.be</summary>
+        <p>Laat dit weten via <a href="mailto:info@zijwerkenvooru.be" target="_blank">info@zijwerkenvooru.be</a>. Bedankt!</p>
+    </details>
+
+    <details>
+        <summary>Ik heb een idee over hoe deze site verbeterd zou kunnen worden</summary>
+        <p>Laat dit weten via <a href="mailto:info@zijwerkenvooru.be" target="_blank">info@zijwerkenvooru.be</a>. Bedankt!</p>
+    </details>
+
+    <details>
+        <summary>Gebruik van artificiële intelligentie</summary>
+        <p>Sommige pagina's hebben de optie om een 'beknopte versie' weer te geven. Deze versie toont teksten die zijn samengevat met behulp van artificële intelligentie.</p>
+        <p>Het gaat over de volgende type samenvattingen:</p>
+        <ul>
+            <li>Onderwerpen van samengevoegde vragen worden omgezet tot 1 algemeen onderwerp</li>
+        </ul>
+        <p>De samengevatte teksten zijn geen uitspraken van echte mensen. De tekst kan foutief zijn en/of aan nuanceverlies lijden ten opzichte van de originele tekst.</p>
+        <p>Alle tekst die is samengevat door artificiële intelligentie wordt altijd <span class="highlight">onderlijnd in het paars</span>.</p>
+    </details>
+
+
+
+    <details>
+        <summary>Een andere vraag?</summary>
+        <p>Laat dit weten via <a href="mailto:info@zijwerkenvooru.be" target="_blank">info@zijwerkenvooru.be</a>. Bedankt!</p>
+    </details>
+</div>

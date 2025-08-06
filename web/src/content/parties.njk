@@ -1,0 +1,184 @@
+---
+layout: layouts/page
+pagination:
+    data: languages
+    size: 1
+    alias: lang
+permalink: "{{ lang }}/parties/"
+eleventyComputed:
+    title: "Belgische politieke partijen in het parlement"
+    description: "Analyseer hoe politieke partijen stemmen in de Kamer. Ontdek hun gedrag bij wetsvoorstellen en debatten."
+---
+
+{# <p><a href="/{{page.lang}}/" class="uppercase"><- {{ languages[page.lang].home }}</a></p> #}
+
+<h1 class="capitalize">{{ languages[page.lang].theParties }}</h1>
+
+<p>{{ languages[page.lang].partiesExplanation1 }}</p>
+<p>{{ languages[page.lang].partiesExplanation2 }}</p>
+
+<!-- KEY STATISTICS -->
+<div id="members-statistics">
+    <div class="flex column gap" style="width: 100%;">
+        <div class="mobile-column gap">
+            <!-- MEMBERS AND PARTIES COUNT -->
+            <div class="mobile-row gap" style="display: flex; width: 100%;">
+                <div class="card padding metric">
+                    <h2>{{ members.members | filter("active", "true") | length }}</h2>
+                    <p>{{ languages[page.lang].chamberMembers }}</p>
+                </div>
+                <div class="card padding metric">
+                    <h2>{{ members.members | map("parties") | map("0") | unique | length }}</h2>
+                    <p>{{ languages[page.lang].parties }}</p>
+                </div>
+            </div>
+
+            <!-- SEAT DISTRIBUTION -->
+            <div style="display: flex; width: 100%;">
+                <div class="card padding metric" style="width: 100%;">
+                    <h3 style="margin: 0;" class="capitalize">{{ languages[page.lang].seatDistribution }}</h3>
+                    <div id="parliamentChart">
+                        <svg></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTIES OVERVIEW -->
+        <div style="display: grid; width: 100%; gap: 0.4rem; grid-template-columns: repeat(2, minmax(0, 1fr));">
+            {% for key, party in parties.parties %}
+            <a class="card padding" href="/{{ page.lang }}/parties/{{ party.name | slugify }}">
+                <div class="flex space-between align-center">
+                    {% set imgSrc = "../assets/img/parties/" + (party.name | slugify) + ".svg" %}
+                    {%- set has_image = imgSrc | imageExists %}
+                    {%- if has_image -%}
+                    <div class="flex column">
+                    <img style="width: auto; height: 1rem;" height="100" src="{{ imgSrc }}" alt="A picture of {{ member.first_name }} {{ member.last_name }}">
+                    <p>{{ party.name }}</p>
+                    </div>
+                    {%- else -%}
+                    <p>{{ party.name }}</p>
+                    {%- endif -%}
+                    {% icon "lucide:chevron-right" %}
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="/assets/js/parliament-chart.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        let partyColors = {{partyColors | dump | safe}};
+
+        const margin = {top: 10, right: 0, bottom: 105, left: 0};
+        const container = document.getElementById("parliamentChart");
+        const width = container.clientWidth - margin.left - margin.right;
+        const height = 150;
+
+          const partyStats = {};
+
+                  const data = {{members.parties | dump | safe}};
+
+  const legendItemHeight = 20;
+        const columns = 3;  // Number of columns
+        const itemWidth = 100;  // Width allocated to each column
+        let i = 0;
+
+
+
+
+        // Populate the partyStats object by iterating over the data
+        data.forEach(partyData => {
+            if (!partyStats[partyData.name]) {
+                partyStats[partyData.name] = {seats: 0, color: partyData.color};
+            }
+            partyStats[partyData.name].seats += partyData.seats;  // Sum up the seats for each party
+        });
+
+        // Convert the partyStats object to an array of {name, seats, color}
+        const partyStatsArray = Object.keys(partyStats).map(partyName => ({
+            name: partyName,
+            seats: partyStats[partyName].seats,
+            color: partyStats[partyName].color
+        }));
+
+        // Sort parties by seat count (descending)
+        partyStatsArray.sort((a, b) => b.seats - a.seats);
+
+       
+
+
+        const legendRows = Math.ceil(partyStatsArray.length / columns);
+const legendHeight = legendRows * (legendItemHeight + 5) + 20; // 20px padding
+
+
+
+        const svg = d3.select("#parliamentChart svg")
+           .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + legendHeight + margin.bottom}`)
+
+            .attr("preserveAspectRatio", "xMidYMid meet")
+            .style("width", "100%")
+            .style("height", "auto");
+
+
+        const g = svg.append("g")
+            .attr("transform", `translate(${margin.left}, ${margin.top})`);
+
+
+
+        svg.append("text")
+            .attr("x", width / 2) // Horizontally center it
+            .attr("y", height) // Vertically center it
+            .attr("text-anchor", "middle")  // Centers the text
+            .attr("dominant-baseline", "bottom") // Vertically centers the text
+            .attr("font-size", "2rem")  // Font size
+            .attr("font-weight", "bold")  // Font weight
+            .attr("fill", "black") // Text color
+            .text("150");  // Text content
+
+        const chart = d3.parliamentChart()
+            .width(width)
+            .seatRadius(5) // Smaller dots
+            .rowHeight(14) // Slightly tighter rows
+            .sections(1)   // One full arc
+            .aggregatedData(data);
+
+        // Legend.
+        // Add legend below the chart
+        const legend = svg.append("g")
+            .attr("transform", `translate(${margin.left}, ${height + margin.top + 20})`);
+
+ // Create legend items in 3 columns
+        partyStatsArray.forEach((party, index) => {
+            const columnIndex = index % columns;  // Calculate the column index
+            const rowIndex = Math.floor(index / columns);  // Calculate the row index
+
+            // Append the circle for the party
+            legend.append("circle")
+                .attr("cx", columnIndex * itemWidth + 10)  // X position based on column
+                .attr("cy", rowIndex * (legendItemHeight + 5))  // Y position based on row
+                .attr("r", 5)  // Radius of the circle
+                .attr("fill", party.color);  // Set color from the party color
+
+            // Append the text for the party name
+            legend.append("text")
+                .attr("x", columnIndex * itemWidth + 20)  // Position the text to the right of the circle
+                .attr("y", rowIndex * (legendItemHeight + 5) + 4)  // Align text vertically
+                .attr("font-size", "10px")  // Font size for the legend
+                .attr("fill", "black")  // Text color
+                .text(`${party.name} (${party.seats})`);
+
+            i++;  // Increment for next legend item
+        });
+      
+      
+        // chart.debug(true);
+
+
+        g.call(chart);
+    });
+</script>

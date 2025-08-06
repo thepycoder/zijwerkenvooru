@@ -1,0 +1,26 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+layout: null
+---
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+<url>
+<loc>{{ "https://zijwerkenvooru.be/metadata/catalog.ttl" }}</loc>
+<lastmod>{{ "2025-07-11" }}</lastmod>
+<changefreq>monthly</changefreq>
+</url>
+
+{%- for page in collections.all %}
+  {%- set draft = page.data.eleventyExcludeFromCollections %}
+  {%- if not draft  %}
+    {%- set absoluteUrl %}{{ page.url | url | absoluteUrl(metadata.url) }}{% endset %}
+    <url>
+      <loc>{{ absoluteUrl }}</loc>
+      <lastmod>{{ page.date | htmlDateString }}</lastmod>
+      <changefreq>{{ "monthly" }}</changefreq>
+    </url>
+  {%- endif %}
+{%- endfor %}
+</urlset>

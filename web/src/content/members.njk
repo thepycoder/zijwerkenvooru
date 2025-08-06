@@ -1,0 +1,551 @@
+---
+layout: layouts/page
+pagination:
+    data: languages
+    size: 1
+    alias: lang
+permalink: "{{ lang }}/members/"
+eleventyComputed:
+    title: "Leden van de Kamer"
+    description: "Een compleet overzicht van alle federale parlementsleden in België. Bekijk hun stemgedrag, vragen, voorstellen en partij."
+---
+
+<h1 class="capitalize">{{ languages[page.lang].theMembers }}</h1>
+<p>{{ languages[page.lang].chamberMembersExplanation }}</p>
+<!-- KEY STATISTICS -->
+<div id="members-statistics">
+    <div style=" display: flex; gap: 0.4rem; flex-direction: column;">
+        <div style="display: flex; width: 100%; gap: 0.4rem;">
+            <div class="card padding metric">
+                <h2>{{ members.members | filter("active", "true") | length }}</h2>
+                <p>{{ languages[page.lang].chamberMembers }}</p>
+            </div>
+            <div class="card padding metric">
+                <h2>{{ members.members | map("parties") | map("0") | unique | length }}</h2>
+                <p>{{ languages[page.lang].parties }}</p>
+            </div>
+        </div>
+        <div style="display: flex; width: 100%; gap: 0.4rem;">
+            <div class="card padding metric">
+                <h2>{{ (members.members | youngest).date_of_birth | age }}
+                    {{ languages[page.lang].age }}</h2>
+                <p>{{ (members.members | youngest).first_name }}
+                    {{ (members.members | youngest).last_name }},
+                {{ languages[page.lang].youngestMember }}</p>
+            </div>
+            <div class="card padding metric">
+                <h2>{{ (members.members | oldest).date_of_birth | age }}
+                    {{ languages[page.lang].age }}</h2>
+                <p>{{ (members.members | oldest).first_name }}
+                    {{ (members.members | oldest).last_name }},
+                {{ languages[page.lang].eldestMember }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SWIPEABLE -->
+<div class="swipeable-row" style="margin-top: 1rem;">
+    <div class="swipeable-item">
+         <div class="card padding">
+            <h3 style="margin-top: 0; margin-bottom: 0.4rem;" class="capitalize">{{ languages[page.lang].ageDistribution }}</h3>
+            <p>Wat is de leeftijdsverdeling van de kamerleden?</p>
+            <svg id="ageHistogram" style="margin-top: 1rem;"></svg>
+        </div>
+    </div>
+    <div class="swipeable-item">
+         <div class="card padding">
+            <h3 style="margin-top: 0; margin-bottom: 0.4rem;" class="capitalize">Inkomen</h3>
+            <p>Wat is het inkomen van de kamerleden?</p>
+            <svg id="incomeHistogram" style="margin-top: 1rem;"></svg>
+        </div>
+    </div>
+</div>
+<div class="swipe-indicator">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+</div>
+
+
+<!-- SHARE BUTTON -->
+<button id="share-button">{{ languages[page.lang].sharePage }}</button>
+<!-- MEMBERS FILTERS -->
+<h2 class="capitalize">{{ languages[page.lang].allMembers }}</h2>
+<p>{{ languages[page.lang].chamberMembersearchInstruction }}</p>
+<input
+    type="text"
+    id="search-filter"
+    placeholder="Zoek op naam..."
+    style="margin-bottom: 1rem; padding: 0.5rem; width: 100%; border-radius: 0;">
+    <div style="margin-bottom: 1rem;">
+        <select id="party-filter">
+            <option value="">-- {{ languages[page.lang].allParties }} --</option>
+            {% for party in members.members | map("parties") | map("0") | unique | sortAlpha %}
+                <option value="{{ party }}">{{ party }}</option>
+            {% endfor %}
+        </select>
+        <select id="constituency-filter">
+            <option value="">-- {{ languages[page.lang].allConstituencies }} --</option>
+            {% for constituency in members.members | map("constituency") | unique | sortAlpha %}
+                <option value="{{ constituency }}">{{ constituency }}</option>
+            {% endfor %}
+        </select>
+        <select id="active-filter">
+            <option value="">-- {{ languages[page.lang].allStatuses }} --</option>
+            <option value="true">{{ languages[page.lang].active }}</option>
+            <option value="false">{{ languages[page.lang].inactive }}</option>
+        </select>
+        <select id="sort-filter">
+            <option value="">-- SORTEER --</option>
+            <option value="attendance-asc">Aanwezigheid laag-hoog</option>
+            <option value="attendance-desc">Aanwezigheid hoog-laag</option>
+            <option value="name-asc">Naam laag-hoog</option>
+            <option value="name-desc">Naam hoog-laag</option>
+            <option value="party-asc">Partij laag-hoog</option>
+            <option value="party-desc">Partij hoog-laag</option>
+            {# <option value="outlier-asc">Overeenkomst partij laag-hoog</option>
+                    <option value="outlier-desc">Overeenkomst partij hoog-laag</option> #}
+        </select>
+    </div>
+    <!-- ATTENDANCE INFO -->
+    <div class="card padding" style="margin-bottom: 0.5rem; display: flex; flex-direction: column;">
+        <details>
+            <summary>Hoe wordt aanwezigheid berekend?</summary>
+            <p style="padding-top: 1rem; padding-bottom: 1rem;">De Kamer publiceert geen aanwezigheden. Daarom wordt het
+                aanwezigheidspercentage berekend als het aantal stemmingen waaraan het kamerlid heeft deelgenomen, gedeeld door het
+                totaal aantal stemmingen waaraan het kamerlid had kunnen deelnemen. Vergaderingen zonder stemmingen tellen dus niet mee.</p>
+            <p style="padding-top: 1rem; padding-bottom: 1rem;">Een fout gezien? Laat dit weten via deze form:
+                <a href="https://tally.so/r/mR2arJ" target="_blank">https://tally.so/r/mR2arJ</a>
+            </p>
+        </details>
+    </div>
+    {# <div class="card padding" style="margin-bottom: 0.5rem; display: flex; flex-direction: column;">
+        <details>
+            <summary>Hoe wordt de overeenkomst met de partij berekend?</summary>
+            <p style="padding-top: 1rem; padding-bottom: 1rem;">De 'overeenkomst met de partij' toont hoeveel procent van de stemmen van het kamerlid overeenkomstig waren met de meerderheid van de partij. Dit is een maat voor hoe frequent een kamerlid hetzelfde stemt als hun partijgenoten.</p>
+           </details>
+    </div> #}
+    <!-- MEMBERS LIST -->
+    <div id="members-grid">
+        {% for member in members.members | filter("active", "true") | sort(attribute='parties') %}
+            {% set primaryColor = partyColors[member.parties[0] | lower].primary or '#95a5a6' %}
+            {% set secondaryColor = partyColors[member.parties[0] | lower].secondary or '#95a5a6' %}
+            {% set imgSrc = "../content/members/img/" + (member.first_name | slugify) + "-" + (member.last_name | slugify) +
+    ".jpg" %}
+            {% set has_image = imgSrc | imageExists %}
+            <a href="/{{ page.lang }}/members/{{ member.first_name | slugify }}-{{ member.last_name | slugify }}" class="member-card card" data-party="{{ member.parties[0] }}" data-constituency="{{ member.constituency }}" data-attendance="{{ member.attendance }}" data-outlier="{{ member.outlier }}" data-active="{{ member.active }}" style="text-decoration: none; color: inherit;">
+                
+                 <div class="category" style="font-weight: bold; background-color: {{ secondaryColor }}; color: {{ primaryColor }};">
+                    {{ member.parties[0] }}
+                </div>
+                <div class="flex padding align-center space-between">
+               
+                <div class="flex row align-start" style="gap: 1rem;">
+                    <img src="{{ imgSrc if has_image else 'https://placehold.co/100?text=%E2%9D%93' }}" alt="A picture of {{ member.first_name }} {{ member.last_name }}" style="width: 4rem; height: 4rem; object-fit: cover; border-radius: 50px;
+                                        {% if member.active != 'true' %} filter: grayscale(100%); {% endif %}">
+                        <div class="flex column" style="gap: 0.4rem; align-items: start;">
+                            <p class="member-name" class="bold">{{ member.first_name }} {{ member.last_name }} ({{ member.date_of_birth | age }})</p>
+                            {# <span
+                                class="party"
+                                style="font-weight: bold; background-color: {{ secondaryColor }}; color: {{ primaryColor }}; padding: 2px 4px; display:
+                                    inline-block; border-radius: 5px;">
+                                {{ member.parties[0] }}
+                            </span> #}
+                            <p style="margin: 0;">
+                                {{ member.constituency }}
+                            </p>
+                            {% if member.active != "true" %}
+                                <span
+                                    class="party"
+                                    style="font-weight: bold; background-color: #e6e6e6; color: #6d6d6d; padding: 2px 4px; display: inline-block;
+                                        border-radius: 5px;">
+                                    {{ languages[page.lang].inactive }}
+                                </span>
+                            {% endif %}
+                            <!-- ATTENDANCE -->
+                            {% if member.active === "true" %}
+                                <span>
+                                    {% set attendance = member.attendance %}
+                                    {% set attendanceColor = "#ff5252" %}
+                                    {% if attendance >= 0.90 %}
+                                        {% set attendanceColor = "#4da74d" %}
+                                    {% elif attendance >= 0.80 %}
+                                        {% set attendanceColor = "#ffc760" %}
+                                    {% endif %}
+                                    <p>Aanwezigheid ({{ (attendance * 100) | round(0, 'floor') }}%)</p>
+                                    <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden;">
+                                        <div style=" width: {{ (attendance * 100) | round(0, 'floor') }}%; height: 100%; background-color: {{ attendanceColor }}; "></div>
+                                    </span>
+                                    {# <span>
+                                                         {% set outlier = member.outlier %}
+                                                     {% set outlierColor = "#97c1ff" %}
+                                                       <p>Overeenkomst partij ({{ (outlier) | round(0, 'floor') }}%)</p>
+                                                       <div style="background: #e0e0e0; height: 10px; overflow: hidden; width: 14rem;">
+                                                           <div style="
+                                                                width: {{ (outlier) | round(0, 'floor') }}%;
+                                                                height: 100%;
+                                                                background-color: {{ outlierColor }};
+                                                            "></div>
+                                                       </div>
+                                                </span> #}
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% icon "lucide:chevron-right" %}
+                        </div>
+                    </a>
+                
+                {% endfor %}
+            </div>
+            <script>
+                const partyFilter = document.getElementById('party-filter');
+                const constituencyFilter = document.getElementById('constituency-filter');
+                const searchFilter = document.getElementById('search-filter');
+                const activeFilter = document.getElementById('active-filter');
+                const sortFilter = document.getElementById('sort-filter');
+                const membersGrid = document.getElementById('members-grid'); // container for cards Use array to allow sorting
+                const allMembers = Array.from(document.querySelectorAll('.member-card'));
+                function filterAndSortMembers() {
+                    const party = partyFilter.value.toLowerCase();
+                    const constituency = constituencyFilter.value.toLowerCase();
+                    const search = searchFilter.value.toLowerCase();
+                    const active = activeFilter.value;
+                    const sortOption = sortFilter.value;
+                    // Filter
+                    let filtered = allMembers.filter(member => {
+                        const name = member
+                            .querySelector(".member-name")
+                            .textContent
+                            .toLowerCase();
+                        const matchesName = ! search || name.includes(search);
+                        const matchesParty = ! party || member
+                            .dataset
+                            .party
+                            .toLowerCase() === party;
+                        const matchesConstituency = ! constituency || member
+                            .dataset
+                            .constituency
+                            .toLowerCase() === constituency;
+                        const matchesActive = ! active || member.dataset.active === active;
+                        return matchesName && matchesParty && matchesConstituency && matchesActive;
+                    });
+                    // Sort
+                    switch (sortOption) {
+                        case "attendance-asc": filtered.sort((a, b) => Number(a.dataset.attendance) - Number(b.dataset.attendance));
+                            break;
+                        case "attendance-desc": filtered.sort((a, b) => Number(b.dataset.attendance) - Number(a.dataset.attendance));
+                            break;
+                        case "outlier-asc": filtered.sort((a, b) => Number(a.dataset.outlier) - Number(b.dataset.outlier));
+                            break;
+                        case "outlier-desc": filtered.sort((a, b) => Number(b.dataset.outlier) - Number(a.dataset.outlier));
+                            break;
+                        case "name-asc": filtered.sort(
+                                (a, b) => a
+                                .querySelector(".member-name")
+                                .textContent
+                                .localeCompare(b.querySelector(".member-name").textContent)
+                            );
+                            break;
+                        case "name-desc": filtered.sort(
+                                (a, b) => b
+                                .querySelector(".member-name")
+                                .textContent
+                                .localeCompare(a.querySelector(".member-name").textContent)
+                            );
+                            break;
+                        case "party-asc": filtered.sort((a, b) => a
+                                .dataset
+                                .party
+                                .localeCompare(b.dataset.party));
+                            break;
+                        case "party-desc": filtered.sort((a, b) => b
+                                .dataset
+                                .party
+                                .localeCompare(a.dataset.party));
+                            break;
+                    }
+                    // Clear and re-render
+                    membersGrid.innerHTML = '';
+                    filtered.forEach(member => membersGrid.appendChild(member));
+                }
+                // Event listeners
+                partyFilter.addEventListener('change', filterAndSortMembers);
+                constituencyFilter.addEventListener('change', filterAndSortMembers);
+                searchFilter.addEventListener('input', filterAndSortMembers);
+                activeFilter.addEventListener('change', filterAndSortMembers);
+                sortFilter.addEventListener('change', filterAndSortMembers);
+            </script>
+            <script src="https://d3js.org/d3.v7.min.js"></script>
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const ages = {{ members.ages | dump | safe }}; // This is how you access the ages array
+                    const membersTranslation = "{{ languages[page.lang].chamberMembers }}";
+                    const ageRangeTranslation = "{{ languages[page.lang].ageRange }}";
+                    // Setup dimensions and margins
+                    const margin = {
+                        top: 5,
+                        right: 0,
+                        bottom: 30,
+                        left: 30
+                    };
+                    const container = document.getElementById("ageHistogram").parentNode;
+                    const width = container.clientWidth - margin.left - margin.right;
+                    const height = 150;
+                    const svg = d3
+                        .select("#ageHistogram")
+                        .attr(
+                            "viewBox",
+                            `0 0 ${
+                                width + margin.left + margin.right
+                            } ${
+                                height + margin.top + margin.bottom
+                            }`
+                        )
+                        .attr("preserveAspectRatio", "xMidYMid meet")
+                        .style("width", "100%")
+                        .style("height", "auto");
+                    const g = svg.append("g").attr("transform", `translate(${
+                        margin.left
+                    },${
+                        margin.top
+                    })`);
+                    // Create bins
+                    const binGenerator = d3
+                        .bin()
+                        .domain([20, 85]) // Adjust as needed
+                        .thresholds(10); // 10 bins
+                    const bins = binGenerator(ages);
+                    // Scales
+                    const y = d3
+                        .scaleLinear()
+                        .domain([
+                            0, d3.max(bins, d => d.length) + 5
+                        ])
+                        .range([height, 0]); // IMPORTANT: bottom (0) to top (max)
+                    const color = d3
+                        .scaleLinear()
+                        .domain([
+                            0, d3.max(bins, d => d.length)
+                        ])
+                        .range(["#cce5ff", "#004085"]);
+                    // Axes
+                    const x = d3
+                        .scaleBand()
+                        .domain(bins.map(d => d.x0)) // Use bin start (x0) for the domain
+                        .range([0, width])
+                        .padding(0.1); // Adjust the padding between bars Add the x-axis with ticks at the start of each bin
+                    g
+                        .append("g")
+                        .attr("transform", `translate(0, ${height})`)
+                        .call(
+                            d3
+                            .axisBottom(x)
+                            .tickValues(bins.map(d => d.x0)) // Place ticks at the start of each bin
+                            .tickFormat(d => `${d}`) // Show ticks as bin ranges (e.g., 30, 35)
+                        )
+                        .call(g => g.select(".domain").remove()) // Remove axis line
+                        .call(g => g
+                            .selectAll("text")
+                            .style("font-size", "0.75rem")
+                            .style("fill", "#333"));
+                    // Tooltip setup
+                    const tooltip = d3
+                        .select("body")
+                        .append("div")
+                        .attr("class", "tooltip")
+                        .style("opacity", 0);
+                    // Add the y-axis with grid lines
+                    g
+                        .append("g")
+                        .call(
+                            d3
+                            .axisLeft(y)
+                            .ticks(10)
+                            .tickSize(- width) // Draw grid lines across the chart
+                            .tickFormat(d => d) // optional, in case you want to format
+                        )
+                        .call(g => g.select(".domain").remove()) // Remove the vertical axis line
+                        .call(
+                            g => g
+                            .selectAll("text")
+                            .style("font-size", "0.75rem")
+                            .style("font-family", "sans-serif")
+                            .style("fill", "#333")
+                        )
+                        .call(
+                            g => g
+                            .selectAll(".tick line")
+                            .attr("stroke", "#ddd") // Light grey lines
+                            .attr("stroke-dasharray", "2,2") // Optional dashed lines
+                        );
+                    // Create the bars with correct positioning and width
+                    const bars = g
+                        .selectAll(".bar")
+                        .data(bins)
+                        .enter()
+                        .append("rect")
+                        .attr("class", "bar")
+                        .attr("x", d => x(d.x0) + x.bandwidth() * 0.5)
+                        .attr("width", x.bandwidth())
+                        .attr("y", y(0)) // Start from bottom
+                        .attr("height", 0) // No height at start
+                        .attr("rx", 4)
+                        .attr("ry", 4)
+                        .attr("fill", d => color(d.length));
+                    bars
+                        .transition()
+                        .duration(800)
+                        .attr("y", d => y(d.length)) // Move upward
+                        .attr("height", d => height - y(d.length)); // Stretch from bottom up Tooltip functionality
+                    bars.on("mouseover", function (event, d) {
+                        tooltip
+                            .transition()
+                            .duration(200)
+                            .style("opacity", 1);
+                        tooltip
+                            .html(`<strong>${
+                                d.length
+                            }</strong> ${membersTranslation}<br/>${ageRangeTranslation}: ${
+                                d.x0
+                            } - ${
+                                d.x1 - 1
+                            }`)
+                            .style("left", (event.pageX + 10) + "px")
+                            .style("top", (event.pageY - 30) + "px");
+                        d3.select(this).attr("fill", "#0056b3");
+                    }).on("mouseout", function (event, d) {
+                        tooltip
+                            .transition()
+                            .duration(200)
+                            .style("opacity", 0);
+                        d3.select(this).attr("fill", color(d.length)); // Correct reference to `d` here
+                    }); // Event handler should work now
+                });
+            </script>
+
+             <script>
+                document.addEventListener("DOMContentLoaded", function () {
+
+
+
+ const incomes = {{ members.incomes2023 | dump | safe }}
+                  .filter(v => v && !isNaN(v));
+
+                  const BIN_SIZE = 3000000;                       // 5 k €, change as needed
+const maxIncome = d3.max(incomes);
+const thresholds = d3.range(0, maxIncome + BIN_SIZE, BIN_SIZE);
+
+
+ const membersTranslation = "members";
+    const incomeRangeTranslation = "range";
+  const euroSymbol = "€";
+
+const margin = { top: 5, right: 0, bottom: 35, left: 20 };
+    const container = document.getElementById("incomeHistogram").parentNode;
+    const width  = container.clientWidth - margin.left - margin.right;
+    const height = 170;
+
+ const svg = d3.select("#incomeHistogram")
+        .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+        .attr("preserveAspectRatio", "xMidYMid meet")
+        .style("width", "100%")
+        .style("height", "auto");
+
+    const g = svg.append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    /* ------------- D.  BINS & SCALES ------------- */
+
+
+    const binGenerator = d3.bin()
+    .domain([0, maxIncome + BIN_SIZE])
+    .thresholds(thresholds);
+
+const bins = binGenerator(incomes);
+
+    const yScale = d3.scaleLinear()
+        .domain([0, d3.max(bins, d => d.length) + 2])
+        .range([height, 0]);
+
+    const xScale = d3.scaleBand()
+        .domain(bins.map(d => d.x0))
+        .range([0, width])
+        .padding(0.1);
+
+    const colour = d3.scaleLinear()
+        .domain([0, d3.max(bins, d => d.length)])
+            .range(["#c6e48b", "#1b4d1f"]);
+            
+    /* ------------- E.  AXES ------------- */
+    g.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(
+            d3.axisBottom(xScale)
+               .tickValues(bins.map(d => d.x0))
+               .tickFormat(d => `${euroSymbol}${d/100000}k`)
+        )
+        .call(g => g.select(".domain").remove())
+        .call(g => g.selectAll("text")
+                    .style("font-size",".75rem")
+                    .style("fill","#333")
+                           .attr("text-anchor","end")       // ✨ NEW
+                  .attr("transform","rotate(-45)") // ✨ NEW
+                  .attr("dx","-.3em")              // shift left a bit
+                  .attr("dy",".15em"));   
+
+    g.append("g")
+        .call(
+            d3.axisLeft(yScale)
+               .ticks(8)
+               .tickSize(-width)
+        )
+        .call(g => g.select(".domain").remove())
+        .call(g => g.selectAll(".tick line")
+                    .attr("stroke","#ddd")
+                    .attr("stroke-dasharray","2,2"))
+        .call(g => g.selectAll("text")
+                    .style("font-size",".75rem")
+                    .style("fill","#333"));
+                       // shift down a bit
+
+    /* ------------- F.  TOOLTIP ------------- */
+    const tooltip = d3.select("body")
+        .append("div")
+        .attr("class","tooltip")
+        .style("opacity",0);
+
+    /* ------------- G.  BARS ------------- */
+    const bars = g.selectAll(".bar")
+        .data(bins)
+        .enter().append("rect")
+            .attr("class","bar")
+            .attr("x", d => xScale(d.x0) + xScale.bandwidth()*0.5)
+            .attr("width", xScale.bandwidth())
+            .attr("y", yScale(0))
+            .attr("height", 0)
+            .attr("rx",4).attr("ry",4)
+            .attr("fill", d => colour(d.length));
+
+    bars.transition()
+        .duration(800)
+        .attr("y", d => yScale(d.length))
+        .attr("height", d => height - yScale(d.length));
+
+    /* ------------- H.  INTERACTION ------------- */
+    bars.on("mouseover", function (event, d) {
+            tooltip.transition().duration(200).style("opacity",1);
+            tooltip.html(
+                `<strong>${d.length}</strong> ${membersTranslation}<br/>` +
+                `${incomeRangeTranslation}: ${euroSymbol}${d.x0.toLocaleString()}–${euroSymbol}${(d.x1-1).toLocaleString()}`
+            )
+            .style("left", (event.pageX + 10) + "px")
+            .style("top", (event.pageY - 30) + "px");
+
+            d3.select(this).attr("fill","#376328");
+        })
+        .on("mouseout", function (event,d){
+            tooltip.transition().duration(200).style("opacity",0);
+            d3.select(this).attr("fill", colour(d.length));
+        });
+});
+            </script>

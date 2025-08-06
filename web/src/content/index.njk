@@ -1,0 +1,437 @@
+---
+pagination:
+    data: languages
+    size: 1
+    alias: lang
+permalink: "{{ lang }}/"
+redirect_from: "/"
+title: "De Belgische Kamer van Volksvertegenwoordigers"
+eleventyComputed:
+    description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stellen, en volg de actualiteit in de Kamer. Transparant overzicht van het federaal parlement."
+---
+
+<div id="hero" style="display: flex; flex-direction: column; align-items: center;">
+    <div class="content" style="display: flex; flex-direction: column; gap: 1rem;">
+        <h1 style="margin: 0; font-size: 2rem;">Hoe stemt het Belgische parlement?</h1>
+        <p style="margin: 0;">In het federaal parlement stemmen verkozen vertegenwoordigers over wetten die uw leven rechtstreeks beïnvloeden.</p>
+        <p style="margin: 0;">Ontdek hier hoe u vertegenwoordigd wordt in De Kamer.</p>
+    </div>
+</div>
+
+<main>
+    <div class="content">
+
+        <!-- NEWS -->
+        {% set plenary = (meetings.meetings | filter("type", "plenary"))[0] %}
+        {% set commission = (meetings.meetings | filter("type", "commission"))[0] %}
+        {% set attendance = plenary.attendance %}
+        {% set attendanceColor = "red" %}
+        {% if attendance.ratio >= 0.85 %}
+            {% set attendanceColor = "green" %}
+        {% elif attendance.ratio >= 0.65 %}
+            {% set attendanceColor = "orange" %}
+        {% endif %}
+
+        <h1 style="text-transform: capitalize;">Nieuws</h1>
+        <p>Bekijk het verslag van de recentste plenaire vergadering en commissievergadering.</p>
+
+        <div class="swipeable-row">
+            <div class="swipeable-item">
+                <div class="card rounded-top">
+                    <div class="category align-center flex">
+                        <span>Nieuwe plenaire vergadering op {{ (plenary.date) | date }}</span>
+                    </div>
+                    <div class="padding-tight">
+                        <p class="bold capitalize">{{ languages[page.lang].questions }}</p>
+                        {% if plenary.questions.length > 0 %}
+                            <ul>
+                                {% for question in plenary.questions | limit(3) %}
+                                    {% if question.topics_summary_nl %}
+                                        <li>{{ question.topics_summary_nl }}</li>
+                                    {% else %}
+                                        <li>{{ question.topics_nl }}</li>
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p style="margin-bottom: 0.5rem;">Geen vragen</p>
+                        {% endif %}
+
+                        <p class="bold capitalize">{{ languages[page.lang].propositions }}</p>
+                        {% if plenary.propositions.length > 0 %}
+                            <ul>
+                                {% for proposition in plenary.propositions | limit(1) %}
+                                    <li>{{ proposition.title_nl }}
+                                        {% if proposition.status == "Aangenomen" %}
+                                            <span class="status small" style="background-color: #28a745; color: white;">{{ languages[page.lang].passed }}</span>
+                                        {% elseif proposition.status == "Verworpen" %}
+                                            <span class="status small" style="background-color: #dc3545; color: white;">{{ languages[page.lang].failed }}</span>
+                                        {% elseif proposition.status == "ZonderVoorwerp" %}
+                                            <span class="status small" style="background-color: orange; color: white;">{{ languages[page.lang].withoutSubject }}</span>
+                                            {% endif%}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p style="margin-bottom: 0.5rem;">Geen voorstellen</p>
+                            {% endif %}
+
+                            <p class="bold capitalize">{{ languages[page.lang].votes }}</p>
+                            <p style="margin-bottom: 0.5rem;">{{ plenary.votes.length }} stemming(en)</p>
+                            <div>
+                                {% if plenary.allVotes.length > 0 %}
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                        <p class="bold">{{ languages[page.lang].attendance }}</p>
+                                        <p>{{ attendance.count }}/150 ({{ (attendance.ratio * 100) | round(0, 'floor') }}%)</p>
+                                    </div>
+
+                                    <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden;">
+                                        <div style="
+                                            width: {{ (attendance.ratio * 100) | round(0, 'floor') }}%;
+                                            height: 100%;
+                                            background-color: {{ attendanceColor }};
+                                        "></div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <a href="/{{ page.lang }}/sessions/56/meetings/plenary/{{ plenary.meeting_id }}/" class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
+                        <p>{{ languages[page.lang].seeMeetingDetails }}</p>
+                        {% lucide "chevron-right" %}
+                    </a>
+                </div>
+
+                <div class="swipeable-item">
+                    <div class="card rounded-top">
+
+                        <div class="category align-center flex">
+                            <span>Nieuwe commissievergadering op {{ (commission.date) | date }}</span>
+                        </div>
+                        <div class="padding-tight">
+                            {% set ctype = commission.commission_type | default('', true) %}
+                            {% set c = commissions[ctype] or {} %}
+                            <p>{{ c.icon or '' }}
+                                {{ c.name or ctype }}</p>
+                            <p>Voorgezeten door <a href="/nl/members/{{ commission.chair | slugify }}/">{{ commission.chair }}</a>
+                            </p>
+                        </div>
+                    </div>
+                    <a href="/{{ page.lang }}/sessions/56/meetings/commission/{{ commission.meeting_id }}/" class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
+                        <p>{{ languages[page.lang].seeMeetingDetails }}</p>
+                        {% lucide "chevron-right" %}
+                    </a>
+                </div>
+
+                <div class="swipeable-item">
+                    <div class="card rounded-top">
+                        <div class="category align-center flex">
+                            <span>Aanwezigheid kamerleden</span>
+                        </div>
+
+                        <div class="padding-tight">
+                        <!-- HIGHEST -->
+                        {% set topMembers = members.members | sort("attendance", "desc") | take(5) %}
+                        {% for member in topMembers %}
+                            {% set attendance = member.attendance %}
+                            {% set attendancePercent = (attendance * 100) | round(0, 'floor') %}
+                            {% set attendanceColor = "red" %}
+                            {% if attendance >= 0.90 %}
+                                {% set attendanceColor = "green" %}
+                            {% elif attendance >= 0.80 %}
+                                {% set attendanceColor = "orange" %}
+                            {% endif %}
+
+                            <div style="margin-bottom: 0.4rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                                    <p class="bold" style="font-size: smaller;">{{ member.first_name }} {{ member.last_name }}</p>
+                                    <p>{{ attendancePercent }}%</p>
+                                </div>
+                                <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden;">
+                                <div style="width: {{ attendancePercent }}%; height: 100%; background-color: {{ attendanceColor }};"></div>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        <!-- LOWEST -->
+                        {% set lowestMembers = members.members | filter("active", "true") | sort("attendance", "asc") | take(5) | sort("attendance", "desc") %}
+                        {% for member in lowestMembers %}
+                            {% set attendance = member.attendance %}
+                            {% set attendancePercent = (attendance * 100) | round(0, 'floor') %}
+                            {% set attendanceColor = "red" %}
+                            {% if attendance >= 0.90 %}
+                                {% set attendanceColor = "green" %}
+                            {% elif attendance >= 0.80 %}
+                                {% set attendanceColor = "orange" %}
+                            {% endif %}
+
+                            <div style="margin-bottom: 0.4rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                                    <p class="bold" style="font-size: smaller;">{{ member.first_name }} {{ member.last_name }}</p>
+                                    <p>{{ attendancePercent }}%</p>
+                                </div>
+                                <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden;">
+                                <div style="width: {{ attendancePercent }}%; height: 100%; background-color: {{ attendanceColor }};"></div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                    </div>
+                    <div class="card padding" style="display: flex; flex-direction: column; margin-top: 0.5rem;">
+                        <details>
+                            <summary>Hoe wordt aanwezigheid berekend?</summary>
+                            <p style="padding-top: 1rem; padding-bottom: 1rem;">De Kamer publiceert geen aanwezigheden. Daarom wordt aanwezigheid berekend op basis van de eerste stemming van een vergadering. Als een kamerlid daaraan deelneemt, geldt het als aanwezig. Latere binnenkomst telt niet mee, en vertrek na de eerste stemming verandert de status niet. Vergaderingen zonder stemmingen tellen niet mee voor aanwezigheid.</p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+
+        <div class="swipe-indicator">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+            <!-- QUICK LINKS -->
+            <h2>Snelle Links</h2>
+            <div class="quick-links">
+                <a class="quick-link" href="/{{ page.lang }}/sessions/56/meetings">
+                    <div class="flex space-between align-center">
+                        <div class="flex column">
+                            <div class="flex align-center">
+                                <span class="icon-padded">{% icon "lucide:calendar-days" %}</span>
+                                <h3>Alle vergaderingen</h3>
+                            </div>
+                            <p>Bekijk de verslagen alle plenaire en commissievergaderingen.</p>
+                        </div>
+                        {% icon "lucide:chevron-right" %}
+                    </div>
+                </a>
+
+                <a class="quick-link" href="/{{ page.lang }}/members">
+                    <div class="flex space-between align-center">
+                        <div class="flex column">
+                            <div class="flex align-center">
+                                <span class="icon-padded">{% icon "lucide:user-round" %}</span>
+                                <h3>Alle kamerleden</h3>
+                            </div>
+                            <p>Bekijk de 150 kamerleden die zetelen in het federaal parlement.</p>
+                        </div>
+                        {% icon "lucide:chevron-right" %}
+                    </div>
+                </a>
+                <a class="quick-link" href="/{{ page.lang }}/parties">
+                    <div class="flex space-between align-center">
+                        <div class="flex column">
+                            <div class="flex align-center">
+                                <span class="icon-padded">{% icon "lucide:users" %}</span>
+                                <h3>Alle partijen</h3>
+                            </div>
+                            <p>Bekijk de 12 partijen die actief zijn in het federaal parlement.</p>
+                        </div>
+                        {% icon "lucide:chevron-right" %}
+                    </div>
+                </a>
+
+                <a class="quick-link" href="/{{ page.lang }}/questions">
+
+                    <div class="flex space-between align-center">
+                        <div class="flex column">
+                            <div class="flex align-center">
+                                <span class="icon-padded">{% icon "lucide:message-circle-question" %}</span>
+                                <h3>Alle vragen</h3>
+                            </div>
+                            <p>Bekijk alle vragen die de kamerleden hebben gesteld.</p>
+                        </div>
+                        {% icon "lucide:chevron-right" %}
+                    </div>
+                </a>
+
+                <a class="quick-link" href="/{{ page.lang }}/propositions">
+                    <div class="flex space-between align-center">
+                        <div class="flex column">
+                            <div class="flex align-center">
+                                <span class="icon-padded">{% icon "lucide:inbox" %}</span>
+                                <h3>Alle voorstellen</h3>
+                            </div>
+                            <p>Bekijk alle voorstellen die de kamerleden hebben ingediend.</p>
+                        </div>
+                        {% icon "lucide:chevron-right" %}
+                    </div>
+                </a>
+
+                <a class="quick-link" href="/{{ page.lang }}/votes">
+                    <div class="flex space-between align-center">
+                        <div class="flex column">
+                            <div class="flex align-center">
+                                <span class="icon-padded">{% icon "lucide:vote" %}</span>
+                                <h3>Alle stemmingen</h3>
+                            </div>
+                            <p>Bekijk alle stemmingen waaraan de kamerleden hebben deelgenomen.</p>
+                        </div>
+                        {% icon "lucide:chevron-right" %}
+                    </div>
+                </a>
+
+                <a class="quick-link" href="/{{ page.lang }}/topics">
+                    <div class="flex space-between align-center">
+                        <div class="flex column">
+                            <div class="flex align-center">
+                                <span class="icon-padded">{% icon "lucide:tag" %}</span>
+                                <h3>Alle onderwerpen</h3>
+                            </div>
+                            <p>Bekijk alle onderwerpen die aan bod komen in het federaal parlement.</p>
+                        </div>
+                        {% icon "lucide:chevron-right" %}
+                    </div>
+                </a>
+
+                <a class="quick-link" href="/{{ page.lang }}/lobby">
+                    <div class="flex space-between align-center">
+                        <div class="flex column">
+                            <div class="flex align-center">
+                                <span class="icon-padded">{% icon "lucide:euro" %}</span>
+                                <h3>Lobbyregister</h3>
+                            </div>
+                            <p>Bekijk alle bedrijven en organisaties die het wetgevingsproces beïnvloeden.</p>
+                        </div>
+                        {% icon "lucide:chevron-right" %}
+                    </div>
+                </a>
+            </div>
+
+            <!-- TOPICS -->
+            <h2 style="margin-bottom: 0;" class="capitalize">{{ languages[page.lang].topics }}</h2>
+            <p>{{ languages[page.lang].topicsExplanation }}</p>
+            <ul id="topics-list">
+                {% for key in topics | keys %}
+                    <li>
+                        <a href="/{{ page.lang }}/topics/{{key | slugify}}">{{ topics[key].icon or '' }}
+                            {{ key }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <!-- CALENDAR -->
+            <h2 style="margin-top:2rem; margin-bottom: 0;" class="capitalize">{{ languages[page.lang].calendar }}</h2>
+            <p>{{ languages[page.lang].calendarExplanation }}</p>
+            <div>
+                <div id="calendars">
+                    <div class="calendar">
+                        <ul class="months">
+                            <li>jan</li>
+                            <li>feb</li>
+                            <li>mrt</li>
+                            <li>apr</li>
+                            <li>mei</li>
+                            <li>jun</li>
+                            <li>jul</li>
+                            <li>aug</li>
+                            <li>sep</li>
+                            <li>oct</li>
+                            <li>nov</li>
+                            <li>dec</li>
+                        </ul>
+                        <ul class="days">
+                            <li>ma</li>
+                            <li>di</li>
+                            <li>wo</li>
+                            <li>do</li>
+                            <li>vr</li>
+                            <li>za</li>
+                            <li>zo</li>
+                        </ul>
+
+                        <ul class="squares">
+                            {% set firstDayOffset = 2 %}
+                            {% for i in range(0, firstDayOffset) %}
+                                <li class="empty"></li>
+                            {% endfor %}
+
+                            {% set days = range(0, 365) %}
+                            {% for day in days %}
+
+                                {% set hasCommission = false %}
+                                {% set commissionDate = "" %}
+                                {% set commissionCount = 0 %}
+
+                                {% for commission in commissions.commissions %}
+                                    {% if commission.date | dayIndex(2025) == day %}
+                                        {% set hasCommission = true %}
+                                        {% set commissionCount = commissionCount + 1 %}
+                                        {% set commissionDate = commission.date | date("YYYY-MM-DD") %}
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% set hasMeeting = false %}
+                                {% set meetingDate = "" %}
+                                {% set meetingCount = 0 %}
+
+                                {% for meeting in meetings.meetings %}
+                                    {% if meeting.date | dayIndex(2025) == day %}
+                                        {% set hasMeeting = true %}
+                                        {% set meetingCount = meetingCount + 1 %}
+                                        {% set meetingDate = meeting.date | date("YYYY-MM-DD") %}
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if hasCommission %}
+                                    <li class="commission" data-level="{{commissionCount}}"
+                            title='{{commissionCount}} commissievergaderingen op {{ commissionDate }}'></li>
+                                {% elseif hasMeeting %}
+                                    <li class="meeting" data-level="{{meetingCount}}"
+                            title='{{meetingCount}} plenaire vergaderingen op {{ meetingDate }}'></li>
+                                {% else %}
+                                    <li data-level="0"></li>
+                                {% endif %}
+
+                            {% endfor %}
+                        </ul>
+                        <div class="legend-row" style="display: flex; align-items: center;">
+                            <span style="margin-right: 0.4rem;">{{ languages[page.lang].less }}</span>
+                            <li></li>
+                            <li class="meeting" data-level="1"></li>
+                            <li class="meeting" data-level="2"></li>
+                            <li class="meeting" data-level="3"></li>
+                            <span style="margin-left: 0.4rem">{{ languages[page.lang].more }}
+                                {{ languages[page.lang].plenaryMeetings }}</span>
+                        </div>
+                        <div class="legend-row" style="display: flex; align-items: center;">
+                            <span style="margin-right: 0.4rem;">{{ languages[page.lang].less }}</span>
+                            <li></li>
+                            <li class="commission" data-level="1"></li>
+                            <li class="commission" data-level="2"></li>
+                            <li class="commission" data-level="3"></li>
+                            <span style="margin-left: 0.4rem">{{ languages[page.lang].more }}
+                                {{ languages[page.lang].commissionMeetings }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p>{{ languages[page.lang].plenaryMeetingsExplanation }}</p>
+                <p>{{ languages[page.lang].commissionMeetingsExplanation }}</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+  const row = document.querySelector('.swipeable-row');
+  const dots = document.querySelectorAll('.dot');
+  const items = document.querySelectorAll('.swipeable-item');
+
+  row.addEventListener('scroll', () => {
+    let index = 0;
+    let minDiff = Infinity;
+
+    items.forEach((item, i) => {
+      const diff = Math.abs(item.getBoundingClientRect().left - row.getBoundingClientRect().left);
+      if (diff < minDiff) {
+        minDiff = diff;
+        index = i;
+      }
+    });
+
+    dots.forEach(dot => dot.classList.remove('active'));
+    if (dots[index]) dots[index].classList.add('active');
+  });
+</script>

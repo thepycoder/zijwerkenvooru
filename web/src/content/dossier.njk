@@ -1,0 +1,188 @@
+---
+layout: layouts/page
+pagination:
+    data: collections.localizedDossiers
+    size: 1
+    alias: dossier
+    addAllPagesToCollections: true
+permalink: "{{ dossier.permalink }}"
+canonical: "nl/sessions/{{dossier.session_id}}/dossiers/{{ dossier.dossier_id }}/"
+eleventyComputed:
+    title: "zwvu | {{ dossier.title }}"
+    description: "Over het {{ languages[page.lang][dossier.document_type] }}: {{ dossier.title }} (dossier {{ dossier.dossier_id }})"
+---
+
+<!-- PAGEFIND EXCERPT -->
+<span style="display: none" data-pagefind-meta="title">{{ languages[page.lang][dossier.document_type] }}</span>
+<span style="display: none" data-pagefind-body>{{ languages[page.lang][dossier.document_type] }} over {{ dossier.title }}</span>
+
+<!-- COMPONENTS -->
+{%- from "components/vote-card.njk" import voteCard -%}
+
+{# <p><a href="javascript:history.back()"><- TERUG</a></p> #}
+
+<h1>Dossier {{ dossier.dossier_id }}</h1>
+
+<h3 style="font-weight: normal; margin-top: 0;">{{ dossier.title }}.</h3>
+
+<!-- DOSSIER OVERVIEW -->
+<div class="card padding info-list">
+    <div class="info-item">
+        <span class="icon-padded">{% icon "lucide:user" %}</span>
+        <div>
+            <p><span>Ingediend door</span></p>
+            <p>
+                {% for author in dossier.authors %}
+                    {% if author.name == "Gouvernement/Regering (AUTEUR)" %}
+                            <span>Regering</span><br>
+                             {% elseif author.name == "Commission/Commissie (AUTEUR)" %}
+                            <span>Commissie</span><br>
+                    {% else %}
+                        {% set party = author.party | lower %}
+                        {% set primaryColor = partyColors[party].primary or '#95a5a6' %}
+                        {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
+                        <span>
+                            <span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span>
+                            <a class="questioner" href="/{{page.lang}}/members/{{ author.name | slugify }}/" class="respondent">{{ author.name }}</a>
+                        </span><br>
+                    {% endif %}
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+    <div class="info-item">
+        <span class="icon-padded">{% icon "lucide:inbox" %}</span>
+        <p>Ingediend op {{ dossier.submission_date | date }}</p>
+    </div>
+    <div class="info-item">
+        <span class="icon-padded">{% icon "lucide:vote" %}</span>
+        {% if dossier.status == "Aangenomen" %}
+        <span class="topic" style="background-color: #28a745; color: white; margin-right: 0.4rem;">
+        {{ languages[page.lang].passed }}
+        </span>
+        {% elseif dossier.status == "Verworpen" %}
+        <span class="topic" style="background-color: #dc3545; color: white; margin-right: 0.4rem;">
+        {{ languages[page.lang].failed }}
+        </span>
+        {% endif%}
+        op {{ dossier.vote_date | date }}
+    </div>
+    <div class="info-item">
+        <span class="icon-padded">{% icon "lucide:file-digit" %}</span>
+        <p>Document <a href="https://www.dekamer.be/kvvcr/showpage.cfm?section=/flwb&language=nl&cfm=/site/wwwcfm/flwb/flwbn.cfm?lang=N&legislat={{ dossier.session_id }}&dossierID={{ dossier.dossier_id }}" target="_blank">{{ dossier.session_id }}K{{ dossier.dossier_id | padLeft(4, '0') }}</a></p>
+    </div>
+</div>
+
+<!-- SHARE BUTTON -->
+<button id="share-button">{{ languages[page.lang].shareDossier }}</button>
+
+<!-- VOTE CONTENTS -->
+<h2>Waarover gaat dit</h2>
+<p>Dit dossier gaat over "{{ dossier.title }}"</p>
+
+
+<!-- TIMELINE OF DOSSIER -->
+{% if dossier.subdocuments.length %}
+<h2>Overzicht</h2>
+<div class="timeline">
+    <ul class="timeline-list">
+        <!-- Vote Event if vote_date exists -->
+        {% if dossier.vote_date %}
+        <li class="dossier-event is-done">
+            <span class="dot-icon">{% icon "lucide:vote" %}</span>
+            <div class="info">
+                <p><span class="bold">Stemming in de kamer</span></p>
+                <p style="font-size: small;">{{ dossier.vote_date | date }}</p>
+                {% if dossier.status == "Aangenomen" %}
+                <span class="topic" style="background-color: #28a745; color: white;">
+                {{ languages[page.lang].passed }}
+                </span>
+                {% elseif dossier.status == "Verworpen" %}
+                <span class="topic" style="background-color: #dc3545; color: white;">
+                {{ languages[page.lang].failed }}
+                </span>
+                {% endif%}
+            </div>
+        </li>
+        {% endif %}
+
+        {% for doc in dossier.subdocuments | reverse(true) %}
+        <li class="dossier-event is-done">
+            {% if doc.type == "Amendement" %}
+            <span class="dot-icon">{% icon "lucide:git-pull-request-arrow" %}</span>
+            {% else %}
+            <span class="dot-icon">{% icon "lucide:paperclip" %}</span>
+            {% endif%}
+
+            <div class="info">
+                <p><span class="bold">{{ doc.id | padLeft(3, '0') }}. {{ languages[page.lang][doc.type] }}</span> (<a href="https://www.dekamer.be/FLWB/PDF/{{ dossier.session_id }}/{{ dossier.dossier_id | padLeft(4, '0') }}/{{ dossier.session_id }}K{{ dossier.dossier_id | padLeft(4, '0') }}{{ doc.id }}.pdf" target="_blank">{{ dossier.session_id }}K{{ dossier.dossier_id | padLeft(4, '0') }}{{ doc.id }}</a>)</p>
+                <p style="font-size: small;">{{ doc.date | date }}</p>
+                <p style="font-size: small;"></p>
+                <ul style="display: flex; flex-direction: column; gap: 0.2rem;" class="links">
+                    {% for author in doc.authors %}
+                    {% set party = author.party | lower %}
+                    {% set primaryColor = partyColors[party].primary or '#95a5a6' %}
+                    {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
+                    <li style="display: flex; margin-left: 0; justify-content: space-between; width: 100%; gap: 1rem;"><span class="party small" style="color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span><a href="/{{ page.lang }}/members/{{ author.name | slugify }}/">{{ author.name }}</a></li>
+                    {% endfor %}
+                </ul>
+
+                <!-- VOTE -->
+                {% if doc.votes[0] %}
+                <a class="flex space-between align-center" style="width: 100%;" href="/{{ page.lang }}/votes/{{ doc.votes[0].session_id }}/{{ doc.votes[0].meeting_id }}/{{doc.votes[0].vote_id}}/">
+                <div class="vote-bar" style="width: 90%;">
+                    <div class="bar-segment yes"
+                         style="width: {{ (doc.votes[0].yes_count / ((doc.votes[0].yes_count | int) + (doc.votes[0].no_count | int) + (doc.votes[0].abstain_count | int)) * 100).toFixed(1) }}%">
+                        {% if doc.votes[0].yes_count > 0 %}
+                        <span class="bar-label">{{ (doc.votes[0].yes_count / ((doc.votes[0].yes_count | int) + (doc.votes[0].no_count | int) + (doc.votes[0].abstain_count | int)) * 100).toFixed(1) }}%</span>
+                        {% endif %}
+                    </div>
+                    <div class="bar-segment no"
+                         style="width: {{ (doc.votes[0].no_count / ((doc.votes[0].yes_count | int) + (doc.votes[0].no_count | int) + (doc.votes[0].abstain_count | int)) * 100).toFixed(1) }}%">
+                        {% if doc.votes[0].no_count > 0 %}
+                        <span class="bar-label">{{ (doc.votes[0].no_count / ((doc.votes[0].yes_count | int) + (doc.votes[0].no_count | int) + (doc.votes[0].abstain_count | int)) * 100).toFixed(1) }}%</span>
+                        {% endif %}
+                    </div>
+                    <div class="bar-segment abstain"
+                         style="width: {{ (doc.votes[0].abstain_count / ((doc.votes[0].yes_count | int) + (doc.votes[0].no_count | int) + (doc.votes[0].abstain_count | int)) * 100).toFixed(1) }}%">
+                        {% if doc.votes[0].abstain_count > 0 %}
+                        <span class="bar-label">{{ (doc.votes[0].abstain_count / ((doc.votes[0].yes_count | int) + (doc.votes[0].no_count | int) + (doc.votes[0].abstain_count | int)) * 100).toFixed(1) }}%</span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% icon "lucide:chevron-right" %}
+                </a>
+
+                <p class="vote-numbers">
+                    <span class="vote-dot yes"></span><span>{{ languages[page.lang].yes }} ({{ doc.votes[0].yes_count }})</span>
+                    <span class="vote-dot no"></span><span>{{ languages[page.lang].no }} ({{ doc.votes[0].no_count }})</span>
+                    <span class="vote-dot abstain"></span><span>{{ languages[page.lang].abstain }} ({{ doc.votes[0].abstain_count }})</span>
+                </p>
+                {% endif %}
+
+            </div>
+        </li>
+
+        {% endfor %}
+
+        <!-- Initial Submission -->
+        <li class="dossier-event is-done">
+            <span class="dot-icon">{% icon "lucide:inbox" %}</span>
+            <div class="info">
+                <p><span class="bold">{{ languages[page.lang][dossier.document_type] }}</span></p>
+                <p style="font-size: small;">{{ dossier.submission_date | date }}</p>
+                <ul style="display: flex; flex-direction: column; gap: 0.2rem;" class="links">
+                    {% for author in dossier.authors %}
+                    {% set party = author.party | lower %}
+                    {% set primaryColor = partyColors[party].primary or '#95a5a6' %}
+                    {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
+                    <li class="gap" style="display: flex; margin-left: 0; width: 100%;"><span class="party small" style="color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span><a href="/{{ page.lang }}/members/{{ author.name | slugify }}/">{{ author.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+{% else %}
+<p>Er werden geen subdocumenten gevonden voor dit dossier.</p>
+{% endif %}
