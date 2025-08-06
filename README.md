@@ -14,7 +14,7 @@ This is a project that aims to improve transparency and accessibility of the vot
 
 ### Why?
 
-The official website of the Belgian parliament (`https://www.dekamer.be`) has no straightforward way to view voting history of their members on various topics.
+The official website of the Belgian parliament ([https://www.dekamer.be](https://www.dekamer.be)) has no straightforward way to view voting history of their members on various topics.
 
 They do publish a weekly report of the plenary session of that week. However:
 
@@ -40,7 +40,9 @@ In a nutshell, the project does the following steps:
 1. Scrapes HTML pages from official sources such as `https://www.dekamer.be`
 2. Parses the HTML pages and extracts the relevant data
 3. Transforms and stores the data in computer-friendly `.parquet` files
-4. Uses the generated `.parquet` files to generate a website (`https://www.zijwerkenvooru.be`) that showcases different views of the data (votes, questions, dossiers etc.)
+4. Uses the generated `.parquet` files to generate a website ([https://www.zijwerkenvooru.be](https://www.zijwerkenvooru.be)) that showcases different views of the data (votes, questions, dossiers etc.)
+
+The final published website is available at [https://www.zijwerkenvooru.be](https://www.zijwerkenvooru.be).
 
 ## 🏗️ Architecture
 
