@@ -52,25 +52,25 @@ Some features are shown below.
 
 This shows who asked the questions and who answered, as well as the conversation.
 
-<img src="docs/questions.png" alt="isolated" width="400"/>
+<img src="docs/questions.png" alt="isolated" width="600"/>
 
 **Example 2. See detailed voting results**
 
 For each vote you can see a breakdown per-party or per-member.
 
-<img src="docs/votes.png" alt="isolated" width="400"/>
+<img src="docs/votes.png" alt="isolated" width="600"/>
 
 **Example 3. Member remunerations**
 
 For any member, see which functions they were paid for and how much they were paid for the past years.
 
-<img src="docs/remunerations.png" alt="isolated" width="400"/>
+<img src="docs/remunerations.png" alt="isolated" width="600"/>
 
 **Example 4. See all propositions related to a topic**
 
 By filtering on a topic you can see any parliamentary work that has been done related to that topic.
 
-<img src="docs/topic.png" alt="isolated" width="400"/>
+<img src="docs/topic.png" alt="isolated" width="600"/>
 
 ## 🏗️ Architecture
 
