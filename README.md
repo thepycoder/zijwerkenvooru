@@ -16,7 +16,7 @@ This is a project that aims to improve transparency and accessibility of the vot
 
 The official website of the Belgian parliament ([https://www.dekamer.be](https://www.dekamer.be)) has no straightforward way to view voting history of their members on various topics.
 
-They do publish a weekly report of the plenary session of that week. However:
+They publish a weekly report of the plenary session of that week. However:
 
 - This document is often over 100 pages long
 - This document only contains the votes from that week's session
