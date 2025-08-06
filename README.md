@@ -42,7 +42,35 @@ In a nutshell, the project does the following steps:
 3. Transforms and stores the data in computer-friendly `.parquet` files
 4. Uses the generated `.parquet` files to generate a website ([https://www.zijwerkenvooru.be](https://www.zijwerkenvooru.be)) that showcases different views of the data (votes, questions, dossiers etc.)
 
+### Result
+
 The final published website is available at [https://www.zijwerkenvooru.be](https://www.zijwerkenvooru.be).
+
+Some features are shown below.
+
+**Example 1. See questions asked during plenary sessions**
+
+This shows who asked the questions and who answered, as well as the conversation.
+
+<img src="docs/questions.png" alt="isolated" width="400"/>
+
+**Example 2. See detailed voting results**
+
+For each vote you can see a breakdown per-party or per-member.
+
+<img src="docs/votes.png" alt="isolated" width="400"/>
+
+**Example 3. Member remunerations**
+
+For any member, see which functions they were paid for and how much they were paid for the past years.
+
+<img src="docs/remunerations.png" alt="isolated" width="400"/>
+
+**Example 4. See all propositions related to a topic**
+
+By filtering on a topic you can see any parliamentary work that has been done related to that topic.
+
+<img src="docs/topic.png" alt="isolated" width="400"/>
 
 ## 🏗️ Architecture
 
@@ -89,6 +117,8 @@ The project for the website can be found in the `web` directory.
 The Bluesky poster is used to automatically create posts on Bluesky showing a summary of the most recent plenary session,
 
 The poster is a Rust project and can be found in the `poster` directory.
+
+<img src="docs/bsky.png" alt="isolated" width="400"/>
 
 ## 🤖 GitHub Actions
 
