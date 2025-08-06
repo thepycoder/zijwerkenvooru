@@ -10,14 +10,37 @@
 
 ## ❓ About
 
-`https://www.zijwerkenvooru.be` is a website that aims to improve transparency and accessibility of the voting history of Belgian parliament's.
+This is a project that aims to improve transparency and accessibility of the voting history of the Belgian parliament.
+
+### Why?
+
+The official website of the Belgian parliament (`https://www.dekamer.be`) has no straightforward way to view voting history of their members on various topics.
+
+They do publish a weekly report of the plenary session of that week. However:
+
+- This document is often over 100 pages long
+- This document only contains the votes from that week's session
+- The chosen format (PDF or HTML) makes it impossible to interactively explore votes
+
+Below is a small part of the report which shows a list of members that voted yes on a specific vote.
+
+<img src="docs/plenary-report.png" alt="isolated" width="400"/>
+
+This project aims to turn this around and allow for the following questions to be easily answered:
+
+- Which questions does member X ask?
+- How does party X vote about topic Y?
+- How much is member X paid?
+- What's happening currently around topic X?
+
+### How?
 
 In a nutshell, the project does the following steps:
 
 1. Scrapes HTML pages from official sources such as `https://www.dekamer.be`
 2. Parses the HTML pages and extracts the relevant data
 3. Transforms and stores the data in computer-friendly `.parquet` files
-4. Uses the generated `.parquet` files to generate a website that showcases different views of the data (votes, questions, dossiers etc.)
+4. Uses the generated `.parquet` files to generate a website (`https://www.zijwerkenvooru.be`) that showcases different views of the data (votes, questions, dossiers etc.)
 
 ## 🏗️ Architecture
 
