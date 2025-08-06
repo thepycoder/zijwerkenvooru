@@ -18,8 +18,8 @@ The official website of the Belgian parliament ([https://www.dekamer.be](https:/
 
 They publish a weekly report of the plenary session of that week. However:
 
-- This document is often over 100 pages long
-- This document only contains the votes from that week's session
+- This document is often over 100 pages long which is difficult to process
+- This document only contains the votes from that week's session which makes this the only view you have on voting data
 - The chosen format (PDF or HTML) makes it impossible to interactively explore votes
 
 Below is a small part of the report which shows a list of members that voted yes on a specific vote.
