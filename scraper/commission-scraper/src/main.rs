@@ -26,7 +26,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let root = Path::new(env!("CARGO_MANIFEST_DIR"))
         .parent()
         .unwrap()
-        .join("web/src/data");
+        .join("../web/src/data");
 
     let commissions_path = root.join("commissions.parquet");
     let questions_path = root.join("commission_questions.parquet");
@@ -109,7 +109,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
 
     for commission in 1..=last_commission_id {
-        println!("SCRAPING: {}", commission);
+        // println!("SCRAPING: {}", commission);
         scrape_commission(
             &client,
             56,

@@ -4,7 +4,7 @@
 
 **How does the Belgian parliament vote?**
 
-<img src="docs/zijwerkenvooru.png" alt="isolated" width="500"/>
+<img src="docs/zijwerkenvooru.png" alt="isolated" width="700"/>
 
 </div>
 
@@ -64,6 +64,10 @@ The project for the website can be found in the `web` directory.
 The Bluesky poster is used to automatically create posts on Bluesky showing a summary of the most recent plenary session,
 
 The poster is a Rust project and can be found in the `poster` directory.
+
+## 🤖 GitHub Actions
+
+There is a single GitHub Actions workflow for automatically scraping data, summarizing data, building and deploying the website and posting. It is run on a schedule or can be triggered manually.
 
 ## 🗃️ Data
 

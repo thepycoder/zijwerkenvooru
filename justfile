@@ -4,8 +4,7 @@ default:
     just --list
 
 setup:
-    @echo "🚀 Installing dependencies"
-    npm install
+    (cd web && npm install)
 
 run:
     (cd web && npm run dev)
