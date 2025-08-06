@@ -166,7 +166,6 @@ Only bug-fixes and some ad-hoc development is done for this project. Below is a 
 - [ ] add a data link to the menu on mobile
 - [ ] add parties between brackets for attendance
 - [ ] check attendance calculation
-- [ ] remove twitter link
 - [ ] add link to data.gov dataset
 - [ ] scrape previous sessions (already supported but need to make sure there are no issues with this)
 - [ ] French localization
