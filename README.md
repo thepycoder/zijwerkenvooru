@@ -118,7 +118,6 @@ Only bug-fixes and some ad-hoc development is done for this project. Below is a 
 - [ ] General UI/UX improvements
 - [ ] Cleanup of chart code
 - [ ] Do a spot check for data correctness
-- [ ] redirect https://zijwerkenvooru.be/data/ to https://zijwerkenvooru.be/nl/data/
 
 **Features:**
 
