@@ -164,7 +164,7 @@ Only bug-fixes and some ad-hoc development is done for this project. Below is a 
 
 - [ ] summarize dossier contents using Mistral
 - [ ] add parties between brackets for attendance
-- [ ] check attendance calculation
+- [ ] check attendance calculation and improve (only mark as present for a meeting if they are present for at least 50% of the votes of that meeting)
 - [ ] add link to data.gov dataset
 - [ ] scrape previous sessions (already supported but need to make sure there are no issues with this)
 - [ ] French localization
