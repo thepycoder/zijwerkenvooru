@@ -114,7 +114,7 @@ eleventyComputed:
                             {% set c = commissions[ctype] or {} %}
                             <p>{{ c.icon or '' }}
                                 {{ c.name or ctype }}</p>
-                            <p>Voorgezeten door <a href="/nl/members/{{ commission.chairs[0] | slugify }}/">{{ commission.chairs[0] }}</a>
+                            <p>Voorgezeten door <a href="/nl/members/{{ commission.chairs[0].name | slugify }}/">{{ commission.chairs[0].name }}</a>
                             </p>
                         </div>
                     </div>
