@@ -263,6 +263,26 @@ eleventyComputed:
                 {% endfor %}
             </div>
             <script>
+            const row = document.querySelector('.swipeable-row');
+            const dots = document.querySelectorAll('.dot');
+            const items = document.querySelectorAll('.swipeable-item');
+
+            row.addEventListener('scroll', () => {
+              let index = 0;
+              let minDiff = Infinity;
+
+              items.forEach((item, i) => {
+                const diff = Math.abs(item.getBoundingClientRect().left - row.getBoundingClientRect().left);
+                if (diff < minDiff) {
+                  minDiff = diff;
+                  index = i;
+                }
+              });
+
+              dots.forEach(dot => dot.classList.remove('active'));
+              if (dots[index]) dots[index].classList.add('active');
+            });
+
                 const partyFilter = document.getElementById('party-filter');
                 const constituencyFilter = document.getElementById('constituency-filter');
                 const searchFilter = document.getElementById('search-filter');
