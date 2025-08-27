@@ -135,11 +135,11 @@ eleventyComputed:
                         {% for member in topMembers %}
                             {% set attendance = member.attendance %}
                             {% set attendancePercent = (attendance * 100) | round(0, 'floor') %}
-                            {% set attendanceColor = "red" %}
+                            {% set attendanceColor = "black" %}
                             {% if attendance >= 0.90 %}
-                                {% set attendanceColor = "green" %}
+                                {% set attendanceColor = "black" %}
                             {% elif attendance >= 0.80 %}
-                                {% set attendanceColor = "orange" %}
+                                {% set attendanceColor = "black" %}
                             {% endif %}
 
                             <div style="margin-bottom: 0.4rem;">
