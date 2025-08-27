@@ -156,6 +156,10 @@ The dataset is also published on `https://data.gov.be/nl/datasets/datafederaalpa
 
 Please read our [Contributor Guide](CONTRIBUTING.md) for more information on how to get started.
 
+## Changelog
+
+- 27/08/2025: Improved wording related to attendance so it is more nuanced and clear.
+
 ## ✅ Future improvements
 
 Only bug-fixes and some ad-hoc development is done for this project. Below is a list of future improvements that can be done:
@@ -163,8 +167,6 @@ Only bug-fixes and some ad-hoc development is done for this project. Below is a 
 **Improvements:**
 
 - [ ] summarize dossier contents using Mistral
-- [ ] add parties between brackets for attendance
-- [ ] check attendance calculation and improve (only mark as present for a meeting if they are present for at least 50% of the votes of that meeting)
 - [ ] add link to data.gov dataset
 - [ ] scrape previous sessions (already supported but need to make sure there are no issues with this)
 - [ ] French localization
@@ -180,3 +182,4 @@ Only bug-fixes and some ad-hoc development is done for this project. Below is a 
 **Fixes:**
 
 - [ ] Document 56K0095 has incorrect date (1970)
+- [ ] Commission meeting on index does not show who led the meeting
