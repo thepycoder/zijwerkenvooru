@@ -48,13 +48,13 @@ eleventyComputed:
             <!-- ATTENDANCE -->
             <span>
                 {% set attendance = member.attendance %}
-                {% set attendanceColor = "#ff5252" %}
+                {% set attendanceColor = "black" %}
                 {% if attendance >= 0.90 %}
-                    {% set attendanceColor = "#4da74d" %}
+                    {% set attendanceColor = "black" %}
                 {% elif attendance >= 0.80 %}
-                    {% set attendanceColor = "#ffc760" %}
+                    {% set attendanceColor = "black" %}
                 {% endif %}
-                <p>Aanwezigheid ({{ (attendance * 100) | round(0, 'floor') }}%)</p>
+                <p>Stemdeelname ({{ (attendance * 100) | round(0, 'floor') }}%)</p>
                 <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden; width: 14rem;">
                     <div style=" width: {{ (attendance * 100) | round(0, 'floor') }}%; height: 100%; background-color: {{ attendanceColor }}; "></div>
                 </span>
@@ -65,10 +65,8 @@ eleventyComputed:
     <!-- ATTENDANCE INFO -->
     <div class="card padding" style="display: flex; flex-direction: column;">
         <details>
-            <summary>Hoe wordt aanwezigheid berekend?</summary>
-            <p style="padding-top: 1rem; padding-bottom: 1rem;">De Kamer publiceert geen aanwezigheden. Daarom wordt het
-                aanwezigheidspercentage berekend als het aantal stemmingen waaraan het kamerlid heeft deelgenomen, gedeeld door het
-                totaal aantal stemmingen waaraan het kamerlid had kunnen deelnemen. Vergaderingen zonder stemmingen tellen dus niet mee.</p>
+            <summary>Hoe wordt stemdeelname berekend?</summary>
+            <p style="padding-top: 1rem; padding-bottom: 1rem;">De Kamer publiceert geen aanwezigheden. Daarom wordt aanwezigheid benaderd via stemdeelname: het aandeel stemmingen waaraan een lid sinds zijn/haar startdatum heeft deelgenomen. Elke stemming telt mee. Dit is dus een benadering van aanwezigheid: er kunnen legitieme redenen zijn waarom een lid niet aan een stemming deelneemt, zoals ziekte of andere verplichtingen.</p>
             <p style="padding-top: 1rem; padding-bottom: 1rem;">Een fout gezien? Laat dit weten via :
                 <a href="mailto:info@zijwerkenvooru.be" target="_blank">info@zijwerkenvooru.be</a>
             </p>
@@ -279,7 +277,7 @@ eleventyComputed:
         <div style="display: flex; width: 100%; gap: 0.4rem;">
             <div class="card padding metric">
                 <h3 style="margin: 0;">{{ (((member.votes | length) / (meetings.meetings | countItems("allVotes"))) * 100.0) | round }}%</h3>
-                <p>aanwezigheid bij stemmingen</p>
+                <p>stemdeelname</p>
             </div>
             <div class="card padding metric">
                 <h3 style="margin: 0;">{{ 100 - (outlier_percentage | int) }}%</h3>

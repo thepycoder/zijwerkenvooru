@@ -126,7 +126,7 @@ eleventyComputed:
                 <div class="swipeable-item">
                     <div class="card rounded-top">
                         <div class="category align-center flex">
-                            <span>Aanwezigheid kamerleden</span>
+                            <span>Stemdeelname kamerleden</span>
                         </div>
 
                         <div class="padding-tight">
@@ -158,11 +158,11 @@ eleventyComputed:
                         {% for member in lowestMembers %}
                             {% set attendance = member.attendance %}
                             {% set attendancePercent = (attendance * 100) | round(0, 'floor') %}
-                            {% set attendanceColor = "red" %}
+                            {% set attendanceColor = "black" %}
                             {% if attendance >= 0.90 %}
-                                {% set attendanceColor = "green" %}
+                                {% set attendanceColor = "black" %}
                             {% elif attendance >= 0.80 %}
-                                {% set attendanceColor = "orange" %}
+                                {% set attendanceColor = "black" %}
                             {% endif %}
 
                             <div style="margin-bottom: 0.4rem;">
@@ -179,8 +179,8 @@ eleventyComputed:
                     </div>
                     <div class="card padding" style="display: flex; flex-direction: column; margin-top: 0.5rem;">
                         <details>
-                            <summary>Hoe wordt aanwezigheid berekend?</summary>
-                            <p style="padding-top: 1rem; padding-bottom: 1rem;">De Kamer publiceert geen aanwezigheden. Daarom wordt aanwezigheid berekend op basis van de eerste stemming van een vergadering. Als een kamerlid daaraan deelneemt, geldt het als aanwezig. Latere binnenkomst telt niet mee, en vertrek na de eerste stemming verandert de status niet. Vergaderingen zonder stemmingen tellen niet mee voor aanwezigheid.</p>
+                            <summary>Hoe wordt stemdeelname berekend?</summary>
+                            <p style="padding-top: 1rem; padding-bottom: 1rem;">De Kamer publiceert geen aanwezigheden. Daarom wordt aanwezigheid benaderd via stemdeelname: het aandeel stemmingen waaraan een lid sinds zijn/haar startdatum heeft deelgenomen. Elke stemming telt mee. Dit is dus een benadering van aanwezigheid: er kunnen legitieme redenen zijn waarom een lid niet aan een stemming deelneemt, zoals ziekte of andere verplichtingen.</p>
                         </details>
                     </div>
                 </div>

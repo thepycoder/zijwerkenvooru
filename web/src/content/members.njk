@@ -97,8 +97,8 @@ eleventyComputed:
         </select>
         <select id="sort-filter">
             <option value="">-- SORTEER --</option>
-            <option value="attendance-asc">Aanwezigheid laag-hoog</option>
-            <option value="attendance-desc">Aanwezigheid hoog-laag</option>
+            <option value="attendance-asc">Stemdeelname laag-hoog</option>
+            <option value="attendance-desc">Stemdeelname hoog-laag</option>
             <option value="name-asc">Naam laag-hoog</option>
             <option value="name-desc">Naam hoog-laag</option>
             <option value="party-asc">Partij laag-hoog</option>
@@ -110,13 +110,9 @@ eleventyComputed:
     <!-- ATTENDANCE INFO -->
     <div class="card padding" style="margin-bottom: 0.5rem; display: flex; flex-direction: column;">
         <details>
-            <summary>Hoe wordt aanwezigheid berekend?</summary>
-            <p style="padding-top: 1rem; padding-bottom: 1rem;">De Kamer publiceert geen aanwezigheden. Daarom wordt het
-                aanwezigheidspercentage berekend als het aantal stemmingen waaraan het kamerlid heeft deelgenomen, gedeeld door het
-                totaal aantal stemmingen waaraan het kamerlid had kunnen deelnemen. Vergaderingen zonder stemmingen tellen dus niet mee.</p>
-            <p style="padding-top: 1rem; padding-bottom: 1rem;">Een fout gezien? Laat dit weten via deze form:
-                <a href="https://tally.so/r/mR2arJ" target="_blank">https://tally.so/r/mR2arJ</a>
-            </p>
+            <summary>Hoe wordt stemdeelname berekend?</summary>
+            <p style="padding-top: 1rem; padding-bottom: 1rem;">De Kamer publiceert geen aanwezigheden. Daarom wordt aanwezigheid benaderd via stemdeelname: het aandeel stemmingen waaraan een lid sinds zijn/haar startdatum heeft deelgenomen. Elke stemming telt mee. Dit is dus een benadering van aanwezigheid: er kunnen legitieme redenen zijn waarom een lid niet aan een stemming deelneemt, zoals ziekte of andere verplichtingen.</p>
+            <p style="padding-top: 1rem; padding-bottom: 1rem;">Laat dit weten via <a href="mailto:info@zijwerkenvooru.be" target="_blank">info@zijwerkenvooru.be</a>. Bedankt!</p>
         </details>
     </div>
     {# <div class="card padding" style="margin-bottom: 0.5rem; display: flex; flex-direction: column;">
@@ -166,13 +162,13 @@ eleventyComputed:
                             {% if member.active === "true" %}
                                 <span>
                                     {% set attendance = member.attendance %}
-                                    {% set attendanceColor = "#ff5252" %}
+                                    {% set attendanceColor = "black" %}
                                     {% if attendance >= 0.90 %}
-                                        {% set attendanceColor = "#4da74d" %}
+                                        {% set attendanceColor = "black" %}
                                     {% elif attendance >= 0.80 %}
-                                        {% set attendanceColor = "#ffc760" %}
+                                        {% set attendanceColor = "black" %}
                                     {% endif %}
-                                    <p>Aanwezigheid ({{ (attendance * 100) | round(0, 'floor') }}%)</p>
+                                    <p>Stemdeelname ({{ (attendance * 100) | round(0, 'floor') }}%)</p>
                                     <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden;">
                                         <div style=" width: {{ (attendance * 100) | round(0, 'floor') }}%; height: 100%; background-color: {{ attendanceColor }}; "></div>
                                     </span>
