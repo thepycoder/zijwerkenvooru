@@ -130,6 +130,7 @@ eleventyComputed:
                         </div>
 
                         <div class="padding-tight">
+                        <p>Enkel de hoogste en laagste 5 percentages worden getoond.</p>
                         <!-- HIGHEST -->
                         {% set topMembers = members.members | sort("attendance", "desc") | take(5) %}
                         {% for member in topMembers %}
