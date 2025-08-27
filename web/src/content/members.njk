@@ -60,10 +60,79 @@ eleventyComputed:
             <svg id="incomeHistogram" style="margin-top: 1rem;"></svg>
         </div>
     </div>
+
+
+    <div class="swipeable-item">
+                        <div class="card rounded-top">
+                            <div class="category align-center flex">
+                                <span>Stemdeelname kamerleden</span>
+                            </div>
+
+                            <div class="padding-tight">
+                            <p style="margin-bottom: 1rem;">Enkel de hoogste en laagste 5 percentages worden getoond.</p>
+                            <!-- HIGHEST -->
+                            {% set topMembers = members.members | sort("attendance", "desc") | take(5) %}
+                            {% for member in topMembers %}
+                                {% set attendance = member.attendance %}
+                                {% set attendancePercent = (attendance * 100) | round(0, 'floor') %}
+                                {% set attendanceColor = "black" %}
+                                {% if attendance >= 0.90 %}
+                                    {% set attendanceColor = "black" %}
+                                {% elif attendance >= 0.80 %}
+                                    {% set attendanceColor = "black" %}
+                                {% endif %}
+
+                                <div style="margin-bottom: 0.4rem;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                                        <p class="bold" style="font-size: smaller;">{{ member.first_name }} {{ member.last_name }}</p>
+                                        <p>{{ attendancePercent }}%</p>
+                                    </div>
+                                    <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden;">
+                                    <div style="width: {{ attendancePercent }}%; height: 100%; background-color: {{ attendanceColor }};"></div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                            <!-- LOWEST -->
+                            {% set lowestMembers = members.members | filter("active", "true") | sort("attendance", "asc") | take(5) | sort("attendance", "desc") %}
+                            {% for member in lowestMembers %}
+                                {% set attendance = member.attendance %}
+                                {% set attendancePercent = (attendance * 100) | round(0, 'floor') %}
+                                {% set attendanceColor = "black" %}
+                                {% if attendance >= 0.90 %}
+                                    {% set attendanceColor = "black" %}
+                                {% elif attendance >= 0.80 %}
+                                    {% set attendanceColor = "black" %}
+                                {% endif %}
+
+                                <div style="margin-bottom: 0.4rem;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                                        <p class="bold" style="font-size: smaller;">{{ member.first_name }} {{ member.last_name }}</p>
+                                        <p>{{ attendancePercent }}%</p>
+                                    </div>
+                                    <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden;">
+                                    <div style="width: {{ attendancePercent }}%; height: 100%; background-color: {{ attendanceColor }};"></div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                        <div class="card padding" style="display: flex; flex-direction: column; margin-top: 0.5rem;">
+                            <details>
+                                <summary>Hoe wordt stemdeelname berekend?</summary>
+                                <p style="padding-top: 1rem; padding-bottom: 1rem;">De Kamer publiceert geen aanwezigheden. Daarom wordt aanwezigheid benaderd via stemdeelname: het aandeel stemmingen waaraan een lid sinds zijn/haar startdatum heeft deelgenomen. Elke stemming telt mee. Dit is dus een benadering van aanwezigheid: er kunnen legitieme redenen zijn waarom een lid niet aan een stemming deelneemt, zoals ziekte of andere verplichtingen.</p>
+                                <p style="padding-top: 1rem; padding-bottom: 1rem;">Een fout gezien of u denkt dat deze data niet correct is? Laat dit weten via :
+                                    <a href="mailto:info@zijwerkenvooru.be" target="_blank">info@zijwerkenvooru.be</a>
+                                </p>
+                            </details>
+                        </div>
+                    </div>
+
 </div>
 <div class="swipe-indicator">
     <span class="dot active"></span>
     <span class="dot"></span>
+     <span class="dot"></span>
 </div>
 
 
@@ -130,12 +199,12 @@ eleventyComputed:
     ".jpg" %}
             {% set has_image = imgSrc | imageExists %}
             <a href="/{{ page.lang }}/members/{{ member.first_name | slugify }}-{{ member.last_name | slugify }}" class="member-card card" data-party="{{ member.parties[0] }}" data-constituency="{{ member.constituency }}" data-attendance="{{ member.attendance }}" data-outlier="{{ member.outlier }}" data-active="{{ member.active }}" style="text-decoration: none; color: inherit;">
-                
+
                  <div class="category" style="font-weight: bold; background-color: {{ secondaryColor }}; color: {{ primaryColor }};">
                     {{ member.parties[0] }}
                 </div>
                 <div class="flex padding align-center space-between">
-               
+
                 <div class="flex row align-start" style="gap: 1rem;">
                     <img src="{{ imgSrc if has_image else 'https://placehold.co/100?text=%E2%9D%93' }}" alt="A picture of {{ member.first_name }} {{ member.last_name }}" style="width: 4rem; height: 4rem; object-fit: cover; border-radius: 50px;
                                         {% if member.active != 'true' %} filter: grayscale(100%); {% endif %}">
@@ -190,7 +259,7 @@ eleventyComputed:
                         {% icon "lucide:chevron-right" %}
                         </div>
                     </a>
-                
+
                 {% endfor %}
             </div>
             <script>
@@ -471,7 +540,7 @@ const bins = binGenerator(incomes);
     const colour = d3.scaleLinear()
         .domain([0, d3.max(bins, d => d.length)])
             .range(["#c6e48b", "#1b4d1f"]);
-            
+
     /* ------------- E.  AXES ------------- */
     g.append("g")
         .attr("transform", `translate(0,${height})`)
@@ -487,7 +556,7 @@ const bins = binGenerator(incomes);
                            .attr("text-anchor","end")       // ✨ NEW
                   .attr("transform","rotate(-45)") // ✨ NEW
                   .attr("dx","-.3em")              // shift left a bit
-                  .attr("dy",".15em"));   
+                  .attr("dy",".15em"));
 
     g.append("g")
         .call(

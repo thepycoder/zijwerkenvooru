@@ -24,7 +24,8 @@ eleventyComputed:
         <!-- NEWS -->
         {% set plenary = (meetings.meetings | filter("type", "plenary"))[0] %}
         {% set commission = (meetings.meetings | filter("type", "commission"))[0] %}
-        {% set attendance = plenary.attendance %}
+
+                {% set attendance = plenary.attendance %}
         {% set attendanceColor = "red" %}
         {% if attendance.ratio >= 0.85 %}
             {% set attendanceColor = "green" %}
@@ -113,7 +114,7 @@ eleventyComputed:
                             {% set c = commissions[ctype] or {} %}
                             <p>{{ c.icon or '' }}
                                 {{ c.name or ctype }}</p>
-                            <p>Voorgezeten door <a href="/nl/members/{{ c.chair | slugify }}/">{{ c.chair }}</a>
+                            <p>Voorgezeten door <a href="/nl/members/{{ commission.chairs[0] | slugify }}/">{{ commission.chairs[0] }}</a>
                             </p>
                         </div>
                     </div>
@@ -127,7 +128,7 @@ eleventyComputed:
         <div class="swipe-indicator">
             <span class="dot active"></span>
             <span class="dot"></span>
-            <span class="dot"></span>
+            <!-- <span class="dot"></span> -->
         </div>
 
             <!-- QUICK LINKS -->
