@@ -4,12 +4,12 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import {
-  parseISO,
   differenceInDays,
-  startOfYear,
   getYear,
-  isBefore,
   isAfter,
+  isBefore,
+  parseISO,
+  startOfYear,
 } from "date-fns";
 import { DateTime } from "luxon";
 import { minify } from "terser";
@@ -259,9 +259,11 @@ export default function (eleventyConfig) {
 
         // If you also want to check subtopics, you can do this:
         if (matchedTopics.length === 0) {
-          for (const [subtopic, subKeywords] of Object.entries(
-            data.subtopics || {},
-          )) {
+          for (
+            const [subtopic, subKeywords] of Object.entries(
+              data.subtopics || {},
+            )
+          ) {
             for (const subKeyword of subKeywords) {
               if (titleLower.includes(subKeyword.toLowerCase())) {
                 matchedTopics.push(topic); // Add parent topic (not subtopic) to the list
@@ -328,9 +330,11 @@ export default function (eleventyConfig) {
 
         // (Optional: If filtering on a main topic, also match its subtopics)
         if (!isSubtopic && parentTopicEntry) {
-          for (const subKeywords of Object.values(
-            parentTopicEntry.subtopics || {},
-          )) {
+          for (
+            const subKeywords of Object.values(
+              parentTopicEntry.subtopics || {},
+            )
+          ) {
             for (const subKeyword of subKeywords) {
               if (text.includes(subKeyword.toLowerCase())) return true;
             }
@@ -392,9 +396,11 @@ export default function (eleventyConfig) {
       }
 
       // Match subtopics
-      for (const [subtopicName, subKeywords] of Object.entries(
-        topicData.subtopics || {},
-      )) {
+      for (
+        const [subtopicName, subKeywords] of Object.entries(
+          topicData.subtopics || {},
+        )
+      ) {
         for (const keyword of subKeywords) {
           for (const t of topicList) {
             if (t.toLowerCase().includes(keyword.toLowerCase())) {
@@ -406,6 +412,18 @@ export default function (eleventyConfig) {
     }
 
     return Array.from(matchedTopics);
+  });
+
+  // Filter only plenary meetings
+  eleventyConfig.addFilter("plenary", function (meetings) {
+    if (!Array.isArray(meetings)) return [];
+    return meetings.filter((m) => m.type === "plenary");
+  });
+
+  // Filter only commission meetings
+  eleventyConfig.addFilter("commission", function (meetings) {
+    if (!Array.isArray(meetings)) return [];
+    return meetings.filter((m) => m.type === "commission");
   });
 
   eleventyConfig.addFilter(
@@ -477,25 +495,51 @@ export default function (eleventyConfig) {
     });
   });
 
-
   // Sort by key (ascending or descending)
-eleventyConfig.addFilter("sort", function (array, key, direction = "asc") {
-  if (!Array.isArray(array)) return [];
+  eleventyConfig.addFilter("sort", function (array, key, direction = "asc") {
+    if (!Array.isArray(array)) return [];
 
-  return array.slice().sort((a, b) => {
-    const aVal = a?.[key] ?? 0;
-    const bVal = b?.[key] ?? 0;
+    return array.slice().sort((a, b) => {
+      const aVal = a?.[key] ?? 0;
+      const bVal = b?.[key] ?? 0;
 
-    return direction === "desc" ? bVal - aVal : aVal - bVal;
+      return direction === "desc" ? bVal - aVal : aVal - bVal;
+    });
   });
-});
 
-// Take first N items from an array
-eleventyConfig.addFilter("take", function (array, count) {
-  if (!Array.isArray(array)) return [];
-  return array.slice(0, count);
-});
+  eleventyConfig.addFilter(
+    "sortDate",
+    function (array, key, direction = "asc") {
+      if (!Array.isArray(array)) return [];
 
+      return array.slice().sort((a, b) => {
+        const aVal = a?.[key];
+        const bVal = b?.[key];
+
+        if (aVal == null) return 1;
+        if (bVal == null) return -1;
+
+        let compare;
+        if (aVal instanceof Date && bVal instanceof Date) {
+          compare = aVal - bVal;
+        } else if (!isNaN(Date.parse(aVal)) && !isNaN(Date.parse(bVal))) {
+          // if it's a date string
+          compare = new Date(aVal) - new Date(bVal);
+        } else {
+          // fallback to string comparison
+          compare = String(aVal).localeCompare(String(bVal));
+        }
+
+        return direction === "desc" ? -compare : compare;
+      });
+    },
+  );
+
+  // Take first N items from an array
+  eleventyConfig.addFilter("take", function (array, count) {
+    if (!Array.isArray(array)) return [];
+    return array.slice(0, count);
+  });
 
   // 👶 Youngest member
   eleventyConfig.addFilter("youngest", function (array) {

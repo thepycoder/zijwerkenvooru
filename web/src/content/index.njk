@@ -23,6 +23,7 @@ eleventyComputed:
 
         <!-- NEWS -->
         {% set plenary = (meetings.meetings | filter("type", "plenary"))[0] %}
+           {% set plenary2 = (meetings.meetings | filter("type", "plenary"))[1] %}
         {% set commission = (meetings.meetings | filter("type", "commission"))[0] %}
 
                 {% set attendance = plenary.attendance %}
@@ -34,7 +35,7 @@ eleventyComputed:
         {% endif %}
 
         <h1 style="text-transform: capitalize;">Nieuws</h1>
-        <p>Bekijk het verslag van de recentste plenaire vergadering en commissievergadering.</p>
+        <p>Bekijk het verslag van de recentste plenaire vergaderingen en commissievergadering.</p>
 
         <div class="swipeable-row">
             <div class="swipeable-item">
@@ -105,6 +106,72 @@ eleventyComputed:
 
                 <div class="swipeable-item">
                     <div class="card rounded-top">
+                        <div class="category align-center flex">
+                            <span>Nieuwe plenaire vergadering op {{ (plenary2.date) | date }}</span>
+                        </div>
+                        <div class="padding-tight">
+                            <p class="bold capitalize">{{ languages[page.lang].questions }}</p>
+                            {% if plenary2.questions.length > 0 %}
+                                <ul>
+                                    {% for question in plenary2.questions | limit(3) %}
+                                        {% if question.topics_summary_nl %}
+                                            <li>{{ question.topics_summary_nl }}</li>
+                                        {% else %}
+                                            <li>{{ question.topics_nl }}</li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <p style="margin-bottom: 0.5rem;">Geen vragen</p>
+                            {% endif %}
+
+                            <p class="bold capitalize">{{ languages[page.lang].propositions }}</p>
+                            {% if plenary2.propositions.length > 0 %}
+                                <ul>
+                                    {% for proposition in plenary2.propositions | limit(1) %}
+                                        <li>{{ proposition.title_nl }}
+                                            {% if proposition.status == "Aangenomen" %}
+                                                <span class="status small" style="background-color: #28a745; color: white;">{{ languages[page.lang].passed }}</span>
+                                            {% elseif proposition.status == "Verworpen" %}
+                                                <span class="status small" style="background-color: #dc3545; color: white;">{{ languages[page.lang].failed }}</span>
+                                            {% elseif proposition.status == "ZonderVoorwerp" %}
+                                                <span class="status small" style="background-color: orange; color: white;">{{ languages[page.lang].withoutSubject }}</span>
+                                                {% endif%}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <p style="margin-bottom: 0.5rem;">Geen voorstellen</p>
+                                {% endif %}
+
+                                <p class="bold capitalize">{{ languages[page.lang].votes }}</p>
+                                <p style="margin-bottom: 0.5rem;">{{ plenary2.votes.length }} stemming(en)</p>
+                                <div>
+                                    {% if plenary2.allVotes.length > 0 %}
+                                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                            <p class="bold">{{ languages[page.lang].attendance }}</p>
+                                            <p>{{ attendance.count }}/150 ({{ (attendance.ratio * 100) | round(0, 'floor') }}%)</p>
+                                        </div>
+
+                                        <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden;">
+                                            <div style="
+                                                width: {{ (attendance.ratio * 100) | round(0, 'floor') }}%;
+                                                height: 100%;
+                                                background-color: {{ attendanceColor }};
+                                            "></div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/{{ page.lang }}/sessions/56/meetings/plenary/{{ plenary2.meeting_id }}/" class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
+                            <p>{{ languages[page.lang].seeMeetingDetails }}</p>
+                            {% lucide "chevron-right" %}
+                        </a>
+                    </div>
+
+                <div class="swipeable-item">
+                    <div class="card rounded-top">
 
                         <div class="category align-center flex">
                             <span>Nieuwe commissievergadering op {{ (commission.date) | date }}</span>
@@ -128,6 +195,7 @@ eleventyComputed:
         <div class="swipe-indicator">
             <span class="dot active"></span>
             <span class="dot"></span>
+             <span class="dot"></span>
             <!-- <span class="dot"></span> -->
         </div>
 

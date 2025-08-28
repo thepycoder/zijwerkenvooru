@@ -110,10 +110,9 @@ export default async function () {
       const status = dossier[8];
       const document_type = dossier[7];
       const vote_date = convertDate(dossier[6]);
-      const authors =
-        dossier[3]
-          ?.split(",")
-          .map((a) => a.trim().toLowerCase().replace(" ", "-")) || [];
+      const authors = dossier[3]
+        ?.split(",")
+        .map((a) => a.trim().toLowerCase().replace(" ", "-")) || [];
       dossierMap.set(dossierId, { sessionId, title, authors });
 
       dossierById[id] = {
@@ -264,8 +263,6 @@ export default async function () {
       }
     });
 
- 
-
     const memberPartyLookup = {};
     membersRows.forEach((row) => {
       const memberId = row[2] + " " + row[3]; // Assuming member_id is at index 0
@@ -380,8 +377,8 @@ export default async function () {
           const voteType = membersYes.includes(memberKey)
             ? "yes"
             : membersNo.includes(memberKey)
-              ? "no"
-              : "abstain";
+            ? "no"
+            : "abstain";
           partyVotes.get(party)[voteType]++;
         }
       });
@@ -463,13 +460,13 @@ export default async function () {
     const ages = members.map((member) => member.age);
     const memberCount = membersRows.length;
 
-       const incomes2023 = members.map(m => {
-  const r2023 = m.remunerations?.["2023"];
-  if (!r2023) return 0;                       // or skip the member if you prefer
-  const min = r2023.total_min || 0;
-  const max = r2023.total_max || 0;
-  return (min + max) / 2;                     // use max or min instead if you like
-});
+    const incomes2023 = members.map((m) => {
+      const r2023 = m.remunerations?.["2023"];
+      if (!r2023) return 0; // or skip the member if you prefer
+      const min = r2023.total_min || 0;
+      const max = r2023.total_max || 0;
+      return (min + max) / 2; // use max or min instead if you like
+    });
 
     await connection.close();
 
@@ -576,9 +573,11 @@ export default async function () {
           for (const [topicKey, data] of Object.entries(topics)) {
             // Match subtopics first
             if (data.subtopics) {
-              for (const [subtopicKey, subKeywords] of Object.entries(
-                data.subtopics,
-              )) {
+              for (
+                const [subtopicKey, subKeywords] of Object.entries(
+                  data.subtopics,
+                )
+              ) {
                 for (const subKeyword of subKeywords) {
                   if (title.includes(subKeyword.toLowerCase())) {
                     registerContribution(subtopicKey, fullName, party, type);
@@ -648,13 +647,28 @@ export default async function () {
       ).length;
       member.attendance = member.votes.length / elegibleVoteCount; //votesRows.length;
 
+      // ALTERTNATIVE CALCULATION
+      // Get unique eligible voting days after member start
+      const elegibleDays = new Set(
+        votesRows
+          .filter((row) => new Date(row[3]) >= new Date(member.start_date))
+          .map((row) => row[3]),
+      );
+      // Get unique days member actually voted
+      const attendedDays = new Set(
+        member.votes.map((vote) => vote.date),
+      );
+      // Attendance = proportion of eligible days where they voted at least once
+      member.normalizedAttendance = elegibleDays.size === 0
+        ? 0
+        : attendedDays.size / elegibleDays.size;
+
       // Calculate outlier percentage.
       const totalVotes = member.votes.length;
       const outlierVotes = member.votes.filter((vote) => vote.outlier).length;
-      member.outlier =
-        totalVotes > 0
-          ? 100 - Math.round((outlierVotes / totalVotes) * 1000) / 10 // rounded to 1 decimal
-          : 100;
+      member.outlier = totalVotes > 0
+        ? 100 - Math.round((outlierVotes / totalVotes) * 1000) / 10 // rounded to 1 decimal
+        : 100;
     });
 
     return {

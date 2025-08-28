@@ -37,41 +37,17 @@ eleventyComputed:
             <div  style="display: flex; flex-direction: row; gap:1rem;" class="padding">
 
         {%- if has_image -%}
-        <img style="object-fit: cover; width: 4rem; height: 4rem; border-radius: 50%;" src="{{ imgSrc }}"
+        <img style="object-fit: cover; width: 4rem; height: 4rem;" src="{{ imgSrc }}"
              alt="A picture of {{ member.first_name }} {{ member.last_name }}" data-pagefind-meta="image[src]">
         {%- endif -%}
 
         <div id="member-details">
             <!-- NAME -->
             <h1 style="margin-top: 0; margin-bottom: 0.4rem;">{{ member.first_name }} {{ member.last_name }}</h1>
-
-            <!-- ATTENDANCE -->
-            <span>
-                {% set attendance = member.attendance %}
-                {% set attendanceColor = "black" %}
-                {% if attendance >= 0.90 %}
-                    {% set attendanceColor = "black" %}
-                {% elif attendance >= 0.80 %}
-                    {% set attendanceColor = "black" %}
-                {% endif %}
-                <p>Stemdeelname ({{ (attendance * 100) | round(0, 'floor') }}%)</p>
-                <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden; width: 14rem;">
-                    <div style=" width: {{ (attendance * 100) | round(0, 'floor') }}%; height: 100%; background-color: {{ attendanceColor }}; "></div>
-                </span>
         </div>
         </div>
     </div>
 
-    <!-- ATTENDANCE INFO -->
-    <div class="card padding" style="display: flex; flex-direction: column;">
-        <details>
-            <summary>Hoe wordt stemdeelname berekend?</summary>
-            <p style="padding-top: 1rem; padding-bottom: 1rem;">De Kamer publiceert geen aanwezigheden. Daarom wordt aanwezigheid benaderd via stemdeelname: het aandeel stemmingen waaraan een lid sinds zijn/haar startdatum heeft deelgenomen. Elke stemming telt mee. Dit is dus een benadering van aanwezigheid: er kunnen legitieme redenen zijn waarom een lid niet aan een stemming deelneemt, zoals ziekte of andere verplichtingen.</p>
-            <p style="padding-top: 1rem; padding-bottom: 1rem;">Een fout gezien of u denkt dat deze data niet correct is? Laat dit weten via :
-                <a href="mailto:info@zijwerkenvooru.be" target="_blank">info@zijwerkenvooru.be</a>
-            </p>
-        </details>
-    </div>
 
     <div class="card padding info-list">
         {%- if member.date_of_birth -%}
@@ -133,24 +109,62 @@ eleventyComputed:
     </div>
 </div>
 
-<div style="display: flex; width: 100%; gap: 0.4rem;">
+<div style="display: flex; width: 100%; gap: 0.4rem; margin-bottom: 0.4rem;">
     <div class="card padding metric">
-        <h2>{{ member.questions | asQuestioner | length }}</h2>
-        <p>vragen</p>
+        <div style="display: flex; align-items: center; gap: 0.4rem;">
+            <h2>{{ member.questions | asQuestioner | length }}</h2>
+             <p>vragen</p>
+        </div>
+
     </div>
-      {# <div class="card padding metric">
-        <h2>{{ member.questions | asRespondent | length }}</h2>
-        <p>antwoorden</p>
-    </div> #}
     <div class="card padding metric">
+         <div style="display: flex; align-items: center; gap: 0.4rem;">
         <h2>{{ member.propositions | length }}</h2>
         <p>voorstellen</p>
-    </div>
-    <div class="card padding metric">
-        <h2>{{ member.votes | length }}</h2>
-        <p>stemmingen</p>
+         </div>
     </div>
 </div>
+
+<div style="display: flex; width: 100%; gap: 0.4rem; margin-bottom: 0.4rem;">
+    <div class="card padding metric" style="width: 100%;">
+         <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.4rem;">
+        <h2>{{ member.votes | length }}</h2>
+        <p>stemmingen</p>
+         </div>
+
+    {% set attendance = member.attendance %}
+      {% set normalizedAttendance = member.normalizedAttendance %}
+
+
+
+    <p style="margin-bottom: 0.2rem;">Stemdeelname (stemmingen) ({{ (attendance * 100) | round(0, 'floor') }}%)</p>
+    <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden; width: 14rem;">
+        <div style=" width: {{ (attendance * 100) | round(0, 'floor') }}%; height: 100%; background-color: black; "></div>
+    </div>
+
+    <p style="margin-bottom: 0.2rem; margin-top: 0.4rem;">Stemdeelname (dagen) ({{ (normalizedAttendance * 100) | round(0, 'floor') }}%)</p>
+    <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden; width: 14rem;">
+        <div style=" width: {{ (normalizedAttendance * 100) | round(0, 'floor') }}%; height: 100%; background-color: black; "></div>
+    </div>
+
+
+
+</div>
+</div>
+
+<!-- ATTENDANCE INFO -->
+<div class="card padding" style="display: flex; flex-direction: column;">
+    <details>
+        <summary>Hoe wordt stemdeelname berekend?</summary>
+        <p style="padding-top: 1rem; padding-bottom: 1rem;">De Kamer publiceert geen aanwezigheden. Daarom wordt aanwezigheid benaderd via stemdeelname: het aandeel stemdagen (of stemmingen) waaraan een lid sinds zijn/haar startdatum heeft deelgenomen. Dit is dus een benadering van aanwezigheid: er kunnen legitieme redenen zijn waarom een lid niet aan een stemming deelneemt, zoals ziekte of andere verplichtingen.</p>
+        <p style="padding-top: 0; padding-bottom: 1rem;">De stemdeelname (dagen) laat elke stemdag evenveel meetellen, onafhankelijk van hoeveel stemmingen er waren die dag.</p>
+                                       <p style="padding-top: 0; padding-bottom: 1rem;">De stemdeelname (stemmingen) neemt elke stemming in rekening. Afwezigheid op een dag met veel stemmingen telt zo harder door.</p>
+        <p style="padding-top: 0; padding-bottom: 1rem;">Een fout gezien of u denkt dat deze data niet correct is? Laat dit weten via :
+            <a href="mailto:info@zijwerkenvooru.be" target="_blank">info@zijwerkenvooru.be</a>
+        </p>
+    </details>
+</div>
+
 
 <!-- SHARE BUTTON -->
 <button id="share-button">{{ languages[page.lang].sharePage }}</button>
@@ -160,26 +174,24 @@ eleventyComputed:
 
 <div class="tabbed">
     <input type="radio" name="tabset" id="tab-1" checked>
-    {# <input type="radio" name="tabset" id="tab-2"> #}
+    <input type="radio" name="tabset" id="tab-2">
     <input type="radio" name="tabset" id="tab-3">
-    <input type="radio" name="tabset" id="tab-4">
 
     <ul class="tabs">
         <li><label for="tab-1">Vragen</label></li>
-          {# <li><label for="tab-2">Antwoorden</label></li> #}
-        <li><label for="tab-3">Voorstellen</label></li>
-        <li><label for="tab-4">Stemmingen</label></li>
+        <li><label for="tab-2">Voorstellen</label></li>
+        <li><label for="tab-3">Stemmingen</label></li>
     </ul>
 
     <!-- QUESTIONS -->
 <div id="tab-1-content" class="tab-content padding">
-    {% set questions = member.questions | asQuestioner %}
+    {% set questions = member.questions | asQuestioner | sortDate('date', "desc") %}
 
 {% if questions | length > 0 %}
   <p>Een overzicht van de vragen die {{ member.first_name }} {{ member.last_name }} heeft gesteld in de kamer.</p>
   <div id="member-questions">
     <div id="question-list">
-      {% for question in questions | sort(attribute='date', reverse=true) %}
+      {% for question in questions %}
         {% set topicCounts = [question] | countTopics(topics) %}
         {% set topic = topicCounts[0][0] %}
         <div>
@@ -207,39 +219,9 @@ eleventyComputed:
 
 </div>
 
-     <!-- ANSWERS -->
-{# <div id="tab-2-content" class="tab-content padding">
-    {% set questions = member.questions | asRespondent %}
-
-{% if questions | length > 0 %}
-  <p>Een overzicht van de vragen die {{ member.first_name }} {{ member.last_name }} heeft beantwoord in de kamer.</p>
-  <div id="member-questions">
-    <div id="question-list">
-      {% for question in questions | sort(attribute='date', reverse=true) %}
-        {% set topicCounts = [question] | countTopics(topics) %}
-        {% set topic = topicCounts[0][0] %}
-        <div>
-          {{ questionCard({
-            question: question,
-            topic: topic,
-            topics: topics,
-            functions: functions,
-            translations: languages[page.lang],
-            language: page.lang,
-            hideAuthors: "true"
-          }) }}
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-{% else %}
-  <p>{{ member.first_name }} {{ member.last_name }} heeft nog geen vragen beantwoord in de kamer.</p>
-{% endif %}
-
-</div> #}
 
     <!-- PROPOSITIONS -->
-    <div id="tab-3-content" class="tab-content padding">
+    <div id="tab-2-content" class="tab-content padding">
 
         {% if member.propositions | length > 0 %}
           <p>Een overzicht van de voorstellen die {{ member.first_name}} {{ member.last_name }} heeft gedaan als hoofdauteur.</p>
@@ -265,7 +247,7 @@ eleventyComputed:
     </div>
 
     <!-- VOTES -->
-    <div id="tab-4-content" class="tab-content">
+    <div id="tab-3-content" class="tab-content">
         <div class="padding">
         {% if member.votes | length > 0 %}
         <p>Een overzicht van hoe {{ member.first_name}} {{ member.last_name }} heeft gestemd in de kamer.</p>
@@ -275,10 +257,6 @@ eleventyComputed:
         {% set outlier_percentage = (outlier_votes / total_votes * 100) | round(1) %}
 
         <div style="display: flex; width: 100%; gap: 0.4rem;">
-            <div class="card padding metric">
-                <h3 style="margin: 0;">{{ (((member.votes | length) / (meetings.meetings | countItems("allVotes"))) * 100.0) | round }}%</h3>
-                <p>stemdeelname</p>
-            </div>
             <div class="card padding metric">
                 <h3 style="margin: 0;">{{ 100 - (outlier_percentage | int) }}%</h3>
                 <p>overeenkomst met meerderheid partij</p>
@@ -297,16 +275,16 @@ eleventyComputed:
                 </tr>
                 </thead>
                 <tbody>
-                {% for vote in member.votes | sort(attribute='date', true) %}
+                {% for vote in member.votes | sortDate('date', "desc") %}
                 <tr>
-                    <!--            <td>{{ vote.date | shortDate }}</td>-->
+
                     <td>
                         <div style="display: flex; flex-direction: column; align-items: start; gap: 0.4rem;">
                             <p style="margin: 0;">
                             {% if page.lang === "nl" %}
-                            {{ vote.title_nl }}
+                            ({{ vote.date | shortDate }}) {{ vote.title_nl }}
                             {% else %}
-                            {{ vote.title_fr }}
+                            ({{ vote.date | shortDate }}) {{ vote.title_fr }}
                             {% endif %}
                             </p>
                             <a target="_blank" href="/{{page.lang}}/votes/{{vote.session_id}}/{{vote.meeting_id}}/{{ vote.vote_id }}/">Bekijk details</a>
