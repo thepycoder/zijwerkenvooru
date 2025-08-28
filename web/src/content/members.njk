@@ -15,7 +15,7 @@ eleventyComputed:
 <!-- KEY STATISTICS -->
 <div id="members-statistics">
     <div style=" display: flex; gap: 0.4rem; flex-direction: column;">
-        <div style="display: flex; width: 100%; gap: 0.4rem;">
+        <div class="member-metrics">
             <div class="card padding metric">
                 <h2>{{ members.members | filter("active", "true") | length }}</h2>
                 <p>{{ languages[page.lang].chamberMembers }}</p>
@@ -25,7 +25,7 @@ eleventyComputed:
                 <p>{{ languages[page.lang].parties }}</p>
             </div>
         </div>
-        <div style="display: flex; width: 100%; gap: 0.4rem;">
+        <div class="member-metrics">
             <div class="card padding metric">
                 <h2>{{ (members.members | youngest).date_of_birth | age }}
                     {{ languages[page.lang].age }}</h2>
@@ -45,7 +45,7 @@ eleventyComputed:
 </div>
 
 <!-- SWIPEABLE -->
-<div class="swipeable-row" style="margin-top: 1rem;">
+<div class="swipeable-row" style="margin-top: 0.4rem;">
     <div class="swipeable-item">
          <div class="card padding">
             <h3 style="margin-top: 0; margin-bottom: 0.4rem;" class="capitalize">{{ languages[page.lang].ageDistribution }}</h3>

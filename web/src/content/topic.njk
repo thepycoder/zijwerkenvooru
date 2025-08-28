@@ -25,7 +25,7 @@ eleventyComputed:
 <ul id="topics-list" style="margin-bottom: 1rem; margin-top: 1rem;">
     <li>
         <a href="/{{page.lang}}/topics/{{topic.name | slugify}}">{{ topics[topic.name].icon or '' }} {{ topic.name }}</a>
-        
+
         {% if topics[topic.name].subtopics %}
         <ul style="margin-top: 0.4rem; margin-bottom: 0.4rem;">
             {% for subtopicName in topics[topic.name].subtopics | keys %}
@@ -42,18 +42,14 @@ eleventyComputed:
 
 {# <p>Een overzicht van het werk geleverd door de leden van de Belgische Kamer van Volksvertegenwoordigers rond het onderwerp {{ topic.name }}. Dit werk bestaat uit mondelinge vragen gesteld aan de bevoegde ministers, of het maken van wetsvoorstellen en wetsontwerpen.</p> #}
 
-<div style="display: flex; width: 100%; gap: 0.4rem;">
+<div class="member-metrics">
     <div class="card padding metric">
         <h2>{{ topicQuestions | length }}</h2>
-        <p>vragen</p>
+        <p>plenaire vragen</p>
     </div>
     <div class="card padding metric">
         <h2>{{ topicPropositions | length }}</h2>
         <p>voorstellen</p>
-    </div>
-    <div class="card padding metric">
-        <h2>{{ member.votes | length }}</h2>
-        <p>stemmingen</p>
     </div>
 </div>
 
@@ -117,7 +113,7 @@ eleventyComputed:
 
 
         const data = {{ members.topContributorsByTopic[topic.name] | dump | safe }};
-        
+
         // Expected format: [{ name: "Alice", count: 5 }, ...]
 
         // Create a temporary SVG to measure text width

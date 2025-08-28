@@ -533,7 +533,7 @@ img {
 }
 
 .metric {
-    width: 50%;
+    /*width: 50%;*/
     display: flex;
     flex-direction: column;
     /*justify-content: center;*/
@@ -728,7 +728,7 @@ details table {
     }
 
     .metric {
-        width: 100% !important;
+        /*width: 100% !important;*/
     }
     .remuneration-tabbed {
         margin-top: 1rem !important;
@@ -762,17 +762,17 @@ details table {
         width: 100% !important;
     }
 
-    #member-header {
+    /*#member-header {
         flex-direction: column !important;
     }
 
     #member-header .card {
-        width: 100% !important;
+        width: auto !important;
     }
 
     #member-header .info-list {
         width: auto !important;
-    }
+    }*/
 
     #member-remunerations {
         flex-direction: column !important;
@@ -805,6 +805,13 @@ details table {
     main,
     #hero {
         grid-template-columns: auto 350px auto;
+    }
+}
+
+@media (min-width: 400px) {
+    main,
+    #hero {
+        grid-template-columns: auto 400px auto;
     }
 }
 
@@ -925,14 +932,31 @@ details table {
     gap: 0.4rem;
 }
 
-/* MEMBER */
-#member-header {
-    display: flex;
-    flex-direction: row;
+.member-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 0.4rem;
-    margin-bottom: 0.4rem;
 }
 
+/* MEMBER */
+#member-header {
+    /*display: flex;
+    flex-direction: row;
+    gap: 0.4rem;
+    margin-bottom: 0.4rem;*/
+    margin-bottom: 0.4rem;
+    display: grid;
+    gap: 0.4rem;
+    grid-template-columns: 1fr; /* default stacked on mobile */
+}
+
+@media (min-width: 768px) {
+    #member-header {
+        grid-template-columns: 1fr 1fr; /* two cards side by side on desktop */
+    }
+}
+
+/*
 #member-header .card {
     width: 50%;
 }
@@ -943,7 +967,7 @@ details table {
 
 #member-header img {
     height: 2rem;
-}
+}*/
 
 .federal-government-after {
     gap: 0.5rem;
@@ -1202,8 +1226,8 @@ details table {
 
 .quick-links {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 0.4rem;
 }
 
 .quick-link:hover {

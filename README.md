@@ -156,12 +156,6 @@ The dataset is also published on `https://data.gov.be/nl/datasets/datafederaalpa
 
 Please read our [Contributor Guide](CONTRIBUTING.md) for more information on how to get started.
 
-## Changelog
-
-- 27/08/2025: Improved wording and visuals related to attendance so it is more nuanced and clear.
-- 27/08/2025: Fixed commission chair not being shown
-
-
 ## ✅ Future improvements
 
 Only bug-fixes and some ad-hoc development is done for this project. Below is a list of future improvements that can be done:
@@ -180,6 +174,8 @@ Only bug-fixes and some ad-hoc development is done for this project. Below is a 
 
 - [ ] Show number of questions over time
 - [ ] More interesting member overview pages
+- [ ] Add commission questions to member pages
+- [ ] Add commission membership to member pages
 
 **Fixes:**
 

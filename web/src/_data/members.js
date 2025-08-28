@@ -18,7 +18,9 @@ export default async function () {
     const membersFilePath = "src/data/members.parquet";
     const remunerationsFilePath = "src/data/remunerations.parquet";
     const questionsFilePath = "src/data/questions.parquet";
+    const commissionQuestionsFilePath = "src/data/commission_questions.parquet";
     const meetingsFilePath = "src/data/meetings.parquet";
+    const commissionsFilePath = "src/data/commissions.parquet";
     const votesFilePath = "src/data/votes.parquet";
     const propositionsFilePath = "src/data/propositions.parquet";
     const dossiersFilePath = "src/data/dossiers.parquet";
@@ -28,7 +30,9 @@ export default async function () {
       !fs.existsSync(membersFilePath) ||
       !fs.existsSync(remunerationsFilePath) ||
       !fs.existsSync(questionsFilePath) ||
+      !fs.existsSync(commissionQuestionsFilePath) ||
       !fs.existsSync(meetingsFilePath) ||
+      !fs.existsSync(commissionsFilePath) ||
       !fs.existsSync(propositionsFilePath) ||
       !fs.existsSync(dossiersFilePath) ||
       !fs.existsSync(votesFilePath) ||
@@ -56,10 +60,20 @@ export default async function () {
     );
     const questionsRows = questionsResult.getRows();
 
+    const commissionQuestionsResult = await connection.runAndReadAll(
+      `SELECT * FROM read_parquet('${commissionQuestionsFilePath}')`,
+    );
+    const commissionQuestionsRows = commissionQuestionsResult.getRows();
+
     const meetingsResult = await connection.runAndReadAll(
       `SELECT * FROM read_parquet('${meetingsFilePath}')`,
     );
     const meetingsRows = meetingsResult.getRows();
+
+    const commissionsResult = await connection.runAndReadAll(
+      `SELECT * FROM read_parquet('${commissionsFilePath}')`,
+    );
+    const commissionsRows = commissionsResult.getRows();
 
     const votesResult = await connection.runAndReadAll(
       `SELECT * FROM read_parquet('${votesFilePath}')`,
@@ -81,6 +95,7 @@ export default async function () {
     );
     const subdocumentsRows = subdocumentsResult.getRows();
 
+    /* Date map for plenary meetings. */
     const meetingDateMap = new Map();
     meetingsRows.forEach((row) => {
       const sessionId = row[0];
@@ -88,6 +103,16 @@ export default async function () {
       const date = row[2];
       const key = `${sessionId}-${meetingId}`;
       meetingDateMap.set(key, date);
+    });
+
+    /* Date map for commission meetings. */
+    const commissionDateMap = new Map();
+    commissionsRows.forEach((row) => {
+      const sessionId = row[0];
+      const meetingId = row[1];
+      const date = row[2];
+      const key = `${sessionId}-${meetingId}`;
+      commissionDateMap.set(key, date);
     });
 
     const memberMap = new Map();
@@ -161,6 +186,7 @@ export default async function () {
           remunerations: {},
           propositions: [],
           questions: [],
+          commissionQuestions: [],
           votes: [],
           age: age,
         });
@@ -270,6 +296,7 @@ export default async function () {
       memberPartyLookup[memberId] = party;
     });
 
+    /* Go through plenary questions. */
     questionsRows.forEach((question) => {
       const questionId = question[0];
       const sessionId = question[1];
@@ -314,6 +341,7 @@ export default async function () {
             session_id: sessionId,
             meeting_id: meetingId,
             date: date,
+            type: "plenary",
             topic_nl,
             topic_fr,
             topics_nl: [topic_nl],
@@ -339,7 +367,97 @@ export default async function () {
             session_id: sessionId,
             meeting_id: meetingId,
             date: date,
+            type: "plenary",
             topic_nl,
+            topic_fr,
+            topics_nl: [topic_nl],
+            topics_fr: [topic_fr],
+            questioners,
+            respondents,
+            discussion,
+            asRespondent: true,
+          });
+        }
+      });
+    });
+
+    /* Go through commission questions. */
+    commissionQuestionsRows.forEach((question) => {
+      const questionId = question[0];
+      if (questionId === "404") {
+        // TODO: why 404s?
+        return;
+      }
+      const sessionId = question[1];
+      const meetingId = question[2];
+      const keyForDate = `${sessionId}-${meetingId}`;
+      const date = commissionDateMap.get(keyForDate) || null;
+
+      const questioners = question[3].split(",").map((q) => {
+        const name = q.trim();
+        return {
+          name: name,
+          party: memberPartyLookup[name] || "Unknown",
+        };
+      });
+
+      const respondents = question[4].split(",").map((q) => {
+        const name = q.trim();
+        return {
+          name: name,
+          party: memberPartyLookup[name] || "Unknown",
+        };
+      });
+
+      const topics_nl = question[5].split(";").map((topic) => topic.trim());
+      const topics_fr = question[6].split(";").map((topic) => topic.trim());
+
+      const discussion = JSON.parse(question[7]).map((discussionItem) => ({
+        speaker: discussionItem.speaker,
+        text: discussionItem.text,
+      }));
+
+      // Add to questioners
+      questioners.forEach((q, i) => {
+        const key = q.name.toLowerCase().replace(" ", "-");
+        const topic_nl = topics_nl[i] || null;
+        const topic_fr = topics_fr[i] || null;
+
+        if (memberMap.has(key)) {
+          const member = memberMap.get(key);
+          member.commissionQuestions.push({
+            question_id: questionId,
+            session_id: sessionId,
+            meeting_id: meetingId,
+            date: date,
+            type: "commission"
+              .topic_nl,
+            topic_fr,
+            topics_nl: [topic_nl],
+            topics_fr: [topic_fr],
+            questioners,
+            respondents,
+            discussion,
+            asRespondent: false,
+          });
+        }
+      });
+
+      // Add to respondents
+      respondents.forEach((r) => {
+        const key = r.name.toLowerCase().replace(" ", "-");
+        const topic_nl = topics_nl[0] || null;
+        const topic_fr = topics_fr[0] || null;
+
+        if (memberMap.has(key)) {
+          const member = memberMap.get(key);
+          member.commissionQuestions.push({
+            question_id: questionId,
+            session_id: sessionId,
+            meeting_id: meetingId,
+            date: date,
+            type: "commission"
+              .topic_nl,
             topic_fr,
             topics_nl: [topic_nl],
             topics_fr: [topic_fr],

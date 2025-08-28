@@ -37,7 +37,7 @@ eleventyComputed:
             <div  style="display: flex; flex-direction: row; gap:1rem;" class="padding">
 
         {%- if has_image -%}
-        <img style="object-fit: cover; width: 4rem; height: 4rem;" src="{{ imgSrc }}"
+        <img style="object-fit: cover; width: 6rem; height: 6rem;" src="{{ imgSrc }}"
              alt="A picture of {{ member.first_name }} {{ member.last_name }}" data-pagefind-meta="image[src]">
         {%- endif -%}
 
@@ -109,33 +109,41 @@ eleventyComputed:
     </div>
 </div>
 
-<div style="display: flex; width: 100%; gap: 0.4rem; margin-bottom: 0.4rem;">
-    <div class="card padding metric">
-        <div style="display: flex; align-items: center; gap: 0.4rem;">
-            <h2>{{ member.questions | asQuestioner | length }}</h2>
-             <p>vragen</p>
+<div class="member-metrics" style="margin-bottom: 0.4rem;">
+    <div class="card padding metric" style="gap: 0.4rem;">
+        <h3 style="margin-top: 0; margin-bottom: 0.4rem;" class="capitalize">Vragen</h3>
+
+        <div style="display: flex; align-items: end; gap: 0.4rem;">
+            {% set plenaryCount = member.questions | asQuestioner | length %}
+            <h2>{{ plenaryCount }}</h2>
+            <p>plenaire</p>
         </div>
 
+        <div style="display: flex; align-items: end; gap: 0.4rem;">
+            {% set commissionCount = member.commissionQuestions | asQuestioner | length %}
+            <h2>{{ commissionCount }}</h2>
+            <p>commissie</p>
+        </div>
     </div>
+
     <div class="card padding metric">
-         <div style="display: flex; align-items: center; gap: 0.4rem;">
-        <h2>{{ member.propositions | length }}</h2>
-        <p>voorstellen</p>
-         </div>
+        <h3 style="margin-top: 0; margin-bottom: 0.4rem;" class="capitalize">Voorstellen</h3>
+        <div style="display: flex; align-items: end; gap: 0.4rem;">
+            <h2>{{ member.propositions | length }}</h2>
+            <p>voorstellen</p>
+        </div>
     </div>
 </div>
 
 <div style="display: flex; width: 100%; gap: 0.4rem; margin-bottom: 0.4rem;">
     <div class="card padding metric" style="width: 100%;">
-         <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.4rem;">
-        <h2>{{ member.votes | length }}</h2>
+        <div style="display: flex; align-items: end; gap: 0.4rem; margin-bottom: 0.4rem;">
+        <h2><span style="font-weight: bold;">{{ member.votes | length }}</span>/<span style="font-size: large; font-weight: normal;">{{ votes.votes | length }}</span></h2>
         <p>stemmingen</p>
-         </div>
+    </div>
 
     {% set attendance = member.attendance %}
-      {% set normalizedAttendance = member.normalizedAttendance %}
-
-
+    {% set normalizedAttendance = member.normalizedAttendance %}
 
     <p style="margin-bottom: 0.2rem;">Stemdeelname (stemmingen) ({{ (attendance * 100) | round(0, 'floor') }}%)</p>
     <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden; width: 14rem;">
@@ -156,7 +164,7 @@ eleventyComputed:
 <div class="card padding" style="display: flex; flex-direction: column;">
     <details>
         <summary>Hoe wordt stemdeelname berekend?</summary>
-        <p style="padding-top: 1rem; padding-bottom: 1rem;">De Kamer publiceert geen aanwezigheden. Daarom wordt aanwezigheid benaderd via stemdeelname: het aandeel stemdagen (of stemmingen) waaraan een lid sinds zijn/haar startdatum heeft deelgenomen. Dit is dus een benadering van aanwezigheid: er kunnen legitieme redenen zijn waarom een lid niet aan een stemming deelneemt, zoals ziekte of andere verplichtingen.</p>
+        <p style="padding-top: 1rem; padding-bottom: 1rem;">De Kamer publiceert geen aanwezigheden. Daarom wordt aanwezigheid benaderd via stemdeelname: het aandeel stemdagen (of stemmingen) waaraan een lid sinds zijn/haar startdatum heeft deelgenomen. Dit is dus een benadering van aanwezigheid: er kunnen legitieme redenen zijn waarom een lid niet aan een stemming deelneemt, zoals ziekte, zwangerschap, ouderschapsverlof, officiële verplichtingen, of andere persoonlijke redenen.</p>
         <p style="padding-top: 0; padding-bottom: 1rem;">De stemdeelname (dagen) laat elke stemdag evenveel meetellen, onafhankelijk van hoeveel stemmingen er waren die dag.</p>
                                        <p style="padding-top: 0; padding-bottom: 1rem;">De stemdeelname (stemmingen) neemt elke stemming in rekening. Afwezigheid op een dag met veel stemmingen telt zo harder door.</p>
         <p style="padding-top: 0; padding-bottom: 1rem;">Een fout gezien of u denkt dat deze data niet correct is? Laat dit weten via :
@@ -188,7 +196,7 @@ eleventyComputed:
     {% set questions = member.questions | asQuestioner | sortDate('date', "desc") %}
 
 {% if questions | length > 0 %}
-  <p>Een overzicht van de vragen die {{ member.first_name }} {{ member.last_name }} heeft gesteld in de kamer.</p>
+  <p>Een overzicht van de vragen die {{ member.first_name }} {{ member.last_name }} heeft gesteld in De Kamer tijdens de plenaire vergaderingen.</p>
   <div id="member-questions">
     <div id="question-list">
       {% for question in questions %}
