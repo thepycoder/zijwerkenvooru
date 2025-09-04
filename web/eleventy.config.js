@@ -12,6 +12,9 @@ import EleventyPluginOgImage from "eleventy-plugin-og-image";
 export default async function (eleventyConfig) {
   const outputDir = "_site";
 
+  eleventyConfig.addPassthroughCopy({
+    "./src/assets/favicon": "assets/favicon",
+  });
   eleventyConfig.addPassthroughCopy({ "./src/assets/img": "assets/img" });
   eleventyConfig.addPassthroughCopy({ "./src/assets/js": "assets/js" });
   eleventyConfig.addPassthroughCopy({ "./src/assets/css": "assets/css" });
