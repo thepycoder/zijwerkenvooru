@@ -8,8 +8,8 @@ pagination:
 permalink: "{{ member.permalink }}"
 canonical: "nl/members/"
 eleventyComputed:
-    title: "Parlementslid {{ member.first_name }} {{ member.last_name }}"
-    description: "Profiel van {{ member.first_name }} {{ member.last_name }}, lid van het federaal parlement. Bekijk stemgedrag, ingediende vragen, wetsvoorstellen en partij."
+    title: "Alles over {{ member.first_name }} {{ member.last_name }} (parlementslid {{ member.parties[0] }})"
+    description: "Kamerlid {{ member.first_name }} {{ member.last_name }} zetelt in het federaal parlement. Bekijk stemgedrag, ingediende vragen, wetsvoorstellen, vergoedingen en meer. Hoe vertegenwoordigt {{ member.first_name }} {{ member.last_name }} u?"
 ---
 
 <!-- PAGEFIND EXCERPT -->
