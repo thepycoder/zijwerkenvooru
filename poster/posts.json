@@ -993,5 +993,42 @@
     "date": "62",
     "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3lua6jb6jjt2l",
     "replies": []
+  },
+  {
+    "id": "63",
+    "date": "63",
+    "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3lz4yfv6g462o",
+    "replies": [
+      {
+        "type": "Vote",
+        "hash": "936e526bc5b96585fa111736187f976b36538cc186c9a9e2a3621dc35465611b",
+        "topic": "Moties ingediend tot besluit van de interpellaties van:\n- Natalie Eggermont over 'De hogere som die aan patiënten zal worden gevraagd voor zorg om het gat in de begroting te dichten'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3lz4yfzylv42j"
+      },
+      {
+        "type": "Vote",
+        "hash": "87a0c40b0630df16dc44262c6f0122cd50d54f8c3e488ece3cd3edb38c3dfc07",
+        "topic": "Voorstel van resolutie betreffende de ondersteuning van belastingplichtigen bij het invullen van de aangifte in de personenbelasting bij het overlijden van een partner",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3lz4yg6cc542j"
+      },
+      {
+        "type": "Vote",
+        "hash": "49e3a92db618f6a10e18cf0cbf845f6e0a80ff440b8d513e5c143e02a472a73a",
+        "topic": "Wetsontwerp tot wijziging van verscheidene bepalingen met het oog op de uitvoering van sommige bepalingen van Verordening (EU) 2024/886 tot wijziging van Verordeningen (EU) nr. 260/2012 en (EU) 2021/1230 en Richtlijnen 98/26/EG en (EU) 2015/2366 wat betreft instantovermakingen in euro's, en de omzetting van Richtlijn (EU) 2024/1174 tot wijziging van Richtlijn 2014/59/EU en Verordening (EU) nr. 806/2014 met betrekking tot bepaalde aspecten van het minimumvereiste voor eigen vermogen en in aanmerking komende passiva (nieuw opschrift)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3lz4ygcgb572x"
+      },
+      {
+        "type": "Vote",
+        "hash": "958905a7c5dce67fcd48921edf1449ee51a5b01586ea4ee9ad18c541d7973818",
+        "topic": "Vast Comité van toezicht op de inlichtingen- en veiligheidsdiensten – Begrotingsaanpassing 2025",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3lz4yggvsp52w"
+      },
+      {
+        "type": "Vote",
+        "hash": "7c48c673ce2c57ca6062f3fefea9efe1605313241191bcd0340f9835abfb9b8b",
+        "topic": "Centrale Toezichtsraad voor het Gevangeniswezen – Begrotingsaanpassing 2025",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3lz4yglr37z2t"
+      }
+    ]
   }
 ]
