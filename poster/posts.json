@@ -1030,5 +1030,48 @@
         "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3lz4yglr37z2t"
       }
     ]
+  },
+  {
+    "id": "64",
+    "date": "64",
+    "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3lzolmfyaud2o",
+    "replies": [
+      {
+        "type": "Vote",
+        "hash": "31ef2bb41401f7e23573ba8ea0ddbcdd9014decd19229932f0edde3aad9c09ad",
+        "topic": "Moties ingediend tot besluit van de interpellaties van:\n- de heer Frank Troosters over 'de bestelling van nieuwe MR30-treinstellen bij het Spaanse CAF'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3lzolml7ob623"
+      },
+      {
+        "type": "Vote",
+        "hash": "df3b5f7563aab235f4656d71fc4ff1b71fe825516cb4f9b27ef745c708fed3cf",
+        "topic": "Moties ingediend tot besluit van de interpellatie van mevrouw Marijke Dillen over 'de noodkreet van de Brusselse procureur'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3lzolmpwmzg2m"
+      },
+      {
+        "type": "Vote",
+        "hash": "4704ce1175a70fdac56485ebed882633a76439ad4c6ea179e0c21ea88b790e49",
+        "topic": "Moties ingediend tot besluit van de interpellatie van mevrouw Marijke Dillen over 'de oprichting van een drugsfonds'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3lzolmuib5a25"
+      },
+      {
+        "type": "Vote",
+        "hash": "efc5157493442ebe48e3d62a666234afb7e56b81553cf5c0cc0eea534ca2899a",
+        "topic": "Moties ingediend tot besluit van de interpellatie van mevrouw Marijke Dillen over 'de opening van het asielcentrum in Schilde'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3lzolmyd3lp22"
+      },
+      {
+        "type": "Vote",
+        "hash": "9fa73754daa3bcd1aaa2487120025e74173355e0aaabcf708eee36584e23c592",
+        "topic": "Moties ingediend tot besluit van de interpellaties van:\n- mevrouw Marie Meunier over 'de afschaffing van de federale subsidies voor de winteropvang en het winterplan'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3lzoln4a4vi2y"
+      },
+      {
+        "type": "Vote",
+        "hash": "8ef9322824cfc6daa11540a3bdd4ecc20879816673dc6b911f9147c744119ae6",
+        "topic": "Moties ingediend tot besluit van de interpellaties van:\n- Sofie Merckx over 'De huisvestingsvergoedingen en voordelen die de ministers genieten'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3lzolnanamo2j"
+      }
+    ]
   }
 ]
