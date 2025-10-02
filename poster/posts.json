@@ -1073,5 +1073,18 @@
         "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3lzolnanamo2j"
       }
     ]
+  },
+  {
+    "id": "65",
+    "date": "65",
+    "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m27xokjqwz2r",
+    "replies": [
+      {
+        "type": "Vote",
+        "hash": "7bfbc5dc7a5fa5dc20442008594497ebd99581c77b549a7ed9c367912e12dc37",
+        "topic": "Voorstel tot verwerping door de commissie voor Buitenlandse Betrekkingen van het voorstel van resolutie betreffende de ondersteuning van de opschorting van de preferentiële associatieovereenkomst tussen de Europese Unie en Israël (voorstel tot verwerping)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m27xoosxuz2e"
+      }
+    ]
   }
 ]
