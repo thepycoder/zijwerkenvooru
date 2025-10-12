@@ -1086,5 +1086,66 @@
         "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m27xoosxuz2e"
       }
     ]
+  },
+  {
+    "id": "66",
+    "date": "66",
+    "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m2zp7sh5rw2f",
+    "replies": [
+      {
+        "type": "Vote",
+        "hash": "d4496e7f10f1ba8eb24c075abe597bf305b216d6db4e0c21b7cfc87c5b4987a3",
+        "topic": "Moties ingediend tot besluit van de interpellatie van mevrouw Marijke Dillen over 'de aanhoudende betaalachterstand voor gerechtstolken en -vertalers'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m2zp7x3bps2g"
+      },
+      {
+        "type": "Vote",
+        "hash": "841686b2584e32b21ddce511e63332a215a70d31fbc2dda6baedf62799d9aa5c",
+        "topic": "Moties ingediend tot besluit van de interpellaties van:\n- mevrouw Ludivine Dedonder over 'de mokerslag van de pensioenhervorming voor 1/3 van de gepensioneerden en 70 % van de vrouwen'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m2zpa2y7fe2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "9d71242bcbb856619fcd166c16c4dbc1818e911d2a338b7fc30d40f6dbc5f0bc",
+        "topic": "Wetsontwerp houdende instemming met het Samenwerkingsakkoord van 10 januari 2024 tussen de Federale Staat, het Vlaamse Gewest, het Waalse Gewest en het Brussels Hoofdstedelijk Gewest met betrekking tot de toewijzing en de verdeling van het bedrag dat is vastgelegd in artikel 2 van de beslissing van het Comité van Ministers van de Belgisch-Luxemburgse Economische Unie (BLEU) van 14 december 2001, zoals gewijzigd bij de beslissing van het Comité van Ministers van de BLEU van 31 augustus 2021",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m2zpa75kvq2h"
+      },
+      {
+        "type": "Vote",
+        "hash": "2dec5d2eaf69039d56501a833914ea956e72e0424ac4d6b385157a1a2448382d",
+        "topic": "Wetsontwerp houdende goedkeuring van de inschrijving van België op de algemene kapitaalverhoging van de Europese Bank voor Wederopbouw en Ontwikkeling",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m2zpad47na2h"
+      },
+      {
+        "type": "Vote",
+        "hash": "43eb6503ee39823552499f027ea3c0edec0a04cec8e276e761801c9143334588",
+        "topic": "Aangehouden amendementen en artikel op het wetsvoorstel tot wijziging van de wet van 11 april 1994 betreffende de openbaarheid van bestuur teneinde ontvankelijkheidsvoorwaarden in te voeren voor de indiening van verzoeken om advies bij de Commissie voor de toegang tot en het hergebruik van bestuursdocumenten, afdeling openbaarheid",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m2zpagtyni2h"
+      },
+      {
+        "type": "Vote",
+        "hash": "5327929c5f47de9b1cf140359278a24d13219f0e47ca9ac783f19cdb49ce7860",
+        "topic": "Geheel van het wetsvoorstel tot wijziging van de wet van 11 april 1994 betreffende de openbaarheid van bestuur teneinde ontvankelijkheidsvoorwaarden in te voeren voor de indiening van verzoeken om advies bij de Commissie voor de toegang tot en het hergebruik van bestuursdocumenten, afdeling openbaarheid",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m2zpakra7q2o"
+      },
+      {
+        "type": "Vote",
+        "hash": "1590dd69517515ef5d68444fd17e8b7ad1c9f65d909ee1544f9b8f16c94f7d1a",
+        "topic": "Wetsontwerp tot wijziging van de wet van 19 maart 2023 tot wijziging van de wet van 15 december 1980 betreffende de toegang tot het grondgebied, het verblijf, de vestiging en de verwijdering van vreemdelingen, wat betreft het inreis-uitreissysteem",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m2zpaoj5yj2w"
+      },
+      {
+        "type": "Vote",
+        "hash": "b9ed0eb51ae7dae6e72456f447999d2ad6170e16fb83e3a8601fe0dc65afbd1d",
+        "topic": "Aangehouden amendement en artikel op het wetsvoorstel betreffende het versturen van een sensibiliseringsbrief inzake de uitdagingen op het vlak van veiligheid waarvoor de toegang tot bepaalde informatiegegevens van het Rijksregister van natuurlijke personen door het ministerie van Landsverdediging noodzakelijk is (nieuw opschrift)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m2zpasf64q2h"
+      },
+      {
+        "type": "Vote",
+        "hash": "ef6fb88d48cd904bf4653ea793ddfcbccce6242b9139f05836b244ca0a78d9b3",
+        "topic": "Geheel van het wetsvoorstel betreffende het versturen van een sensibiliseringsbrief inzake de uitdagingen op het vlak van veiligheid waarvoor de toegang tot bepaalde informatiegegevens van het Rijksregister van natuurlijke personen door het ministerie van Landsverdediging noodzakelijk is (nieuw opschrift)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m2zpawagjm2a"
+      }
+    ]
   }
 ]
