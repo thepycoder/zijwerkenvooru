@@ -1147,5 +1147,36 @@
         "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m2zpawagjm2a"
       }
     ]
+  },
+  {
+    "id": "68",
+    "date": "68",
+    "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3dbfgsd3b2m",
+    "replies": [
+      {
+        "type": "Vote",
+        "hash": "8f78a0d69a6218bab77b3b239f3126041676264aafb18b8b56f3dba2364bb475",
+        "topic": "Wetsontwerp tot bekrachtiging van het koninklijk besluit van 18 oktober 2024 tot vaststelling voor het jaar 2024 van het bedrag van de repartitiebijdrage bedoeld in artikel 14, § 8, van de wet van 11 april 2003 op de repartitiebijdrage",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3dbfl5bsr2f"
+      },
+      {
+        "type": "Vote",
+        "hash": "3ad4f5008b03ac752d7e5b35aa9b0b3582fbfc242e212ef61f133378444684aa",
+        "topic": "Voorstel van resolutie betreffende de oprichting van TreinPunten",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3dbfpmz4m2e"
+      },
+      {
+        "type": "Vote",
+        "hash": "c4b0abf4fa14768198eb5cd0d7889abd6ccd2b1f74fb560e336200f96d310e4b",
+        "topic": "Wetsontwerp houdende goedkeuring van het samenwerkingsakkoord van 19 april 2024 tussen de Federale Staat en de Duitstalige Gemeenschap inzake slachtofferzorg (nieuw opschrift)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3dbfu6hld27"
+      },
+      {
+        "type": "Vote",
+        "hash": "fc1ff533c0878cb4fbac104167a26988d666aae462332003307fb4e9275b2465",
+        "topic": "Voorstel tot verwerping door de commissie voor Binnenlandse Zaken, Veiligheid, Migratie en Bestuurszaken van het wetsvoorstel tot opheffing de wet van 17 augustus 2013 voor wat betreft de afschaffing van het Federaal Migratiecentrum (MYRIA)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3dbfypeca2o"
+      }
+    ]
   }
 ]
