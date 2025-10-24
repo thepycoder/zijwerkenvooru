@@ -616,6 +616,8 @@ fn extract_time_from_document(document: &Html, keywords: &[&str]) -> Option<Stri
 
 fn extract_start_time_from_document(document: &Html) -> Result<String, Box<dyn Error>> {
     let keywords = [
+        "De behandeling van de",
+        "De behandeling van de vragen en de interpellatie vangt aan om",
         "De behandeling van de vragen en interpellaties vangt aan",
         "De behandeling van de vragen en van de interpellatie vangt aan om",
         "De openbare commissievergadering wordt geopend",
