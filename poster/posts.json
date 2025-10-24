@@ -1178,5 +1178,84 @@
         "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3dbfypeca2o"
       }
     ]
+  },
+  {
+    "id": "69",
+    "date": "69",
+    "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3wnlubt6x2o",
+    "replies": [
+      {
+        "type": "Vote",
+        "hash": "3044dcace9568d9f2230aa0bdb63957aaf04acc9342209714136b5daf775dd94",
+        "topic": "Moties ingediend tot besluit van de interpellatie van de heer Ortwin Depoortere over 'de islamitische terreurdreiging tegen de eerste minister en politici in dit land'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3wnlz3bv42g"
+      },
+      {
+        "type": "Vote",
+        "hash": "fef36f7d3200c90949e1daef01c9fe92d82fde63ee8d24bcd3edd93cac873f86",
+        "topic": "Moties ingediend tot besluit van de interpellatie van mevrouw Dominiek Sneppe over 'de artsenquota en de toekenning van een hoger aantal kandidaten in de Franse Gemeenschap'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3wnm4pfhd2e"
+      },
+      {
+        "type": "Vote",
+        "hash": "3f3599034c0a6fecce75dc00cc689b511039358e6836d90d67c04b0e0c139d67",
+        "topic": "Moties ingediend tot besluit van de interpellatie van de heer Lode Vereeck over 'de cumulatie van belastingvrije sommen'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3wnmagthf2r"
+      },
+      {
+        "type": "Vote",
+        "hash": "a08a93bea94978a48a94585257600224c63c968262b7e2356856238eae46d79b",
+        "topic": "Moties ingediend tot besluit van de interpellatie van mevrouw Dominiek Sneppe over 'geschorste en geschrapte buitenlandse zorgverleners en het falende controlesysteem'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3wnme5o2c2h"
+      },
+      {
+        "type": "Vote",
+        "hash": "653dd6e62cd684cefd4db33cd73c15c0d0d8ad51ffdc097e4a34d281bed77363",
+        "topic": "Moties ingediend tot besluit van de interpellatie van de heer Frank Troosters over 'de invoering van de nieuwe tariefstructuur door de NMBS'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3wnmhvoke2g"
+      },
+      {
+        "type": "Vote",
+        "hash": "39241bab1e33b3c6bbbf8fad338ba50b3136b0bbc85b21c906847260a97e5599",
+        "topic": "Moties ingediend tot besluit van de interpellaties van:\n- de heer @lacroixch.bsky.social over 'de diplomatieke crisis en Europese strategische autonomie in het kader van de aankoop van de F-35's'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3wnmlzscv2q"
+      },
+      {
+        "type": "Vote",
+        "hash": "bb7ae1586dab789f19e16e8e76bf154a79ab991564902885fda07a9fa53231d9",
+        "topic": "Wetsontwerp houdende de oprichting van het Raadgevend Comité voor het Goederenvervoer per Spoor (nieuw opschrift)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3wnmprgd32y"
+      },
+      {
+        "type": "Vote",
+        "hash": "7732506c6d63f9220b5ed8164998126bcb9bd9a11d37da8acb5e3cb85b50fe8c",
+        "topic": "Voorstel van resolutie betreffende de publicatie van het Belgische hoofdstuk van de NAVO Defence Planning Capability Review (DPCR)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3wnmtkxd72o"
+      },
+      {
+        "type": "Vote",
+        "hash": "6de06399f101d290db8b7d1bc5dadc6c18395a54d1f63bc02c61e843acc484e4",
+        "topic": "Wetsvoorstel tot wijziging van het Wetboek van de inkomstenbelastingen 1992 en het Wetboek der registratie-, hypotheek- en griffierechten wat betreft fiscaal neutrale reorganisaties (nieuw opschrift)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3wnmxdh3r2o"
+      },
+      {
+        "type": "Vote",
+        "hash": "e5eb0e87924afacfaaac46b7d913d83caf9becc947e9ba3eaac5873ba6dd011e",
+        "topic": "Wetsontwerp betreffende de toegang tot het Rijksregister van de natuurlijke personen en het gebruik van het rijksregisternummer door de Federale Overheidsdienst Beleid en Ondersteuning",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3wnn33se72o"
+      },
+      {
+        "type": "Vote",
+        "hash": "ccf835a8356051054739ec0856cb1a23951f1e4038117ea4df2770571d53d0b9",
+        "topic": "Wetsvoorstel tot wijziging van het Gerechtelijk Wetboek inzake de retributie ter financiering    van de beheerskosten    van het centraal register    collectieve schuldenregelingen (nieuw opschrift)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3wnn6vyp52k"
+      },
+      {
+        "type": "Vote",
+        "hash": "dfd6636505b48dd79fb5c0c0531c38462c2458cfe5df1cc4835d2fb3cc6d2cdd",
+        "topic": "Wetsontwerp tot herstel van artikel 31bis van de wetten op de Raad van State, gecoördineerd op 12 januari 1973, met betrekking tot de elektronische procesvoering voor de afdeling bestuursrechtspraak van de Raad van State",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3wnncnerw2e"
+      }
+    ]
   }
 ]
