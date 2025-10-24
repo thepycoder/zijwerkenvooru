@@ -93,21 +93,12 @@ fn parse_dutch_date(date_str: &str) -> Option<chrono::NaiveDate> {
 
 
 fn format_dutch_date(date_str: &str) -> Option<String> {
-    let months = [
-        "", "januari", "februari", "maart", "april", "mei", "juni",
-        "juli", "augustus", "september", "oktober", "november", "december",
-    ];
-
     if let Ok(date) = chrono::NaiveDate::parse_from_str(date_str, "%Y-%m-%d") {
-        let day = date.day();
-        let month = months.get(date.month() as usize)?;
-        let year = date.year();
-        Some(format!("{} {} {}", day, month, year))
+        Some(format!("{:02}/{:02}/{}", date.day(), date.month(), date.year()))
     } else {
         None
     }
 }
-
 
 fn read_string_column(file_path: &PathBuf, col_name: &str) -> anyhow::Result<Vec<String>> {
     let file = File::open(file_path)?;
@@ -284,7 +275,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
             main_post_uri = Some(existing.uri.clone());
         } else {
             let date_str = format_dutch_date(date.as_str()).unwrap();
-            let main_post_text = format!("📣 Nieuwe vergadering van het Belgische Parlement ({})\n- {} stemmingen\n- {} vragen", date_str, vote_count, question_count);
+            let main_post_text = format!("🇧🇪 Vandaag in het Parlement ({})\n- {} stemmingen\n- {} vragen", date_str, vote_count, question_count);
             let main_post = agent.create_record(RecordData {
                 created_at: Datetime::now(),
                 text: main_post_text,
@@ -382,7 +373,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 ));
 
                 // Create vote post text.
-                let result = if yes > (no + abstain) { "aangenomen" } else { "verworpen" };
+                let result = if yes > (no + abstain) { "-> Aangenomen" } else { "-> Verworpen" };
                 let total = yes + no + abstain;
                 let bar_len: usize = 14;
                 let scale = |count: u32| ((count as f64 / total as f64) * bar_len as f64).round() as usize;
@@ -391,15 +382,15 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 let abstain_blocks = bar_len.saturating_sub(yes_blocks + no_blocks);
 
                 let bar = format!(
-                    "{}{}{}\n{}",
+                    "{}\n{}{}{}",
+                    result,
                     "🟩".repeat(yes_blocks),
                     "🟥".repeat(no_blocks),
                     "🟧".repeat(abstain_blocks),
-                    result
                 );
 
                 let vote_post_text = format!(
-                    "🗳️ Stemming\n\"{}\"\n\n{}\n\nDetails: https://zijwerkenvooru.be/nl/sessions/{}/meetings/plenary/{}/votes/{}",
+                    "🗳️ Gestemd\n\"{}\"\n\n{}\n\nOntdek wie hoe heeft gestemd: https://zijwerkenvooru.be/nl/sessions/{}/meetings/plenary/{}/votes/{}",
                     vote_title_with_handles,
                     bar,
                     session_id, meeting_id, vote_id
