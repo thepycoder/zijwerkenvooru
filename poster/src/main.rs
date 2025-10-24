@@ -158,6 +158,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     // Hardcoded name to handle mapping.
     let name_to_handle: HashMap<&str, &str> = HashMap::from([
         ("Staf Aerts", "@stafaerts.be"),
+        ("Meyrem Almaci", "meyremalmaci.bsky.social"),
         ("Khalil Aouasti", "@khalilaouasti.bsky.social"),
         ("Ridouane Chahid", "@ridouanechahid.bsky.social"),
         ("Steven Coenegrachts", "@stevencoenegrachts.bsky.social"),
@@ -332,8 +333,9 @@ async fn main() -> Result<(), Box<dyn Error>> {
             }
 
             // Add vote.
-            let vote_title = vote_titles.value(i);
-            let vote_hash = hash_text(vote_title);
+            let raw_vote_title = vote_titles.value(i);
+            let vote_title_with_handles = replace_names_with_handles(raw_vote_title, &name_to_handle);
+            let vote_hash = hash_text(raw_vote_title);
 
             if let Some(parent) = posts.iter_mut().find(|p| p.id == target_meeting_id) {
                 if parent.replies.iter().any(|r| match r {
@@ -399,7 +401,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
                 let vote_post_text = format!(
                     "🗳️ Stemming\n\"{}\"\n\n{}\n\nDetails: https://zijwerkenvooru.be/nl/sessions/{}/meetings/plenary/{}/votes/{}",
-                    vote_title,
+                    vote_title_with_handles,
                     bar,
                     session_id, meeting_id, vote_id
                 );
@@ -427,7 +429,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
                 let vote_reply = BskyReply::Vote(BskyReplyVote {
                     hash: vote_hash.clone(),
-                    topic: vote_title.to_string(),
+                    topic: vote_title_with_handles.to_string(),
                     uri: vote_post_uri.clone(),
                 });
 
@@ -641,7 +643,7 @@ pub fn take_screenshot_of_element(browser: &Browser, url: &str, selector: &str) 
         height: content_box.height + 14.0,
         scale: 3.0,
     });
-   
+
     let png_data = tab.capture_screenshot(headless_chrome::protocol::cdp::Page::CaptureScreenshotFormatOption::Png, None, adjusted_viewport, true)?;
 
     eprintln!("🌐 Captured screenshot for: {}", url);
@@ -707,4 +709,13 @@ pub async fn get_post(agent: &BskyAgent, uri: &str) -> anyhow::Result<atrium_api
     } else {
         return Err(anyhow::anyhow!("Failed to get post"));
     }
+}
+
+fn replace_names_with_handles(input: &str, map: &HashMap<&str, &str>) -> String {
+    let mut out = input.to_string();
+    for (name, handle) in map {
+        // replace full name with handle
+        out = out.replace(name, handle);
+    }
+    out
 }
