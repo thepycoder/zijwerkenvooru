@@ -94,19 +94,31 @@ async fn main() -> Result<(), Box<dyn Error>> {
         (&commission_id_path)?
         .trim()
         .parse()?;
-    let mut last_commission_id = current_commission_id + 1;
-    let url = format!(
-        "https://www.dekamer.be/doc/CCRI/html/{}/ic{:03}x.html",
-        session_id, last_commission_id
-    );
-    let response = client.get(&url).await?;
-    if response.status() == StatusCode::NOT_FOUND {
-        println!("No new meeting available.");
-        last_commission_id = current_commission_id;
-    } else {
-        println!("New meeting available: {}", last_commission_id);
+
+    let mut last_commission_id = current_commission_id;
+
+    loop {
+        let probe = last_commission_id + 1;
+        let url = format!(
+            "https://www.dekamer.be/doc/CCRI/html/{}/ic{:03}x.html",
+            session_id, probe
+        );
+        let resp = client.get(&url).await?;
+        web_request_count += 1;
+
+        if resp.status() == StatusCode::NOT_FOUND {
+            break;
+        } else {
+            // found a new one, move forward
+            last_commission_id = probe;
+        }
     }
 
+    if last_commission_id == current_commission_id {
+        println!("No new meeting available.");
+    } else {
+        println!("Found new meetings up to {}", last_commission_id);
+    }
 
     for commission in 1..=last_commission_id {
         // println!("SCRAPING: {}", commission);

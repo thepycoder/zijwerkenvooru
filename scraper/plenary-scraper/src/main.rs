@@ -166,18 +166,30 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     // let current_meeting_id: u32 = std::fs::read_to_string("../../current_meeting_id.txt")?.trim().parse()?;
     // println!("NOK");
-    let mut last_meeting_id = current_meeting_id + 1;
 
-    let url = format!(
-        "https://www.dekamer.be/doc/PCRI/html/{}/ip{:03}x.html",
-        session_id, last_meeting_id
-    );
-    let response = client.get(&url).await?;
-    if response.status() == StatusCode::NOT_FOUND {
+    let mut last_meeting_id = current_meeting_id;
+
+    loop {
+        let probe = current_meeting_id + 1;
+        let url = format!(
+            "https://www.dekamer.be/doc/PCRI/html/{}/ip{:03}x.html",
+            session_id, probe
+        );
+        let resp = client.get(&url).await?;
+        web_request_count += 1;
+
+        if resp.status() == StatusCode::NOT_FOUND {
+            break;
+        } else {
+            // found a new one, move forward
+            last_meeting_id = probe;
+        }
+    }
+
+    if last_meeting_id == current_meeting_id {
         println!("No new meeting available.");
-        last_meeting_id = current_meeting_id;
     } else {
-        println!("New meeting available: {}", last_meeting_id);
+        println!("Found new meetings up to {}", last_meeting_id);
     }
 
     for meeting in 1..=last_meeting_id {
