@@ -172,7 +172,6 @@ async fn main() -> Result<(), Box<dyn Error>> {
         ("Paul Magnette", "@paulmagnette.bsky.social"),
         ("Sammy Mahdi", "@sammymahdi.bsky.social"),
         ("Dieter vanbesien", "@dietervanbesien.bsky.social"),
-        ("Rajae Maouane", "@rajaemaouane.bsky.social"),
         ("Steven Matheï", "@stevenmathei.bsky.social"),
         ("Sofie Merckx", "@sofiemerckx.bsky.social"),
         ("Peter Mertens", "@petermertens.bsky.social"),

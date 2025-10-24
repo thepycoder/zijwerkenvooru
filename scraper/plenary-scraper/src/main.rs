@@ -170,7 +170,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
     let mut last_meeting_id = current_meeting_id;
 
     loop {
-        let probe = current_meeting_id + 1;
+        let probe = last_meeting_id + 1;
         let url = format!(
             "https://www.dekamer.be/doc/PCRI/html/{}/ip{:03}x.html",
             session_id, probe
