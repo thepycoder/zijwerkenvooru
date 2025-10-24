@@ -383,7 +383,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 // Create vote post text.
                 let result = if yes > (no + abstain) { "aangenomen" } else { "verworpen" };
                 let total = yes + no + abstain;
-                let bar_len: usize = 15;
+                let bar_len: usize = 14;
                 let scale = |count: u32| ((count as f64 / total as f64) * bar_len as f64).round() as usize;
                 let yes_blocks = scale(yes);
                 let no_blocks = scale(no);
