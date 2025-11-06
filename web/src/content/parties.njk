@@ -1,21 +1,17 @@
 ---
 layout: layouts/page
-pagination:
-    data: languages
-    size: 1
-    alias: lang
-permalink: "{{ lang }}/parties/"
+permalink: "nl/parties/"
 eleventyComputed:
     title: "Belgische politieke partijen in het parlement"
     description: "Analyseer hoe politieke partijen stemmen in de Kamer. Ontdek hun gedrag bij wetsvoorstellen en debatten."
 ---
 
-{# <p><a href="/{{page.lang}}/" class="uppercase"><- {{ languages[page.lang].home }}</a></p> #}
+{# <p><a href="/nl/" class="uppercase"><- {{ languages[nl].home }}</a></p> #}
 
-<h1 class="capitalize">{{ languages[page.lang].theParties }}</h1>
+<h1 class="capitalize">{{ languages[nl].theParties }}</h1>
 
-<p>{{ languages[page.lang].partiesExplanation1 }}</p>
-<p>{{ languages[page.lang].partiesExplanation2 }}</p>
+<p>{{ languages[nl].partiesExplanation1 }}</p>
+<p>{{ languages[nl].partiesExplanation2 }}</p>
 
 <!-- KEY STATISTICS -->
 <div id="members-statistics">
@@ -25,18 +21,18 @@ eleventyComputed:
             <div class="mobile-row gap" style="display: flex; width: 100%;">
                 <div class="card padding metric">
                     <h2>{{ members.members | filter("active", "true") | length }}</h2>
-                    <p>{{ languages[page.lang].chamberMembers }}</p>
+                    <p>{{ languages[nl].chamberMembers }}</p>
                 </div>
                 <div class="card padding metric">
                     <h2>{{ members.members | map("parties") | map("0") | unique | length }}</h2>
-                    <p>{{ languages[page.lang].parties }}</p>
+                    <p>{{ languages[nl].parties }}</p>
                 </div>
             </div>
 
             <!-- SEAT DISTRIBUTION -->
             <div style="display: flex; width: 100%;">
                 <div class="card padding metric" style="width: 100%;">
-                    <h3 style="margin: 0;" class="capitalize">{{ languages[page.lang].seatDistribution }}</h3>
+                    <h3 style="margin: 0;" class="capitalize">{{ languages[nl].seatDistribution }}</h3>
                     <div id="parliamentChart">
                         <svg></svg>
                     </div>
@@ -47,7 +43,7 @@ eleventyComputed:
         <!-- PARTIES OVERVIEW -->
         <div style="display: grid; width: 100%; gap: 0.4rem; grid-template-columns: repeat(2, minmax(0, 1fr));">
             {% for key, party in parties.parties %}
-            <a class="card padding" href="/{{ page.lang }}/parties/{{ party.name | slugify }}/">
+            <a class="card padding" href="/nl/parties/{{ party.name | slugify }}/">
                 <div class="flex space-between align-center">
                     {% set imgSrc = "../assets/img/parties/" + (party.name | slugify) + ".svg" %}
                     {%- set has_image = imgSrc | imageExists %}

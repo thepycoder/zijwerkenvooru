@@ -1,9 +1,5 @@
 ---
-pagination:
-    data: languages
-    size: 1
-    alias: lang
-permalink: "{{ lang }}/"
+permalink: "nl/"
 redirect_from: "/"
 title: "De Belgische Kamer van Volksvertegenwoordigers"
 eleventyComputed:
@@ -46,7 +42,7 @@ eleventyComputed:
                         <span>Nieuwe plenaire vergadering op {{ (plenary.date) | date }}</span>
                     </div>
                     <div class="padding-tight">
-                        <p class="bold capitalize">{{ languages[page.lang].questions }}</p>
+                        <p class="bold capitalize">{{ languages[nl].questions }}</p>
                         {% if plenary.questions.length > 0 %}
                             <ul>
                                 {% for question in plenary.questions | limit(3) %}
@@ -61,17 +57,17 @@ eleventyComputed:
                             <p style="margin-bottom: 0.5rem;">Geen vragen</p>
                         {% endif %}
 
-                        <p class="bold capitalize">{{ languages[page.lang].propositions }}</p>
+                        <p class="bold capitalize">{{ languages[nl].propositions }}</p>
                         {% if plenary.propositions.length > 0 %}
                             <ul>
                                 {% for proposition in plenary.propositions | limit(1) %}
                                     <li>{{ proposition.title_nl }}
                                         {% if proposition.status == "Aangenomen" %}
-                                            <span class="status small" style="background-color: #28a745; color: white;">{{ languages[page.lang].passed }}</span>
+                                            <span class="status small" style="background-color: #28a745; color: white;">{{ languages[nl].passed }}</span>
                                         {% elseif proposition.status == "Verworpen" %}
-                                            <span class="status small" style="background-color: #dc3545; color: white;">{{ languages[page.lang].failed }}</span>
+                                            <span class="status small" style="background-color: #dc3545; color: white;">{{ languages[nl].failed }}</span>
                                         {% elseif proposition.status == "ZonderVoorwerp" %}
-                                            <span class="status small" style="background-color: orange; color: white;">{{ languages[page.lang].withoutSubject }}</span>
+                                            <span class="status small" style="background-color: orange; color: white;">{{ languages[nl].withoutSubject }}</span>
                                             {% endif%}
                                         </li>
                                     {% endfor %}
@@ -80,12 +76,12 @@ eleventyComputed:
                                 <p style="margin-bottom: 0.5rem;">Geen voorstellen</p>
                             {% endif %}
 
-                            <p class="bold capitalize">{{ languages[page.lang].votes }}</p>
+                            <p class="bold capitalize">{{ languages[nl].votes }}</p>
                             <p style="margin-bottom: 0.5rem;">{{ plenary.votes.length }} stemming(en)</p>
                             <div>
                                 {% if plenary.allVotes.length > 0 %}
                                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                                        <p class="bold">{{ languages[page.lang].attendance }}</p>
+                                        <p class="bold">{{ languages[nl].attendance }}</p>
                                         <p>{{ attendance.count }}/150 ({{ (attendance.ratio * 100) | round(0, 'floor') }}%)</p>
                                     </div>
 
@@ -100,8 +96,8 @@ eleventyComputed:
                             </div>
                         </div>
                     </div>
-                    <a href="/{{ page.lang }}/sessions/56/meetings/plenary/{{ plenary.meeting_id }}/" class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
-                        <p>{{ languages[page.lang].seeMeetingDetails }}</p>
+                    <a href="/nl/sessions/56/meetings/plenary/{{ plenary.meeting_id }}/" class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
+                        <p>{{ languages[nl].seeMeetingDetails }}</p>
                         {% lucide "chevron-right" %}
                     </a>
                 </div>
@@ -112,7 +108,7 @@ eleventyComputed:
                             <span>Nieuwe plenaire vergadering op {{ (plenary2.date) | date }}</span>
                         </div>
                         <div class="padding-tight">
-                            <p class="bold capitalize">{{ languages[page.lang].questions }}</p>
+                            <p class="bold capitalize">{{ languages[nl].questions }}</p>
                             {% if plenary2.questions.length > 0 %}
                                 <ul>
                                     {% for question in plenary2.questions | limit(3) %}
@@ -127,17 +123,17 @@ eleventyComputed:
                                 <p style="margin-bottom: 0.5rem;">Geen vragen</p>
                             {% endif %}
 
-                            <p class="bold capitalize">{{ languages[page.lang].propositions }}</p>
+                            <p class="bold capitalize">{{ languages[nl].propositions }}</p>
                             {% if plenary2.propositions.length > 0 %}
                                 <ul>
                                     {% for proposition in plenary2.propositions | limit(1) %}
                                         <li>{{ proposition.title_nl }}
                                             {% if proposition.status == "Aangenomen" %}
-                                                <span class="status small" style="background-color: #28a745; color: white;">{{ languages[page.lang].passed }}</span>
+                                                <span class="status small" style="background-color: #28a745; color: white;">{{ languages[nl].passed }}</span>
                                             {% elseif proposition.status == "Verworpen" %}
-                                                <span class="status small" style="background-color: #dc3545; color: white;">{{ languages[page.lang].failed }}</span>
+                                                <span class="status small" style="background-color: #dc3545; color: white;">{{ languages[nl].failed }}</span>
                                             {% elseif proposition.status == "ZonderVoorwerp" %}
-                                                <span class="status small" style="background-color: orange; color: white;">{{ languages[page.lang].withoutSubject }}</span>
+                                                <span class="status small" style="background-color: orange; color: white;">{{ languages[nl].withoutSubject }}</span>
                                                 {% endif%}
                                             </li>
                                         {% endfor %}
@@ -146,12 +142,12 @@ eleventyComputed:
                                     <p style="margin-bottom: 0.5rem;">Geen voorstellen</p>
                                 {% endif %}
 
-                                <p class="bold capitalize">{{ languages[page.lang].votes }}</p>
+                                <p class="bold capitalize">{{ languages[nl].votes }}</p>
                                 <p style="margin-bottom: 0.5rem;">{{ plenary2.votes.length }} stemming(en)</p>
                                 <div>
                                     {% if plenary2.allVotes.length > 0 %}
                                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                                            <p class="bold">{{ languages[page.lang].attendance }}</p>
+                                            <p class="bold">{{ languages[nl].attendance }}</p>
                                             <p>{{ attendance.count }}/150 ({{ (attendance.ratio * 100) | round(0, 'floor') }}%)</p>
                                         </div>
 
@@ -166,8 +162,8 @@ eleventyComputed:
                                 </div>
                             </div>
                         </div>
-                        <a href="/{{ page.lang }}/sessions/56/meetings/plenary/{{ plenary2.meeting_id }}/" class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
-                            <p>{{ languages[page.lang].seeMeetingDetails }}</p>
+                        <a href="/nl/sessions/56/meetings/plenary/{{ plenary2.meeting_id }}/" class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
+                            <p>{{ languages[nl].seeMeetingDetails }}</p>
                             {% lucide "chevron-right" %}
                         </a>
                     </div>
@@ -187,8 +183,8 @@ eleventyComputed:
                             </p>
                         </div>
                     </div>
-                    <a href="/{{ page.lang }}/sessions/56/meetings/commission/{{ commission.meeting_id }}/" class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
-                        <p>{{ languages[page.lang].seeMeetingDetails }}</p>
+                    <a href="/nl/sessions/56/meetings/commission/{{ commission.meeting_id }}/" class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
+                        <p>{{ languages[nl].seeMeetingDetails }}</p>
                         {% lucide "chevron-right" %}
                     </a>
                 </div>
@@ -205,7 +201,7 @@ eleventyComputed:
         <h1 style="text-transform: capitalize; font-size: xx-large;">Snelle Links</h1>
 
         <div class="quick-links">
-                <a class="quick-link" href="/{{ page.lang }}/sessions/56/meetings">
+                <a class="quick-link" href="/nl/sessions/56/meetings">
                     <div class="flex space-between align-center">
                         <div class="flex column">
                             <div class="flex align-center">
@@ -218,7 +214,7 @@ eleventyComputed:
                     </div>
                 </a>
 
-                <a class="quick-link" href="/{{ page.lang }}/members">
+                <a class="quick-link" href="/nl/members">
                     <div class="flex space-between align-center">
                         <div class="flex column">
                             <div class="flex align-center">
@@ -230,7 +226,7 @@ eleventyComputed:
                         {% icon "lucide:chevron-right" %}
                     </div>
                 </a>
-                <a class="quick-link" href="/{{ page.lang }}/parties">
+                <a class="quick-link" href="/nl/parties">
                     <div class="flex space-between align-center">
                         <div class="flex column">
                             <div class="flex align-center">
@@ -243,7 +239,7 @@ eleventyComputed:
                     </div>
                 </a>
 
-                <a class="quick-link" href="/{{ page.lang }}/questions">
+                <a class="quick-link" href="/nl/questions">
 
                     <div class="flex space-between align-center">
                         <div class="flex column">
@@ -257,7 +253,7 @@ eleventyComputed:
                     </div>
                 </a>
 
-                <a class="quick-link" href="/{{ page.lang }}/propositions">
+                <a class="quick-link" href="/nl/propositions">
                     <div class="flex space-between align-center">
                         <div class="flex column">
                             <div class="flex align-center">
@@ -270,7 +266,7 @@ eleventyComputed:
                     </div>
                 </a>
 
-                <a class="quick-link" href="/{{ page.lang }}/votes">
+                <a class="quick-link" href="/nl/votes">
                     <div class="flex space-between align-center">
                         <div class="flex column">
                             <div class="flex align-center">
@@ -283,7 +279,7 @@ eleventyComputed:
                     </div>
                 </a>
 
-                <a class="quick-link" href="/{{ page.lang }}/topics">
+                <a class="quick-link" href="/nl/topics">
                     <div class="flex space-between align-center">
                         <div class="flex column">
                             <div class="flex align-center">
@@ -296,7 +292,7 @@ eleventyComputed:
                     </div>
                 </a>
 
-                <a class="quick-link" href="/{{ page.lang }}/lobby">
+                <a class="quick-link" href="/nl/lobby">
                     <div class="flex space-between align-center">
                         <div class="flex column">
                             <div class="flex align-center">
@@ -315,11 +311,11 @@ eleventyComputed:
 
         <h1 style="text-transform: capitalize; font-size: xx-large;">Onderwerpen</h1>
 
-        <p>{{ languages[page.lang].topicsExplanation }}</p>
+        <p>{{ languages[nl].topicsExplanation }}</p>
             <ul id="topics-list">
                 {% for key in topics | keys %}
                     <li>
-                        <a href="/{{ page.lang }}/topics/{{key | slugify}}">{{ topics[key].icon or '' }}
+                        <a href="/nl/topics/{{key | slugify}}">{{ topics[key].icon or '' }}
                             {{ key }}</a>
                     </li>
                 {% endfor %}
@@ -329,7 +325,7 @@ eleventyComputed:
         <h1 style="text-transform: capitalize; font-size: xx-large;">Kalender</h1>
 
 
-        <p>{{ languages[page.lang].calendarExplanation }}</p>
+        <p>{{ languages[nl].calendarExplanation }}</p>
             <div>
                 <div id="calendars">
                     <div class="calendar">
@@ -403,28 +399,28 @@ eleventyComputed:
                             {% endfor %}
                         </ul>
                         <div class="legend-row" style="display: flex; align-items: center;">
-                            <span style="margin-right: 0.4rem;">{{ languages[page.lang].less }}</span>
+                            <span style="margin-right: 0.4rem;">{{ languages[nl].less }}</span>
                             <li></li>
                             <li class="meeting" data-level="1"></li>
                             <li class="meeting" data-level="2"></li>
                             <li class="meeting" data-level="3"></li>
-                            <span style="margin-left: 0.4rem">{{ languages[page.lang].more }}
-                                {{ languages[page.lang].plenaryMeetings }}</span>
+                            <span style="margin-left: 0.4rem">{{ languages[nl].more }}
+                                {{ languages[nl].plenaryMeetings }}</span>
                         </div>
                         <div class="legend-row" style="display: flex; align-items: center;">
-                            <span style="margin-right: 0.4rem;">{{ languages[page.lang].less }}</span>
+                            <span style="margin-right: 0.4rem;">{{ languages[nl].less }}</span>
                             <li></li>
                             <li class="commission" data-level="1"></li>
                             <li class="commission" data-level="2"></li>
                             <li class="commission" data-level="3"></li>
-                            <span style="margin-left: 0.4rem">{{ languages[page.lang].more }}
-                                {{ languages[page.lang].commissionMeetings }}</span>
+                            <span style="margin-left: 0.4rem">{{ languages[nl].more }}
+                                {{ languages[nl].commissionMeetings }}</span>
                         </div>
                     </div>
                 </div>
 
-                <p>{{ languages[page.lang].plenaryMeetingsExplanation }}</p>
-                <p>{{ languages[page.lang].commissionMeetingsExplanation }}</p>
+                <p>{{ languages[nl].plenaryMeetingsExplanation }}</p>
+                <p>{{ languages[nl].commissionMeetingsExplanation }}</p>
             </div>
         </div>
     </main>

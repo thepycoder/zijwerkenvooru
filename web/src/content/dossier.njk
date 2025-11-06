@@ -9,12 +9,12 @@ permalink: "{{ dossier.permalink }}"
 canonical: "nl/sessions/{{dossier.session_id}}/dossiers/{{ dossier.dossier_id }}/"
 eleventyComputed:
     title: "zwvu | {{ dossier.title }}"
-    description: "Over het {{ languages[page.lang][dossier.document_type] }}: {{ dossier.title }} (dossier {{ dossier.dossier_id }})"
+    description: "Over het {{ languages[nl][dossier.document_type] }}: {{ dossier.title }} (dossier {{ dossier.dossier_id }})"
 ---
 
 <!-- PAGEFIND EXCERPT -->
-<span style="display: none" data-pagefind-meta="title">{{ languages[page.lang][dossier.document_type] }}</span>
-<span style="display: none" data-pagefind-body>{{ languages[page.lang][dossier.document_type] }} over {{ dossier.title }}</span>
+<span style="display: none" data-pagefind-meta="title">{{ languages[nl][dossier.document_type] }}</span>
+<span style="display: none" data-pagefind-body>{{ languages[nl][dossier.document_type] }} over {{ dossier.title }}</span>
 
 <!-- COMPONENTS -->
 {%- from "components/vote-card.njk" import voteCard -%}
@@ -43,7 +43,7 @@ eleventyComputed:
                         {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
                         <span>
                             <span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span>
-                            <a class="questioner" href="/{{page.lang}}/members/{{ author.name | slugify }}/" class="respondent">{{ author.name }}</a>
+                            <a class="questioner" href="/nl/members/{{ author.name | slugify }}/" class="respondent">{{ author.name }}</a>
                         </span><br>
                     {% endif %}
                 {% endfor %}
@@ -58,11 +58,11 @@ eleventyComputed:
         <span class="icon-padded">{% icon "lucide:vote" %}</span>
         {% if dossier.status == "Aangenomen" %}
         <span class="topic" style="background-color: #28a745; color: white; margin-right: 0.4rem;">
-        {{ languages[page.lang].passed }}
+        {{ languages[nl].passed }}
         </span>
         {% elseif dossier.status == "Verworpen" %}
         <span class="topic" style="background-color: #dc3545; color: white; margin-right: 0.4rem;">
-        {{ languages[page.lang].failed }}
+        {{ languages[nl].failed }}
         </span>
         {% endif%}
         op {{ dossier.vote_date | date }}
@@ -74,7 +74,7 @@ eleventyComputed:
 </div>
 
 <!-- SHARE BUTTON -->
-<button id="share-button">{{ languages[page.lang].shareDossier }}</button>
+<button id="share-button">{{ languages[nl].shareDossier }}</button>
 
 <!-- VOTE CONTENTS -->
 <h2>Waarover gaat dit</h2>
@@ -95,11 +95,11 @@ eleventyComputed:
                 <p style="font-size: small;">{{ dossier.vote_date | date }}</p>
                 {% if dossier.status == "Aangenomen" %}
                 <span class="topic" style="background-color: #28a745; color: white;">
-                {{ languages[page.lang].passed }}
+                {{ languages[nl].passed }}
                 </span>
                 {% elseif dossier.status == "Verworpen" %}
                 <span class="topic" style="background-color: #dc3545; color: white;">
-                {{ languages[page.lang].failed }}
+                {{ languages[nl].failed }}
                 </span>
                 {% endif%}
             </div>
@@ -115,7 +115,7 @@ eleventyComputed:
             {% endif%}
 
             <div class="info">
-                <p><span class="bold">{{ doc.id | padLeft(3, '0') }}. {{ languages[page.lang][doc.type] }}</span> (<a href="https://www.dekamer.be/FLWB/PDF/{{ dossier.session_id }}/{{ dossier.dossier_id | padLeft(4, '0') }}/{{ dossier.session_id }}K{{ dossier.dossier_id | padLeft(4, '0') }}{{ doc.id }}.pdf" target="_blank">{{ dossier.session_id }}K{{ dossier.dossier_id | padLeft(4, '0') }}{{ doc.id }}</a>)</p>
+                <p><span class="bold">{{ doc.id | padLeft(3, '0') }}. {{ languages[nl][doc.type] }}</span> (<a href="https://www.dekamer.be/FLWB/PDF/{{ dossier.session_id }}/{{ dossier.dossier_id | padLeft(4, '0') }}/{{ dossier.session_id }}K{{ dossier.dossier_id | padLeft(4, '0') }}{{ doc.id }}.pdf" target="_blank">{{ dossier.session_id }}K{{ dossier.dossier_id | padLeft(4, '0') }}{{ doc.id }}</a>)</p>
                 <p style="font-size: small;">{{ doc.date | date }}</p>
                 <p style="font-size: small;"></p>
                 <ul style="display: flex; flex-direction: column; gap: 0.2rem;" class="links">
@@ -123,13 +123,13 @@ eleventyComputed:
                     {% set party = author.party | lower %}
                     {% set primaryColor = partyColors[party].primary or '#95a5a6' %}
                     {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
-                    <li style="display: flex; margin-left: 0; justify-content: space-between; width: 100%; gap: 1rem;"><span class="party small" style="color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span><a href="/{{ page.lang }}/members/{{ author.name | slugify }}/">{{ author.name }}</a></li>
+                    <li style="display: flex; margin-left: 0; justify-content: space-between; width: 100%; gap: 1rem;"><span class="party small" style="color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span><a href="/nl/members/{{ author.name | slugify }}/">{{ author.name }}</a></li>
                     {% endfor %}
                 </ul>
 
                 <!-- VOTE -->
                 {% if doc.votes[0] %}
-                <a class="flex space-between align-center" style="width: 100%;" href="/{{ page.lang }}/sessions/{{ doc.votes[0].session_id }}/meetings/plenary/{{ doc.votes[0].meeting_id }}/votes/{{doc.votes[0].vote_id}}/">
+                <a class="flex space-between align-center" style="width: 100%;" href="/nl/sessions/{{ doc.votes[0].session_id }}/meetings/plenary/{{ doc.votes[0].meeting_id }}/votes/{{doc.votes[0].vote_id}}/">
                 <div class="vote-bar" style="width: 90%;">
                     <div class="bar-segment yes"
                          style="width: {{ (doc.votes[0].yes_count / ((doc.votes[0].yes_count | int) + (doc.votes[0].no_count | int) + (doc.votes[0].abstain_count | int)) * 100).toFixed(1) }}%">
@@ -154,9 +154,9 @@ eleventyComputed:
                 </a>
 
                 <p class="vote-numbers">
-                    <span class="vote-dot yes"></span><span>{{ languages[page.lang].yes }} ({{ doc.votes[0].yes_count }})</span>
-                    <span class="vote-dot no"></span><span>{{ languages[page.lang].no }} ({{ doc.votes[0].no_count }})</span>
-                    <span class="vote-dot abstain"></span><span>{{ languages[page.lang].abstain }} ({{ doc.votes[0].abstain_count }})</span>
+                    <span class="vote-dot yes"></span><span>{{ languages[nl].yes }} ({{ doc.votes[0].yes_count }})</span>
+                    <span class="vote-dot no"></span><span>{{ languages[nl].no }} ({{ doc.votes[0].no_count }})</span>
+                    <span class="vote-dot abstain"></span><span>{{ languages[nl].abstain }} ({{ doc.votes[0].abstain_count }})</span>
                 </p>
                 {% endif %}
 
@@ -169,14 +169,14 @@ eleventyComputed:
         <li class="dossier-event is-done">
             <span class="dot-icon">{% icon "lucide:inbox" %}</span>
             <div class="info">
-                <p><span class="bold">{{ languages[page.lang][dossier.document_type] }}</span></p>
+                <p><span class="bold">{{ languages[nl][dossier.document_type] }}</span></p>
                 <p style="font-size: small;">{{ dossier.submission_date | date }}</p>
                 <ul style="display: flex; flex-direction: column; gap: 0.2rem;" class="links">
                     {% for author in dossier.authors %}
                     {% set party = author.party | lower %}
                     {% set primaryColor = partyColors[party].primary or '#95a5a6' %}
                     {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
-                    <li class="gap" style="display: flex; margin-left: 0; width: 100%;"><span class="party small" style="color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span><a href="/{{ page.lang }}/members/{{ author.name | slugify }}/">{{ author.name }}</a></li>
+                    <li class="gap" style="display: flex; margin-left: 0; width: 100%;"><span class="party small" style="color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span><a href="/nl/members/{{ author.name | slugify }}/">{{ author.name }}</a></li>
                     {% endfor %}
                 </ul>
             </div>

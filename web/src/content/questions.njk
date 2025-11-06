@@ -1,10 +1,6 @@
 ---
 layout: layouts/page
-pagination:
-    data: languages
-    size: 1
-    alias: lang
-permalink: "{{ lang }}/questions/"
+permalink: "nl/questions/"
 eleventyComputed:
     title: "Parlementaire vragen in de Kamer"
     description: "Blader door alle schriftelijke en mondelinge vragen van Belgische Kamerleden. Bekijk wie wat vroeg en wanneer, met antwoorden van ministers."
@@ -42,7 +38,7 @@ eleventyComputed:
         {% for question in meeting.questions %}
         {% set allTopics = question.topics_nl | getMatchedTopics(topics) %}
         <div class="question-card-wrapper" data-topics="{{ allTopics | join(',') }}">
-            {{ questionCardTiny({ question: question, topic: allTopics[0], topics: topics, functions: functions, translations: languages[page.lang], language: page.lang, showCategory: "true" }) }}
+            {{ questionCardTiny({ question: question, topic: allTopics[0], topics: topics, functions: functions, translations: languages[nl], language: nl, showCategory: "true" }) }}
         </div>
         {% endfor %}
     </div>

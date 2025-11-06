@@ -46,7 +46,7 @@ eleventyComputed:
 
         <div class="info-item">
              <span class="icon-padded">{% icon "lucide:clock" %}</span>
-            <p>{{ languages[page.lang].From }} {{ commission.start_time }} {{ languages[page.lang].until }} {{ commission.end_time }} ({{ commission.start_time | duration(commission.end_time)
+            <p>{{ languages[nl].From }} {{ commission.start_time }} {{ languages[nl].until }} {{ commission.end_time }} ({{ commission.start_time | duration(commission.end_time)
                 }})</p>
         </div>
 
@@ -71,7 +71,7 @@ eleventyComputed:
 
         <div class="info-item">
               <span class="icon-padded">{% icon "lucide:file-digit" %}</span>
-            <p>{{ languages[page.lang].source }} <a
+            <p>{{ languages[nl].source }} <a
                     href="https://www.dekamer.be/doc/CCRI/html/{{ commission.session_id }}/ic{{ commission.meeting_id | padLeft(3, '0') }}x.html"
                     target="_blank">dekamer.be</a></p>
         </div>
@@ -80,12 +80,12 @@ eleventyComputed:
 </div>
 
 <!-- SHARE BUTTON -->
-<button id="share-button">{{ languages[page.lang].shareMeeting }}</button>
+<button id="share-button">{{ languages[nl].shareMeeting }}</button>
 
 <!-- QUESTIONS -->
-<h2>{{ languages[page.lang].Questions }}</h2>
+<h2>{{ languages[nl].Questions }}</h2>
 {% if commission.questions.length == 0 %}
-<p>{{ languages[page.lang].noQuestions }}</p>
+<p>{{ languages[nl].noQuestions }}</p>
 {% else %}
 <p>De volgende vragen werden gesteld tijdens deze commissievergadering.</p>
 <div id="question-list">
@@ -99,8 +99,8 @@ eleventyComputed:
         topics: topics,
         functions: functions,
         partyColors: partyColors,
-        translations: languages[page.lang],
-        language: page.lang,
+        translations: languages[nl],
+        language: nl,
         nolink: true,
         showCategory: 'false'
         }) }}

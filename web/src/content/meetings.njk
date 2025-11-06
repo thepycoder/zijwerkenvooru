@@ -1,10 +1,6 @@
 ---
 layout: layouts/page
-pagination:
-    data: languages
-    size: 1
-    alias: lang
-permalink: "{{ lang }}/sessions/56/meetings/"
+permalink: "nl/sessions/56/meetings/"
 eleventyComputed:
     title: "Parlementaire vergaderingen in de Kamer"
     description: "Alle plenaire en commissievergaderingen van de Belgische Kamer, met agenda, deelnemers en besproken thema’s."
@@ -42,7 +38,7 @@ eleventyComputed:
 </div>
 
 <!-- SHARE BUTTON -->
-<button id="share-button">{{ languages[page.lang].sharePage }}</button>
+<button id="share-button">{{ languages[nl].sharePage }}</button>
 
 <!-- OVERVIEW -->
 <h2>Alle vergaderingen</h2>
@@ -87,9 +83,9 @@ eleventyComputed:
     <div
             {% if not isEmpty %}
                 {% if meeting.type == 'plenary' %}
-            onclick="window.location.href='/{{ page.lang }}/sessions/{{ meeting.session_id }}/meetings/plenary/{{ meeting.meeting_id }}'"
+            onclick="window.location.href='/nl/sessions/{{ meeting.session_id }}/meetings/plenary/{{ meeting.meeting_id }}'"
                {% elseif meeting.type == 'commission' %}
-               onclick="window.location.href='/{{ page.lang }}/sessions/{{ meeting.session_id }}/meetings/commission/{{ meeting.meeting_id }}'"
+               onclick="window.location.href='/nl/sessions/{{ meeting.session_id }}/meetings/commission/{{ meeting.meeting_id }}'"
                      {% endif %}
             {% endif %}
             class="card"
@@ -150,12 +146,12 @@ eleventyComputed:
             <div>
                 {% if  meeting.allVotes.length > 0 %}
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                    <p class="bold">{{ languages[page.lang].attendance }}</p>
+                    <p class="bold">{{ languages[nl].attendance }}</p>
                     <p>{{ attendance.count }}/150 ({{ (attendance.ratio * 100) | round(0, 'floor') }}%)</p>
                 </div>
                 {% else %}
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                    <p class="bold">{{ languages[page.lang].attendance }}</p>
+                    <p class="bold">{{ languages[nl].attendance }}</p>
                     <p>onbekend</p>
                 </div>
                 {% endif %}

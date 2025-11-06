@@ -53,7 +53,7 @@ eleventyComputed:
                     alt="A picture of {{ member.first_name }} {{ member.last_name }}"
                     style="width: 1.2rem; height: 1.2rem; object-fit: cover; border-radius: 50%;
                 {% if member.active != 'true' %} filter: grayscale(100%); {% endif %}">
-            <p><a class="member" href="/{{page.lang}}/members/{{ member.first_name | slugify }}-{{ member.last_name | slugify }}/">{{ member.first_name }} {{ member.last_name }}</a> ({{ member.date_of_birth | age }})</p>
+            <p><a class="member" href="/nl/members/{{ member.first_name | slugify }}-{{ member.last_name | slugify }}/">{{ member.first_name }} {{ member.last_name }}</a> ({{ member.date_of_birth | age }})</p>
         </div>
         {% endfor %}
         </div>
@@ -61,7 +61,7 @@ eleventyComputed:
 </div>
 
 <!-- SHARE BUTTON -->
-<button id="share-button">{{ languages[page.lang].sharePage }}</button>
+<button id="share-button">{{ languages[nl].sharePage }}</button>
 
 <!-- ACTIVITIES PER TOPIC -->
 <h2>Activiteit in De Kamer</h2>
@@ -97,7 +97,7 @@ eleventyComputed:
             {% for question in party.questions | sort(attribute='date', true) %}
             {% set allTopics = question.topics_nl | getMatchedTopics(topics) %}
             <div class="question-card-wrapper" data-topics="{{ allTopics | join(',') }}">
-            {{ questionCard({ question: question, topic: allTopics[0], topics: topics, functions: functions, translations: languages[page.lang], language: page.lang, hideAuthors: "true", showCategory: "true" }) }}
+            {{ questionCard({ question: question, topic: allTopics[0], topics: topics, functions: functions, translations: languages[nl], language: nl, hideAuthors: "true", showCategory: "true" }) }}
             </div>
             {% endfor %}
             </div>

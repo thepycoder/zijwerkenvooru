@@ -175,7 +175,7 @@ eleventyComputed:
 
 
 <!-- SHARE BUTTON -->
-<button id="share-button">{{ languages[page.lang].sharePage }}</button>
+<button id="share-button">{{ languages[nl].sharePage }}</button>
 
 <!-- ACTIVITIES -->
 <h2>Activiteit in De Kamer</h2>
@@ -208,8 +208,8 @@ eleventyComputed:
             topic: topic,
             topics: topics,
             functions: functions,
-            translations: languages[page.lang],
-            language: page.lang,
+            translations: languages[nl],
+            language: nl,
             hideAuthors: "true"
           }) }}
         </div>
@@ -236,7 +236,7 @@ eleventyComputed:
             <div id="proposition-list">
             {% for proposition in member.propositions | sort(attribute='date', true) %}
                 <div>
-                    {{ propositionCard({proposition: proposition, translations: languages[page.lang], language: page.lang, hideAuthors: "true" }) }}
+                    {{ propositionCard({proposition: proposition, translations: languages[nl], language: nl, hideAuthors: "true" }) }}
                 </div>
             {% endfor %}
             </div>
@@ -289,11 +289,9 @@ eleventyComputed:
                     <td>
                         <div style="display: flex; flex-direction: column; align-items: start; gap: 0.4rem;">
                             <p style="margin: 0;">
-                            {% if page.lang === "nl" %}
+
                             ({{ vote.date | shortDate }}) {{ vote.title_nl }}
-                            {% else %}
-                            ({{ vote.date | shortDate }}) {{ vote.title_fr }}
-                            {% endif %}
+
                             </p>
                             <a target="_blank" href="/nl/sessions/{{vote.session_id}}/meetings/plenary/{{vote.meeting_id}}/votes/{{ vote.vote_id }}/">Bekijk details</a>
                         </div>

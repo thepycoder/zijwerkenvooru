@@ -1,15 +1,11 @@
 ---
 layout: layouts/page
-pagination:
-    data: languages
-    size: 1
-    alias: lang
-permalink: "{{ lang }}/about/"
+permalink: "nl/about/"
 title: Over zijwerkenvooru
 description: zijwerkenvooru.be is een site die informatie over de werking van de Belgische Kamer van Volksvertegenwoordigers verzamelt en publiceert.
 ---
 {#
-<p><a href="/{{page.lang}}/" class="uppercase"><- {{ languages[page.lang].home }}</a></p> #}
+<p><a href="/nl/" class="uppercase"><- {{ languages[nl].home }}</a></p> #}
 
 <h1>Over deze website</h1>
 
@@ -104,7 +100,7 @@ description: zijwerkenvooru.be is een site die informatie over de werking van de
 
     <details>
         <summary>Hoe kan ik de achterliggende data raadplegen?</summary>
-        <p>Zie <a href="/{{page.lang}}/data">/data</a> voor informatie over de data die gebruikt wordt bij het genereren van deze website.</p>
+        <p>Zie <a href="/nl/data">/data</a> voor informatie over de data die gebruikt wordt bij het genereren van deze website.</p>
     </details>
 
     <details>

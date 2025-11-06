@@ -24,13 +24,13 @@ eleventyComputed:
 
 <ul id="topics-list" style="margin-bottom: 1rem; margin-top: 1rem;">
     <li>
-        <a href="/{{page.lang}}/topics/{{topic.name | slugify}}">{{ topics[topic.name].icon or '' }} {{ topic.name }}</a>
+        <a href="/nl/topics/{{topic.name | slugify}}">{{ topics[topic.name].icon or '' }} {{ topic.name }}</a>
 
         {% if topics[topic.name].subtopics %}
         <ul style="margin-top: 0.4rem; margin-bottom: 0.4rem;">
             {% for subtopicName in topics[topic.name].subtopics | keys %}
             <li style="padding-bottom: 0.4rem;">
-                <a href="/{{ page.lang }}/topics/{{ topic.name | slugify }}/{{ subtopicName | slugify }}">
+                <a href="/nl/topics/{{ topic.name | slugify }}/{{ subtopicName | slugify }}">
                     {{ subtopicName }}
                 </a>
             </li>
@@ -55,7 +55,7 @@ eleventyComputed:
 
  <div style="display: flex; width: 100%; margin-top: 0.4rem;">
     <div class="card padding metric" style="width: 100%;">
-        <h3 style="margin: 0;" class="capitalize-first">{{ languages[page.lang].mostContributions }}</h3>
+        <h3 style="margin: 0;" class="capitalize-first">{{ languages[nl].mostContributions }}</h3>
         <svg id="topMembersChart"></svg>
     </div>
 </div>
@@ -75,7 +75,7 @@ eleventyComputed:
             <!-- SUMMARIZED VERSION -->
             <div class="card padding flex column gap">
                 <div style="margin-top: 0.2rem; margin-bottom: 0.2rem; display: flex; justify-content: space-between; align-items: center;">
-                    <p>{{ languages[page.lang].summarizedVersion }}</p>
+                    <p>{{ languages[nl].summarizedVersion }}</p>
                     <label class="switch">
                         <input type="checkbox" id="summaryToggle" />
                         <span class="slider round"></span>
@@ -84,12 +84,12 @@ eleventyComputed:
 
                 <details id="summaryExplanation" style="display: none;">
                     <summary>Hoe werkt dit?</summary>
-                    <p>{{ languages[page.lang].summaryExplanation }} <span class="highlight">{{ languages[page.lang].underlined }}</span>.</p>
+                    <p>{{ languages[nl].summaryExplanation }} <span class="highlight">{{ languages[nl].underlined }}</span>.</p>
                 </details>
             </div>
             {% for question in topicQuestions | sort(attribute='date', true) %}
                 <div>
-                    {{ questionCard({question: question, functions: functions, partyColors: partyColors, translations: languages[page.lang], language: page.lang }) }}
+                    {{ questionCard({question: question, functions: functions, partyColors: partyColors, translations: languages[nl], language: nl }) }}
                 </div>
             {%- endfor %}
         </div>
@@ -100,7 +100,7 @@ eleventyComputed:
        <div id="proposition-list">
             {% for proposition in topicPropositions| sort(attribute='date', true) %}
                 <div>
-                    {{ propositionCard({proposition: proposition, partyColors: partyColors, translations: languages[page.lang], language: page.lang }) }}
+                    {{ propositionCard({proposition: proposition, partyColors: partyColors, translations: languages[nl], language: nl }) }}
                 </div>
             {% endfor %}
         </div>
