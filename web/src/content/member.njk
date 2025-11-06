@@ -6,7 +6,6 @@ pagination:
     alias: member
     addAllPagesToCollections: true
 permalink: "{{ member.permalink }}"
-canonical: "{{ member.permalink }}"
 eleventyComputed:
     title: "Alles over {{ member.first_name }} {{ member.last_name }} (parlementslid {{ member.parties[0] }})"
     description: "Kamerlid {{ member.first_name }} {{ member.last_name }} zetelt in het federaal parlement. Bekijk stemgedrag, ingediende vragen, wetsvoorstellen, vergoedingen en meer. Hoe vertegenwoordigt {{ member.first_name }} {{ member.last_name }} u?"
