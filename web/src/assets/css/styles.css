@@ -43,8 +43,16 @@ body p {
 
 /* LAYOUT */
 main,
-#hero {
+#hero,
+nav{
     display: grid;
+    grid-template-columns: auto 1fr; /* Sidebar and main content layout */
+    grid-template-rows: 100%; /* Full height for the page */
+    grid-template-areas: "left content right";
+    flex: 1;
+}
+
+#site-menu {
     grid-template-columns: auto 1fr; /* Sidebar and main content layout */
     grid-template-rows: 100%; /* Full height for the page */
     grid-template-areas: "left content right";
@@ -61,7 +69,7 @@ h4 {
 
 /* NAVBAR */
 nav {
-    border-bottom: 4px solid black;
+    /*border-bottom: 4px solid black;*/
     position: fixed;
     padding: 1.2rem;
     top: 0;
@@ -78,6 +86,10 @@ nav {
     max-width: 100%;
     box-sizing: border-box;
     overflow-x: hidden;
+}
+
+nav a:hover {
+   background: transparent !important;;
 }
 
 #languageSelect {
@@ -119,11 +131,11 @@ nav {
     width: 100%;
     background: #fff;
     display: none; /* hidden by default */
-    border-bottom: 1px solid #e3e3e3; /* optional visual separation */
+
 }
 
 .site-menu.is-open {
-    display: block;
+    display: grid;
 }
 
 .site-menu__content {
@@ -803,61 +815,77 @@ details table {
 
 @media (min-width: 350px) {
     main,
-    #hero {
+    #hero,
+    nav,
+    #site-menu {
         grid-template-columns: auto 350px auto;
     }
 }
 
 @media (min-width: 400px) {
     main,
-    #hero {
+    #hero,
+    nav,
+    #site-menu  {
         grid-template-columns: auto 400px auto;
     }
 }
 
 @media (min-width: 450px) {
     main,
-    #hero {
+    #hero,
+    nav,
+    #site-menu  {
         grid-template-columns: auto 450px auto;
     }
 }
 
 @media (min-width: 576px) {
     main,
-    #hero {
+    #hero,
+    nav,
+    #site-menu  {
         grid-template-columns: auto 576px auto;
     }
 }
 
 @media (min-width: 768px) {
     main,
-    #hero {
+    #hero,
+    nav,
+    #site-menu  {
         grid-template-columns: auto 720px auto;
     }
 }
 
 @media (min-width: 992px) {
     main,
-    #hero {
+    #hero,
+    nav,
+    #site-menu  {
         grid-template-columns: auto 800px auto;
     }
 }
 
 @media (min-width: 1200px) {
     main,
-    #hero {
+    #hero,
+    nav,
+    #site-menu  {
         grid-template-columns: auto 900px auto;
     }
 }
 
 @media (min-width: 1400px) {
     .nav-bar nav {
-        grid-template-columns: auto 1000px auto;
+        grid-template-columns: auto 1200px auto;
     }
 
     main,
-    #hero {
-        grid-template-columns: auto 1000px auto;
+    #hero,
+    nav,
+    #site-menu  {
+        grid-template-columns: auto 1200px auto;
     }
 }
 

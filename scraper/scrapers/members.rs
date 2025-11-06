@@ -406,14 +406,34 @@ async fn extract_members(
         // Extract birthdate.
         let birth_date_raw = member_document
             .select(&Selector::parse("p").unwrap())
-            .find(|el| el.text().any(|t| t.contains("Geboren te")))
+            .find(|el| el.text().any(|t| t.contains("Geboren")))
             .map(|el| {
                 let text = el.text().collect::<String>();
-                text.split("Geboren te")
-                    .nth(1)
-                    .and_then(|s| s.split("op").nth(1))
-                    .map(|s| s.split('.').next().unwrap_or_default().trim().to_string())
-                    .unwrap_or_default()
+
+                // Split the paragraph into smaller segments (here '|' is used in your data)
+                // and pick the segment that mentions "Geboren".
+                let segments: Vec<&str> = text.split('|').map(|s| s.trim()).collect();
+                let geb_segment = segments
+                    .iter()
+                    .find(|s| s.to_lowercase().contains("geboren"))
+                    .unwrap_or(&"");
+
+                // Regex: optionally capture place after "Geboren te <place>" (non-greedy),
+                // then match "op <date>" where date is like "1 augustus 1983".
+                // Use a liberal month token (letters and hyphen) and stop before '.' or '|'.
+                let re = Regex::new(
+                    r"(?i)Geboren(?:\s+te\s+(?P<place>.*?))?\s+op\s+(?P<date>\d{1,2}\s+[^\d\.\|\n]+?\s+\d{4})"
+                ).unwrap();
+
+                if let Some(caps) = re.captures(geb_segment) {
+                    caps.name("date").map(|m| m.as_str().trim().trim_end_matches('.').to_string()).unwrap_or_default()
+                } else {
+                    // Fallback: maybe it's "Geboren op ..." without 'te' or different spacing
+                    let re2 = Regex::new(r"(?i)Geboren\s+op\s+(?P<date>\d{1,2}\s+[^\d\.\|\n]+?\s+\d{4})").unwrap();
+                    re2.captures(geb_segment)
+                        .and_then(|c| c.name("date").map(|m| m.as_str().trim().trim_end_matches('.').to_string()))
+                        .unwrap_or_default()
+                }
             })
             .unwrap_or_default();
 

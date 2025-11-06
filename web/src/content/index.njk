@@ -10,16 +10,18 @@ eleventyComputed:
     description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stellen, en volg de actualiteit in de Kamer. Transparant overzicht van het federaal parlement."
 ---
 
-<div id="hero" style="display: flex; flex-direction: column; align-items: center;">
-    <div class="content" style="display: flex; flex-direction: column; gap: 1rem;">
-        <h1 style="margin: 0; font-size: 2rem;">Hoe stemt het Belgische parlement?</h1>
-        <p style="margin: 0;">In het federaal parlement stemmen verkozen vertegenwoordigers over wetten die uw leven rechtstreeks beïnvloeden.</p>
-        <p style="margin: 0;">Ontdek hier hoe u vertegenwoordigd wordt in De Kamer.</p>
-    </div>
-</div>
+
 
 <main>
     <div class="content">
+
+        <div id="hero" style="display: flex; flex-direction: column; align-items: center; margin-top: 2rem;">
+            <div class="content" style="display: flex; flex-direction: column; gap: 1rem;">
+                <h1 style="margin: 0; font-size: 2rem;">Hoe stemt het Belgische parlement?</h1>
+                <p style="margin: 0;">In het federaal parlement stemmen verkozen vertegenwoordigers over wetten die uw leven rechtstreeks beïnvloeden.</p>
+                <p style="margin: 0;">Ontdek hier hoe u vertegenwoordigd wordt in De Kamer.</p>
+            </div>
+        </div>
 
         <!-- NEWS -->
         {% set plenary = (meetings.meetings | filter("type", "plenary"))[0] %}
@@ -27,14 +29,14 @@ eleventyComputed:
         {% set commission = (meetings.meetings | filter("type", "commission"))[0] %}
 
                 {% set attendance = plenary.attendance %}
-        {% set attendanceColor = "red" %}
+        {% set attendanceColor = "#ff4c40" %}
         {% if attendance.ratio >= 0.85 %}
-            {% set attendanceColor = "green" %}
+            {% set attendanceColor = "#28a745" %}
         {% elif attendance.ratio >= 0.65 %}
-            {% set attendanceColor = "orange" %}
+            {% set attendanceColor = "#ff4c40" %}
         {% endif %}
 
-        <h1 style="text-transform: capitalize;">Nieuws</h1>
+        <h1 style="text-transform: capitalize; font-size: xx-large;">Recente Vergaderingen</h1>
         <p>Bekijk het verslag van de recentste plenaire vergaderingen en commissievergadering.</p>
 
         <div class="swipeable-row">
@@ -200,8 +202,9 @@ eleventyComputed:
         </div>
 
             <!-- QUICK LINKS -->
-            <h2>Snelle Links</h2>
-            <div class="quick-links">
+        <h1 style="text-transform: capitalize; font-size: xx-large;">Snelle Links</h1>
+
+        <div class="quick-links">
                 <a class="quick-link" href="/{{ page.lang }}/sessions/56/meetings">
                     <div class="flex space-between align-center">
                         <div class="flex column">
@@ -308,8 +311,11 @@ eleventyComputed:
             </div>
 
             <!-- TOPICS -->
-            <h2 style="margin-bottom: 0;" class="capitalize">{{ languages[page.lang].topics }}</h2>
-            <p>{{ languages[page.lang].topicsExplanation }}</p>
+
+
+        <h1 style="text-transform: capitalize; font-size: xx-large;">Onderwerpen</h1>
+
+        <p>{{ languages[page.lang].topicsExplanation }}</p>
             <ul id="topics-list">
                 {% for key in topics | keys %}
                     <li>
@@ -320,8 +326,10 @@ eleventyComputed:
             </ul>
 
             <!-- CALENDAR -->
-            <h2 style="margin-top:2rem; margin-bottom: 0;" class="capitalize">{{ languages[page.lang].calendar }}</h2>
-            <p>{{ languages[page.lang].calendarExplanation }}</p>
+        <h1 style="text-transform: capitalize; font-size: xx-large;">Kalender</h1>
+
+
+        <p>{{ languages[page.lang].calendarExplanation }}</p>
             <div>
                 <div id="calendars">
                     <div class="calendar">

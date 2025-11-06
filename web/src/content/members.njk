@@ -61,6 +61,9 @@ eleventyComputed:
         </div>
     </div>
 
+</div>
+
+<div class="swipeable-row" style="margin-top: 0.4rem;">
 
     <div class="swipeable-item">
         <div class="card padding">
@@ -231,7 +234,13 @@ eleventyComputed:
                     <img src="{{ imgSrc if has_image else 'https://placehold.co/100?text=%E2%9D%93' }}" alt="A picture of {{ member.first_name }} {{ member.last_name }}" style="width: 4rem; height: 4rem; object-fit: cover;
                                         {% if member.active != 'true' %} filter: grayscale(100%); {% endif %}">
                         <div class="flex column" style="align-items: start;">
+
+                            {% if member.date_of_birth  %}
                             <p class="member-name bold">{{ member.first_name }} {{ member.last_name }} ({{ member.date_of_birth | age }})</p>
+                           {% else %}
+                            <p class="member-name bold">{{ member.first_name }} {{ member.last_name }}</p>
+                            {% endif %}
+
                             {# <span
                                 class="party"
                                 style="font-weight: bold; background-color: {{ secondaryColor }}; color: {{ primaryColor }}; padding: 2px 4px; display:
