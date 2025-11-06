@@ -8,7 +8,7 @@ pagination:
 permalink: "{{ meeting.lang }}/sessions/{{ meeting.session_id }}/meetings/plenary/{{ meeting.meeting_id }}/"
 canonical: "nl/sessions/{{ meeting.session_id }}/meetings/plenary/{{ meeting.meeting_id }}/"
 eleventyComputed:
-    title: "Verslag vergadering {{ meeting.date | date }} ({{ languages['nl'][meeting.time_of_day] }})"
+    title: "Verslag plenaire vergadering {{ meeting.date | date }} ({{ languages['nl'][meeting.time_of_day] }})"
     description: "Details van de vergadering op {{ meeting.date | date }} ({{ languages['nl'][meeting.time_of_day] }}), met besproken agendapunten, vragen en stemmingen."
 ---
 
