@@ -1257,5 +1257,60 @@
         "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m3wnncnerw2e"
       }
     ]
+  },
+  {
+    "id": "70",
+    "date": "70",
+    "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m4yfgnltni27",
+    "replies": [
+      {
+        "type": "Vote",
+        "hash": "91bc898666e06470edb564d46ac3263f00cb838a521c29fe26e90f3f52653ab0",
+        "topic": "Moties ingediend tot besluit van de interpellaties van:\n- mevrouw @sofiemerckx.bsky.social over 'de onjuiste informatie over de uitsluitingen van het recht op een werkloosheidsuitkering'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m4yfgrungc2y"
+      },
+      {
+        "type": "Vote",
+        "hash": "235f143c7aee23aac924b12bd6c110ac0e1d81caf43e1ef267705730517a1f79",
+        "topic": "Moties ingediend tot besluit van de interpellaties van:\n- mevrouw Sophie Thémont over 'de definitie van het begrip ‘oorsprong’ door de KSZ: misbruik en desinformatie door de minister'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m4yfgwirns2y"
+      },
+      {
+        "type": "Vote",
+        "hash": "465fadb21292a37ff476d0b53ab2096e8d18d8d1ca0515d46207b4c95d12247e",
+        "topic": "Moties ingediend tot besluit van de interpellaties van:\n- mevrouw Alexia Bertrand over 'het uitblijven van de regeringsverklaring en de gevolgen voor de begroting en de hervormingen'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m4yfh32yvv2x"
+      },
+      {
+        "type": "Vote",
+        "hash": "7342d33d51b4d2691f1ab222dd5e034c58cdefd6613bb5ee7b2e75af08dc803f",
+        "topic": "Wetsontwerp tot uitlegging van de artikelen 1, 3, 8, 10 en 13 van de wet van 3 mei 1880 op het parlementair onderzoek",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m4yfh76v7y27"
+      },
+      {
+        "type": "Vote",
+        "hash": "cb2ffa03a3805cb998e12457cff41db5e9f3c43997bf29b45ebd24407fca1d63",
+        "topic": "Aangehouden amendement en artikel van het wetsvoorstel tot wijziging van de wet van 3 mei 1880 op het parlementair onderzoek, teneinde een wettelijk mechanisme in te voeren voor het vervallen, verlengen en opheffen van de geheimhouding (nieuw opschrift)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m4yfhf2trq2t"
+      },
+      {
+        "type": "Vote",
+        "hash": "5ed11b88908ca9c1414bb114714b9513f6c391e2a102461a67b9617820466ac8",
+        "topic": "Geheel van het wetsvoorstel tot wijziging van de wet van 3 mei 1880 op het parlementair onderzoek, teneinde een wettelijk mechanisme in te voeren voor het vervallen, verlengen en opheffen van de geheimhouding (nieuw opschrift)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m4yfhjzxsi2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "21fc531868b1f7707690449d16f2b8c4b7a6839368c31b54e66d078275201abf",
+        "topic": "Wetsontwerp tot wijziging van de wet van 27 februari 1987 betreffende de tegemoetkomingen aan personen met een handicap, wat betreft de wettelijke pensioenleeftijd",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m4yfho7r2i2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "331846d2b9e8798fa1b4a3e32333d94cc527b175316934be511680e85d800804",
+        "topic": "Voorstel tot verwerping door de commissie voor Justitie van het voorstel van resolutie betreffende de oprichting binnen het federaal parket van een afdeling die gespecialiseerd is in zware economische en financiële criminaliteit en in corruptie",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m4yfhsv26a2t"
+      }
+    ]
   }
 ]
