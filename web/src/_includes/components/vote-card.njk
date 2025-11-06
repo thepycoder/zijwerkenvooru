@@ -1,7 +1,7 @@
 {% macro voteCard(params) %}
 <div class="card padding rounded-top">
     <p class="title">
-        {% if params.language == "nl" %}
+
         <span>
             {{ (params.vote.title_nl
                 | replace(params.proposition.title_nl, params.translations[params.proposition.document_type] | toLowerCase))
@@ -10,16 +10,7 @@
             ({{ params.vote.dossier_id }}/{{ params.vote.document_id }})
                      {% endif %}
         </span>
-                {% elseif params.language == "fr" %}
-                <span>
-            {{ (params.vote.title_fr
-                | replace(params.proposition.title_fr, params.translations[params.proposition.document_type] | toLowerCase))
-                | highlightWord("verwerping") | safe }}.
-                    {% if params.vote.dossier_id and params.vote.document_id %}
-            ({{ params.vote.dossier_id }}/{{ params.vote.document_id }})
-                     {% endif %}
-        </span>
-        {% endif %}
+
 
     </p>
     <div class="vote-bar">

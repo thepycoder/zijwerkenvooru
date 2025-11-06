@@ -3,18 +3,18 @@
 
 {% if passed %}
   <a
-        href="/{{ params.language }}/sessions/{{ params.vote.session_id }}/meetings/plenary/{{ params.vote.meeting_id }}/votes/{{ params.vote.vote_id }}/"
+        href="/sessions/{{ params.vote.session_id }}/meetings/plenary/{{ params.vote.meeting_id }}/votes/{{ params.vote.vote_id }}/"
         class="card padding flex space-between align-center" style="background-color: #f3fff3">
    {% else %} 
      <a
-        href="/{{ params.language }}/sessions/{{ params.vote.session_id }}/meetings/plenary/{{ params.vote.meeting_id }}/votes/{{ params.vote.vote_id }}/"
+        href="/sessions/{{ params.vote.session_id }}/meetings/plenary/{{ params.vote.meeting_id }}/votes/{{ params.vote.vote_id }}/"
         class="card padding flex space-between align-center" style="background-color: #fff4f4">
 {% endif %}
 
   
         <div style="width: 90%;">
             <p class="title">
-                {% if params.language == "nl" %}
+
                     <span>
                         {{ (params.vote.title_nl
                 | replace(params.proposition.title_nl, params.translations[params.proposition.document_type] | toLowerCase))
@@ -24,17 +24,7 @@
                             ({{ params.vote.dossier_id }}/{{ params.vote.document_id }})
                         {% endif %}
                     </span>
-                {% elseif params.language == "fr" %}
-                    <span>
-                        {{ (params.vote.title_fr
-                | replace(params.proposition.title_fr, params.translations[params.proposition.document_type] | toLowerCase))
-                | highlightWord("verwerping") | safe }}
-                            .
-                        {% if params.vote.dossier_id and params.vote.document_id %}
-                            ({{ params.vote.dossier_id }}/{{ params.vote.document_id }})
-                        {% endif %}
-                    </span>
-                {% endif %}
+
             </p>
             <div class="vote-bar">
                 <div

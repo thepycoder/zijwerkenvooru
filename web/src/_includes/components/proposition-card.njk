@@ -11,13 +11,10 @@
         {% endif %}
         <div class="padding flex column gap">
             <p class="bold">
-                {% if params.language === "nl" %}
+
                 <span class="full">{{ params.proposition.title_nl }}</span>
                 <span class="summarized highlight" style="display: none;">{{ params.proposition.title_summary_nl }}</span>
-                {% else %}
-                <span class="full">{{ params.proposition.title_fr }}</span>
-                <span class="summarized highlight" style="display: none;">{{ params.proposition.title_summary_fr }}</span>
-                {% endif %}
+
             </p>
             {% if params.hideAuthors === "false" %}
             <div class="flex column">
@@ -30,7 +27,7 @@
                     {% set primaryColor = params.partyColors[party].primary or '#95a5a6' %}
                     {% set secondaryColor = params.partyColors[party].secondary or '#95a5a6' %}
                     <span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span>
-                    <span class="submitter"><a href="/{{params.language}}/members/{{ author.name | slugify }}/">{{ author.name }}</a></span><br>
+                    <span class="submitter"><a href="/members/{{ author.name | slugify }}/">{{ author.name }}</a></span><br>
                     {% endfor %}
                     </span>
                 </p>
@@ -41,7 +38,7 @@
                     {% set primaryColor = params.partyColors[party].primary or '#95a5a6' %}
                     {% set secondaryColor = params.partyColors[party].secondary or '#95a5a6' %}
                     <span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ params.proposition.authors[0].party }}</span>
-                    <span class="submitter"><a href="/{{params.language}}/members/{{ params.proposition.authors[0].name | slugify }}/">{{ params.proposition.authors[0].name }}</a></span><br>
+                    <span class="submitter"><a href="/members/{{ params.proposition.authors[0].name | slugify }}/">{{ params.proposition.authors[0].name }}</a></span><br>
                 </p>
                 {% endif %}
             </div>
@@ -80,7 +77,7 @@
 
 <!-- STATUS CARD -->
 {% if params.proposition.status %}
-<a href="/{{ params.language }}/sessions/{{ params.proposition.session_id }}/dossiers/{{ params.proposition.dossier_id }}/" class="proposition-status card rounded-bottom padding">
+<a href="/sessions/{{ params.proposition.session_id }}/dossiers/{{ params.proposition.dossier_id }}/" class="proposition-status card rounded-bottom padding">
     <div>
         <p>{{ params.translations[params.proposition.document_type] }}
             {% if params.proposition.status == "Aangenomen" %}
