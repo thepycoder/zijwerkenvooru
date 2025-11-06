@@ -242,13 +242,18 @@ async fn extract_members(
     let email_selector = Selector::parse("tr a[href*='mailto:']").unwrap();
     let language_selector = Selector::parse("p i").unwrap();
 
+    let row_selector = Selector::parse("tr").unwrap();
+    let rows = parent_document.select(&row_selector);
+
     // Iterate over each row.
     let mut processed_rows = 0;
-    for (_, row) in parent_document
-        .select(&Selector::parse("tr").unwrap())
-        .take(total_rows - 1)
-        .enumerate()
+    for row in rows
     {
+        // Only process rows that actually contain a member link
+        if extract_from_row(&row, &name_selector, None).is_none() {
+            continue; // skip disclaimer/footer or empty rows
+        }
+
         // Extract name.
         let name = match extract_from_row(&row, &name_selector, None) {
             None => "".to_string(),
