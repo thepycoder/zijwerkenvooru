@@ -8,9 +8,9 @@ eleventyComputed:
 
 {# <p><a href="javascript:history.back()"><- TERUG</a></p> #}
 
-<h1>{{ languages[nl].allTopics }}</h1>
+<h1>{{ languages["nl"].allTopics }}</h1>
 
-<p>{{ languages[nl].topicsExplanation }}</p>
+<p>{{ languages["nl"].topicsExplanation }}</p>
 
 {% for key in topics | keys %}
 <h2 class="capitalize-first" style="margin-top: 2rem;">{{ key }}</h2>

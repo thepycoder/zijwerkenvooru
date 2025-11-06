@@ -6,35 +6,35 @@ eleventyComputed:
     description: "Een compleet overzicht van alle federale parlementsleden in België. Bekijk hun stemgedrag, vragen, voorstellen en partij."
 ---
 
-<h1 class="capitalize">{{ languages[nl].theMembers }}</h1>
-<p>{{ languages[nl].chamberMembersExplanation }}</p>
+<h1 class="capitalize">{{ languages["nl"].theMembers }}</h1>
+<p>{{ languages["nl"].chamberMembersExplanation }}</p>
 <!-- KEY STATISTICS -->
 <div id="members-statistics">
     <div style=" display: flex; gap: 0.4rem; flex-direction: column;">
         <div class="member-metrics">
             <div class="card padding metric">
                 <h2>{{ members.members | filter("active", "true") | length }}</h2>
-                <p>{{ languages[nl].chamberMembers }}</p>
+                <p>{{ languages["nl"].chamberMembers }}</p>
             </div>
             <div class="card padding metric">
                 <h2>{{ members.members | map("parties") | map("0") | unique | length }}</h2>
-                <p>{{ languages[nl].parties }}</p>
+                <p>{{ languages["nl"].parties }}</p>
             </div>
         </div>
         <div class="member-metrics">
             <div class="card padding metric">
                 <h2>{{ (members.members | youngest).date_of_birth | age }}
-                    {{ languages[nl].age }}</h2>
+                    {{ languages["nl"].age }}</h2>
                 <p>{{ (members.members | youngest).first_name }}
                     {{ (members.members | youngest).last_name }},
-                {{ languages[nl].youngestMember }}</p>
+                {{ languages["nl"].youngestMember }}</p>
             </div>
             <div class="card padding metric">
                 <h2>{{ (members.members | oldest).date_of_birth | age }}
-                    {{ languages[nl].age }}</h2>
+                    {{ languages["nl"].age }}</h2>
                 <p>{{ (members.members | oldest).first_name }}
                     {{ (members.members | oldest).last_name }},
-                {{ languages[nl].eldestMember }}</p>
+                {{ languages["nl"].eldestMember }}</p>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@ eleventyComputed:
 <div class="swipeable-row" style="margin-top: 0.4rem;">
     <div class="swipeable-item">
          <div class="card padding">
-            <h3 style="margin-top: 0; margin-bottom: 0.4rem;" class="capitalize">{{ languages[nl].ageDistribution }}</h3>
+            <h3 style="margin-top: 0; margin-bottom: 0.4rem;" class="capitalize">{{ languages["nl"].ageDistribution }}</h3>
             <p>Wat is de leeftijdsverdeling van de kamerleden?</p>
             <svg id="ageHistogram" style="margin-top: 1rem;"></svg>
         </div>
@@ -170,10 +170,10 @@ eleventyComputed:
 
 
 <!-- SHARE BUTTON -->
-<button id="share-button">{{ languages[nl].sharePage }}</button>
+<button id="share-button">{{ languages["nl"].sharePage }}</button>
 <!-- MEMBERS FILTERS -->
-<h2 class="capitalize">{{ languages[nl].allMembers }}</h2>
-<p>{{ languages[nl].chamberMembersearchInstruction }}</p>
+<h2 class="capitalize">{{ languages["nl"].allMembers }}</h2>
+<p>{{ languages["nl"].chamberMembersearchInstruction }}</p>
 <input
     type="text"
     id="search-filter"
@@ -181,21 +181,21 @@ eleventyComputed:
     style="margin-bottom: 1rem; padding: 0.5rem; width: 100%; border-radius: 0;">
     <div style="margin-bottom: 1rem;">
         <select id="party-filter">
-            <option value="">-- {{ languages[nl].allParties }} --</option>
+            <option value="">-- {{ languages["nl"].allParties }} --</option>
             {% for party in members.members | map("parties") | map("0") | unique | sortAlpha %}
                 <option value="{{ party }}">{{ party }}</option>
             {% endfor %}
         </select>
         <select id="constituency-filter">
-            <option value="">-- {{ languages[nl].allConstituencies }} --</option>
+            <option value="">-- {{ languages["nl"].allConstituencies }} --</option>
             {% for constituency in members.members | map("constituency") | unique | sortAlpha %}
                 <option value="{{ constituency }}">{{ constituency }}</option>
             {% endfor %}
         </select>
         <select id="active-filter">
-            <option value="">-- {{ languages[nl].allStatuses }} --</option>
-            <option value="true">{{ languages[nl].active }}</option>
-            <option value="false">{{ languages[nl].inactive }}</option>
+            <option value="">-- {{ languages["nl"].allStatuses }} --</option>
+            <option value="true">{{ languages["nl"].active }}</option>
+            <option value="false">{{ languages["nl"].inactive }}</option>
         </select>
         <select id="sort-filter">
             <option value="">-- SORTEER --</option>
@@ -251,7 +251,7 @@ eleventyComputed:
                                     class="party"
                                     style="font-weight: bold; background-color: #e6e6e6; color: #6d6d6d; padding: 2px 4px; display: inline-block;
                                         border-radius: 5px;">
-                                    {{ languages[nl].inactive }}
+                                    {{ languages["nl"].inactive }}
                                 </span>
                             {% endif %}
 
@@ -395,8 +395,8 @@ eleventyComputed:
             <script>
                 document.addEventListener("DOMContentLoaded", function () {
                     const ages = {{ members.ages | dump | safe }}; // This is how you access the ages array
-                    const membersTranslation = "{{ languages[nl].chamberMembers }}";
-                    const ageRangeTranslation = "{{ languages[nl].ageRange }}";
+                    const membersTranslation = "{{ languages["nl"].chamberMembers }}";
+                    const ageRangeTranslation = "{{ languages["nl"].ageRange }}";
                     // Setup dimensions and margins
                     const margin = {
                         top: 5,

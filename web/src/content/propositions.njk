@@ -9,7 +9,7 @@ eleventyComputed:
 <!-- COMPONENTS -->
 {%- from "components/proposition-card-tiny.njk" import propositionCardTiny -%}
 
-<p><a href="/nl/" class="uppercase"><- {{ languages[nl].home }}</a></p>
+<p><a href="/nl/" class="uppercase"><- {{ languages["nl"].home }}</a></p>
 
 <h1>Alle Voorstellen</h1>
 
@@ -39,7 +39,7 @@ eleventyComputed:
         {% for proposition in meeting.propositions %}
         {% set allTopics = proposition.title_nl | getMatchedTopics(topics) %}
         <div class="proposition-card-wrapper" data-topics="{{ allTopics | join(',') }}">
-            {{ propositionCardTiny({ proposition: proposition, topic: allTopics[0], topics: topics, functions: functions, translations: languages[nl], language: nl, showCategory: "true" }) }}
+            {{ propositionCardTiny({ proposition: proposition, topic: allTopics[0], topics: topics, functions: functions, translations: languages["nl"], language: nl, showCategory: "true" }) }}
         </div>
         {% endfor %}
     </div>

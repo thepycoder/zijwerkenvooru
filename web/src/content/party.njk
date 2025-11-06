@@ -61,7 +61,7 @@ eleventyComputed:
 </div>
 
 <!-- SHARE BUTTON -->
-<button id="share-button">{{ languages[nl].sharePage }}</button>
+<button id="share-button">{{ languages["nl"].sharePage }}</button>
 
 <!-- ACTIVITIES PER TOPIC -->
 <h2>Activiteit in De Kamer</h2>
@@ -97,7 +97,7 @@ eleventyComputed:
             {% for question in party.questions | sort(attribute='date', true) %}
             {% set allTopics = question.topics_nl | getMatchedTopics(topics) %}
             <div class="question-card-wrapper" data-topics="{{ allTopics | join(',') }}">
-            {{ questionCard({ question: question, topic: allTopics[0], topics: topics, functions: functions, translations: languages[nl], language: nl, hideAuthors: "true", showCategory: "true" }) }}
+            {{ questionCard({ question: question, topic: allTopics[0], topics: topics, functions: functions, translations: languages["nl"], language: nl, hideAuthors: "true", showCategory: "true" }) }}
             </div>
             {% endfor %}
             </div>

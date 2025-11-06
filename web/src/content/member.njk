@@ -175,7 +175,7 @@ eleventyComputed:
 
 
 <!-- SHARE BUTTON -->
-<button id="share-button">{{ languages[nl].sharePage }}</button>
+<button id="share-button">{{ languages["nl"].sharePage }}</button>
 
 <!-- ACTIVITIES -->
 <h2>Activiteit in De Kamer</h2>
@@ -208,7 +208,7 @@ eleventyComputed:
             topic: topic,
             topics: topics,
             functions: functions,
-            translations: languages[nl],
+            translations: languages["nl"],
             language: nl,
             hideAuthors: "true"
           }) }}
@@ -236,7 +236,7 @@ eleventyComputed:
             <div id="proposition-list">
             {% for proposition in member.propositions | sort(attribute='date', true) %}
                 <div>
-                    {{ propositionCard({proposition: proposition, translations: languages[nl], language: nl, hideAuthors: "true" }) }}
+                    {{ propositionCard({proposition: proposition, translations: languages["nl"], language: nl, hideAuthors: "true" }) }}
                 </div>
             {% endfor %}
             </div>
