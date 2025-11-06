@@ -9,16 +9,13 @@
         {% endif %}
         <div class="padding flex column gap">
             <p class="bold">
-                {% if params.language === "nl" %}
+
                 {% if params.proposition.title_summary_nl %}
                 <span class="highlight" style="display: inline;">{{ params.proposition.title_summary_nl }}</span>
                 {% else %}
                 <span style="display: inline;">{{ params.proposition.title_nl }}</span>
                 {% endif %}
-                {% else %}
-                <span class="full">{{ params.proposition.title_fr }}</span>
-                <span class="summarized highlight" style="display: none;">{{ params.proposition.title_summary_fr }}</span>
-                {% endif %}
+
             </p>
         </div>
     </div>
@@ -26,7 +23,7 @@
 
 <!-- STATUS CARD -->
 {% if params.proposition.status %}
-<a href="/{{ params.language }}/dossiers/{{ params.proposition.session_id }}/{{ params.proposition.dossier_id }}/" class="proposition-status card rounded-bottom padding">
+<a href="/dossiers/{{ params.proposition.session_id }}/{{ params.proposition.dossier_id }}/" class="proposition-status card rounded-bottom padding">
     <div>
         <p>{{ params.translations[params.proposition.document_type] }}
             {% if params.proposition.status == "Aangenomen" %}

@@ -1,6 +1,6 @@
 {% macro questionCardTiny(params) %}
 <!-- TITLE -->
-<a class="meeting-item card rounded-top" href="/{{ params.language }}/questions/{{ params.question.session_id }}/{{ params.question.meeting_id }}/{{ params.question.question_id }}/">
+<a class="meeting-item card rounded-top" href="/questions/{{ params.question.session_id }}/{{ params.question.meeting_id }}/{{ params.question.question_id }}/">
     {% if params.topic and params.showCategory !== "false" %}
     <div class="category">
         {# {{ params.topics[params.topic].icon or '' }}  #}
@@ -10,16 +10,13 @@
 
     <div class="padding flex space-between">
         <p class="bold">
-            {% if params.language === "nl" %}
+
             {% if params.question.topics_summary_nl %}
             <span class="highlight" style="display: inline;">{{ params.question.topics_summary_nl }}</span>
             {% else %}
             <span style="display: inline;">{{ params.question.topics_nl }}</span>
             {% endif %}
-            {% else %}
-            <span class="full">{{ params.question.topics_fr }}</span>
-            <span class="summarized highlight" style="display: none;">{{ params.question.topics_summary_fr }}</span>
-            {% endif %}
+
         </p>
         {% lucide "chevron-right" %}
     </div>
