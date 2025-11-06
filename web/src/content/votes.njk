@@ -38,7 +38,7 @@ eleventyComputed:
         {% for vote in meeting.allVotes %}
         {% set allTopics = vote.title_nl | getMatchedTopics(topics) %}
         <div class="vote-card-wrapper" data-topics="{{ allTopics | join(',') }}">
-            {{ voteCardTiny({ vote: vote, topic: allTopics[0], topics: topics, functions: functions, translations: languages["nl"], language: nl, showCategory: "true" }) }}
+            {{ voteCardTiny({ vote: vote, topic: allTopics[0], topics: topics, functions: functions, translations: languages['nl'], language: nl, showCategory: "true" }) }}
         </div>
         {% endfor %}
     </div>

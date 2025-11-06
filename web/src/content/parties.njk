@@ -6,12 +6,12 @@ eleventyComputed:
     description: "Analyseer hoe politieke partijen stemmen in de Kamer. Ontdek hun gedrag bij wetsvoorstellen en debatten."
 ---
 
-{# <p><a href="/nl/" class="uppercase"><- {{ languages["nl"].home }}</a></p> #}
+{# <p><a href="/nl/" class="uppercase"><- {{ languages['nl'].home }}</a></p> #}
 
-<h1 class="capitalize">{{ languages["nl"].theParties }}</h1>
+<h1 class="capitalize">{{ languages['nl'].theParties }}</h1>
 
-<p>{{ languages["nl"].partiesExplanation1 }}</p>
-<p>{{ languages["nl"].partiesExplanation2 }}</p>
+<p>{{ languages['nl'].partiesExplanation1 }}</p>
+<p>{{ languages['nl'].partiesExplanation2 }}</p>
 
 <!-- KEY STATISTICS -->
 <div id="members-statistics">
@@ -21,18 +21,18 @@ eleventyComputed:
             <div class="mobile-row gap" style="display: flex; width: 100%;">
                 <div class="card padding metric">
                     <h2>{{ members.members | filter("active", "true") | length }}</h2>
-                    <p>{{ languages["nl"].chamberMembers }}</p>
+                    <p>{{ languages['nl'].chamberMembers }}</p>
                 </div>
                 <div class="card padding metric">
                     <h2>{{ members.members | map("parties") | map("0") | unique | length }}</h2>
-                    <p>{{ languages["nl"].parties }}</p>
+                    <p>{{ languages['nl'].parties }}</p>
                 </div>
             </div>
 
             <!-- SEAT DISTRIBUTION -->
             <div style="display: flex; width: 100%;">
                 <div class="card padding metric" style="width: 100%;">
-                    <h3 style="margin: 0;" class="capitalize">{{ languages["nl"].seatDistribution }}</h3>
+                    <h3 style="margin: 0;" class="capitalize">{{ languages['nl'].seatDistribution }}</h3>
                     <div id="parliamentChart">
                         <svg></svg>
                     </div>

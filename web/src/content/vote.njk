@@ -15,7 +15,7 @@ eleventyComputed:
 <span style="display: none" data-pagefind-meta="title">Stemming op {{ vote.date | date }} over {{ vote.title_nl }}</span>
 <span style="display: none" data-pagefind-body>Vraag van {% for questioner in question.questioners %}{{ questioner.name }}{% if not loop.last %}, {% endif %}{% endfor %} over {% if question.topics_summary_nl %}{{ question.topics_summary_nl }}{% else %}{{ question.topics_nl }}{% endif %}: {% for discussion in question.discussion %}{{ discussion.text | replace("NEWPARAGRAPH", " ") }}{% endfor %}</span>
 
-<h1>{{ languages["nl"].Vote }}</h1>
+<h1>{{ languages['nl'].Vote }}</h1>
 
 
 <h3 style="font-weight: normal; margin-top: 0;">{{ vote.title_nl }}.</h3>
@@ -27,9 +27,9 @@ eleventyComputed:
         <span class="icon-padded">{% icon "lucide:vote" %}</span>
         <p>
             {% if (vote.yes_count | int) > ((vote.no_count | int) + (vote.abstain_count | int)) %}
-            <span class="topic" style="background-color: #28a745; color: white;">{{ languages["nl"].passed }}</span>
+            <span class="topic" style="background-color: #28a745; color: white;">{{ languages['nl'].passed }}</span>
             {% else %}
-            <span class="topic" style="background-color: #dc3545; color: white;">{{ languages["nl"].failed }}</span>
+            <span class="topic" style="background-color: #dc3545; color: white;">{{ languages['nl'].failed }}</span>
             {% endif %} tijdens <a href="/nl/sessions/{{ vote.session_id }}/meetings/plenary/{{ vote.meeting_id }}" target="_blank">vergadering van {{ vote.date | date }}</a></p>
         </p>
     </div>
@@ -57,9 +57,9 @@ eleventyComputed:
 <div id="screenshot-target">
 
 <!-- VOTE RESULTS -->
-<h2>{{ languages["nl"].Results }}</h2>
+<h2>{{ languages['nl'].Results }}</h2>
 
-<p>Deze stemming werd {% if (vote.yes_count | int) > ((vote.no_count | int) + (vote.abstain_count | int)) %}{{ languages["nl"].passed }}{% else %}{{ languages["nl"].failed }}{% endif %}.</p>
+<p>Deze stemming werd {% if (vote.yes_count | int) > ((vote.no_count | int) + (vote.abstain_count | int)) %}{{ languages['nl'].passed }}{% else %}{{ languages['nl'].failed }}{% endif %}.</p>
 
 <div class="vote-bar">
     <div class="bar-segment yes"

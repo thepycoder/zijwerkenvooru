@@ -38,7 +38,7 @@ eleventyComputed:
 </div>
 
 <!-- SHARE BUTTON -->
-<button id="share-button">{{ languages["nl"].sharePage }}</button>
+<button id="share-button">{{ languages['nl'].sharePage }}</button>
 
 <!-- OVERVIEW -->
 <h2>Alle vergaderingen</h2>
@@ -146,12 +146,12 @@ eleventyComputed:
             <div>
                 {% if  meeting.allVotes.length > 0 %}
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                    <p class="bold">{{ languages["nl"].attendance }}</p>
+                    <p class="bold">{{ languages['nl'].attendance }}</p>
                     <p>{{ attendance.count }}/150 ({{ (attendance.ratio * 100) | round(0, 'floor') }}%)</p>
                 </div>
                 {% else %}
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                    <p class="bold">{{ languages["nl"].attendance }}</p>
+                    <p class="bold">{{ languages['nl'].attendance }}</p>
                     <p>onbekend</p>
                 </div>
                 {% endif %}

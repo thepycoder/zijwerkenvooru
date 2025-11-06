@@ -8,8 +8,8 @@ pagination:
 permalink: "{{ meeting.lang }}/sessions/{{ meeting.session_id }}/meetings/plenary/{{ meeting.meeting_id }}/"
 canonical: "nl/sessions/{{ meeting.session_id }}/meetings/plenary/{{ meeting.meeting_id }}/"
 eleventyComputed:
-    title: "Verslag vergadering {{ meeting.date | date }} ({{ languages["nl"][meeting.time_of_day] }})"
-    description: "Details van de vergadering op {{ meeting.date | date }} ({{ languages["nl"][meeting.time_of_day] }}), met besproken agendapunten, vragen en stemmingen."
+    title: "Verslag vergadering {{ meeting.date | date }} ({{ languages['nl'][meeting.time_of_day] }})"
+    description: "Details van de vergadering op {{ meeting.date | date }} ({{ languages['nl'][meeting.time_of_day] }}), met besproken agendapunten, vragen en stemmingen."
 ---
 
 <!-- PAGEFIND EXCERPTS -->
@@ -37,7 +37,7 @@ eleventyComputed:
     <!-- SUMMARY TOGGLE -->
     <div class="card padding" style="margin-bottom: 0.2rem; display: flex; flex-direction: column;">
         <div style="margin-top: 0.2rem; display: flex; justify-content: space-between; align-items: center;">
-            <p>{{ languages["nl"].summarizedVersion }}</p>
+            <p>{{ languages['nl'].summarizedVersion }}</p>
             <label class="switch">
                 <input type="checkbox" id="summaryToggle" />
                 <span class="slider round"></span>
@@ -45,7 +45,7 @@ eleventyComputed:
         </div>
         <details id="summaryExplanation" style="display: none;">
             <summary>Hoe werkt dit?</summary>
-            <p>{{ languages["nl"].summaryExplanation }} <span class="highlight">{{ languages["nl"].underlined }}</span>.</p>
+            <p>{{ languages['nl'].summaryExplanation }} <span class="highlight">{{ languages['nl'].underlined }}</span>.</p>
         </details>
     </div>
 
@@ -53,18 +53,18 @@ eleventyComputed:
     <div class="card padding info-list">
         <div class="info-item">
              <span class="icon-padded">{% icon "lucide:clock" %}</span>
-            <p>{{ languages["nl"].From }} {{ meeting.start_time }} {{ languages["nl"].until }} {{ meeting.end_time }} ({{ meeting.start_time | duration(meeting.end_time)
+            <p>{{ languages['nl'].From }} {{ meeting.start_time }} {{ languages['nl'].until }} {{ meeting.end_time }} ({{ meeting.start_time | duration(meeting.end_time)
                 }})</p>
         </div>
         <div class="info-item">
               <span class="icon-padded">{% icon "lucide:message-circle-question" %}</span>
-            <p>{{ meeting.questions.length }} {{ languages["nl"].questions }}, {{ meeting.propositions.length }} {{ languages["nl"].propositions }}, {{ meeting.allVotes.length
-                }} {{ languages["nl"].votes }}</p>
+            <p>{{ meeting.questions.length }} {{ languages['nl'].questions }}, {{ meeting.propositions.length }} {{ languages['nl'].propositions }}, {{ meeting.allVotes.length
+                }} {{ languages['nl'].votes }}</p>
         </div>
 
         <div class="info-item">
               <span class="icon-padded">{% icon "lucide:file-digit" %}</span>
-            <p>{{ languages["nl"].source }} <a
+            <p>{{ languages['nl'].source }} <a
                     href="https://www.dekamer.be/doc/PCRI/html/{{ meeting.session_id }}/ip{{ meeting.meeting_id | padLeft(3, '0') }}x.html"
                     target="_blank">dekamer.be</a></p>
         </div>
@@ -78,12 +78,12 @@ eleventyComputed:
         {% endif %}
         {% if  meeting.allVotes.length > 0 %}
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <p class="bold">{{ languages["nl"].attendance }}</p>
+            <p class="bold">{{ languages['nl'].attendance }}</p>
             <p>{{ attendance.count }}/150 ({{ (attendance.ratio * 100) | round(0, 'floor') }}%)</p>
         </div>
         {% else %}
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-            <p class="bold">{{ languages["nl"].attendance }}</p>
+            <p class="bold">{{ languages['nl'].attendance }}</p>
             <p>onbekend</p>
         </div>
         {% endif %}
@@ -98,12 +98,12 @@ eleventyComputed:
 </div>
 
 <!-- SHARE BUTTON -->
-<button id="share-button">{{ languages["nl"].shareMeeting }}</button>
+<button id="share-button">{{ languages['nl'].shareMeeting }}</button>
 
 <!-- QUESTIONS -->
-<h2>{{ languages["nl"].Questions }}</h2>
+<h2>{{ languages['nl'].Questions }}</h2>
 {% if meeting.questions.length == 0 %}
-<p>{{ languages["nl"].noQuestions }}</p>
+<p>{{ languages['nl'].noQuestions }}</p>
 {% else %}
 <p>De vragen die gesteld werden tijdens deze vergadering.</p>
 <div id="question-list">
@@ -111,23 +111,23 @@ eleventyComputed:
     {% set topicCounts = [question] | countTopics(topics) %}
     {% set topic = topicCounts[0][0] %}
     <div class="question-container">
-        {{ questionCardComplete({question: question, topic: topic, topics: topics, functions: functions, partyColors: partyColors, translations: languages["nl"], language: nl, nolink: true, showCategory: false }) }}
+        {{ questionCardComplete({question: question, topic: topic, topics: topics, functions: functions, partyColors: partyColors, translations: languages['nl'], language: nl, nolink: true, showCategory: false }) }}
     </div>
     {% endfor %}
 </div>
 {% endif %}
 
 <!-- PROPOSITIONS AND DESIGNS -->
-<h2>{{ languages["nl"].PropositionsAndDesigns }}</h2>
+<h2>{{ languages['nl'].PropositionsAndDesigns }}</h2>
 {% if meeting.propositions.length == 0 %}
-<p>{{ languages["nl"].noPropositions }}</p>
+<p>{{ languages['nl'].noPropositions }}</p>
 {% else %}
 <p>De voorstellen en wetsontwerpen die besproken werden tijdens deze vergadering en de bijbehorende stemmingen.</p>
 
 <div id="proposition-list">
     {% for proposition in meeting.propositions %}
         <div class="proposition-container">
-            {{ propositionCard({proposition: proposition, partyColors: partyColors, translations: languages["nl"], language: nl }) }}
+            {{ propositionCard({proposition: proposition, partyColors: partyColors, translations: languages['nl'], language: nl }) }}
         </div>
     {% endfor %}
 </div>
@@ -135,26 +135,26 @@ eleventyComputed:
 
 
 <!-- VOTES -->
-<h2>{{ languages["nl"].Votes }}</h2>
+<h2>{{ languages['nl'].Votes }}</h2>
 {% if meeting.allVotes.length == 0 %}
-<p>{{ languages["nl"].noVotes }}</p>
+<p>{{ languages['nl'].noVotes }}</p>
 {% else %}
 
 <p>Stemmingen niet gelinkt aan een voorstel/ontwerp.</p>
 
 <div id="vote-list">
     {% for vote in meeting.votes %}
-    {{ voteCard({ vote: vote, translations: languages["nl"], language: nl }) }}
+    {{ voteCard({ vote: vote, translations: languages['nl'], language: nl }) }}
     <a href="/nl/sessions/{{ vote.session_id }}/meetings/plenary/{{ vote.meeting_id }}/votes/{{vote.vote_id}}/" class="vote-status card rounded-bottom padding">
         <div>
-        {{ languages["nl"].Vote }}
+        {{ languages['nl'].Vote }}
         {% if (vote.yes_count | int) > ((vote.no_count | int) + (vote.abstain_count | int)) %}
         <span class="topic" style="background-color: #28a745; color: white;">
-            {{ languages["nl"].passed }}
+            {{ languages['nl'].passed }}
             </span>
         {% else %}
         <span class="topic" style="background-color: #dc3545; color: white;">
-            {{ languages["nl"].failed }}
+            {{ languages['nl'].failed }}
             </span>
         {% endif%}
         </div>

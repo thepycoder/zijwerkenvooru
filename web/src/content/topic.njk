@@ -55,7 +55,7 @@ eleventyComputed:
 
  <div style="display: flex; width: 100%; margin-top: 0.4rem;">
     <div class="card padding metric" style="width: 100%;">
-        <h3 style="margin: 0;" class="capitalize-first">{{ languages["nl"].mostContributions }}</h3>
+        <h3 style="margin: 0;" class="capitalize-first">{{ languages['nl'].mostContributions }}</h3>
         <svg id="topMembersChart"></svg>
     </div>
 </div>
@@ -75,7 +75,7 @@ eleventyComputed:
             <!-- SUMMARIZED VERSION -->
             <div class="card padding flex column gap">
                 <div style="margin-top: 0.2rem; margin-bottom: 0.2rem; display: flex; justify-content: space-between; align-items: center;">
-                    <p>{{ languages["nl"].summarizedVersion }}</p>
+                    <p>{{ languages['nl'].summarizedVersion }}</p>
                     <label class="switch">
                         <input type="checkbox" id="summaryToggle" />
                         <span class="slider round"></span>
@@ -84,12 +84,12 @@ eleventyComputed:
 
                 <details id="summaryExplanation" style="display: none;">
                     <summary>Hoe werkt dit?</summary>
-                    <p>{{ languages["nl"].summaryExplanation }} <span class="highlight">{{ languages["nl"].underlined }}</span>.</p>
+                    <p>{{ languages['nl'].summaryExplanation }} <span class="highlight">{{ languages['nl'].underlined }}</span>.</p>
                 </details>
             </div>
             {% for question in topicQuestions | sort(attribute='date', true) %}
                 <div>
-                    {{ questionCard({question: question, functions: functions, partyColors: partyColors, translations: languages["nl"], language: nl }) }}
+                    {{ questionCard({question: question, functions: functions, partyColors: partyColors, translations: languages['nl'], language: nl }) }}
                 </div>
             {%- endfor %}
         </div>
@@ -100,7 +100,7 @@ eleventyComputed:
        <div id="proposition-list">
             {% for proposition in topicPropositions| sort(attribute='date', true) %}
                 <div>
-                    {{ propositionCard({proposition: proposition, partyColors: partyColors, translations: languages["nl"], language: nl }) }}
+                    {{ propositionCard({proposition: proposition, partyColors: partyColors, translations: languages['nl'], language: nl }) }}
                 </div>
             {% endfor %}
         </div>

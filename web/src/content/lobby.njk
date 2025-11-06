@@ -3,10 +3,10 @@ layout: layouts/page
 permalink: "nl/lobby/"
 title: "zwvu | lobbyregister"
 eleventyComputed:
-    description: "{{ languages["nl"].lobbyDescription }}"
+    description: "{{ languages['nl'].lobbyDescription }}"
 ---
 
-{# <p><a href="/nl/" class="uppercase"><- {{ languages["nl"].home }}</a></p> #}
+{# <p><a href="/nl/" class="uppercase"><- {{ languages['nl'].home }}</a></p> #}
 
 <h1>Het Lobbyregister</h1>
 
@@ -20,11 +20,11 @@ eleventyComputed:
         <div style="display: flex; width: 100%; gap: 0.4rem;">
             <div class="card padding metric">
                 <h2>{{ lobby.lobby | length }}</h2>
-                <p>{{ languages["nl"].lobbyists }}</p>
+                <p>{{ languages['nl'].lobbyists }}</p>
             </div>
             <div class="card padding metric">
                 <h2>{{ sectors | keys | length }}</h2>
-                <p>{{ languages["nl"].sectors }}</p>
+                <p>{{ languages['nl'].sectors }}</p>
             </div>
         </div>
     </div>
