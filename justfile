@@ -21,7 +21,7 @@ scrape-remunerations:
 scrape-plenary:
     cargo run --bin plenary-scraper
 
-scrape-commission:
+scrape-commissions:
     cargo run --bin commission-scraper
 
 summarize:

@@ -148,17 +148,13 @@ The `parquet` files are published under the `web/src/data` directory. They inclu
 
 ### Updates
 
-The dataset is updated daily.
+The dataset is updated daily automatically.
 
 The dataset is also published on `https://data.gov.be/nl/datasets/datafederaalparlement`.
 
-## 🛠️ Contributing
-
-Please read our [Contributor Guide](CONTRIBUTING.md) for more information on how to get started.
-
 ## ✅ Future improvements
 
-Only bug-fixes and some ad-hoc development is done for this project. Below is a list of future improvements that can be done:
+Only bug-fixes and some ad-hoc development is done for this project. Some goals/ideas are mentioned below but these are not actively being worked on.
 
 **Improvements:**
 

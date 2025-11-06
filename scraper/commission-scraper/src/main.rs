@@ -238,7 +238,6 @@ enum Commission {
     BuitenlandseBetrekkingen,
     FinancienEnBegroting,
     SocialeZakenWerkEnPensioenen,
-    GrondwetEnInstitutioneleVernieuwing,
     BinnenlandseZakenVeiligheidMigratieEnBestuurszaken,
     EconomieConsumentenBeschermingEnDigitalisering,
     MobiliteitOverheidsbedrijvenEnFederaleInstellingen,
@@ -264,10 +263,6 @@ impl fmt::Display for Commission {
             Commission::FinancienEnBegroting => write!(f, "FinancienEnBegroting"),
 
             Commission::SocialeZakenWerkEnPensioenen => write!(f, "SocialeZakenWerkEnPensioenen"),
-
-            Commission::GrondwetEnInstitutioneleVernieuwing => {
-                write!(f, "GrondwetEnInstitutioneleVernieuwing")
-            }
 
             Commission::EconomieConsumentenBeschermingEnDigitalisering => {
                 write!(f, "EconomieConsumentenBeschermingEnDigitalisering")
