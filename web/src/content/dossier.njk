@@ -129,7 +129,7 @@ eleventyComputed:
 
                 <!-- VOTE -->
                 {% if doc.votes[0] %}
-                <a class="flex space-between align-center" style="width: 100%;" href="/{{ page.lang }}/votes/{{ doc.votes[0].session_id }}/{{ doc.votes[0].meeting_id }}/{{doc.votes[0].vote_id}}/">
+                <a class="flex space-between align-center" style="width: 100%;" href="/{{ page.lang }}/sessions/{{ doc.votes[0].session_id }}/meetings/plenary/{{ doc.votes[0].meeting_id }}/votes/{{doc.votes[0].vote_id}}/">
                 <div class="vote-bar" style="width: 90%;">
                     <div class="bar-segment yes"
                          style="width: {{ (doc.votes[0].yes_count / ((doc.votes[0].yes_count | int) + (doc.votes[0].no_count | int) + (doc.votes[0].abstain_count | int)) * 100).toFixed(1) }}%">

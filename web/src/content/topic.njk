@@ -7,7 +7,7 @@ pagination:
     addAllPagesToCollections: true
 permalink: "{{ topic.lang }}/topics/{% if topic.type == 'subtopic' %}{{ topic.parent | slugify }}/{% endif %}{{ topic.name | slugify }}/index.html"
 eleventyComputed:
-    title: "Thema: {{ topic.name }}"
+    title: "Stemmingen en vragen over {{ topic.name }} in De Kamer"
     description: "Alles rond het parlementair thema {{ topic.name }}: relevante vragen, wetsvoorstellen en stemmingen in de federale Kamer."
 ---
 

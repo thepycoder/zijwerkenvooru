@@ -116,6 +116,7 @@ export default async function () {
             question_id: questionId,
             session_id: sessionId,
             meeting_id: meetingId,
+            type: 'plenary', // FIXME: always plenary? no?
             questioners: rawQuestioners.map((name, idx) => ({
               name: name.trim(),
               party: memberPartyMap[name.trim().toLowerCase().replace(/\s+/g, '-')] || "Unknown"

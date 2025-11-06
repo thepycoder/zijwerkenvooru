@@ -6,7 +6,7 @@ pagination:
     alias: member
     addAllPagesToCollections: true
 permalink: "{{ member.permalink }}"
-canonical: "nl/members/"
+canonical: "{{ member.permalink }}"
 eleventyComputed:
     title: "Alles over {{ member.first_name }} {{ member.last_name }} (parlementslid {{ member.parties[0] }})"
     description: "Kamerlid {{ member.first_name }} {{ member.last_name }} zetelt in het federaal parlement. Bekijk stemgedrag, ingediende vragen, wetsvoorstellen, vergoedingen en meer. Hoe vertegenwoordigt {{ member.first_name }} {{ member.last_name }} u?"
@@ -295,7 +295,7 @@ eleventyComputed:
                             ({{ vote.date | shortDate }}) {{ vote.title_fr }}
                             {% endif %}
                             </p>
-                            <a target="_blank" href="/{{page.lang}}/votes/{{vote.session_id}}/{{vote.meeting_id}}/{{ vote.vote_id }}/">Bekijk details</a>
+                            <a target="_blank" href="/nl/sessions/{{vote.session_id}}/meetings/plenary/{{vote.meeting_id}}/votes/{{ vote.vote_id }}/">Bekijk details</a>
                         </div>
                     </td>
 
