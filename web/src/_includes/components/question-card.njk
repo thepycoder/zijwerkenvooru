@@ -10,17 +10,14 @@
 
     <div class="padding flex column gap">
         <p class="bold">
-            {% if params.language === "nl" %}
+
            <span class="full">
             {% for topic in params.question.topics_nl %}
                 {{ topic }}<br>
             {% endfor %}
             </span>
             <span class="summarized highlight" style="display: none;">{{ params.question.topics_summary_nl }}</span>
-            {% else %}
-            <span class="full">{{ params.question.topics_fr }}</span>
-            <span class="summarized highlight" style="display: none;">{{ params.question.topics_summary_fr }}</span>
-            {% endif %}
+
         </p>
         {% if params.hideAuthors !== "true"%}
         <div class="flex column full">
@@ -33,7 +30,7 @@
                     {% set primaryColor = params.partyColors[party].primary or '#95a5a6' %}
                     {% set secondaryColor = params.partyColors[party].secondary or '#95a5a6' %}
                     <span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ questioner.party }}</span>
-                    <span class="questioner"><a href="/{{params.language}}/members/{{ questioner.name | slugify }}/">{{ questioner.name }}</a></span><br>
+                    <span class="questioner"><a href="/members/{{ questioner.name | slugify }}/">{{ questioner.name }}</a></span><br>
                     {% endfor %}
                 </span>
             </p>
@@ -44,7 +41,7 @@
                 {% set primaryColor = params.partyColors[party].primary or '#95a5a6' %}
                 {% set secondaryColor = params.partyColors[party].secondary or '#95a5a6' %}
                 <span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ params.question.questioners[0].party }}</span>
-                <span class="questioner"><a href="/{{params.language}}/members/{{ params.question.questioners[0].name | slugify }}/">{{ params.question.questioners[0].name }}</a></span><br>
+                <span class="questioner"><a href="/members/{{ params.question.questioners[0].name | slugify }}/">{{ params.question.questioners[0].name }}</a></span><br>
             </p>
             {% endif %}
         </div>
@@ -56,7 +53,7 @@
 </div>
 
 <!-- RESPONDENTS -->
-<a href="/{{ params.language }}/sessions/{{ params.question.session_id }}/meetings/{{ params.question.type }}/{{ params.question.meeting_id }}/"
+<a href="/sessions/{{ params.question.session_id }}/meetings/{{ params.question.type }}/{{ params.question.meeting_id }}/"
    class="question-respondent card rounded-bottom padding">
     <div style="display: flex; flex-direction: column">
         <p>Gesteld aan</p>

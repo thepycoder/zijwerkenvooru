@@ -53,7 +53,7 @@ eleventyComputed:
                     alt="A picture of {{ member.first_name }} {{ member.last_name }}"
                     style="width: 1.2rem; height: 1.2rem; object-fit: cover; border-radius: 50%;
                 {% if member.active != 'true' %} filter: grayscale(100%); {% endif %}">
-            <p><a class="member" href="/nl/members/{{ member.first_name | slugify }}-{{ member.last_name | slugify }}/">{{ member.first_name }} {{ member.last_name }}</a> ({{ member.date_of_birth | age }})</p>
+            <p><a class="member" href="/members/{{ member.first_name | slugify }}-{{ member.last_name | slugify }}/">{{ member.first_name }} {{ member.last_name }}</a> ({{ member.date_of_birth | age }})</p>
         </div>
         {% endfor %}
         </div>

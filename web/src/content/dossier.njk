@@ -5,8 +5,6 @@ pagination:
     size: 1
     alias: dossier
     addAllPagesToCollections: true
-permalink: "{{ dossier.permalink }}"
-canonical: "nl/sessions/{{dossier.session_id}}/dossiers/{{ dossier.dossier_id }}/"
 eleventyComputed:
     title: "zwvu | {{ dossier.title }}"
     description: "Over het dossier: {{ dossier.title }} (dossier {{ dossier.dossier_id }})"
@@ -43,7 +41,7 @@ eleventyComputed:
                         {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
                         <span>
                             <span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span>
-                            <a class="questioner" href="/nl/members/{{ author.name | slugify }}/" class="respondent">{{ author.name }}</a>
+                            <a class="questioner" href="/members/{{ author.name | slugify }}/" class="respondent">{{ author.name }}</a>
                         </span><br>
                     {% endif %}
                 {% endfor %}
@@ -123,13 +121,13 @@ eleventyComputed:
                     {% set party = author.party | lower %}
                     {% set primaryColor = partyColors[party].primary or '#95a5a6' %}
                     {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
-                    <li style="display: flex; margin-left: 0; justify-content: space-between; width: 100%; gap: 1rem;"><span class="party small" style="color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span><a href="/nl/members/{{ author.name | slugify }}/">{{ author.name }}</a></li>
+                    <li style="display: flex; margin-left: 0; justify-content: space-between; width: 100%; gap: 1rem;"><span class="party small" style="color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span><a href="/members/{{ author.name | slugify }}/">{{ author.name }}</a></li>
                     {% endfor %}
                 </ul>
 
                 <!-- VOTE -->
                 {% if doc.votes[0] %}
-                <a class="flex space-between align-center" style="width: 100%;" href="/nl/sessions/{{ doc.votes[0].session_id }}/meetings/plenary/{{ doc.votes[0].meeting_id }}/votes/{{doc.votes[0].vote_id}}/">
+                <a class="flex space-between align-center" style="width: 100%;" href="/sessions/{{ doc.votes[0].session_id }}/meetings/plenary/{{ doc.votes[0].meeting_id }}/votes/{{doc.votes[0].vote_id}}/">
                 <div class="vote-bar" style="width: 90%;">
                     <div class="bar-segment yes"
                          style="width: {{ (doc.votes[0].yes_count / ((doc.votes[0].yes_count | int) + (doc.votes[0].no_count | int) + (doc.votes[0].abstain_count | int)) * 100).toFixed(1) }}%">
@@ -176,7 +174,7 @@ eleventyComputed:
                     {% set party = author.party | lower %}
                     {% set primaryColor = partyColors[party].primary or '#95a5a6' %}
                     {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
-                    <li class="gap" style="display: flex; margin-left: 0; width: 100%;"><span class="party small" style="color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span><a href="/nl/members/{{ author.name | slugify }}/">{{ author.name }}</a></li>
+                    <li class="gap" style="display: flex; margin-left: 0; width: 100%;"><span class="party small" style="color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span><a href="/members/{{ author.name | slugify }}/">{{ author.name }}</a></li>
                     {% endfor %}
                 </ul>
             </div>

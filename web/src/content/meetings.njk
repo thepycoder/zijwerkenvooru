@@ -1,6 +1,6 @@
 ---
 layout: layouts/page
-permalink: "nl/sessions/56/meetings/"
+permalink: "sessions/56/meetings/"
 eleventyComputed:
     title: "Parlementaire vergaderingen in de Kamer"
     description: "Alle plenaire en commissievergaderingen van de Belgische Kamer, met agenda, deelnemers en besproken thema’s."
@@ -83,9 +83,9 @@ eleventyComputed:
     <div
             {% if not isEmpty %}
                 {% if meeting.type == 'plenary' %}
-            onclick="window.location.href='/nl/sessions/{{ meeting.session_id }}/meetings/plenary/{{ meeting.meeting_id }}'"
+            onclick="window.location.href='/sessions/{{ meeting.session_id }}/meetings/plenary/{{ meeting.meeting_id }}'"
                {% elseif meeting.type == 'commission' %}
-               onclick="window.location.href='/nl/sessions/{{ meeting.session_id }}/meetings/commission/{{ meeting.meeting_id }}'"
+               onclick="window.location.href='/sessions/{{ meeting.session_id }}/meetings/commission/{{ meeting.meeting_id }}'"
                      {% endif %}
             {% endif %}
             class="card"

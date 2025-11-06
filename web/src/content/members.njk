@@ -1,6 +1,5 @@
 ---
 layout: layouts/page
-permalink: "nl/members/"
 eleventyComputed:
     title: "Leden van de Kamer"
     description: "Een compleet overzicht van alle federale parlementsleden in België. Bekijk hun stemgedrag, vragen, voorstellen en partij."
@@ -219,7 +218,7 @@ eleventyComputed:
             {% set imgSrc = "../content/members/img/" + (member.first_name | slugify) + "-" + (member.last_name | slugify) +
     ".jpg" %}
             {% set has_image = imgSrc | imageExists %}
-            <a href="/nl/members/{{ member.first_name | slugify }}-{{ member.last_name | slugify }}" class="member-card card" data-party="{{ member.parties[0] }}" data-constituency="{{ member.constituency }}" data-attendance="{{ member.attendance }}" data-normalized="{{ member.normalizedAttendance }}" data-outlier="{{ member.outlier }}" data-active="{{ member.active }}" style="text-decoration: none; color: inherit;">
+            <a href="/members/{{ member.first_name | slugify }}-{{ member.last_name | slugify }}" class="member-card card" data-party="{{ member.parties[0] }}" data-constituency="{{ member.constituency }}" data-attendance="{{ member.attendance }}" data-normalized="{{ member.normalizedAttendance }}" data-outlier="{{ member.outlier }}" data-active="{{ member.active }}" style="text-decoration: none; color: inherit;">
 
                  <div class="category" style="font-weight: bold; background-color: {{ secondaryColor }}; color: {{ primaryColor }};">
                     {{ member.parties[0] }}

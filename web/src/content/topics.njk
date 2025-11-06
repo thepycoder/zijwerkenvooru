@@ -1,6 +1,5 @@
 ---
 layout: layouts/page
-permalink: "nl/topics/"
 eleventyComputed:
     title: "Parlementaire onderwerpen en thema’s"
     description: "Verken thema’s zoals klimaat, economie, justitie en meer. Zie welke onderwerpen besproken worden in de Kamer."
@@ -17,7 +16,7 @@ eleventyComputed:
 <p>Alle onderwerpen gerelateerd aan {{ key }}.</p>
 <ul id="topics-list" style="margin: 0;">
     <li style="width: 100%;">
-        <a href="/nl/topics/{{ key | slugify }}">
+        <a href="/topics/{{ key | slugify }}">
             {{ topics[key].icon or '' }} {{ key }}
         </a>
 
@@ -25,7 +24,7 @@ eleventyComputed:
         <ul style="margin-top: 0.4rem; margin-bottom: 0rem;">
             {% for subtopicName in topics[key].subtopics | keys %}
             <li style="padding-bottom: 0.4rem;">
-                <a href="/nl/topics/{{ key | slugify }}/{{ subtopicName | slugify }}">
+                <a href="/topics/{{ key | slugify }}/{{ subtopicName | slugify }}">
                     {{ subtopicName }}
                 </a>
             </li>

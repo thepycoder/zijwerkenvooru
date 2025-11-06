@@ -5,8 +5,7 @@ pagination:
     size: 1
     alias: commission
     addAllPagesToCollections: true
-permalink: "{{ commission.lang }}/sessions/{{ commission.session_id }}/meetings/commission/{{ commission.meeting_id }}/"
-canonical: "nl/sessions/{{ commission.session_id }}/meetings/commission/{{ commission.meeting_id }}/"
+permalink: "sessions/{{ commission.session_id }}/meetings/commission/{{ commission.meeting_id }}/"
 eleventyComputed:
     title: "Verslag commissievergadering {{ commission.date | date }}"
     description: "Details van de commissievergadering op {{ commission.date | date }}, met besproken agendapunten, vragen en stemmingen."
@@ -62,7 +61,7 @@ eleventyComputed:
                                 {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
                                 <span>
                                     <span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ chair.party }}</span>
-                                    <a href="/nl/members/{{ chair.name | slugify }}/">{{ chair.name }}</a>
+                                    <a href="/members/{{ chair.name | slugify }}/">{{ chair.name }}</a>
                                 </span>
                             {% endfor %}
                         </p>

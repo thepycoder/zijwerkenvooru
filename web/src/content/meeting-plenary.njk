@@ -5,8 +5,7 @@ pagination:
     size: 1
     alias: meeting
     addAllPagesToCollections: true
-permalink: "{{ meeting.lang }}/sessions/{{ meeting.session_id }}/meetings/plenary/{{ meeting.meeting_id }}/"
-canonical: "nl/sessions/{{ meeting.session_id }}/meetings/plenary/{{ meeting.meeting_id }}/"
+permalink: "sessions/{{ meeting.session_id }}/meetings/plenary/{{ meeting.meeting_id }}/"
 eleventyComputed:
     title: "Verslag plenaire vergadering {{ meeting.date | date }} ({{ languages['nl'][meeting.time_of_day] }})"
     description: "Details van de vergadering op {{ meeting.date | date }} ({{ languages['nl'][meeting.time_of_day] }}), met besproken agendapunten, vragen en stemmingen."
@@ -145,7 +144,7 @@ eleventyComputed:
 <div id="vote-list">
     {% for vote in meeting.votes %}
     {{ voteCard({ vote: vote, translations: languages['nl'], language: nl }) }}
-    <a href="/nl/sessions/{{ vote.session_id }}/meetings/plenary/{{ vote.meeting_id }}/votes/{{vote.vote_id}}/" class="vote-status card rounded-bottom padding">
+    <a href="/sessions/{{ vote.session_id }}/meetings/plenary/{{ vote.meeting_id }}/votes/{{vote.vote_id}}/" class="vote-status card rounded-bottom padding">
         <div>
         {{ languages['nl'].Vote }}
         {% if (vote.yes_count | int) > ((vote.no_count | int) + (vote.abstain_count | int)) %}

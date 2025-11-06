@@ -343,7 +343,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 let vote_id = vote_id_col.value(i);
 
                 // Take screenshot of vote and upload.
-                let vote_url = format!("https://zijwerkenvooru.pages.dev/nl/sessions/{}/meetings/plenary/{}/votes/{}", session_id, meeting_id, vote_id);
+                let vote_url = format!("https://zijwerkenvooru.pages.dev/sessions/{}/meetings/plenary/{}/votes/{}", session_id, meeting_id, vote_id);
                 let ScreenshotResult { png_data, viewport } = take_screenshot_of_element(&browser, &vote_url, "#screenshot-target")?;
                 let output = agent
                     .api
@@ -390,7 +390,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 );
 
                 let vote_post_text = format!(
-                    "🗳️ Gestemd\n\"{}\"\n\n{}\n\nOntdek wie hoe heeft gestemd: https://zijwerkenvooru.be/nl/sessions/{}/meetings/plenary/{}/votes/{}",
+                    "🗳️ Gestemd\n\"{}\"\n\n{}\n\nOntdek wie hoe heeft gestemd: https://zijwerkenvooru.be/sessions/{}/meetings/plenary/{}/votes/{}",
                     vote_title_with_handles,
                     bar,
                     session_id, meeting_id, vote_id
@@ -502,7 +502,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
                     .collect();
 
                 // Take screenshot of question and upload.
-                let vote_url = format!("https://zijwerkenvooru.pages.dev/nl/sessions/{}/meetings/plenary/{}/questions/{}", session_id, meeting_id, question_id);
+                let vote_url = format!("https://zijwerkenvooru.pages.dev/sessions/{}/meetings/plenary/{}/questions/{}", session_id, meeting_id, question_id);
                 let ScreenshotResult { png_data, viewport } = take_screenshot_of_element(&browser, &vote_url, "#screenshot-target")?;
                 let output = agent
                     .api
@@ -532,7 +532,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
                 // Create question post text.
                 let question_post_text = format!(
-                    "❓Vraag\n\"{}\"\n\n{}\n\nDetails: https://zijwerkenvooru.be/nl/sessions/{}/meetings/plenary/{}/questions/{}",
+                    "❓Vraag\n\"{}\"\n\n{}\n\nDetails: https://zijwerkenvooru.be/sessions/{}/meetings/plenary/{}/questions/{}",
                     summary,
                     questioners.join(", "),
                     session_id, meeting_id, question_id

@@ -84,7 +84,7 @@ export default async function (eleventyConfig) {
             ...meeting,
             lang,
             permalink:
-              `/${lang}/meetings/${meeting.session_id}/${meeting.meeting_id}/`,
+              `/meetings/${meeting.session_id}/${meeting.meeting_id}/`,
           });
         }
       }
@@ -105,7 +105,7 @@ export default async function (eleventyConfig) {
               ...commission,
               lang,
               permalink:
-                `/${lang}/commissions/${commission.session_id}/${commission.meeting_id}/`,
+                `/commissions/${commission.session_id}/${commission.meeting_id}/`,
             });
           }
         }
@@ -123,7 +123,7 @@ export default async function (eleventyConfig) {
         localized.push({
           ...member,
           lang,
-          permalink: `/${lang}/members/${string_to_slug(member.first_name)}-${
+          permalink: `/members/${string_to_slug(member.first_name)}-${
             string_to_slug(member.last_name)
           }/`,
           title:
@@ -144,7 +144,7 @@ export default async function (eleventyConfig) {
         localized.push({
           ...parties[partyKey],
           lang,
-          permalink: `/${lang}/parties`,
+          permalink: `/parties`,
         });
       }
     }
@@ -162,7 +162,7 @@ export default async function (eleventyConfig) {
             ...question,
             lang,
             permalink:
-              `/${lang}/questions/${question.session_id}/${question.meeting_id}/${question.question_id}/`,
+              `/questions/${question.session_id}/${question.meeting_id}/${question.question_id}/`,
           });
         }
       }
@@ -180,7 +180,7 @@ export default async function (eleventyConfig) {
           ...dossier,
           lang,
           permalink:
-            `/${lang}/sessions/${dossier.session_id}/dossiers/${dossier.dossier_id}/`,
+            `/sessions/${dossier.session_id}/dossiers/${dossier.dossier_id}/`,
         });
       }
     }
@@ -202,7 +202,7 @@ export default async function (eleventyConfig) {
                 ...vote,
                 lang,
                 permalink:
-                  `/${lang}/sessions/${meeting.session_id}/meetings/plenary/${meeting.meeting_id}/votes/${vote.vote_id}/`,
+                  `/sessions/${meeting.session_id}/meetings/plenary/${meeting.meeting_id}/votes/${vote.vote_id}/`,
               });
             }
           }

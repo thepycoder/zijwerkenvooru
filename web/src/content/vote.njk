@@ -8,7 +8,7 @@ pagination:
 permalink: "{{ vote.permalink }}"
 eleventyComputed:
     title: "Parlementaire stemming van {{ vote.date | date }}"
-    canonical: "nl/sessions/{{ vote.session_id }}/meetings/plenary/{{ vote.meeting_id }}/votes/{{ vote.vote_id }}/"
+    canonical: "sessions/{{ vote.session_id }}/meetings/plenary/{{ vote.meeting_id }}/votes/{{ vote.vote_id }}/"
 ---
 
 <!-- PAGEFIND EXCERPT -->
@@ -30,14 +30,14 @@ eleventyComputed:
             <span class="topic" style="background-color: #28a745; color: white;">{{ languages['nl'].passed }}</span>
             {% else %}
             <span class="topic" style="background-color: #dc3545; color: white;">{{ languages['nl'].failed }}</span>
-            {% endif %} tijdens <a href="/nl/sessions/{{ vote.session_id }}/meetings/plenary/{{ vote.meeting_id }}" target="_blank">vergadering van {{ vote.date | date }}</a></p>
+            {% endif %} tijdens <a href="/sessions/{{ vote.session_id }}/meetings/plenary/{{ vote.meeting_id }}" target="_blank">vergadering van {{ vote.date | date }}</a></p>
         </p>
     </div>
     {% if vote.dossier_id %}
     <div class="info-item">
         <span class="icon-padded">{% icon "lucide:file-digit" %}</span>
         <p>Stemming over dossier <a
-                href="/nl/sessions/{{ vote.session_id }}/dossiers/{{ vote.dossier_id }}"
+                href="/sessions/{{ vote.session_id }}/dossiers/{{ vote.dossier_id }}"
                 target="_blank">{{ vote.dossier_id }}</a></p>
     </div>
     {% endif %}
@@ -48,7 +48,7 @@ eleventyComputed:
 
  {% if vote.dossier_id %}
 <p>Deze stemming ging over dossier <a
-                href="/nl/sessions/{{ vote.session_id }}/dossiers/{{ vote.dossier_id }}"
+                href="/sessions/{{ vote.session_id }}/dossiers/{{ vote.dossier_id }}"
                 target="_blank">{{ vote.dossier_id }}</a>.</p>
                 {% else %}
                 Deze stemming kon niet gelinkt worden aan een dossier.
@@ -156,7 +156,7 @@ eleventyComputed:
                     <td><span class="party"
                               style="font-weight: bold; color: {{primaryColor}};background-color: {{ secondaryColor }};">{{ member.party }}</span>
                     </td>
-                    <td><a href="/nl/members/{{member.name | slugify }}">{{ member.name }}</a></td>
+                    <td><a href="/members/{{member.name | slugify }}">{{ member.name }}</a></td>
                     <td style="text-align: end;">
                         <span class="vote-dot yes"></span>ja
                     </td>
@@ -170,7 +170,7 @@ eleventyComputed:
                     <td><span class="party"
                               style="font-weight: bold; color: {{primaryColor}};background-color: {{ secondaryColor }};">{{ member.party }}</span>
                     </td>
-                    <td><a href="/nl/members/{{member.name | slugify }}">{{ member.name }}</a></td>
+                    <td><a href="/members/{{member.name | slugify }}">{{ member.name }}</a></td>
                     <td style="text-align: end;">
                         <span class="vote-dot no"></span>nee
                     </td>
@@ -184,7 +184,7 @@ eleventyComputed:
                     <td><span class="party"
                               style="font-weight: bold; color: {{primaryColor}};background-color: {{ secondaryColor }};">{{ member.party }}</span>
                     </td>
-                    <td><a href="/nl/members/{{member.name | slugify }}">{{ member.name }}</a></td>
+                    <td><a href="/members/{{member.name | slugify }}">{{ member.name }}</a></td>
                     <td style="text-align: end;">
                         <span class="vote-dot abstain"></span>onthouding
                     </td>

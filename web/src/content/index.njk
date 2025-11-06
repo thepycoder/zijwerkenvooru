@@ -1,6 +1,5 @@
 ---
-permalink: "nl/"
-redirect_from: "/"
+permalink: "/"
 title: "De Belgische Kamer van Volksvertegenwoordigers"
 eleventyComputed:
     description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stellen, en volg de actualiteit in de Kamer. Transparant overzicht van het federaal parlement."
@@ -96,7 +95,7 @@ eleventyComputed:
                             </div>
                         </div>
                     </div>
-                    <a href="/nl/sessions/56/meetings/plenary/{{ plenary.meeting_id }}/" class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
+                    <a href="/sessions/56/meetings/plenary/{{ plenary.meeting_id }}/" class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
                         <p>{{ languages['nl'].seeMeetingDetails }}</p>
                         {% lucide "chevron-right" %}
                     </a>
@@ -162,7 +161,7 @@ eleventyComputed:
                                 </div>
                             </div>
                         </div>
-                        <a href="/nl/sessions/56/meetings/plenary/{{ plenary2.meeting_id }}/" class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
+                        <a href="/sessions/56/meetings/plenary/{{ plenary2.meeting_id }}/" class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
                             <p>{{ languages['nl'].seeMeetingDetails }}</p>
                             {% lucide "chevron-right" %}
                         </a>
@@ -179,11 +178,11 @@ eleventyComputed:
                             {% set c = commissions[ctype] or {} %}
                             <p>{{ c.icon or '' }}
                                 {{ c.name or ctype }}</p>
-                            <p>Voorgezeten door <a href="/nl/members/{{ commission.chairs[0].name | slugify }}/">{{ commission.chairs[0].name }}</a>
+                            <p>Voorgezeten door <a href="/members/{{ commission.chairs[0].name | slugify }}/">{{ commission.chairs[0].name }}</a>
                             </p>
                         </div>
                     </div>
-                    <a href="/nl/sessions/56/meetings/commission/{{ commission.meeting_id }}/" class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
+                    <a href="/sessions/56/meetings/commission/{{ commission.meeting_id }}/" class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
                         <p>{{ languages['nl'].seeMeetingDetails }}</p>
                         {% lucide "chevron-right" %}
                     </a>
@@ -201,7 +200,7 @@ eleventyComputed:
         <h1 style="text-transform: capitalize; font-size: xx-large;">Snelle Links</h1>
 
         <div class="quick-links">
-                <a class="quick-link" href="/nl/sessions/56/meetings">
+                <a class="quick-link" href="/sessions/56/meetings">
                     <div class="flex space-between align-center">
                         <div class="flex column">
                             <div class="flex align-center">
@@ -214,7 +213,7 @@ eleventyComputed:
                     </div>
                 </a>
 
-                <a class="quick-link" href="/nl/members">
+                <a class="quick-link" href="/members">
                     <div class="flex space-between align-center">
                         <div class="flex column">
                             <div class="flex align-center">
@@ -226,7 +225,7 @@ eleventyComputed:
                         {% icon "lucide:chevron-right" %}
                     </div>
                 </a>
-                <a class="quick-link" href="/nl/parties">
+                <a class="quick-link" href="/parties">
                     <div class="flex space-between align-center">
                         <div class="flex column">
                             <div class="flex align-center">
@@ -239,7 +238,7 @@ eleventyComputed:
                     </div>
                 </a>
 
-                <a class="quick-link" href="/nl/questions">
+                <a class="quick-link" href="/questions">
 
                     <div class="flex space-between align-center">
                         <div class="flex column">
@@ -253,7 +252,7 @@ eleventyComputed:
                     </div>
                 </a>
 
-                <a class="quick-link" href="/nl/propositions">
+                <a class="quick-link" href="/propositions">
                     <div class="flex space-between align-center">
                         <div class="flex column">
                             <div class="flex align-center">
@@ -266,7 +265,7 @@ eleventyComputed:
                     </div>
                 </a>
 
-                <a class="quick-link" href="/nl/votes">
+                <a class="quick-link" href="/votes">
                     <div class="flex space-between align-center">
                         <div class="flex column">
                             <div class="flex align-center">
@@ -279,7 +278,7 @@ eleventyComputed:
                     </div>
                 </a>
 
-                <a class="quick-link" href="/nl/topics">
+                <a class="quick-link" href="/topics">
                     <div class="flex space-between align-center">
                         <div class="flex column">
                             <div class="flex align-center">
@@ -315,7 +314,7 @@ eleventyComputed:
             <ul id="topics-list">
                 {% for key in topics | keys %}
                     <li>
-                        <a href="/nl/topics/{{key | slugify}}">{{ topics[key].icon or '' }}
+                        <a href="/topics/{{key | slugify}}">{{ topics[key].icon or '' }}
                             {{ key }}</a>
                     </li>
                 {% endfor %}

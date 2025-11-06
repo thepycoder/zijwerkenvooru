@@ -1,12 +1,12 @@
 ---
 layout: layouts/page
-permalink: "nl/parties/"
+permalink: "parties/"
 eleventyComputed:
     title: "Belgische politieke partijen in het parlement"
     description: "Analyseer hoe politieke partijen stemmen in de Kamer. Ontdek hun gedrag bij wetsvoorstellen en debatten."
 ---
 
-{# <p><a href="/nl/" class="uppercase"><- {{ languages['nl'].home }}</a></p> #}
+{# <p><a href="/" class="uppercase"><- {{ languages['nl'].home }}</a></p> #}
 
 <h1 class="capitalize">{{ languages['nl'].theParties }}</h1>
 
@@ -43,7 +43,7 @@ eleventyComputed:
         <!-- PARTIES OVERVIEW -->
         <div style="display: grid; width: 100%; gap: 0.4rem; grid-template-columns: repeat(2, minmax(0, 1fr));">
             {% for key, party in parties.parties %}
-            <a class="card padding" href="/nl/parties/{{ party.name | slugify }}/">
+            <a class="card padding" href="/parties/{{ party.name | slugify }}/">
                 <div class="flex space-between align-center">
                     {% set imgSrc = "../assets/img/parties/" + (party.name | slugify) + ".svg" %}
                     {%- set has_image = imgSrc | imageExists %}

@@ -5,7 +5,7 @@ pagination:
     size: 1
     alias: topic
     addAllPagesToCollections: true
-permalink: "{{ topic.lang }}/topics/{% if topic.type == 'subtopic' %}{{ topic.parent | slugify }}/{% endif %}{{ topic.name | slugify }}/index.html"
+permalink: "topics/{% if topic.type == 'subtopic' %}{{ topic.parent | slugify }}/{% endif %}{{ topic.name | slugify }}/index.html"
 eleventyComputed:
     title: "Stemmingen en vragen over {{ topic.name }} in De Kamer"
     description: "Alles rond het parlementair thema {{ topic.name }}: relevante vragen, wetsvoorstellen en stemmingen in de federale Kamer."
@@ -24,13 +24,13 @@ eleventyComputed:
 
 <ul id="topics-list" style="margin-bottom: 1rem; margin-top: 1rem;">
     <li>
-        <a href="/nl/topics/{{topic.name | slugify}}">{{ topics[topic.name].icon or '' }} {{ topic.name }}</a>
+        <a href="/topics/{{topic.name | slugify}}">{{ topics[topic.name].icon or '' }} {{ topic.name }}</a>
 
         {% if topics[topic.name].subtopics %}
         <ul style="margin-top: 0.4rem; margin-bottom: 0.4rem;">
             {% for subtopicName in topics[topic.name].subtopics | keys %}
             <li style="padding-bottom: 0.4rem;">
-                <a href="/nl/topics/{{ topic.name | slugify }}/{{ subtopicName | slugify }}">
+                <a href="/topics/{{ topic.name | slugify }}/{{ subtopicName | slugify }}">
                     {{ subtopicName }}
                 </a>
             </li>
