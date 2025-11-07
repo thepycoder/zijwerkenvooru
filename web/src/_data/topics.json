@@ -57,7 +57,8 @@
       "ziekte",
       "patiënt",
       "hiv",
-      "sigaret"
+      "sigaret",
+      "tandzorg"
     ],
     "background": "#dae0f6",
     "color": "#4c5677",
@@ -137,6 +138,8 @@
   },
   "economie en werk": {
     "keywords": [
+      "daklozen",
+      "werkloze",
       "lastenverlaging",
       "burn-out",
       "horecasector",
@@ -271,6 +274,7 @@
   },
   "internationale politiek en migratie": {
     "keywords": [
+      "integratie",
       "midden-oosten",
       "gedetineerde",
       "terugkeerpremie",
@@ -297,7 +301,8 @@
       "congo",
       "DRC",
       "rwanda",
-      "macron"
+      "macron",
+      "voedselhulp"
     ],
     "background": "#b9e7f5",
     "color": "#39616d",
