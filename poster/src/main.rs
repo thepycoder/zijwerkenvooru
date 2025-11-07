@@ -373,7 +373,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 ));
 
                 // Create vote post text.
-                let result = if yes > (no + abstain) { "-> Aangenomen" } else { "-> Verworpen" };
+                let result = if yes > (no + abstain) { "Aangenomen" } else { "Verworpen" };
                 let total = yes + no + abstain;
                 let bar_len: usize = 14;
                 let scale = |count: u32| ((count as f64 / total as f64) * bar_len as f64).round() as usize;
@@ -390,7 +390,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 );
 
                 let vote_post_text = format!(
-                    "🗳️ Gestemd\n\"{}\"\n\n{}\n\nOntdek wie hoe heeft gestemd: https://zijwerkenvooru.be/sessions/{}/meetings/plenary/{}/votes/{}",
+                    "🗳️ Gestemd\n\"{}\"\n\n{}\n\nhttps://zijwerkenvooru.be/sessions/{}/meetings/plenary/{}/votes/{}",
                     vote_title_with_handles,
                     bar,
                     session_id, meeting_id, vote_id
