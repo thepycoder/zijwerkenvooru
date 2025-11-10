@@ -781,8 +781,13 @@ async fn extract_question_data(
     //  println!("TOPIC: {}", question_text);
     // FIXME: French issue, single ticks (fixed now?)
     //let regex = Regex::new(r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*'([^"']+?)'\s*\((\d{8}[A-Z])\)"#)?;
+    // 10/11/2025: regex was (?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*["“'](.+?)["”']\s*\((\d{8}[A-Z])\)
+    // but it failed for "Vraag van de heer Steven Coenegrachts aan de vice-eersteminister en minister van Werk, Economie en Landbouw over "Het banenverlies in de industrie" (nr. 6003263c)"
+    // from commission meeting 107, because this does not have the info in brackets, also ID format changed...
+    // so regex was modified
+    // FIXME: STILL this question has an issue since the respondent is 'de vice-eersteminister en minister van Werk, Economie en Landbouw' but this is left for now..
     let regex = Regex::new(
-        r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*["“'](.+?)["”']\s*\((\d{8}[A-Z])\)"#,
+        r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)(?:\s*\(.*?\))?\s*(?:over|sur)\s*["“'](.+?)["”']\s*\(?(?:nr\.?\s*)?(\d{6,8}[A-Za-z])\)?"#,
     )?;
 
     // let regex = Regex::new(r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*'([^"']+)"#)?;
@@ -800,6 +805,7 @@ async fn extract_question_data(
             .as_str()
             .trim()
             .replace("- ", "")
+            .replace("de heer ", "") // remove titles
             .to_string();
 
         let respondent = capture.get(2).unwrap().as_str().trim().to_string();
