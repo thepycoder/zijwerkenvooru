@@ -5,6 +5,7 @@ pagination:
     size: 1
     alias: dossier
     addAllPagesToCollections: true
+permalink: "sessions/{{ dossier.session_id }}/dossiers/{{ dossier.dossier_id }}/"
 eleventyComputed:
     title: "zwvu | {{ dossier.title }}"
     description: "Over het dossier: {{ dossier.title }} (dossier {{ dossier.dossier_id }})"
