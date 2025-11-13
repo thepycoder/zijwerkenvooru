@@ -36,6 +36,8 @@ eleventyComputed:
                             <span>Regering</span><br>
                              {% elseif author.name == "Commission/Commissie (AUTEUR)" %}
                             <span>Commissie</span><br>
+                {% elseif author.name == "Sénat/Senaat (AUTEUR)" %}
+                <span>Senaat</span><br>
                     {% else %}
                         {% set party = author.party | lower %}
                         {% set primaryColor = partyColors[party].primary or '#95a5a6' %}
