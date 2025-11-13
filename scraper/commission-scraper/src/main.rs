@@ -308,6 +308,8 @@ async fn scrape_commission(
     question_dossier_ids: &mut Vec<String>,
     web_request_count: &mut u32,
 ) -> Result<(), Box<dyn Error>> {
+
+    println!("Scraping commission: {}", commission_id);
     let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
     let filename = format!(
         "data/sources/sessions/{}/meetings/commission/{}-{}.html",
@@ -666,6 +668,7 @@ fn extract_end_time_from_document(document: &Html) -> Result<String, Box<dyn Err
         "De gedachtewisseling eindigt",
         "De vergadering wordt gesloten",
         "De behandeling van de interpellatie eindigt",
+        "De behandeling van de interpellaties eindigt",
     ];
     extract_time_from_document(document, &keywords)
         .ok_or_else(|| "No end time found matching the expected patterns".into())
