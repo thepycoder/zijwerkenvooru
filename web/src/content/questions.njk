@@ -11,7 +11,13 @@ eleventyComputed:
 
 <h1>Alle Vragen</h1>
 
-<p>Bekijk recente vragen of zoek op onderwerp.</p>
+<p>Een overzicht van alle vragen die gesteld werden tijdens de plenaire vergaderingen en de commissievergaderingen. Bekijk recente vragen of zoek op onderwerp.</p>
+
+
+<div class="card padding metric">
+    <h2>{{ questions.questions | length }}</h2>
+    <p>vragen</p>
+</div>
 
 <!-- FILTER -->
 <select id="topicFilter" style="margin-bottom: 2rem;">
