@@ -11,7 +11,13 @@ eleventyComputed:
 
 <h1>Alle Stemmingen</h1>
 
-<p>Bekijk recente stemmingen of zoek op onderwerp.</p>
+<p>Een overzicht van alle stemmingen die werden uitgevoerd tijdens de plenaire vergaderingen. Bekijk recente stemmingen of zoek op onderwerp.</p>
+
+<div class="card padding metric" style="margin-bottom: 1rem;">
+    <h2>{{ votes.votes | length }}</h2>
+    <p>stemmingen</p>
+</div>
+
 
 <!-- FILTER -->
 <select id="topicFilter" style="margin-bottom: 2rem;">

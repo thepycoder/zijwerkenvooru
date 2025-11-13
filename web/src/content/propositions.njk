@@ -9,11 +9,14 @@ eleventyComputed:
 <!-- COMPONENTS -->
 {%- from "components/proposition-card-tiny.njk" import propositionCardTiny -%}
 
-<p><a href="/" class="uppercase"><- {{ languages['nl'].home }}</a></p>
-
 <h1>Alle Voorstellen</h1>
 
-<p>Bekijk recente voorstellen of zoek op onderwerp.</p>
+<p>Een overzicht van alle voorstellen die werden ingediend. Bekijk recente voorstellen of zoek op onderwerp.</p>
+
+<div class="card padding metric" style="margin-bottom: 1rem;">
+    <h2>{{ propositions.propositions | length }}</h2>
+    <p>voorstellen</p>
+</div>
 
 <!-- FILTER -->
 <select id="topicFilter" style="margin-bottom: 2rem;">
@@ -28,11 +31,12 @@ eleventyComputed:
 
 <!-- ITEM COUNT -->
 <div class="flex space-between">
-    <span id="propositionCount">{{ propositions.propositions | length }} vragen</span>
+    <span id="propositionCount">{{ propositions.propositions | length }} voorstellen</span>
 </div>
 
 <!-- ITEM LIST -->
 {% for meeting in meetings.meetings | sort(attribute='date', true) %}
+{% if meeting.propositions.length > 0 %}
 <div class="meeting-group">
     <h3>{{ meeting.date | date }}</h3>
     <div id="proposition-list">
@@ -45,6 +49,7 @@ eleventyComputed:
     </div>
     <hr>
 </div>
+{% endif %}
 {% endfor %}
 
 <script>

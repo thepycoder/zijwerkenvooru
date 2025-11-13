@@ -22,7 +22,7 @@ eleventyComputed:
 
 <h1>Dossier {{ dossier.dossier_id }}</h1>
 
-<h3 style="font-weight: normal; margin-top: 0;">{{ dossier.title }}.</h3>
+<h3 style="font-weight: normal; margin-top: 0;">{{ dossier.title }}</h3>
 
 <!-- DOSSIER OVERVIEW -->
 <div class="card padding info-list">
@@ -36,7 +36,7 @@ eleventyComputed:
                             <span>Regering</span><br>
                              {% elseif author.name == "Commission/Commissie (AUTEUR)" %}
                             <span>Commissie</span><br>
-                {% elseif author.name == "Sénat/Senaat (AUTEUR)" %}
+                            {% elseif author.name == "Sénat/Senaat (AUTEUR)" %}
                 <span>Senaat</span><br>
                     {% else %}
                         {% set party = author.party | lower %}
@@ -174,10 +174,22 @@ eleventyComputed:
                 <p style="font-size: small;">{{ dossier.submission_date | date }}</p>
                 <ul style="display: flex; flex-direction: column; gap: 0.2rem;" class="links">
                     {% for author in dossier.authors %}
+
+
+                    {% if author.name == "Gouvernement/Regering (AUTEUR)" %}
+                    <span>Regering</span><br>
+                    {% elseif author.name == "Commission/Commissie (AUTEUR)" %}
+                    <span>Commissie</span><br>
+                    {% elseif author.name == "Sénat/Senaat (AUTEUR)" %}
+                    <span>Senaat</span><br>
+                    {% else %}
                     {% set party = author.party | lower %}
                     {% set primaryColor = partyColors[party].primary or '#95a5a6' %}
                     {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
                     <li class="gap" style="display: flex; margin-left: 0; width: 100%;"><span class="party small" style="color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span><a href="/members/{{ author.name | slugify }}/">{{ author.name }}</a></li>
+                    {% endif %}
+
+
                     {% endfor %}
                 </ul>
             </div>
