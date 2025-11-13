@@ -463,9 +463,10 @@ enum DocumentType {
     AdviesVanDeRaadVanState,
     Verslag,
     WetsOntwerp,                 // 02
+    OvergezondenOntwerp,         // 03
+    WetsVoorstel,                // 05
     VoorstelVanResolutie,        // 06
     VoorstelTotHerziening,       // 08
-    WetsVoorstel,                // 05
     VoorstelOnderzoekscommissie, // 20
     VoorstelReglement,           // 21
     ArtikelenBijEersteStemmingAangenomen,
@@ -522,7 +523,11 @@ fn parse_document_type(raw: &str) -> DocumentType {
         DocumentType::WetsVoorstel
     } else if raw.contains("wetsontwerp") {
         DocumentType::WetsOntwerp
-    } else if raw.contains("verslag") {
+    } else if raw.contains("overgezonden ontwerp") {
+        DocumentType::OvergezondenOntwerp
+    }
+
+    else if raw.contains("verslag") {
         DocumentType::Verslag
     } else if raw.contains("advies van de raad van state") {
         DocumentType::AdviesVanDeRaadVanState
