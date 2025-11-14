@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use arrow::array::{ArrayRef, RecordBatch, StringArray};
 use arrow::datatypes::{DataType, Field, Schema};
 use chrono::{Local, NaiveDate};
@@ -844,6 +845,11 @@ async fn scrape_meeting(
     // Selectors.
     let span_selector = Selector::parse("span").unwrap();
 
+    // Typo map added to fix some typos that they made in the report,
+    let mut typo_map = HashMap::new();
+    typo_map.insert("Steven Coengrachts".to_string(), "Steven Coenegrachts".to_string());
+    typo_map.insert("Ridouhane Chahid".to_string(), "Ridouane Chahid".to_string());
+
     // Extract questions.
     let mut previous_question_nl = String::new();
     let mut previous_question_fr = String::new();
@@ -884,11 +890,13 @@ async fn scrape_meeting(
                     // Save the grouped question.
                     if !previous_question_nl.is_empty() || !previous_question_fr.is_empty() {
                         let question_nl = extract_question_data(
+                            typo_map,
                             previous_question_nl.clone(),
                             previous_discussion.clone(),
                         )
                         .await?;
                         let question_fr = extract_question_data(
+                            typo_map,
                             previous_question_fr.clone(),
                             previous_discussion.clone(),
                         )
@@ -1773,7 +1781,9 @@ async fn extract_vote_data(vote_text: String) -> Result<VoteData, Box<dyn Error>
     }
 }
 
+
 async fn extract_question_data(
+    typo_map: HashMap<String, String>,
     question_text: String,
     discussion_text: String,
 ) -> Result<QuestionData, Box<dyn Error>> {
@@ -1789,13 +1799,17 @@ async fn extract_question_data(
     let mut dossier_ids = Vec::new();
 
     for capture in regex.captures_iter(&question_text) {
-        let questioner = capture
+        let questioner_raw = capture
             .get(1)
             .unwrap()
             .as_str()
             .trim()
             .replace("- ", "")
             .to_string();
+        let questioner = typo_map // apply tpo fixes
+            .get(&questioner_raw)
+            .cloned()
+            .unwrap_or(questioner_raw);
         let respondent = capture.get(2).unwrap().as_str().trim().to_string();
         let topic = capture.get(3).unwrap().as_str().trim().to_string();
         let dossier_id = match capture.get(4) {
