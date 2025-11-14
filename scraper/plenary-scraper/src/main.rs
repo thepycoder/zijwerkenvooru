@@ -890,13 +890,13 @@ async fn scrape_meeting(
                     // Save the grouped question.
                     if !previous_question_nl.is_empty() || !previous_question_fr.is_empty() {
                         let question_nl = extract_question_data(
-                            typo_map,
+                            typo_map.clone(),
                             previous_question_nl.clone(),
                             previous_discussion.clone(),
                         )
                         .await?;
                         let question_fr = extract_question_data(
-                            typo_map,
+                            typo_map.clone(),
                             previous_question_fr.clone(),
                             previous_discussion.clone(),
                         )
@@ -1000,11 +1000,13 @@ async fn scrape_meeting(
             if is_group_start || is_single_question {
                 if !previous_question_nl.is_empty() && !previous_question_fr.is_empty() {
                     let question_nl = extract_question_data(
+                        typo_map.clone(),
                         previous_question_nl.clone(),
                         previous_discussion.clone(),
                     )
                     .await?;
                     let question_fr = extract_question_data(
+                        typo_map.clone(),
                         previous_question_fr.clone(),
                         previous_discussion.clone(),
                     )
