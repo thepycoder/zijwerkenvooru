@@ -129,10 +129,12 @@
       "start_date": "2025-02-03"
     }
   ],
-  "Vanessa Matz": {
-    "function": "Mminister van Modernisering van de Overheid",
-    "start_date": "2025-02-03"
-  },
+  "Vanessa Matz": [
+    {
+      "function": "Minster van Modernisering van de overheid, Overheidsbedrijven, Ambtenarenzaken, Gebouwenbeheer van de Staat, Digitalisering en Wetenschapsbeleid",
+      "start_date": "2025-02-03"
+    }
+  ],
   "Rob Beenders": [
     {
       "function": "Minister van Consumentenbescherming, Sociale Fraudebestrijding, Personen met een handicap en Gelijke Kansen",
