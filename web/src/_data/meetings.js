@@ -91,6 +91,17 @@ export default async function () {
       memberPartyLookup[memberId] = party;
     });
 
+    // all members
+    const activeMembers = membersRows
+        .filter(row => row[12] === "true")
+        .map(row => {
+          const name = row[2] + " " + row[3];
+          return {
+            name,
+            party: row[9] || "Unknown"
+          };
+        });
+
     const meetingDateMap = new Map();
     meetingsRows.forEach((row) => {
       const sessionId = row[0];
@@ -539,6 +550,18 @@ export default async function () {
         const total = yes + no + abstain;
         const attendanceRatio = total / 150;
 
+        const presentMembers = [
+          ...firstVote.yes_members,
+          ...firstVote.no_members,
+          ...firstVote.abstain_members
+        ].map(m => m.name);
+
+        const absentees = activeMembers.filter(
+            m => !presentMembers.includes(m.name)
+        );
+
+        meeting.absentees = absentees;
+
         meeting.attendance = {
           count: total,
           ratio: attendanceRatio,
@@ -548,6 +571,7 @@ export default async function () {
           count: 0,
           ratio: 0,
         };
+        meeting.absentees = [];
       }
     });
 

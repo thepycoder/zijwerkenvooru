@@ -99,6 +99,24 @@ eleventyComputed:
 <!-- SHARE BUTTON -->
 <button id="share-button">{{ languages['nl'].shareMeeting }}</button>
 
+<!-- ABSENTEES -->
+<h2>Afwezigen</h2>
+{% if meeting.absentees.length == 0 %}
+<p>Geen afwezigen.</p>
+{% else %}
+De volgende {{ meeting.absentees.length }} kamerleden waren afwezig bij tenminste de eerste naamstemming.
+<p>
+    {% for absentee in meeting.absentees %}
+    {% set party = absentee.party | lower %}
+    {% set primaryColor = partyColors[party].primary or '#95a5a6' %}
+    {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
+  <span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ absentee.party }}</span>
+    <span ><a href="/members/{{ absentee.name | slugify }}/">{{ absentee.name }}</a></span><br>
+
+    {% endfor %}
+</p>
+{% endif %}
+
 <!-- QUESTIONS -->
 <h2>{{ languages['nl'].Questions }}</h2>
 {% if meeting.questions.length == 0 %}
