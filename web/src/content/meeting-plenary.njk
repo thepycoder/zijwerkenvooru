@@ -100,10 +100,9 @@ eleventyComputed:
 <button id="share-button">{{ languages['nl'].shareMeeting }}</button>
 
 <!-- ABSENTEES -->
-<h2>Afwezigen</h2>
 {% if meeting.absentees.length == 0 %}
-<p>Geen afwezigen.</p>
 {% else %}
+<h2>Afwezigen</h2>
 De volgende {{ meeting.absentees.length }} kamerleden waren afwezig bij tenminste de eerste naamstemming.
 <p>
     {% for absentee in meeting.absentees %}
