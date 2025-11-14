@@ -1777,16 +1777,12 @@ async fn extract_question_data(
     question_text: String,
     discussion_text: String,
 ) -> Result<QuestionData, Box<dyn Error>> {
-    //  println!("TOPIC: {}", question_text);
-    // FIXME: French issue, single ticks (fixed now?)
-    //let regex = Regex::new(r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*'([^"']+?)'\s*\((\d{8}[A-Z])\)"#)?;
+    // Below are some of the issues found in meeting reports.
+    // ISSUE: plenary meeting report 071: questions did not have dossier ids mentioned. -> Adjusted regex to not require this
     let regex = Regex::new(
-        r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*["“'](.+?)["”']\s*\((\d{8}[A-Z])\)"#,
+        r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*["“'](.+?)["”'](?:\s*\((\d{8}[A-Z])\))?"#,
     )?;
 
-    // let regex = Regex::new(r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*'([^"']+)"#)?;
-
-    // (?m)(?:Vraag van\s)?([^\n]+?)\s+aan\s+([^\n]+?)\s*\(.*?\)\s*over\s*'([^']+)'",
     let mut questioners = Vec::new();
     let mut topics = Vec::new();
     let mut respondents = Vec::new();
@@ -1800,21 +1796,17 @@ async fn extract_question_data(
             .trim()
             .replace("- ", "")
             .to_string();
-
         let respondent = capture.get(2).unwrap().as_str().trim().to_string();
-
         let topic = capture.get(3).unwrap().as_str().trim().to_string();
-
-        let dossier_id = capture.get(4).unwrap().as_str().trim().to_string();
-
+        let dossier_id = match capture.get(4) {
+            Some(m) => format!("Q{}", m.as_str().trim()),
+            None => "".to_string(),
+        };
         questioners.push(questioner);
-
         if !respondents.contains(&respondent) {
             respondents.push(respondent);
         }
-
-        dossier_ids.push(format!("{}{}", "Q", dossier_id));
-
+        dossier_ids.push(dossier_id);
         topics.push(topic);
     }
 
