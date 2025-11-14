@@ -1312,5 +1312,90 @@
         "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m4yfhsv26a2t"
       }
     ]
+  },
+  {
+    "id": "72",
+    "date": "72",
+    "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m5labxll2l2n",
+    "replies": [
+      {
+        "type": "Vote",
+        "hash": "bd22932886ee642f69c282ddaf262950c5c8574862582a4461234227af3906f3",
+        "topic": "Moties ingediend tot besluit van de interpellaties van:\n- mevrouw @sarahschlitz.bsky.social over 'de antwoorden van de minister in de Kamer over de brieven aan werklozen die hun uitkering verliezen'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m5lac46ekl2s"
+      },
+      {
+        "type": "Vote",
+        "hash": "5381b9d7bef368f11630b8ac9dd3278abc22ef0a3d7178866da47515e7611b8e",
+        "topic": "Aangehouden amendement op het voorstel van resolutie tot ondersteuning van de kandidatuur voor de bouw van de Einsteintelescoop in de Euregio Maas-Rijn",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m5lacaazfw2y"
+      },
+      {
+        "type": "Vote",
+        "hash": "d801e0b85f1463b50745865a114341b1df9dacc83851e03b70b589bd227caedc",
+        "topic": "Geheel van het voorstel van resolutie tot ondersteuning van de kandidatuur voor de bouw van de Einsteintelescoop in de Euregio Maas-Rijn",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m5lacdxams2t"
+      },
+      {
+        "type": "Vote",
+        "hash": "e8a78bbc5d2d02f7b0c5977948f8d63cfa06d2abd8e9f226398125ea9fcfeab4",
+        "topic": "Aangehouden amendementen en artikelen van het wetsontwerp tot wijziging van artikel 10 van de wet van 26 juli 1996 tot bevordering van de werkgelegenheid en tot preventieve vrijwaring van het concurrentievermogen",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m5laci2uad2m"
+      },
+      {
+        "type": "Vote",
+        "hash": "64abedf6875737b07da680e496c8c7167c61c37b7420b2a9adb1338369123d60",
+        "topic": "Geheel van het wetsontwerp tot wijziging van artikel 10 van de wet van 26 juli 1996 tot bevordering van de werkgelegenheid en tot preventieve vrijwaring van het concurrentievermogen",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m5laclm3wt23"
+      },
+      {
+        "type": "Vote",
+        "hash": "4c90ed69df273539e3bc07a890719045a3382b9b1eb1c0de4cfa7f2f767b0212",
+        "topic": "Wetsontwerp tot goedkeuring van de algemene rekening van het algemeen bestuur en van de algemene rekeningen van de administratieve openbare instellingen met ministerieel beheer en van de administratieve diensten met boekhoudkundige autonomie van het jaar 2024",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m5lacpmuzt23"
+      },
+      {
+        "type": "Vote",
+        "hash": "26db18f6cb9deb6516927ffd9d6f65c85d784e2325c60e0f74b388b5e8c4a77c",
+        "topic": "Wetsontwerp tot wijziging van de wet van 22 mei 2003 houdende organisatie van de begroting en van de comptabiliteit van de federale Staat, met het oog op de gedeeltelijke omzetting van de Richtlijn (EU) 2024/1265",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m5lactq2cd23"
+      },
+      {
+        "type": "Vote",
+        "hash": "1fedcec4338c41d1d8c4fc3f69d7a300e4eaf0cda6b46f0c0a58c5202a1c8bab",
+        "topic": "Wetsontwerp tot wijziging van de wet van 16 mei 2003 tot vaststelling van de algemene bepalingen die gelden voor de begrotingen, de controle op de subsidies en voor de boekhouding van de gemeenschappen en de gewesten, alsook voor de organisatie van de controle door het Rekenhof, met het oog op de gedeeltelijke omzetting van de Richtlijn (EU) 2024/1265",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m5lacxpvux2n"
+      },
+      {
+        "type": "Vote",
+        "hash": "349c99fad65c3906152114f18c80c8a49498fc44b6532755919ea6d2209ef3ee",
+        "topic": "Wetsontwerp tot wijziging van de wet van 16 maart 1994 betreffende het statuut en de bezoldiging van het onderwijzend personeel van de Koninklijke Militaire School",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m5lad3r7gg2y"
+      },
+      {
+        "type": "Vote",
+        "hash": "3f528ae6b0f12e3566d71857e95f73d542f694e825329558d097721dac37f887",
+        "topic": "Aangehouden amendementen en artikel van het wetsontwerp tot wijziging van de wet van 15 mei 2007 tot erkenning en bescherming van het beroep van auto-expert en tot oprichting van een Instituut van de auto-experts (I)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m5lad7zsa32m"
+      },
+      {
+        "type": "Vote",
+        "hash": "4119ea349ad314eed7752207f3afa57076e0e7e5a58c34d76047d64def4c0001",
+        "topic": "Geheel van het wetsontwerp tot wijziging van de wet van 15 mei 2007 tot erkenning en bescherming van het beroep van auto-expert en tot oprichting van een Instituut van de auto-experts (I)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m5ladecgfl2s"
+      },
+      {
+        "type": "Vote",
+        "hash": "a506a02634ce4e66b23fd82fc21394c1f7fbf4f4409f216c06079a8ee6480f97",
+        "topic": "Wetsontwerp tot wijziging van de wet van 15 mei 2007 tot erkenning en bescherming van het beroep van auto-expert en tot oprichting van een Instituut van de auto-experts voor wat betreft het beroep tegen de verkiezingsresultaten (II)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m5ladijl6t2x"
+      },
+      {
+        "type": "Vote",
+        "hash": "1b607e81b99caa97d67ddcd25ed8e2f1c596577b1fb76044d57a42b7acd46a63",
+        "topic": "Wetsontwerp houdende wijziging van de wet van 26 mei 2002 betreffende het recht op maatschappelijke integratie voor wat betreft de compensatie van OCMW's naar aanleiding van de beperking van de werkloosheidsuitkering in de tijd",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m5ladmku322v"
+      }
+    ]
   }
 ]
