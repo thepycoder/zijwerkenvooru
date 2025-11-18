@@ -2175,88 +2175,69 @@ h3 {
     display: block;
 }
 
-/* ✅ Meeting intensity: Green shades */
-/* ✅ Commission intensity: Blue shades */
-.calendar .squares li.commission[data-level="1"] {
-    background-color: #b0dbe4;
-}
+/* GREEN LEVELS 1–10 */
+.calendar .squares li[data-level="1"] { background-color: #c6e48b; }
+.calendar .squares li[data-level="1"]:hover { background-color: #a8c276; }
 
-.calendar .squares li.commission[data-level="1"]:hover {
-    background-color: #61adea;
-}
+.calendar .squares li[data-level="2"] { background-color: #b1ce7d; }
+.calendar .squares li[data-level="2"]:hover { background-color: #96af6a; }
 
-.calendar .squares li.commission[data-level="2"] {
-    background-color: #61adea;
-}
+.calendar .squares li[data-level="3"] { background-color: #9bb86e; }
+.calendar .squares li[data-level="3"]:hover { background-color: #849c5e; }
 
-.calendar .squares li.commission[data-level="2"]:hover {
-    background-color: #438dc6;
-}
+.calendar .squares li[data-level="4"] { background-color: #86a260; }
+.calendar .squares li[data-level="4"]:hover { background-color: #728a52; }
 
-.calendar .squares li.commission[data-level="3"] {
-    background-color: #1d4e89;
-}
+.calendar .squares li[data-level="5"] { background-color: #718c52; }
+.calendar .squares li[data-level="5"]:hover { background-color: #607746; }
 
-.calendar .squares li.commission[data-level="3"]:hover {
-    background-color: #0e3159;
-}
+.calendar .squares li[data-level="6"] { background-color: #5b7643; }
+.calendar .squares li[data-level="6"]:hover { background-color: #4d6439; }
 
-.calendar .squares li.commission[data-level="4"] {
-    background-color: #0e3159;
-}
+.calendar .squares li[data-level="7"] { background-color: #466035; }
+.calendar .squares li[data-level="7"]:hover { background-color: #3c522d; }
 
-.calendar .squares li.commission[data-level="4"]:hover {
-    background-color: #081e36;
-}
+.calendar .squares li[data-level="8"] { background-color: #314a27; }
+.calendar .squares li[data-level="8"]:hover { background-color: #2a3f21; }
 
-.calendar .squares li.commission[data-level="5"] {
-    background-color: #061728;
-}
+.calendar .squares li[data-level="9"] { background-color: #1b3418; }
+.calendar .squares li[data-level="9"]:hover { background-color: #172c14; }
 
-.calendar .squares li.commission[data-level="5"]:hover {
-    background-color: #030d14;
-}
+.calendar .squares li[data-level="10"] { background-color: #061e0a; }
+.calendar .squares li[data-level="10"]:hover { background-color: #051a08; }
 
-/* ✅ Generic intensity: Green shades */
-.calendar .squares li[data-level="1"] {
-    background-color: #c6e48b;
-}
 
-.calendar .squares li[data-level="1"]:hover {
-    background-color: #7bc96f;
-}
+/* BLUE LEVELS 1–10 */
+.calendar .squares li.commission[data-level="1"] { background-color: #b0dbe4; }
+.calendar .squares li.commission[data-level="1"]:hover { background-color: #96bac2; }
 
-.calendar .squares li[data-level="2"] {
-    background-color: #7bc96f;
-}
+.calendar .squares li.commission[data-level="2"] { background-color: #9dc5cf; }
+.calendar .squares li.commission[data-level="2"]:hover { background-color: #85a7b0; }
 
-.calendar .squares li[data-level="2"]:hover {
-    background-color: #4fa34f;
-}
+.calendar .squares li.commission[data-level="3"] { background-color: #8aafba; }
+.calendar .squares li.commission[data-level="3"]:hover { background-color: #75959e; }
 
-.calendar .squares li[data-level="3"] {
-    background-color: #196127;
-}
+.calendar .squares li.commission[data-level="4"] { background-color: #779aa5; }
+.calendar .squares li.commission[data-level="4"]:hover { background-color: #65838c; }
 
-.calendar .squares li[data-level="3"]:hover {
-    background-color: #031c09;
-}
+.calendar .squares li.commission[data-level="5"] { background-color: #648490; }
+.calendar .squares li.commission[data-level="5"]:hover { background-color: #55707a; }
 
-.calendar .squares li[data-level="4"] {
-    background-color: #0d3a12;
-}
+.calendar .squares li.commission[data-level="6"] { background-color: #526e7c; }
+.calendar .squares li.commission[data-level="6"]:hover { background-color: #465e69; }
 
-.calendar .squares li[data-level="4"]:hover {
-    background-color: #021405;
-}
+.calendar .squares li.commission[data-level="7"] { background-color: #3f5867; }
+.calendar .squares li.commission[data-level="7"]:hover { background-color: #364b58; }
 
-.calendar .squares li[data-level="5"] {
-    background-color: #061e0a;
-}
+.calendar .squares li.commission[data-level="8"] { background-color: #2c4352; }
+.calendar .squares li.commission[data-level="8"]:hover { background-color: #253946; }
 
-.calendar .squares li[data-level="5"]:hover {
-    background-color: #010a03;
-}
+.calendar .squares li.commission[data-level="9"] { background-color: #192d3d; }
+.calendar .squares li.commission[data-level="9"]:hover { background-color: #152634; }
+
+.calendar .squares li.commission[data-level="10"] { background-color: #061728; }
+.calendar .squares li.commission[data-level="10"]:hover { background-color: #051422; }
+
 
 .calendar .legend-row {
     display: flex;
