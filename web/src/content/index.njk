@@ -2,9 +2,8 @@
 permalink: "/"
 title: "De Belgische Kamer van Volksvertegenwoordigers"
 eleventyComputed:
-    description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stellen, en volg de actualiteit in de Kamer. Transparant overzicht van het federaal parlement."
+description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stellen, en volg de actualiteit in de Kamer. Transparant overzicht van het federaal parlement."
 ---
-
 
 
 <main>
@@ -13,22 +12,23 @@ eleventyComputed:
         <div id="hero" style="display: flex; flex-direction: column; align-items: center; margin-top: 2rem;">
             <div class="content" style="display: flex; flex-direction: column; gap: 1rem;">
                 <h1 style="margin: 0; font-size: 2rem;">Hoe stemt het Belgische parlement?</h1>
-                <p style="margin: 0;">In het federaal parlement stemmen verkozen vertegenwoordigers over wetten die uw leven rechtstreeks beïnvloeden.</p>
+                <p style="margin: 0;">In het federaal parlement stemmen verkozen vertegenwoordigers over wetten die uw
+                    leven rechtstreeks beïnvloeden.</p>
                 <p style="margin: 0;">Ontdek hier hoe u vertegenwoordigd wordt in De Kamer.</p>
             </div>
         </div>
 
         <!-- NEWS -->
         {% set plenary = (meetings.meetings | filter("type", "plenary"))[0] %}
-           {% set plenary2 = (meetings.meetings | filter("type", "plenary"))[1] %}
+        {% set plenary2 = (meetings.meetings | filter("type", "plenary"))[1] %}
         {% set commission = (meetings.meetings | filter("type", "commission"))[0] %}
 
-                {% set attendance = plenary.attendance %}
+        {% set attendance = plenary.attendance %}
         {% set attendanceColor = "#ff4c40" %}
         {% if attendance.ratio >= 0.85 %}
-            {% set attendanceColor = "#28a745" %}
+        {% set attendanceColor = "#28a745" %}
         {% elif attendance.ratio >= 0.65 %}
-            {% set attendanceColor = "#ff4c40" %}
+        {% set attendanceColor = "#ff4c40" %}
         {% endif %}
 
         <h2 style="text-transform: capitalize; font-size: xx-large;">Recente Vergaderingen</h2>
@@ -43,405 +43,422 @@ eleventyComputed:
                     <div class="padding-tight">
                         <p class="bold capitalize">{{ languages['nl'].questions }}</p>
                         {% if plenary.questions.length > 0 %}
-                            <ul>
-                                {% for question in plenary.questions | limit(3) %}
-                                    {% if question.topics_summary_nl %}
-                                        <li>{{ question.topics_summary_nl }}</li>
-                                    {% else %}
-                                        <li>{{ question.topics_nl }}</li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>
+                        <ul>
+                            {% for question in plenary.questions | limit(3) %}
+                            {% if question.topics_summary_nl %}
+                            <li>{{ question.topics_summary_nl }}</li>
+                            {% else %}
+                            <li>{{ question.topics_nl }}</li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
                         {% else %}
-                            <p style="margin-bottom: 0.5rem;">Geen vragen</p>
+                        <p style="margin-bottom: 0.5rem;">Geen vragen</p>
                         {% endif %}
 
                         <p class="bold capitalize">{{ languages['nl'].propositions }}</p>
                         {% if plenary.propositions.length > 0 %}
-                            <ul>
-                                {% for proposition in plenary.propositions | limit(1) %}
-                                    <li>{{ proposition.title_nl }}
-                                        {% if proposition.status == "Aangenomen" %}
-                                            <span class="status small" style="background-color: #28a745; color: white;">{{ languages['nl'].passed }}</span>
-                                        {% elseif proposition.status == "Verworpen" %}
-                                            <span class="status small" style="background-color: #dc3545; color: white;">{{ languages['nl'].failed }}</span>
-                                        {% elseif proposition.status == "ZonderVoorwerp" %}
-                                            <span class="status small" style="background-color: orange; color: white;">{{ languages['nl'].withoutSubject }}</span>
-                                            {% endif%}
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            {% else %}
-                                <p style="margin-bottom: 0.5rem;">Geen voorstellen</p>
-                            {% endif %}
+                        <ul>
+                            {% for proposition in plenary.propositions | limit(1) %}
+                            <li>{{ proposition.title_nl }}
+                                {% if proposition.status == "Aangenomen" %}
+                                <span class="status small" style="background-color: #28a745; color: white;">{{ languages['nl'].passed }}</span>
+                                {% elseif proposition.status == "Verworpen" %}
+                                <span class="status small" style="background-color: #dc3545; color: white;">{{ languages['nl'].failed }}</span>
+                                {% elseif proposition.status == "ZonderVoorwerp" %}
+                                <span class="status small" style="background-color: orange; color: white;">{{ languages['nl'].withoutSubject }}</span>
+                                {% endif%}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <p style="margin-bottom: 0.5rem;">Geen voorstellen</p>
+                        {% endif %}
 
-                            <p class="bold capitalize">{{ languages['nl'].votes }}</p>
-                            <p style="margin-bottom: 0.5rem;">{{ plenary.votes.length }} stemming(en)</p>
-                            <div>
-                                {% if plenary.allVotes.length > 0 %}
-                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                                        <p class="bold">{{ languages['nl'].attendance }}</p>
-                                        <p>{{ attendance.count }}/150 ({{ (attendance.ratio * 100) | round(0, 'floor') }}%)</p>
-                                    </div>
+                        <p class="bold capitalize">{{ languages['nl'].votes }}</p>
+                        <p style="margin-bottom: 0.5rem;">{{ plenary.votes.length }} stemming(en)</p>
+                        <div>
+                            {% if plenary.allVotes.length > 0 %}
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <p class="bold">{{ languages['nl'].attendance }}</p>
+                                <p>{{ attendance.count }}/150 ({{ (attendance.ratio * 100) | round(0, 'floor') }}%)</p>
+                            </div>
 
-                                    <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden;">
-                                        <div style="
+                            <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden;">
+                                <div style="
                                             width: {{ (attendance.ratio * 100) | round(0, 'floor') }}%;
                                             height: 100%;
                                             background-color: {{ attendanceColor }};
                                         "></div>
-                                    </div>
-                                {% endif %}
                             </div>
+                            {% endif %}
                         </div>
                     </div>
-                    <a href="/sessions/56/meetings/plenary/{{ plenary.meeting_id }}/" class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
-                        <p>{{ languages['nl'].seeMeetingDetails }}</p>
-                        {% lucide "chevron-right" %}
-                    </a>
                 </div>
+                <a href="/sessions/56/meetings/plenary/{{ plenary.meeting_id }}/"
+                   class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
+                    <p>{{ languages['nl'].seeMeetingDetails }}</p>
+                    {% lucide "chevron-right" %}
+                </a>
+            </div>
 
-                <div class="swipeable-item">
-                    <div class="card rounded-top">
-                        <div class="category align-center flex">
-                            <span>Nieuwe plenaire vergadering op {{ (plenary2.date) | date }}</span>
-                        </div>
-                        <div class="padding-tight">
-                            <p class="bold capitalize">{{ languages['nl'].questions }}</p>
-                            {% if plenary2.questions.length > 0 %}
-                                <ul>
-                                    {% for question in plenary2.questions | limit(3) %}
-                                        {% if question.topics_summary_nl %}
-                                            <li>{{ question.topics_summary_nl }}</li>
-                                        {% else %}
-                                            <li>{{ question.topics_nl }}</li>
-                                        {% endif %}
-                                    {% endfor %}
-                                </ul>
+            <div class="swipeable-item">
+                <div class="card rounded-top">
+                    <div class="category align-center flex">
+                        <span>Nieuwe plenaire vergadering op {{ (plenary2.date) | date }}</span>
+                    </div>
+                    <div class="padding-tight">
+                        <p class="bold capitalize">{{ languages['nl'].questions }}</p>
+                        {% if plenary2.questions.length > 0 %}
+                        <ul>
+                            {% for question in plenary2.questions | limit(3) %}
+                            {% if question.topics_summary_nl %}
+                            <li>{{ question.topics_summary_nl }}</li>
                             {% else %}
-                                <p style="margin-bottom: 0.5rem;">Geen vragen</p>
+                            <li>{{ question.topics_nl }}</li>
                             {% endif %}
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <p style="margin-bottom: 0.5rem;">Geen vragen</p>
+                        {% endif %}
 
-                            <p class="bold capitalize">{{ languages['nl'].propositions }}</p>
-                            {% if plenary2.propositions.length > 0 %}
-                                <ul>
-                                    {% for proposition in plenary2.propositions | limit(1) %}
-                                        <li>{{ proposition.title_nl }}
-                                            {% if proposition.status == "Aangenomen" %}
-                                                <span class="status small" style="background-color: #28a745; color: white;">{{ languages['nl'].passed }}</span>
-                                            {% elseif proposition.status == "Verworpen" %}
-                                                <span class="status small" style="background-color: #dc3545; color: white;">{{ languages['nl'].failed }}</span>
-                                            {% elseif proposition.status == "ZonderVoorwerp" %}
-                                                <span class="status small" style="background-color: orange; color: white;">{{ languages['nl'].withoutSubject }}</span>
-                                                {% endif%}
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                {% else %}
-                                    <p style="margin-bottom: 0.5rem;">Geen voorstellen</p>
-                                {% endif %}
+                        <p class="bold capitalize">{{ languages['nl'].propositions }}</p>
+                        {% if plenary2.propositions.length > 0 %}
+                        <ul>
+                            {% for proposition in plenary2.propositions | limit(1) %}
+                            <li>{{ proposition.title_nl }}
+                                {% if proposition.status == "Aangenomen" %}
+                                <span class="status small" style="background-color: #28a745; color: white;">{{ languages['nl'].passed }}</span>
+                                {% elseif proposition.status == "Verworpen" %}
+                                <span class="status small" style="background-color: #dc3545; color: white;">{{ languages['nl'].failed }}</span>
+                                {% elseif proposition.status == "ZonderVoorwerp" %}
+                                <span class="status small" style="background-color: orange; color: white;">{{ languages['nl'].withoutSubject }}</span>
+                                {% endif%}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <p style="margin-bottom: 0.5rem;">Geen voorstellen</p>
+                        {% endif %}
 
-                                <p class="bold capitalize">{{ languages['nl'].votes }}</p>
-                                <p style="margin-bottom: 0.5rem;">{{ plenary2.votes.length }} stemming(en)</p>
-                                <div>
-                                    {% if plenary2.allVotes.length > 0 %}
-                                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                                            <p class="bold">{{ languages['nl'].attendance }}</p>
-                                            <p>{{ attendance.count }}/150 ({{ (attendance.ratio * 100) | round(0, 'floor') }}%)</p>
-                                        </div>
+                        <p class="bold capitalize">{{ languages['nl'].votes }}</p>
+                        <p style="margin-bottom: 0.5rem;">{{ plenary2.votes.length }} stemming(en)</p>
+                        <div>
+                            {% if plenary2.allVotes.length > 0 %}
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <p class="bold">{{ languages['nl'].attendance }}</p>
+                                <p>{{ attendance.count }}/150 ({{ (attendance.ratio * 100) | round(0, 'floor') }}%)</p>
+                            </div>
 
-                                        <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden;">
-                                            <div style="
+                            <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden;">
+                                <div style="
                                                 width: {{ (attendance.ratio * 100) | round(0, 'floor') }}%;
                                                 height: 100%;
                                                 background-color: {{ attendanceColor }};
                                             "></div>
-                                        </div>
-                                    {% endif %}
-                                </div>
                             </div>
-                        </div>
-                        <a href="/sessions/56/meetings/plenary/{{ plenary2.meeting_id }}/" class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
-                            <p>{{ languages['nl'].seeMeetingDetails }}</p>
-                            {% lucide "chevron-right" %}
-                        </a>
-                    </div>
-
-                <div class="swipeable-item">
-                    <div class="card rounded-top">
-
-                        <div class="category align-center flex">
-                            <span>Nieuwe commissievergadering op {{ (commission.date) | date }}</span>
-                        </div>
-                        <div class="padding-tight">
-                            {% set ctype = commission.commission_type | default('', true) %}
-                            {% set c = commissions[ctype] or {} %}
-                            <p>{{ c.icon or '' }}
-                                {{ c.name or ctype }}</p>
-                            <p>Voorgezeten door <a href="/members/{{ commission.chairs[0].name | slugify }}/">{{ commission.chairs[0].name }}</a>
-                            </p>
+                            {% endif %}
                         </div>
                     </div>
-                    <a href="/sessions/56/meetings/commission/{{ commission.meeting_id }}/" class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
-                        <p>{{ languages['nl'].seeMeetingDetails }}</p>
-                        {% lucide "chevron-right" %}
-                    </a>
                 </div>
+                <a href="/sessions/56/meetings/plenary/{{ plenary2.meeting_id }}/"
+                   class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
+                    <p>{{ languages['nl'].seeMeetingDetails }}</p>
+                    {% lucide "chevron-right" %}
+                </a>
             </div>
+
+            <div class="swipeable-item">
+                <div class="card rounded-top">
+
+                    <div class="category align-center flex">
+                        <span>Nieuwe commissievergadering op {{ (commission.date) | date }}</span>
+                    </div>
+                    <div class="padding-tight">
+                        {% set ctype = commission.commission_type | default('', true) %}
+                        {% set c = commissions[ctype] or {} %}
+                        <p>{{ c.icon or '' }}
+                            {{ c.name or ctype }}</p>
+                        <p>Voorgezeten door <a href="/members/{{ commission.chairs[0].name | slugify }}/">{{
+                            commission.chairs[0].name }}</a>
+                        </p>
+                    </div>
+                </div>
+                <a href="/sessions/56/meetings/commission/{{ commission.meeting_id }}/"
+                   class="card rounded-bottom padding flex space-between align-center" style="border-top: none;">
+                    <p>{{ languages['nl'].seeMeetingDetails }}</p>
+                    {% lucide "chevron-right" %}
+                </a>
+            </div>
+        </div>
 
         <div class="swipe-indicator">
             <span class="dot active"></span>
             <span class="dot"></span>
-             <span class="dot"></span>
+            <span class="dot"></span>
             <!-- <span class="dot"></span> -->
         </div>
 
-            <!-- QUICK LINKS -->
+        <!-- QUICK LINKS -->
         <h2 style="text-transform: capitalize; font-size: xx-large;">Snelle Links</h2>
 
         <div class="quick-links">
-                <a class="quick-link" href="/sessions/56/meetings">
-                    <div class="flex space-between align-center">
-                        <div class="flex column">
-                            <div class="flex align-center">
-                                <span class="icon-padded">{% icon "lucide:calendar-days" %}</span>
-                                <h3>Alle vergaderingen</h3>
-                            </div>
-                            <p>Bekijk de verslagen alle plenaire en commissievergaderingen.</p>
+            <a class="quick-link" href="/sessions/56/meetings">
+                <div class="flex space-between align-center">
+                    <div class="flex column">
+                        <div class="flex align-center">
+                            <span class="icon-padded">{% icon "lucide:calendar-days" %}</span>
+                            <h3>Alle vergaderingen</h3>
                         </div>
-                        {% icon "lucide:chevron-right" %}
+                        <p>Bekijk de verslagen alle plenaire en commissievergaderingen.</p>
                     </div>
-                </a>
+                    {% icon "lucide:chevron-right" %}
+                </div>
+            </a>
 
-                <a class="quick-link" href="/members">
-                    <div class="flex space-between align-center">
-                        <div class="flex column">
-                            <div class="flex align-center">
-                                <span class="icon-padded">{% icon "lucide:user-round" %}</span>
-                                <h3>Alle kamerleden</h3>
-                            </div>
-                            <p>Bekijk de 150 kamerleden die zetelen in het federaal parlement.</p>
+            <a class="quick-link" href="/members">
+                <div class="flex space-between align-center">
+                    <div class="flex column">
+                        <div class="flex align-center">
+                            <span class="icon-padded">{% icon "lucide:user-round" %}</span>
+                            <h3>Alle kamerleden</h3>
                         </div>
-                        {% icon "lucide:chevron-right" %}
+                        <p>Bekijk de 150 kamerleden die zetelen in het federaal parlement.</p>
                     </div>
-                </a>
-                <a class="quick-link" href="/parties">
-                    <div class="flex space-between align-center">
-                        <div class="flex column">
-                            <div class="flex align-center">
-                                <span class="icon-padded">{% icon "lucide:users" %}</span>
-                                <h3>Alle partijen</h3>
-                            </div>
-                            <p>Bekijk de 12 partijen die actief zijn in het federaal parlement.</p>
+                    {% icon "lucide:chevron-right" %}
+                </div>
+            </a>
+            <a class="quick-link" href="/parties">
+                <div class="flex space-between align-center">
+                    <div class="flex column">
+                        <div class="flex align-center">
+                            <span class="icon-padded">{% icon "lucide:users" %}</span>
+                            <h3>Alle partijen</h3>
                         </div>
-                        {% icon "lucide:chevron-right" %}
+                        <p>Bekijk de 12 partijen die actief zijn in het federaal parlement.</p>
                     </div>
-                </a>
+                    {% icon "lucide:chevron-right" %}
+                </div>
+            </a>
 
-                <a class="quick-link" href="/questions">
+            <a class="quick-link" href="/questions">
 
-                    <div class="flex space-between align-center">
-                        <div class="flex column">
-                            <div class="flex align-center">
-                                <span class="icon-padded">{% icon "lucide:message-circle-question" %}</span>
-                                <h3>Alle vragen</h3>
-                            </div>
-                            <p>Bekijk alle vragen die de kamerleden hebben gesteld.</p>
+                <div class="flex space-between align-center">
+                    <div class="flex column">
+                        <div class="flex align-center">
+                            <span class="icon-padded">{% icon "lucide:message-circle-question" %}</span>
+                            <h3>Alle vragen</h3>
                         </div>
-                        {% icon "lucide:chevron-right" %}
+                        <p>Bekijk alle vragen die de kamerleden hebben gesteld.</p>
                     </div>
-                </a>
+                    {% icon "lucide:chevron-right" %}
+                </div>
+            </a>
 
-                <a class="quick-link" href="/propositions">
-                    <div class="flex space-between align-center">
-                        <div class="flex column">
-                            <div class="flex align-center">
-                                <span class="icon-padded">{% icon "lucide:inbox" %}</span>
-                                <h3>Alle voorstellen</h3>
-                            </div>
-                            <p>Bekijk alle voorstellen die de kamerleden hebben ingediend.</p>
+            <a class="quick-link" href="/propositions">
+                <div class="flex space-between align-center">
+                    <div class="flex column">
+                        <div class="flex align-center">
+                            <span class="icon-padded">{% icon "lucide:inbox" %}</span>
+                            <h3>Alle voorstellen</h3>
                         </div>
-                        {% icon "lucide:chevron-right" %}
+                        <p>Bekijk alle voorstellen die de kamerleden hebben ingediend.</p>
                     </div>
-                </a>
+                    {% icon "lucide:chevron-right" %}
+                </div>
+            </a>
 
-                <a class="quick-link" href="/votes">
-                    <div class="flex space-between align-center">
-                        <div class="flex column">
-                            <div class="flex align-center">
-                                <span class="icon-padded">{% icon "lucide:vote" %}</span>
-                                <h3>Alle stemmingen</h3>
-                            </div>
-                            <p>Bekijk alle stemmingen waaraan de kamerleden hebben deelgenomen.</p>
+            <a class="quick-link" href="/votes">
+                <div class="flex space-between align-center">
+                    <div class="flex column">
+                        <div class="flex align-center">
+                            <span class="icon-padded">{% icon "lucide:vote" %}</span>
+                            <h3>Alle stemmingen</h3>
                         </div>
-                        {% icon "lucide:chevron-right" %}
+                        <p>Bekijk alle stemmingen waaraan de kamerleden hebben deelgenomen.</p>
                     </div>
-                </a>
+                    {% icon "lucide:chevron-right" %}
+                </div>
+            </a>
 
-                <a class="quick-link" href="/topics">
-                    <div class="flex space-between align-center">
-                        <div class="flex column">
-                            <div class="flex align-center">
-                                <span class="icon-padded">{% icon "lucide:tag" %}</span>
-                                <h3>Alle onderwerpen</h3>
-                            </div>
-                            <p>Bekijk alle onderwerpen die aan bod komen in het federaal parlement.</p>
+            <a class="quick-link" href="/topics">
+                <div class="flex space-between align-center">
+                    <div class="flex column">
+                        <div class="flex align-center">
+                            <span class="icon-padded">{% icon "lucide:tag" %}</span>
+                            <h3>Alle onderwerpen</h3>
                         </div>
-                        {% icon "lucide:chevron-right" %}
+                        <p>Bekijk alle onderwerpen die aan bod komen in het federaal parlement.</p>
                     </div>
-                </a>
+                    {% icon "lucide:chevron-right" %}
+                </div>
+            </a>
 
-                <a class="quick-link" href="/lobby">
-                    <div class="flex space-between align-center">
-                        <div class="flex column">
-                            <div class="flex align-center">
-                                <span class="icon-padded">{% icon "lucide:euro" %}</span>
-                                <h3>Lobbyregister</h3>
-                            </div>
-                            <p>Bekijk alle bedrijven en organisaties die het wetgevingsproces beïnvloeden.</p>
+            <a class="quick-link" href="/lobby">
+                <div class="flex space-between align-center">
+                    <div class="flex column">
+                        <div class="flex align-center">
+                            <span class="icon-padded">{% icon "lucide:euro" %}</span>
+                            <h3>Lobbyregister</h3>
                         </div>
-                        {% icon "lucide:chevron-right" %}
+                        <p>Bekijk alle bedrijven en organisaties die het wetgevingsproces beïnvloeden.</p>
                     </div>
-                </a>
-            </div>
+                    {% icon "lucide:chevron-right" %}
+                </div>
+            </a>
+        </div>
 
-            <!-- TOPICS -->
+        <!-- TOPICS -->
 
 
         <h2 style="text-transform: capitalize; font-size: xx-large;">Onderwerpen</h2>
 
         <p>{{ languages['nl'].topicsExplanation }}</p>
-            <ul id="topics-list">
-                {% for key in topics | keys %}
-                    <li>
-                        <a href="/topics/{{key | slugify}}">{{ topics[key].icon or '' }}
-                            {{ key }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
+        <ul id="topics-list">
+            {% for key in topics | keys %}
+            <li>
+                <a href="/topics/{{key | slugify}}">{{ topics[key].icon or '' }}
+                    {{ key }}</a>
+            </li>
+            {% endfor %}
+        </ul>
 
-            <!-- CALENDAR -->
+        <!-- CALENDAR -->
         <h2 style="text-transform: capitalize; font-size: xx-large;">Kalender</h2>
 
 
         <p>{{ languages['nl'].calendarExplanation }}</p>
-            <div>
-                <div id="calendars">
-                    <div class="calendar">
-                        <ul class="months">
-                            <li>jan</li>
-                            <li>feb</li>
-                            <li>mrt</li>
-                            <li>apr</li>
-                            <li>mei</li>
-                            <li>jun</li>
-                            <li>jul</li>
-                            <li>aug</li>
-                            <li>sep</li>
-                            <li>oct</li>
-                            <li>nov</li>
-                            <li>dec</li>
-                        </ul>
-                        <ul class="days">
-                            <li>ma</li>
-                            <li>di</li>
-                            <li>wo</li>
-                            <li>do</li>
-                            <li>vr</li>
-                            <li>za</li>
-                            <li>zo</li>
-                        </ul>
+        <div>
+            <div id="calendars">
+                <div class="calendar">
+                    <ul class="months">
+                        <li>jan</li>
+                        <li>feb</li>
+                        <li>mrt</li>
+                        <li>apr</li>
+                        <li>mei</li>
+                        <li>jun</li>
+                        <li>jul</li>
+                        <li>aug</li>
+                        <li>sep</li>
+                        <li>oct</li>
+                        <li>nov</li>
+                        <li>dec</li>
+                    </ul>
+                    <ul class="days">
+                        <li>ma</li>
+                        <li>di</li>
+                        <li>wo</li>
+                        <li>do</li>
+                        <li>vr</li>
+                        <li>za</li>
+                        <li>zo</li>
+                    </ul>
 
-                        <ul class="squares">
-                            {% set firstDayOffset = 2 %}
-                            {% for i in range(0, firstDayOffset) %}
-                                <li class="empty"></li>
-                            {% endfor %}
+                    <ul class="squares">
+                        {% set firstDayOffset = 2 %}
+                        {% for i in range(0, firstDayOffset) %}
+                        <li class="empty"></li>
+                        {% endfor %}
 
-                            {% set days = range(0, 365) %}
-                            {% for day in days %}
+                        {% set days = range(0, 365) %}
+                        {% for day in days %}
 
-                                {% set hasCommission = false %}
-                                {% set commissionDate = "" %}
-                                {% set commissionCount = 0 %}
+                        {% set hasCommission = false %}
+                        {% set commissionDate = "" %}
+                        {% set commissionCount = 0 %}
 
-                                {% for commission in commissions.commissions %}
-                                    {% if commission.date | dayIndex(2025) == day %}
-                                        {% set hasCommission = true %}
-                                        {% set commissionCount = commissionCount + 1 %}
-                                        {% set commissionDate = commission.date | date("YYYY-MM-DD") %}
-                                    {% endif %}
-                                {% endfor %}
+                        {% for commission in commissions.commissions %}
+                        {% if commission.date | dayIndex(2025) == day %}
+                        {% set hasCommission = true %}
+                        {% set commissionCount = commissionCount + 1 %}
+                        {% set commissionDate = commission.date | date("YYYY-MM-DD") %}
+                        {% endif %}
+                        {% endfor %}
 
-                                {% set hasMeeting = false %}
-                                {% set meetingDate = "" %}
-                                {% set meetingCount = 0 %}
+                        {% set hasMeeting = false %}
+                        {% set meetingDate = "" %}
+                        {% set meetingCount = 0 %}
 
-                                {% for meeting in meetings.meetings %}
-                                    {% if meeting.date | dayIndex(2025) == day %}
-                                        {% set hasMeeting = true %}
-                                        {% set meetingCount = meetingCount + 1 %}
-                                        {% set meetingDate = meeting.date | date("YYYY-MM-DD") %}
-                                    {% endif %}
-                                {% endfor %}
+                        {% for meeting in meetings.meetings %}
+                        {% if meeting.date | dayIndex(2025) == day %}
+                        {% set hasMeeting = true %}
+                        {% set meetingCount = meetingCount + 1 %}
+                        {% set meetingDate = meeting.date | date("YYYY-MM-DD") %}
+                        {% endif %}
+                        {% endfor %}
 
-                                {% if hasCommission %}
-                                    <li class="commission" data-level="{{commissionCount}}"
+                        {% if hasCommission %}
+                        <li class="commission" data-level="{{commissionCount}}"
                             title='{{commissionCount}} commissievergaderingen op {{ commissionDate }}'></li>
-                                {% elseif hasMeeting %}
-                                    <li class="meeting" data-level="{{meetingCount}}"
+                        {% elseif hasMeeting %}
+                        <li class="meeting" data-level="{{meetingCount}}"
                             title='{{meetingCount}} plenaire vergaderingen op {{ meetingDate }}'></li>
-                                {% else %}
-                                    <li data-level="0"></li>
-                                {% endif %}
+                        {% else %}
+                        <li data-level="0"></li>
+                        {% endif %}
 
-                            {% endfor %}
-                        </ul>
-                        <div class="legend-row" style="display: flex; align-items: center;">
-                            <span style="margin-right: 0.4rem;">{{ languages['nl'].less }}</span>
-                            <li></li>
-                            <li class="meeting" data-level="1"></li>
-                            <li class="meeting" data-level="2"></li>
-                            <li class="meeting" data-level="3"></li>
-                            <span style="margin-left: 0.4rem">{{ languages['nl'].more }}
+                        {% endfor %}
+                    </ul>
+                    <div class="legend-row" style="display: flex; align-items: center;">
+                        <span style="margin-right: 0.4rem;">{{ languages['nl'].less }}</span>
+                        <li></li>
+                        <li class="meeting" data-level="1"></li>
+                        <li class="meeting" data-level="2"></li>
+                        <li class="meeting" data-level="3"></li>
+                        <span style="margin-left: 0.4rem">{{ languages['nl'].more }}
                                 {{ languages['nl'].plenaryMeetings }}</span>
-                        </div>
-                        <div class="legend-row" style="display: flex; align-items: center;">
-                            <span style="margin-right: 0.4rem;">{{ languages['nl'].less }}</span>
-                            <li></li>
-                            <li class="commission" data-level="1"></li>
-                            <li class="commission" data-level="2"></li>
-                            <li class="commission" data-level="3"></li>
-                            <span style="margin-left: 0.4rem">{{ languages['nl'].more }}
+                    </div>
+                    <div class="legend-row" style="display: flex; align-items: center;">
+                        <span style="margin-right: 0.4rem;">{{ languages['nl'].less }}</span>
+                        <li></li>
+                        <li class="commission" data-level="1"></li>
+                        <li class="commission" data-level="2"></li>
+                        <li class="commission" data-level="3"></li>
+                        <span style="margin-left: 0.4rem">{{ languages['nl'].more }}
                                 {{ languages['nl'].commissionMeetings }}</span>
-                        </div>
                     </div>
                 </div>
-
-                <p>{{ languages['nl'].plenaryMeetingsExplanation }}</p>
-                <p>{{ languages['nl'].commissionMeetingsExplanation }}</p>
             </div>
+
+            <p>{{ languages['nl'].plenaryMeetingsExplanation }}</p>
+            <p>{{ languages['nl'].commissionMeetingsExplanation }}</p>
         </div>
-    </main>
 
-    <script>
-  const row = document.querySelector('.swipeable-row');
-  const dots = document.querySelectorAll('.dot');
-  const items = document.querySelectorAll('.swipeable-item');
 
-  row.addEventListener('scroll', () => {
-    let index = 0;
-    let minDiff = Infinity;
+        <!-- NIEUWSBRIEF -->
+        <h2 style="text-transform: capitalize; font-size: xx-large;">Nieuwsbrief</h2>
+        <iframe
+                src="https://www.rumicat.com/embed/zijwerkenvooru"
+                width="100%"
+                height="464"
+                style="border:none;border-radius:8px;box-sizing:border-box;max-width:100%;min-width:0;"
+                frameborder="0"
+                title="Newsletter subscription">
+        </iframe>
 
-    items.forEach((item, i) => {
-      const diff = Math.abs(item.getBoundingClientRect().left - row.getBoundingClientRect().left);
-      if (diff < minDiff) {
-        minDiff = diff;
-        index = i;
-      }
+    </div>
+</main>
+
+<script>
+    const row = document.querySelector('.swipeable-row');
+    const dots = document.querySelectorAll('.dot');
+    const items = document.querySelectorAll('.swipeable-item');
+
+    row.addEventListener('scroll', () => {
+        let index = 0;
+        let minDiff = Infinity;
+
+        items.forEach((item, i) => {
+            const diff = Math.abs(item.getBoundingClientRect().left - row.getBoundingClientRect().left);
+            if (diff < minDiff) {
+                minDiff = diff;
+                index = i;
+            }
+        });
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        if (dots[index]) dots[index].classList.add('active');
     });
-
-    dots.forEach(dot => dot.classList.remove('active'));
-    if (dots[index]) dots[index].classList.add('active');
-  });
 </script>
