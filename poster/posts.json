@@ -1397,5 +1397,96 @@
         "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m5ladmku322v"
       }
     ]
+  },
+  {
+    "id": "73",
+    "date": "73",
+    "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m63ipql3wt2l",
+    "replies": [
+      {
+        "type": "Vote",
+        "hash": "398b594243a5d3a87445fac2a38260212873a368d14752b58fa52e6e40368584",
+        "topic": "Moties ingediend tot besluit van de interpellatie van mevrouw Barbara Pas over 'de berekening en de aanpak van de welvaartsoverdracht van Vlaanderen naar Wallonië'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m63ipyu5xz2m"
+      },
+      {
+        "type": "Vote",
+        "hash": "c42c45369fba8fa24c04b5114a79bae05bb2c745b4960de95acc824c84809b69",
+        "topic": "Moties ingediend tot besluit van de interpellaties van:\n- mevrouw Katleen Bury over 'de audit van het FAGG met betrekking tot de fertiliteitscentra'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m63iq5ni642i"
+      },
+      {
+        "type": "Vote",
+        "hash": "869a04276382d2ffec936ba158f79dc1756e570d20372b0fefc9fba43cfa2f1f",
+        "topic": "Moties ingediend tot besluit van de interpellatie van de heer Alexander Van Hoecke over 'de islamitische terreurdreiging tegen de eerste minister en politici in dit land'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m63iqc2tg42f"
+      },
+      {
+        "type": "Vote",
+        "hash": "9105d0e79b4e9c917c81f0d2fed6d289193c206572d9d421a87b9bd03744dcbc",
+        "topic": "Moties ingediend tot besluit van de interpellatie van mevrouw Marijke Dillen over 'de kaderuitbreiding bij de rechtbank van eerste aanleg en het hof van beroep te Antwerpen'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m63iqge76b2m"
+      },
+      {
+        "type": "Vote",
+        "hash": "0711da95ea161a344a490dd29439f6b30997fd709c5b5567be513030e9824b13",
+        "topic": "Moties ingediend tot besluit van de interpellatie van mevrouw Marijke Dillen over 'de versterkte strafrechtelijke keten bij het parket en de rechtbank van eerste aanleg Limburg'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m63iqkgctm2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "383db8a63ee90f93b991115e9b210aac22999e691ccbd76e96dcf57c402aa21e",
+        "topic": "Aangehouden amendementen en artikel van het wetsvoorstel tot wijziging van de wet van 4 juli 1989    betreffende de beperking en de controle van de verkiezingsuitgaven voor de Kamer van volksvertegenwoordigers,    de financiering en de open boekhouding    van de politieke partijen om de forfaitaire    bedragen te bevriezen en de indexering van de financiering van de politieke    partijen op te heffen voor de begrotingsjaren 2025-2029 (nieuw opschrift)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m63iqobnts23"
+      },
+      {
+        "type": "Vote",
+        "hash": "e8a422218ddf1af09b7561a365be7890a0f608f87d8efdfd175b20d02f86f03c",
+        "topic": "Geheel van het wetsvoorstel tot wijziging van de wet van 4 juli 1989 betreffende de beperking en de controle van de verkiezingsuitgaven voor de Kamer van volksvertegenwoordigers, de financiering en de open boekhouding    van de politieke partijen om de forfaitaire    bedragen te bevriezen en de indexering van de financiering van de politieke    partijen op te heffen voor de begrotingsjaren 2025-2029 (nieuw opschrift)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m63iqspcbi2y"
+      },
+      {
+        "type": "Vote",
+        "hash": "175a5ed07208d5e7bf87b0a7419a7aa3201a6a1064afd09a2b1d5cc69ae6e4d5",
+        "topic": "Aangehouden amendementen en artikelen van het wetsontwerp houdende diverse bepalingen inzake gezondheid",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m63iqwtyet2t"
+      },
+      {
+        "type": "Vote",
+        "hash": "306dc3a3bf8e1a7e87382ce6b7759ec773468909d732904bae9d9d29d57c602a",
+        "topic": "Geheel van het wetsontwerp houdende diverse bepalingen inzake gezondheid",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m63ir2zpr72v"
+      },
+      {
+        "type": "Vote",
+        "hash": "b216cab382c977e2f7e480b7abef6f259c11262d88c04bb607307bd3765ccf6e",
+        "topic": "Voorstel tot verwerping door de commissie voor Sociale Zaken, Werk en Pensioenen van het voorstel van resolutie teneinde het beheerscomité van de Hulpkas voor werkloosheidsuitkeringen performanter, inclusiever en representatiever te maken",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m63ir7fxwy2y"
+      },
+      {
+        "type": "Vote",
+        "hash": "668ad4eba33fd32aa182b4e5de7e9afa211309180ec083309ac73a1c4b8918dd",
+        "topic": "Voorstel tot verwerping door de commissie voor Mobiliteit, Overheidsbedrijven en Federale Instellingen van het voorstel van resolutie betreffende het vermijden van een maatschappelijke en sociaaleconomische isolatie van Limburg en zijn achterliggende regio’s in een ruimere internationale context",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m63ire7g3y2y"
+      },
+      {
+        "type": "Vote",
+        "hash": "7600fb5683b613c0a42f2806613702725286fcfc5925f429fbba6775886ef2b1",
+        "topic": "Voorstel tot verwerping door de commissie voor Grondwet en Institutionele Vernieuwing van het voorstel tot herziening van de Grondwet met het oog op de invoering van een nieuw stelsel van bevoegdheidsverdeling tussen de federale overheid en de deelstaten (I)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m63irikff52n"
+      },
+      {
+        "type": "Vote",
+        "hash": "79db5f78dfcb4c037f4a32b9dfd0e46ccdcb77224a054655e4852cfff5df27b8",
+        "topic": "Voorstel tot verwerping door de commissie voor Grondwet en Institutionele Vernieuwing van het voorstel tot herziening van de Grondwet met het oog op de invoering van een nieuw stelsel van bevoegdheidsverdeling tussen de federale overheid en de deelstaten (II)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m63irmlof52f"
+      },
+      {
+        "type": "Vote",
+        "hash": "2a625b6ab677dd0dfc279105fc0c7bd870010ab9d267c389c3eda927a6d13d1e",
+        "topic": "Voorstel tot verwerping door de commissie voor Grondwet en Institutionele Vernieuwing van het voorstel van bijzondere wet tot wijziging van de bijzondere wet van 12 januari 1989 met betrekking tot de Brusselse instellingen, teneinde asymmetrische bevoegdheidsoverdrachten aan de Gemeenschappen en de Gewesten mogelijk te maken",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m63irqxihu27"
+      }
+    ]
   }
 ]
