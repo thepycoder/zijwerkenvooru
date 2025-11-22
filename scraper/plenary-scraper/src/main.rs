@@ -947,7 +947,9 @@ async fn scrape_meeting(
 
             if let Some(span) = dutch_spans.last() {
                 let raw_text = span.text().collect::<Vec<_>>().join(" ");
-                let cleaned = clean_text(&raw_text).replace("\"", "\'");
+
+                // NOTE: Why is this replacement done?
+                let cleaned = clean_text(&raw_text);//.replace("\"", "\'");
 
                 let is_likely_french = french_indicator_words
                     .iter()
@@ -1791,13 +1793,16 @@ async fn extract_question_data(
 ) -> Result<QuestionData, Box<dyn Error>> {
     // Below are some of the issues found in meeting reports.
     // ISSUE: plenary meeting report 071: questions did not have dossier ids mentioned. -> Adjusted regex to not require this
-    let regex = Regex::new(
-        r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*["“'](.+?)["”'](?:\s*\((\d{8}[A-Z])\))?"#,
-    )?;
-    // ISSUE: plenary meeting report 073: question title with single tick in it (such as OCMW's) broke the regex -> Adjusted regx
+    // let regex = Regex::new(
+    //     r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*["“'](.+?)["”'](?:\s*\((\d{8}[A-Z])\))?"#,
+    // )?;
+    // ISSUE: plenary meeting report 073: question title with single tick in it (such as OCMW's) broke the regex -> Adjusted regex
     // let regex = Regex::new(
     //     r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*[“"]([^“"]+)[”"](?:\s*\((\d{8}[A-Z])\))?"#
     // )?;
+    let regex = Regex::new(r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*(?:"([^"]+?)"|“([^”]+?)”|'([^']+?)')(?:\s*\((\d{8}[A-Z])\))?"#)?;
+
+
 
     let mut questioners = Vec::new();
     let mut topics = Vec::new();
@@ -1812,22 +1817,56 @@ async fn extract_question_data(
             .trim()
             .replace("- ", "")
             .to_string();
-        let questioner = typo_map // apply tpo fixes
+        let questioner = typo_map
             .get(&questioner_raw)
             .cloned()
             .unwrap_or(questioner_raw);
+
         let respondent = capture.get(2).unwrap().as_str().trim().to_string();
-        let topic = capture.get(3).unwrap().as_str().trim().to_string();
-        let dossier_id = match capture.get(4) {
+
+        // topic may be in group 3, 4 or 5 depending on which branch matched
+        let topic = capture
+            .get(3)
+            .or_else(|| capture.get(4))
+            .or_else(|| capture.get(5))
+            .map(|m| m.as_str().trim().to_string())
+            .unwrap_or_else(|| "".to_string());
+
+        let dossier_id = match capture.get(6) {
             Some(m) => format!("Q{}", m.as_str().trim()),
             None => "".to_string(),
         };
+
         questioners.push(questioner);
         if !respondents.contains(&respondent) {
             respondents.push(respondent);
         }
         dossier_ids.push(dossier_id);
         topics.push(topic);
+
+        // let questioner_raw = capture
+        //     .get(1)
+        //     .unwrap()
+        //     .as_str()
+        //     .trim()
+        //     .replace("- ", "")
+        //     .to_string();
+        // let questioner = typo_map // apply tpo fixes
+        //     .get(&questioner_raw)
+        //     .cloned()
+        //     .unwrap_or(questioner_raw);
+        // let respondent = capture.get(2).unwrap().as_str().trim().to_string();
+        // let topic = capture.get(3).unwrap().as_str().trim().to_string();
+        // let dossier_id = match capture.get(4) {
+        //     Some(m) => format!("Q{}", m.as_str().trim()),
+        //     None => "".to_string(),
+        // };
+        // questioners.push(questioner);
+        // if !respondents.contains(&respondent) {
+        //     respondents.push(respondent);
+        // }
+        // dossier_ids.push(dossier_id);
+        // topics.push(topic);
     }
 
     Ok(QuestionData {
