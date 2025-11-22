@@ -2385,12 +2385,12 @@ small {
 
 
 /* NEWSLETTER */
-iframe .bg-card {
+.embed-layout .bg-card {
     border: 2px solid black !important;
     border-radius: 0 !important;
 }
 
-iframe button {
+.embed-layout .bg-custom-theme-primary  {
     background-color: white !important;
     color: black !important;
     border: 2px solid black !important;
