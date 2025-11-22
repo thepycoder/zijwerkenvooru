@@ -2382,3 +2382,21 @@ small {
     transform: translate(-50%, 0%);
     background: white;
 }
+
+
+/* NEWSLETTER */
+iframe .bg-card {
+    border: 2px solid black !important;
+    border-radius: 0 !important;
+}
+
+iframe button {
+    background-color: white !important;
+    color: black !important;
+    border: 2px solid black !important;
+    border-radius: 0 !important;
+    font-family: monospace !important;
+    text-transform: lowercase !important;
+    font-size: 1rem !important;
+    box-shadow: none !important;
+}
