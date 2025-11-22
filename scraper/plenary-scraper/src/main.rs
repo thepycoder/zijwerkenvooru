@@ -1796,7 +1796,7 @@ async fn extract_question_data(
     // )?;
     // ISSUE: plenary meeting report 073: question title with single tick in it (such as OCMW's) broke the regex -> Adjusted regx
     let regex = Regex::new(
-        r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*["“](.+?)["”](?:\s*\((\d{8}[A-Z])\))?"#
+        r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*[“"]([^“"]+)[”"](?:\s*\((\d{8}[A-Z])\))?"#
     )?;
 
     let mut questioners = Vec::new();
