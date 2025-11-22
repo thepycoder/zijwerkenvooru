@@ -1791,13 +1791,13 @@ async fn extract_question_data(
 ) -> Result<QuestionData, Box<dyn Error>> {
     // Below are some of the issues found in meeting reports.
     // ISSUE: plenary meeting report 071: questions did not have dossier ids mentioned. -> Adjusted regex to not require this
-    // let regex = Regex::new(
-    //     r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*["“'](.+?)["”'](?:\s*\((\d{8}[A-Z])\))?"#,
-    // )?;
-    // ISSUE: plenary meeting report 073: question title with single tick in it (such as OCMW's) broke the regex -> Adjusted regx
     let regex = Regex::new(
-        r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*[“"]([^“"]+)[”"](?:\s*\((\d{8}[A-Z])\))?"#
+        r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*["“'](.+?)["”'](?:\s*\((\d{8}[A-Z])\))?"#,
     )?;
+    // ISSUE: plenary meeting report 073: question title with single tick in it (such as OCMW's) broke the regex -> Adjusted regx
+    // let regex = Regex::new(
+    //     r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*[“"]([^“"]+)[”"](?:\s*\((\d{8}[A-Z])\))?"#
+    // )?;
 
     let mut questioners = Vec::new();
     let mut topics = Vec::new();
