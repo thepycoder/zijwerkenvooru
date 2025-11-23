@@ -456,7 +456,7 @@ async fn scrape_commission(
             // NOTE: So, we analyze the text to be sure as well.
             let dutch_spans: Vec<_> = element
                 .select(&span_selector)
-                .filter(|s| s.value().attr("lang") == Some("NL"))
+                .filter(|s| matches!(s.value().attr("lang"), Some("NL") | Some("NL-BE")))
                 .collect();
 
             let french_spans: Vec<_> = element

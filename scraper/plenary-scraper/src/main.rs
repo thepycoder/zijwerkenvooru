@@ -929,9 +929,10 @@ async fn scrape_meeting(
         if tag_name == "h2" {
             // NOTE: Here we extract dutch/french language parts HOWEVER, they are not 100% reliable and may be incorrect.
             // NOTE: So, we analyze the text to be sure as well.
+            // NOTE: For SOME REASON in plenary meeting 71 they use NL-BE instead of NL
             let dutch_spans: Vec<_> = element
                 .select(&span_selector)
-                .filter(|s| s.value().attr("lang") == Some("NL"))
+                .filter(|s| matches!(s.value().attr("lang"), Some("NL") | Some("NL-BE")))
                 .collect();
 
             let french_spans: Vec<_> = element
@@ -1158,7 +1159,7 @@ async fn scrape_meeting(
             // Extract Dutch.
             let dutch_text_raw = element
                 .select(&span_selector)
-                .filter(|s| s.value().attr("lang") == Some("NL"))
+                .filter(|s| matches!(s.value().attr("lang"), Some("NL") | Some("NL-BE")))
                 .last()
                 .map(|span| span.text().collect::<Vec<_>>().join(" "));
 
@@ -1315,7 +1316,7 @@ async fn scrape_meeting(
         if tag_name == "h2" {
             let nl_spans: Vec<_> = element
                 .select(&span_selector)
-                .filter(|s| s.value().attr("lang") == Some("NL"))
+                .filter(|s| matches!(s.value().attr("lang"), Some("NL") | Some("NL-BE")))
                 .collect();
 
             let fr_spans: Vec<_> = element
