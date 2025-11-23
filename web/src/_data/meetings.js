@@ -555,25 +555,10 @@ export default async function () {
           ...firstVote.no_members,
           ...firstVote.abstain_members
         ].map(m => m.name);
-
-        const absentees = activeMembers.filter(
-            m => !presentMembers.includes(m.name)
-        );
-
-        const groupedAbsentees = absentees.reduce((acc, member) => {
-          const party = member.party || "unknown";
-
-          if (!acc[party]) {
-            acc[party] = [];
-          }
-
-          acc[party].push(member);
-
-          return acc;
-        }, {});
-
-        meeting.absentees = groupedAbsentees;
-
+        
+        meeting.absentees = activeMembers
+            .filter(m => !presentMembers.includes(m.name))
+            .sort((a, b) => a.party.localeCompare(b.party));
 
         meeting.attendance = {
           count: total,
