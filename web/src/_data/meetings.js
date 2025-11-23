@@ -560,7 +560,20 @@ export default async function () {
             m => !presentMembers.includes(m.name)
         );
 
-        meeting.absentees = absentees;
+        const groupedAbsentees = absentees.reduce((acc, member) => {
+          const party = member.party || "unknown";
+
+          if (!acc[party]) {
+            acc[party] = [];
+          }
+
+          acc[party].push(member);
+
+          return acc;
+        }, {});
+
+        meeting.absentees = groupedAbsentees;
+
 
         meeting.attendance = {
           count: total,
