@@ -164,6 +164,8 @@ export default {
     wetsontwerp: "wetsonwerp",
     WetsVoorstel: "Wetsvoorstel",
     wetsvoorstel: "wetsvoorstel",
+    OvergezondenOntwerp: "Overgezonden Ontwerp",
+    overgezondenontwerp: "overgezonden ontwerp",
     VoorstelReglement: "Voorstel tot wijziging reglement",
     Aangenomen: "Aangenomen",
     Verworpen: "Verworpen",

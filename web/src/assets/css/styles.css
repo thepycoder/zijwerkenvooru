@@ -372,7 +372,7 @@ hr {
 
 .content p a:hover {
     background-color: black;
-    color: white;
+    color: white !important;
     transition: color 0.2s ease;
     font-weight: bold;
     opacity: 1;
@@ -1343,7 +1343,7 @@ select {
 
 #question-list a {
     text-decoration: none;
-    color: unset;
+    /*color: unset;*/
 }
 
 #vote-list a {
