@@ -69,11 +69,11 @@ eleventyComputed:
         </div>
 
         {% set attendance = meeting.attendance %}
-        {% set attendanceColor = "red" %}
-        {% if attendance.ratio >= 0.9 %}
-        {% set attendanceColor = "green" %}
-        {% elif attendance.ratio >= 0.8 %}
-        {% set attendanceColor = "orange" %}
+        {% set attendanceColor = "#ff4c40" %}
+        {% if attendance.ratio >= 0.85 %}
+        {% set attendanceColor = "#28a745" %}
+        {% elif attendance.ratio >= 0.65 %}
+        {% set attendanceColor = "#ff4c40" %}
         {% endif %}
         {% if  meeting.allVotes.length > 0 %}
         <div style="display: flex; justify-content: space-between; align-items: center;">

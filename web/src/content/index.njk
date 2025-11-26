@@ -24,11 +24,20 @@ description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stel
         {% set commission = (meetings.meetings | filter("type", "commission"))[0] %}
 
         {% set attendance = plenary.attendance %}
+        {% set attendance2 = plenary2.attendance %}
+
         {% set attendanceColor = "#ff4c40" %}
         {% if attendance.ratio >= 0.85 %}
         {% set attendanceColor = "#28a745" %}
         {% elif attendance.ratio >= 0.65 %}
         {% set attendanceColor = "#ff4c40" %}
+        {% endif %}
+
+        {% set attendanceColor2 = "#ff4c40" %}
+        {% if attendanceColor2.ratio >= 0.85 %}
+        {% set attendanceColor2 = "#28a745" %}
+        {% elif attendance2.ratio >= 0.65 %}
+        {% set attendanceColor2 = "#ff4c40" %}
         {% endif %}
 
         <h2 style="text-transform: capitalize; font-size: xx-large;">Recente Vergaderingen</h2>
@@ -148,14 +157,14 @@ description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stel
                             {% if plenary2.allVotes.length > 0 %}
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
                                 <p class="bold">{{ languages['nl'].attendance }}</p>
-                                <p>{{ attendance.count }}/150 ({{ (attendance.ratio * 100) | round(0, 'floor') }}%)</p>
+                                <p>{{ attendance2.count }}/150 ({{ (attendance2.ratio * 100) | round(0, 'floor') }}%)</p>
                             </div>
 
                             <div style="border-radius: 5px; background: #e0e0e0; height: 10px; overflow: hidden;">
                                 <div style="
-                                                width: {{ (attendance.ratio * 100) | round(0, 'floor') }}%;
+                                                width: {{ (attendance2.ratio * 100) | round(0, 'floor') }}%;
                                                 height: 100%;
-                                                background-color: {{ attendanceColor }};
+                                                background-color: {{ attendanceColor2 }};
                                             "></div>
                             </div>
                             {% endif %}
