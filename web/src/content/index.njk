@@ -34,7 +34,7 @@ description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stel
         {% endif %}
 
         {% set attendanceColor2 = "#ff4c40" %}
-        {% if attendanceColor2.ratio >= 0.85 %}
+        {% if attendance2.ratio >= 0.85 %}
         {% set attendanceColor2 = "#28a745" %}
         {% elif attendance2.ratio >= 0.65 %}
         {% set attendanceColor2 = "#ff4c40" %}
