@@ -29,3 +29,6 @@ summarize:
 
 post:
     cargo run --bin poster
+
+newsletter:
+    cargo run --bin newsletter

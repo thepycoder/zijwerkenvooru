@@ -6,4 +6,5 @@ members = [
     "scraper/commission-scraper",
     "poster",
     "summarizer",
+    "newsletter"
 ]
