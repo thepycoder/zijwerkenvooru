@@ -2,10 +2,10 @@
 {% set passed = (params.vote.yes_count | int) > ((params.vote.no_count | int) + (params.vote.abstain_count | int)) %}
 
 {% if passed %}
-<a href="/votes/{{ params.vote.session_id }}/{{ params.vote.meeting_id }}/{{ params.vote.vote_id }}"
+<a href="/sessions/{{ params.vote.session_id }}/meetings/plenary/{{ params.vote.meeting_id }}/votes/{{ params.vote.vote_id }}/"
    class="card padding flex space-between align-center" style="background-color: #f3fff3">
    {% else %} 
-   <a href="/votes/{{ params.vote.session_id }}/{{ params.vote.meeting_id }}/{{ params.vote.vote_id }}"
+   <a href="/sessions/{{ params.vote.session_id }}/meetings/plenary/{{ params.vote.meeting_id }}/votes/{{ params.vote.vote_id }}/"
    class="card padding flex space-between align-center" style="background-color: #fff4f4">
 {% endif %}
     <div>
