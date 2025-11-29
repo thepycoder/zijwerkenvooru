@@ -1488,5 +1488,30 @@
         "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m63irqxihu27"
       }
     ]
+  },
+  {
+    "id": "79",
+    "date": "79",
+    "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m6r54keng42y",
+    "replies": [
+      {
+        "type": "Vote",
+        "hash": "3995786924061d2d41fb9ac32de2c7f7ea65eff0b9f25efe79a4c5492b4e5af9",
+        "topic": "Motie van vertrouwen ingediend door de eerste minister na de verklaring van de regering",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m6r54o6tuo2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "8f0cc00c2797358b108991fddc55204565e0886481ed151bc3b6f16bc1dea9e0",
+        "topic": "Moties ingediend tot besluit van de interpellatie van mevrouw Britt Huybrechts over 'de plannen van de voorzitter van de Europese Raad om de toetredingsregels tot de EU te herschrijven'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m6r54skbnr2q"
+      },
+      {
+        "type": "Vote",
+        "hash": "d65e9d100095d83b5f95a21e812fb896bc560b7cbc43b3fc3079766cf5f96131",
+        "topic": "Moties ingediend tot besluit van de interpellatie van mevrouw Britt Huybrechts over 'de internationale dimensie van het terreuronderzoek in Antwerpen'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m6r54woiwm2y"
+      }
+    ]
   }
 ]
