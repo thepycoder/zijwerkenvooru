@@ -19,7 +19,7 @@
 
         </p>
         {% if params.hideAuthors !== "true"%}
-        <div class="flex column full">
+        <div class="flex column">
             <!-- QUESTIONERS -->
             {% if (params.question.questioners | length) > 1 %}
             <p>Gesteld door</p>
@@ -52,9 +52,6 @@
                 <span class="respondent">{{ respondent.name }}{% if function %} ({{ function.function }}){% endif %}</span>{% if not loop.last %}, {% endif %}
                 {% endfor %}
             </p>
-        </div>
-        <div class="summarized" style="display: none;">
-            <p>Gesteld door {% for questioner in params.question.questioners %}{{ questioner.name }}, {% endfor %}</p>
         </div>
         {% endif %}
     </div>
