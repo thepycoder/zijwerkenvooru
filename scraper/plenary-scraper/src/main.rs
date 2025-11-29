@@ -1,4 +1,3 @@
-use std::collections::HashMap;
 use arrow::array::{ArrayRef, RecordBatch, StringArray};
 use arrow::datatypes::{DataType, Field, Schema};
 use chrono::{Local, NaiveDate};
@@ -12,6 +11,7 @@ use parquet::arrow::ArrowWriter;
 use regex::Regex;
 use scraper::{ElementRef, Html, Selector};
 use serde_json::json;
+use std::collections::HashMap;
 use std::error::Error;
 use std::fmt;
 use std::fs::{File, read_to_string};
@@ -526,9 +526,7 @@ fn parse_document_type(raw: &str) -> DocumentType {
         DocumentType::WetsOntwerp
     } else if raw.contains("overgezonden ontwerp") {
         DocumentType::OvergezondenOntwerp
-    }
-
-    else if raw.contains("verslag") {
+    } else if raw.contains("verslag") {
         DocumentType::Verslag
     } else if raw.contains("advies van de raad van state") {
         DocumentType::AdviesVanDeRaadVanState
@@ -806,7 +804,10 @@ async fn scrape_meeting(
     web_request_count: &mut u32,
 ) -> Result<(), Box<dyn Error>> {
     let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
-    let filename = format!("data/sources/sessions/{}/meetings/plenary/{}-{}.html", session_id, session_id, meeting_id);
+    let filename = format!(
+        "data/sources/sessions/{}/meetings/plenary/{}-{}.html",
+        session_id, session_id, meeting_id
+    );
     let filepath = root.join(filename);
 
     // Check if file already exists.
@@ -847,8 +848,14 @@ async fn scrape_meeting(
 
     // Typo map added to fix some typos that they made in the report,
     let mut typo_map = HashMap::new();
-    typo_map.insert("Steven Coengrachts".to_string(), "Steven Coenegrachts".to_string());
-    typo_map.insert("Ridouhane Chahid".to_string(), "Ridouane Chahid".to_string());
+    typo_map.insert(
+        "Steven Coengrachts".to_string(),
+        "Steven Coenegrachts".to_string(),
+    );
+    typo_map.insert(
+        "Ridouhane Chahid".to_string(),
+        "Ridouane Chahid".to_string(),
+    );
 
     // Extract questions.
     let mut previous_question_nl = String::new();
@@ -950,7 +957,7 @@ async fn scrape_meeting(
                 let raw_text = span.text().collect::<Vec<_>>().join(" ");
 
                 // NOTE: Why is this replacement done?
-                let cleaned = clean_text(&raw_text);//.replace("\"", "\'");
+                let cleaned = clean_text(&raw_text); //.replace("\"", "\'");
 
                 let is_likely_french = french_indicator_words
                     .iter()
@@ -1476,10 +1483,7 @@ async fn check_and_download_dossier_file(
 ) -> Result<(), Box<dyn Error>> {
     let dossier_root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
 
-    let foldername = format!(
-        "data/sources/sessions/{}/dossiers",
-        session_id
-    );
+    let foldername = format!("data/sources/sessions/{}/dossiers", session_id);
 
     let dossier_dir = dossier_root.join(foldername);
 
@@ -1786,7 +1790,6 @@ async fn extract_vote_data(vote_text: String) -> Result<VoteData, Box<dyn Error>
     }
 }
 
-
 async fn extract_question_data(
     typo_map: HashMap<String, String>,
     question_text: String,
@@ -1801,9 +1804,9 @@ async fn extract_question_data(
     // let regex = Regex::new(
     //     r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*[“"]([^“"]+)[”"](?:\s*\((\d{8}[A-Z])\))?"#
     // )?;
-    let regex = Regex::new(r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*(?:"([^"]+?)"|“([^”]+?)”|'([^']+?)')(?:\s*\((\d{8}[A-Z])\))?"#)?;
-
-
+    let regex = Regex::new(
+        r#"(?m)(?:(?:Vraag van|Question de)\s)?([^\n]+?)\s+(?:aan|à)\s+([^\n]+?)\s*\(.*?\)\s*(?:over|sur)\s*(?:"([^"]+?)"|“([^”]+?)”|'([^']+?)')(?:\s*\((\d{8}[A-Z])\))?"#,
+    )?;
 
     let mut questioners = Vec::new();
     let mut topics = Vec::new();
@@ -1974,23 +1977,32 @@ fn extract_voter_names(document: &Html, vote_index: &str) -> (String, String, St
     let mut no_voters = String::new();
     let mut abstain_voters = String::new();
 
-    let span_selector  = Selector::parse("span").unwrap();
-    let td_selector    = Selector::parse("td").unwrap();
-    let p_selector     = Selector::parse("p").unwrap();
+    let span_selector = Selector::parse("span").unwrap();
+    let td_selector = Selector::parse("td").unwrap();
+    let p_selector = Selector::parse("p").unwrap();
 
     // 1. find the three result‑tables that belong to the requested vote
     let mut tables = Vec::new();
     for span in document.select(&span_selector) {
-        if span.text().collect::<Vec<_>>().join(" ")
-            .contains(&format!("Vote nominatif - Naamstemming: {}", vote_index)) || span.text().collect::<Vec<_>>().join(" ")
-            .contains(&format!("Naamstemming - Vote nominatif: {}", vote_index))
+        if span
+            .text()
+            .collect::<Vec<_>>()
+            .join(" ")
+            .contains(&format!("Vote nominatif - Naamstemming: {}", vote_index))
+            || span
+                .text()
+                .collect::<Vec<_>>()
+                .join(" ")
+                .contains(&format!("Naamstemming - Vote nominatif: {}", vote_index))
         {
             let mut node = span.parent();
             while let Some(n) = node {
                 if let Some(el) = ElementRef::wrap(n) {
                     if el.value().name() == "table" {
                         tables.push(el);
-                        if tables.len() == 3 { break; }
+                        if tables.len() == 3 {
+                            break;
+                        }
                     }
                 }
                 node = n.next_sibling();
@@ -2009,15 +2021,22 @@ fn extract_voter_names(document: &Html, vote_index: &str) -> (String, String, St
         //     are no names and we can skip the expensive scan.
         //--------------------------------------------------------------
         let mut tds = table.select(&td_selector);
-        tds.next();                                           // label
+        tds.next(); // label
         let count: usize = tds
             .next()
-            .map(|td| td.text().collect::<Vec<_>>().join(" ").trim().parse().unwrap_or(0))
+            .map(|td| {
+                td.text()
+                    .collect::<Vec<_>>()
+                    .join(" ")
+                    .trim()
+                    .parse()
+                    .unwrap_or(0)
+            })
             .unwrap_or(0);
 
         if count == 0 {
             *vote_types[i] = String::new();
-            continue;                 // go to the next of the 3 tables
+            continue; // go to the next of the 3 tables
         }
 
         //--------------------------------------------------------------
@@ -2028,14 +2047,21 @@ fn extract_voter_names(document: &Html, vote_index: &str) -> (String, String, St
         while let Some(n) = node {
             if let Some(el) = ElementRef::wrap(n) {
                 // stop when we reach the next result‑table
-                if el.value().name() == "table" { break; }
+                if el.value().name() == "table" {
+                    break;
+                }
 
                 if el.value().name() == "p" {
                     // first child should be the <span> that holds the text
                     if let Some(span_node) = el.first_child() {
                         if let Some(span_el) = ElementRef::wrap(span_node) {
                             if span_el.value().name() == "span" {
-                                let raw = span_el.text().collect::<Vec<_>>().join(" ").trim().to_string();
+                                let raw = span_el
+                                    .text()
+                                    .collect::<Vec<_>>()
+                                    .join(" ")
+                                    .trim()
+                                    .to_string();
 
                                 // ───────────  good‑enough heuristic  ───────────
                                 // • starts with a letter (not the digit of “3 Vote…”)
@@ -2045,10 +2071,13 @@ fn extract_voter_names(document: &Html, vote_index: &str) -> (String, String, St
                                 // This accepts one name (“Peeters Karel”)
                                 // and many comma‑separated names alike.
                                 // ────────────────────────────────────────────────
-                                let looks_like_names =
-                                    raw.chars().next().map(|c| c.is_alphabetic()).unwrap_or(false)
-                                        && !raw.contains("Vote nominatif")
-                                        && raw.chars().any(|c| c.is_alphabetic());
+                                let looks_like_names = raw
+                                    .chars()
+                                    .next()
+                                    .map(|c| c.is_alphabetic())
+                                    .unwrap_or(false)
+                                    && !raw.contains("Vote nominatif")
+                                    && raw.chars().any(|c| c.is_alphabetic());
 
                                 if looks_like_names {
                                     *vote_types[i] = raw
@@ -2056,7 +2085,7 @@ fn extract_voter_names(document: &Html, vote_index: &str) -> (String, String, St
                                         .replace(",\n", ",")
                                         .replace('\n', " ")
                                         .to_string();
-                                    break;      // done with this vote‑type
+                                    break; // done with this vote‑type
                                 }
                             }
                         }
@@ -2069,7 +2098,6 @@ fn extract_voter_names(document: &Html, vote_index: &str) -> (String, String, St
 
     (yes_voters, no_voters, abstain_voters)
 }
-
 
 // fn extract_voter_names(document: &Html, vote_index: &str) -> (String, String, String) {
 //     let mut yes_voters = String::new();
@@ -2201,10 +2229,7 @@ fn extract_time_from_document(document: &Html, keyword: &str) -> Result<String, 
 }
 
 fn extract_start_time_from_document(document: &Html) -> Result<String, Box<dyn Error>> {
-    let phrases = vec![
-        "De vergadering wordt geopend",
-        "De vergadering wordt hervat",
-    ];
+    let phrases = vec!["wordt geopend", "wordt hervat"];
 
     for phrase in phrases {
         if let Ok(time) = extract_time_from_document(document, phrase) {
