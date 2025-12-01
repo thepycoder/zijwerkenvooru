@@ -1986,11 +1986,13 @@ fn extract_voter_names(document: &Html, vote_index: &str) -> (String, String, St
     for span in document.select(&span_selector) {
         if span
             .text()
+            .flat_map(|t| t.split_whitespace())
             .collect::<Vec<_>>()
             .join(" ")
             .contains(&format!("Vote nominatif - Naamstemming: {}", vote_index))
             || span
                 .text()
+                .flat_map(|t| t.split_whitespace())
                 .collect::<Vec<_>>()
                 .join(" ")
                 .contains(&format!("Naamstemming - Vote nominatif: {}", vote_index))
