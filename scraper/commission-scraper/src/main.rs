@@ -90,8 +90,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         .parent()
         .unwrap()
         .join("current_commission_id.txt");
-    let current_commission_id: u32 = std::fs::read_to_string
-        (&commission_id_path)?
+    let current_commission_id: u32 = std::fs::read_to_string(&commission_id_path)?
         .trim()
         .parse()?;
 
@@ -308,7 +307,6 @@ async fn scrape_commission(
     question_dossier_ids: &mut Vec<String>,
     web_request_count: &mut u32,
 ) -> Result<(), Box<dyn Error>> {
-
     println!("Scraping commission: {}", commission_id);
     let root = Path::new(env!("CARGO_MANIFEST_DIR")).parent().unwrap();
     let filename = format!(
@@ -467,8 +465,8 @@ async fn scrape_commission(
             let mut found_text_nl = None;
             let mut found_text_fr = None;
 
-            let french_indicator_words = ["questions jointes"];
-            let dutch_indicator_words = ["samengevoegde vragen"];
+            let french_indicator_words = ["questions jointes", "question de"];
+            let dutch_indicator_words = ["samengevoegde vragen", "toegevoegde vragen", "vraag van"];
 
             if let Some(span) = dutch_spans.last() {
                 let raw_text = span.text().collect::<Vec<_>>().join(" ");
@@ -501,12 +499,12 @@ async fn scrape_commission(
             }
 
             // Combine decision-making logic based on Dutch/French headers
-            let is_group_start = found_text_nl
+            // NOTE: See https://www.dekamer.be/doc/CCRI/html/56/ic017x.html, here there is a grouped question that does not start with 'Samengevoegde' but has 'toegevoegde'.
+            let is_group_start = found_text_nl.as_deref().map_or(false, |t| {
+                t.starts_with("Samengevoegde") || t.contains("toegevoegde vragen")
+            }) || found_text_fr
                 .as_deref()
-                .map_or(false, |t| t.starts_with("Samengevoegde"))
-                || found_text_fr
-                    .as_deref()
-                    .map_or(false, |t| t.contains("jointes"));
+                .map_or(false, |t| t.contains("jointes"));
 
             let is_subquestion = found_text_nl
                 .as_deref()
@@ -586,6 +584,28 @@ async fn scrape_commission(
                 previous_discussion.push_str("NEWPARAGRAPH");
             }
         }
+    }
+
+    // Push last question if there is one
+    if !previous_question_nl.is_empty() && !previous_question_fr.is_empty() {
+        let question_nl =
+            extract_question_data(previous_question_nl.clone(), previous_discussion.clone())
+                .await?;
+        let question_fr =
+            extract_question_data(previous_question_fr.clone(), previous_discussion.clone())
+                .await?;
+
+        question_ids.push(question_id.to_string());
+        question_meeting_ids.push(commission_id.to_string());
+        question_session_ids.push(session_id.to_string());
+        question_discussions.push(question_nl.discussion.clone());
+        question_questioners.push(question_nl.questioners.join(","));
+        question_respondents.push(question_nl.respondents.join(","));
+        question_topics_nl.push(question_nl.topics.join(";"));
+        question_topics_fr.push(question_fr.topics.join(";"));
+        question_dossier_ids.push(question_nl.dossier_ids.join(","));
+
+        question_id += 1;
     }
 
     commission_session_ids.push(session_id.to_string());
