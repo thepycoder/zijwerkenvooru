@@ -106,7 +106,18 @@ eleventyComputed:
 
     <!-- PROPOSITIONS -->
     <div id="tab-2-content" class="tab-content padding">
-        <p>Propositions</p>
+        {% if party.propositions and (party.propositions | length) > 0 %}
+        <div id="proposition-list">
+            {% for proposition in party.propositions | sort(attribute='date', true) %}
+            {% set allTopics = proposition.title_nl | getMatchedTopics(topics) %}
+            <div class="proposition-card-wrapper" data-topics="{{ allTopics | join(',') }}">
+                {{ propositionCard({ proposition: proposition, translations: languages['nl'], language: nl, hideAuthors: "true" }) }}
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>Deze partij heeft nog geen voorstellen ingediend als hoofdauteur.</p>
+        {% endif %}
     </div>
 
     <!-- VOTES -->
@@ -120,13 +131,12 @@ eleventyComputed:
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const filterSelect = document.getElementById("topicFilter");
-  const cards = document.querySelectorAll(".question-card-wrapper");
+  const cards = document.querySelectorAll(".question-card-wrapper, .proposition-card-wrapper");
 
   filterSelect.addEventListener("change", () => {
     const selectedTopic = filterSelect.value;
     cards.forEach(card => {
       const topics = card.dataset.topics.split(',').map(t => t.trim());
-      console.log(topics);
       const shouldShow = !selectedTopic || topics.includes(selectedTopic);
       card.style.display = shouldShow ? "block" : "none";
     });

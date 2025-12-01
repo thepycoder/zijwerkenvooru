@@ -87,6 +87,32 @@ export default async function () {
   
     });
 
+    // Build dossier lookup for propositions (document type, status, vote date, authors)
+    const convertDate = (rawDate) => {
+      if (!rawDate || typeof rawDate !== 'string') return null;
+      const [day, month, year] = rawDate.split('/');
+      if (!day || !month || !year) return null;
+      return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+    };
+
+    const dossierById = {};
+    dossiersRows.forEach((dossier) => {
+      const id = dossier[1];
+      const document_type = dossier[7];
+      const status = dossier[8];
+      const vote_date = convertDate(dossier[6]);
+      const authors = (dossier[3] || '')
+        .split(',')
+        .map((a) => a.trim().toLowerCase().replace(/\s+/g, '-'))
+        .filter(Boolean);
+      dossierById[id] = {
+        authors,
+        document_type,
+        status,
+        vote_date,
+      };
+    });
+
     // Add questions to parties
     questionsRows.forEach(q => {
       const questionId = q[0];
@@ -136,6 +162,58 @@ export default async function () {
         }
       });
       
+    });
+
+    // Add propositions to parties (include under all parties with at least one author)
+    propositionsRows.forEach((prop) => {
+      const propId = prop[0];
+      const sessionId = prop[1];
+      const meetingId = prop[2];
+      const titleNl = prop[3];
+      const titleFr = prop[4];
+      const dossierId = prop[5];
+      const documentId = prop[6];
+
+      const keyForDate = `${sessionId}-${meetingId}`;
+      const date = meetingDateMap.get(keyForDate) || null;
+
+      const dossierData = dossierById[dossierId] || { authors: [] };
+
+      // Determine all parties involved based on authors mapped to member parties
+      const partiesInvolved = new Set();
+      (dossierData.authors || []).forEach((authorKey) => {
+        const partyName = memberPartyMap[authorKey];
+        if (partyName) partiesInvolved.add(partyName);
+      });
+
+      partiesInvolved.forEach((partyName) => {
+        if (!parties[partyName]) {
+          parties[partyName] = {
+            name: partyName,
+            members: new Set(),
+            propositions: [],
+            questions: []
+          };
+        }
+
+        // Deduplicate per party by proposition_id
+        const alreadyHas = parties[partyName].propositions.some((p) => p.proposition_id === propId);
+        if (alreadyHas) return;
+
+        parties[partyName].propositions.push({
+          proposition_id: propId,
+          session_id: sessionId,
+          meeting_id: meetingId,
+          date: date,
+          title_nl: titleNl,
+          title_fr: titleFr,
+          dossier_id: dossierId,
+          document_id: documentId,
+          document_type: dossierData.document_type || null,
+          status: dossierData.status || null,
+          vote_date: dossierData.vote_date,
+        });
+      });
     });
 
     // Convert Sets to arrays for JSON serialization
