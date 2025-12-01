@@ -29,6 +29,7 @@ eleventyComputed:
 <h1 data-pagefind-meta="title" class="capitalize-first">Commissievergadering op {{ commission.date | date }}</h1>
 
 <div class="flex column gap">
+    <!-- INFO -->
     <div class="card info-list" style="gap: 0;">
         {% set ctype = commission.commission_type | default('', true) %}
         {% set c = commissions[ctype] or {} %}
@@ -40,8 +41,7 @@ eleventyComputed:
               {{ c.icon or '' }} {{ c.name or ctype }}
             </div>
 
-            <div class="padding info-list">
-
+    <div class="padding info-list">
 
         <div class="info-item">
              <span class="icon-padded">{% icon "lucide:clock" %}</span>
@@ -49,6 +49,10 @@ eleventyComputed:
                 }})</p>
         </div>
 
+        <div class="info-item">
+              <span class="icon-padded">{% icon "lucide:message-circle-question" %}</span>
+            <p>{{ commission.questions.length }} {{ languages['nl'].questions }}</p>
+        </div>
 
                 <div class="info-item">
                     <span class="icon-padded">{% icon "lucide:user" %}</span>
