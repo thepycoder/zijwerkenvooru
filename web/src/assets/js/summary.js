@@ -3,7 +3,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const toggles = document.querySelectorAll('input#summaryToggle');
     if (!toggles || toggles.length === 0) return;
 
+    // Textual summaries following the .full / .summarized pairing pattern
     const fullElements = document.querySelectorAll('.full');
+    // Discussion summaries (AI) shown alongside the full discussion
+    const discussionContainers = document.querySelectorAll('.discussion');
     const summaryExplanation = document.querySelector('#summaryExplanation');
 
     function findSummaryElementFor(fullEl) {
@@ -25,6 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (summaryExplanation) {
             summaryExplanation.style.display = showSummary ? 'inline' : 'none';
         }
+
+        // 1) Toggle .full /.summarized text blocks (titles, topics, etc.)
         fullElements.forEach(function (el) {
             const summaryEl = findSummaryElementFor(el);
 
@@ -35,6 +40,25 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 el.style.display = 'inline';
                 if (summaryEl) summaryEl.style.display = 'none';
+            }
+        });
+
+        // 2) Toggle AI discussion summaries (keep full discussion visible)
+        discussionContainers.forEach(function (container) {
+            // The AI summary container lives as a message-container sibling within .discussion
+            const aiSummaryContainer = container.querySelector('.ai-discussion-summary');
+            if (!aiSummaryContainer) return;
+
+            // Only show the AI block when toggled ON and when there is non-empty content
+            const aiSummaryHtml = aiSummaryContainer.querySelector('.ai-summary-html');
+            const hasContent = aiSummaryHtml && aiSummaryHtml.textContent.trim() !== '';
+
+            if (showSummary && hasContent) {
+                // Show AI summary block; do NOT hide the rest of the discussion
+                aiSummaryContainer.style.display = '';
+            } else {
+                // Hide the AI summary block
+                aiSummaryContainer.style.display = 'none';
             }
         });
     }
