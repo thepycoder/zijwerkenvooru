@@ -7,7 +7,7 @@ eleventyComputed:
 ---
 
 <!-- COMPONENTS -->
-{%- from "components/question-card-tiny.njk" import questionCardTiny -%}
+{%- from "components/question-card-complete.njk" import questionCardComplete -%}
 
 <h1>Alle Vragen</h1>
 
@@ -43,7 +43,7 @@ eleventyComputed:
         {% for question in meeting.questions %}
         {% set allTopics = question.topics_nl | getMatchedTopics(topics) %}
         <div class="question-card-wrapper" data-topics="{{ allTopics | join(',') }}">
-            {{ questionCardTiny({ question: question, topic: allTopics[0], topics: topics, functions: functions, translations: languages['nl'], language: nl, showCategory: "true" }) }}
+            {{ questionCardComplete({ question: question, topic: allTopics[0], topics: topics, functions: functions, partyColors: partyColors, translations: languages['nl'], language: nl, showCategory: "true" }) }}
         </div>
         {% endfor %}
     </div>

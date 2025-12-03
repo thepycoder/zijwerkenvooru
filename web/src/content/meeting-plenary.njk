@@ -27,25 +27,12 @@ eleventyComputed:
 {%- from "components/vote-card.njk" import voteCard -%}
 {%- from "components/proposition-card.njk" import propositionCard -%}
 {%- from "components/question-card-complete.njk" import questionCardComplete -%}
+{%- from "components/summary-toggle.njk" import summaryToggle -%}
 
 <h1 data-pagefind-meta="title" class="capitalize-first">Plenaire vergadering op {{ meeting.date | date }}</h1>
 
 <div class="flex column gap">
 
-    <!-- SUMMARY TOGGLE -->
-    <div class="card padding" style="margin-bottom: 0.2rem; display: flex; flex-direction: column;">
-        <div style="margin-top: 0.2rem; display: flex; justify-content: space-between; align-items: center;">
-            <p>{{ languages['nl'].summarizedVersion }}</p>
-            <label class="switch">
-                <input type="checkbox" id="summaryToggle" />
-                <span class="slider round"></span>
-            </label>
-        </div>
-        <details id="summaryExplanation" style="display: none;">
-            <summary>Hoe werkt dit?</summary>
-            <p>{{ languages['nl'].summaryExplanation }} <span class="highlight">{{ languages['nl'].underlined }}</span>.</p>
-        </details>
-    </div>
 
     <!-- INFO -->
     <div class="card padding info-list">
@@ -185,45 +172,6 @@ De volgende {{ meeting.absentees.length }} kamerleden waren afwezig bij tenminst
 {% endif %}
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const toggle = document.getElementById('summaryToggle');
-
-        const fullElements = document.querySelectorAll('.full');
-        const summarizedElements = document.querySelectorAll('.summarized');
-        const discussionSummaries = document.querySelectorAll('.ai-discussion-summary');
-        const summaryExplanation = document.querySelector('#summaryExplanation');
-
-        toggle.addEventListener('change', function () {
-            const showSummary = this.checked;
-
-            if (showSummary) {
-                summaryExplanation.style.display = 'inline';
-            } else {
-                summaryExplanation.style.display = 'none';
-            }
-
-            fullElements.forEach(function (el, index) {
-                const summaryEl = summarizedElements[index];
-
-                if (showSummary && summaryEl && summaryEl.textContent.trim() !== '') {
-                    el.style.display = 'none';
-                    summaryEl.style.display = 'inline';
-                } else {
-                    el.style.display = 'inline';
-                    if (summaryEl) summaryEl.style.display = 'none';
-                }
-            });
-
-            // Toggle AI discussion summaries independently of topic pairing
-            discussionSummaries.forEach(function (el) {
-                el.style.display = showSummary ? 'block' : 'none';
-            });
-        });
-    });
-</script>
-
-
-<script>
     document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll(".toggle-votes").forEach(button => {
             button.addEventListener("click", () => {
@@ -233,20 +181,6 @@ De volgende {{ meeting.absentees.length }} kamerleden waren afwezig bij tenminst
                 if (!voteBlock) return;
 
                 const isOpen = voteBlock.classList.toggle("open");
-
-                // Toggle class on the button or svg for rotation
-                button.classList.toggle("rotated", isOpen);
-            });
-        });
-
-        document.querySelectorAll(".toggle-discussion").forEach(button => {
-            button.addEventListener("click", () => {
-                const container = button.closest(".question-container");
-                const discussion = container.querySelector(".discussion");
-
-                if (!discussion) return;
-
-                const isOpen = discussion.classList.toggle("open");
 
                 // Toggle class on the button or svg for rotation
                 button.classList.toggle("rotated", isOpen);

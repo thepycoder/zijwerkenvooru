@@ -13,7 +13,8 @@ eleventyComputed:
 
 <!-- COMPONENTS -->
 {%- from "components/proposition-card.njk" import propositionCard -%}
-{%- from "components/question-card.njk" import questionCard -%}
+{%- from "components/question-card-complete.njk" import questionCardComplete -%}
+{%- from "components/summary-toggle.njk" import summaryToggle -%}
 
 {% set topicQuestions = questions.questions | filterQuestionsByTopic(topic, topics) %}
 {% set topicPropositions = propositions.propositions | filterPropositionsByTopic(topic, topics) %}
@@ -72,24 +73,9 @@ eleventyComputed:
     <!-- QUESTIONS -->
     <div id="tab-1-content" class="tab-content padding">
         <div id="question-list">
-            <!-- SUMMARIZED VERSION -->
-            <div class="card padding flex column gap">
-                <div style="margin-top: 0.2rem; margin-bottom: 0.2rem; display: flex; justify-content: space-between; align-items: center;">
-                    <p>{{ languages['nl'].summarizedVersion }}</p>
-                    <label class="switch">
-                        <input type="checkbox" id="summaryToggle" />
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-
-                <details id="summaryExplanation" style="display: none;">
-                    <summary>Hoe werkt dit?</summary>
-                    <p>{{ languages['nl'].summaryExplanation }} <span class="highlight">{{ languages['nl'].underlined }}</span>.</p>
-                </details>
-            </div>
             {% for question in topicQuestions | sort(attribute='date', true) %}
                 <div>
-                    {{ questionCard({question: question, functions: functions, partyColors: partyColors, translations: languages['nl'], language: nl }) }}
+                    {{ questionCardComplete({question: question, topics: topics, functions: functions, partyColors: partyColors, translations: languages['nl'], language: nl, showCategory: "true" }) }}
                 </div>
             {%- endfor %}
         </div>
@@ -246,34 +232,4 @@ eleventyComputed:
 </script>
 
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const toggle = document.getElementById('summaryToggle');
-
-        const fullElements = document.querySelectorAll('.full');
-        const summarizedElements = document.querySelectorAll('.summarized');
-        const summaryExplanation = document.querySelector('#summaryExplanation');
-
-        toggle.addEventListener('change', function () {
-            const showSummary = this.checked;
-
-            if (showSummary) {
-                summaryExplanation.style.display = 'inline';
-            } else {
-                summaryExplanation.style.display = 'none';
-            }
-
-            fullElements.forEach(function (el, index) {
-                const summaryEl = summarizedElements[index];
-
-                if (showSummary && summaryEl && summaryEl.textContent.trim() !== '') {
-                    el.style.display = 'none';
-                    summaryEl.style.display = 'inline';
-                } else {
-                    el.style.display = 'inline';
-                    if (summaryEl) summaryEl.style.display = 'none';
-                }
-            });
-        });
-    });
-</script>
+<!-- summary toggle behavior handled globally via /assets/js/summary.js -->

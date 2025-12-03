@@ -19,6 +19,15 @@
     <div style="display: flex; align-items: center;">
       <div class="flex align-center" style="gap: 1rem;">
 
+        <!-- AI SUMMARY TOGGLE (global) -->
+        <div class="flex align-center" style="gap: 0.4rem;">
+          <span style="font-size: 0.8rem;">{{ languages['nl'].summarizedVersion }}</span>
+          <label class="switch" aria-label="AI-samenvatting">
+            <input type="checkbox" id="summaryToggle" />
+            <span class="slider round"></span>
+          </label>
+        </div>
+
         <!-- SEARCH DESKTOP -->
         <section id="search">
           <button
@@ -44,6 +53,7 @@
             <span style="margin-left: 2rem;" class="meta-key-symbol">⌘K</span>
           </button>
         </section>
+
       </div>
 
       <!-- MENU -->

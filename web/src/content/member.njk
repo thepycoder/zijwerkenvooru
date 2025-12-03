@@ -17,7 +17,8 @@ eleventyComputed:
 
 <!-- COMPONENTS -->
 {%- from "components/proposition-card.njk" import propositionCard -%}
-{%- from "components/question-card.njk" import questionCard -%}
+{%- from "components/question-card-complete.njk" import questionCardComplete -%}
+{%- from "components/summary-toggle.njk" import summaryToggle -%}
 
 <!-- VARIABLES -->
 {% set imgSrc = "../content/members/img/" + (member.first_name | slugify) + "-" + (member.last_name | slugify) + ".jpg" %}
@@ -202,14 +203,14 @@ eleventyComputed:
         {% set topicCounts = [question] | countTopics(topics) %}
         {% set topic = topicCounts[0][0] %}
         <div>
-          {{ questionCard({
+          {{ questionCardComplete({
             question: question,
             topic: topic,
             topics: topics,
             functions: functions,
+            partyColors: partyColors,
             translations: languages['nl'],
-            language: nl,
-            hideAuthors: "true"
+            language: nl
           }) }}
         </div>
       {% endfor %}

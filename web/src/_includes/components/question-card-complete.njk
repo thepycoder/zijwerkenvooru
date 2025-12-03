@@ -44,24 +44,47 @@
                 <span class="questioner"><a href="/members/{{ params.question.questioners[0].name | slugify }}/">{{ params.question.questioners[0].name }}</a></span><br>
             </p>
             {% endif %}
-            <!-- RESPONDENTS -->
-            <p>Aan</p>
-            <p>
-                {% for respondent in params.question.respondents %}
-                {% set function = params.functions[respondent.name] | getActive(params.question.date) %}
-                <span class="respondent">{{ respondent.name }}{% if function %} ({{ function.function }}){% endif %}</span>{% if not loop.last %}, {% endif %}
-                {% endfor %}
-            </p>
         </div>
         {% endif %}
     </div>
 </div>
 
+{% if params.nolink != true and params.nolink != 'true' %}
+<a href="/sessions/{{ params.question.session_id }}/meetings/{{ params.question.type }}/{{ params.question.meeting_id }}/"
+   class="card padding straight"
+   style="border-top: none; display: flex; align-items: center; justify-content: space-between;">
+    <div style="display: flex; flex-direction: column">
+        <p>Gesteld aan</p>
+        <p>
+            {% for respondent in params.question.respondents %}
+            {% set function = params.functions[respondent.name] | getActive(params.question.date) %}
+            <span class="respondent">{{ respondent.name }}{% if function %} ({{ function.function }}){% endif %}</span>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+        <p>op {{ params.question.date | date }}</p>
+    </div>
+    {% lucide "chevron-right" %}
+</a>
+{% else %}
+<div class="card padding straight" style="border-top: none;">
+    <div style="display: flex; flex-direction: column">
+        <p>Gesteld aan</p>
+        <p>
+            {% for respondent in params.question.respondents %}
+            {% set function = params.functions[respondent.name] | getActive(params.question.date) %}
+            <span class="respondent">{{ respondent.name }}{% if function %} ({{ function.function }}){% endif %}</span>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+        <p>op {{ params.question.date | date }}</p>
+    </div>
+</div>
+{% endif %}
+
 <!-- DISCUSSION TOGGLE -->
 <div class="card padding straight" style="border-top: none;">
     <div style="display: flex; gap: 1rem;">
         <p>Bekijk antwoord</p>
-        <button class="toggle-discussion" data-proposition="{{ loop.index }}">
+        <button class="toggle-discussion">
             {% lucide "chevron-down" %}
         </button>
     </div>
@@ -79,16 +102,17 @@
     </div>
     {% endif %}
     {% for x in params.question.discussion %}
+    {% set speakerName = x.speaker.name if x.speaker and x.speaker.name else x.speaker %}
     <div class="message-container">
         <div class="speech
-                {% if x.speaker.name in respondent_names %}response
-                {% elif x.speaker.name == 'Voorzitter' %}moderator
+                {% if speakerName in respondent_names %}response
+                {% elif speakerName == 'Voorzitter' %}moderator
                 {% else %}question{% endif %}">
 
-            {% if x.speaker.name == 'Voorzitter' %}
+            {% if speakerName == 'Voorzitter' %}
             <p style="font-weight: bold; margin: 0;" class="capitalize-first">Voorzitter:</p>
             {% else %}
-            <p style="font-weight: bold; margin: 0;">{{ x.speaker.name }}:</p>
+            <p style="font-weight: bold; margin: 0;">{{ speakerName }}:</p>
             {% endif %}
 
             {% set paragraphs = x.text.trim().split("NEWPARAGRAPH") %}

@@ -1049,6 +1049,10 @@ details table {
     gap: 0.5rem;
     align-items: start;
 }
+/* Ensure stable 70/30 split for member questions vs stellar chart */
+#member-questions #question-list {
+    width: 70%;
+}
 
 /* REMUNERATIONS */
 #member-remunerations {
@@ -2040,6 +2044,13 @@ h1 {
     margin-top: 2rem;
 }
 
+/* Make header sticky so the AI summary toggle is always visible */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: white;
+}
 input {
     border: 2px solid black;
     box-sizing: border-box;

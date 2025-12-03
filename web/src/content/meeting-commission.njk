@@ -111,27 +111,3 @@ eleventyComputed:
     {% endfor %}
 </div>
 {% endif %}
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll(".toggle-discussion").forEach(button => {
-            button.addEventListener("click", () => {
-                const container = button.closest(".question-container");
-                const discussion = container.querySelector(".discussion");
-                const aiSummary = container.querySelector(".ai-discussion-summary");
-
-                if (!discussion) return;
-
-                const isOpen = discussion.classList.toggle("open");
-
-                // Toggle class on the button or svg for rotation
-                button.classList.toggle("rotated", isOpen);
-
-                // Show AI summary bubble when discussion is opened (no global summary toggle on commission pages)
-                if (aiSummary) {
-                    aiSummary.style.display = isOpen ? "block" : "none";
-                }
-            });
-        });
-    });
-</script>
