@@ -12,8 +12,10 @@
         <div class="padding flex column gap">
             <p class="bold">
 
-                <span class="full">{{ params.proposition.title_nl }}</span>
-                <span class="summarized highlight" style="display: none;">{{ params.proposition.title_summary_nl }}</span>
+                <span class="full {% if params.proposition.title_summary_nl %}ai-hide-when-summary{% endif %}">{{ params.proposition.title_nl }}</span>
+                {% if params.proposition.title_summary_nl %}
+                <span class="summarized highlight ai-show-when-summary" style="display: none;">{{ params.proposition.title_summary_nl }}</span>
+                {% endif %}
 
             </p>
             {% if params.hideAuthors === "false" %}

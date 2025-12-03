@@ -3,63 +3,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const toggles = document.querySelectorAll('input#summaryToggle');
     if (!toggles || toggles.length === 0) return;
 
-    // Textual summaries following the .full / .summarized pairing pattern
-    const fullElements = document.querySelectorAll('.full');
-    // Discussion summaries (AI) shown alongside the full discussion
-    const discussionContainers = document.querySelectorAll('.discussion');
-    const summaryExplanation = document.querySelector('#summaryExplanation');
-
-    function findSummaryElementFor(fullEl) {
-        if (fullEl.nextElementSibling && fullEl.nextElementSibling.classList.contains('summarized')) {
-            return fullEl.nextElementSibling;
-        }
-        if (fullEl.previousElementSibling && fullEl.previousElementSibling.classList.contains('summarized')) {
-            return fullEl.previousElementSibling;
-        }
-        if (fullEl.parentElement) {
-            // fallback: search within the same parent container
-            return fullEl.parentElement.querySelector('.summarized');
-        }
-        return null;
-    }
+    // New unified AI summary class system
+    const aiShowWhenSummary = document.querySelectorAll('.ai-show-when-summary');
+    const aiHideWhenSummary = document.querySelectorAll('.ai-hide-when-summary');
 
     // Apply state to the page
     function applySummaryState(showSummary) {
-        if (summaryExplanation) {
-            summaryExplanation.style.display = showSummary ? 'inline' : 'none';
-        }
-
-        // 1) Toggle .full /.summarized text blocks (titles, topics, etc.)
-        fullElements.forEach(function (el) {
-            const summaryEl = findSummaryElementFor(el);
-
-            const hasSummary = summaryEl && summaryEl.textContent.trim() !== '';
-            if (showSummary && hasSummary) {
-                el.style.display = 'none';
-                summaryEl.style.display = 'inline';
-            } else {
-                el.style.display = 'inline';
-                if (summaryEl) summaryEl.style.display = 'none';
-            }
+        // 1) Unified class-based toggling
+        aiShowWhenSummary.forEach(function (el) {
+            el.style.display = showSummary ? '' : 'none';
         });
-
-        // 2) Toggle AI discussion summaries (keep full discussion visible)
-        discussionContainers.forEach(function (container) {
-            // The AI summary container lives as a message-container sibling within .discussion
-            const aiSummaryContainer = container.querySelector('.ai-discussion-summary');
-            if (!aiSummaryContainer) return;
-
-            // Only show the AI block when toggled ON and when there is non-empty content
-            const aiSummaryHtml = aiSummaryContainer.querySelector('.ai-summary-html');
-            const hasContent = aiSummaryHtml && aiSummaryHtml.textContent.trim() !== '';
-
-            if (showSummary && hasContent) {
-                // Show AI summary block; do NOT hide the rest of the discussion
-                aiSummaryContainer.style.display = '';
-            } else {
-                // Hide the AI summary block
-                aiSummaryContainer.style.display = 'none';
-            }
+        aiHideWhenSummary.forEach(function (el) {
+            el.style.display = showSummary ? 'none' : '';
         });
     }
 

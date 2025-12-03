@@ -17,7 +17,8 @@ export default async function () {
       !fs.existsSync(questionsFilePath) ||
       !fs.existsSync(propositionsFilePath) ||
       !fs.existsSync(dossiersFilePath) ||
-      !fs.existsSync(meetingsFilePath)
+      !fs.existsSync(meetingsFilePath) ||
+      !fs.existsSync(summariesFilePath)
     ) {
       console.error('Required Parquet file(s) missing.');
       return {};
@@ -26,12 +27,13 @@ export default async function () {
     const instance = await DuckDBInstance.create(':memory:');
     const connection = await instance.connect();
 
-    const [membersRows, questionsRows, propositionsRows, dossiersRows, meetingsRows] = await Promise.all([
+    const [membersRows, questionsRows, propositionsRows, dossiersRows, meetingsRows, summariesRows] = await Promise.all([
       connection.runAndReadAll(`SELECT * FROM read_parquet('${membersFilePath}')`).then(r => r.getRows()),
       connection.runAndReadAll(`SELECT * FROM read_parquet('${questionsFilePath}')`).then(r => r.getRows()),
       connection.runAndReadAll(`SELECT * FROM read_parquet('${propositionsFilePath}')`).then(r => r.getRows()),
       connection.runAndReadAll(`SELECT * FROM read_parquet('${dossiersFilePath}')`).then(r => r.getRows()),
       connection.runAndReadAll(`SELECT * FROM read_parquet('${meetingsFilePath}')`).then(r => r.getRows()),
+      connection.runAndReadAll(`SELECT * FROM read_parquet('${summariesFilePath}')`).then(r => r.getRows()),
     ]);
 
     const parties = {};
@@ -46,6 +48,13 @@ export default async function () {
           const key = `${sessionId}-${meetingId}`;
           meetingDateMap.set(key, date);
       });
+
+    // Summary lookup
+    const summaryByHash = {};
+    summariesRows.forEach((row) => {
+      summaryByHash[row[0]] = row[2]; // input_hash -> summary
+    });
+    const hashText = (text) => crypto.createHash('sha256').update(text).digest('hex');
 
     // Build member maps
     membersRows.forEach(row => {
@@ -137,6 +146,14 @@ export default async function () {
         const party = memberPartyMap[trimmed];
       
         if (party && parties[party]) {
+          const rawTopicsNl = q[5] || '';
+          const topics_summary_nl = rawTopicsNl ? (summaryByHash[hashText(rawTopicsNl)] || null) : null;
+          const rawDiscussion = q[7] || '';
+          const rawDiscussionTrimmed = typeof rawDiscussion === 'string' ? rawDiscussion.trim() : '';
+          const discussion_summary_nl = rawDiscussionTrimmed && rawDiscussionTrimmed !== '[]'
+            ? (summaryByHash[hashText(rawDiscussion)] || null)
+            : null;
+
           // Check if the current index's party matches
           const questionDetails = {
             question_id: questionId,
@@ -151,10 +168,12 @@ export default async function () {
               name: name.trim(),
               party: memberPartyMap[name.trim().toLowerCase().replace(/\s+/g, '-')] || "Unknown"
             })),
-            topics_nl: [topicsNl[index]].filter(Boolean),  // Only include matching topic
-            topics_fr: [topicsFr[index]].filter(Boolean),
+            topics_nl: topicsNl,  // Use full topics list
+            topics_fr: topicsFr,
+            topics_summary_nl: topics_summary_nl,
             discussion: discussion,
             discussion_ids: discussionIds,
+            discussion_summary_nl: discussion_summary_nl,
             date: date
           };
       
@@ -200,6 +219,8 @@ export default async function () {
         const alreadyHas = parties[partyName].propositions.some((p) => p.proposition_id === propId);
         if (alreadyHas) return;
 
+        const title_summary_nl = (titleNl && summaryByHash[hashText(titleNl)]) || null;
+
         parties[partyName].propositions.push({
           proposition_id: propId,
           session_id: sessionId,
@@ -207,6 +228,7 @@ export default async function () {
           date: date,
           title_nl: titleNl,
           title_fr: titleFr,
+          title_summary_nl: title_summary_nl,
           dossier_id: dossierId,
           document_id: documentId,
           document_type: dossierData.document_type || null,

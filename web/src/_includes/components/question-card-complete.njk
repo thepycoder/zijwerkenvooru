@@ -10,12 +10,14 @@
     <div class="padding flex column gap">
         <p class="bold">
 
-           <span class="full">
+           <span class="full {% if params.question.topics_summary_nl %}ai-hide-when-summary{% endif %}">
             {% for topic in params.question.topics_nl %}
                 {{ topic }}<br>
             {% endfor %}
             </span>
-            <span class="summarized highlight" style="display: none;">{{ params.question.topics_summary_nl }}</span>
+            {% if params.question.topics_summary_nl %}
+            <span class="summarized highlight ai-show-when-summary" style="display: none;">{{ params.question.topics_summary_nl }}</span>
+            {% endif %}
 
         </p>
         {% if params.hideAuthors !== "true"%}
@@ -94,7 +96,7 @@
 {% set respondent_names = params.question.respondents | map('name') | list %}
 <div class="discussion" style="display: flex; flex-direction: column; gap: 0.5rem;">
     {% if params.question.discussion_summary_nl %}
-    <div class="message-container ai-discussion-summary" style="display: none;">
+    <div class="message-container ai-discussion-summary ai-show-when-summary" style="display: none;">
         <div class="speech ai-summary">
             <p style="font-weight: bold; margin: 0 0 0.25rem 0;">AI Samenvatting</p>
             <div class="ai-summary-html">{{ params.question.discussion_summary_nl }}</div>
