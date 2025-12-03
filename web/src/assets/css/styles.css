@@ -1939,6 +1939,11 @@ select {
     background-color: #d5e1f7 !important;
 }
 
+.speech.ai-summary {
+    border-left: 4px solid #c783ff; /* same purple as highlight underline */
+    background-color: #f6efff;      /* soft purple tint for readability */
+}
+
 #swap-axes {
     padding-left: 0.4rem;
     padding-right: 0.4rem;

@@ -236,6 +236,12 @@ export default async function () {
             text: discussionItem.text
           }));
 
+          const rawDiscussion = row[7] || '';
+          const rawDiscussionTrimmed = typeof rawDiscussion === 'string' ? rawDiscussion.trim() : '';
+          const discussion_summary_nl = rawDiscussionTrimmed && rawDiscussionTrimmed !== '[]'
+            ? (summaryByHash[hashText(rawDiscussion)] || null)
+            : null;
+
 
           const discussion_ids = row[8].split(",").map((d) => d.trim());
 
@@ -253,6 +259,7 @@ export default async function () {
             topics_summary_fr: topics_summary_nl,
             discussion: discussion,
             discussion_ids: discussion_ids,
+            discussion_summary_nl: discussion_summary_nl,
           });
         }
       }
@@ -307,6 +314,12 @@ export default async function () {
             text: discussionItem.text
           }));
 
+          const rawDiscussion = row[7] || '';
+          const rawDiscussionTrimmed = typeof rawDiscussion === 'string' ? rawDiscussion.trim() : '';
+          const discussion_summary_nl = rawDiscussionTrimmed && rawDiscussionTrimmed !== '[]'
+            ? (summaryByHash[hashText(rawDiscussion)] || null)
+            : null;
+
 
           const discussion_ids = row[8].split(",").map((d) => d.trim());
 
@@ -323,7 +336,8 @@ export default async function () {
             topics_summary_nl: topics_summary_nl,
             topics_summary_fr: topics_summary_nl,
             discussion: discussion,
-            discussion_ids: discussion_ids
+            discussion_ids: discussion_ids,
+            discussion_summary_nl: discussion_summary_nl,
           });
         }
       }
@@ -338,7 +352,7 @@ export default async function () {
       const dossier_id = row[5];
 
       const rawTitleNl = row[3];
-      const hash = hashText(rawTitleNl + ".");
+      const hash = hashText(rawTitleNl);
       const title_summary_nl = summaryByHash[hash] || null;
 
       const dossierData = dossierById[dossier_id] || {};

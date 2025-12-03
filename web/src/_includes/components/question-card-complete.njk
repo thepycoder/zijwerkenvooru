@@ -70,6 +70,14 @@
 <!-- DISCUSSION -->
 {% set respondent_names = params.question.respondents | map('name') | list %}
 <div class="discussion" style="display: flex; flex-direction: column; gap: 0.5rem;">
+    {% if params.question.discussion_summary_nl %}
+    <div class="message-container ai-discussion-summary" style="display: none;">
+        <div class="speech ai-summary">
+            <p style="font-weight: bold; margin: 0 0 0.25rem 0;">AI Samenvatting</p>
+            <div class="ai-summary-html">{{ params.question.discussion_summary_nl }}</div>
+        </div>
+    </div>
+    {% endif %}
     {% for x in params.question.discussion %}
     <div class="message-container">
         <div class="speech
