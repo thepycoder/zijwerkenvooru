@@ -18,7 +18,6 @@ eleventyComputed:
 <!-- COMPONENTS -->
 {%- from "components/proposition-card.njk" import propositionCard -%}
 {%- from "components/question-card-complete.njk" import questionCardComplete -%}
-{%- from "components/summary-toggle.njk" import summaryToggle -%}
 
 <!-- VARIABLES -->
 {% set imgSrc = "../content/members/img/" + (member.first_name | slugify) + "-" + (member.last_name | slugify) + ".jpg" %}
