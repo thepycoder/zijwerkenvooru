@@ -1513,5 +1513,48 @@
         "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m6r54woiwm2y"
       }
     ]
+  },
+  {
+    "id": "80",
+    "date": "80",
+    "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m76moxdsju2i",
+    "replies": [
+      {
+        "type": "Vote",
+        "hash": "dd5bbcf87e00d0cb1cbe36753072ac5179c5c9b1672386ad236915944948cde8",
+        "topic": "Wetsontwerp tot wijziging van artikel 7 van de wet van 21 november 1989 betreffende de verplichte aansprakelijkheidsverzekering inzake motorrijtuigen",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m76mp3ufx62f"
+      },
+      {
+        "type": "Vote",
+        "hash": "7edefaf836795cc68eba75e9bd6113de7e703e2b0011f6b4af986a2e23b34011",
+        "topic": "Wetsontwerp tot wijziging van artikel 116 van de wet van 2 december 2024 betreffende de openbaarmaking van duurzaamheidsinformatie door bepaalde vennootschappen en groepen en de assurance van duurzaamheidsinformatie en houdende diverse bepalingen, inzake de datums waarop de rapportageverplichtingen van toepassing worden (nieuw opschrift)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m76mpbzzpe2i"
+      },
+      {
+        "type": "Vote",
+        "hash": "95cc4a811f57c869a6e4276c1bf9a93f907567ee20c97f327e9ad6ad2c2e8a41",
+        "topic": "Wetsvoorstel tot wijziging van de wetgeving betreffende de vergoedingspensioenen en de wetgeving betreffende de herstelpensioenen ingevolge daden van terrorisme",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m76mpgn5g52v"
+      },
+      {
+        "type": "Vote",
+        "hash": "0059893ff9e1d28001465f7b7c6616f796acd2040352f5b3ff208ef76e0c1af6",
+        "topic": "Wetsontwerp betreffende de financiële ondersteuning van sommige buitenlandse militairen die een opleiding volgen aan een Belgische militaire onderwijsinstelling",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m76mplfidz2f"
+      },
+      {
+        "type": "Vote",
+        "hash": "ddae42d983ce152cc30a369e389e3d669b2b19910fcdcd9a17e6bea7a1b709c7",
+        "topic": "Wetsontwerp tot wijziging van diverse bepalingen betreffende het statuut van de militairen",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m76mpqbhov2m"
+      },
+      {
+        "type": "Vote",
+        "hash": "7abe828155f6980292d1a23acb3db2860dd2375726ec206bc8657f5c2826f0c8",
+        "topic": "Wetsontwerp tot wijziging van de wet van 18 maart 1838 houdende organisatie van de Koninklijke Militaire School",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m76mpv5ycx2t"
+      }
+    ]
   }
 ]
