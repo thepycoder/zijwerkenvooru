@@ -26,6 +26,13 @@
             <input type="checkbox" id="summaryToggle" />
             <span class="slider round"></span>
           </label>
+          <script>
+            try {
+                if (localStorage.getItem('summaryToggleChecked.v2') === 'true') {
+                    document.getElementById('summaryToggle').checked = true;
+                }
+            } catch (e) {}
+          </script>
         </div>
 
         <!-- SEARCH DESKTOP -->

@@ -1962,6 +1962,13 @@ select {
 }
 
 /* SUMMARIZED TOGGLE */
+:root:not(.ai-summary-enabled) .ai-show-when-summary {
+    display: none !important;
+}
+:root.ai-summary-enabled .ai-hide-when-summary {
+    display: none !important;
+}
+
 :root {
     --base-size: 22px;
     --ratio-factor: 0.9;
@@ -2046,7 +2053,7 @@ h1 {
 
 /* Make header sticky so the AI summary toggle is always visible */
 nav {
-    position: sticky;
+    position: fixed;
     top: 0;
     z-index: 1000;
     background: white;

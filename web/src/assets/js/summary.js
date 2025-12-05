@@ -3,26 +3,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const toggles = document.querySelectorAll('input#summaryToggle');
     if (!toggles || toggles.length === 0) return;
 
-    // New unified AI summary class system
-    const aiShowWhenSummary = document.querySelectorAll('.ai-show-when-summary');
-    const aiHideWhenSummary = document.querySelectorAll('.ai-hide-when-summary');
-
-    // Apply state to the page
+    // Apply state to the page (CSS class based)
     function applySummaryState(showSummary) {
-        // 1) Unified class-based toggling
-        aiShowWhenSummary.forEach(function (el) {
-            el.style.display = showSummary ? '' : 'none';
-        });
-        aiHideWhenSummary.forEach(function (el) {
-            el.style.display = showSummary ? 'none' : '';
-        });
+        if (showSummary) {
+            document.documentElement.classList.add('ai-summary-enabled');
+        } else {
+            document.documentElement.classList.remove('ai-summary-enabled');
+        }
     }
 
-    // Initialize from persisted value (bump key to default OFF for all users)
+    // Initialize from persisted value
+    // Note: Visual state is handled by inline scripts in head/navbar to prevent flicker.
+    // We just ensure JS state matches here in case inline script failed or for robustness.
     const STORAGE_KEY = 'summaryToggleChecked.v2';
     const saved = localStorage.getItem(STORAGE_KEY);
     const initialChecked = saved === 'true';
+
+    // Sync toggle elements
     toggles.forEach(t => { t.checked = initialChecked; });
+    // Ensure class is correct (redundant if inline script worked, but good for consistency)
     applySummaryState(initialChecked);
 
     // Persist on change and apply

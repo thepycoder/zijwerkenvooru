@@ -3,6 +3,13 @@
     <!-- HEAD -->
     <head>
         {% include "head.njk" %}
+        <script>
+            try {
+                if (localStorage.getItem('summaryToggleChecked.v2') === 'true') {
+                    document.documentElement.classList.add('ai-summary-enabled');
+                }
+            } catch (e) {}
+        </script>
     </head>
 
     <!-- BODY -->
