@@ -21,6 +21,8 @@
   },
   "gezondheid en welzijn": {
     "keywords": [
+      "geneesmiddelen",
+      "orgaandonatie",
       "obesitas",
       "celtherapie",
       "thuiszorg",
@@ -58,6 +60,7 @@
       " zorg",
       "mentaal welzijn",
       "gezondheid",
+      "gyneaecoloog",
       "arts",
       "dokter",
       "ziekte",
@@ -87,7 +90,7 @@
   },
   "klimaat, energie en landbouw": {
     "keywords": [
-
+      "vogelgriep",
       "UNOC3",
       "ocean pact",
       "kerncentrale",
@@ -145,6 +148,10 @@
   },
   "economie en werk": {
     "keywords": [
+      "bpost",
+      "indexsprong",
+      "palliatief verlof",
+      "familiaal verlof",
       "leefloon",
       "daklozen",
       "werkloze",
@@ -282,6 +289,7 @@
   },
   "internationale politiek en migratie": {
     "keywords": [
+      "venezuela",
       "integratie",
       "midden-oosten",
       "gedetineerde",

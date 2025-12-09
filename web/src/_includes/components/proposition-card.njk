@@ -6,7 +6,7 @@
     <div class="title" style="flex-direction: column;">
         {% if params.proposition.document_type %}
         <div class="category">
-            {{ params.translations[params.proposition.document_type] }}
+            {{ params.translations[params.proposition.document_type] }} ({{ params.proposition.dossier_id }})
         </div>
         {% endif %}
         <div class="padding flex column gap">
