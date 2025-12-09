@@ -218,12 +218,12 @@ eleventyComputed:
             {% set imgSrc = "../content/members/img/" + (member.first_name | slugify) + "-" + (member.last_name | slugify) +
     ".jpg" %}
             {% set has_image = imgSrc | imageExists %}
-            <a href="/members/{{ member.first_name | slugify }}-{{ member.last_name | slugify }}" class="member-card card" data-party="{{ member.parties[0] }}" data-constituency="{{ member.constituency }}" data-attendance="{{ member.attendance }}" data-normalized="{{ member.normalizedAttendance }}" data-outlier="{{ member.outlier }}" data-active="{{ member.active }}" style="text-decoration: none; color: inherit;">
+            <div class="member-card card" data-party="{{ member.parties[0] }}" data-constituency="{{ member.constituency }}" data-attendance="{{ member.attendance }}" data-normalized="{{ member.normalizedAttendance }}" data-outlier="{{ member.outlier }}" data-active="{{ member.active }}" style="color: inherit;">
 
-                 <div class="category" style="font-weight: bold; background-color: {{ secondaryColor }}; color: {{ primaryColor }};">
+                 <a href="/parties/{{ member.parties[0] | slugify }}/" class="category badge-link" style="display: block; width: fit-content; text-decoration: none; font-weight: bold; background-color: {{ secondaryColor }} !important; color: {{ primaryColor }} !important;">
                     {{ member.parties[0] }}
-                </div>
-                <div class="flex padding-tight align-center space-between">
+                </a>
+                <a href="/members/{{ member.first_name | slugify }}-{{ member.last_name | slugify }}" class="flex padding-tight align-center space-between" style="text-decoration: none; color: inherit;">
 
                 <div class="flex row align-start" style="gap: 1rem;">
                     <img src="{{ imgSrc if has_image else 'https://placehold.co/100?text=%E2%9D%93' }}" alt="A picture of {{ member.first_name }} {{ member.last_name }}" style="width: 4rem; height: 4rem; object-fit: cover;
@@ -272,8 +272,8 @@ eleventyComputed:
                             </div>
                         </div>
                         {% icon "lucide:chevron-right" %}
-                        </div>
-                    </a>
+                        </a>
+                    </div>
 
                 {% endfor %}
             </div>

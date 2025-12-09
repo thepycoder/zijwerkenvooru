@@ -153,8 +153,8 @@ eleventyComputed:
                 {% set secondaryColor = partyColors[member.party | lower].secondary or '#95a5a6' %}
 
                 <tr>
-                    <td><span class="party"
-                              style="font-weight: bold; color: {{primaryColor}};background-color: {{ secondaryColor }};">{{ member.party }}</span>
+                    <td><a href="/parties/{{ member.party | slugify }}/" class="badge-link" style="text-decoration: none;"><span class="party"
+                              style="font-weight: bold; color: {{primaryColor}};background-color: {{ secondaryColor }};">{{ member.party }}</span></a>
                     </td>
                     <td><a href="/members/{{member.name | slugify }}">{{ member.name }}</a></td>
                     <td style="text-align: end;">
@@ -167,8 +167,8 @@ eleventyComputed:
                 {% set secondaryColor = partyColors[member.party | lower].secondary or '#95a5a6' %}
 
                 <tr>
-                    <td><span class="party"
-                              style="font-weight: bold; color: {{primaryColor}};background-color: {{ secondaryColor }};">{{ member.party }}</span>
+                    <td><a href="/parties/{{ member.party | slugify }}/" class="badge-link" style="text-decoration: none;"><span class="party"
+                              style="font-weight: bold; color: {{primaryColor}};background-color: {{ secondaryColor }};">{{ member.party }}</span></a>
                     </td>
                     <td><a href="/members/{{member.name | slugify }}">{{ member.name }}</a></td>
                     <td style="text-align: end;">
@@ -181,8 +181,8 @@ eleventyComputed:
                 {% set secondaryColor = partyColors[member.party | lower].secondary or '#95a5a6' %}
 
                 <tr>
-                    <td><span class="party"
-                              style="font-weight: bold; color: {{primaryColor}};background-color: {{ secondaryColor }};">{{ member.party }}</span>
+                    <td><a href="/parties/{{ member.party | slugify }}/" class="badge-link" style="text-decoration: none;"><span class="party"
+                              style="font-weight: bold; color: {{primaryColor}};background-color: {{ secondaryColor }};">{{ member.party }}</span></a>
                     </td>
                     <td><a href="/members/{{member.name | slugify }}">{{ member.name }}</a></td>
                     <td style="text-align: end;">

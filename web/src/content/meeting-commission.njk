@@ -64,7 +64,7 @@ eleventyComputed:
                                 {% set primaryColor = partyColors[party].primary or '#95a5a6' %}
                                 {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
                                 <span>
-                                    <span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ chair.party }}</span>
+                                    <a href="/parties/{{ chair.party | slugify }}/" class="badge-link" style="text-decoration: none;"><span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ chair.party }}</span></a>
                                     <a href="/members/{{ chair.name | slugify }}/">{{ chair.name }}</a>
                                 </span>
                             {% endfor %}
