@@ -180,8 +180,11 @@ Only bug-fixes and some ad-hoc development is done for this project. Some goals/
 
 There are some known data issues in the plenary reports. These are listed below.
 
-- Plenary session 71: question 1 contains 'Steven Coengrachts' as author while the actual name of the member is 'Steven Coenegrachts' [https://www.dekamer.be/doc/PCRI/PDF/56/ip071.pdf](https://www.dekamer.be/doc/PCRI/PDF/56/ip071.pdf)
+- [Plenary Session 71](https://www.dekamer.be/doc/PCRI/PDF/56/ip071.pdf): question 1 contains 'Steven Coengrachts' as author while the actual name of the member is 'Steven Coenegrachts'  -> handled by scraper by fixing member name typos
+- [Plenary Session 71](https://www.dekamer.be/doc/PCRI/PDF/56/ip071.pdf): they use NL-BE sometimes instead of NL -> handled by scraper
 
-- Plenary session 80: vote 4 has 11 'no votes' in the vote summary while in the detail of the votes (where the member names are shown), the 11 votes are shown as 'abstention votes' [https://www.dekamer.be/doc/PCRI/PDF/56/ip080.pdf](https://www.dekamer.be/doc/PCRI/PDF/56/ip080.pdf)
-- Plenary session 80: vote 4 has 11 'no votes' in the vote summary while in the detail of the votes (where the member names are shown), the 11 votes are shown as 'abstention votes' [https://www.dekamer.be/doc/PCRI/PDF/56/ip080.pdf](https://www.dekamer.be/doc/PCRI/PDF/56/ip080.pdf)
-- Plenary session 80: proposition 990 uses a h2 tag but proposition 483 after it (and the propositions after that) use a p tag instead of a h2 tag, this is inconsistent with the other reports where usually a h2 tag is always used [https://www.dekamer.be/doc/PCRI/PDF/56/ip080.pdf](https://www.dekamer.be/doc/PCRI/PDF/56/ip080.pdf)
+- [Plenary Session 80](https://www.dekamer.be/doc/PCRI/PDF/56/ip080.pdf): vote 4 has 11 'no votes' in the vote summary while in the detail of the votes (where the member names are shown), the 11 votes are shown as 'abstention votes' -> left as is for now
+- [Plenary Session 80](https://www.dekamer.be/doc/PCRI/PDF/56/ip080.pdf): vote 4 has 11 'no votes' in the vote summary while in the detail of the votes (where the member names are shown), the 11 votes are shown as 'abstention votes' -> left as is for now
+- [Plenary Session 80](https://www.dekamer.be/doc/PCRI/PDF/56/ip080.pdf): proposition 990 uses a h2 tag but proposition 483 after it (and the propositions after that) use a p tag instead of a h2 tag, this is inconsistent with the other reports where usually a h2 tag is always used -> handled by scraper by looking at p tags as well to see if they are actually titles
+
+- General: sometimes incorrect languages are attributed to text -> handled by scraper
