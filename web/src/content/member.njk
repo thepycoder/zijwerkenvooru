@@ -30,7 +30,7 @@ eleventyComputed:
 <div id="member-header" style="margin-top: 2rem;">
 
     <div class="card">
-           <a href="/parties/{{ member.parties[0] | slugify }}/" class="category badge-link" style="display: block; width: fit-content; font-weight: bold; background-color: {{ secondaryColor }} !important; color: {{ primaryColor }} !important;">
+           <a href="/parties/{{ member.parties[0] | slugify }}/" class="category badge-link" style="display: block; width: fit-content; font-weight: bold; background-color: {{ secondaryColor }}; color: {{ primaryColor }};">
                 {{ member.parties[0] }}
             </a>
             <div  style="display: flex; flex-direction: row; gap:1rem;" class="padding">

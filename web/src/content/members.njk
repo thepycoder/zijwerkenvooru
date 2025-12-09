@@ -220,7 +220,7 @@ eleventyComputed:
             {% set has_image = imgSrc | imageExists %}
             <div class="member-card card" data-party="{{ member.parties[0] }}" data-constituency="{{ member.constituency }}" data-attendance="{{ member.attendance }}" data-normalized="{{ member.normalizedAttendance }}" data-outlier="{{ member.outlier }}" data-active="{{ member.active }}" style="color: inherit;">
 
-                 <a href="/parties/{{ member.parties[0] | slugify }}/" class="category badge-link" style="display: block; width: fit-content; font-weight: bold; background-color: {{ secondaryColor }} !important; color: {{ primaryColor }} !important;">
+                 <a href="/parties/{{ member.parties[0] | slugify }}/" class="category badge-link" style="display: block; width: fit-content; font-weight: bold; background-color: {{ secondaryColor }}; color: {{ primaryColor }};">
                     {{ member.parties[0] }}
                 </a>
                 <a href="/members/{{ member.first_name | slugify }}-{{ member.last_name | slugify }}" class="flex padding-tight align-center space-between" style="text-decoration: none; color: inherit;">
