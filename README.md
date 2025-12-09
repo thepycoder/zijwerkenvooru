@@ -159,7 +159,6 @@ Only bug-fixes and some ad-hoc development is done for this project. Some goals/
 **Improvements:**
 
 - [ ] summarize dossier contents using Mistral
-- [ ] add link to data.gov dataset
 - [ ] scrape previous sessions (already supported but need to make sure there are no issues with this)
 - [ ] French localization
 - [ ] General UI/UX improvements
@@ -177,3 +176,12 @@ Only bug-fixes and some ad-hoc development is done for this project. Some goals/
 
 - [ ] Document 56K0095 has incorrect date (1970)
 
+## Known issues and inconsistencies
+
+There are some known data issues in the plenary reports. These are listed below.
+
+- Plenary session 71: question 1 contains 'Steven Coengrachts' as author while the actual name of the member is 'Steven Coenegrachts' [https://www.dekamer.be/doc/PCRI/PDF/56/ip071.pdf](https://www.dekamer.be/doc/PCRI/PDF/56/ip071.pdf)
+
+- Plenary session 80: vote 4 has 11 'no votes' in the vote summary while in the detail of the votes (where the member names are shown), the 11 votes are shown as 'abstention votes' [https://www.dekamer.be/doc/PCRI/PDF/56/ip080.pdf](https://www.dekamer.be/doc/PCRI/PDF/56/ip080.pdf)
+- Plenary session 80: vote 4 has 11 'no votes' in the vote summary while in the detail of the votes (where the member names are shown), the 11 votes are shown as 'abstention votes' [https://www.dekamer.be/doc/PCRI/PDF/56/ip080.pdf](https://www.dekamer.be/doc/PCRI/PDF/56/ip080.pdf)
+- Plenary session 80: proposition 990 uses a h2 tag but proposition 483 after it (and the propositions after that) use a p tag instead of a h2 tag, this is inconsistent with the other reports where usually a h2 tag is always used [https://www.dekamer.be/doc/PCRI/PDF/56/ip080.pdf](https://www.dekamer.be/doc/PCRI/PDF/56/ip080.pdf)

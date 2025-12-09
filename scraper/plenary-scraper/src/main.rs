@@ -1300,7 +1300,8 @@ async fn scrape_meeting(
     let mut collecting_grouped_vote = false;
 
     // Find vote summaries.
-    for element in document.select(&Selector::parse("h1, h2, table").unwrap()) {
+    // NOTE: In plenary session 80, some propositions did not use h2 but p, so p was added here.
+    for element in document.select(&Selector::parse("h1, h2, table, p").unwrap()) {
         let tag_name = element.value().name();
 
         // Votes section.
@@ -1320,7 +1321,24 @@ async fn scrape_meeting(
             continue;
         }
 
-        if tag_name == "h2" {
+        // Check if paragraph is actually a vote title or not by checking if ends with dossier.
+        // NOTE: In plenary session 80, some propositions did not use h2 but p, so this check was added here.
+        // NOTE: We check for paragraphs if they are actually a vote title (by checking if they have a dossier ID). This might not work in all cases though.
+        let vote_title_regex = Regex::new(
+            r"\(\s*\d{1,5}(?:\s*\/\s*\d{1,5}(?:\s*-\s*\d{1,5})?)?\s*\)\s*$"
+        ).unwrap();
+        let mut is_vote_title_as_paragraph: bool = false;
+        let spans: Vec<_> = element
+            .select(&span_selector)
+            .filter(|s| matches!(s.value().attr("lang"), Some("NL") | Some("NL-BE")))
+            .collect();
+        if let Some(span) = spans.last() {
+            let raw_text = span.text().collect::<Vec<_>>().join(" ");
+            let text = clean_text(&raw_text).replace("\"", "\'");
+            is_vote_title_as_paragraph = tag_name == "p" && vote_title_regex.is_match(text.as_str());
+        }
+
+        if tag_name == "h2" || is_vote_title_as_paragraph {
             let nl_spans: Vec<_> = element
                 .select(&span_selector)
                 .filter(|s| matches!(s.value().attr("lang"), Some("NL") | Some("NL-BE")))
