@@ -112,7 +112,7 @@ De volgende {{ meeting.absentees.length }} kamerleden waren afwezig bij tenminst
     {% set party = absentee.party | lower %}
     {% set primaryColor = partyColors[party].primary or '#95a5a6' %}
     {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
-    <a href="/parties/{{ absentee.party | slugify }}/" class="badge-link" style="text-decoration: none;"><span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ absentee.party }}</span></a>
+    <a href="/parties/{{ absentee.party | slugify }}/" class="badge-link"><span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ absentee.party }}</span></a>
     <span ><a href="/members/{{ absentee.name | slugify }}/">{{ absentee.name }}</a></span><br>
 
     {% endfor %}

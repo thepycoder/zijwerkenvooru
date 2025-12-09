@@ -29,7 +29,7 @@
                     {% set party = questioner.party | lower %}
                     {% set primaryColor = params.partyColors[party].primary or '#95a5a6' %}
                     {% set secondaryColor = params.partyColors[party].secondary or '#95a5a6' %}
-                    <a href="/parties/{{ questioner.party | slugify }}/" class="badge-link" style="text-decoration: none;"><span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ questioner.party }}</span></a>
+                    <a href="/parties/{{ questioner.party | slugify }}/" class="badge-link"><span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ questioner.party }}</span></a>
                     <span class="questioner"><a href="/members/{{ questioner.name | slugify }}/">{{ questioner.name }}</a></span><br>
                     {% endfor %}
                 </span>
@@ -40,7 +40,7 @@
                 {% set party = params.question.questioners[0].party | lower %}
                 {% set primaryColor = params.partyColors[party].primary or '#95a5a6' %}
                 {% set secondaryColor = params.partyColors[party].secondary or '#95a5a6' %}
-                <a href="/parties/{{ params.question.questioners[0].party | slugify }}/" class="badge-link" style="text-decoration: none;"><span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ params.question.questioners[0].party }}</span></a>
+                <a href="/parties/{{ params.question.questioners[0].party | slugify }}/" class="badge-link"><span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ params.question.questioners[0].party }}</span></a>
                 <span class="questioner"><a href="/members/{{ params.question.questioners[0].name | slugify }}/">{{ params.question.questioners[0].name }}</a></span><br>
             </p>
             {% endif %}
