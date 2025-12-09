@@ -1,6 +1,6 @@
 import { DuckDBInstance } from "@duckdb/node-api";
 import fs from "fs";
-import crypto from "crypto";
+import { hashText } from "../lib/textUtils.js";
 
 import path from "path";
 import { fileURLToPath } from "url";
@@ -108,10 +108,6 @@ export default async function () {
     summariesRows.forEach((row) => {
       summaryByHash[row[0]] = row[2]; // input_hash -> summary
     });
-
-    const hashText = (text) => {
-      return crypto.createHash("sha256").update(text).digest("hex");
-    };
 
     /* Date map for plenary meetings. */
     const meetingDateMap = new Map();

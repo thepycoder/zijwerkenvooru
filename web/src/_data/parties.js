@@ -1,6 +1,6 @@
 import { DuckDBInstance } from '@duckdb/node-api';
 import fs from 'fs';
-import crypto from 'crypto';
+import { hashText } from '../lib/textUtils.js';
 
 const meetingsFilePath = 'src/data/meetings.parquet';
 const votesFilePath = 'src/data/votes.parquet';
@@ -54,7 +54,6 @@ export default async function () {
     summariesRows.forEach((row) => {
       summaryByHash[row[0]] = row[2]; // input_hash -> summary
     });
-    const hashText = (text) => crypto.createHash('sha256').update(text).digest('hex');
 
     // Build member maps
     membersRows.forEach(row => {

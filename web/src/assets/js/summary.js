@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Support multiple toggles (future-proof) and avoid duplicate-id pitfalls
     const toggles = document.querySelectorAll('input#summaryToggle');
     if (!toggles || toggles.length === 0) return;
 

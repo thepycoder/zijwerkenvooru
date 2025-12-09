@@ -196,7 +196,6 @@ async fn process_file(
                     println!(
                         "Sending discussion to Mistral (chars={}): {}",
                         prepared_input.len(),
-                        preview_for_log(&prepared_input, 400)
                     );
                 }
                 let summary = match task {
@@ -294,7 +293,6 @@ async fn summarize_question_discussion(client: &Client, api_key: &str, discussio
     println!(
         "Mistral request (discussion) payload preview (chars={}): {}",
         discussion_text.len(),
-        preview_for_log(discussion_text, 400)
     );
     let payload = &json!({
         "model": "mistral-medium-2508",
@@ -327,7 +325,6 @@ async fn summarize_question_discussion(client: &Client, api_key: &str, discussio
                 println!(
                     "Mistral response (discussion) preview (chars={}): {}",
                     content.len(),
-                    preview_for_log(&content, 300)
                 );
                 Some(strip_markdown(&content))
             } else {
@@ -336,7 +333,6 @@ async fn summarize_question_discussion(client: &Client, api_key: &str, discussio
                 eprintln!(
                     "HTTP Error (discussion): {} - {}",
                     status,
-                    preview_for_log(&body, 400)
                 );
                 None
             }
@@ -399,6 +395,17 @@ struct SummaryRow {
     model: String
 }
 
+/// Returns a preview of the given string of up to `limit` bytes, appending a truncated
+/// message if the string exceeds the limit. This is useful for debug logging purposes
+/// to avoid printing very long strings in full (such as LLM input payloads).
+///
+/// Ensures the slice ends on a valid UTF-8 boundary.
+///
+/// # Example
+/// ```
+/// let text = "Dit is een hele lange inputtekst die getoond moet worden..."; 
+/// println!("{}", preview_for_log(text, 20)); // Shows: "Dit is een hele lange… [truncated, 58 chars total]"
+/// ```
 fn preview_for_log(s: &str, limit: usize) -> String {
     if s.len() <= limit {
         s.to_string()
@@ -425,11 +432,12 @@ fn hash_text(input: &str) -> String {
 }
 
 fn strip_markdown(input: &str) -> String {
-    // Remove markdown bold markers while preserving the inner text.
-    // We intentionally only strip double markers to avoid affecting italics or lists.
-    let without_asterisks = input.replace("**", "");
-    let without_underscores = without_asterisks.replace("__", "");
-    without_underscores.trim().to_string()
+    // Remove markdown bold (**) and italics (*) and underline (__) and (_) markers while preserving the inner text.
+    let mut s = input.replace("**", "");
+    s = s.replace("__", "");
+    s = s.replace("*", "");
+    s = s.replace("_", "");
+    s.trim().to_string()
 }
 
 fn rewrite_summaries_file(summaries_path: &PathBuf, new_rows: &[SummaryRow]) -> Result<(), Box<dyn std::error::Error>> {

@@ -1,6 +1,6 @@
 import { DuckDBInstance } from '@duckdb/node-api';
 import fs from 'fs';
-import crypto from 'crypto';
+import { hashText } from '../lib/textUtils.js';
 
 export default async function () {
     try {
@@ -247,7 +247,3 @@ export default async function () {
     }
 }
 
-
-const hashText = (text) => {
-  return crypto.createHash('sha256').update(text).digest('hex');
-};
