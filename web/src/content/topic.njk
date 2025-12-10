@@ -87,7 +87,7 @@ eleventyComputed:
                     <p>{{ languages['nl'].summaryExplanation }} <span class="highlight">{{ languages['nl'].underlined }}</span>.</p>
                 </details>
             </div>
-            {% for question in topicQuestions | sort(attribute='date', true) %}
+            {% for question in topicQuestions | sortDate('date', "desc") %}
                 <div>
                     {{ questionCard({question: question, functions: functions, partyColors: partyColors, translations: languages['nl'], language: nl }) }}
                 </div>
@@ -98,7 +98,7 @@ eleventyComputed:
     <!-- PROPOSITIONS -->
     <div id="tab-2-content" class="tab-content padding">
        <div id="proposition-list">
-            {% for proposition in topicPropositions| sort(attribute='date', true) %}
+            {% for proposition in topicPropositions| sortDate('date', "desc") %}
                 <div>
                     {{ propositionCard({proposition: proposition, partyColors: partyColors, translations: languages['nl'], language: nl }) }}
                 </div>
