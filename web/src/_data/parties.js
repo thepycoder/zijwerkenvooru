@@ -196,8 +196,9 @@ export default async function () {
           };
         }
 
-        // Deduplicate per party by proposition_id
-        const alreadyHas = parties[partyName].propositions.some((p) => p.proposition_id === propId);
+        // Deduplicate per party by proposition_id AND dossier_id
+        // The parquet file reuses IDs (0, 1, 2...) for different propositions
+        const alreadyHas = parties[partyName].propositions.some((p) => p.proposition_id === propId && p.dossier_id === dossierId);
         if (alreadyHas) return;
 
         parties[partyName].propositions.push({
