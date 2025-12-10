@@ -209,6 +209,9 @@ export default async function () {
       const dossierId = prop[5];
       const documentId = prop[6];
 
+      const keyForDate = `${sessionId}-${meetingId}`;
+      const date = meetingDateMap.get(keyForDate) || null;
+
       const dossierData = dossierById[dossierId] || {};
 
       const dossier = dossierMap.get(dossierId);
@@ -230,6 +233,7 @@ export default async function () {
             proposition_id: propId,
             session_id: sessionId,
             meeting_id: meetingId,
+            date: date,
             title_nl: titleNl,
             title_fr: titleFr,
             dossier_id: dossierId,

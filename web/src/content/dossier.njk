@@ -43,7 +43,7 @@ eleventyComputed:
                         {% set primaryColor = partyColors[party].primary or '#95a5a6' %}
                         {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
                         <span>
-                            <span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span>
+                            <a href="/parties/{{ author.party | slugify }}/" class="badge-link"><span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span></a>
                             <a class="questioner" href="/members/{{ author.name | slugify }}/" class="respondent">{{ author.name }}</a>
                         </span><br>
                     {% endif %}
@@ -124,7 +124,7 @@ eleventyComputed:
                     {% set party = author.party | lower %}
                     {% set primaryColor = partyColors[party].primary or '#95a5a6' %}
                     {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
-                    <li style="display: flex; margin-left: 0; justify-content: space-between; width: 100%; gap: 1rem;"><span class="party small" style="color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span><a href="/members/{{ author.name | slugify }}/">{{ author.name }}</a></li>
+                    <li style="display: flex; margin-left: 0; justify-content: space-between; width: 100%; gap: 1rem;"><a href="/parties/{{ author.party | slugify }}/" class="badge-link"><span class="party small" style="color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span></a><a href="/members/{{ author.name | slugify }}/">{{ author.name }}</a></li>
                     {% endfor %}
                 </ul>
 
@@ -186,7 +186,7 @@ eleventyComputed:
                     {% set party = author.party | lower %}
                     {% set primaryColor = partyColors[party].primary or '#95a5a6' %}
                     {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
-                    <li class="gap" style="display: flex; margin-left: 0; width: 100%;"><span class="party small" style="color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span><a href="/members/{{ author.name | slugify }}/">{{ author.name }}</a></li>
+                    <li class="gap" style="display: flex; margin-left: 0; width: 100%;"><a href="/parties/{{ author.party | slugify }}/" class="badge-link"><span class="party small" style="color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ author.party }}</span></a><a href="/members/{{ author.name | slugify }}/">{{ author.name }}</a></li>
                     {% endif %}
 
 

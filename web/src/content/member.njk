@@ -30,9 +30,9 @@ eleventyComputed:
 <div id="member-header" style="margin-top: 2rem;">
 
     <div class="card">
-           <div class="category" style="font-weight: bold; background-color: {{ secondaryColor }}; color: {{ primaryColor }};">
+           <a href="/parties/{{ member.parties[0] | slugify }}/" class="category badge-link" style="display: block; width: fit-content; font-weight: bold; background-color: {{ secondaryColor }}; color: {{ primaryColor }};">
                 {{ member.parties[0] }}
-            </div>
+            </a>
             <div  style="display: flex; flex-direction: row; gap:1rem;" class="padding">
 
         {%- if has_image -%}
@@ -233,7 +233,7 @@ eleventyComputed:
         {% if member.propositions | length > 0 %}
           <p>Een overzicht van de voorstellen die {{ member.first_name}} {{ member.last_name }} heeft gedaan als hoofdauteur.</p>
             <div id="proposition-list">
-            {% for proposition in member.propositions | sort(attribute='date', true) %}
+            {% for proposition in member.propositions | sortDate('date', "desc") %}
                 <div>
                     {{ propositionCard({proposition: proposition, translations: languages['nl'], language: nl, hideAuthors: "true" }) }}
                 </div>
@@ -357,7 +357,7 @@ eleventyComputed:
         </div>
 
    {% set years = member.remunerations | keys %}
-{% set years = years | sort(reverse=true) %}
+{% set years = years | sortAlpha | reverse %}
 
 <div class="tabbed">
     {% for year in years %}
