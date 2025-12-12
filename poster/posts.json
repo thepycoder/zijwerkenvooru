@@ -1592,5 +1592,426 @@
         "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7ke6dau5q2i"
       }
     ]
+  },
+  {
+    "id": "83",
+    "date": "83",
+    "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swcnr7jf2k",
+    "replies": [
+      {
+        "type": "Vote",
+        "hash": "ad5d1d0f3579185487420ccee547abf7a4fd2e7562e46902cb173003636c31ef",
+        "topic": "Moties ingediend tot besluit van de interpellaties van:\n- de heer @vincentvq.bsky.social over 'pertinente vragen over de begrotingstabel die naar aanleiding van de SOTU werd verspreid'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swcsj6s52i"
+      },
+      {
+        "type": "Vote",
+        "hash": "87e45c57bb1ee1ebb2b6f9ab4390381dde294beb30ce32794b1f3428a3885b77",
+        "topic": "Voorstel tot wijziging van het Reglement van de Kamer van volksvertegenwoordigers wat betreft de verplichte raadpleging van de commissie voor de Comptabiliteit bij de oprichting van dotatiegerechtigde instellingen of bij de wijziging van hun takenpakket",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swcwg7v22y"
+      },
+      {
+        "type": "Vote",
+        "hash": "358d50e9a0d5d09f36de4569ce11c8a68f66315fe672a1efaa7999ba0a145ea5",
+        "topic": "Stemming over amendement nr. 2 van Florence Reuter cs tot invoeging van een artikel 8/1(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swd2dlpz2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "9d7640b4b320b794a02dc106a0b18d3d15cce2cb8b6b802decdaf1220021e89b",
+        "topic": "Stemming over amendement nr. 8 van Kurt Moons cs tot invoeging van een hoofdstuk 4/1(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swd6cql42p"
+      },
+      {
+        "type": "Vote",
+        "hash": "6e6144d694253e60c07c8eb18b71a787fef88c0c8c9a0f561f6f85dd76d2445f",
+        "topic": "Stemming over amendement nr. 3 van Florence Reuter cs tot invoeging van een artikel 8/2(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swdcbhqr2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "a4ac675b2cf9b8c70312450d3bc8ba95d9cf907dac374dea4d5a570ef5c3dbb9",
+        "topic": "Stemming over amendement nr. 10 van Marie Meunier tot invoeging van een artikel 8/3(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swdge5eu2b"
+      },
+      {
+        "type": "Vote",
+        "hash": "451df131b6a5e7b307775d6ae86e4d0e324251457066fbcc10e94e23ee9a3ab2",
+        "topic": "Stemming over amendement nr. 4 van Wouter Raskin cs tot invoeging van een artikel 8/3(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swdkcing2b"
+      },
+      {
+        "type": "Vote",
+        "hash": "c4a38384bdd43f0b1e812f0e48b46b73b0589ee2b0148a80a5eceb1f77975d36",
+        "topic": "Stemming over amendement nr. 13 van @sofiemerckx.bsky.social tot invoeging van een artikel 8/3(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swdojpov2t"
+      },
+      {
+        "type": "Vote",
+        "hash": "a06f593e912658ec2e55b3d90a8e2642ebd31d8335332cea1dc7a0cc9199c89f",
+        "topic": "Stemming over amendement nr. 11 van Marie Meunier tot invoeging van een artikel 8/4(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swdsikao23"
+      },
+      {
+        "type": "Vote",
+        "hash": "5f2a5b4a946375b328a42873768c01715eb90b1da68624b9a385728a46cc705a",
+        "topic": "Stemming over amendement nr. 5 van Wouter Raskin cs tot invoeging van een artikel 8/4(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swdwjceg23"
+      },
+      {
+        "type": "Vote",
+        "hash": "6ed4ef3000cbd64b8930a67197adf9479f14c36b5bc421d9280ce03b41d924f7",
+        "topic": "Stemming over amendement nr. 14 van @sofiemerckx.bsky.social tot invoeging van een artikel 8/4(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swe2owuo2b"
+      },
+      {
+        "type": "Vote",
+        "hash": "330fff1ffa254c8b22c122b6834f86297e050c2548020134a4fc501629ff5155",
+        "topic": "Stemming over amendement nr. 12 van Marie Meunier tot invoeging van een artikel 8/5(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swe6gkpy27"
+      },
+      {
+        "type": "Vote",
+        "hash": "128b9ef6cf3e5ef06c0bd2a65caa0676eb310a2325d8551962399fb80ac68967",
+        "topic": "Stemming over amendement nr. 6 van Wouter Raskin cs tot invoeging van een artikel 8/5(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swec4dfw23"
+      },
+      {
+        "type": "Vote",
+        "hash": "81b432380a84ec9a53760b9860f8d9d0355919c5c6f6343687ca8b75497e7759",
+        "topic": "Stemming over amendement nr. 15 van @sofiemerckx.bsky.social tot invoeging van een artikel 8/5(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7sweftzgs2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "2d3dbbf071340df475af802b603a8fe026edd3bd58ab1ccd76f3bbeb9d768efd",
+        "topic": "Stemming over amendement nr. 7 van Wouter Raskin cs op artikel 9.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swejkytk2y"
+      },
+      {
+        "type": "Vote",
+        "hash": "e549f576ddbf53d4be53592fe8be293ecbdfa19ddc4698cb9cb7b571bc20d47a",
+        "topic": "Stemming over artikel 1.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swendcoa2v"
+      },
+      {
+        "type": "Vote",
+        "hash": "849fe9f86e8707099ca3d1aecd86cfb5b8e55a952dbba52d3515726d38916bee",
+        "topic": "Stemming over amendement nr. 6 van Lode Vereeck cs op artikelen 11 en 13.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swerev2j2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "ff912069fa40763783160b98f03d92a77dc1d01b072024e481777f6457d88087",
+        "topic": "Stemming over amendement nr. 34 van @vincentvq.bsky.social cs op artikel 14.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swevq35r2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "3710c2d4209644f5846f8c652bb9aeb3edbee6b8af3529bea4d10f88c544d2c6",
+        "topic": "Stemming over amendement nr. 7 van Lode Vereeck cs op artikelen 15 en 16.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swezruhm2b"
+      },
+      {
+        "type": "Vote",
+        "hash": "08f812a5258f923be7c6e835530119faf2cdcf03806fafa84d9d102f9ac466f3",
+        "topic": "Stemming over de artikelen 15 tot 18.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swf5qpav2t"
+      },
+      {
+        "type": "Vote",
+        "hash": "8ba9270010489af8cbde2621804e0e55ddb71cc6a166c5a90a18913de890e5e8",
+        "topic": "Stemming over amendement nr. 35 van @vincentvq.bsky.social cs tot invoeging van artikelen 20/1 tot 20/9(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swfbuud52i"
+      },
+      {
+        "type": "Vote",
+        "hash": "dc2457943e96bf35a614419c4483508cbda4a401d77c973c98ec753b6b2977e0",
+        "topic": "Stemming over de artikelen 19 tot 21.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swffuho22a"
+      },
+      {
+        "type": "Vote",
+        "hash": "1dbb48a6268064fbcd71795444052df0391131c907daf3339d72f9aca8c0f64b",
+        "topic": "Stemming over de artikelen 22 tot 29.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swfjtvom2b"
+      },
+      {
+        "type": "Vote",
+        "hash": "0e6ad22167575a53ddfcb04ee3128ae7294c514b4b071c6995baa592f1471edb",
+        "topic": "Stemming over amendement nr. 37 van @vincentvq.bsky.social cs tot invoeging van een artikel 29/1(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swfnvvui27"
+      },
+      {
+        "type": "Vote",
+        "hash": "e3a86a9409fd9d2f7f7ff29c2bbca90d8dc4f4b1b6b60770711ffc50cca9fad9",
+        "topic": "Stemming over de artikelen 30 tot 33.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swfrtqxf2i"
+      },
+      {
+        "type": "Vote",
+        "hash": "8cb5538d3835cb92a94d2c7995add53468515f6a0ac0ba22e544e344ef3cb8d3",
+        "topic": "Stemming over amendement nr. 2 van @francoisdesmet.bsky.social tot weglating van artikelen 34 tot 37.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swfwhjyo2b"
+      },
+      {
+        "type": "Vote",
+        "hash": "bc8ff2474f1c16e104e7afaf05973c584f8065b03d4a30799839f61d22c0aae6",
+        "topic": "Stemming over amendement nr. 8 van Lode Vereeck cs  tot weglating van artikelen 34 tot 37 .",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swg2bqtr2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "e11f080d70e80eef252a0a0c6e9dcde58e3aec38108b6c104b10c2545d70d8ad",
+        "topic": "Stemming over amendement nr. 15 van Frédéric Daerden cs tot weglating van artikelen 34 tot 37.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swg6auj62b"
+      },
+      {
+        "type": "Vote",
+        "hash": "8405a3543775fced137a4f557ec50f04fa69ccf5de626e82d277684b032c8f96",
+        "topic": "Stemming over amendement nr. 38 van @vincentvq.bsky.social cs op artikel 37.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swgco5sk2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "7454033c83e20567e5ee0650588be11098dacdf4c1abf6d28a8e6419f4edd68e",
+        "topic": "Stemming over de artikelen 38 tot 41.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swggmcsm2b"
+      },
+      {
+        "type": "Vote",
+        "hash": "cf0762e0e6293ca26f0170cbbdd4a324df594a3473d2b1ee958106284157a8c9",
+        "topic": "Stemming over amendement nr. 39 van Vincent van Quickenborne cs tot weglating van artikelen 46 tot 50.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swgkjs7n2k"
+      },
+      {
+        "type": "Vote",
+        "hash": "c46abd1aa36c310b39a7d4e6a43a9f322119e9e134fa2aad992d2ee358a4e577",
+        "topic": "Stemming over de artikelen 51 en 52.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swgolgr22y"
+      },
+      {
+        "type": "Vote",
+        "hash": "e336c5de5804c56c27f9fc2277ae1853c90c433ef49a6c0655f16ca12440ea9c",
+        "topic": "Stemming over amendement nr. 40 van @vincentvq.bsky.social cs tot weglating van artikelen 53 tot 67 en 69 tot 90.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swgstarf2t"
+      },
+      {
+        "type": "Vote",
+        "hash": "768dda0f38ecb3243a4eb3e7d882d4255f05bb1355f21bedc2b07c1978320cca",
+        "topic": "Stemming over amendement nr. 16 van Frédéric Daerden cs tot weglating van artikel 55.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swgwph5a2t"
+      },
+      {
+        "type": "Vote",
+        "hash": "6074f21b4f4917b19330f19771d316caf4fc1cf962a63503554d351175491909",
+        "topic": "Stemming over amendement nr. 3 van @francoisdesmet.bsky.social tot weglating van artikel 67.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swh2qarn2p"
+      },
+      {
+        "type": "Vote",
+        "hash": "4c55fb7104e64edd5e5c9cddfc393cc0cc82f1237f8d21d7c6d2c593d698bbed",
+        "topic": "Stemming over amendement nr. 4 van Dieter Vanbesien cs tot weglating van artikel 67.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swh6oqyk2y"
+      },
+      {
+        "type": "Vote",
+        "hash": "ebd8268b8c705890fb0eed038799977078e50fbea917cb4f70c11f10a5d3cb5e",
+        "topic": "Stemming over amendement nr. 17 van Frédéric Daerden cs tot weglating van artikel 67.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swhcmfg52p"
+      },
+      {
+        "type": "Vote",
+        "hash": "6f02e71628fd1c13208b18cf373a3e75ad27506cde6f58686b70ef3c0dd947ac",
+        "topic": "Stemming over artikel 68.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swhgm7nn2t"
+      },
+      {
+        "type": "Vote",
+        "hash": "b2e436b21f7a74f5bcec8730d0e931d1e507b43b3b1544f6aceb55251666bb54",
+        "topic": "Stemming over amendement nr. 41 van @vincentvq.bsky.social cs op artikel 90.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swhkypiy2t"
+      },
+      {
+        "type": "Vote",
+        "hash": "4dcb830cd31a9e7b908177910651729674e8e3900d0ecea6aa7828e79e831457",
+        "topic": "Stemming over de artikelen 91 tot 96.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swhp2cs52k"
+      },
+      {
+        "type": "Vote",
+        "hash": "0e40b0c06ca05ec097a0691802cd56cd34c45e61553973aab3a82ec25eaead29",
+        "topic": "Stemming over de artikelen 97 tot 102.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swht3tnk2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "a6ef63c5ef9459e1c286c0e22afd78ac50e8c9626ed6f02916cef7eb9751e19f",
+        "topic": "Stemming over amendement nr. 9 van Lode Vereeck cs tot weglating van artikelen 103 tot 110.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swhx6sx42b"
+      },
+      {
+        "type": "Vote",
+        "hash": "bf7f4a26a1a2c1ea788b8fe8435aa2ad0bdb6b9de246e3642dfaa379a7eb856b",
+        "topic": "Stemming over amendement nr. 20 van @vincentvq.bsky.social cs tot weglating van artikelen 103 en 104.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swi37zm22y"
+      },
+      {
+        "type": "Vote",
+        "hash": "b9cdbaddc3f257c01d85ff2ceaf42ff587a1483deae3140e31584cb06e96ac3c",
+        "topic": "Stemming over amendement nr. 10 van Lode Vereeck cs tot invoeging van een artikel 110/1(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swi76hky2t"
+      },
+      {
+        "type": "Vote",
+        "hash": "cf9eb84273dbd7b31bce639801f4fa1ec8379eae0dda89c61626ca90b59fd131",
+        "topic": "Stemming over amendement nr. 19 van @vincentvq.bsky.social cs tot invoeging van een artikel 110/1(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swicmed22a"
+      },
+      {
+        "type": "Vote",
+        "hash": "020f052b4e3ec29cec57dc3669775a08204fccec048803ce11de6669f83050fc",
+        "topic": "Stemming over amendement nr. 11 van Lode Vereeck cs tot invoeging van een artikel 110/2(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swigqzde2b"
+      },
+      {
+        "type": "Vote",
+        "hash": "62b76b39fa926f7dc988455cc4c2b398ecb111fa66afa5fc79615d4d70237047",
+        "topic": "Stemming over artikel 111.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swiksfqf2k"
+      },
+      {
+        "type": "Vote",
+        "hash": "86259db4267096bd0455c805df22f75b3317531a332474892e67a12c366bbf22",
+        "topic": "Stemming over artikel 112.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swiow3wq2v"
+      },
+      {
+        "type": "Vote",
+        "hash": "f1fc9f15cd529a3431556ca004a75e54484ebf6225f4f7c45d4b8c00b58b397b",
+        "topic": "Stemming over artikel 113.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swisxjpw2b"
+      },
+      {
+        "type": "Vote",
+        "hash": "6fa91471c9f093af5b3d70fcba153a7063395447308a8fea60e8c5b89f643e0a",
+        "topic": "Stemming over amendement nr. 18 van Irina De Knop op artikel 114.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swix43ky2t"
+      },
+      {
+        "type": "Vote",
+        "hash": "73d4b4616599f557e97973b0f8ba3e72ae26467522cc3532ebedbed2f36d057c",
+        "topic": "Stemming over artikel 119.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swj2x4c623"
+      },
+      {
+        "type": "Vote",
+        "hash": "ec162ee7a1d44838060bd77f557c76ca3dba15aec708517b58898593df21e332",
+        "topic": "Stemming over de artikelen 120 tot 124.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swj6w4pa2v"
+      },
+      {
+        "type": "Vote",
+        "hash": "9ae2f739139334d9307adc5527b498256e21b117e29f6598f4ba81668e2a5146",
+        "topic": "Stemming over amendement nr. 13 van Kurt Moons cs tot invoeging van een hoofdstuk 3(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swjctobk2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "bf72a91d8af25ef895226ad47163184285e8281212b035a1c18de91731147d1e",
+        "topic": "Stemming over de artikelen 125 tot 128.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swjgqw3k2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "4558a193d3d6221e104cf39f50888d48603297ef654dbf9d6cebc568dc372c84",
+        "topic": "Stemming over amendement nr. 14 van Kurt Moons cs tot invoeging van een artikel 128/1(n).",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swjki3nn2t"
+      },
+      {
+        "type": "Vote",
+        "hash": "9c10189e487c1531489d739e6b278fc1eccc5a5613152e31468cf93ac43b17d9",
+        "topic": "Stemming over de artikelen 129 tot 141.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swjolh3f2p"
+      },
+      {
+        "type": "Vote",
+        "hash": "0ae64da2bab4d7fe65ea249e2cd2e1d55586aad85a16c4e0f109b38f74cff45b",
+        "topic": "Stemming over artikel 142.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swjsndxo23"
+      },
+      {
+        "type": "Vote",
+        "hash": "9275d0c7a59789254e96046496a7879a1fc7030ac8570a0d9e89a87338829a62",
+        "topic": "Stemming over amendement nr. 5 van Dieter Vanbesien cs op artikel 143.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swjwrgi22a"
+      },
+      {
+        "type": "Vote",
+        "hash": "c48d2f2dce0f0359a4ed98dc711e1bd3ed1bcf9cfa6d6b83f3c57b6d20493206",
+        "topic": "Stemming over artikel 143.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swk2jzvo23"
+      },
+      {
+        "type": "Vote",
+        "hash": "768ad3b3673475b1971860bdf2aed31df73603137a3513d8e92c6ca880ee09c2",
+        "topic": "Stemming over de artikelen 144 en 145.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swk6lu6d2v"
+      },
+      {
+        "type": "Vote",
+        "hash": "a3e86f27d903f090bd973733475aa317ab1054f85ebef0a44685aa171e407489",
+        "topic": "Stemming over de artikelen 150 tot 152.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swkcrlee2v"
+      },
+      {
+        "type": "Vote",
+        "hash": "cc962ea1d7267139eaa5e179b31a38edeccf9b146babaa2743a91d7f77156bf8",
+        "topic": "Stemming over amendement nr. 12 van Ellen Samyn cs tot weglating van artikelen 153 tot 157.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swkgpsja2v"
+      },
+      {
+        "type": "Vote",
+        "hash": "bb54ba5de67fa7170b2a0c512ed065814a9eea74e654133ca2f27cbf6d34a9c9",
+        "topic": "Stemming over de artikelen 158 tot 165.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swkktkpv2p"
+      },
+      {
+        "type": "Vote",
+        "hash": "9c4554fb2745081e0784a5667e798c782e447ec3557acda346d4f487686d3da9",
+        "topic": "Stemming over artikel 166.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swkoq4la27"
+      },
+      {
+        "type": "Vote",
+        "hash": "20d7d94fa67c92df2c6a780def0c2233f5f17b199575ee6f10d9116acd3e4be2",
+        "topic": "Geheel van het wetsontwerp houdende diverse bepalingen",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swkshfwm2b"
+      },
+      {
+        "type": "Vote",
+        "hash": "4d8616c464e013a0b1ba6bda7772ec4742f9b7af5414edd05e2825e908b62f21",
+        "topic": "Wetsvoorstel tot verlenging van de toepassing van het mechanisme voor de vermindering van de retributie voor het gebruik van de spoorweginfrastructuur ten voordele van het goederenvervoer per spoor, zoals vastgesteld in titel 6 van de programmawet van 27 december 2021 (nieuw opschrift)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swkwiuo623"
+      },
+      {
+        "type": "Vote",
+        "hash": "b2354d520bb4ee442599d0b7c0cf73e26ba813711ec1629079a3ad891ce63db9",
+        "topic": "Voorstel van naturalisatiewet toegekend bij toepassing van de wet van 1 maart 2000 tot wijziging van een aantal bepalingen betreffende de Belgische nationaliteit (deel A)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swl2kydv2i"
+      },
+      {
+        "type": "Vote",
+        "hash": "bb1ebdc3beea22e3232645a788389cf1b09741e8f365ab46143194978ec1f413",
+        "topic": "Voorstel van naturalisatiewet toegekend bij toepassing van de wet van 27 december 2006 houdende diverse bepalingen tot wijziging van het Wetboek van de Belgische nationaliteit (deel B)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swl6mm2q27"
+      },
+      {
+        "type": "Vote",
+        "hash": "e204605d36f669c3345e2eb45494ce8715d4e7a107b9517c8d2ea5faea4c90c6",
+        "topic": "Voorstel tot verwerping door de commissie voor de Naturalisaties van de dossiers die in haar verslag nr. 519/5 op pagina’s 3 en 4 zijn opgenomen",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swlcdlgo2k"
+      }
+    ]
   }
 ]
