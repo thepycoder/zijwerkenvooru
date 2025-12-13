@@ -532,24 +532,19 @@ img {
 .badge-link {
     text-decoration: none !important;
     border-bottom: none !important;
-    color: inherit !important;
+    color: inherit;
     transition: filter 0.15s ease-in-out;
 }
 
 .badge-link:hover {
+    /* Slightly lighter and desaturated on hover */
+    filter: brightness(1.08) saturate(0.9);
+}
+
+.badge-link:not(.category):hover {
     background-color: transparent !important;
-    /* Slightly lighter and desaturated on hover */
-    filter: brightness(1.08) saturate(0.9);
 }
 
-.badge-link .party {
-    transition: filter 0.15s ease-in-out;
-}
-
-.badge-link:hover .party {
-    /* Slightly lighter and desaturated on hover */
-    filter: brightness(1.08) saturate(0.9);
-}
 
 .status {
     padding: 2px 8px;
