@@ -560,6 +560,8 @@ async fn scrape_dossier(dossier_id: &str, document: &Html) -> Result<Dossier, Bo
     let mut submission_date = String::new();
     let mut vote_date = String::new();
     let mut end_date = String::new();
+    let mut distribution_date = String::new();
+    let mut main_document_id = String::new();
     let mut dossier_authors = Vec::new();
     let mut document_type = DocumentType::Unknown;
     let mut status = DocumentStatus::Onbekend;
@@ -597,8 +599,20 @@ async fn scrape_dossier(dossier_id: &str, document: &Html) -> Result<Dossier, Bo
                         .trim()
                         .to_string();
 
+                    // Main document ID.
+                    if label.contains("document kamer") {
+                        if let Some(link) = cell_2.select(&Selector::parse("a").unwrap()).last() {
+                            if let Some(text) = link.text().next() {
+                                main_document_id = text.trim().to_string();
+                            }
+                        }
+                    }
+                    // Distribution date.
+                    else if label.contains("datum ronddeling") {
+                        distribution_date = value.clone();
+                    }
                     // Submission date.
-                    if label.contains("indieningsdatum") {
+                    else if label.contains("indieningsdatum") {
                         submission_date = value;
                     }
                     // Vote date.
@@ -745,6 +759,31 @@ async fn scrape_dossier(dossier_id: &str, document: &Html) -> Result<Dossier, Bo
                     }
                 }
             }
+        }
+    }
+
+    // Add main document if found.
+    if !main_document_id.is_empty() {
+        let short_id = if main_document_id.len() >= 3 {
+             let suffix = &main_document_id[main_document_id.len()-3..];
+             if suffix.chars().all(|c| c.is_numeric()) {
+                 suffix.to_string()
+             } else {
+                 main_document_id.clone()
+             }
+        } else {
+             main_document_id.clone()
+        };
+
+        // Check if not already in subdocuments (avoid duplicates).
+        if !subdocuments.iter().any(|d| d.id == short_id) {
+            subdocuments.insert(0, Subdocument {
+                dossier_id: dossier_id.to_string(),
+                id: short_id,
+                document_type, 
+                date: if !distribution_date.is_empty() { distribution_date.clone() } else { submission_date.clone() },
+                authors: dossier_authors.clone(),
+            });
         }
     }
 

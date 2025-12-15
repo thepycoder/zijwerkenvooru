@@ -170,7 +170,7 @@ eleventyComputed:
         <li class="dossier-event is-done">
             <span class="dot-icon">{% icon "lucide:inbox" %}</span>
             <div class="info">
-                <p><span class="bold">{{ languages['nl'][dossier.document_type] }}</span></p>
+                <p><span class="bold">{{ languages['nl'][dossier.document_type] }}</span> (<a href="https://www.dekamer.be/FLWB/PDF/{{ dossier.session_id }}/{{ dossier.dossier_id | padLeft(4, '0') }}/{{ dossier.session_id }}K{{ dossier.dossier_id | padLeft(4, '0') }}001.pdf" target="_blank">{{ dossier.session_id }}K{{ dossier.dossier_id | padLeft(4, '0') }}001</a>)</p>
                 <p style="font-size: small;">{{ dossier.submission_date | date }}</p>
                 <ul style="display: flex; flex-direction: column; gap: 0.2rem;" class="links">
                     {% for author in dossier.authors %}
