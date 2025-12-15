@@ -102,3 +102,7 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 /web/_site
 /.idea
+
+# PDF parser
+pdf-parser/downloads/
+pdf-parser/processed_markdown/
