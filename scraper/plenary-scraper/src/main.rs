@@ -1133,8 +1133,8 @@ async fn scrape_meeting(
                 .trim()
                 .to_string();
 
-            let proposition_keywords_nl = ["voorstel", "wetsvoorstel"];
-            let proposition_keywords_fr = ["proposition"];
+            let proposition_keywords_nl = ["voorstel", "wetsvoorstel", "wetsontwerp"];
+            let proposition_keywords_fr = ["proposition", "projet de loi"];
             if proposition_keywords_nl
                 .iter()
                 .any(|&keyword| text.to_lowercase().contains(keyword))
@@ -1149,43 +1149,70 @@ async fn scrape_meeting(
                 // skip french translation of the header
                 if !previous_proposition_nl.is_empty() || !previous_proposition_fr.is_empty() {
                     // Flush proposition
-                    let proposition_nl =
-                        extract_proposition_data(previous_proposition_nl.clone()).await?;
-                    let proposition_fr =
-                        extract_proposition_data(previous_proposition_fr.clone()).await?;
-                    let has_dossier_id = proposition_nl.dossier_id.is_some();
-                    let dossier_id_opt = proposition_nl.dossier_id.clone();
+                    let previous_fr_clone = previous_proposition_fr.clone();
+                    let propositions_fr = previous_fr_clone
+                        .split('\n')
+                        .filter(|s| !s.trim().is_empty())
+                        .collect::<Vec<_>>();
 
-                    proposition_ids.push(proposition_id.to_string());
-                    proposition_meeting_ids.push(meeting_id.to_string());
-                    proposition_session_ids.push(session_id.to_string());
+                    let previous_nl_clone = previous_proposition_nl.clone();
+                    let propositions_nl = previous_nl_clone
+                        .split('\n')
+                        .filter(|s| !s.trim().is_empty())
+                        .collect::<Vec<_>>();
 
-                    proposition_titles_nl.push(proposition_nl.topic.clone());
-                    proposition_titles_fr.push(proposition_fr.topic.clone());
-                    proposition_dossier_ids.push(match proposition_nl.dossier_id {
-                        None => "".to_string(),
-                        Some(dossier_id) => dossier_id.clone(),
-                    });
-                    proposition_document_ids.push(match proposition_nl.document_id {
-                        None => "".to_string(),
-                        Some(document_id) => document_id.clone(),
-                    });
+                    for pair in propositions_nl.iter().zip_longest(propositions_fr.iter()) {
+                        match pair {
+                            EitherOrBoth::Both(text_nl, text_fr) => {
+                                let prop_text_nl = text_nl.to_string();
+                                let prop_text_fr = text_fr.to_string();
 
-                    // proposition_id += 1;
+                                let proposition_nl = extract_proposition_data(
+                                    prop_text_nl.clone().replace("- ", ""),
+                                )
+                                .await?;
+                                let proposition_fr = extract_proposition_data(
+                                    prop_text_fr.clone().replace("- ", ""),
+                                )
+                                .await?;
+                                let has_dossier_id = proposition_nl.dossier_id.is_some();
+                                let dossier_id_opt = proposition_nl.dossier_id.clone();
+
+                                proposition_ids.push(proposition_id.to_string());
+                                proposition_meeting_ids.push(meeting_id.to_string());
+                                proposition_session_ids.push(session_id.to_string());
+
+                                proposition_titles_nl.push(proposition_nl.topic.clone());
+                                proposition_titles_fr.push(proposition_fr.topic.clone());
+                                proposition_dossier_ids.push(match proposition_nl.dossier_id {
+                                    None => "".to_string(),
+                                    Some(dossier_id) => dossier_id.clone(),
+                                });
+                                proposition_document_ids.push(match proposition_nl.document_id {
+                                    None => "".to_string(),
+                                    Some(document_id) => document_id.clone(),
+                                });
+
+                                // proposition_id += 1;
+
+                                // Download dossier if needed.
+                                if has_dossier_id {
+                                    check_and_download_dossier_file(
+                                        dossier_id_opt.unwrap().as_str(),
+                                        session_id,
+                                        date.parse().unwrap(),
+                                        client,
+                                        web_request_count,
+                                    )
+                                    .await?;
+                                }
+                            }
+                            _ => {}
+                        }
+                    }
+
                     previous_proposition_nl.clear();
                     previous_proposition_fr.clear();
-
-                    // Download dossier if needed.
-                    if has_dossier_id {
-                        check_and_download_dossier_file(
-                            dossier_id_opt.unwrap().as_str(),
-                            session_id,
-                            date.parse().unwrap(),
-                            client,
-                            web_request_count,
-                        )
-                        .await?;
-                    }
                 }
 
                 break;
@@ -1324,6 +1351,71 @@ async fn scrape_meeting(
                     previous_proposition_fr.push_str("\n");
                 }
                 previous_proposition_fr.push_str(&cleaned_fr);
+            }
+        }
+    }
+
+    // Flush any remaining propositions after the loop (to handle the very last one)
+    if !previous_proposition_nl.is_empty() || !previous_proposition_fr.is_empty() {
+        let previous_fr_clone = previous_proposition_fr.clone();
+        let propositions_fr = previous_fr_clone
+            .split('\n')
+            .filter(|s| !s.trim().is_empty())
+            .collect::<Vec<_>>();
+
+        let previous_nl_clone = previous_proposition_nl.clone();
+        let propositions_nl = previous_nl_clone
+            .split('\n')
+            .filter(|s| !s.trim().is_empty())
+            .collect::<Vec<_>>();
+
+        for pair in propositions_nl.iter().zip_longest(propositions_fr.iter()) {
+            match pair {
+                EitherOrBoth::Both(text_nl, text_fr) => {
+                    let prop_text_nl = text_nl.to_string();
+                    let prop_text_fr = text_fr.to_string();
+
+                    let proposition_nl = extract_proposition_data(
+                        prop_text_nl.clone().replace("- ", ""),
+                    )
+                    .await?;
+                    let proposition_fr = extract_proposition_data(
+                        prop_text_fr.clone().replace("- ", ""),
+                    )
+                    .await?;
+                    let has_dossier_id = proposition_nl.dossier_id.is_some();
+                    let dossier_id_opt = proposition_nl.dossier_id.clone();
+
+                    proposition_ids.push(proposition_id.to_string());
+                    proposition_meeting_ids.push(meeting_id.to_string());
+                    proposition_session_ids.push(session_id.to_string());
+
+                    proposition_titles_nl.push(proposition_nl.topic.clone());
+                    proposition_titles_fr.push(proposition_fr.topic.clone());
+                    proposition_dossier_ids.push(match proposition_nl.dossier_id {
+                        None => "".to_string(),
+                        Some(id) => id.clone(),
+                    });
+                    proposition_document_ids.push(match proposition_nl.document_id {
+                        None => "".to_string(),
+                        Some(id) => id.clone(),
+                    });
+
+                    proposition_id += 1;
+
+                    // Download dossier if needed.
+                    if has_dossier_id {
+                        check_and_download_dossier_file(
+                            dossier_id_opt.unwrap().as_str(),
+                            session_id,
+                            date.parse().unwrap(),
+                            client,
+                            web_request_count,
+                        )
+                        .await?;
+                    }
+                }
+                _ => {}
             }
         }
     }
@@ -2036,7 +2128,7 @@ fn extract_voter_names(document: &Html, vote_index: &str) -> (String, String, St
 
     let span_selector = Selector::parse("span").unwrap();
     let td_selector = Selector::parse("td").unwrap();
-    let p_selector = Selector::parse("p").unwrap();
+    // let p_selector = Selector::parse("p").unwrap();
 
     // 1. find the three result‑tables that belong to the requested vote
     let mut tables = Vec::new();
