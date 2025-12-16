@@ -5,6 +5,7 @@ use crawl::client::ScrapingClient;
 use crawl::utils::clean_text;
 use encoding_rs::WINDOWS_1252;
 use http::StatusCode;
+use indicatif::{ProgressBar, ProgressStyle};
 use itertools::EitherOrBoth;
 use itertools::Itertools;
 use parquet::arrow::ArrowWriter;
@@ -193,6 +194,13 @@ async fn main() -> Result<(), Box<dyn Error>> {
         println!("Found new meetings up to {}", last_meeting_id);
     }
 
+    let pb = ProgressBar::new(u64::from(last_meeting_id));
+    pb.set_style(
+        ProgressStyle::default_bar()
+            .template("{spinner:.green} [{elapsed_precise}] [{bar:40.cyan/blue}] {pos}/{len} ({eta})")?
+            .progress_chars("#>-"),
+    );
+
     for meeting in 1..=last_meeting_id {
         scrape_meeting(
             &client,
@@ -238,7 +246,9 @@ async fn main() -> Result<(), Box<dyn Error>> {
             &mut web_request_count,
         )
         .await?;
+        pb.inc(1);
     }
+    pb.finish_with_message("Done");
 
     std::fs::write(&meeting_id_path, last_meeting_id.to_string())?;
 
@@ -586,18 +596,19 @@ async fn scrape_dossier(dossier_id: &str, document: &Html) -> Result<Dossier, Bo
                 let cell_2 = cells.next();
 
                 if let (Some(cell_1), Some(cell_2)) = (cell_1, cell_2) {
-                    let label = cell_1
-                        .text()
-                        .collect::<String>()
-                        .to_lowercase()
-                        .trim()
-                        .to_string();
-                    let value = cell_2
-                        .text()
-                        .collect::<String>()
-                        .to_lowercase()
-                        .trim()
-                        .to_string();
+                    let label_text = cell_1.text().collect::<String>();
+                    let label = label_text
+                        .split_whitespace()
+                        .collect::<Vec<_>>()
+                        .join(" ")
+                        .to_lowercase();
+
+                    let value_text = cell_2.text().collect::<String>();
+                    let value = value_text
+                        .split_whitespace()
+                        .collect::<Vec<_>>()
+                        .join(" ")
+                        .to_lowercase();
 
                     // Main document ID.
                     if label.contains("document kamer") {
@@ -697,18 +708,19 @@ async fn scrape_dossier(dossier_id: &str, document: &Html) -> Result<Dossier, Bo
                             }
 
                             if let (Some(cell_1), Some(cell_2)) = (cell_1, cell_2) {
-                                let label = cell_1
-                                    .text()
-                                    .collect::<String>()
-                                    .to_lowercase()
-                                    .trim()
-                                    .to_string();
-                                let value = cell_2
-                                    .text()
-                                    .collect::<String>()
-                                    .to_lowercase()
-                                    .trim()
-                                    .to_string();
+                                let label_text = cell_1.text().collect::<String>();
+                                let label = label_text
+                                    .split_whitespace()
+                                    .collect::<Vec<_>>()
+                                    .join(" ")
+                                    .to_lowercase();
+
+                                let value_text = cell_2.text().collect::<String>();
+                                let value = value_text
+                                    .split_whitespace()
+                                    .collect::<Vec<_>>()
+                                    .join(" ")
+                                    .to_lowercase();
 
                                 // Document id.
                                 if let Some(link) =
