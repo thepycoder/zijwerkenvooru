@@ -108,6 +108,7 @@ eleventyComputed:
         {% endif %}
 
         {% for doc in dossier.subdocuments | reverse(true) %}
+        {% if doc.id != 1 %}
         <li class="dossier-event is-done">
             {% if doc.type == "Amendement" %}
             <span class="dot-icon">{% icon "lucide:git-pull-request-arrow" %}</span>
@@ -163,7 +164,7 @@ eleventyComputed:
 
             </div>
         </li>
-
+        {% endif %}
         {% endfor %}
 
         <!-- Initial Submission -->
@@ -172,6 +173,42 @@ eleventyComputed:
             <div class="info">
                 <p><span class="bold">{{ languages['nl'][dossier.document_type] }}</span> (<a href="https://www.dekamer.be/FLWB/PDF/{{ dossier.session_id }}/{{ dossier.dossier_id | padLeft(4, '0') }}/{{ dossier.session_id }}K{{ dossier.dossier_id | padLeft(4, '0') }}001.pdf" target="_blank">{{ dossier.session_id }}K{{ dossier.dossier_id | padLeft(4, '0') }}001</a>)</p>
                 <p style="font-size: small;">{{ dossier.submission_date | date }}</p>
+                
+                <!-- CHECK FOR VOTES ON INITIAL SUBMISSION (DOC 001) -->
+                {% for subdoc in dossier.subdocuments %}
+                {% if subdoc.id == 1 and subdoc.votes[0] %}
+                <a class="flex space-between align-center" style="width: 100%;" href="/sessions/{{ subdoc.votes[0].session_id }}/meetings/plenary/{{ subdoc.votes[0].meeting_id }}/votes/{{subdoc.votes[0].vote_id}}/">
+                <div class="vote-bar" style="width: 90%;">
+                    <div class="bar-segment yes"
+                         style="width: {{ (subdoc.votes[0].yes_count / ((subdoc.votes[0].yes_count | int) + (subdoc.votes[0].no_count | int) + (subdoc.votes[0].abstain_count | int)) * 100).toFixed(1) }}%">
+                        {% if subdoc.votes[0].yes_count > 0 %}
+                        <span class="bar-label">{{ (subdoc.votes[0].yes_count / ((subdoc.votes[0].yes_count | int) + (subdoc.votes[0].no_count | int) + (subdoc.votes[0].abstain_count | int)) * 100).toFixed(1) }}%</span>
+                        {% endif %}
+                    </div>
+                    <div class="bar-segment no"
+                         style="width: {{ (subdoc.votes[0].no_count / ((subdoc.votes[0].yes_count | int) + (subdoc.votes[0].no_count | int) + (subdoc.votes[0].abstain_count | int)) * 100).toFixed(1) }}%">
+                        {% if subdoc.votes[0].no_count > 0 %}
+                        <span class="bar-label">{{ (subdoc.votes[0].no_count / ((subdoc.votes[0].yes_count | int) + (subdoc.votes[0].no_count | int) + (subdoc.votes[0].abstain_count | int)) * 100).toFixed(1) }}%</span>
+                        {% endif %}
+                    </div>
+                    <div class="bar-segment abstain"
+                         style="width: {{ (subdoc.votes[0].abstain_count / ((subdoc.votes[0].yes_count | int) + (subdoc.votes[0].no_count | int) + (subdoc.votes[0].abstain_count | int)) * 100).toFixed(1) }}%">
+                        {% if subdoc.votes[0].abstain_count > 0 %}
+                        <span class="bar-label">{{ (subdoc.votes[0].abstain_count / ((subdoc.votes[0].yes_count | int) + (subdoc.votes[0].no_count | int) + (subdoc.votes[0].abstain_count | int)) * 100).toFixed(1) }}%</span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% icon "lucide:chevron-right" %}
+                </a>
+
+                <p class="vote-numbers">
+                    <span class="vote-dot yes"></span><span>{{ languages['nl'].yes }} ({{ subdoc.votes[0].yes_count }})</span>
+                    <span class="vote-dot no"></span><span>{{ languages['nl'].no }} ({{ subdoc.votes[0].no_count }})</span>
+                    <span class="vote-dot abstain"></span><span>{{ languages['nl'].abstain }} ({{ subdoc.votes[0].abstain_count }})</span>
+                </p>
+                {% endif %}
+                {% endfor %}
+
                 <ul style="display: flex; flex-direction: column; gap: 0.2rem;" class="links">
                     {% for author in dossier.authors %}
 
