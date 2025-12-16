@@ -24,6 +24,9 @@ scrape-plenary:
 scrape-commissions:
     cargo run --bin commission-scraper
 
+scrape-dossiers:
+    cargo run --bin dossier-scraper
+
 summarize:
     cargo run --bin summarizer
 

@@ -4,6 +4,7 @@ resolver = "2"
 members = [
     "scraper/plenary-scraper",
     "scraper/commission-scraper",
+    "scraper/dossier-scraper",
     "poster",
     "summarizer",
     "newsletter"
