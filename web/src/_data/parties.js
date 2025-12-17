@@ -38,11 +38,24 @@ export default async function () {
     const memberPartyMap = {};
     const memberIdMap = {};
 
-     const meetingDateMap = new Map();
+    const convertDate = (rawDate) => {
+      if (!rawDate || typeof rawDate !== 'string') return null;
+
+      // Already YYYY-MM-DD
+      if (/^\d{4}-\d{2}-\d{2}$/.test(rawDate)) {
+        return rawDate;
+      }
+
+      const [day, month, year] = rawDate.split('/');
+      if (!day || !month || !year) return null;
+      return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+    };
+
+    const meetingDateMap = new Map();
       meetingsRows.forEach(row => {
           const sessionId = row[0];
           const meetingId = row[1];
-          const date = row[2];
+          const date = convertDate(row[2]);
           const key = `${sessionId}-${meetingId}`;
           meetingDateMap.set(key, date);
       });
@@ -88,13 +101,6 @@ export default async function () {
     });
 
     // Build dossier lookup for propositions (document type, status, vote date, authors)
-    const convertDate = (rawDate) => {
-      if (!rawDate || typeof rawDate !== 'string') return null;
-      const [day, month, year] = rawDate.split('/');
-      if (!day || !month || !year) return null;
-      return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
-    };
-
     const dossierById = {};
     dossiersRows.forEach((dossier) => {
       const id = dossier[1];
@@ -196,8 +202,9 @@ export default async function () {
           };
         }
 
-        // Deduplicate per party by proposition_id
-        const alreadyHas = parties[partyName].propositions.some((p) => p.proposition_id === propId);
+        // Deduplicate per party by proposition_id AND dossier_id
+        // The parquet file reuses IDs (0, 1, 2...) for different propositions
+        const alreadyHas = parties[partyName].propositions.some((p) => p.proposition_id === propId && p.dossier_id === dossierId);
         if (alreadyHas) return;
 
         parties[partyName].propositions.push({

@@ -137,7 +137,7 @@ export default async function () {
       const vote_date = convertDate(dossier[6]);
       const authors = dossier[3]
         ?.split(",")
-        .map((a) => a.trim().toLowerCase().replace(" ", "-")) || [];
+        .map((a) => a.trim().toLowerCase().replace(/\s+/g, "-")) || [];
       dossierMap.set(dossierId, { sessionId, title, authors });
 
       dossierById[id] = {
@@ -152,7 +152,7 @@ export default async function () {
     membersRows.forEach((row) => {
       const firstName = row[2];
       const lastName = row[3];
-      const key = `${firstName}-${lastName}`.toLowerCase();
+      const key = `${firstName} ${lastName}`.trim().toLowerCase().replace(/\s+/g, '-');
 
       if (!memberMap.has(key)) {
         const birthDate = new Date(row[5]);
@@ -224,6 +224,11 @@ export default async function () {
           const member = memberMap.get(authorKey);
           if (!member.propositions) member.propositions = [];
 
+          // Deduplicate based on distinct content, not just ID
+          // The same ID (e.g. 0, 1, 2, 3) is reused for completely different propositions in the parquet file
+          // So we check if we already have this specific combination of ID AND dossier ID
+          if (member.propositions.some(p => p.proposition_id === propId && p.dossier_id === dossierId)) return;
+
           member.propositions.push({
             proposition_id: propId,
             session_id: sessionId,
@@ -267,7 +272,7 @@ export default async function () {
     remunerationsRows.forEach((remuneration) => {
       const firstName = remuneration[0];
       const lastName = remuneration[1];
-      const key = `${firstName}-${lastName}`.toLowerCase();
+      const key = `${firstName} ${lastName}`.trim().toLowerCase().replace(/\s+/g, '-');
 
       if (memberMap.has(key)) {
         const member = memberMap.get(key);
@@ -334,7 +339,7 @@ export default async function () {
 
       // Add to questioners
       questioners.forEach((q, i) => {
-        const key = q.name.toLowerCase().replace(" ", "-");
+        const key = q.name.toLowerCase().replace(/\s+/g, "-");
         const topic_nl = topics_nl[i] || null;
         const topic_fr = topics_fr[i] || null;
 
@@ -360,7 +365,7 @@ export default async function () {
 
       // Add to respondents
       respondents.forEach((r) => {
-        const key = r.name.toLowerCase().replace(" ", "-");
+        const key = r.name.toLowerCase().replace(/\s+/g, "-");
         const topic_nl = topics_nl[0] || null;
         const topic_fr = topics_fr[0] || null;
 
@@ -423,7 +428,7 @@ export default async function () {
 
       // Add to questioners
       questioners.forEach((q, i) => {
-        const key = q.name.toLowerCase().replace(" ", "-");
+        const key = q.name.toLowerCase().replace(/\s+/g, "-");
         const topic_nl = topics_nl[i] || null;
         const topic_fr = topics_fr[i] || null;
 
@@ -449,7 +454,7 @@ export default async function () {
 
       // Add to respondents
       respondents.forEach((r) => {
-        const key = r.name.toLowerCase().replace(" ", "-");
+        const key = r.name.toLowerCase().replace(/\s+/g, "-");
         const topic_nl = topics_nl[0] || null;
         const topic_fr = topics_fr[0] || null;
 
@@ -478,13 +483,13 @@ export default async function () {
     votesRows.forEach((vote) => {
       const membersYes = vote[9]
         .split(",")
-        .map((name) => name.trim().toLowerCase().replace(" ", "-"));
+        .map((name) => name.trim().toLowerCase().replace(/\s+/g, "-"));
       const membersNo = vote[10]
         .split(",")
-        .map((name) => name.trim().toLowerCase().replace(" ", "-"));
+        .map((name) => name.trim().toLowerCase().replace(/\s+/g, "-"));
       const membersAbstain = vote[11]
         .split(",")
-        .map((name) => name.trim().toLowerCase().replace(" ", "-"));
+        .map((name) => name.trim().toLowerCase().replace(/\s+/g, "-"));
 
       // Group members by their party
       const partyVotes = new Map();
