@@ -1,4 +1,0 @@
-PyMuPDF==1.26.7
-pandas
-pyarrow
-requests
