@@ -44,7 +44,7 @@ body p {
 /* LAYOUT */
 main,
 #hero,
-nav{
+nav {
     display: grid;
     grid-template-columns: auto 1fr; /* Sidebar and main content layout */
     grid-template-rows: 100%; /* Full height for the page */
@@ -89,16 +89,13 @@ nav {
 }
 
 nav a:hover {
-   background: transparent !important;;
+    background: transparent !important;
 }
 
-#languageSelect {
-    padding: 0.25rem;
-    background: transparent;
-    color: white;
-    font-weight: bold;
-    max-width: 100%;
-    margin: 0;
+#menu-toggle svg {
+    height: 2rem;
+    width: 100%;
+    stroke-width: 1px;
 }
 
 .menu-toggle-button {
@@ -110,28 +107,11 @@ nav a:hover {
     align-items: center;
 }
 
-.menu-toggle-button-inner {
-    text-decoration: none;
-    color: black;
-}
-
-/* When menu is open (optional style) */
-.menu-toggle-button.is-active .menu-toggle-button-inner {
-    text-decoration: 2px underline;
-}
-
-/* Underline on hover */
-.menu-toggle-button:hover .menu-toggle-button-inner,
-.menu-toggle-button:focus .menu-toggle-button-inner {
-    text-decoration: 2px underline;
-}
-
 /* menu as a normal block */
 .site-menu {
     width: 100%;
     background: #fff;
     display: none; /* hidden by default */
-
 }
 
 .site-menu.is-open {
@@ -545,7 +525,6 @@ img {
     background-color: transparent !important;
 }
 
-
 .status {
     padding: 2px 8px;
     color: white;
@@ -843,7 +822,7 @@ details table {
     main,
     #hero,
     nav,
-    #site-menu  {
+    #site-menu {
         grid-template-columns: auto 400px auto;
     }
 }
@@ -852,7 +831,7 @@ details table {
     main,
     #hero,
     nav,
-    #site-menu  {
+    #site-menu {
         grid-template-columns: auto 450px auto;
     }
 }
@@ -861,7 +840,7 @@ details table {
     main,
     #hero,
     nav,
-    #site-menu  {
+    #site-menu {
         grid-template-columns: auto 576px auto;
     }
 }
@@ -870,7 +849,7 @@ details table {
     main,
     #hero,
     nav,
-    #site-menu  {
+    #site-menu {
         grid-template-columns: auto 720px auto;
     }
 }
@@ -879,7 +858,7 @@ details table {
     main,
     #hero,
     nav,
-    #site-menu  {
+    #site-menu {
         grid-template-columns: auto 800px auto;
     }
 }
@@ -888,7 +867,7 @@ details table {
     main,
     #hero,
     nav,
-    #site-menu  {
+    #site-menu {
         grid-template-columns: auto 900px auto;
     }
 }
@@ -901,7 +880,7 @@ details table {
     main,
     #hero,
     nav,
-    #site-menu  {
+    #site-menu {
         grid-template-columns: auto 1200px auto;
     }
 }
@@ -1381,19 +1360,30 @@ select {
     font-weight: bold;
 }
 
-/*#question-list a span {*/
-/*    border: none;*/
-/*}*/
-
 .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 28rem;
+    background-color: #000000;
+    color: #ffffff;
+    text-align: left;
+    border-radius: 4px;
+    padding: 0.6rem;
     position: absolute;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 6px 8px;
-    font-size: 0.9rem;
-    border-radius: 6px;
-    pointer-events: none;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-weight: normal;
+    z-index: 1;
+    top: 160%;
+    left: 65%;
+    margin-left: -65px;
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
 }
 
 /* FAQ */
@@ -1867,10 +1857,6 @@ select {
     /*font-style: italic;*/
 }
 
-#summaryExplanation {
-    font-style: italic;
-}
-
 .ai-summary-tooltip {
     cursor: help;
     position: relative;
@@ -1962,7 +1948,7 @@ select {
 
 .speech.ai-summary {
     border-left: 4px solid #c783ff; /* same purple as highlight underline */
-    background-color: #f6efff;      /* soft purple tint for readability */
+    background-color: #f6efff; /* soft purple tint for readability */
 }
 
 #swap-axes {
@@ -2216,68 +2202,146 @@ h3 {
 }
 
 /* GREEN LEVELS 1–10 */
-.calendar .squares li[data-level="1"] { background-color: #c6e48b; }
-.calendar .squares li[data-level="1"]:hover { background-color: #a8c276; }
+.calendar .squares li[data-level="1"] {
+    background-color: #c6e48b;
+}
+.calendar .squares li[data-level="1"]:hover {
+    background-color: #a8c276;
+}
 
-.calendar .squares li[data-level="2"] { background-color: #b1ce7d; }
-.calendar .squares li[data-level="2"]:hover { background-color: #96af6a; }
+.calendar .squares li[data-level="2"] {
+    background-color: #b1ce7d;
+}
+.calendar .squares li[data-level="2"]:hover {
+    background-color: #96af6a;
+}
 
-.calendar .squares li[data-level="3"] { background-color: #9bb86e; }
-.calendar .squares li[data-level="3"]:hover { background-color: #849c5e; }
+.calendar .squares li[data-level="3"] {
+    background-color: #9bb86e;
+}
+.calendar .squares li[data-level="3"]:hover {
+    background-color: #849c5e;
+}
 
-.calendar .squares li[data-level="4"] { background-color: #86a260; }
-.calendar .squares li[data-level="4"]:hover { background-color: #728a52; }
+.calendar .squares li[data-level="4"] {
+    background-color: #86a260;
+}
+.calendar .squares li[data-level="4"]:hover {
+    background-color: #728a52;
+}
 
-.calendar .squares li[data-level="5"] { background-color: #718c52; }
-.calendar .squares li[data-level="5"]:hover { background-color: #607746; }
+.calendar .squares li[data-level="5"] {
+    background-color: #718c52;
+}
+.calendar .squares li[data-level="5"]:hover {
+    background-color: #607746;
+}
 
-.calendar .squares li[data-level="6"] { background-color: #5b7643; }
-.calendar .squares li[data-level="6"]:hover { background-color: #4d6439; }
+.calendar .squares li[data-level="6"] {
+    background-color: #5b7643;
+}
+.calendar .squares li[data-level="6"]:hover {
+    background-color: #4d6439;
+}
 
-.calendar .squares li[data-level="7"] { background-color: #466035; }
-.calendar .squares li[data-level="7"]:hover { background-color: #3c522d; }
+.calendar .squares li[data-level="7"] {
+    background-color: #466035;
+}
+.calendar .squares li[data-level="7"]:hover {
+    background-color: #3c522d;
+}
 
-.calendar .squares li[data-level="8"] { background-color: #314a27; }
-.calendar .squares li[data-level="8"]:hover { background-color: #2a3f21; }
+.calendar .squares li[data-level="8"] {
+    background-color: #314a27;
+}
+.calendar .squares li[data-level="8"]:hover {
+    background-color: #2a3f21;
+}
 
-.calendar .squares li[data-level="9"] { background-color: #1b3418; }
-.calendar .squares li[data-level="9"]:hover { background-color: #172c14; }
+.calendar .squares li[data-level="9"] {
+    background-color: #1b3418;
+}
+.calendar .squares li[data-level="9"]:hover {
+    background-color: #172c14;
+}
 
-.calendar .squares li[data-level="10"] { background-color: #061e0a; }
-.calendar .squares li[data-level="10"]:hover { background-color: #051a08; }
-
+.calendar .squares li[data-level="10"] {
+    background-color: #061e0a;
+}
+.calendar .squares li[data-level="10"]:hover {
+    background-color: #051a08;
+}
 
 /* BLUE LEVELS 1–10 */
-.calendar .squares li.commission[data-level="1"] { background-color: #b0dbe4; }
-.calendar .squares li.commission[data-level="1"]:hover { background-color: #96bac2; }
+.calendar .squares li.commission[data-level="1"] {
+    background-color: #b0dbe4;
+}
+.calendar .squares li.commission[data-level="1"]:hover {
+    background-color: #96bac2;
+}
 
-.calendar .squares li.commission[data-level="2"] { background-color: #9dc5cf; }
-.calendar .squares li.commission[data-level="2"]:hover { background-color: #85a7b0; }
+.calendar .squares li.commission[data-level="2"] {
+    background-color: #9dc5cf;
+}
+.calendar .squares li.commission[data-level="2"]:hover {
+    background-color: #85a7b0;
+}
 
-.calendar .squares li.commission[data-level="3"] { background-color: #8aafba; }
-.calendar .squares li.commission[data-level="3"]:hover { background-color: #75959e; }
+.calendar .squares li.commission[data-level="3"] {
+    background-color: #8aafba;
+}
+.calendar .squares li.commission[data-level="3"]:hover {
+    background-color: #75959e;
+}
 
-.calendar .squares li.commission[data-level="4"] { background-color: #779aa5; }
-.calendar .squares li.commission[data-level="4"]:hover { background-color: #65838c; }
+.calendar .squares li.commission[data-level="4"] {
+    background-color: #779aa5;
+}
+.calendar .squares li.commission[data-level="4"]:hover {
+    background-color: #65838c;
+}
 
-.calendar .squares li.commission[data-level="5"] { background-color: #648490; }
-.calendar .squares li.commission[data-level="5"]:hover { background-color: #55707a; }
+.calendar .squares li.commission[data-level="5"] {
+    background-color: #648490;
+}
+.calendar .squares li.commission[data-level="5"]:hover {
+    background-color: #55707a;
+}
 
-.calendar .squares li.commission[data-level="6"] { background-color: #526e7c; }
-.calendar .squares li.commission[data-level="6"]:hover { background-color: #465e69; }
+.calendar .squares li.commission[data-level="6"] {
+    background-color: #526e7c;
+}
+.calendar .squares li.commission[data-level="6"]:hover {
+    background-color: #465e69;
+}
 
-.calendar .squares li.commission[data-level="7"] { background-color: #3f5867; }
-.calendar .squares li.commission[data-level="7"]:hover { background-color: #364b58; }
+.calendar .squares li.commission[data-level="7"] {
+    background-color: #3f5867;
+}
+.calendar .squares li.commission[data-level="7"]:hover {
+    background-color: #364b58;
+}
 
-.calendar .squares li.commission[data-level="8"] { background-color: #2c4352; }
-.calendar .squares li.commission[data-level="8"]:hover { background-color: #253946; }
+.calendar .squares li.commission[data-level="8"] {
+    background-color: #2c4352;
+}
+.calendar .squares li.commission[data-level="8"]:hover {
+    background-color: #253946;
+}
 
-.calendar .squares li.commission[data-level="9"] { background-color: #192d3d; }
-.calendar .squares li.commission[data-level="9"]:hover { background-color: #152634; }
+.calendar .squares li.commission[data-level="9"] {
+    background-color: #192d3d;
+}
+.calendar .squares li.commission[data-level="9"]:hover {
+    background-color: #152634;
+}
 
-.calendar .squares li.commission[data-level="10"] { background-color: #061728; }
-.calendar .squares li.commission[data-level="10"]:hover { background-color: #051422; }
-
+.calendar .squares li.commission[data-level="10"] {
+    background-color: #061728;
+}
+.calendar .squares li.commission[data-level="10"]:hover {
+    background-color: #051422;
+}
 
 .calendar .legend-row {
     display: flex;
@@ -2375,7 +2439,8 @@ small {
     z-index: 1000;
 }
 
-#search-modal[aria-hidden="true"], #search-modal[hidden] {
+#search-modal[aria-hidden="true"],
+#search-modal[hidden] {
     display: none !important;
 }
 
