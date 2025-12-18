@@ -1066,6 +1066,10 @@ details table {
     gap: 0.5rem;
     align-items: start;
 }
+/* Ensure stable 70/30 split for member questions vs stellar chart */
+#member-questions #question-list {
+    width: 70%;
+}
 
 /* REMUNERATIONS */
 #member-remunerations {
@@ -1956,6 +1960,11 @@ select {
     background-color: #d5e1f7 !important;
 }
 
+.speech.ai-summary {
+    border-left: 4px solid #c783ff; /* same purple as highlight underline */
+    background-color: #f6efff;      /* soft purple tint for readability */
+}
+
 #swap-axes {
     padding-left: 0.4rem;
     padding-right: 0.4rem;
@@ -1970,6 +1979,13 @@ select {
 }
 
 /* SUMMARIZED TOGGLE */
+:root:not(.ai-summary-enabled) .ai-show-when-summary {
+    display: none !important;
+}
+:root.ai-summary-enabled .ai-hide-when-summary {
+    display: none !important;
+}
+
 :root {
     --base-size: 22px;
     --ratio-factor: 0.9;
@@ -2052,6 +2068,13 @@ h1 {
     margin-top: 2rem;
 }
 
+/* Make header sticky so the AI summary toggle is always visible */
+nav {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background: white;
+}
 input {
     border: 2px solid black;
     box-sizing: border-box;

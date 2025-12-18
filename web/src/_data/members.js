@@ -1,5 +1,6 @@
 import { DuckDBInstance } from "@duckdb/node-api";
 import fs from "fs";
+import { hashText } from "../lib/textUtils.js";
 
 import path from "path";
 import { fileURLToPath } from "url";
@@ -21,6 +22,7 @@ export default async function () {
     const commissionQuestionsFilePath = "src/data/commission_questions.parquet";
     const meetingsFilePath = "src/data/meetings.parquet";
     const commissionsFilePath = "src/data/commissions.parquet";
+    const summariesFilePath = "src/data/summaries.parquet";
     const votesFilePath = "src/data/votes.parquet";
     const propositionsFilePath = "src/data/propositions.parquet";
     const dossiersFilePath = "src/data/dossiers.parquet";
@@ -33,6 +35,7 @@ export default async function () {
       !fs.existsSync(commissionQuestionsFilePath) ||
       !fs.existsSync(meetingsFilePath) ||
       !fs.existsSync(commissionsFilePath) ||
+      !fs.existsSync(summariesFilePath) ||
       !fs.existsSync(propositionsFilePath) ||
       !fs.existsSync(dossiersFilePath) ||
       !fs.existsSync(votesFilePath) ||
@@ -75,6 +78,11 @@ export default async function () {
     );
     const commissionsRows = commissionsResult.getRows();
 
+    const summariesResult = await connection.runAndReadAll(
+      `SELECT * FROM read_parquet('${summariesFilePath}')`,
+    );
+    const summariesRows = summariesResult.getRows();
+
     const votesResult = await connection.runAndReadAll(
       `SELECT * FROM read_parquet('${votesFilePath}')`,
     );
@@ -94,6 +102,12 @@ export default async function () {
       `SELECT * FROM read_parquet('${subdocumentsFilePath}')`,
     );
     const subdocumentsRows = subdocumentsResult.getRows();
+
+    // Summary lookup
+    const summaryByHash = {};
+    summariesRows.forEach((row) => {
+      summaryByHash[row[0]] = row[2]; // input_hash -> summary
+    });
 
     /* Date map for plenary meetings. */
     const meetingDateMap = new Map();
@@ -337,6 +351,18 @@ export default async function () {
         text: discussionItem.text,
       }));
 
+      const rawTopicsNl = question[5];
+      const topics_summary_nl =
+        (rawTopicsNl && summaryByHash[hashText(rawTopicsNl)]) || null;
+
+      const rawDiscussion = question[7] || "";
+      const rawDiscussionTrimmed =
+        typeof rawDiscussion === "string" ? rawDiscussion.trim() : "";
+      const discussion_summary_nl =
+        rawDiscussionTrimmed && rawDiscussionTrimmed !== "[]"
+          ? summaryByHash[hashText(rawDiscussion)] || null
+          : null;
+
       // Add to questioners
       questioners.forEach((q, i) => {
         const key = q.name.toLowerCase().replace(/\s+/g, "-");
@@ -353,11 +379,13 @@ export default async function () {
             type: "plenary",
             topic_nl,
             topic_fr,
-            topics_nl: [topic_nl],
-            topics_fr: [topic_fr],
+            topics_nl: topics_nl,
+            topics_fr: topics_fr,
+            topics_summary_nl: topics_summary_nl,
             questioners,
             respondents,
             discussion,
+            discussion_summary_nl: discussion_summary_nl,
             asRespondent: false,
           });
         }
@@ -379,11 +407,13 @@ export default async function () {
             type: "plenary",
             topic_nl,
             topic_fr,
-            topics_nl: [topic_nl],
-            topics_fr: [topic_fr],
+            topics_nl: topics_nl,
+            topics_fr: topics_fr,
+            topics_summary_nl: topics_summary_nl,
             questioners,
             respondents,
             discussion,
+            discussion_summary_nl: discussion_summary_nl,
             asRespondent: true,
           });
         }
@@ -426,6 +456,18 @@ export default async function () {
         text: discussionItem.text,
       }));
 
+      const rawTopicsNl = question[5];
+      const topics_summary_nl =
+        (rawTopicsNl && summaryByHash[hashText(rawTopicsNl)]) || null;
+
+      const rawDiscussion = question[7] || "";
+      const rawDiscussionTrimmed =
+        typeof rawDiscussion === "string" ? rawDiscussion.trim() : "";
+      const discussion_summary_nl =
+        rawDiscussionTrimmed && rawDiscussionTrimmed !== "[]"
+          ? summaryByHash[hashText(rawDiscussion)] || null
+          : null;
+
       // Add to questioners
       questioners.forEach((q, i) => {
         const key = q.name.toLowerCase().replace(/\s+/g, "-");
@@ -439,14 +481,16 @@ export default async function () {
             session_id: sessionId,
             meeting_id: meetingId,
             date: date,
-            type: "commission"
-              .topic_nl,
+            type: "commission",
+            topic_nl,
             topic_fr,
-            topics_nl: [topic_nl],
-            topics_fr: [topic_fr],
+            topics_nl: topics_nl,
+            topics_fr: topics_fr,
+            topics_summary_nl: topics_summary_nl,
             questioners,
             respondents,
             discussion,
+            discussion_summary_nl: discussion_summary_nl,
             asRespondent: false,
           });
         }
@@ -465,14 +509,16 @@ export default async function () {
             session_id: sessionId,
             meeting_id: meetingId,
             date: date,
-            type: "commission"
-              .topic_nl,
+            type: "commission",
+            topic_nl,
             topic_fr,
-            topics_nl: [topic_nl],
-            topics_fr: [topic_fr],
+            topics_nl: topics_nl,
+            topics_fr: topics_fr,
+            topics_summary_nl: topics_summary_nl,
             questioners,
             respondents,
             discussion,
+            discussion_summary_nl: discussion_summary_nl,
             asRespondent: true,
           });
         }

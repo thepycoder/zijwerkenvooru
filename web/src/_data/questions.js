@@ -1,6 +1,6 @@
 import { DuckDBInstance } from '@duckdb/node-api';
 import fs from 'fs';
-import crypto from 'crypto';
+import { hashText } from '../lib/textUtils.js';
 
 export default async function () {
     try {
@@ -121,6 +121,12 @@ export default async function () {
                 text: discussionItem.text
             }));
 
+            const rawDiscussion = row[7] || '';
+            const rawDiscussionTrimmed = typeof rawDiscussion === 'string' ? rawDiscussion.trim() : '';
+            const discussion_summary_nl = rawDiscussionTrimmed && rawDiscussionTrimmed !== '[]'
+              ? (summaryByHash[hashText(rawDiscussion)] || null)
+              : null;
+
             const topics_nl = row[5].split(";").map(t => t.trim());
             const topics_fr = row[6].split(";").map(t => t.trim());
 
@@ -156,7 +162,8 @@ export default async function () {
                 topics_summary_fr: topics_summary_nl,
                 questioners: questioners,
                 respondents: respondents,
-                discussion: discussion
+                discussion: discussion,
+                discussion_summary_nl: discussion_summary_nl
             };
 
             questions.push(question);
@@ -181,6 +188,12 @@ export default async function () {
                   },
                 text: discussionItem.text
             }));
+
+            const rawDiscussion = row[7] || '';
+            const rawDiscussionTrimmed = typeof rawDiscussion === 'string' ? rawDiscussion.trim() : '';
+            const discussion_summary_nl = rawDiscussionTrimmed && rawDiscussionTrimmed !== '[]'
+              ? (summaryByHash[hashText(rawDiscussion)] || null)
+              : null;
 
 
             const topics_nl = row[5].split(";").map(t => t.trim());
@@ -218,7 +231,8 @@ export default async function () {
                 topics_summary_fr: topics_summary_nl,
                 questioners: questioners,
                 respondents: respondents,
-                discussion: discussion
+                discussion: discussion,
+                discussion_summary_nl: discussion_summary_nl
             };
 
             questions.push(question);
@@ -233,7 +247,3 @@ export default async function () {
     }
 }
 
-
-const hashText = (text) => {
-  return crypto.createHash('sha256').update(text).digest('hex');
-};

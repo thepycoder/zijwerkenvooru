@@ -1,6 +1,6 @@
 import { DuckDBInstance } from '@duckdb/node-api';
 import fs from 'fs';
-import crypto from 'crypto';
+import { hashText } from '../lib/textUtils.js';
 export default async function () {
     try {
         const propositionsFilePath = 'src/data/propositions.parquet';
@@ -144,7 +144,3 @@ export default async function () {
         return { propositions: [] };
     }
 }
-
-const hashText = (text) => {
-    return crypto.createHash('sha256').update(text).digest('hex');
-};

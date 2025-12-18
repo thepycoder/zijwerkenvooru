@@ -111,21 +111,3 @@ eleventyComputed:
     {% endfor %}
 </div>
 {% endif %}
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll(".toggle-discussion").forEach(button => {
-            button.addEventListener("click", () => {
-                const container = button.closest(".question-container");
-                const discussion = container.querySelector(".discussion");
-
-                if (!discussion) return;
-
-                const isOpen = discussion.classList.toggle("open");
-
-                // Toggle class on the button or svg for rotation
-                button.classList.toggle("rotated", isOpen);
-            });
-        });
-    });
-</script>
