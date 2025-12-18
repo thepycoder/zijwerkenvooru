@@ -7,14 +7,12 @@ use std::time::Duration;
 use arrow::array::{Array, ArrayRef, StringArray};
 use arrow::datatypes::{DataType, Field};
 use arrow::{datatypes::Schema, record_batch::RecordBatch};
-use parquet::{
-    arrow::ArrowWriter, arrow::arrow_reader::ParquetRecordBatchReaderBuilder,
-};
 use indicatif::{ProgressBar, ProgressStyle};
+use parquet::{arrow::ArrowWriter, arrow::arrow_reader::ParquetRecordBatchReaderBuilder};
 use reqwest::Client;
 use reqwest::header::{ACCEPT, AUTHORIZATION, CONTENT_TYPE};
+use serde::{Deserialize, Serialize};
 use serde_json::json;
-use serde::{Serialize, Deserialize};
 use sha2::{Digest, Sha256};
 
 #[derive(Debug, Clone, Copy)]
@@ -59,13 +57,45 @@ async fn main() {
     }
 
     // Process files (limited for testing inside process_file).
-    let (rows_q, calls_q) = process_questions(&client, &mistral_api_key, &questions_path, model_name, &existing_hashes, &summaries_path).await;
-    let (rows_d, calls_d) = process_dossiers(&client, &mistral_api_key, &root.join("dossiers.parquet"), model_name, &existing_hashes, &summaries_path).await;
-    let (rows_q_disc, calls_q_disc) = process_question_discussions(&client, &mistral_api_key, &questions_path, model_name, &existing_hashes, &summaries_path).await;
-    let (rows_cq_disc, calls_cq_disc) = process_question_discussions(&client, &mistral_api_key, &commission_questions_path, model_name, &existing_hashes, &summaries_path).await;
+    let (rows_q, calls_q) = process_questions(
+        &client,
+        &mistral_api_key,
+        &questions_path,
+        model_name,
+        &existing_hashes,
+        &summaries_path,
+    )
+    .await;
+    let (rows_d, calls_d) = process_dossiers(
+        &client,
+        &mistral_api_key,
+        &root.join("dossiers.parquet"),
+        model_name,
+        &existing_hashes,
+        &summaries_path,
+    )
+    .await;
+    let (rows_q_disc, calls_q_disc) = process_question_discussions(
+        &client,
+        &mistral_api_key,
+        &questions_path,
+        model_name,
+        &existing_hashes,
+        &summaries_path,
+    )
+    .await;
+    let (rows_cq_disc, calls_cq_disc) = process_question_discussions(
+        &client,
+        &mistral_api_key,
+        &commission_questions_path,
+        model_name,
+        &existing_hashes,
+        &summaries_path,
+    )
+    .await;
     let _all_rows = [rows_q, rows_d, rows_q_disc, rows_cq_disc].concat();
 
- //   let existing_batches = [batches_q.clone(), batches_d.clone()].concat();
+    //   let existing_batches = [batches_q.clone(), batches_d.clone()].concat();
     let mistral_calls = calls_q + calls_d + calls_q_disc + calls_cq_disc;
 
     println!("Total Mistral API calls: {}", mistral_calls); // Print total number of API calls
@@ -178,30 +208,50 @@ async fn process_file(
             //     return (summary_rows, mistral_calls);
             // }
 
-
             let raw_input = column.value(i);
             let prepared_input = raw_input.to_string();
             let input_hash = hash_text(&prepared_input);
             let should_summarize = match task {
-                SummarizeTask::QuestionTopics => prepared_input.contains(';') && !existing_hashes.contains(&input_hash),
+                SummarizeTask::QuestionTopics => {
+                    prepared_input.contains(';') && !existing_hashes.contains(&input_hash)
+                }
                 SummarizeTask::DossierTitle => !existing_hashes.contains(&input_hash),
                 SummarizeTask::QuestionDiscussion => {
                     let trimmed = raw_input.trim();
                     trimmed != "[]" && !trimmed.is_empty() && !existing_hashes.contains(&input_hash)
-                },
+                }
             };
 
             if should_summarize {
                 if let SummarizeTask::QuestionDiscussion = task {
                     println!(
-                        "Sending discussion to Mistral (chars={}): {}",
+                        "Sending discussion to Mistral (chars={})",
                         prepared_input.len(),
                     );
                 }
                 let summary = match task {
-                    SummarizeTask::QuestionTopics => summarize_question(client, api_key, &prepared_input, &mut mistral_calls).await,
-                    SummarizeTask::DossierTitle => summarize_dossier_title(client, api_key, &prepared_input, &mut mistral_calls).await,
-                    SummarizeTask::QuestionDiscussion => summarize_question_discussion(client, api_key, &prepared_input, &mut mistral_calls).await,
+                    SummarizeTask::QuestionTopics => {
+                        summarize_question(client, api_key, &prepared_input, &mut mistral_calls)
+                            .await
+                    }
+                    SummarizeTask::DossierTitle => {
+                        summarize_dossier_title(
+                            client,
+                            api_key,
+                            &prepared_input,
+                            &mut mistral_calls,
+                        )
+                        .await
+                    }
+                    SummarizeTask::QuestionDiscussion => {
+                        summarize_question_discussion(
+                            client,
+                            api_key,
+                            &prepared_input,
+                            &mut mistral_calls,
+                        )
+                        .await
+                    }
                 };
 
                 if let Some(summary) = summary {
@@ -209,7 +259,7 @@ async fn process_file(
                         input_hash,
                         original: prepared_input.to_string(),
                         summary,
-                        model: model_name.to_string()
+                        model: model_name.to_string(),
                     };
                     // Persist incrementally by rewriting the summaries file with the new row appended.
                     if let Err(err) = rewrite_summaries_file(summaries_path, &[row.clone()]) {
@@ -229,7 +279,6 @@ async fn process_file(
     (summary_rows, mistral_calls)
 }
 
-
 #[derive(Serialize, Deserialize, Debug)]
 struct Message {
     role: String,
@@ -246,7 +295,12 @@ struct ApiResponse {
     choices: Vec<Choice>,
 }
 
-async fn summarize_question(client: &Client, api_key: &str, topic: &str, mistral_calls: &mut u32) -> Option<String> {
+async fn summarize_question(
+    client: &Client,
+    api_key: &str,
+    topic: &str,
+    mistral_calls: &mut u32,
+) -> Option<String> {
     let payload = &json!({
         "model": "mistral-large-latest",
         "messages": [
@@ -263,7 +317,8 @@ async fn summarize_question(client: &Client, api_key: &str, topic: &str, mistral
         ]
     });
 
-    match client.post("https://api.mistral.ai/v1/chat/completions")
+    match client
+        .post("https://api.mistral.ai/v1/chat/completions")
         .header(CONTENT_TYPE, "application/json")
         .header(ACCEPT, "application/json")
         .header(AUTHORIZATION, format!("Bearer {}", api_key))
@@ -278,7 +333,11 @@ async fn summarize_question(client: &Client, api_key: &str, topic: &str, mistral
                 tokio::time::sleep(Duration::from_secs(5)).await;
                 Some(strip_markdown(&json_resp.choices[0].message.content))
             } else {
-                eprintln!("HTTP Error: {} - {:?}", resp.status(), resp.text().await.unwrap_or_default());
+                eprintln!(
+                    "HTTP Error: {} - {:?}",
+                    resp.status(),
+                    resp.text().await.unwrap_or_default()
+                );
                 None
             }
         }
@@ -289,9 +348,14 @@ async fn summarize_question(client: &Client, api_key: &str, topic: &str, mistral
     }
 }
 
-async fn summarize_question_discussion(client: &Client, api_key: &str, discussion_text: &str, mistral_calls: &mut u32) -> Option<String> {
+async fn summarize_question_discussion(
+    client: &Client,
+    api_key: &str,
+    discussion_text: &str,
+    mistral_calls: &mut u32,
+) -> Option<String> {
     println!(
-        "Mistral request (discussion) payload preview (chars={}): {}",
+        "Mistral request (discussion) payload preview (chars={})",
         discussion_text.len(),
     );
     let payload = &json!({
@@ -308,7 +372,8 @@ async fn summarize_question_discussion(client: &Client, api_key: &str, discussio
         ]
     });
 
-    match client.post("https://api.mistral.ai/v1/chat/completions")
+    match client
+        .post("https://api.mistral.ai/v1/chat/completions")
         .header(CONTENT_TYPE, "application/json")
         .header(ACCEPT, "application/json")
         .header(AUTHORIZATION, format!("Bearer {}", api_key))
@@ -323,17 +388,14 @@ async fn summarize_question_discussion(client: &Client, api_key: &str, discussio
                 tokio::time::sleep(Duration::from_secs(5)).await;
                 let content = json_resp.choices[0].message.content.clone();
                 println!(
-                    "Mistral response (discussion) preview (chars={}): {}",
+                    "Mistral response (discussion) preview (chars={})",
                     content.len(),
                 );
                 Some(strip_markdown(&content))
             } else {
                 let status = resp.status();
                 let body = resp.text().await.unwrap_or_default();
-                eprintln!(
-                    "HTTP Error (discussion): {} - {}",
-                    status,
-                );
+                eprintln!("HTTP Error (discussion): {}", status,);
                 None
             }
         }
@@ -344,7 +406,12 @@ async fn summarize_question_discussion(client: &Client, api_key: &str, discussio
     }
 }
 
-async fn summarize_dossier_title(client: &Client, api_key: &str, topic: &str, mistral_calls: &mut u32) -> Option<String> {
+async fn summarize_dossier_title(
+    client: &Client,
+    api_key: &str,
+    topic: &str,
+    mistral_calls: &mut u32,
+) -> Option<String> {
     let payload = &json!({
         "model": "mistral-large-latest",
         "messages": [
@@ -361,7 +428,8 @@ async fn summarize_dossier_title(client: &Client, api_key: &str, topic: &str, mi
         ]
     });
 
-    match client.post("https://api.mistral.ai/v1/chat/completions")
+    match client
+        .post("https://api.mistral.ai/v1/chat/completions")
         .header(CONTENT_TYPE, "application/json")
         .header(ACCEPT, "application/json")
         .header(AUTHORIZATION, format!("Bearer {}", api_key))
@@ -376,7 +444,11 @@ async fn summarize_dossier_title(client: &Client, api_key: &str, topic: &str, mi
                 tokio::time::sleep(Duration::from_secs(5)).await;
                 Some(strip_markdown(&json_resp.choices[0].message.content))
             } else {
-                eprintln!("HTTP Error: {} - {:?}", resp.status(), resp.text().await.unwrap_or_default());
+                eprintln!(
+                    "HTTP Error: {} - {:?}",
+                    resp.status(),
+                    resp.text().await.unwrap_or_default()
+                );
                 None
             }
         }
@@ -392,7 +464,7 @@ struct SummaryRow {
     input_hash: String,
     original: String,
     summary: String,
-    model: String
+    model: String,
 }
 
 /// Returns a preview of the given string of up to `limit` bytes, appending a truncated
@@ -403,7 +475,7 @@ struct SummaryRow {
 ///
 /// # Example
 /// ```
-/// let text = "Dit is een hele lange inputtekst die getoond moet worden..."; 
+/// let text = "Dit is een hele lange inputtekst die getoond moet worden...";
 /// println!("{}", preview_for_log(text, 20)); // Shows: "Dit is een hele lange… [truncated, 58 chars total]"
 /// ```
 fn preview_for_log(s: &str, limit: usize) -> String {
@@ -440,7 +512,10 @@ fn strip_markdown(input: &str) -> String {
     s.trim().to_string()
 }
 
-fn rewrite_summaries_file(summaries_path: &PathBuf, new_rows: &[SummaryRow]) -> Result<(), Box<dyn std::error::Error>> {
+fn rewrite_summaries_file(
+    summaries_path: &PathBuf,
+    new_rows: &[SummaryRow],
+) -> Result<(), Box<dyn std::error::Error>> {
     // Gather existing rows from file if present
     let mut input_hashes: Vec<String> = Vec::new();
     let mut originals: Vec<String> = Vec::new();
