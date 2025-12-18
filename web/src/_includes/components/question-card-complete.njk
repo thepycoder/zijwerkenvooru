@@ -94,7 +94,7 @@
 
 <!-- DISCUSSION -->
 {% set respondent_names = params.question.respondents | map('name') | list %}
-<div class="discussion" style="display: flex; flex-direction: column; gap: 0.5rem;">
+<div class="discussion" style="display: flex; flex-direction: column; gap: 0.5rem; overflow-x: hidden;">
     {% if params.question.discussion_summary_nl %}
     <div class="message-container ai-discussion-summary ai-show-when-summary">
         <div class="speech ai-summary">
