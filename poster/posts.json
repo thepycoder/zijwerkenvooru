@@ -2013,5 +2013,270 @@
         "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3m7swlcdlgo2k"
       }
     ]
+  },
+  {
+    "id": "88",
+    "date": "88",
+    "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvswyv7r2v",
+    "replies": [
+      {
+        "type": "Vote",
+        "hash": "2f8f69ae0e4b019a668b895f3c5d72e9f192acb0bfcfc774a1dbaa832d987147",
+        "topic": "Moties ingediend tot besluit van de interpellatie van mevrouw Barbara Pas over 'de onevenwichtige verdeling v.d. betrekkingen N/F bij de federale wetenschappelijke instellingen'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvt32ver2v"
+      },
+      {
+        "type": "Vote",
+        "hash": "c703a2e02e8674c3d56cc281bb7d364335c17a1a69c3df28dedc0b19475a13a2",
+        "topic": "Moties ingediend tot besluit van de interpellatie van de heer @vincentvq.bsky.social over 'de 'meerwaardemiskleun''",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvtctbcx2i"
+      },
+      {
+        "type": "Vote",
+        "hash": "695102ed82e4f0eb1f0f18fd70a4f94601937c72ffa4d7b9d902d0be9a1ce42b",
+        "topic": "Moties ingediend tot besluit van de interpellaties van:\n- mevrouw Natalie Eggermont over 'massale ontslagen bij Alstom Brugge en de rol van de NMBS bij de toekenning van bestellingen'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvtgwyzy27"
+      },
+      {
+        "type": "Vote",
+        "hash": "f9ac424e0790b55650f148df41c9ddf7c457f58f9d274570d5850aa6aceb1346",
+        "topic": "Moties ingediend tot besluit van de interpellaties van:\n- mevrouw @sarahschlitz.bsky.social over 'de incoherente uitspraken van de minister over nachtarbeid'",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvtlixwq27"
+      },
+      {
+        "type": "Vote",
+        "hash": "a220b41c3e69b02d49ca4cd8c791f2693865de530a17b9affc3bf8d7c5562e7d",
+        "topic": "Geheel van het wetsontwerp houdende diverse bepalingen inzake sociale zaken, zoals geamendeerd tijdens de plenaire vergadering van 11 december 2025",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvtpmpbq2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "4fc4ac051aa421fac67553125a4ec07ea00a00d4bdbf225b54b24e87db84b1d1",
+        "topic": "Stemming over amendement nr. 5 van Dieter Vanbesien cs op artikel 16.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvttqzcc2t"
+      },
+      {
+        "type": "Vote",
+        "hash": "d93572718c74b431b2c3c7a44f13cbeb14b132407160ba9b57f30eade0ec086b",
+        "topic": "Stemming over amendement nr. 7 van Dieter Vanbesien cs op artikel 16.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvtxp2yz2v"
+      },
+      {
+        "type": "Vote",
+        "hash": "4fdcee75e04ae9f001d03ac88cddfe9c03a920fd0d00a30c83bd4baeeb36d829",
+        "topic": "Geheel van het ontwerp van financiewet voor het begrotingsjaar 2026",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvu3n2wk2p"
+      },
+      {
+        "type": "Vote",
+        "hash": "022436775985475bd29f335cf916d94f302e29ce14daa13e51b8006f67fefe10",
+        "topic": "Wetsontwerp houdende de eerste aanpassing van de Algemene uitgavenbegroting voor het begrotingsjaar 2025",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvu7wqjx23"
+      },
+      {
+        "type": "Vote",
+        "hash": "a3eba5539c17e8de059a565f3d17f24ea1ba4a070811efd5089f861803d8dcd6",
+        "topic": "Begroting van de Commissie voor de Regulering van de Elektriciteit en het Gas (CREG) voor het begrotingsjaar 2026",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvueah5x2p"
+      },
+      {
+        "type": "Vote",
+        "hash": "9d85d129bdfda6a150dc181b063dba641a55688e281429b5858b027aa6b9c27a",
+        "topic": "Beleidsplan en begroting van Hedera voor het jaar 2026",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvuilnpl2b"
+      },
+      {
+        "type": "Vote",
+        "hash": "d4fc9a20d9bb144e06582b021334eb968e2524700a46bf8f2aba601510ca891f",
+        "topic": "Wetsontwerp houdende instemming met de Overeenkomst tussen de Regering van het Koninkrijk België en het Kabinet van ministers van Oekraïne betreffende technische en financiële samenwerking, gedaan te Brussel en Kyiv op 20 augustus 2024",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvumwumc2p"
+      },
+      {
+        "type": "Vote",
+        "hash": "ac859920c09443840cf95333d6101b507f0c19246c79726f6720420117054f45",
+        "topic": "Wetsontwerp houdende instemming met de Partnerschaps- en samenwerkingsovereenkomst tussen de Europese Unie en haar Lidstaten, enerzijds, en de Republiek Singapore, anderzijds, gedaan te Brussel op 19 oktober 2018",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvur5u5o2v"
+      },
+      {
+        "type": "Vote",
+        "hash": "0df904b7b4725a70228aa50310584fd663537f8359c4ab29c7123d90ec66a96e",
+        "topic": "Wetsontwerp houdende instemming met de Wijzigingen aan de Overeenkomst houdende oprichting van het Afrikaans Ontwikkelingsfonds, aangenomen te Sharm el-Sheikh bij resolutie F/BG/2023/04 op de 49ste jaarvergadering van de Raad van bestuur van het Afrikaans Ontwikkelingsfonds op 23 mei 2023",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvuvigmp2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "ded0c34aa5ea70778755d4d05c2dbb714ccaff0c88007bdbbce0c4ee69bee70e",
+        "topic": "Aangehouden amendementen op het voorstel van resolutie over de oorlog, de hongersnood en de mensenrechtenschendingen in Soedan",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvuztemw2k"
+      },
+      {
+        "type": "Vote",
+        "hash": "007f38545d269be6bd484400f6b43957e5a944f10ad6f12f8cf0bfbabbaaad31",
+        "topic": "Geheel van het voorstel van resolutie over de oorlog, de hongersnood en de mensenrechtenschendingen in Soedan",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvv6azz32p"
+      },
+      {
+        "type": "Vote",
+        "hash": "0b728f361978eda90deae47409881f0e20b4dc88c60c316b09c6d6ab654ea138",
+        "topic": "(1105/10)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvvckbxx2t"
+      },
+      {
+        "type": "Vote",
+        "hash": "329b3eb95a4ddbfa378140422302fb536717ef4fc6567e0be94c650ae326b427",
+        "topic": "Geheel van het wetsontwerp tot wijziging van de wet van 24 januari 1977 betreffende de bescherming van de gezondheid van de gebruikers op het stuk van de voedingsmiddelen en andere produkten",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvvgrui32p"
+      },
+      {
+        "type": "Vote",
+        "hash": "41950c9bfc6028d622b97058e6a13c16a5a793eb81eac4b20e1425cc839c4dc2",
+        "topic": "Aangehouden amendementen en artikelen van het wetsontwerp tot uitvoering van een versterkt terug-naar-werkbeleid in geval van arbeidsongeschiktheid",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvvky2hz2v"
+      },
+      {
+        "type": "Vote",
+        "hash": "9a3732c0ef0e415c43f7ea33bdb88c890e6ba2e4d7564ae583e0853cf3c313f4",
+        "topic": "Geheel van het wetsontwerp tot uitvoering van een versterkt terug-naar-werkbeleid in geval van arbeidsongeschiktheid",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvvopgzj2b"
+      },
+      {
+        "type": "Vote",
+        "hash": "756034951b2b6819283dfaf498756caa107cd6f2a0115c94803044f075f945db",
+        "topic": "Wetsontwerp tot verlenging van bepaalde maatregelen voorzien in de wet van 20 november 2022 houdende maatregelen aangaande de personeelsschaarste in de zorgsector",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvvt3ael2p"
+      },
+      {
+        "type": "Vote",
+        "hash": "b5906822d74c0f3f7093142522e274d287dc72f12f124b1a27b568e51cd9ccfc",
+        "topic": "Aangehouden amendementen en artikelen van het wetsontwerp houdende diverse bepalingen inzake gezondheidszorg",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvvxan3a2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "7c07e7b719d7a1ada75a6a7ed626b55a91e4cf0339cbdbce463da6f20f5cd6a8",
+        "topic": "Stemming over amendement nr. 19 van Dominiek Sneppe cs op artikel 6.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvw3ifhj2y"
+      },
+      {
+        "type": "Vote",
+        "hash": "7376695b8704c7db343b7457691535cc2a16ef2f18379da713281daaf845fbb7",
+        "topic": "Geheel van het wetsontwerp houdende diverse bepalingen inzake gezondheidszorg",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvw7ootb2v"
+      },
+      {
+        "type": "Vote",
+        "hash": "56b3da84d735f12740b56b313207e7ecc112410e086fb25c71bbc16696809a86",
+        "topic": "Aangehouden amendementen en artikels van het wetsvoorstel houdende diverse dringende begrotingsbepalingen inzake gezondheidszorg",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvwdye3j2b"
+      },
+      {
+        "type": "Vote",
+        "hash": "0cf648d6656717cf5c209e4706b9a80c4d4854fed3104b6e739719b30f7cc11e",
+        "topic": "Stemming over amendement nr. 32 van Natalie Eggermont op artikel 7.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvwi7skz2y"
+      },
+      {
+        "type": "Vote",
+        "hash": "135b419629080aa801d20f7906858b7761a8444bcfb869b4f63fac6b1e69b754",
+        "topic": "Geheel van het wetsvoorstel houdende diverse dringende begrotingsbepalingen inzake gezondheidszorg",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvwmq66r2b"
+      },
+      {
+        "type": "Vote",
+        "hash": "7720ede7ff902031ba6622c0d76f940200df57b62a7c67003919b1c6593c8d31",
+        "topic": "Wetsontwerp tot wijziging van het Wetboek van de belasting over de toegevoegde waarde betreffende de plaats van sommige diensten en betreffende de winstmargeregeling op de levering van kunstvoorwerpen, voorwerpen voor verzamelingen en antiquiteiten",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvwqzue62v"
+      },
+      {
+        "type": "Vote",
+        "hash": "7635ea1bd7c23f306c3acb97a16754c378e99c8a2cb590a08ba5c5441953df53",
+        "topic": "Wetsontwerp tot wijziging van de wet van 19 december 2023 houdende de invoering van een minimumbelasting voor multinationale ondernemingen en omvangrijke binnenlandse groepen",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvwvbwnd2p"
+      },
+      {
+        "type": "Vote",
+        "hash": "08e20d632883c69717f1690e76f95e9fe07a2ebf3f6df32efc5f4ba176af1309",
+        "topic": "Wetsvoorstel tot wijziging van de programmawet van 18 juli 2025 betreffende de toepassingsmodaliteiten van de tijdelijke beperking van de indexering van de wettelijke pensioenen",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvwzjpkd2b"
+      },
+      {
+        "type": "Vote",
+        "hash": "e8c4606a6e11ab13f0b4ce63f6b33b905f6d4fbbb41667b1427bf72dcc331ec6",
+        "topic": "Wetsontwerp houdende de strafbaarstelling van de ontsnapping van gedetineerden en van de beschadiging of verduistering van het elektronisch toezichtsmateriaal en betreffende het afnemen van drugstesten in de gevangenis en de herroeping van het elektronisch toezicht in het kader van de strafuitvoering (nieuw opschrift)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvx5q7u22t"
+      },
+      {
+        "type": "Vote",
+        "hash": "d36a60b9d0a5c12c7f305ac0b6b6939a70cb5a00626006c8bc8c50c99e750c2e",
+        "topic": "Wetsontwerp betreffende de weerbaarheid van kritieke entiteiten",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvxc2m3r2v"
+      },
+      {
+        "type": "Vote",
+        "hash": "d6fe0dd994d099ec1f3323922e731e854c437dbc30403af2df8e786bca0d6ce7",
+        "topic": "Wetsontwerp betreffende de verhoging van opdecimes en de verzwaring van de geldboete voor inbreuk op het Sociaal Strafwetboek met een verzwarende factor",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvxgbp6q2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "d5ca6ded27c36bc51aa906ecd5f9bc529fc4bd0b3fbd8a2ae64cba4eace241a4",
+        "topic": "Wetsvoorstel houdende wijziging    van de artikelen 368 en 368/1    van het Wetboek    van de inkomstenbelastingen 1992    betreffende de aanvraag tot teruggave    van de niet-ingekohierde voorheffing en    houdende wijziging    van het Wetboek diverse rechten en    taksen betreffende de jaarlijkse taks    op kredietinstellingen (nieuw opschrift)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvxkjeuz2v"
+      },
+      {
+        "type": "Vote",
+        "hash": "69deb89ebefb3ed86c7387bd2c31327b0415b31cfad3d1e99e5f254f88fc9d2b",
+        "topic": "Voorstel tot verwerping door de commissie voor Justitie van het wetsvoorstel teneinde vrouwenmoord in het Strafwetboek op te nemen",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvxor3vb2b"
+      },
+      {
+        "type": "Vote",
+        "hash": "43cd088b1e7bcab515828e9f7761f00133f2c82924f97ced684d92e55eeab7d7",
+        "topic": "Stemming over amendement nr. 17 van @lacroixch.bsky.social cs tot invoeging van een artikel 11/1.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvxuckwy27"
+      },
+      {
+        "type": "Vote",
+        "hash": "40312712df17e7df6d44716521dc1204840177fb8bd04ca63e7ba834b438d54d",
+        "topic": "Stemming over amendement nr. 18 van @lacroixch.bsky.social cs op bijlage II.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvxyskhp2i"
+      },
+      {
+        "type": "Vote",
+        "hash": "202a26c82c037e10eaf567899d4ebf4cff8040edd007cc6a71ee55614875c63c",
+        "topic": "Stemming over amendement nr. 20 van Nabil Boukili op bijlage II.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvy4yjxy2a"
+      },
+      {
+        "type": "Vote",
+        "hash": "91a4efe34b7d953ebcb77cecca46e3e364ec3d394c96495528fdcad5b2c0b5ef",
+        "topic": "Stemming over amendement nr. 19 van @lacroixch.bsky.social cs op bijlage II.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvybe4bi27"
+      },
+      {
+        "type": "Vote",
+        "hash": "ba5265d0ae1a9021e8b88e56aa9a308e650d8e33a167e7ace3d8957247626c1d",
+        "topic": "Geheel van het wetsontwerp houdende de militaire programmering op het gebied van investeringen, personeel en technologische versterking voor de periode 2026-2034 (nieuw opschrift)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvyfqnvg2v"
+      },
+      {
+        "type": "Vote",
+        "hash": "cb249b4d18e9758e3ac27f85e3fd1ff4b56c1c83891fdde62e306f953504fa89",
+        "topic": "Wetsontwerp tot vaststelling van het legercontingent voor het jaar 2026",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvyjx2bc2t"
+      },
+      {
+        "type": "Vote",
+        "hash": "a0347cbc356dffaf43bb43b67cffb26095fcaede43baadb2d70a96359eaddc84",
+        "topic": "Stemming over amendement nr. 1 van Ellen Samyn cs tot weglating van considerans K.",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvyodwf72a"
+      },
+      {
+        "type": "Vote",
+        "hash": "ba2764c2fd17f1386697a71bdfda0a1f12e753cb81ff4786d346f5d4f1b2aa47",
+        "topic": "Geheel van het voorstel van resolutie betreffende het veroordelen van de schending van de legitieme rechten van Afghaanse vrouwen onder het Talibanregime en het oproepen van België en de Europese landen tot het verlenen van steun",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvyslt7b2b"
+      }
+    ]
   }
 ]
