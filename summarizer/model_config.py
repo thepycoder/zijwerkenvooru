@@ -59,12 +59,12 @@ MODELS_TO_TEST = [
         model="mistral-medium-2508",
         client_class=MistralLLMClient,
     ),
-    ModelConfig(
-        name="Kimi K2 Thinking",
-        provider="nebius",
-        model="moonshotai/Kimi-K2-Thinking",
-        client_class=NebiusLLMClient,
-    ),
+    # ModelConfig(
+    #     name="Kimi K2 Thinking",
+    #     provider="nebius",
+    #     model="moonshotai/Kimi-K2-Thinking",
+    #     client_class=NebiusLLMClient,
+    # ),
     # Add more models here as needed
     # Example:
     # ModelConfig(

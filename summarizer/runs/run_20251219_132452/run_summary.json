@@ -1,0 +1,64 @@
+{
+  "run_timestamp": "2025-12-19T13:31:20.134636",
+  "models_tested": 7,
+  "models_successful": 7,
+  "models_failed": 0,
+  "model_results": [
+    {
+      "name": "Claude Haiku 4.5",
+      "provider": "anthropic",
+      "model": "claude-haiku-4-5-20251001",
+      "success": true,
+      "results_count": 6,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251219_132452/results_claude-haiku-4-5-20251001.json"
+    },
+    {
+      "name": "Gemini 3 Flash Preview",
+      "provider": "gemini",
+      "model": "gemini-3-flash-preview",
+      "success": true,
+      "results_count": 6,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251219_132452/results_gemini-3-flash-preview.json"
+    },
+    {
+      "name": "Claude Sonnet 4.5",
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-5-20250929",
+      "success": true,
+      "results_count": 6,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251219_132452/results_claude-sonnet-4-5-20250929.json"
+    },
+    {
+      "name": "Mistral Medium 2508",
+      "provider": "mistral",
+      "model": "mistral-medium-2508",
+      "success": true,
+      "results_count": 6,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251219_132452/results_mistral-medium-2508.json"
+    },
+    {
+      "name": "Mistral Large 2512",
+      "provider": "mistral",
+      "model": "mistral-large-2512",
+      "success": true,
+      "results_count": 6,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251219_132452/results_mistral-large-2512.json"
+    },
+    {
+      "name": "Gemini 3 Pro Preview",
+      "provider": "gemini",
+      "model": "gemini-3-pro-preview",
+      "success": true,
+      "results_count": 6,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251219_132452/results_gemini-3-pro-preview.json"
+    },
+    {
+      "name": "Kimi K2 Thinking",
+      "provider": "nebius",
+      "model": "moonshotai/Kimi-K2-Thinking",
+      "success": true,
+      "results_count": 3,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251219_132452/results_moonshotai_Kimi-K2-Thinking.json"
+    }
+  ]
+}

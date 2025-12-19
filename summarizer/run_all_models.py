@@ -295,9 +295,9 @@ def main():
         "191": "Completed Law (Standard) - Has AangenomenTekst + Verslag",
         "135": "Debated Bill (Ongoing) - Has Verslag + Voorstel, no Law",
         "30": "Floating Amendment (Stalled) - Has Voorstel + Amendement, no Verslag",
-        "449": "Special (Budget) - Begroting",
         "200": "Various document types",
-        "1131": "ET Telescoop"
+        "1131": "ET Telescoop",
+        "52": "Israel"
     }
     
     # Create results directory with timestamp

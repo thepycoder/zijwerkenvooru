@@ -105,3 +105,5 @@ fabric.properties
 
 pdf-parser/downloads
 pdf-parser/processed_markdown
+
+**/__pycache__/**

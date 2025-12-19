@@ -1,0 +1,125 @@
+{
+  "191": {
+    "dossier_id": "191",
+    "title": "Wetsontwerp tot wijziging van de wet van 8 juni 2006 houdende regeling van economische en individuele activiteiten met wapens wat betreft het verwerven en gebruiken van geluiddempers en nachtzichtrichtkijkers.",
+    "generated_title": "Wijziging regels voor geluiddempers en nachtzichtrichtkijkers",
+    "model": "moonshotai/Kimi-K2-Thinking",
+    "model_name": "Kimi K2 Thinking",
+    "provider": "nebius",
+    "fact_summary": {
+      "summary": " **Welk probleem lost dit op of wat is het doel?**\nDeze wet wijzigt de Belgische wapenwetgeving uit 2006 om de regels voor het verwerven en gebruiken van geluiddempers en nachtzichtrichtkijkers aan te passen. Het doel is deze specifieke wapenaccessoires anders te reguleren, maar de precieze motivatie en probleemstelling staan niet in dit document.\n\n**Wat verandert er concreet in de praktijk?**\n- De concrete wijzigingen zijn niet opgenomen in dit document. Er staat alleen dat de wet wordt gewijzigd.\n- De volledige tekst van de aangenomen artikelen ontbreekt, waardoor de exacte praktische veranderingen niet kunnen worden samengevat.",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "summary_debate": null,
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 3,
+      "json_parse_failed": true,
+      "json_parse_error": "Expecting ',' delimiter: line 1 column 3043 (char 3042)"
+    },
+    "cost_info": {
+      "total_cost": 0.030292,
+      "input_tokens": 27816,
+      "output_tokens": 8192,
+      "input_cost": 0.013908,
+      "output_cost": 0.016384
+    }
+  },
+  "135": {
+    "dossier_id": "135",
+    "title": "Wetsvoorstel tot wijziging van de programmawet (I) van 27 december 2006, de wetten betreffende de preventie van beroepsziekten en de vergoeding van de schade die uit die ziekten voortvloeit, gecoördineerd op 3 juni 1970, en van het koninklijk besluit van 28 april 2017 tot vaststelling van boek I Algemene beginselen van de codex over het welzijn op het werk, met het oog op de verbetering van de ondersteuning voor asbestslachtoffers en de financiering van het Schadeloosstellingfonds voor asbestslachtoffers.",
+    "generated_title": "Verbeterde ondersteuning en vergoeding voor asbestslachtoffers",
+    "model": "moonshotai/Kimi-K2-Thinking",
+    "model_name": "Kimi K2 Thinking",
+    "provider": "nebius",
+    "fact_summary": {
+      "summary": " **Welk probleem lost dit op of wat is het doel?**\n\nDit wetsvoorstel wil asbestslachtoffers beter ondersteunen en het Schadeloosstellingfonds voor asbestslachtoffers (AFA) versterken. Nu hebben slachtoffers moeite om erkenning en vergoeding te krijgen. Het fonds kampt met financieringsproblemen en onduidelijkheden. Werkgevers hebben quasi-absolute immuniteit, waardoor slachtoffers bijna nooit juridische stappen kunnen ondernemen. Er is ook geen centraal overzicht van waar asbest nog zit, en slachtoffers hebben geen laagdrempelige manier om informatie te krijgen.\n\n**Wat verandert er concreet in de praktijk?**\n\n- Er komt een gratis telefoonnummer waar slachtoffers informatie en begeleiding krijgen.\n- Werkgevers moeten hun asbestinventarissen doorgeven aan een centraal register bij het Asbestfonds.\n- Het Asbestfonds moet jaarlijks rapporteren over zijn werking en financiering.\n- Bedrijven die asbestrisico's hebben verhoogd, moeten een extra boete betalen aan het fonds (principe \"de vervuiler betaalt\").\n- Zelfstandigen krijgen via hun sociaal statuut vergoeding voor alle asbestziekten, niet alleen voor asbestose.\n- Slachtoffers kunnen werkgevers aansprakelijk stellen bij \"onverschoonbare fout\" (als de werkgever wist of moest weten van het gevaar en niets deed), zonder opzet te hoeven bewijzen.\n- Werknemers die een bedrijf verlaten, krijgen schriftelijk informatie over hun rechten.",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Asbest veroorzaakt nog steeds 200+ nieuwe ziektegevallen en 300 sterfgevallen per jaar. Dit wetsvoorstel geeft slachtoffers een gratis infolijn, betere financiering van het vergoedingsfonds, en maakt het eindelijk mogelijk om bedrijven aan te klagen zonder moeilijk opzet te bewijzen. We hebben al te lang gewacht."
+        },
+        {
+          "party": "PS",
+          "argument": "Asbest is een maatschappelijke schande. Bedrijven hebben jarenlang winst gemaakt terwijl ze wisten dat ze werknemers en buurtbewoners vergiftigden. Dit wetsvoorstel geeft slachtoffers eindelijk een echte kans op schadevergoeding en erkent hun lijden."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "Dit is een overwinning voor de gewone mensen tegen de grote bedrijven. Asbest is pure klassenstrijd: arbeiders en hun gezinnen betalen met hun gezondheid, terwijl bedrijven jarenlang zijn beschermd. We steunen dit voorstel, maar het is jammer dat het al is afgezwakt."
+        },
+        {
+          "party": "VB",
+          "argument": "We beoordelen dit voorstel op de inhoud, niet op wie het indient. De maatregelen zijn nodig voor de slachtoffers, dus steunen we het."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "N-VA",
+          "argument": "We willen wel helpen, maar dit voorstel houdt de immuniteit voor bedrijven te veel in stand. Bovendien werkt de regering al aan een beter voorstel. Geef de regering de tijd om een juridisch sterker plan te maken."
+        },
+        {
+          "party": "cd&v",
+          "argument": "Dit dossier is te belangrijk om over te haasten. Laat de regering eerst een grondig voorstel indienen, zodat we een breed debat kunnen voeren met alle kaarten op tafel."
+        },
+        {
+          "party": "Open Vld",
+          "argument": "Het voorstel is goed bedoeld, maar we riskeren juridische problemen. Beter wachten op een regeringstekst die alle aspecten dekt en tegen juridische aanvallen van grote bedrijven kan standhouden."
+        },
+        {
+          "party": "Vooruit",
+          "argument": "We vinden dit een zeer belangrijk dossier, maar de wet moet waterdicht zijn. Grote bedrijven hebben legers van advocaten. De regering werkt aan een sterker voorstel dat we zullen steunen zodra het klaar is."
+        }
+      ],
+      "neutral_technical": [],
+      "summary_debate": "Het debat over asbestslachtoffers toont een scherp politiek verschil. Ecolo-Groen, PS, PVDA-PTB en VB willen nu actie met dit wetsvoorstel dat slachtoffers een gratis infolijn, betere fondsfinanciering en de mogelijkheid geeft bedrijven aan te klagen bij \"onverschoonbare fout\". N-VA, cd&v, Open Vld en Vooruit willen wachten op een juridisch sterker regeringsvoorstel, bang voor procedures van grote bedrijven. Alle partijen erkennen het asbestprobleem en willen slachtoffers helpen, maar twisten over timing en of dit voorstel de bedrijfsimmuniteit genoeg doorbreekt. Er is geen consensus: het voorstel werd verworpen met 9 tegen 6 stemmen.",
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.0209665,
+      "input_tokens": 17453,
+      "output_tokens": 6120,
+      "input_cost": 0.0087265,
+      "output_cost": 0.01224
+    }
+  },
+  "30": {
+    "dossier_id": "30",
+    "title": "Voorstel tot herziening van artikel 22 van de Grondwet met het oog op de erkenning van het recht op vrijwillige zwangerschapsafbreking.",
+    "generated_title": "Abortusrecht verankeren in de Grondwet",
+    "model": "moonshotai/Kimi-K2-Thinking",
+    "model_name": "Kimi K2 Thinking",
+    "provider": "nebius",
+    "fact_summary": {
+      "summary": " **Welk probleem lost dit op of wat is het doel?**\n\nVrijwillige zwangerschapsafbreking is in België nu alleen beschermd door een gewone wet. Dat betekent dat een toekomstige meerderheid die wet relatief makkelijk kan aanpassen of afschaffen. Het recente Amerikaanse arrest Dobbs toont aan dat rechten die niet expliciet in de grondwet staan, kwetsbaar zijn: van de ene dag op de andere verloren miljoenen vrouwen daar een recht dat ze decennia hadden. Dit voorstel wil dat scenario in België voorkomen door het recht op vrijwillige zwangerschapsafbreking in de Grondwet te verankeren, zodat het beter beschermd is voor de toekomst.\n\n**Wat verandert er concreet in de praktijk?**\n\n- Artikel 22 van de Grondwet krijgt de volgende zin toegevoegd: \"Dit recht omvat het recht op vrijwillige zwangerschapsafbreking.\"\n- Het recht op vrijwillige zwangerschapsafbreking wordt zo expliciet onderdeel van het grondwettelijk recht op privéleven en gezinsleven.\n- De voorwaarden voor abortus blijven wel via gewone wetgeving bepaald, zoals nu al het geval is.\n- Het wordt moeilijker voor toekomstige regeringen om dit recht af te schaffen, omdat een grondwetswijziging een bijzondere meerderheid vereist.",
+      "document_type": "VoorstelTotHerziening",
+      "selection_reason": "Dit is een voorstel tot herziening. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "summary_debate": null,
+      "notable_changes": null,
+      "has_debate": false
+    },
+    "retry_info": null,
+    "cost_info": null
+  }
+}
