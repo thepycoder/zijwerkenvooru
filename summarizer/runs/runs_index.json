@@ -1,0 +1,20 @@
+{
+  "runs": [
+    {
+      "run_id": "run_20251219_124849",
+      "path": "runs/run_20251219_124849",
+      "result_count": 7
+    },
+    {
+      "run_id": "run_20251219_120745",
+      "path": "runs/run_20251219_120745",
+      "result_count": 7
+    },
+    {
+      "run_id": "run_20251219_112306",
+      "path": "runs/run_20251219_112306",
+      "result_count": 7
+    }
+  ],
+  "count": 3
+}

@@ -1,0 +1,38 @@
+{
+  "30": {
+    "dossier_id": "30",
+    "title": "Voorstel tot herziening van artikel 22 van de Grondwet met het oog op de erkenning van het recht op vrijwillige zwangerschapsafbreking.",
+    "generated_title": "Het recht op abortus sterker beschermen in de Belgische Grondwet",
+    "model": "claude-haiku-4-5-20251001",
+    "fact_summary": {
+      "summary": "# Samenvatting Voorstel tot Herziening van de Grondwet\n\n## Welk probleem lost dit op of wat is het doel?\n\nDit voorstel wil het recht op vrijwillige zwangerschapsafbreking rechtstreeks in de Belgische Grondwet opnemen. Op dit moment is abortus alleen geregeld in een normale wet, die gemakkelijk kan worden veranderd of afgeschaft. Door het in de Grondwet op te nemen, wordt dit recht beter beschermd en moeilijker om af te schaffen. Het voorstel verwijst naar een uitspraak van het Amerikaanse Hooggerechtshof in 2022, waar het recht op abortus werd ingetrokken, wat voor veel vrouwen gevolgen had. België wil voorkomen dat zoiets hier kan gebeuren.\n\n## Wat verandert er concreet in de praktijk?\n\nEr verandert niets in de regels rond abortus zelf. De voorwaarden waaronder vrouwen een abortus kunnen krijgen, blijven hetzelfde. Het enige dat verandert, is dat dit recht nu expliciet in artikel 22 van de Grondwet wordt opgenomen (het artikel over privéleven en familieleven). Dit maakt het recht sterker beschermd, omdat het veel moeilijker is om iets uit de Grondwet te halen dan om een normale wet te veranderen.\n\n## Wie wordt hierdoor geraakt?\n\nDeze verandering betreft vooral vrouwen en hun recht om zelf te beslissen over hun lichaam en zwangerschap. Indirect gaat het om de hele samenleving, omdat de Grondwet de fundamentele rechten van alle burgers bepaalt.",
+      "document_type": "VoorstelTotHerziening",
+      "selection_reason": "Dit is een voorstel tot herziening. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": false
+    }
+  },
+  "200": {
+    "dossier_id": "200",
+    "title": "Voorstel van bijzondere wet tot wijziging van de bijzondere wet van 6 januari 1989 op het Grondwettelijk Hof voor wat de samenstelling van het Hof en de voorwaarden om benoemd te kunnen worden tot rechter betreft.",
+    "generated_title": "Betere voorbereiding van rechters aan het Grondwettelijk Hof",
+    "model": "claude-haiku-4-5-20251001",
+    "fact_summary": {
+      "summary": "# Samenvatting wetsvoorstel: Hervorming Grondwettelijk Hof\n\n## Welk probleem lost dit op of wat is het doel?\n\nBelgië wil het Grondwettelijk Hof beter voorbereid maken op zijn steeds complexere taken. Het Hof moet onder meer bepalen welke regering of parlement welke bevoegdheden heeft, en moet mensenrechten controleren. De huidige regels voor het selecteren van rechters zijn niet meer aangepast aan deze moeilijkere werk. Daarom stelt dit voorstel voor: strengere eisen stellen aan wie rechter kan worden, en rechters voortaan van alle taalgroepen dezelfde taal kunnen spreken.\n\n## Wat verandert er concreet in de praktijk?\n\n**Voor alle kandidaat-rechters:**\n- Iedereen moet Nederlands en Frans spreken (tot nu toe niet verplicht)\n- Iedereen moet een juridisch diploma hebben (master, licentiaat of doctor in de rechten)\n\n**Voor juristen:**\n- Advocaten met 20 jaar ervaring kunnen nu ook solliciteren (vroeger niet)\n\n**Voor politici:**\n- Ervaring als minister/staatssecretaris telt voortaan mee bij het berekenen of je genoeg ervaring hebt\n- Je hebt voortaan 8 jaar ervaring nodig in plaats van 5 jaar\n\n**Voor samenstelling:**\n- Per taalgroep moeten minstens ⅓ en hooguit ½ van de rechters voormalige politici zijn (was: precies ½)\n\n**Voor benoeming:**\n- Kandidaten moeten voortaan hoorzittingen doorstaan waarbij het parlement ze kan bevragen\n\n## Wie wordt hierdoor geraakt?\n\n- **Kandidaat-rechters** (vooral advocaten): krijgen meer kansen, maar hogere eisen\n- **Het Grondwettelijk Hof zelf**: krijgt beter voorbereide rechters met betere communicatie\n- **Burgers**: kunnen meer vertrouwen hebben in rechtskwaliteit van het Hof\n- **Het parlement**: krijgt inspraak bij benoeming van rechters",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": false
+    }
+  }
+}

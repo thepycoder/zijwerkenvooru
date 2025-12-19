@@ -1,0 +1,42 @@
+{
+  "30": {
+    "dossier_id": "30",
+    "title": "Voorstel tot herziening van artikel 22 van de Grondwet met het oog op de erkenning van het recht op vrijwillige zwangerschapsafbreking.",
+    "generated_title": "Recht op abortus vastleggen in de Grondwet voor betere bescherming",
+    "model": "claude-sonnet-4-5-20250929",
+    "model_name": "Claude Sonnet 4.5",
+    "provider": "anthropic",
+    "fact_summary": {
+      "summary": "# Welk probleem lost dit op of wat is het doel?\n\nDit voorstel wil het recht op vrijwillige zwangerschapsafbreking (abortus) in de Grondwet opnemen. Nu is abortus in België alleen toegestaan via een gewone wet. De indieners vrezen dat dit recht kwetsbaar is, omdat een gewone wet ook weer makkelijk kan worden afgeschaft. Ze verwijzen naar de Verenigde Staten, waar het Hooggerechtshof in 2022 het recht op abortus heeft geschrapt. Het voorstel wil dit recht in België definitief beschermen door het in de Grondwet vast te leggen.\n\n# Wat verandert er concreet in de praktijk?\n\nEr verandert niets aan de praktijk van vandaag. Abortus blijft toegestaan onder dezelfde voorwaarden als nu. Het verschil is dat het recht op abortus wordt toegevoegd aan artikel 22 van de Grondwet (het artikel over privacy en gezinsleven). Dit betekent dat een toekomstige meerderheid het recht op abortus veel moeilijker kan afschaffen, omdat je daarvoor de Grondwet moet wijzigen (wat een zwaardere procedure is dan een gewone wet aanpassen).\n\n# Wie wordt hierdoor geraakt?\n\nAlle vrouwen die zwanger kunnen worden. Door dit recht in de Grondwet op te nemen, krijgen zij een sterkere juridische garantie dat abortus in de toekomst toegankelijk blijft. Ook artsen en abortusklinieken krijgen meer rechtszekerheid dat hun werk grondwettelijk beschermd is.",
+      "document_type": "VoorstelTotHerziening",
+      "selection_reason": "Dit is een voorstel tot herziening. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": false
+    }
+  },
+  "200": {
+    "dossier_id": "200",
+    "title": "Voorstel van bijzondere wet tot wijziging van de bijzondere wet van 6 januari 1989 op het Grondwettelijk Hof voor wat de samenstelling van het Hof en de voorwaarden om benoemd te kunnen worden tot rechter betreft.",
+    "generated_title": "Strengere eisen en betere taalkennis voor rechters van het Grondwettelijk Hof",
+    "model": "claude-sonnet-4-5-20250929",
+    "model_name": "Claude Sonnet 4.5",
+    "provider": "anthropic",
+    "fact_summary": {
+      "summary": "# Welk probleem lost dit op of wat is het doel?\n\nDit voorstel wil het Grondwettelijk Hof hervormen om beter om te gaan met complexere juridische zaken. Het Hof moet nu oordelen over ingewikkelde materies, Europees recht en mensenrechten - veel complexer dan bij de oprichting in 1980. Het voorstel wil waarborgen dat rechters over de juiste kwalificaties en taalkennis beschikken, en wil meer transparantie door kandidaten te laten horen in het parlement.\n\n# Wat verandert er concreet in de praktijk?\n\n**Voor alle rechters:**\n- Moeten voldoende kennis van de tweede landstaal bewijzen via een examen\n- Moeten een diploma rechten (doctor/master) hebben\n\n**Voor rechters met juridische achtergrond:**\n- Ook advocaten met 20 jaar ervaring in publiek recht kunnen nu kandideren\n\n**Voor rechters met politieke achtergrond:**\n- Minimale parlementaire ervaring stijgt van 5 naar 8 jaar\n- Ervaring als minister telt nu ook mee\n- Hun aandeel per taalgroep moet minstens 1/3 en maximum de helft zijn (nu verplicht de helft)\n\n**Voor de benoemingsprocedure:**\n- Alle kandidaten moeten gehoord worden door Kamer of Senaat\n\n# Wie wordt hierdoor geraakt?\n\nToekomstige kandidaat-rechters moeten aan strengere eisen voldoen. Oud-parlementairen met minder dan 8 jaar ervaring en zonder rechtendiploma kunnen niet meer kandideren. Advocaten met expertise krijgen nieuwe kansen. De samenstelling van het Hof wordt flexibeler met minder verplichte politieke rechters.",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": false
+    }
+  }
+}

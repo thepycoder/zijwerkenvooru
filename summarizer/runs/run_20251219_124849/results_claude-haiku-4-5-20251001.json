@@ -1,0 +1,350 @@
+{
+  "191": {
+    "dossier_id": "191",
+    "title": "Wetsontwerp tot wijziging van de wet van 8 juni 2006 houdende regeling van economische en individuele activiteiten met wapens wat betreft het verwerven en gebruiken van geluiddempers en nachtzichtrichtkijkers.",
+    "generated_title": "Nieuwe regels voor geluiddempers en nachtzichtrichtkijkers bij wapens",
+    "model": "claude-haiku-4-5-20251001",
+    "model_name": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "fact_summary": {
+      "summary": "# Welk probleem lost dit op of wat is het doel?\n\nDeze wet **wijzigt de bestaande regels voor wapenbezit in België**. Het gaat specifiek om de regels voor **geluiddempers (geluiddempers voor vuurwapens) en nachtzichtrichtkijkers** (apparaten waarmee je in het donker kunt richten). De wet stelt nieuwe voorwaarden voor wie deze items mag kopen en gebruiken.\n\n# Wat verandert er concreet in de praktijk?\n\n• De voorwaarden voor het verkrijgen van geluiddempers worden aangepast\n• De voorwaarden voor het verkrijgen van nachtzichtrichtkijkers worden aangepast\n• De regels voor het gebruik van deze items worden gewijzigd\n• Deze veranderingen gelden voor zowel economische activiteiten (zoals wapenwinkels) als voor particulieren\n\n# Wie wordt hierdoor geraakt?\n\n• Wapenbezitters die een geluiddemper of nachtzichtrichtkijker willen kopen\n• Wapenwinkels en handelaren in wapens en accessoires\n• Jagers en sportschutters die deze apparatuur gebruiken",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "cd&v, N-VA, VB, Vooruit, Open Vld",
+          "argument": "Het wetsvoorstel biedt een praktische oplossing voor de aanzienlijke wildschade en verkeersgevaren veroorzaakt door everzwijnen in bepaalde regio's. Jagers kunnen met geluiddempers en nachtkijkers meer accuraat en diervriendelijker jagen."
+        },
+        {
+          "party": "VB, Vooruit, Open Vld",
+          "argument": "Nachtkijkers en geluiddempers zijn al illegaal in omloop bij criminelen, dus legalisering onder strikte voorwaarden creëert geen fundamenteel nieuwe risico's. Criminele organisaties zullen zich niet registreren voor legale aankoop."
+        },
+        {
+          "party": "cd&v, N-VA",
+          "argument": "De ingediende amendementen voorzien in voldoende waarborgen: registratieplicht, verbod op uitlenen, beperkingen op afstandsverkoop, en overdracht alleen toegestaan onder bepaalde voorwaarden. Deze tegemoetkomen aan de bezorgdheden in de adviezen."
+        },
+        {
+          "party": "Open Vld",
+          "argument": "Het wetsvoorstel maakt de jacht veiliger doordat jagers beter zicht hebben in moeilijke omstandigheden en ongewilde doelwitten kunnen voorkomen. Dit voorkomt ook onnodig dierenleed."
+        },
+        {
+          "party": "N-VA, Vooruit",
+          "argument": "De wetgeving respecteert de bevoegdheidsverdeling: de federale overheid stelt de kaders, maar de gewesten bepalen de praktische toepassing, onder meer welke dieren kunnen worden bejaagd met deze middelen."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "PS, Ecolo-Groen",
+          "argument": "De Federale Wapendienst, federale politie en DJSOC hebben fundamentele bezorgdheden geuit. Ze waarschuwen dat het risico op verspreiding naar criminele organisaties duidelijk wordt onderschat en dat controverse op openbare veiligheid ontstaat."
+        },
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Meer wapens in circulatie leidt empirisch tot meer geweld, zoals aangetoond in landen als de VS. Dit wetsvoorstel gaat tegen de Europese trend van strengere wapenwetgeving in."
+        },
+        {
+          "party": "PS, Ecolo-Groen",
+          "argument": "Serienummers zijn niet wettelijk gedefinieerd, wat tracering bemoeilijkt. Het wapenregister (CWR) zal ingrijpende aanpassingen nodig hebben. De praktische implementatie blijft onduidelijk."
+        },
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Jagers hebben historisch problemen met regelhandhaving: veel berecht vanwege stroperij en illegale praktijken. Het risico op misbruik (bijv. gebruik buiten seizoen of op andere dieren) is aanzienlijk."
+        },
+        {
+          "party": "Ecolo-Groen, PS",
+          "argument": "Nachtkijkers kunnen eenvoudig op bijna elk vuurwapen worden gemonteerd, niet alleen jachtwapens. Legalisering opent deuren voor misbruik buiten jachtcontext."
+        },
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Er is een verband tussen meer wapenbezit en intrafamiliaal geweld, met name femicide. Een derde van vrouwenmoorden worden met vuurwapens gepleegd."
+        },
+        {
+          "party": "PS, Ecolo-Groen",
+          "argument": "Dit voorstel lost het eigenlijke everzwijnprobleem niet op. Experts stellen per-gevalsbenadering en andere middelen (vangkooien, bestrijding van voeding) voor, niet legalisering van wapens."
+        },
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Dit voorstel stelt de wapenlobby tevreden, niet de werkelijke belangen van jagers of natuurbehoud. Het precedent van legalisering is problematisch."
+        }
+      ],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": "Expecting value: line 1 column 1 (char 0)"
+    },
+    "cost_info": {
+      "total_cost": 0.0086965,
+      "input_tokens": 27446,
+      "output_tokens": 1468,
+      "input_cost": 0.0068615,
+      "output_cost": 0.0018349999999999998
+    }
+  },
+  "135": {
+    "dossier_id": "135",
+    "title": "Wetsvoorstel tot wijziging van de programmawet (I) van 27 december 2006, de wetten betreffende de preventie van beroepsziekten en de vergoeding van de schade die uit die ziekten voortvloeit, gecoördineerd op 3 juni 1970, en van het koninklijk besluit van 28 april 2017 tot vaststelling van boek I Algemene beginselen van de codex over het welzijn op het werk, met het oog op de verbetering van de ondersteuning voor asbestslachtoffers en de financiering van het Schadeloosstellingfonds voor asbestslachtoffers.",
+    "generated_title": "Betere bescherming en schadevergoeding voor asbestslachtoffers in België",
+    "model": "claude-haiku-4-5-20251001",
+    "model_name": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "fact_summary": {
+      "summary": "# Welk probleem lost dit op of wat is het doel?\n\n**Dit wetsvoorstel wil de ondersteuning van slachtoffers van asbestziekten verbeteren en bedrijven die asbestrisico's hebben vergroot beter aansprakelijk stellen.** Asbest is een giftig materiaal dat decennialang veel werd gebruikt in België, ondanks bekende gezondheidsrisico's. Veel mensen zijn besmet geraakt en kunnen nog jarenlang ziek worden, want asbestziekten verschijnen soms 40 jaar na blootstelling. Het voorstel erkent dat België schuldig is door het verbod te laat in te stellen en wil slachtoffers beter helpen en bedrijven meer verantwoordelijk houden.\n\n**Een belangrijk probleem is dat asbestslachtoffers nu moeilijk rechtszaken kunnen winnen tegen vervuilers.** Werkgevers zijn grotendeels immuun tegen aansprakelijkheid, tenzij je bewijst dat ze opzettelijk schadelijk handelden—wat bijna onmogelijk is. Dit voorstel introduceert een nieuw juridisch concept: \"onverschoonbare fout\". Dit maakt het makkelijker om bedrijven aan te pakken, omdat je niet hoeft te bewijzen dat ze opzettelijk handelden, maar alleen dat ze de gevaren kenden of hadden moeten kennen en niets deden.\n\n---\n\n# Wat verandert er concreet in de praktijk?\n\n- Het Asbestfonds krijgt een **gratis telefoonnummer** waar slachtoffers informatie kunnen krijgen en begeleiding bij stappen\n- **Asbestinventarissen van alle werkgevers** worden gecentraliseerd in één nationaal register zodat je kan zien welke gebouwen asbest bevatten\n- Slachtoffers kunnen **rechtszaken aanspannen** tegen bedrijven bij \"onverschoonbare fout\" (niet alleen opzettelijke schuld)\n- **Bedrijven die aansprakelijk worden gesteld** moeten een boete aan het fonds betalen (bedrag door de Koning bepaald)\n- **Zelfstandigen** worden nu volledig gefinancierd door hun socialezekerheidsbijdrage, niet alleen voor asbestose maar voor alle asbestziekten\n- Het Asbestfonds publiceert **jaarlijks een rapport** over hoe goed het werkt en wat kan verbeteren\n- **Werkgevers informeren werknemers schriftelijk** over hun rechten op medische dossiers als zij het bedrijf verlaten\n\n---\n\n# Wie wordt hierdoor geraakt?\n\n- **Asbestslachtoffers** (werknemers, zelfstandigen, familieleden, omwonenden van fabrieken)\n- **Erfgenamen** van overledenen door asbestziekte\n- **Werkgevers en bedrijven** die asbest hebben geproduceerd, gebruikt of verwerkt (moeten bijdragen aan fonds en riskeren boetes)\n- **Arbeiders in de bouw en renovatie** (sloop, loodgieterij, dakdekking) die asbest tegenkomen\n- **Mensen in gebouwen met asbest** (kantoren, scholen, oude huizen)\n- **De staat België** (betaalt mee aan het compensatiefonds)",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Asbest veroorzaakt nog steeds 200+ nieuwe gevallen per jaar en 300 doden. Het dossier is te lang uitgesteld. Het voorstel helpt slachtoffers beter door infolijn, centraal register, betere financiering en het concept 'onverschoonbare fout' waardoor slachtoffers bedrijven kunnen aansprakelijk stellen zonder opzettelijkheid te hoeven bewijzen."
+        },
+        {
+          "party": "PS",
+          "argument": "Dit is een schande: bedrijven hebben jarenlang winst gemaakt terwijl ze wisten dat asbest gevaarlijk was. Industriële lobby's vertragden het verbod. Het Asbestfonds van 2006 was vooruitgang, maar bedrijven ontlopen nog steeds aansprakelijkheid. Dit voorstel breidt bescherming uit."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "Dit is een klassenstrijd: werknemers en buurtbewoners lijden onder asbestziekten, niet de bazen en aandeelhouders. Bedrijven kenden de risico's al in jaren 60-70 maar kozen voor winst. Het fonds van 2007 gaf immuniteit aan bedrijven. Eindelijk actie, hoewel amendementen het voorstel hebben verzwakt."
+        },
+        {
+          "party": "VB",
+          "argument": "We kijken naar de inhoud, niet naar wie het indient. Dit voorstel helpt slachtoffers, dus wij steunen het."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "N-VA",
+          "argument": "Wij steunen dit voorstel niet. Het regeerakkoord voorziet al in aanpak van dit dossier. De regering moet tijd krijgen om een degelijke tekst voor te bereiden, niet het Parlement. Laten we het los van andere voorstellen behandelen."
+        },
+        {
+          "party": "Vooruit",
+          "argument": "Dit dossier raakt gigantische bedrijven met grote juridische teams. De wet moet juridisch solide zijn. De regering moet de nodige tijd krijgen om een goed voorstel uit te werken. Wij steunen het als het klaar is."
+        },
+        {
+          "party": "cd&v",
+          "argument": "Een oplossing is nodig, maar het is voorbaarig om nu al te stemmen. Beter eerst een breed debat houden en afwachten wat de regering voorstelt."
+        },
+        {
+          "party": "Open Vld",
+          "argument": "Het voorstel is goed, maar het is slimmer om eerst een breed debat te voeren als alle teksten, ook van de regering, voorliggen."
+        },
+        {
+          "party": "Raad van State (technisch)",
+          "argument": "Het concept 'onverschoonbare fout' is onduidelijk. Wat is het verschil met gewone niet-opzettelijke schuld? Hoe kan 'vrijwillig' handelen bestaan zonder 'opzettelijkheid'? Dit verdient verduidelijking. Ook: waarom alleen bedrijven die veroordeeld zijn aansprakelijk voor boetes, en niet alle bedrijven die schade veroorzaakten?"
+        }
+      ],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": "Expecting value: line 1 column 1 (char 0)"
+    },
+    "cost_info": {
+      "total_cost": 0.0058885,
+      "input_tokens": 17714,
+      "output_tokens": 1168,
+      "input_cost": 0.0044285,
+      "output_cost": 0.00146
+    }
+  },
+  "30": {
+    "dossier_id": "30",
+    "title": "Voorstel tot herziening van artikel 22 van de Grondwet met het oog op de erkenning van het recht op vrijwillige zwangerschapsafbreking.",
+    "generated_title": "Recht op zwangerschapsafbreking in de Grondwet verankeren",
+    "model": "claude-haiku-4-5-20251001",
+    "model_name": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "fact_summary": {
+      "summary": "# Welk probleem lost dit op of wat is het doel?\n\n**Dit voorstel wil het recht op vrijwillige zwangerschapsafbreking in de Belgische Grondwet opnemen.** Momenteel is zwangerschapsafbreking in België toegestaan op basis van een gewone wet, maar die kan relatief gemakkelijk weer afgeschaft worden. Het voorstel stelt voor dit recht in de Grondwet vast te leggen zodat het sterker beschermd is.\n\nDe aanleiding is de Amerikaanse uitspraak van 2022, waarbij het Amerikaanse Hooggerechtshof het grondwettelijk recht op abortus afschafte, waardoor miljoenen vrouwen hun toegang verloren. Dit toont aan dat rechten niet vanzelfsprekend zijn en beter in de grondwet kunnen worden verankerd. Ook volgens internationale rechtspraak (Europees Hof voor de Rechten van de Mens) hoort dit recht bij het recht op privéleven.\n\n# Wat verandert er concreet in de praktijk?\n\n• Artikel 22 van de Grondwet (het artikel dat privéleven beschermt) wordt uitgebreid met expliciet erkent het recht op vrijwillige zwangerschapsafbreking\n• Het recht kan niet langer zomaar met een gewone wet worden afgeschaft – een grondwetswijziging zou nodig zijn\n• De bestaande regels (zoals de huidige wettelijke voorwaarden) blijven gewoon van kracht\n\n# Wie wordt hierdoor geraakt?\n\n• Vrouwen die een zwangerschapsafbreking willen ondergaan – hun recht wordt sterker beschermd\n• De Nederlandse wetgever – deze moet zich in de toekomst aan grondwettelijk bescherming houden\n• Mogelijk andere landen – België zou hier als pionier fungeren (na Frankrijk dat dit in 2024 deed)",
+      "document_type": "VoorstelTotHerziening",
+      "selection_reason": "Dit is een voorstel tot herziening. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": false
+    },
+    "retry_info": null,
+    "cost_info": null
+  },
+  "449": {
+    "dossier_id": "449",
+    "title": "Wetsontwerp houdende de eerste aanpassing van de Middelenbegroting voor het begrotingsjaar 2024.",
+    "generated_title": "Regering past rijksbegroting 2024 aan: eerste update begrotingsplan",
+    "model": "claude-haiku-4-5-20251001",
+    "model_name": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "fact_summary": {
+      "summary": "# Welk probleem lost dit op of wat is het doel?\n\nDit document betreft de **eerste aanpassing van de rijksbegroting voor 2024**. De regering past hiermee de uitgaven en inkomsten aan die eerder voor dit jaar waren gepland. Dit is een normale procedure om de begroting aan te passen wanneer zich onvoorziene situaties voordoen of wanneer schattingen moeten worden bijgesteld.\n\n# Wat verandert er concreet in de praktijk?\n\n• Dit document zelf bevat geen concrete details over welke begrotingsposten worden aangepast\n• Voor de specifieke wijzigingen moet het volledige wetsvoorstel (DOC 56 0449/001) worden geraadpleegd\n• De wet is aangenomen door het parlement en wacht nu op goedkeuring van de Koning\n\n# Wie wordt hierdoor geraakt?\n\n• **Alle burgers en bedrijven** - aangezien begrotingswijzigingen invloed kunnen hebben op overheidsuitgaven en belastingen\n• **Overheidsinstanties** - die hun begroting moeten aanpassen aan de nieuwe budgetcijfers\n• **De Koning** - moet de wet nog formeel goedkeuren voordat deze in werking treedt",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "MR, PS, Les Engagés, Vooruit, cd&v, Ecolo-Groen, Open Vld",
+          "argument": "Dit is een noodzakelijke technische aanpassing om de goede werking van staatsinstanties te garanderen (ziekenhuizen, politie, sociale zekerheid, pensioenen, dotaties aan gemeenschappen). Het gaat om volume-effecten en noodzakelijke herverdelingen, niet om politieke keuzes."
+        },
+        {
+          "party": "Open Vld, MR, Vooruit",
+          "argument": "De aanpassingen zijn urgent voor de continuïteit van vitale diensten, zoals SHAPE (NAVO-hoofdkwartier op Belgisch grondgebied), drugsbestrijding via douanediensten, en betalingen aan ziekenhuizen en OCMW's."
+        },
+        {
+          "party": "Open Vld, MR",
+          "argument": "De begrotingsaanpassing leidt tot een uitgavevermindering van meer dan 1 miljard euro, wat wijst op beter beheer ondanks moeilijke omstandigheden."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "VB",
+          "argument": "Het is ongebruikelijk een begrotingsaanpassing door te voeren tijdens lopende zaken (in 2012 en 2019 gebeurde dit niet). Bovendien werd het Rekenhof niet om advies gevraagd, wat onvoldoende controle betekent, vooral bij een aanpassing van meer dan 1 miljard euro."
+        },
+        {
+          "party": "VB, PVDA-PTB",
+          "argument": "Het Rekenhof heeft zich in het verleden kritisch uitgelaten over bepaalde posten (interdepartementale provisies, gebrekkige controle). Een advies van het Rekenhof zou nuttig zijn, zeker omdat het voor de voorlopige twaalfden van 2025 relevant kan zijn."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "Er zijn enkele onduidelijkheden: waarom worden personeelenveloppes verschoven zonder duidelijke verantwoording? Hoe zullen de voorlopige twaalfden precies berekend worden?"
+        },
+        {
+          "party": "N-VA",
+          "argument": "Hoewel de aanpassingen grotendeels technisch zijn, zijn er vragen over onderraming van het Herstel- en Veerkrachtsplan, de 200 miljoen euro voor kerncentrales, en de impact op het netto te financieren saldo. Dit ondermijnt de roadmap voor gezonde staatsfinanciën."
+        }
+      ],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": "Expecting value: line 1 column 1 (char 0)"
+    },
+    "cost_info": {
+      "total_cost": 0.006257,
+      "input_tokens": 20058,
+      "output_tokens": 994,
+      "input_cost": 0.0050145,
+      "output_cost": 0.0012425000000000001
+    }
+  },
+  "200": {
+    "dossier_id": "200",
+    "title": "Voorstel van bijzondere wet tot wijziging van de bijzondere wet van 6 januari 1989 op het Grondwettelijk Hof voor wat de samenstelling van het Hof en de voorwaarden om benoemd te kunnen worden tot rechter betreft.",
+    "generated_title": "Strenger geschikt maken: wie mag rechter worden aan het Grondwettelijk Hof",
+    "model": "claude-haiku-4-5-20251001",
+    "model_name": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "fact_summary": {
+      "summary": "# SAMENVATTING VOOR BURGERS\n\n## 1. Welk probleem lost dit op of wat is het doel?\n\nDit voorstel wil de regels voor rechters van het **Grondwettelijk Hof** aanscherpen. Het Grondwettelijk Hof beslist over geschillen tussen het federale niveau en gemeenschappen/gewesten, en toetst wetten aan de Grondwet.\n\n**Het probleem:** De huidige regels zijn verouderd. Ze stellen weinig eisen aan politici die rechter willen worden (ze hoeven geen rechtenstudie te hebben), en de taken van het Hof zijn veel ingewikkelder geworden door Europese rechtspraak en mensenrechten.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n• **Alle rechters moeten Nederlands en Frans spreken** – dit moet worden aangetoond via een examen\n\n• **Rechters moeten een diploma in de rechten hebben** – geen uitzondering meer voor voormalige politici\n\n• **Advocaten kunnen nu ook kandidaat-rechter worden** – als zij 20 jaar advocaat waren en expertise in staatsrecht hebben\n\n• **Voormalige politici moeten 8 jaar ervaring hebben** (in plaats van 5) – zowel in het parlement als in regeringsfuncties tellen mee\n\n• **Minder strikte verhouding politici-juristen** – het Hof moet minstens 1/3 en hooguit de helft voormalige politici hebben (niet meer precies de helft)\n\n• **Kandidaten moeten worden gehoord door het parlement** – voor hun benoeming, voor meer transparantie\n\n• **Duitstalige rechter moet examen doen** – net als andere taalvereisten\n\n## 3. Wie wordt hierdoor geraakt?\n\n• **Kandidaten voor het Grondwettelijk Hof** – strengere eisen, maar ook meer mogelijkheden (advocaten)\n\n• **Het Grondwettelijk Hof zelf** – meer juridische expertise, minder puur politieke invloed\n\n• **Burgers** – besluiten van het Hof worden mogelijk beter onderbouwd en transparanter (door hoorzittingen)\n\n• **Parlement** – krijgt meer inspraak via verplichte hoorzittingen van kandidaten",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": false
+    },
+    "retry_info": null,
+    "cost_info": null
+  },
+  "1131": {
+    "dossier_id": "1131",
+    "title": "Resolutie tot ondersteuning van de kandidatuur voor de bouw van de Einsteintelescoop in de Euregio Maas-Rijn.",
+    "generated_title": "België steunt bouw van geavanceerd sterrenwachtproject in grensgebied",
+    "model": "claude-haiku-4-5-20251001",
+    "model_name": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "fact_summary": {
+      "summary": "# Welk probleem lost dit op of wat is het doel?\n\nBelgië, Nederland en de Duitse deelstaat Noordrijn-Westfalen willen samen de **Einsteintelescoop** in het grensgebied (Euregio Maas-Rijn) bouwen. Dit is een geavanceerd observatorium om zwaartekrachtgolven en fundamentele natuurverschijnselen te bestuderen. Het doel is België als wetenschappelijke en innovatieve speler op de wereldkaart te zetten en economische voordelen voor de regio te creëren.\n\nDe Belgische regering moet nu actief steun verlenen aan deze kandidatuur, omdat andere landen (zoals Italië en Duitsland) ook meedingen naar dit prestigieuze project.\n\n# Wat verandert er concreet in de praktijk?\n\n* De federale regering erkent het project als strategisch belangrijk voor België\n* België zal diplomatieke inspanningen leveren om andere landen aan te trekken om mee te investeren\n* De regering onderzoekt financiële en praktische bijdragen (grondgebied, treinfaciliteiten, logistiek centrum bij Montzen)\n* Gezamenlijke coördinatie tussen federaal niveau, gewesten en gemeenten voor onderzoeks- en economische ontwikkeling\n* Een uitvoeringsplan met duidelijk bestuur en publieke betrokkenheid\n\n# Wie wordt hierdoor geraakt?\n\n* Wetenschappers en universiteiten (onderzoeksmogelijkheden)\n* Lokale bevolking in Maas-Rijngebied (bouwactiviteiten, milieu, arbeidsplaatsen)\n* Bedrijven en kmo's in regio's (economische groei en innovatie)\n* Belastingbetalers (publieke investering van miljarden euro's)",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "N-VA, MR, Les Engagés, Vooruit, cd&v, Ecolo-Groen, Open Vld",
+          "argument": "De Einsteintelescoop is een unieke kans om België op de wereldkaart van fundamenteel onderzoek te plaatsen en economische groei te genereren door directe werkgelegenheid, technologietransfer en spin-offs"
+        },
+        {
+          "party": "N-VA, MR, Les Engagés, Vooruit, cd&v, Ecolo-Groen, Open Vld",
+          "argument": "De EMR-kandidatuur heeft superieure geologische kenmerken (stabiele ondergrond met dempende lagen) en een uniek ecosysteem van kennisinstellingen, hoogtechnologische bedrijven en infrastructuur vergeleken met concurrenten"
+        },
+        {
+          "party": "N-VA, MR, Les Engagés, Vooruit, cd&v, Ecolo-Groen, Open Vld",
+          "argument": "De samenwerking tussen drie landen (België, Nederland, Duitsland) spreidt financiële risico's en maakt het project financieel haalbaar, vooral door Nederlandse toezegging van 870 miljoen euro"
+        },
+        {
+          "party": "PS, Ecolo-Groen",
+          "argument": "Het project creëert tewerkstelling, STEM-onderwijs stimuleert jeugd, en ondersteunt herindustrialisering en circulaire economie in de regio"
+        },
+        {
+          "party": "Vooruit",
+          "argument": "Dit is een transformatief project voor Limburg na de mijnsluiting, met potentieel voor duurzame regionale ontwikkeling"
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "VB, PS (gedeeltelijk)",
+          "argument": "Duitse steun is cruciaal maar onzeker: Duitsland ondersteunt tegelijk Saksen, waardoor duplicatie en intern conflict ontstaat; federale Duitse commitment ontbreekt nog"
+        },
+        {
+          "party": "PS",
+          "argument": "Belgische federale financiële bijdrage voor constructiefase is nog niet toegezegd, ondanks het essentieel zijn voor geloofwaardigheid van candidatuur"
+        },
+        {
+          "party": "PS, VB",
+          "argument": "Federale regering snijdt in wetenschapsbudget (39-93 miljoen euro) terwijl Einsteintelescoop steun behoeft; mogelijk ten koste van andere onderzoeksprojecten"
+        },
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Complexe governancestructuur met 11 betrokken overheidsentiteiten vergroot risico op vertraging en inefficiëntie; onduidelijk wie uiteindelijk regie voert"
+        },
+        {
+          "party": "Ecolo-Groen, VB",
+          "argument": "Beroepsprocedures en milieuvergunningen vormen ernstig risico voor vertraging/stillegging; NIMBY-protest van buurtbewoners kan project frustreren"
+        },
+        {
+          "party": "VB",
+          "argument": "Onzekerheid over uiteindelijke locatie (2027 beslissing); grote investeringen kunnen nutteloos zijn als project niet in EMR wordt gerealiseerd"
+        },
+        {
+          "party": "VB, PS",
+          "argument": "Loonkostenhandicap België en concurrentie tussen regio's riskeert dat economische voordelen naar Nederland/Duitsland vloeien in plaats van België"
+        },
+        {
+          "party": "PS",
+          "argument": "Onvoldoende aandacht voor milieuimpact, duurzaamheid en transparante burgercommunicatie in originele voorstel"
+        }
+      ],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": "Expecting value: line 1 column 1 (char 0)"
+    },
+    "cost_info": {
+      "total_cost": 0.023123,
+      "input_tokens": 85652,
+      "output_tokens": 1368,
+      "input_cost": 0.021413,
+      "output_cost": 0.0017100000000000001
+    }
+  }
+}

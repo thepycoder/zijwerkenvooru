@@ -1,0 +1,202 @@
+{
+  "191": {
+    "dossier_id": "191",
+    "title": "Wetsontwerp tot wijziging van de wet van 8 juni 2006 houdende regeling van economische en individuele activiteiten met wapens wat betreft het verwerven en gebruiken van geluiddempers en nachtzichtrichtkijkers.",
+    "generated_title": "Aangepaste regels voor geluiddempers en nachtkijkers goedgekeurd",
+    "model": "moonshotai/Kimi-K2-Thinking",
+    "model_name": "Kimi K2 Thinking",
+    "provider": "nebius",
+    "fact_summary": {
+      "summary": " **1. Welk probleem lost dit op of wat is het doel?**\nDit document bevestigt dat de Kamer van volksvertegenwoordigers op 17 juli 2025 een wetswijziging heeft aangenomen. Deze wijziging past de regels aan voor het verwerven en gebruiken van geluiddempers en nachtzichtrichtkijkers. De specifieke problemen die hiermee worden aangepakt, staan niet in deze aannemingsmededeling.\n\n**2. Wat verandert er concreet in de praktijk?**\n- De procedures voor het verwerven en gebruiken van geluiddempers en nachtzichtrichtkijkers worden gewijzigd.\n- De exacte nieuwe regels zijn niet opgenomen in dit document; ze staan in de artikelen van DOC 56 0191/013.\n\n**3. Wie wordt hierdoor geraakt?**\n- Personen en bedrijven die geluiddempers of nachtzichtrichtkijkers willen verwerven of gebruiken.\n- De Koning, die de wet nog moet bekrachtigen voordat deze van kracht wordt.",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": ":[{",
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.026959,
+      "input_tokens": 27930,
+      "output_tokens": 6497,
+      "input_cost": 0.013965,
+      "output_cost": 0.012994
+    }
+  },
+  "135": {
+    "dossier_id": "135",
+    "title": "Wetsvoorstel tot wijziging van de programmawet (I) van 27 december 2006, de wetten betreffende de preventie van beroepsziekten en de vergoeding van de schade die uit die ziekten voortvloeit, gecoördineerd op 3 juni 1970, en van het koninklijk besluit van 28 april 2017 tot vaststelling van boek I Algemene beginselen van de codex over het welzijn op het werk, met het oog op de verbetering van de ondersteuning voor asbestslachtoffers en de financiering van het Schadeloosstellingfonds voor asbestslachtoffers.",
+    "generated_title": "Sterkere ondersteuning asbestslachtoffers: vervuiler betaalt",
+    "model": "moonshotai/Kimi-K2-Thinking",
+    "model_name": "Kimi K2 Thinking",
+    "provider": "nebius",
+    "fact_summary": {
+      "summary": " **Welk probleem lost dit op of wat is het doel?**\n\nDit wetsvoorstel wil asbestslachtoffers beter ondersteunen en de financiering van het Schadeloosstellingfonds voor asbestslachtoffers (AFA) versterken. Nu hebben slachtoffers moeilijk toegang tot informatie en kunnen ze werkgevers alleen aansprakelijk stellen als ze **opzet** kunnen bewijzen, wat praktisch onmogelijk is. Bedrijven die asbestrisico's bewust verhoogden, dragen niet proportioneel bij aan het fonds. Er is ook geen centraal overzicht van waar asbest nog zit in werkomgevingen.\n\nHet doel is: **slachtoffers sterker te maken**, de **vervuiler te laten betalen**, en **transparantie** te creëren over asbestrisico's en de werking van het fonds.\n\n---\n\n**Wat verandert er concreet in de praktijk?**\n\n* Slachtoffers krijgen een **gratis telefoonnummer** voor informatie en begeleiding bij hun dossier\n* Alle asbestinventarissen die werkgevers moeten opmaken, worden **centraal geregistreerd** bij het AFA\n* Het AFA moet **jaarlijks rapporteren** over zijn werking, financiering en vergoedingen\n* Bedrijven die door de rechter worden veroordeeld voor asbestschade, moeten een **forfaitaire boete** betalen aan het fonds (principe \"de vervuiler betaalt\")\n* Zelfstandigen kunnen voortaan voor **alle asbestziekten** compensatie krijgen, niet alleen voor asbestose\n* Slachtoffers kunnen werkgevers aansprakelijk stellen bij **\"onverschoonbare fout\"** - dus zonder opzet te hoeven bewijzen, als de werkgever het risico kende of moest kennen\n* Werknemers die een bedrijf verlaten, krijgen **schriftelijk informatie** over hun rechten en de gevaren van asbest\n\n---\n\n**Wie wordt hierdoor geraakt?**\n\n* **Asbestslachtoffers**: betere informatie, meer rechtsmogelijkheden en gelijke behandeling tussen beroeps- en niet-beroepsmatige slachtoffers\n* **Werkgevers die asbestrisico verhoogden**: ze moeten forfaitaire boetes betalen als ze worden veroordeeld\n* **Alle werkgevers**: verplicht om hun asbestinventaris door te geven aan een centraal register\n* **Zelfstandigen**: uitbreiding van hun recht op compensatie naar alle asbestgerelateerde ziekten\n* **Het Asbestfonds (AFA)**: krijgt nieuwe taken (telefoonnummer, register, rapportage) en extra inkomsten via boetes",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Asbestslachtoffers verdienen betere ondersteuning: gratis infolijn, centrale registratie van asbestinventarissen, jaarlijkse rapportage en verduidelijking van procedures. De vervuiler moet betalen via forfaitaire boetes. Slachtoffers moeten werkgevers kunnen aanklagen bij 'onverschoonbare fout' zonder opzet te bewijzen, wat nu praktisch onmogelijk is. Dit voorkomt discriminatie tussen verschillende soorten slachtoffers."
+        },
+        {
+          "party": "PS",
+          "argument": "Dit is een maatschappelijke schande: bedrijven hebben duizenden levens in gevaar gebracht voor winst. Het voorstel laat verantwoordelijke bedrijven eindelijk betalen en versterkt de bescherming van slachtoffers. We moeten deze strijd blijven voeren."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "Na decennia van blokkering is dit eindelijk politieke beweging. Asbest is een klassenstrijd: werknemers en gezinnen betaalden de prijs, niet de bedrijfsleiders. Dit voorstel is een goede eerste stap, al is het door amendementen afgezwakt."
+        },
+        {
+          "party": "Vlaams Belang",
+          "argument": "Steunt het voorstel op basis van de inhoud, omdat het concrete verbeteringen biedt voor asbestslachtoffers."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "N-VA",
+          "argument": "Kan het voorstel niet steunen, vooral vanwege de aanpak van de immuniteit van bedrijven. De regering werkt al aan een eigen tekst zoals afgesproken in het regeerakkoord. Die moet juridisch sterker zijn gezien de machtige belangen die worden geraakt."
+        },
+        {
+          "party": "Vooruit",
+          "argument": "Het dossier is cruciaal, maar de regering is bezig met een eigen wetsontwerp. Die moet juridisch waterdicht zijn tegenover grote bedrijven met dure advocaten. De regering verdient de tijd om dit goed te doen."
+        },
+        {
+          "party": "Christen-Democratisch en Vlaams (cd&v)",
+          "argument": "Er is een oplossing nodig, maar het is verstandiger om te wachten op een breed debat na de regeringsbehandeling. De deelstaten nemen al initiatieven. Nu stemmen is te vroeg."
+        },
+        {
+          "party": "Open Vlaamse liberalen en democraten (Open Vld)",
+          "argument": "Het voorstel is goed, maar een uitgebreid debat is slimmer wanneer alle teksten, inclusief die van de regering, klaar zijn. Nu al stemmen is niet de beste aanpak."
+        },
+        {
+          "party": "Raad van State",
+          "argument": "Het nieuwe concept 'onverschoonbare fout' is te vaag en moet worden verduidelijkt. Er zijn mogelijke discriminatieproblemen tussen veroordeelde en niet-veroordeelde bedrijven. De tekst bevat technische fouten en tegenstrijdigheden tussen de Nederlandse en Franse versies."
+        }
+      ],
+      "neutral_technical": [],
+      "notable_changes": "Het volledige wetsvoorstel werd verworpen bij de eindstemming (9 tegen 6). Ecolo-Groen diende meerdere amendementen in: sommige om het concept 'onverschoonbare fout' te verduidelijken na kritiek van de Raad van State, andere om overlap met het regeerakkoord te verwijderen. PVDA-PTB stelde voor deze amendementen in te trekken omdat ze de tekst afzwakken. De Raad van State adviseerde dat interpretatieve bepalingen overbodig waren en dat er fundamentele technische en juridische problemen moesten worden opgelost.",
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.0205475,
+      "input_tokens": 17759,
+      "output_tokens": 5834,
+      "input_cost": 0.0088795,
+      "output_cost": 0.011668
+    }
+  },
+  "30": {
+    "dossier_id": "30",
+    "title": "Voorstel tot herziening van artikel 22 van de Grondwet met het oog op de erkenning van het recht op vrijwillige zwangerschapsafbreking.",
+    "generated_title": "Grondwettelijke bescherming van het recht op abortus",
+    "model": "moonshotai/Kimi-K2-Thinking",
+    "model_name": "Kimi K2 Thinking",
+    "provider": "nebius",
+    "fact_summary": {
+      "summary": " **1. Welk probleem lost dit op of wat is het doel?**\n\nIn België is vrijwillige zwangerschapsafbreking wel toegelaten via een gewone wet, maar het staat **niet** in de Grondwet. Dat maakt het recht kwetsbaar: een toekomstige regering kan het met een gewone meerderheid wijzigen of zelfs afschaffen. De recente gebeurtenissen in de Verenigde Staten, waar het Hooggerechtshof het recht op abortus terugdraaide, tonen aan dat verworven rechten nooit gegarandeerd zijn als ze niet in de grondwet staan.\n\nDit voorstel wil dat voorkomen door het recht op vrijwillige zwangerschapsafbreking **expliciet in de Belgische Grondwet** te verankeren. Zo wordt het beschermd tegen politieke schommelingen en veiliggesteld voor de toekomst.\n\n**2. Wat verandert er concreet in de praktijk?**\n\n- **Artikel 22 van de Grondwet** krijgt een extra zin: \"Dit recht omvat het recht op vrijwillige zwangerschapsafbreking.\"\n- De **bestaande wet** over abortus blijft volledig van kracht; de voorwaarden en procedures veranderen niet.\n- Het wordt **moeilijker** om het recht af te schaffen: daarvoor is voortaan een **grondwetswijziging** nodig, wat een speciale meerderheid vereist (2/3 van de stemmen).\n- België volgt het voorbeeld van Frankrijk, dat dit recht in 2024 in zijn Grondwet schreef.\n\n**3. Wie wordt hierdoor geraakt?**\n\n- **Vrouwen** in België: hun recht op vrijwillige zwangerschapsafbreking is beter beschermd, nu en in de toekomst.\n- **Toekomstige generaties**: het recht wordt voor de lange termijn veiliggesteld tegen politieke veranderingen.\n- **Politici en wetgevers**: ze kunnen dit recht niet langer met een gewone meerderheid aanpassen of intrekken.\n- De **Belgische samenleving**: het land zet een internationaal signaal af over de bescherming van fundamentele rechten.",
+      "document_type": "VoorstelTotHerziening",
+      "selection_reason": "Dit is een voorstel tot herziening. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": false
+    },
+    "retry_info": null,
+    "cost_info": null
+  },
+  "449": {
+    "dossier_id": "449",
+    "title": "Wetsontwerp houdende de eerste aanpassing van de Middelenbegroting voor het begrotingsjaar 2024.",
+    "generated_title": "Overheidsbegroting 2024: formele goedkeuring van aangepaste inkomstenraming",
+    "model": "moonshotai/Kimi-K2-Thinking",
+    "model_name": "Kimi K2 Thinking",
+    "provider": "nebius",
+    "fact_summary": {
+      "summary": " Welk probleem lost dit op of wat is het doel?\n\nDeze wet past de inkomstenkant van de Belgische overheidsbegroting voor 2024 aan. Een begroting is een raming, maar de werkelijke inkomsten (zoals belastingen en sociale bijdragen) kunnen anders uitvallen dan gepland. Deze wet maakt de officiële correctie van die raming mogelijk, zodat de begroting realistischer wordt. Het gaat hier enkel om de formele goedkeuring van die aanpassing.\n\nWat verandert er concreet in de praktijk?\n\n- Dit document bevat geen concrete cijfers of maatregelen, alleen de formele aanneming van de wet.\n- De echte wijzigingen (welke bedragen en waarom) staan in een technisch document (DOC 56 0449/003) dat niet bij deze tekst is gevoegd.\n\nWie wordt hierdoor geraakt?\n\n- Zonder de specifieke inhoud kan dit niet worden bepaald.\n- Afhankelijk van de aangepaste inkomsten kunnen dit burgers, bedrijven of overheidsdiensten zijn.",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "MR, PS, Les Engagés, Vooruit, cd&v, Ecolo-Groen, Open Vld",
+          "argument": "Deze begrotingsaanpassing is noodzakelijk om essentiële diensten te laten draaien: ziekenhuizen, sociale uitkeringen, pensioenen, politie, douane en onze verplichtingen tegenover NAVO. Ze past de begroting aan aan de economische realiteit en bespaart meer dan 1 miljard euro. Het Rekenhof controleert normaal geen zuiver technische aanpassingen."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "VB",
+          "argument": "Er is geen onafhankelijke controle door het Rekenhof, wat onverantwoordelijk is bij een begroting van miljarden. De regering past de begroting aan tijdens een lopende zakenperiode, wat ongebruikelijk is. Zonder dit advies kunnen we dit niet goedkeuren."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "Het Rekenhof heeft geen advies gegeven, wat ons vertrouwen ondermijnt. De vorige regering heeft een gigantisch begrotingstekort nagelaten (18 miljard euro). De volgende regering moet 16-29 miljard besparen, wat pijn zal doen bij gewone mensen. De rijken moeten betalen, niet de burger."
+        },
+        {
+          "party": "N-VA",
+          "argument": "We hebben vragen over de kernuitstapkosten (200 miljoen) en andere posten. Het begrotingstekort wordt veel te groot (18 miljard in 2024, 20,5 miljard in 2025). We onthouden ons omdat dit een voortzetting is van het oude beleid."
+        },
+        {
+          "party": "Les Engagés",
+          "argument": "We zijn verrast dat het Rekenhof geen advies gaf. We willen meer uitleg over specifieke uitgaven zoals NAVO-pensioenen, krantenbezorging en leeflonen."
+        }
+      ],
+      "neutral_technical": [],
+      "notable_changes": "Er werden geen fundamentele wijzigingen via amendementen voorgesteld. De enige discussie ging over het al dan niet vragen van een Rekenhof-advies. De wet werd uiteindelijk goedgekeurd zonder inhoudelijke aanpassingen.",
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.019191,
+      "input_tokens": 19998,
+      "output_tokens": 4596,
+      "input_cost": 0.009999,
+      "output_cost": 0.009192
+    }
+  },
+  "200": {
+    "dossier_id": "200",
+    "title": "Voorstel van bijzondere wet tot wijziging van de bijzondere wet van 6 januari 1989 op het Grondwettelijk Hof voor wat de samenstelling van het Hof en de voorwaarden om benoemd te kunnen worden tot rechter betreft.",
+    "generated_title": "Strengere kwaliteitseisen voor rechters van het Grondwettelijk Hof",
+    "model": "moonshotai/Kimi-K2-Thinking",
+    "model_name": "Kimi K2 Thinking",
+    "provider": "nebius",
+    "fact_summary": {
+      "summary": " **Welk probleem lost dit op of wat is het doel?**\n\nHet Grondwettelijk Hof controleert of wetten en decreten de Grondwet respecteren. Nu bestaat het Hof uit twaalf rechters: **zes juristen** en **zes gewezen politici**. Er is kritiek dat politici **geen juridisch diploma** nodig hebben en dat de **strikte 50/50-verdeling** te star is. Dit wetsvoorstel wil het Hof **professioneler** maken door hogere kwalificaties en meer **flexibiliteit** in de samenstelling.\n\n**Wat verandert er concreet in de praktijk?**\n\n- Alle rechters moeten voortaan bewijzen dat ze de **andere landstaal** voldoende beheersen (via examen)\n- Politici die rechter willen worden, moeten nu ook een **diploma rechten** hebben\n- Advocaten met **20 jaar ervaring** in publiekrecht kunnen nu ook rechter-jurist worden\n- De vereiste **parlementaire ervaring** voor politici gaat van **5 naar 8 jaar**\n- Tijd als **minister of staatssecretaris** telt mee voor die 8 jaar\n- De verplichte **50/50-verdeling** verdwijnt: per taalgroep moet minstens **1/3 en maximaal 1/2** politicus zijn\n- Het bewijs van **Duitse taalkennis** kan alleen nog via examen van het **Selectiebureau**\n- Alle kandidaten krijgen een **verplichte hoorzitting** in de Kamer of Senaat\n\n**Wie wordt hierdoor geraakt?**\n\n- **Toekomstige kandidaten** voor het Grondwettelijk Hof: hogere eisen\n- **Gewezen parlementsleden** zonder juridisch diploma: kunnen niet meer benoemd worden\n- **Ervaren advocaten**: krijgen nieuwe kans op benoeming\n- **Kamer en Senaat**: moeten hoorzittingen organiseren\n- **Selectiebureau van de Federale Overheid**: moet taalexamens afnemen",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": false
+    },
+    "retry_info": null,
+    "cost_info": null
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "30": {
+    "dossier_id": "30",
+    "title": "Voorstel tot herziening van artikel 22 van de Grondwet met het oog op de erkenning van het recht op vrijwillige zwangerschapsafbreking.",
+    "generated_title": "Grondwettelijke bescherming van het recht op abortus in België",
+    "model": "claude-sonnet-4-5-20250929",
+    "fact_summary": {
+      "summary": "# Welk probleem lost dit op of wat is het doel?\n\nHet grondvoorstel wil het recht op vrijwillige zwangerschapsafbreking (abortus) vastleggen in de Belgische Grondwet. Nu is dit enkel geregeld via een gewone wet, waardoor het in principe makkelijker kan worden afgeschaft door een nieuwe wet. Het voorstel is ingediend na het Amerikaanse arrest waardoor abortus daar niet langer grondwettelijk beschermd is. De indieners willen voorkomen dat een toekomstige meerderheid dit recht in België kan afschaffen.\n\n# Wat verandert er concreet in de praktijk?\n\nIn de praktijk verandert er voorlopig weinig: abortus blijft toegelaten onder de huidige wettelijke voorwaarden. Het grote verschil is dat het recht op abortus een grondwettelijk recht wordt, wat betekent dat het moeilijker wordt om dit in de toekomst af te schaffen. Een wijziging van de Grondwet vergt immers een complexere procedure dan een gewone wet. Het artikel over privacy en gezinsleven wordt uitgebreid met de expliciete vermelding dat dit het recht op abortus omvat.\n\n# Wie wordt hierdoor geraakt?\n\nAlle vrouwen in België die nu of in de toekomst gebruik willen maken van het recht op abortus. Door de grondwettelijke verankering krijgen zij een stevigere juridische bescherming. Ook zorginstellingen en artsen die abortussen uitvoeren krijgen meer rechtszekerheid.",
+      "document_type": "VoorstelTotHerziening",
+      "selection_reason": "Dit is een voorstel tot herziening. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": false
+    }
+  },
+  "200": {
+    "dossier_id": "200",
+    "title": "Voorstel van bijzondere wet tot wijziging van de bijzondere wet van 6 januari 1989 op het Grondwettelijk Hof voor wat de samenstelling van het Hof en de voorwaarden om benoemd te kunnen worden tot rechter betreft.",
+    "generated_title": "Strengere eisen voor rechters Grondwettelijk Hof: verplicht rechtendiploma en kennis tweede landstaal",
+    "model": "claude-sonnet-4-5-20250929",
+    "fact_summary": {
+      "summary": "# Welk probleem lost dit op of wat is het doel?\n\nDit wetsvoorstel wil het Grondwettelijk Hof hervormen om de kwaliteit en legitimiteit te verbeteren. Het Hof controleert of wetten en decreten de Grondwet respecteren. De indieners vinden dat de huidige samenstelling en benoemingsvoorwaarden niet meer passen bij de complexere taken van het Hof. Sinds 1980 is de rol van het Hof sterk uitgebreid - van het oplossen van bevoegdheidsconflicten tussen beleidsniveaus naar ook het toetsen van grondrechten en Europees recht. Deze complexere zaken vragen volgens de indieners meer juridische kennis en taalvaardigheid van alle rechters.\n\n# Wat verandert er concreet in de praktijk?\n\n**Voor alle rechters:**\n- Moeten voortaan voldoende kennis hebben van de tweede landstaal (Nederlands of Frans), bewezen via een examen\n- Moeten een diploma rechten hebben (doctor, licentiaat of master)\n\n**Voor rechters met juridische achtergrond:**\n- Ook advocaten met 20 jaar ervaring in publiekrecht kunnen nu kandideren (voorheen enkel magistraten, staatsraden, hoogleraren)\n\n**Voor rechters met politieke achtergrond:**\n- Moeten 8 jaar parlementaire ervaring hebben (nu 5 jaar)\n- Ervaring als minister of staatssecretaris telt nu ook mee\n- Per taalgroep moet minstens 1/3 en maximaal de helft ex-politicus zijn (nu exact de helft)\n\n**Benoemingsprocedure:**\n- Kandidaten moeten verplicht gehoord worden door Kamer of Senaat\n\n# Wie wordt hierdoor geraakt?\n\n**Toekomstige kandidaat-rechters** die aan het Grondwettelijk Hof willen zetelen, moeten aan strengere eisen voldoen. Ex-politici zonder rechtendiploma kunnen niet meer kandideren. Advocaten krijgen wel nieuwe kansen.\n\n**Huidige rechters** worden niet geraakt - de nieuwe regels gelden alleen voor nieuwe benoemingen.\n\n**Het Grondwettelijk Hof** krijgt mogelijk een andere samenstelling met meer juridisch geschoolde rechters en minder ex-politici.\n\n**Burgers en organisaties** die zaken voorleggen aan het Hof, krijgen te maken met rechters die allemaal juridisch geschoold zijn en beide landstalen beheersen.",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": false
+    }
+  }
+}

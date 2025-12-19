@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Output Comparison</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: #2c3e50;
+            color: white;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            margin-bottom: 1rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        select {
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            background: white;
+            cursor: pointer;
+            min-width: 200px;
+        }
+
+        select:hover {
+            border-color: #3498db;
+        }
+
+        .run-info {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            height: calc(100vh - 200px);
+            margin: 1rem;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            margin: 0.5rem;
+        }
+
+        .panel-header {
+            background: #34495e;
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+            border-bottom: 2px solid #2c3e50;
+        }
+
+        .panel-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        .dossier-section {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #ecf0f1;
+        }
+
+        .dossier-section:last-child {
+            border-bottom: none;
+        }
+
+        .dossier-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .generated-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #27ae60;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            background: #e8f8f5;
+            border-radius: 6px;
+            border-left: 4px solid #27ae60;
+        }
+
+        .original-title-label {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            font-weight: 500;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        .dossier-id {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #34495e;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            padding-left: 0.5rem;
+            border-left: 4px solid #3498db;
+        }
+
+        .fact-summary {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #27ae60;
+        }
+
+        .political-analysis {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .arguments-list {
+            margin-top: 0.5rem;
+        }
+
+        .argument-item {
+            background: white;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+            border-left: 3px solid #95a5a6;
+        }
+
+        .argument-item.for {
+            border-left-color: #27ae60;
+            background: #e8f8f5;
+        }
+
+        .argument-item.against {
+            border-left-color: #e74c3c;
+            background: #fadbd8;
+        }
+
+        .argument-item.neutral {
+            border-left-color: #3498db;
+            background: #ebf5fb;
+        }
+
+        .argument-party {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.25rem;
+        }
+
+        .argument-text {
+            color: #555;
+        }
+
+        .notable-changes {
+            background: #fff3cd;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #f39c12;
+            margin-top: 1rem;
+        }
+
+        .has-debate {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .has-debate.true {
+            background: #27ae60;
+            color: white;
+        }
+
+        .has-debate.false {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .metadata-info {
+            background: #ecf0f1;
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .metadata-info .info-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .metadata-info .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .retry-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .retry-badge.success {
+            background: #27ae60;
+            color: white;
+        }
+
+        .retry-badge.warning {
+            background: #f39c12;
+            color: white;
+        }
+
+        .retry-badge.error {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .cost-info {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        /* Markdown styling */
+        .markdown-content h1,
+        .markdown-content h2,
+        .markdown-content h3,
+        .markdown-content h4 {
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .markdown-content h1 {
+            font-size: 1.5rem;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 0.5rem;
+        }
+
+        .markdown-content h2 {
+            font-size: 1.3rem;
+        }
+
+        .markdown-content h3 {
+            font-size: 1.1rem;
+        }
+
+        .markdown-content ul,
+        .markdown-content ol {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .markdown-content li {
+            margin-bottom: 0.25rem;
+        }
+
+        .markdown-content p {
+            margin-bottom: 0.75rem;
+        }
+
+        .markdown-content strong {
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .markdown-content code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .markdown-content pre {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        .markdown-content pre code {
+            background: none;
+            padding: 0;
+        }
+
+        .markdown-content blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 1rem;
+            margin-left: 0;
+            color: #555;
+            font-style: italic;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #95a5a6;
+        }
+
+        .empty-state h2 {
+            margin-bottom: 1rem;
+            color: #7f8c8d;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-container {
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .panel {
+                min-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Model Output Comparison</h1>
+        <div class="controls">
+            <div class="control-group">
+                <label for="model1-select">Model 1:</label>
+                <select id="model1-select">
+                    <option value="">Select a model...</option>
+                </select>
+                <div class="run-info" id="run1-info"></div>
+            </div>
+            <div class="control-group">
+                <label for="model2-select">Model 2:</label>
+                <select id="model2-select">
+                    <option value="">Select a model...</option>
+                </select>
+                <div class="run-info" id="run2-info"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="comparison-container">
+        <div class="panel">
+            <div class="panel-header">Model 1 Output</div>
+            <div class="panel-content" id="panel1-content">
+                <div class="empty-state">
+                    <h2>Select a model</h2>
+                    <p>Choose a model from the dropdown above to view its output</p>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-header">Model 2 Output</div>
+            <div class="panel-content" id="panel2-content">
+                <div class="empty-state">
+                    <h2>Select a model</h2>
+                    <p>Choose a model from the dropdown above to view its output</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let allResults = {};
+        let modelMetadata = {}; // Store metadata for each model (run info, etc.)
+
+        // Structure: { "run_id/model": { data, metadata } }
+        // Example: { "run_20240101_120000/claude-sonnet": { data: {...}, metadata: {...} } }
+
+        // Load all JSON files from current directory and runs subdirectories
+        async function loadResults() {
+            const loadingDiv = document.getElementById('panel1-content');
+            loadingDiv.innerHTML = '<div class="loading">Scanning for results...</div>';
+
+            // First, try to load from current directory (legacy support)
+            await loadResultsFromDirectory('.');
+
+            // Then, try to load from runs subdirectories
+            try {
+                // Try to fetch a list of runs directories
+                // Since we can't list directories directly via fetch, we'll try common patterns
+                // and also try to load a runs index if it exists
+                await loadResultsFromRunsDirectory();
+            } catch (e) {
+                console.log('Could not load from runs directory:', e);
+            }
+
+            // Populate dropdowns
+            populateDropdowns();
+        }
+
+        async function loadResultsFromDirectory(basePath) {
+            // Try to load an index file first
+            try {
+                const indexPath = basePath === '.' ? 'results_index.json' : `${basePath}/results_index.json`;
+                const indexResponse = await fetch(indexPath);
+                if (indexResponse.ok) {
+                    const index = await indexResponse.json();
+                    for (const filename of index.files || []) {
+                        const filePath = basePath === '.' ? filename : `${basePath}/${filename}`;
+                        await loadResultFile(filePath, basePath);
+                    }
+                }
+            } catch (e) {
+                // Index file doesn't exist, continue
+            }
+
+            // Try to load default results.json
+            const defaultPath = basePath === '.' ? 'results.json' : `${basePath}/results.json`;
+            await loadResultFile(defaultPath, basePath);
+
+            // Try common model files
+            const commonPatterns = [
+                'results_*.json',
+            ];
+            
+            // Since we can't glob, try to load files we know about
+            // This is a fallback - ideally the index file should list them
+        }
+
+        async function loadResultsFromRunsDirectory() {
+            // Try to fetch a runs index if it exists
+            try {
+                const runsIndexResponse = await fetch('runs/runs_index.json');
+                if (runsIndexResponse.ok) {
+                    const runsIndex = await runsIndexResponse.json();
+                    for (const runInfo of runsIndex.runs || []) {
+                        const runPath = `runs/${runInfo.run_id}`;
+                        await loadResultsFromRunDirectory(runPath);
+                    }
+                    return;
+                }
+            } catch (e) {
+                // No runs index, try to discover runs manually
+                console.log('No runs index found, trying to discover runs...');
+            }
+
+            // Fallback: Try to load from a few recent run patterns
+            // This is a best-effort approach when no index exists
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            const currentMonth = String(now.getMonth() + 1).padStart(2, '0');
+            const currentDay = String(now.getDate()).padStart(2, '0');
+            
+            // Try a few recent date patterns (limited fallback)
+            for (let dayOffset = 0; dayOffset < 7; dayOffset++) {
+                const date = new Date(now);
+                date.setDate(date.getDate() - dayOffset);
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                
+                // Try a few hour patterns for today
+                if (dayOffset === 0) {
+                    for (let hour = now.getHours(); hour >= Math.max(0, now.getHours() - 12); hour--) {
+                        for (let minute = 0; minute < 60; minute += 30) {
+                            const runId = `run_${year}${month}${day}_${String(hour).padStart(2, '0')}${String(minute).padStart(2, '0')}00`;
+                            const runPath = `runs/${runId}`;
+                            await loadResultsFromRunDirectory(runPath);
+                        }
+                    }
+                }
+            }
+        }
+
+        async function loadResultsFromRunDirectory(runPath) {
+            // Load all results_*.json files from this run directory
+            try {
+                // Try to load run metadata
+                const metadataPath = `${runPath}/run_metadata.json`;
+                let metadata = null;
+                try {
+                    const metadataResponse = await fetch(metadataPath);
+                    if (metadataResponse.ok) {
+                        metadata = await metadataResponse.json();
+                    }
+                } catch (e) {
+                    // No metadata file
+                }
+
+                // Try to load run summary
+                const summaryPath = `${runPath}/run_summary.json`;
+                let summary = null;
+                try {
+                    const summaryResponse = await fetch(summaryPath);
+                    if (summaryResponse.ok) {
+                        summary = await summaryResponse.json();
+                    }
+                } catch (e) {
+                    // No summary file
+                }
+
+                // Try to load all results_*.json files
+                // Since we can't list directories, we'll need to try known patterns
+                // or rely on the summary file to tell us which models were tested
+                if (summary && summary.model_results) {
+                    for (const modelResult of summary.model_results) {
+                        if (modelResult.success && modelResult.output_file) {
+                            // Extract filename from full path
+                            const filename = modelResult.output_file.split('/').pop();
+                            const filePath = `${runPath}/${filename}`;
+                            await loadResultFile(filePath, runPath, metadata, modelResult);
+                        }
+                    }
+                } else {
+                    // Fallback: try common model patterns
+                    const commonModels = [
+                        'claude-sonnet-4-5-20250929',
+                        'claude-haiku-4-5-20251001',
+                        'gemini-3-pro-preview',
+                        'gemini-3-flash-preview',
+                        'mistral-large-2512',
+                        'mistral-medium-2508',
+                        'moonshotai_Kimi-K2-Thinking',
+                    ];
+                    
+                    for (const model of commonModels) {
+                        const safeModel = model.replace('/', '_').replace(':', '_');
+                        const filePath = `${runPath}/results_${safeModel}.json`;
+                        await loadResultFile(filePath, runPath, metadata);
+                    }
+                }
+            } catch (e) {
+                console.log(`Error loading run directory ${runPath}:`, e);
+            }
+        }
+
+        async function loadResultFile(filePath, runPath = '.', metadata = null, modelInfo = null) {
+            try {
+                const response = await fetch(filePath);
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    // Extract model identifier
+                    let modelKey;
+                    if (runPath === '.') {
+                        // Legacy: just use model name from filename
+                        modelKey = extractModelName(filePath);
+                    } else {
+                        // New: use run_id/model format
+                        const runId = runPath.split('/').pop();
+                        const modelName = extractModelName(filePath);
+                        modelKey = `${runId}/${modelName}`;
+                    }
+                    
+                    // Store result data
+                    allResults[modelKey] = data;
+                    
+                    // Store metadata
+                    modelMetadata[modelKey] = {
+                        runPath: runPath,
+                        metadata: metadata,
+                        modelInfo: modelInfo,
+                        filePath: filePath,
+                    };
+                    
+                    return true;
+                }
+            } catch (e) {
+                // File doesn't exist, continue
+            }
+            return false;
+        }
+
+        function extractModelName(filename) {
+            // Extract model name from filename like "results_gpt-4o-mini.json"
+            const match = filename.match(/results_(.+)\.json/);
+            return match ? match[1] : filename.replace('.json', '');
+        }
+
+        function populateDropdowns() {
+            const select1 = document.getElementById('model1-select');
+            const select2 = document.getElementById('model2-select');
+
+            // Clear existing options (except first)
+            while (select1.options.length > 1) select1.remove(1);
+            while (select2.options.length > 1) select2.remove(1);
+
+            // Group models by run
+            const modelsByRun = {};
+            for (const modelKey of Object.keys(allResults)) {
+                const parts = modelKey.split('/');
+                if (parts.length === 2) {
+                    const [runId, modelName] = parts;
+                    if (!modelsByRun[runId]) {
+                        modelsByRun[runId] = [];
+                    }
+                    modelsByRun[runId].push({ key: modelKey, name: modelName });
+                } else {
+                    // Legacy format
+                    if (!modelsByRun['legacy']) {
+                        modelsByRun['legacy'] = [];
+                    }
+                    modelsByRun['legacy'].push({ key: modelKey, name: modelKey });
+                }
+            }
+
+            // Add models grouped by run
+            const sortedRuns = Object.keys(modelsByRun).sort().reverse(); // Most recent first
+            
+            for (const runId of sortedRuns) {
+                const models = modelsByRun[runId];
+                const runLabel = runId === 'legacy' ? 'Legacy Results' : `Run: ${runId}`;
+                
+                // Add optgroup for this run
+                const optgroup1 = document.createElement('optgroup');
+                optgroup1.label = runLabel;
+                const optgroup2 = document.createElement('optgroup');
+                optgroup2.label = runLabel;
+                
+                for (const model of models.sort((a, b) => a.name.localeCompare(b.name))) {
+                    const option1 = document.createElement('option');
+                    option1.value = model.key;
+                    option1.textContent = model.name;
+                    optgroup1.appendChild(option1);
+
+                    const option2 = document.createElement('option');
+                    option2.value = model.key;
+                    option2.textContent = model.name;
+                    optgroup2.appendChild(option2);
+                }
+                
+                select1.appendChild(optgroup1);
+                select2.appendChild(optgroup2);
+            }
+        }
+
+        function renderDossier(dossierId, data) {
+            const html = `
+                <div class="dossier-section">
+                    <div class="dossier-title">
+                        <span class="dossier-id">${dossierId}</span>
+                        ${data.generated_title ? escapeHtml(data.generated_title) : (data.title ? escapeHtml(data.title) : 'Untitled')}
+                    </div>
+                    ${data.generated_title && data.title && data.generated_title !== data.title ? `
+                        <div class="generated-title">
+                            ✨ ${escapeHtml(data.generated_title)}
+                        </div>
+                        <div class="original-title-label">
+                            Original: ${escapeHtml(data.title)}
+                        </div>
+                    ` : ''}
+                    ${!data.generated_title && data.title ? `
+                        <div class="original-title-label">
+                            ${escapeHtml(data.title)}
+                        </div>
+                    ` : ''}
+
+                    <div class="section-title">Fact Summary</div>
+                    <div class="fact-summary markdown-content">
+                        ${safeMarkdownParse(data.fact_summary?.summary || 'No summary available')}
+                        <div style="margin-top: 1rem; font-size: 0.9rem; color: #7f8c8d;">
+                            <strong>Document Type:</strong> ${escapeHtml(data.fact_summary?.document_type || 'N/A')}<br>
+                            <strong>Selection Reason:</strong> ${escapeHtml(data.fact_summary?.selection_reason || 'N/A')}
+                        </div>
+                    </div>
+
+                    <div class="section-title">Political Analysis</div>
+                    <div class="political-analysis">
+                        <div class="has-debate ${data.political_analysis?.has_debate ? 'true' : 'false'}">
+                            ${data.political_analysis?.has_debate ? 'Has Debate' : 'No Debate'}
+                        </div>
+
+                        ${data.political_analysis?.arguments_for?.length > 0 ? `
+                            <div style="margin-top: 1rem;">
+                                <strong style="color: #27ae60;">Arguments For (${data.political_analysis.arguments_for.length}):</strong>
+                                <div class="arguments-list">
+                                    ${data.political_analysis.arguments_for.map(arg => {
+                                        const party = extractPartyOrSource(arg);
+                                        const text = extractArgumentText(arg);
+                                        return `
+                                        <div class="argument-item for">
+                                            ${party ? `<div class="argument-party">${escapeHtml(party)}</div>` : ''}
+                                            <div class="argument-text markdown-content">${safeMarkdownParse(text)}</div>
+                                        </div>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+
+                        ${data.political_analysis?.arguments_against?.length > 0 ? `
+                            <div style="margin-top: 1rem;">
+                                <strong style="color: #e74c3c;">Arguments Against (${data.political_analysis.arguments_against.length}):</strong>
+                                <div class="arguments-list">
+                                    ${data.political_analysis.arguments_against.map(arg => {
+                                        const party = extractPartyOrSource(arg);
+                                        const text = extractArgumentText(arg);
+                                        return `
+                                        <div class="argument-item against">
+                                            ${party ? `<div class="argument-party">${escapeHtml(party)}</div>` : ''}
+                                            <div class="argument-text markdown-content">${safeMarkdownParse(text)}</div>
+                                        </div>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+
+                        ${data.political_analysis?.summary_debate ? `
+                            <div class="notable-changes">
+                                <strong>Debate Summary:</strong>
+                                <div class="markdown-content" style="margin-top: 0.5rem;">
+                                    ${safeMarkdownParse(data.political_analysis.summary_debate)}
+                                </div>
+                            </div>
+                        ` : ''}
+
+                        ${data.political_analysis?.notable_changes ? `
+                            <div class="notable-changes">
+                                <strong>Notable Changes:</strong>
+                                <div class="markdown-content" style="margin-top: 0.5rem;">
+                                    ${safeMarkdownParse(formatNotableChanges(data.political_analysis.notable_changes))}
+                                </div>
+                            </div>
+                        ` : ''}
+                    </div>
+
+                    ${(data.retry_info || data.cost_info) ? `
+                        <div class="section-title">Metadata</div>
+                        <div class="metadata-info">
+                            ${data.retry_info ? `
+                                <div class="info-item">
+                                    <strong>JSON Parse Retries:</strong>
+                                    ${data.retry_info.json_parse_retries > 0 ? `
+                                        <span class="retry-badge ${data.retry_info.json_parse_failed ? 'error' : 'warning'}">
+                                            ${data.retry_info.json_parse_retries} retries
+                                            ${data.retry_info.json_parse_failed ? ' (failed)' : ''}
+                                        </span>
+                                    ` : `
+                                        <span class="retry-badge success">No retries needed</span>
+                                    `}
+                                    ${data.retry_info.json_parse_failed && data.retry_info.json_parse_error ? `
+                                        <div style="margin-top: 0.25rem; font-size: 0.85rem; color: #e74c3c;">
+                                            Error: ${escapeHtml(data.retry_info.json_parse_error.substring(0, 100))}
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            ` : ''}
+                            ${data.cost_info && data.cost_info.total_cost > 0 ? `
+                                <div class="info-item">
+                                    <strong>Cost:</strong>
+                                    <span class="cost-info">$${data.cost_info.total_cost.toFixed(4)}</span>
+                                    ${data.cost_info.input_tokens !== undefined ? `
+                                        <div style="margin-top: 0.25rem; font-size: 0.85rem; color: #7f8c8d;">
+                                            Input: ${data.cost_info.input_tokens.toLocaleString()} tokens ($${data.cost_info.input_cost?.toFixed(4) || '0.0000'})<br>
+                                            Output: ${data.cost_info.output_tokens.toLocaleString()} tokens ($${data.cost_info.output_cost?.toFixed(4) || '0.0000'})
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            ` : ''}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+            return html;
+        }
+
+        function renderResults(results, panelId) {
+            const panel = document.getElementById(panelId);
+            
+            if (!results || Object.keys(results).length === 0) {
+                panel.innerHTML = '<div class="empty-state"><h2>No results found</h2><p>This model has no output data</p></div>';
+                return;
+            }
+
+            let html = '';
+            Object.entries(results).forEach(([dossierId, data]) => {
+                html += renderDossier(dossierId, data);
+            });
+
+            panel.innerHTML = html;
+        }
+
+        function updateRunInfo(selectId, modelKey) {
+            const infoDiv = document.getElementById(selectId === 'model1-select' ? 'run1-info' : 'run2-info');
+            const metadata = modelMetadata[modelKey];
+            
+            if (metadata && metadata.metadata) {
+                const meta = metadata.metadata;
+                let info = '';
+                if (meta.timestamp) {
+                    const date = new Date(meta.timestamp);
+                    info = `Run: ${date.toLocaleString()}`;
+                }
+                if (meta.git_commit) {
+                    info += ` | Commit: ${meta.git_commit.substring(0, 7)}`;
+                }
+                infoDiv.textContent = info;
+            } else {
+                infoDiv.textContent = '';
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function safeMarkdownParse(value) {
+            // Convert value to string safely
+            if (value === null || value === undefined) {
+                return '';
+            }
+            if (Array.isArray(value)) {
+                // If it's an array, join it or convert to string
+                return marked.parse(value.join('\n\n'));
+            }
+            if (typeof value !== 'string') {
+                // Convert other types to string
+                return marked.parse(String(value));
+            }
+            return marked.parse(value);
+        }
+
+        function extractArgumentText(arg) {
+            // Handle different argument object structures
+            if (typeof arg === 'string') {
+                return arg;
+            }
+            if (arg === null || arg === undefined) {
+                return '';
+            }
+            if (Array.isArray(arg)) {
+                // If it's an array, try to extract text from each element
+                return arg.map(item => extractArgumentText(item)).filter(Boolean).join('\n\n');
+            }
+            if (typeof arg !== 'object') {
+                return String(arg);
+            }
+            
+            // Try common keys for argument text (in order of preference)
+            const textKeys = ['argument', 'observation', 'text', 'content', 'message', 'note', 'comment', 'description'];
+            for (const key of textKeys) {
+                if (arg[key] !== undefined && arg[key] !== null) {
+                    return String(arg[key]);
+                }
+            }
+            
+            // If no text key found, try to stringify the object (excluding metadata keys)
+            const metadataKeys = ['party', 'source', 'author', 'from', 'origin'];
+            const cleanObj = {};
+            for (const key in arg) {
+                if (!metadataKeys.includes(key) && arg[key] !== undefined && arg[key] !== null) {
+                    cleanObj[key] = arg[key];
+                }
+            }
+            
+            // If we have some content, stringify it nicely
+            if (Object.keys(cleanObj).length > 0) {
+                return JSON.stringify(cleanObj, null, 2);
+            }
+            
+            return '';
+        }
+
+        function extractPartyOrSource(arg) {
+            // Extract party or source from argument object
+            if (typeof arg !== 'object' || arg === null) {
+                return null;
+            }
+            return arg.party || arg.source || arg.author || arg.from || arg.origin || null;
+        }
+
+        function formatNotableChanges(changes) {
+            // Handle different formats of notable_changes
+            if (typeof changes === 'string') {
+                return changes;
+            }
+            if (changes === null || changes === undefined) {
+                return '';
+            }
+            if (Array.isArray(changes)) {
+                // Handle array of strings or objects
+                return changes.map(item => {
+                    if (typeof item === 'string') {
+                        return item;
+                    }
+                    if (typeof item === 'object' && item !== null) {
+                        // Try to extract text from object
+                        return item.change || item.text || item.content || item.message || 
+                               item.description || JSON.stringify(item, null, 2);
+                    }
+                    return String(item);
+                }).filter(Boolean).join('\n\n');
+            }
+            if (typeof changes === 'object') {
+                // Handle object with multiple keys
+                const parts = [];
+                for (const key in changes) {
+                    if (changes[key] !== null && changes[key] !== undefined) {
+                        const value = changes[key];
+                        const formattedKey = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                        if (typeof value === 'string') {
+                            parts.push(`**${formattedKey}:** ${value}`);
+                        } else if (Array.isArray(value)) {
+                            parts.push(`**${formattedKey}:**\n${value.map(v => typeof v === 'string' ? v : JSON.stringify(v)).join('\n')}`);
+                        } else {
+                            parts.push(`**${formattedKey}:** ${JSON.stringify(value, null, 2)}`);
+                        }
+                    }
+                }
+                return parts.join('\n\n');
+            }
+            return String(changes);
+        }
+
+        // Event listeners
+        document.getElementById('model1-select').addEventListener('change', (e) => {
+            const modelKey = e.target.value;
+            if (modelKey && allResults[modelKey]) {
+                renderResults(allResults[modelKey], 'panel1-content');
+                const parts = modelKey.split('/');
+                const displayName = parts.length === 2 ? parts[1] : modelKey;
+                document.querySelector('.panel:first-child .panel-header').textContent = `Model 1: ${displayName}`;
+                updateRunInfo('model1-select', modelKey);
+            } else {
+                document.getElementById('panel1-content').innerHTML = '<div class="empty-state"><h2>Select a model</h2><p>Choose a model from the dropdown above</p></div>';
+                document.querySelector('.panel:first-child .panel-header').textContent = 'Model 1 Output';
+                document.getElementById('run1-info').textContent = '';
+            }
+        });
+
+        document.getElementById('model2-select').addEventListener('change', (e) => {
+            const modelKey = e.target.value;
+            if (modelKey && allResults[modelKey]) {
+                renderResults(allResults[modelKey], 'panel2-content');
+                const parts = modelKey.split('/');
+                const displayName = parts.length === 2 ? parts[1] : modelKey;
+                document.querySelector('.panel:last-child .panel-header').textContent = `Model 2: ${displayName}`;
+                updateRunInfo('model2-select', modelKey);
+            } else {
+                document.getElementById('panel2-content').innerHTML = '<div class="empty-state"><h2>Select a model</h2><p>Choose a model from the dropdown above</p></div>';
+                document.querySelector('.panel:last-child .panel-header').textContent = 'Model 2 Output';
+                document.getElementById('run2-info').textContent = '';
+            }
+        });
+
+        // Initialize
+        loadResults();
+    </script>
+</body>
+</html>

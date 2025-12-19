@@ -1,0 +1,306 @@
+{
+  "191": {
+    "dossier_id": "191",
+    "title": "Wetsontwerp tot wijziging van de wet van 8 juni 2006 houdende regeling van economische en individuele activiteiten met wapens wat betreft het verwerven en gebruiken van geluiddempers en nachtzichtrichtkijkers.",
+    "generated_title": "Nieuwe regels voor het bezit en gebruik van geluiddempers en nachtzichtrichtkijkers",
+    "model": "gemini-3-flash-preview",
+    "model_name": "Gemini 3 Flash Preview",
+    "provider": "gemini",
+    "fact_summary": {
+      "summary": "**Welk probleem lost dit op of wat is het doel?**\n\nDeze wet wijzigt de bestaande Wapenwet om het strikte verbod op **geluiddempers en nachtzichtrichtkijkers** te versoepelen. Het doel is om een wettelijk kader te creëren waarbinnen deze accessoires onder strikte voorwaarden legaal kunnen worden **verworven, bezeten en gebruikt**.\n\nHiermee wil de wetgever tegemoetkomen aan de noodzaak voor **gehoorbescherming** bij schutters en de omgeving, en aan de vraag naar efficiëntere middelen voor **natuurbeheer en schadebestrijding** (zoals de jacht op everzwijnen in het donker). Door deze accessoires te reguleren in plaats van volledig te verbieden, wordt de wetgeving aangepast aan de praktijk terwijl de **openbare veiligheid** gewaarborgd blijft via vergunningen.\n\n**Wat verandert er concreet in de praktijk?**\n\n*   Geluiddempers worden niet langer beschouwd als verboden wapens, maar als accessoires die onder bepaalde voorwaarden vergund kunnen worden.\n*   Het wordt mogelijk om een legale machtiging aan te vragen voor het bezit van een geluiddemper, gekoppeld aan een specifiek vuurwapen.\n*   Nachtzichtrichtkijkers (optische instrumenten die het restlicht elektronisch versterken of thermische beelden weergeven) mogen voortaan gemonteerd en gebruikt worden voor specifieke doeleinden.\n*   De handel in deze accessoires wordt gereguleerd: alleen erkende wapenhandelaars mogen ze verkopen aan personen die over de juiste documenten beschikken.\n*   Er komen duidelijke regels voor de registratie en het transport van deze hulpmiddelen om misbruik te voorkomen.\n\n**Wie wordt hierdoor geraakt?**\n\n*   Jagers en bijzondere veldwachters die deze middelen willen inzetten voor een veiligere en effectievere uitvoering van hun taken.\n*   Sportschutters die geluiddempers willen gebruiken om geluidsoverlast en gehoorschade te beperken.\n*   Erkende wapenhandelaars die hun assortiment legaal kunnen uitbreiden met deze accessoires.\n*   De diensten van de Gouverneurs en de Federale Wapendienst, die verantwoordelijk zijn voor de controle en het uitreiken van de nieuwe vergunningen.",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "cd&v, N-VA, Open Vld, VB, Vooruit, Les Engagés",
+          "argument": "Het is noodzakelijk voor een effectieve bestrijding van de everzwijnenplaag, die aanzienlijke schade toebrengt aan landbouw, tuinen en de verkeersveiligheid."
+        },
+        {
+          "party": "cd&v, Open Vld",
+          "argument": "Geluiddempers bieden essentiële gehoorbescherming voor zowel de schutter als de omgeving en verminderen geluidsoverlast."
+        },
+        {
+          "party": "Open Vld, VB",
+          "argument": "Nachtzichtkijkers maken de jacht veiliger en diervriendelijker omdat de jager een beter zicht heeft en het doelwit nauwkeuriger kan raken, wat onnodig dierenleed voorkomt."
+        },
+        {
+          "party": "N-VA, VB",
+          "argument": "Criminelen hebben momenteel al toegang tot deze accessoires via het buitenland; het legaliseren voor erkende jagers onder strikte voorwaarden verandert niets aan de veiligheidssituatie in het criminele circuit."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "PS, Ecolo-Groen",
+          "argument": "De federale politie en de Federale Wapendienst hebben negatieve adviezen gegeven vanwege de risico's voor de openbare veiligheid en de vrees dat deze middelen in handen van criminelen vallen."
+        },
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Meer wapens en accessoires in omloop leiden tot een groter risico op wapengeweld, waaronder incidenten in de familiale sfeer en vrouwenmoord."
+        },
+        {
+          "party": "PS, Ecolo-Groen",
+          "argument": "Er is grote juridische onduidelijkheid over definities, zoals wat precies een serienummer is en op welke wapens deze kijkers gemonteerd kunnen worden, wat de controle bemoeilijkt."
+        },
+        {
+          "party": "PS",
+          "argument": "De versoepeling wordt gezien als een toegift aan de jachtlobby, terwijl de noodzaak voor de bestrijding van everzwijnen volgens tegenstanders wordt overschat of op andere manieren kan worden aangepakt."
+        }
+      ],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.002145225,
+      "input_tokens": 25655,
+      "output_tokens": 737,
+      "input_cost": 0.001924125,
+      "output_cost": 0.0002211
+    }
+  },
+  "135": {
+    "dossier_id": "135",
+    "title": "Wetsvoorstel tot wijziging van de programmawet (I) van 27 december 2006, de wetten betreffende de preventie van beroepsziekten en de vergoeding van de schade die uit die ziekten voortvloeit, gecoördineerd op 3 juni 1970, en van het koninklijk besluit van 28 april 2017 tot vaststelling van boek I Algemene beginselen van de codex over het welzijn op het werk, met het oog op de verbetering van de ondersteuning voor asbestslachtoffers en de financiering van het Schadeloosstellingfonds voor asbestslachtoffers.",
+    "generated_title": "Betere ondersteuning en schadevergoeding voor asbestslachtoffers en strengere regels voor bedrijven",
+    "model": "gemini-3-flash-preview",
+    "model_name": "Gemini 3 Flash Preview",
+    "provider": "gemini",
+    "fact_summary": {
+      "summary": "### Welk probleem lost dit op of wat is het doel?\n\nDit wetsvoorstel wil de **ondersteuning voor asbestslachtoffers verbeteren** en de **aansprakelijkheid van bedrijven** die mensen aan asbest hebben blootgesteld, versterken. Momenteel is het voor slachtoffers juridisch zeer moeilijk om een volledige schadevergoeding te eisen van een werkgever, omdat zij moeten bewijzen dat de fout **opzettelijk** was. Dit voorstel wil die drempel verlagen door een nieuw juridisch begrip in te voeren, zodat slachtoffers makkelijker hun recht kunnen halen bij nalatigheid.\n\nDaarnaast streeft het voorstel naar **eerlijkere financiering en betere informatievoorziening**. Bedrijven die effectief verantwoordelijk zijn voor asbestrisico's moeten meer bijdragen volgens het principe **\"de vervuiler betaalt\"**. Ook moet er een centraal overzicht komen van waar asbest zich nog bevindt in Belgische bedrijven, om de link tussen iemands loopbaan en een latere ziekte sneller te kunnen leggen.\n\n### Wat verandert er concreet in de praktijk?\n\n*   Er komt een **gratis telefoonnummer** waar slachtoffers en hun naasten terechtkunnen voor medische, administratieve en juridische informatie.\n*   Het begrip **\"onverschoonbare fout\"** wordt ingevoerd: slachtoffers kunnen naar de rechter stappen als een werkgever wist van het gevaar, maar naliet de nodige voorzorgsmaatregelen te nemen.\n*   Bedrijven die door een rechter veroordeeld worden voor asbestschade, moeten een **extra burgerlijke boete** betalen aan het Asbestfonds.\n*   Alle **asbestinventarissen** van werkgevers worden centraal geregistreerd bij het Asbestfonds voor een beter overzicht van gevaarlijke locaties.\n*   Zelfstandigen krijgen een **bredere vergoeding** voor alle erkende asbestziekten (zoals verschillende soorten kanker), waar dit voorheen beperkter was.\n*   Het Asbestfonds moet voortaan **jaarlijks rapporteren** over haar werking, de transparantie van de procedures en de uitgekeerde bedragen.\n*   Werkgevers worden verplicht om werknemers die het bedrijf verlaten schriftelijk te informeren over hun recht op inzage in hun **medisch dossier**.\n\n### Wie wordt hierdoor geraakt?\n\n*   **Asbestslachtoffers en hun nabestaanden**: zij krijgen betere begeleiding en meer mogelijkheden om een schadevergoeding te eisen via de rechtbank.\n*   **Werkgevers en bedrijven**: zij moeten hun asbestinventaris delen en riskeren zwaardere financiële gevolgen als zij de veiligheidsregels hebben geschonden.\n*   **Zelfstandigen**: zij krijgen bij ziekte door asbest toegang tot dezelfde vergoedingen als werknemers.\n*   **Het Asbestfonds (AFA) en Fedris**: deze instanties krijgen extra taken op het gebied van informatieverstrekking, registratie van gegevens en jaarlijkse verslaglegging.",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "Ecolo-Groen, PS, PVDA-PTB, VB",
+          "argument": "Het verlagen van de juridische drempel voor slachtoffers om schadevergoedingen te eisen door het invoeren van het begrip 'onverschoonbare fout', aangezien de huidige eis om 'opzet' te bewijzen nagenoeg onmogelijk is."
+        },
+        {
+          "party": "Ecolo-Groen, PS",
+          "argument": "Toepassing van het principe 'de vervuiler betaalt' door bedrijven die de veiligheidsregels schonden extra te laten bijdragen aan het Asbestfonds."
+        },
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Betere preventie en opvolging door de centralisatie van asbestinventarissen en de oprichting van een gratis infolijn voor slachtoffers."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "Het rechtzetten van een historisch onrecht waarbij grote bedrijven decennialang winst verkozen boven de gezondheid van werknemers en omwonenden."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "N-VA, Vooruit, cd&v, Open Vld",
+          "argument": "De voorkeur om te wachten op een breder en juridisch robuuster wetsontwerp van de regering (Arizona-coalitie) in plaats van dit parlementair initiatief nu al goed te keuren."
+        },
+        {
+          "party": "N-VA",
+          "argument": "Specifieke bezorgdheden over de impact op de juridische immuniteit van bedrijven en de technische uitwerking van het voorstel."
+        },
+        {
+          "party": "Vooruit, Open Vld",
+          "argument": "Vrees voor rechtsonzekerheid; het voorstel moet juridisch 'waterdicht' zijn om niet onderuit gehaald te worden door advocaten van grote asbestbedrijven."
+        },
+        {
+          "party": "Raad van State (Advies)",
+          "argument": "Onduidelijkheid over hoe de 'onverschoonbare fout' zich precies onderscheidt van een gewone fout en bezorgdheid over mogelijke discriminatie bij de burgerlijke boetes."
+        }
+      ],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.0014651999999999998,
+      "input_tokens": 16420,
+      "output_tokens": 779,
+      "input_cost": 0.0012315,
+      "output_cost": 0.0002337
+    }
+  },
+  "30": {
+    "dossier_id": "30",
+    "title": "Voorstel tot herziening van artikel 22 van de Grondwet met het oog op de erkenning van het recht op vrijwillige zwangerschapsafbreking.",
+    "generated_title": "Het recht op abortus vastleggen in de Grondwet voor een betere bescherming",
+    "model": "gemini-3-flash-preview",
+    "model_name": "Gemini 3 Flash Preview",
+    "provider": "gemini",
+    "fact_summary": {
+      "summary": "**Welk probleem lost dit op of wat is het doel?**\n\nHet doel van dit voorstel is om het **recht op abortus (vrijwillige zwangerschapsafbreking) beter te beschermen** door het op te nemen in de Grondwet. Momenteel is abortus in België geregeld via een gewone wet. De indieners stellen dat zo'n wet kwetsbaar is, omdat een toekomstige parlementaire meerderheid deze relatief eenvoudig kan wijzigen of afschaffen.\n\nDoor dit recht in de Grondwet te verankeren, wordt het **\"gebetonneerd\" voor de toekomst**. Het wordt hierdoor veel moeilijker om dit recht in te trekken. Het voorstel is een reactie op internationale ontwikkelingen, zoals in de Verenigde Staten, waar het grondwettelijk recht op abortus werd teruggedraaid. De indieners willen voorkomen dat verworven rechten in België ook weer ter discussie komen te staan.\n\n**Wat verandert er concreet in de praktijk?**\n\n*   Artikel 22 van de Grondwet, dat het recht op een privé- en gezinsleven beschermt, wordt aangevuld met de zin: \"Dit recht omvat het recht op vrijwillige zwangerschapsafbreking.\"\n*   Het recht op abortus krijgt de hoogst mogelijke juridische status in België.\n*   Er ontstaat een zogenaamd 'standstill-effect': de overheid mag de bestaande bescherming en toegang tot abortus niet zomaar aanzienlijk verminderen.\n*   Toekomstige regeringen of parlementen kunnen het recht op abortus niet meer met een eenvoudige wetswijziging ongedaan maken; hiervoor zou dan een complexe grondwetswijziging nodig zijn.\n\n**Wie wordt hierdoor geraakt?**\n\n*   Zwangere personen, die de garantie krijgen dat hun recht op zelfbeschikking en het maken van een eigen keuze over hun zwangerschap grondwettelijk beschermd blijft.\n*   Zorgverleners en abortuscentra, die binnen een juridisch sterker verankerd kader kunnen blijven werken.\n*   De wetgever (het parlement), die bij toekomstige wetgeving altijd rekening moet houden met dit expliciete grondwettelijke recht.",
+      "document_type": "VoorstelTotHerziening",
+      "selection_reason": "Dit is een voorstel tot herziening. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": false
+    },
+    "retry_info": null,
+    "cost_info": null
+  },
+  "449": {
+    "dossier_id": "449",
+    "title": "Wetsontwerp houdende de eerste aanpassing van de Middelenbegroting voor het begrotingsjaar 2024.",
+    "generated_title": "Eerste aanpassing van de verwachte overheidsinkomsten voor 2024",
+    "model": "gemini-3-flash-preview",
+    "model_name": "Gemini 3 Flash Preview",
+    "provider": "gemini",
+    "fact_summary": {
+      "summary": "### Welk probleem lost dit op of wat is het doel?\n\nHet doel van deze wet is het **bijstellen van de verwachte inkomsten** van de federale overheid voor het begrotingsjaar 2024. Omdat een begroting vooraf een inschatting is, moet deze gedurende het jaar worden **gecorrigeerd op basis van de werkelijke economische ontwikkelingen**, zoals actuele belastingontvangsten en economische groei.\n\nMet deze eerste aanpassing zorgt de overheid ervoor dat de **boekhouding in overeenstemming blijft met de realiteit**. Dit is noodzakelijk om een transparant beeld te houden van de financiële middelen die de staat effectief ter beschikking heeft om haar beleid en diensten te financieren.\n\n### Wat verandert er concreet in de praktijk?\n\n*   De officiële ramingen van de staatsinkomsten (zoals btw, personenbelasting en accijnzen) worden geactualiseerd naar de meest recente cijfers.\n*   De wettelijke machtiging voor de overheid om deze middelen te innen, wordt formeel aangepast aan de nieuwe totalen.\n*   Het biedt het parlement en de burger een actueel overzicht van de financiële status van de schatkist voor het lopende jaar.\n\n### Wie wordt hierdoor geraakt?\n\n*   De federale regering en overheidsdiensten, die hun planning en uitgaven moeten baseren op de werkelijk beschikbare middelen.\n*   De belastingbetaler (burgers en bedrijven), aangezien deze wet vastlegt hoeveel geld de staat in totaal uit belastingen en andere bronnen verwacht te ontvangen.\n*   Parlementsleden, die deze cijfers gebruiken om de financiële koers van het land te controleren en bij te sturen.",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "MR, PS, Vooruit, cd&v, Ecolo-Groen, Open Vld, Les Engagés",
+          "argument": "De aanpassing is essentieel om de continuïteit van vitale overheidsdiensten te garanderen, zoals de uitbetaling van pensioenen, leeflonen en de financiering van ziekenhuizen."
+        },
+        {
+          "party": "Open Vld, Vooruit",
+          "argument": "Het betreft een louter technische oefening die de begroting in lijn brengt met de actuele economische realiteit, wat resulteert in een feitelijke vermindering van de uitgaven met 1 miljard euro."
+        },
+        {
+          "party": "Open Vld",
+          "argument": "De aanpassing is noodzakelijk om internationale verplichtingen na te komen, zoals de bijdragen aan de Europese Unie en de ondersteuning van de NAVO-hoofdkwartieren (SHAPE) in België."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "Vlaams Belang, PVDA-PTB",
+          "argument": "Er is scherpe kritiek op het ontbreken van een formeel advies van het Rekenhof, waardoor de parlementaire controle op de juistheid van de cijfers in het gedrang komt."
+        },
+        {
+          "party": "N-VA",
+          "argument": "Er zijn grote vragen bij specifieke kostenposten, zoals de 200 miljoen euro voor de ontmanteling van kerncentrales en het gebrek aan structurele hervormingen in het arbeidsmarkt- en pensioenbeleid."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "Het verschuiven van ongebruikte personeelsbudgetten (door niet-ingevulde vacatures bij Justitie en Financiën) naar andere uitgaven wordt bekritiseerd als een teken van falend beleid."
+        },
+        {
+          "party": "Vlaams Belang",
+          "argument": "De aanpassing wordt gezien als een voortzetting van het Vivaldi-beleid dat heeft geleid tot een historisch groot begrotingstekort."
+        }
+      ],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.0015981749999999999,
+      "input_tokens": 18401,
+      "output_tokens": 727,
+      "input_cost": 0.001380075,
+      "output_cost": 0.0002181
+    }
+  },
+  "200": {
+    "dossier_id": "200",
+    "title": "Voorstel van bijzondere wet tot wijziging van de bijzondere wet van 6 januari 1989 op het Grondwettelijk Hof voor wat de samenstelling van het Hof en de voorwaarden om benoemd te kunnen worden tot rechter betreft.",
+    "generated_title": "Nieuwe regels voor de selectie en samenstelling van het Grondwettelijk Hof",
+    "model": "gemini-3-flash-preview",
+    "model_name": "Gemini 3 Flash Preview",
+    "provider": "gemini",
+    "fact_summary": {
+      "summary": "**Welk probleem lost dit op of wat is het doel?**\n\nSinds de oprichting van het Grondwettelijk Hof zijn de taken van de rechters veel complexer geworden. Zij moeten tegenwoordig niet alleen wetten toetsen aan de Belgische Grondwet, maar ook rekening houden met ingewikkelde Europese regels en internationale mensenrechten. Het doel van dit voorstel is om de **deskundigheid en de legitimiteit** van het Hof te versterken. De indieners willen garanderen dat alle rechters over een **grondige juridische basis** beschikken en dat zij elkaars taal voldoende begrijpen om complexe juridische discussies te kunnen voeren.\n\nDaarnaast beoogt het voorstel de **samenstelling van het Hof flexibeler** te maken. De huidige strikte verdeling (de helft juristen, de helft oud-politici) wordt als te rigide beschouwd. Door de voorwaarden aan te passen, wil men de toegang tot het ambt van rechter moderniseren en de **ervaring van kandidaten** (zowel op juridisch als op politiek vlak) beter naar waarde schatten.\n\n**Wat verandert er concreet in de praktijk?**\n\n*   **Diplomavereiste:** Elke rechter, ook wie uit de politiek komt, moet voortaan een diploma van master, licentiaat of doctor in de rechten hebben.\n*   **Taalkennis:** Alle rechters moeten bewijzen dat ze de tweede landstaal (Nederlands of Frans) voldoende beheersen via een examen bij het selectiebureau van de overheid (Werkenvoor.be).\n*   **Politieke ervaring:** Voor de categorie 'politici' wordt de vereiste ervaring verhoogd van vijf naar acht jaar, maar de tijd als minister of staatssecretaris telt voortaan ook mee.\n*   **Nieuwe categorie juristen:** Advocaten met minstens twintig jaar ervaring en expertise in publiekrecht kunnen voortaan ook benoemd worden als rechter-jurist.\n*   **Flexibele verhouding:** De verplichte 50/50-verdeling tussen juristen en politici verdwijnt; voortaan moet per taalgroep tussen één derde en de helft van de rechters een politieke achtergrond hebben.\n*   **Hoorzittingen:** Kandidaat-rechters moeten voortaan verplicht worden gehoord door de Kamer of de Senaat voordat zij benoemd kunnen worden.\n*   **Duitse taal:** De bewijsvoering voor de kennis van het Duits (voor de rechter die dit moet kennen) wordt strenger geregeld via een officiële examencommissie.\n\n**Wie wordt hierdoor geraakt?**\n\n*   **Kandidaat-rechters:** Zij moeten aan strengere diploma- en taalvereisten voldoen.\n*   **Parlementsleden en ministers:** Hun loopbaanpad naar het Grondwettelijk Hof verandert door de nieuwe ervaringstermijnen en de diplomavereiste.\n*   **Advocaten:** Ervaren specialisten in publiekrecht krijgen een nieuwe mogelijkheid om rechter te worden in het Hof.\n*   **Het Grondwettelijk Hof:** De interne werking en de samenstelling van de taalgroepen worden aangepast aan de nieuwe regels.",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": false
+    },
+    "retry_info": null,
+    "cost_info": null
+  },
+  "1131": {
+    "dossier_id": "1131",
+    "title": "Resolutie tot ondersteuning van de kandidatuur voor de bouw van de Einsteintelescoop in de Euregio Maas-Rijn.",
+    "generated_title": "Steun voor de komst van de Einsteintelescoop naar de Euregio Maas-Rijn",
+    "model": "gemini-3-flash-preview",
+    "model_name": "Gemini 3 Flash Preview",
+    "provider": "gemini",
+    "fact_summary": {
+      "summary": "**Welk probleem lost dit op of wat is het doel?**\n\nHet doel van deze resolutie is de officiële steun van de Belgische Kamer te bevestigen voor de komst van de **Einsteintelescoop** naar de Euregio Maas-Rijn (het grensgebied van België, Nederland en Duitsland). Dit is een prestigieus Europees project voor een ondergrondse sterrenwacht die **zwaartekrachtgolven** meet. Hiermee willen wetenschappers fundamentele vragen over het **heelal en zwarte gaten** beantwoorden.\n\nDoor dit project naar België te halen, wil de overheid de positie van het land als leider in **wetenschap en innovatie** versterken. Het project dient als een economische motor die zorgt voor **hoogwaardige werkgelegenheid, technologische ontwikkeling** en internationale uitstraling, waarbij België de concurrentie aangaat met andere locaties zoals Sardinië.\n\n**Wat verandert er concreet in de praktijk?**\n\n* De federale regering erkent de kandidatuur officieel als een **strategisch project van nationaal belang**.\n* België zet zijn **diplomatieke netwerk** in om internationaal steun te zoeken bij andere landen voor de locatie in de Euregio Maas-Rijn.\n* Er wordt onderzocht of federale eigendommen, zoals het **station en rangeerterrein van Montzen**, kunnen worden gebruikt als logistiek centrum voor de bouw en de verwerking van uitgegraven grond.\n* De federale overheid gaat nauwer **samenwerken en coördineren** met Vlaanderen, Wallonië, Nederland en Duitsland over de financiering en de vergunningen.\n* Er komen strategieën om de opgebouwde kennis en technologie sneller te laten doorstromen naar **Belgische bedrijven en onderzoekscentra**.\n\n**Wie wordt hierdoor geraakt?**\n\n* **Wetenschappers en universiteiten**: Zij krijgen een unieke kans om op wereldniveau onderzoek te doen in eigen land.\n* **Het bedrijfsleven**: Vooral technologische bedrijven en de bouwsector kunnen profiteren van grote opdrachten en innovatieve projecten.\n* **Inwoners van de grensregio**: De lokale bevolking krijgt te maken met een grootschalig bouwproject, maar profiteert ook van extra banen en regionale investeringen.\n* **De federale en regionale regeringen**: Zij moeten de nodige budgetten (honderden miljoenen euro's) en juridische kaders voorzien om de bouw mogelijk te maken.",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "N-VA, MR, Open Vld, Vooruit, cd&v, Les Engagés",
+          "argument": "De Einsteintelescoop fungeert als een enorme economische motor die zorgt voor hoogwaardige werkgelegenheid, technologische innovatie en de versterking van België als internationale leider in wetenschappelijk onderzoek."
+        },
+        {
+          "party": "PS",
+          "argument": "Het project biedt een unieke kans voor de herindustrialisering van de regio en genereert een sterke maatschappelijke return door jobs te creëren voor zowel hoog- als laaggeschoolden."
+        },
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Naast de wetenschappelijke waarde biedt het project kansen voor ecologische innovatie, zoals het hergebruik van uitgegraven grond voor circulair beton en het beperken van de CO2-voetafdruk."
+        },
+        {
+          "party": "Vlaams Belang",
+          "argument": "De telescoop kan dienen als een krachtig symbool om jongeren te inspireren voor STEM-opleidingen, wat essentieel is voor de toekomstige kenniseconomie."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "Vlaams Belang, PS",
+          "argument": "Er is grote onduidelijkheid over de exacte federale financiële bijdrage; men vreest dat dit ten koste zal gaan van de budgetten voor bestaande federale wetenschappelijke instellingen."
+        },
+        {
+          "party": "Ecolo-Groen, Les Engagés",
+          "argument": "Er zijn ernstige zorgen over de lokale hinder voor omwonenden, zoals de enorme toename van werfverkeer (duizenden vrachtwagens) en de impact op het landelijke karakter van de regio."
+        },
+        {
+          "party": "Vlaams Belang",
+          "argument": "De complexe governance met drie landen en talloze beleidsniveaus wordt gezien als een achilleshiel die de besluitvorming kan vertragen en de Belgische belangen kan verwateren."
+        },
+        {
+          "party": "Algemene bezorgdheid (o.a. MR, VB)",
+          "argument": "De juridische kwetsbaarheid van het project is groot; jarenlange procedureslagen rond vergunningen en onteigeningen kunnen de realisatie in de weg staan."
+        }
+      ],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.005943599999999999,
+      "input_tokens": 76260,
+      "output_tokens": 747,
+      "input_cost": 0.0057195,
+      "output_cost": 0.0002241
+    }
+  }
+}

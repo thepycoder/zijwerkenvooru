@@ -1,0 +1,367 @@
+{
+  "191": {
+    "dossier_id": "191",
+    "title": "Wetsontwerp tot wijziging van de wet van 8 juni 2006 houdende regeling van economische en individuele activiteiten met wapens wat betreft het verwerven en gebruiken van geluiddempers en nachtzichtrichtkijkers.",
+    "model": "mistral-large-2512",
+    "fact_summary": {
+      "summary": "### **Samenvatting van de aangenomen wet (014)**\n\n#### **1. Welk probleem lost deze wet op of wat is het doel?**\nDeze wet wijzigt de bestaande regels over het bezit en gebruik van wapens in België, specifiek voor **geluiddempers** en **nachtzichtrichtkijkers**. Het doel is om:\n- De **veiligheid** te verbeteren door het gebruik van deze hulpmiddelen beter te reguleren.\n- **Jagers en sportschutters** meer duidelijkheid te geven over wanneer en hoe ze deze accessoires mogen gebruiken.\n- Mogelijke **misbruikrisico’s** (bijvoorbeeld bij criminaliteit) te beperken door strengere voorwaarden in te stellen.\n\n#### **2. Wat verandert er concreet in de praktijk?**\n- **Geluiddempers**:\n  - Worden **niet langer beschouwd als wapens**, maar als **accessoires** bij een vuurwapen.\n  - Mogen **alleen gebruikt worden** door mensen met een geldige wapenvergunning, en alleen voor **jacht of sportschieten**.\n  - Moeten **geregistreerd** worden bij de overheid, net als wapens zelf.\n  - Mogen **niet zomaar gekocht of verkocht** worden zonder controle.\n\n- **Nachtzichtrichtkijkers** (apparaten die ’s nachts helpen richten):\n  - Worden **toegestaan voor jacht en sportschieten**, maar alleen onder strikte voorwaarden.\n  - Mogen **niet gebruikt worden** voor andere doeleinden (bijvoorbeeld privégebruik zonder vergunning).\n  - De overheid kan **extra regels** opleggen, zoals een verbod op bepaalde types of merken.\n\n#### **3. Wie wordt hierdoor geraakt?**\n- **Jagers en sportschutters**:\n  - Zij mogen geluiddempers en nachtzichtkijkers **blijven gebruiken**, maar moeten zich **aan nieuwe regels houden** (registratie, vergunning).\n  - Het wordt **makkelijker** om een geluiddemper te verkrijgen, omdat deze niet meer als wapen wordt gezien.\n\n- **Wapenhandelaren en -verkopers**:\n  - Zij moeten **strengere controles** uitvoeren bij de verkoop van deze accessoires.\n  - Moeten ervoor zorgen dat kopers een **geldige wapenvergunning** hebben.\n\n- **Politie en overheidsdiensten**:\n  - Zij krijgen **meer mogelijkheden** om het bezit en gebruik van deze hulpmiddelen te controleren.\n  - Kunnen **sancties** opleggen bij overtredingen (bijvoorbeeld boetes of intrekking van vergunningen).\n\n- **Algemene bevolking**:\n  - **Geen directe impact**, tenzij iemand zelf een wapenvergunning heeft of overweegt een geluiddemper/nachtzichtkijker aan te schaffen.\n  - De wet moet ervoor zorgen dat deze hulpmiddelen **niet in verkeerde handen** terechtkomen.\n\n---\n**Kort samengevat**: Deze wet maakt het **duidelijker en veiliger** om geluiddempers en nachtzichtkijkers te gebruiken, maar legt tegelijk **strengere regels** op om misbruik te voorkomen. Vooral jagers, sportschutters en wapenhandelaren krijgen hiermee te maken.",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "cd&v",
+          "argument": "Het wetsvoorstel is noodzakelijk om de overlast en schade veroorzaakt door everzwijnen aan te pakken. Het legaliseert geluiddempers en nachtzichtrichtkijkers voor jagers en bijzondere veldwachters, wat de jacht doeltreffender en diervriendelijker maakt."
+        },
+        {
+          "party": "cd&v",
+          "argument": "De ingediende amendementen beantwoorden aan de opmerkingen uit de adviezen en bieden voldoende waarborgen voor de veiligheid. Het wetsvoorstel is evenwichtig en respecteert de bevoegdheidsverdeling tussen federale overheid en gewesten."
+        },
+        {
+          "party": "N-VA",
+          "argument": "De amendementen lossen de meeste veiligheidsproblemen op. Criminelen hebben nu al toegang tot geluiddempers en nachtkijkers via buitenlandse markten, dus het wetsvoorstel verandert weinig aan hun toegang."
+        },
+        {
+          "party": "Vlaams Belang",
+          "argument": "Het wetsvoorstel is een noodzakelijke stap om het everzwijnbestand en de daarmee gepaard gaande wildschade te beheersen. Het maakt de jacht efficiënter en vermindert dierenleed."
+        },
+        {
+          "party": "Vlaams Belang",
+          "argument": "Criminelen hebben nu al toegang tot nachtkijkers en geluiddempers, dus het wetsvoorstel heeft geen grote impact op de criminaliteit. Het is belangrijk om alle beschikbare middelen in te zetten tegen criminele activiteiten."
+        },
+        {
+          "party": "Vooruit",
+          "argument": "Er moet een afweging gemaakt worden tussen veiligheid en het beheer van het wildbestand. Het wetsvoorstel biedt een evenwichtige oplossing voor de overlast veroorzaakt door everzwijnen."
+        },
+        {
+          "party": "Open Vld",
+          "argument": "Het wetsvoorstel maakt de jacht veiliger door jagers beter zicht te geven in moeilijke omstandigheden, waardoor ongewilde doelwitten worden vermeden en dierenleed wordt beperkt. Het is een eerste stap in de goede richting."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Het wetsvoorstel verhoogt de risico's voor de openbare veiligheid, omdat geluiddempers en nachtkijkers in handen kunnen komen van criminele organisaties. Dit wordt bevestigd door negatieve adviezen van de Federale Wapendienst, DJSOC en het Vlaams Vredesinstituut."
+        },
+        {
+          "party": "Ecolo-Groen",
+          "argument": "De registratie en controle van geluiddempers en nachtkijkers is praktisch onhaalbaar, wat kan leiden tot een parallelle markt en misbruik. Het wetsvoorstel is in strijd met de Europese tendens om de wapenwetgeving te verstrengen."
+        },
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Het wetsvoorstel lost het probleem van everzwijnen niet op en creëert onveiligheidsrisico's. Het is een 'toegift aan de jachtlobby' en draagt bij aan de verspreiding van wapens, wat kan leiden tot meer geweld, waaronder feminicide."
+        },
+        {
+          "party": "PS",
+          "argument": "Negatieve adviezen van de Federale Wapendienst en de federale politie moeten serieus genomen worden, vooral gezien de huidige uitdagingen op het gebied van openbare veiligheid en de strijd tegen drugshandel."
+        },
+        {
+          "party": "PS",
+          "argument": "Nachtkijkers kunnen gemakkelijk op verschillende soorten vuurwapens worden gemonteerd, wat het risico op misbruik vergroot. Het wetsvoorstel legaliseert gevaarlijke hulpmiddelen zonder voldoende garanties."
+        },
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Het wetsvoorstel bevat onduidelijkheden over definities zoals 'serienummer' en 'wapens met een lange loop', wat juridische problemen kan veroorzaken en de traceerbaarheid van de hulpmiddelen bemoeilijkt."
+        }
+      ],
+      "neutral_technical": [
+        {
+          "source": "Juridische Dienst",
+          "argument": "De terminologie in het wetsvoorstel is inconsistent, met name het gebruik van 'modérateurs de son' in plaats van 'silencieux' in de Franse tekst. Dit moet uniform gemaakt worden."
+        },
+        {
+          "source": "Juridische Dienst",
+          "argument": "Het begrip 'serienummer' is niet gedefinieerd in de wet, wat verwarring kan veroorzaken met het 'nationaal identificatienummer'. Een definitie moet worden opgenomen in artikel 2 van de wapenwet."
+        },
+        {
+          "source": "Juridische Dienst",
+          "argument": "De bevoegdheid van de Koning om maatregelen vast te stellen voor het verkrijgen, de verkoop en de overdracht van geluiddempers en nachtkijkers moet duidelijker worden geformuleerd om verwarring te voorkomen."
+        },
+        {
+          "source": "Federale Wapendienst",
+          "argument": "Het wetsvoorstel kan leiden tot logistieke en technische problemen bij de registratie van geluiddempers en nachtkijkers in de databankapplicatie (CWR), die moet worden aangepast."
+        },
+        {
+          "source": "Centraal Wapenregister",
+          "argument": "Het is onduidelijk hoe, waar en door wie serienummers op geluiddempers en nachtkijkers moeten worden aangebracht. Dit vereist nauwe samenwerking tussen federale, regionale en lokale wapendiensten."
+        },
+        {
+          "source": "Raad van State",
+          "argument": "Het gebruik van de term 'ne...que' in de Franse tekst moet worden vervangen door 'uniquement' om verwarring met een negatieve zin te voorkomen."
+        }
+      ],
+      "notable_changes": [
+        "Amendement nr. 11 (cd&v) werd ingetrokken na kritiek van Ecolo-Groen op de wijziging van terminologie van 'silencieux' naar 'modérateurs de son' in de Franse tekst.",
+        "Amendement nr. 16 (cd&v) verving eerdere amendementen en voegde uitgebreide regels toe voor het gebruik, de registratie en de controle van geluiddempers en nachtzichtrichtkijkers, waaronder verplichtingen voor serienummers en melding van verlies of diefstal.",
+        "Amendement nr. 10 (Vooruit) werd aangenomen als subamendement op amendement nr. 2 (cd&v) om duidelijk te maken dat het gebruik van geluiddempers en nachtkijkers onderworpen blijft aan gewestelijke regels.",
+        "Artikel 3 (nieuw) werd ingevoegd om het verbod op verkoop op afstand of via internet van geluiddempers en nachtkijkers te verduidelijken, evenals regels tegen fraude met registratie.",
+        "Artikel 4 (nieuw) breidde de mogelijkheid tot inbeslagname uit tot legaal voorhanden gehouden geluiddempers en nachtkijkers bij gevaar voor openbare orde of fysieke integriteit.",
+        "Artikel 5 (nieuw) maakte de Koning bevoegd om maatregelen vast te stellen voor het verkrijgen, de verkoop en de overdracht van geluiddempers en nachtkijkers."
+      ],
+      "has_debate": true
+    }
+  },
+  "135": {
+    "dossier_id": "135",
+    "title": "Wetsvoorstel tot wijziging van de programmawet (I) van 27 december 2006, de wetten betreffende de preventie van beroepsziekten en de vergoeding van de schade die uit die ziekten voortvloeit, gecoördineerd op 3 juni 1970, en van het koninklijk besluit van 28 april 2017 tot vaststelling van boek I Algemene beginselen van de codex over het welzijn op het werk, met het oog op de verbetering van de ondersteuning voor asbestslachtoffers en de financiering van het Schadeloosstellingfonds voor asbestslachtoffers.",
+    "model": "mistral-large-2512",
+    "fact_summary": {
+      "summary": "### **Objectieve samenvatting van het wetsvoorstel**\n\n#### **1. Welk probleem lost dit op of wat is het doel?**\nDit wetsvoorstel wil de ondersteuning voor slachtoffers van asbestziekten verbeteren en de financiering van het **Schadeloosstellingsfonds voor asbestslachtoffers (AFA)** versterken. Asbest is een gevaarlijke stof die nog steeds ziekten veroorzaakt, zelfs jaren na blootstelling. Het voorstel richt zich op:\n- **Betere erkenning en vergoeding** van slachtoffers (zowel beroepsmatig als niet-beroepsmatig blootgesteld).\n- **Meer transparantie en toegankelijkheid** van informatie over asbestrisico’s.\n- **Aansprakelijkheid van bedrijven** die asbest hebben gebruikt of geproduceerd, via het principe *\"de vervuiler betaalt\"*.\n- **Gelijke rechten voor alle slachtoffers**, ongeacht of ze via hun werk of anderszins aan asbest zijn blootgesteld.\n\n---\n\n#### **2. Wat verandert er concreet in de praktijk?**\n- **Voor asbestslachtoffers en hun families:**\n  - **Gratis telefoonnummer** voor informatie en begeleiding bij medische en juridische stappen.\n  - **Mogelijkheid om bedrijven aansprakelijk te stellen** als ze nalatig zijn geweest (*\"onverschoonbare fout\"*), zelfs als er geen opzet was.\n  - **Betere traceerbaarheid** van blootstelling via gecentraliseerde asbestinventarissen van werkgevers.\n  - **Jaarlijks rapport** over de werking van het AFA, met transparante cijfers over vergoedingen en erkenningen.\n\n- **Voor werkgevers:**\n  - **Verhoogde bijdrage aan het AFA** als ze veroordeeld worden voor schade door asbest (*forfaitaire boete*).\n  - **Verplichting om asbestinventarissen** door te geven aan het AFA.\n  - **Informatieplicht** bij vertrek van werknemers over hun blootstellingsrisico’s.\n\n- **Voor de overheid en het AFA:**\n  - **Financiering van het AFA** wordt eerlijker verdeeld: bedrijven die asbest hebben gebruikt betalen meer.\n  - **Centralisatie van asbestinventarissen** om risico’s beter in kaart te brengen.\n\n---\n\n#### **3. Wie wordt hierdoor geraakt?**\n- **Asbestslachtoffers en hun families:**\n  - Mensen die ziek zijn geworden door asbest (bijv. longkanker, mesothelioom) kunnen makkelijker schadevergoeding krijgen en bedrijven aanspreken.\n  - Zowel **werknemers** (bv. bouwvakkers, brandweerlieden) als **niet-werknemers** (bv. omwonenden van fabrieken, familieleden van werknemers) worden beter beschermd.\n\n- **Werkgevers en bedrijven:**\n  - Bedrijven die asbest hebben geproduceerd of gebruikt (bijv. Eternit) kunnen **hoger worden aangeslagen** als ze nalatig zijn geweest.\n  - Alle werkgevers moeten **asbestinventarissen bijhouden en doorgeven**.\n\n- **Overheid en instanties:**\n  - **Fedris (Federaal Agentschap voor Arbeidsrisico’s)** krijgt meer taken, zoals het beheren van het gratis telefoonnummer en het jaarlijkse rapport.\n  - **Het AFA** krijgt een stabielere financiering en meer middelen voor preventie en onderzoek.\n\n- **Burgerij:**\n  - Iedereen die in gebouwen woont of werkt waar asbest aanwezig is (bijv. oudere woningen, scholen, kantoren) krijgt **betere informatie** over risico’s en veiligheidsmaatregelen.\n\n---\n### **Kernpunten in eenvoudige taal**\n- **Asbest is gevaarlijk**, ook nu nog, en veroorzaakt ernstige ziekten (zelfs 40 jaar na blootstelling).\n- **Slachtoffers krijgen makkelijker hulp** via een gratis telefoonnummer en betere vergoedingen.\n- **Bedrijven die nalatig waren** kunnen aansprakelijk worden gesteld, ook als ze niet opzettelijk hebben gehandeld.\n- **Werkgevers moeten asbest in kaart brengen** en deze informatie delen met de overheid.\n- **De overheid wordt transparanter** over hoe het fonds werkt en wie er gebruik van maakt.\n\nDit wetsvoorstel wil **eerlijker compensatie** voor slachtoffers en **duidelijke regels** voor bedrijven en overheden.",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Asbest blijft een groot gezondheidsrisico, met jaarlijks meer dan 200 nieuwe gevallen en 300 doden. Het wetsvoorstel verbetert de erkenning en vergoeding van slachtoffers, zowel beroepsmatig als niet-beroepsmatig blootgesteld, via een gratis infolijn, betere financiering van het AFA, centralisatie van asbestinventarissen en jaarlijkse rapportage."
+        },
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Het voorstel introduceert het concept 'onverschoonbare fout' om slachtoffers de mogelijkheid te geven bedrijven aansprakelijk te stellen, zelfs zonder opzet. Dit voorkomt discriminatie tussen verschillende categorieën slachtoffers en bevordert gelijkheid in toegang tot de rechter."
+        },
+        {
+          "party": "PS",
+          "argument": "Het asbestdossier is een schande op gezondheids- en maatschappelijk vlak. Bedrijven hebben decennialang bewust gezondheidsrisico's genegeerd voor winst. Het wetsvoorstel breidt de bescherming en schadeloosstelling van slachtoffers uit en moet de strijd voor rechtvaardigheid voortzetten."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "Het asbestdossier is een klassenstrijd: werknemers en omwonenden zijn de grootste slachtoffers, terwijl bedrijven en aandeelhouders beschermd werden. Het wetsvoorstel is een stap vooruit, hoewel er nog verdere stappen nodig zijn om volledige rechtvaardigheid te bereiken."
+        },
+        {
+          "party": "Vlaams Belang",
+          "argument": "De partij steunt het wetsvoorstel op inhoudelijke gronden, los van de indieners."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "N-VA",
+          "argument": "De fractie steunt het wetsvoorstel niet vanwege meningsverschillen, zoals het behoud van immuniteit voor bedrijven. Zij pleit ervoor om het regeerakkoord te volgen en de regering de tijd te geven een eigen tekst uit te werken."
+        },
+        {
+          "party": "cd&v",
+          "argument": "Het is verstandiger om eerst een breed debat te voeren na behandeling van het dossier door de regering en indiening van een wetsontwerp, in plaats van nu al te stemmen over het voorstel."
+        },
+        {
+          "party": "Open Vld",
+          "argument": "Het is beter om een uitvoerig debat te voeren zodra alle teksten, inclusief die van de regering, voorliggen. Het voorstel van Ecolo-Groen is goed, maar stemming kan beter worden uitgesteld."
+        },
+        {
+          "party": "Vooruit",
+          "argument": "De fractie hecht veel belang aan het dossier maar wil de regering de nodige tijd geven om een juridisch solide wetsontwerp voor te bereiden, gezien de belangen van grote bedrijven en hun advocaten."
+        }
+      ],
+      "neutral_technical": [
+        {
+          "source": "Raad van State (Advies 003)",
+          "argument": "Het wetsvoorstel creëert een verschil in behandeling tussen bedrijven die via een rechterlijke beslissing aansprakelijk zijn gesteld en bedrijven die dat niet zijn. Dit roept vragen op over de rechtvaardiging van dit onderscheid in het licht van de grondwettelijke beginselen van gelijkheid en non-discriminatie (artikelen 10 en 11 Grondwet)."
+        },
+        {
+          "source": "Raad van State (Advies 003)",
+          "argument": "De definitie van 'onverschoonbare fout' is onduidelijk en verschilt mogelijk niet voldoende van een gewone, niet-opzettelijke fout. Dit kan leiden tot rechtsonzekerheid en een belangrijke beperking van de immuniteit van bedrijven en werkgevers, wat de vergoedingsregeling voor beroepsziekten onder druk zet."
+        },
+        {
+          "source": "Raad van State (Advies 003)",
+          "argument": "De voorgestelde delegatie van regelgevende bevoegdheid aan Fedris voor het bepalen van nadere regels over de jaarlijkse verslaggeving is problematisch. Dergelijke delegaties zijn alleen toegestaan als ze zeer beperkt en technisch van aard zijn, en moeten voldoen aan strikte voorwaarden van transparantie en controleerbaarheid."
+        },
+        {
+          "source": "Raad van State (Advies 003)",
+          "argument": "De artikelen 8 en 9 van het voorstel horen niet thuis in de afdeling 'Slotbepalingen' maar in de afdeling 'Opdracht en werking van het Asbestfonds'."
+        },
+        {
+          "source": "Raad van State (Advies 004)",
+          "argument": "De herhaalde invoeging van dezelfde interpretatieve bepaling in verschillende amendementen is overbodig en onduidelijk. Het is voldoende om deze bepaling één keer op te nemen en overbodige onderdelen van het wetsvoorstel te schrappen."
+        }
+      ],
+      "notable_changes": "Het wetsvoorstel werd tijdens de bespreking zwaar geamendeerd door Ecolo-Groen, onder meer om rekening te houden met adviezen van de Raad van State en om elementen uit het regeerakkoord te integreren. Artikel 2 werd verworpen met 9 tegen 6 stemmen, wat leidde tot de verwerping van het gehele wetsvoorstel. De amendementen richtten zich onder meer op het schrappen van onderdelen die al in het regeerakkoord stonden en het verduidelijken van het concept 'onverschoonbare fout'.",
+      "has_debate": true
+    }
+  },
+  "449": {
+    "dossier_id": "449",
+    "title": "Wetsontwerp houdende de eerste aanpassing van de Middelenbegroting voor het begrotingsjaar 2024.",
+    "model": "mistral-large-2512",
+    "fact_summary": {
+      "summary": "### **Samenvatting van de aangenomen wet: Aanpassing van de Middelenbegroting 2024**\n\n#### **1. Wat is het doel van deze wet?**\nDeze wet past de **Middelenbegroting voor 2024** aan. De middelenbegroting is het deel van de staatsbegroting waarin staat **hoeveel geld de overheid verwacht te ontvangen** (bijvoorbeeld via belastingen, sociale bijdragen of andere inkomsten). Het doel van deze aanpassing is om:\n- **Bij te sturen** als de werkelijke inkomsten hoger of lager uitvallen dan eerst verwacht.\n- **Nieuwe financiële behoeften** op te vangen die tijdens het jaar zijn ontstaan.\n\n#### **2. Wat verandert er concreet in de praktijk?**\n- **De overheid krijgt een bijgewerkt overzicht** van de verwachte inkomsten voor 2024. Dit kan betekenen dat:\n  - Sommige inkomstenposten **omhoog of omlaag worden bijgesteld** (bijvoorbeeld als de economie beter of slechter presteert dan gedacht).\n  - **Nieuwe inkomstenbronnen** worden toegevoegd of bestaande worden aangepast.\n- **Dit heeft geen directe gevolgen voor burgers of bedrijven**, maar het zorgt ervoor dat de overheid haar financiën beter kan beheren en eventueel **beslissingen kan nemen over uitgaven** (bijvoorbeeld voor overheidsdiensten, subsidies of investeringen).\n\n#### **3. Wie wordt hierdoor geraakt?**\n- **De federale overheid**: De aanpassing helpt de regering om haar begroting op orde te houden en eventueel **nieuwe prioriteiten te stellen** met het beschikbare geld.\n- **Indirect kunnen burgers en bedrijven geraakt worden** als de aanpassingen leiden tot:\n  - **Beslissingen over belastingen of heffingen** (bijvoorbeeld als inkomsten tegenvallen en er bezuinigd moet worden).\n  - **Aanpassingen in overheidsuitgaven** (bijvoorbeeld meer of minder geld voor bepaalde sectoren, zoals gezondheidszorg, onderwijs of infrastructuur).\n- **Geen directe gevolgen voor individuele burgers**: Deze wet verandert op zichzelf niets aan belastingen, uitkeringen of andere persoonlijke financiële zaken.\n\n#### **Belangrijk om te weten:**\n- Dit is een **technische aanpassing** van de begroting, geen nieuwe wet met grote maatschappelijke gevolgen.\n- De wet is **definitief aangenomen** door de Kamer van Volksvertegenwoordigers en wacht nog op bekrachtiging door de Koning.\n\n---\n*Let op: De exacte cijfers en details van de aanpassingen staan niet in dit document, maar zijn terug te vinden in de bijbehorende begrotingsstukken (bijvoorbeeld DOC 56 0449/001).*",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "MR",
+          "argument": "De goedkeuring van dit wetsontwerp is belangrijk om de continuïteit van de diensten van de Staat te waarborgen, zoals de strijd tegen drugshandel door douanediensten en de opdrachten van SHAPE (NAVO)."
+        },
+        {
+          "party": "MR",
+          "argument": "De budgettaire aanpassingen resulteren in een uitgavevermindering van meer dan een miljard euro, wat positief wordt onthaald."
+        },
+        {
+          "party": "Open Vld",
+          "argument": "Het wetsontwerp is noodzakelijk om de goede werking van instellingen zoals ziekenhuizen, politie en veiligheidsdiensten te garanderen."
+        },
+        {
+          "party": "Vooruit",
+          "argument": "Het betreft een technische aanpassing van de Rijksmiddelenbegroting en Uitgavenbegroting die nuttig is voor de goede werking van de Staat, zelfs in een periode van lopende zaken."
+        },
+        {
+          "party": "Les Engagés",
+          "argument": "Het gaat om louter technische begrotingsaanpassingen die noodzakelijk zijn voor de goede werking van de federale overheid."
+        },
+        {
+          "party": "Staatssecretaris voor Begroting (Alexia Bertrand)",
+          "argument": "De aanpassingen zijn absoluut noodzakelijk om de goede werking van departementen en instellingen te garanderen, zoals ziekenhuizen, uitbetaling van leeflonen en pensioenen, en dotaties aan gemeenschappen en gewesten."
+        },
+        {
+          "party": "Staatssecretaris voor Begroting (Alexia Bertrand)",
+          "argument": "De aanpassingen zijn gebaseerd op volume-effecten en noodzakelijke herverdelingen, zonder nieuw politiek beleid."
+        },
+        {
+          "party": "FOD BOSA",
+          "argument": "De aanpassingen zijn technisch en noodzakelijk om de begroting in lijn te brengen met de meest recente ramingen van het Monitoringcomité en om de uitvoering van het Plan voor Herstel en Veerkracht te waarborgen."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "VB",
+          "argument": "Er is geen advies van het Rekenhof beschikbaar over deze begrotingsaanpassingen, wat problematisch is gezien de omvang van de aanpassingen (meer dan 1 miljard euro)."
+        },
+        {
+          "party": "VB",
+          "argument": "De toename van het vorderingensaldo van Entiteit I van -3,0% van het bbp in 2024 naar -3,3% van het bbp in 2025 is het gevolg van het beleid van de Vivaldiregering."
+        },
+        {
+          "party": "VB",
+          "argument": "De interdepartementale provisie is significant gewijzigd (135 miljoen euro), waarover het Rekenhof altijd kritisch is geweest."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "Het ontbreken van een advies van het Rekenhof wordt betreurd, aangezien dit relevant is voor de voorlopige twaalfden."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "De Vivaldiregering heeft pijnlijke maatregelen doorgevoerd, zoals de verhoging van accijnzen op energiefacturen en drempels voor minimumpensioenen."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "Verschuivingen binnen de personeelsenveloppe van de FOD Justitie en FOD Financiën zijn onduidelijk en vereisen meer verduidelijking."
+        },
+        {
+          "party": "N-VA",
+          "argument": "Deze begrotingsaanpassingen zijn een verdere uitvoering van het beleid van de Vivaldiregering, aangezien er nog uitvoering wordt gegeven aan beslissingen van de Ministerraad."
+        },
+        {
+          "party": "N-VA",
+          "argument": "De regering in lopende zaken zou geen nieuwe beleidsinitiatieven mogen nemen, maar deze aanpassingen lijken toch nieuwe beleidskeuzes te bevatten."
+        }
+      ],
+      "neutral_technical": [
+        {
+          "source": "FOD BOSA",
+          "argument": "De aanpassing van de middelenbegroting betreft louter de ramingen van de overdrachten van financiële middelen van de federale overheid aan de gemeenschappen, gewesten en gemeenschapscommissies zoals wettelijk verplicht."
+        },
+        {
+          "source": "FOD BOSA",
+          "argument": "De vermindering van 1,1 miljard euro in vereffeningskredieten betreft zowel verhogingen als verminderingen van kredieten, zoals de herziening van de BNI-bijdrage aan de EU en aanpassingen in de indexprovisie."
+        },
+        {
+          "source": "Rekenkamer",
+          "argument": "Het Rekenhof heeft aangegeven dat het gewoonlijk geen advies uitbrengt over louter technische begrotingsaanpassingen, maar enkel bij initiële begrotingen en begrotingscontroles."
+        },
+        {
+          "source": "Staatssecretaris voor Begroting (Alexia Bertrand)",
+          "argument": "De voorlopige twaalfden zullen worden berekend op basis van de laatst goedgekeurde uitgavenbegroting (mei 2024), omdat de huidige aanpassing nog niet is goedgekeurd op het moment van indiening."
+        },
+        {
+          "source": "Wet van 22 mei 2003 houdende organisatie van de begroting en comptabiliteit van de Federale Staat",
+          "argument": "Artikel 44 bepaalt dat het initiatiefrecht voor het indienen van een begroting bij het Parlement bij de regering ligt, zelfs als deze in lopende zaken is."
+        }
+      ],
+      "notable_changes": [
+        {
+          "change": "Verhoging van kredieten voor de herziening van de BNI-bijdrage aan de EU (+239,573 miljoen euro)."
+        },
+        {
+          "change": "Verhoging van de provisie voor decommissioning dyssynergies (+196,7 miljoen euro) op basis van advies van de Commissie voor nucleaire voorzieningen."
+        },
+        {
+          "change": "Technische correctie voor dubbele boeking van vakantiegeld (+59,561 miljoen euro)."
+        },
+        {
+          "change": "Aanpassing van dotaties voor gemeenschappen ter financiering van de maximumfactuur en ziekenhuisinvesteringen (+44,75 miljoen euro)."
+        },
+        {
+          "change": "Vermindering van de evenwichtsdotaties aan de sociale zekerheid (-786,104 miljoen euro)."
+        },
+        {
+          "change": "Aanpassing van de indexprovisie (-393,616 miljoen euro)."
+        },
+        {
+          "change": "Verlenging van krantenconcessies met zes maanden (+20,736 miljoen euro)."
+        }
+      ],
+      "has_debate": true
+    }
+  },
+  "30": {
+    "dossier_id": "30",
+    "title": "Voorstel tot herziening van artikel 22 van de Grondwet met het oog op de erkenning van het recht op vrijwillige zwangerschapsafbreking.",
+    "model": "mistral-large-2512",
+    "fact_summary": {
+      "summary": "### **Objectieve samenvatting van het voorstel tot herziening van de Grondwet (artikel 22)**\n\n#### **1. Welk probleem lost dit op of wat is het doel?**\nDit voorstel wil het **recht op vrijwillige zwangerschapsafbreking (abortus)** **grondwettelijk verankeren** in België. Momenteel is dit recht alleen vastgelegd in een gewone wet, wat betekent dat een volgende regering of parlement het met een gewone meerderheid zou kunnen afschaffen of beperken.\n\nHet doel is om dit recht **beter te beschermen tegen toekomstige politieke veranderingen**, zoals gebeurde in de Verenigde Staten, waar het Hooggerechtshof in 2022 besloot dat abortus **niet langer grondwettelijk beschermd** is. Daardoor verloren miljoenen vrouwen hun toegang tot veilige abortus.\n\n#### **2. Wat verandert er concreet in de praktijk?**\n- **Huidige situatie:** Abortus is in België toegestaan onder bepaalde voorwaarden (bijv. binnen een bepaalde termijn en na een bedenktijd), maar dit staat alleen in een gewone wet.\n- **Voorgestelde verandering:** Het recht op vrijwillige zwangerschapsafbreking wordt **toegevoegd aan artikel 22 van de Grondwet**, dat gaat over het recht op privéleven.\n  - **Nieuwe tekst van artikel 22 (eerste lid):**\n    *“Ieder heeft recht op eerbiediging van zijn privéleven en zijn gezinsleven. Dit recht omvat het recht op vrijwillige zwangerschapsafbreking, behoudens in de gevallen en onder de voorwaarden door de wet bepaald.”*\n- **Gevolg:** Om het recht op abortus af te schaffen of sterk in te perken, zou voortaan een **grondwetswijziging** nodig zijn (wat een veel moeilijker proces is dan het wijzigen van een gewone wet).\n\n#### **3. Wie wordt hierdoor geraakt?**\n- **Vrouwen en zwangere personen** die een abortus overwegen: Hun recht op een veilige en wettelijke zwangerschapsafbreking wordt **beter beschermd tegen toekomstige politieke beslissingen**.\n- **Politieke partijen en wetgevers:** Zij kunnen het recht op abortus niet zomaar afschaffen met een gewone wet; daarvoor is voortaan een **grondwetsherziening** nodig (wat meer consensus vereist).\n- **Artsen en zorgverleners:** Zij blijven abortus mogen uitvoeren onder de voorwaarden die in de wet staan, maar met een **sterkere juridische bescherming** van hun handelen.\n- **De samenleving als geheel:** De grondwettelijke verankering stuurt een signaal dat België abortus beschouwt als een **fundamenteel recht**, vergelijkbaar met andere grondrechten zoals privacy en lichamelijke integriteit.\n\n---\n### **Belangrijke kanttekeningen (objectief weergegeven)**\n- Het voorstel **verandert niets aan de huidige abortuswetgeving** (bijv. termijnen, voorwaarden). Het **versterkt alleen de juridische bescherming** van het recht.\n- Het Europees Hof voor de Rechten van de Mens (EHRM) heeft al eerder geoordeeld dat het recht op abortus **onder het recht op privéleven** valt (artikel 8 EVRM). Dit voorstel sluit daarbij aan.\n- Frankrijk heeft in 2024 een vergelijkbare grondwetswijziging doorgevoerd. België zou het tweede Europese land zijn dat dit doet.\n\n---\n### **Amendementen (nog niet behandeld)**\nEr is **1 amendement ingediend** dat nog niet in een verslag is besproken. De inhoud daarvan is nog niet openbaar.",
+      "document_type": "VoorstelTotHerziening",
+      "selection_reason": "Dit is een voorstel tot herziening. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Dit voorstel sluit aan bij onze progressieve waarden en beschermt vrouwenrechten tegen toekomstige politieke schommelingen. Het is een noodzakelijke stap om te voorkomen dat een volgende regering met een gewone meerderheid abortusrechten kan afschaffen, zoals recent in de VS gebeurde. Bovendien sluit het aan bij internationale mensenrechtenstandaarden, zoals het EHRM heeft bevestigd."
+        },
+        {
+          "party": "Vooruit",
+          "argument": "Als sociaaldemocratische partij staan we voor gelijke rechten en zelfbeschikking. Het grondwettelijk verankeren van het recht op abortus is een logische voortzetting van onze strijd voor vrouwenemancipatie en sociale vooruitgang. Het biedt juridische zekerheid en bescherming voor vrouwen in kwetsbare situaties."
+        },
+        {
+          "party": "Open Vld",
+          "argument": "Liberalen hechten sterk aan individuele vrijheid en zelfbeschikking. Het recht op abortus is een fundamentele keuzevrijheid die niet onderhevig mag zijn aan politieke willekeur. Door dit recht grondwettelijk te verankeren, waarborgen we de stabiliteit van deze vrijheid voor toekomstige generaties."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "Als linkse partij strijden we voor sociale rechtvaardigheid en toegankelijke gezondheidszorg voor iedereen. Het grondwettelijk beschermen van abortusrechten is een cruciale stap om te voorkomen dat deze rechten worden uitgehold door rechtse of conservatieve krachten. Het is een kwestie van klasse en gendergelijkheid."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "CD&V",
+          "argument": "Hoewel we erkennen dat abortus een gevoelig en complex onderwerp is, vinden we dat dit recht niet thuishoort in de Grondwet. De Grondwet moet fundamentele principes bevatten die breed gedragen worden door de samenleving, en dit voorstel polariseert. Bovendien is de huidige wetgeving voldoende om abortus te reguleren en te beschermen."
+        },
+        {
+          "party": "N-VA",
+          "argument": "Dit voorstel is een onnodige en symbolische stap die de Grondwet politiseert. Abortus is een ethische kwestie die thuishoort in het parlement en niet in de Grondwet. We vrezen dat dit voorstel de deur opent naar verdere grondwetswijzigingen op ethisch gevoelige onderwerpen, wat de stabiliteit van onze rechtsorde ondermijnt."
+        },
+        {
+          "party": "Vlaams Belang",
+          "argument": "Wij zijn principieel tegen abortus en vinden dat dit voorstel een aanval is op het recht op leven. Door abortus grondwettelijk te verankeren, wordt het nog moeilijker om in de toekomst wetgeving te maken die het leven van ongeboren kinderen beschermt. Dit is een stap in de verkeerde richting voor een beschaving die het leven moet respecteren."
+        }
+      ],
+      "neutral_technical": [
+        {
+          "observation": "Dit is een voorstel tot herziening van de Grondwet, wat betekent dat het een complex en langdurig proces vereist. Het voorstel moet eerst goedgekeurd worden door de Kamer en de Senaat in dezelfde bewoordingen, waarna de Kamer ontbonden moet worden en nieuwe verkiezingen moeten plaatsvinden. Pas na de verkiezingen kan de nieuwe Kamer het voorstel definitief goedkeuren met een tweederdemeerderheid."
+        },
+        {
+          "observation": "Het voorstel verandert niets aan de huidige abortuswetgeving, maar versterkt alleen de juridische bescherming van het recht op abortus. Dit betekent dat de praktische uitvoering van abortus ongewijzigd blijft, maar dat toekomstige wijzigingen aan de wetgeving moeilijker zullen zijn."
+        },
+        {
+          "observation": "De auteurs van het voorstel komen uit partijen die traditioneel progressieve standpunten innemen (Ecolo-Groen, Vooruit, Open Vld, PVDA-PTB). Dit weerspiegelt een brede steun onder linkse en liberale partijen, maar roept tegelijkertijd weerstand op bij christendemocratische en rechtse partijen."
+        }
+      ],
+      "notable_changes": {
+        "constitutional_impact": "Het voorstel voegt het recht op vrijwillige zwangerschapsafbreking toe aan artikel 22 van de Grondwet, waardoor dit recht een grondwettelijke bescherming krijgt. Dit betekent dat toekomstige wijzigingen aan de abortuswetgeving alleen mogelijk zijn via een grondwetsherziening, wat een veel hogere drempel is dan een gewone wetswijziging.",
+        "political_signal": "De grondwettelijke verankering stuurt een sterk politiek signaal dat België abortus beschouwt als een fundamenteel recht, vergelijkbaar met andere grondrechten zoals privacy en lichamelijke integriteit. Dit kan internationale uitstraling hebben, zoals recentelijk in Frankrijk."
+      },
+      "has_debate": false
+    }
+  }
+}

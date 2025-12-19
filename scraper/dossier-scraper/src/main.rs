@@ -281,6 +281,23 @@ enum DocumentType {
     VoorstelOnderzoekscommissie, // 20
     VoorstelReglement,           // 21
     ArtikelenBijEersteStemmingAangenomen,
+    TabellenOfLijsten,
+    Beleidsnota,
+    ArtikelenAangenomenInPlenum,
+    Kaft,
+    Regeerakkoord,
+    Corrigendum,
+    Bijlage,
+    VoorstelVanVerklaring,
+    BeslissingOverlegcommissie,
+    Begroting,
+    VoordrachtVanKandidaten,
+    LijstVanVerzoekschriften,
+    Beleidsverklaring,
+    Verantwoording,
+    NietGeevoceerdOntwerp,
+    Errata,
+    OpmerkingenVanHetRekenhof,
     Unknown,
 }
 
@@ -350,6 +367,40 @@ fn parse_document_type(raw: &str) -> DocumentType {
         DocumentType::ArtikelenBijEersteStemmingAangenomen
     } else if raw.contains("aangenomen tekst") {
         DocumentType::AangenomenTekst
+    } else if raw.contains("tabellen of lijsten") {
+        DocumentType::TabellenOfLijsten
+    } else if raw.contains("beleidsnota") {
+        DocumentType::Beleidsnota
+    } else if raw.contains("artikelen aangenomen in plenum") {
+        DocumentType::ArtikelenAangenomenInPlenum
+    } else if raw.contains("kaft") {
+        DocumentType::Kaft
+    } else if raw.contains("regeerakkoord") {
+        DocumentType::Regeerakkoord
+    } else if raw.contains("corrigendum") {
+        DocumentType::Corrigendum
+    } else if raw.contains("bijlage") {
+        DocumentType::Bijlage
+    } else if raw.contains("voorstel van verklaring") {
+        DocumentType::VoorstelVanVerklaring
+    } else if raw.contains("beslissing overlegcommissie") {
+        DocumentType::BeslissingOverlegcommissie
+    } else if raw.contains("begroting") {
+        DocumentType::Begroting
+    } else if raw.contains("voordracht van kandidaten") {
+        DocumentType::VoordrachtVanKandidaten
+    } else if raw.contains("lijst van verzoekschriften") {
+        DocumentType::LijstVanVerzoekschriften
+    } else if raw.contains("beleidsverklaring") {
+        DocumentType::Beleidsverklaring
+    } else if raw.contains("verantwoording") {
+        DocumentType::Verantwoording
+    } else if raw.contains("niet-geevoceerd ontwerp") {
+        DocumentType::NietGeevoceerdOntwerp
+    } else if raw.contains("errata") {
+        DocumentType::Errata
+    } else if raw.contains("opmerkingen van het rekenhof") {
+        DocumentType::OpmerkingenVanHetRekenhof
     } else {
         DocumentType::Unknown
     }

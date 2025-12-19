@@ -1,0 +1,128 @@
+{
+  "135": {
+    "dossier_id": "135",
+    "title": "Wetsvoorstel tot wijziging van de programmawet (I) van 27 december 2006, de wetten betreffende de preventie van beroepsziekten en de vergoeding van de schade die uit die ziekten voortvloeit, gecoördineerd op 3 juni 1970, en van het koninklijk besluit van 28 april 2017 tot vaststelling van boek I Algemene beginselen van de codex over het welzijn op het werk, met het oog op de verbetering van de ondersteuning voor asbestslachtoffers en de financiering van het Schadeloosstellingfonds voor asbestslachtoffers.",
+    "model": "moonshotai/Kimi-K2-Thinking",
+    "fact_summary": {
+      "summary": " **Samenvatting van het wetsvoorstel over asbestslachtoffers**\n\n**1. Welk probleem lost dit op en wat is het doel?**\n\nAsbest blijft een ernstig gezondheidsrisico in België, ook nadat het gebruik ervan in 2001 werd verboden. De ziekten die het veroorzaakt (zoals longkanker en mesothelioom) hebben een lange latentieperiode, waardoor het aantal diagnoses nu piekt. Bovendien zit er nog veel asbest in gebouwen.\n\nHet huidige systeem voor schadevergoeding heeft drie grote tekortkomingen:\n- **Discriminatie**: slachtoffers die op het werk aan asbest werden blootgesteld kunnen bijna nooit een rechtszaak starten tegen hun werkgever, terwijl andere slachtoffers (bijvoorbeeld omwonenden) dat wel kunnen.\n- **Immuniteit**: werkgevers zijn bijna nooit aansprakelijk, alleen als ze opzettelijk fout handelden – iets dat bijna onmogelijk te bewijzen is.\n- **Onvoldoende transparantie**: er is geen centraal overzicht van waar asbest zit, geen jaarlijkse rapportage over het asbestfonds, en geen makkelijk toegankelijke informatie voor slachtoffers.\n\nHet wetsvoorstel wil:\n- Slachtoffers beter ondersteunen en informeren\n- De financiering van het Asbestfonds eerlijker maken (bedrijven die het risico verhoogden, betalen meer)\n- Werkgevers die nalatig waren makkelijker aansprakelijk stellen\n- Meer transparantie creëren\n\n**2. Wat verandert er concreet in de praktijk?**\n\n- **Gratis informatienummer**: Het Asbestfonds moet een gratis telefoonnummer opzetten waar slachtoffers en hun families informatie kunnen krijgen over medische en administratieve stappen.\n- **Centraal register**: Werkgevers moeten hun asbestinventaris (een lijst van alle asbest op de werkvloer) niet alleen bijhouden, maar ook een kopie sturen naar het Asbestfonds. Zo ontstaat een nationaal overzicht.\n- **Jaarlijkse rapportage**: Het Asbestfonds moet elk jaar een openbaar rapport maken over zijn werking: hoeveel mensen kregen vergoeding, welke ziektes, hoe soepel de procedures zijn, welke onderzoeksprojecten worden gefinancierd, enz.\n- **Boetes voor veroordeelde bedrijven**: Bedrijven die door een rechter worden veroordeeld voor schade door asbest, moeten een forfaitaire boete betalen aan het Asbestfonds. Dit is gebaseerd op het principe \"de vervuiler betaalt\".\n- **Uitbreiding financiering zelfstandigen**: Zelfstandigen krijgen nu voor alle asbestziekten een vergoeding, niet alleen voor asbestose.\n- **Nieuwe mogelijkheid tot rechtszaak**: Slachtoffers kunnen nu ook een rechtszaak starten als de werkgever een **onverschoonbare fout** beging. Dit is minder zwaar dan \"opzettelijk fout handelen\", maar wel meer dan gewone nalatigheid. Het betekent: de werkgever wist of moest weten dat er gevaar was, maar nam niet de nodige maatregelen.\n- **Informatie bij ontslag**: Werknemers die een bedrijf verlaten, moeten schriftelijk worden geïnformeerd over hun recht op een beroepsziektedossier.\n\n**3. Wie wordt hierdoor geraakt?**\n\n- **Asbestslachtoffers**: Krijgen makkelijker toegang tot informatie, gelijke kansen om een rechtszaak te starten (ongeacht of ze op het werk of elders werden blootgesteld), en betere begeleiding.\n- **Werkgevers**: Bedrijven die asbest hebben gebruikt of verwerkt en worden veroordeeld, moeten een boete betalen. Alle werkgevers moeten hun asbestinventaris doorsturen.\n- **Zelfstandigen**: Hun vergoedingen worden uitgebreid naar alle asbestgerelateerde ziektes.\n- **Het Asbestfonds (AFA)**: Krijgt nieuwe taken (informatielijn, centralisatie inventarissen, rapportage) en extra financiële middelen via boetes.\n- **Werknemers die van job veranderen**: Krijgen expliciete informatie over hun rechten m.b.t. beroepsziekten.",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Asbest blijft een ernstig gezondheidsrisico met een piek in diagnoses verwacht rond 2025-2030. Het huidige systeem discrimineert tussen slachtoffers (werk vs omgeving) en geeft werkgevers te veel immuniteit. Het wetsvoorstel biedt concrete oplossingen: een gratis infolijn, centralisatie van asbestinventarissen, jaarlijkse rapportage, boetes voor veroordeelde bedrijven, uitbreiding van vergoedingen voor zelfstandigen, en invoering van 'onverschoonbare fout' om aansprakelijkheid makkelijker te maken. Er is geen reden om nog langer te wachten op een regeringstekst."
+        },
+        {
+          "party": "PS",
+          "argument": "Het asbestdossier is een schande. Bedrijven hebben jarenlang mensenlevens in gevaar gebracht voor winst. Het compromis van 2006 gaf verantwoordelijke bedrijven immuniteit, behalve bij opzettelijke fout. Dit wetsvoorstel breidt de bescherming en schadeloosstelling van asbestslachtoffers uit en laat slachtoffers toe om bij onverschoonbare fout een schadevergoeding te eisen van verantwoordelijke bedrijven."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "Juicht de politieke beweging in dit decennialang geblokkeerde dossier toe. De strijd tegen asbest zit in het DNA van de partij. Het is niet alleen een milieudossier maar ook een klassenstrijd: de getroffen werknemers en buurtbewoners lijden nog steeds terwijl bedrijven werden beschermd. De tekst is echter zwaar afgezwakt door amendementen en deze dienen te worden ingetrokken."
+        },
+        {
+          "party": "Vlaams Belang",
+          "argument": "De fractie beoordeelt het wetsvoorstel op inhoud en niet op basis van de indieners en zal het wetsvoorstel steunen."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "N-VA",
+          "argument": "De fractie steunt het wetsvoorstel niet omdat ze het oneens is met het behoud van de immuniteit op bepaalde punten. Het regeerakkoord vermeldt de aanpak van dit dossier en de regering moet de tijd krijgen om een juridisch solide tekst uit te werken. Daarom moet het wetsvoorstel worden losgekoppeld van het parallelle wetsvoorstel DOC 56 0297."
+        },
+        {
+          "party": "Vooruit",
+          "argument": "De fractie hecht veel belang aan het dossier en het regeerakkoord bevat het voornemen asbestslachtoffers beter te beschermen. De minister werkt aan een wetsontwerp. De wet moet juridisch solide zijn omdat ze de belangen van grote bedrijven met veel advocaten raakt. De regering moet de nodige tijd krijgen. Vooruit zal het wetsontwerp steunen zodra het klaar is."
+        },
+        {
+          "party": "cd&v",
+          "argument": "Er moet een oplossing komen in dit belangrijke dossier en de deelstaten hebben al initiatieven genomen. Het is echter betreurenswaardig dat Ecolo-Groen nu al wil stemmen. Het is verstandiger om eerst een breed debat te houden na de behandeling van het dossier door de regering en na indiening van een wetsontwerp."
+        },
+        {
+          "party": "Open Vld",
+          "argument": "Het is belangrijk om het debat zo breed mogelijk open te trekken. Het voorstel van Ecolo-Groen is goed, maar het is slimmer om een uitvoerig debat te voeren zodra alle teksten, dus ook die van de regering, voorliggen. Er moet vandaag nog niet worden overgegaan tot stemming."
+        }
+      ],
+      "neutral_technical": [
+        {
+          "source": "Raad van State (Advies 003)",
+          "argument": "Technische opmerkingen over incorrecte verwijzingen in de tekst (bijv. '§§ 3 en 4' moet 'derde en vierde lid' zijn, verwijzing naar 'eerste lid' moet worden weggelaten waar bepaling maar één lid heeft)."
+        },
+        {
+          "source": "Raad van State (Advies 003)",
+          "argument": "Het onderscheid tussen veroordeelde en niet-veroordeelde bedrijven voor de forfaitaire boete is een objectief criterium, maar het is onduidelijk of dit gerechtvaardigd is in het licht van de grondwettelijke beginselen van gelijkheid en niet-discriminatie (artikelen 10 en 11 Grondwet)."
+        },
+        {
+          "source": "Raad van State (Advies 003)",
+          "argument": "Het begrip 'onverschoonbare fout' is onduidelijk: wat betekent 'vrijwillig' handelen/nalaten dat niet 'opzettelijk' is? Hoe onderscheidt dit zich precies van een gewone (niet-opzettelijke) fout? Dit moet worden verduidelijkt tijdens de parlementaire bespreking."
+        },
+        {
+          "source": "Raad van State (Advies 003)",
+          "argument": "De artikelen 133/1 en 133/2 horen niet in afdeling 7 'Slotbepaling' maar in afdeling 1 'Opdracht en werking van het Asbestfonds'."
+        },
+        {
+          "source": "Raad van State (Advies 003)",
+          "argument": "Discordantie tussen Nederlandse en Franse tekst over verordenende bevoegdheid van Fedris voor het jaarlijkse verslag. Het verlenen van verordenende bevoegdheid aan een openbare instelling als Fedris is in beginsel niet in overeenstemming met algemene publiekrechtelijke beginselen (eenheid van verordenende macht, ontbreken parlementaire controle)."
+        },
+        {
+          "source": "Raad van State (Advies 003)",
+          "argument": "Discordantie tussen Nederlandse en Franse tekst over de machtiging van de Koning voor registratieprocedures van asbestinventarissen."
+        },
+        {
+          "source": "Raad van State (Advies 004)",
+          "argument": "De amendementen strekken tot verduidelijking van artikel 125, §2 via interpretatieve wet, maar driemaal dezelfde interpretatieve bepaling invoegen is overbodig en onduidelijk. Het tweede en derde amendement dienen te worden weggelaten en overbodige bepalingen moeten worden geschrapt."
+        }
+      ],
+      "notable_changes": "Het wetsvoorstel werd uiteindelijk verworpen in de commissie tijdens de artikelsgewijze bespreking. Artikel 2 werd verworpen met 9 stemmen tegen 6, waardoor het gehele wetsvoorstel sneuvelde. Ecolo-Groen had amendementen ingediend (nrs. 2-8 en 9-12) naar aanleiding van adviezen van de Raad van State en om elementen die in het regeerakkoord staan te verwijderen. Er is een duidelijke breuklijn tussen partijen die willen doorgaan (Ecolo-Groen, PS, PVDA-PTB, VB) en partijen die willen wachten op een regeringstekst (N-VA, Vooruit, cd&v, Open Vld).",
+      "has_debate": true
+    }
+  },
+  "449": {
+    "dossier_id": "449",
+    "title": "Wetsontwerp houdende de eerste aanpassing van de Middelenbegroting voor het begrotingsjaar 2024.",
+    "model": "moonshotai/Kimi-K2-Thinking",
+    "fact_summary": {
+      "summary": " **Samenvatting van de aangenomen wet**\n\nDit is een formele wet die de eerste aanpassing van de middelenbegroting voor 2024 goedkeurt.\n\n**1. Doel van de wet**\nDe wet past de inkomstenverwachtingen van de Belgische staat voor 2024 aan. Een middelenbegroting schat de geldstroom naar de overheid (zoals belastingen, btw en andere inkomsten). Deze aanpassing gebeurt meestal omdat de werkelijke economische situatie anders is dan eerder voorspeld, of om nieuwe beslissingen van de regering te verwerken.\n\n**2. Wat verandert er concreet?**\nDeze tekst bevat geen concrete wijzigingen. Het is enkel de formele goedkeuring van de wet. De specifieke bedragen, maatregelen en wijzigingen staan in de bijlagen en documenten die hieraan gekoppeld zijn (documenten 001, 002 en 003). De wet zelf bevestigt alleen dat de plenaire vergadering de tekst heeft goedgekeurd die eerder door de commissie werd aangenomen.\n\n**3. Wie wordt geraakt?**\nZonder de specifieke inhoud van de bijlagen is niet te zeggen welke groepen of sectoren precies worden geraakt. In het algemeen kunnen aanpassingen van de middelenbegroting gevolgen hebben voor:\n- Alle burgers (via belastingen of heffingen)\n- Bedrijven en zelfstandigen\n- Overheidsdiensten en sociale zekerheid\n- Andere entiteiten die geld ontvangen van of betalen aan de staat\n\n**Conclusie**\nDeze wet is een administratieve en formele stap. De echte wijzigingen voor burgers en bedrijven staan in de technische bijlagen die niet in dit document zijn opgenomen.",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "Open Vld (staatssecretaris Alexia Bertrand)",
+          "argument": "De aanpassingen zijn absoluut noodzakelijk voor de goede werking van departementen en instellingen (ziekenhuizen, sociale zekerheid, pensioenen, SHAPE). Het zijn louter technische aanpassingen zonder nieuw politiek beleid, die de begroting in lijn brengen met het laatste rapport van het Monitoringcomité. De staatssecretaris voert haar taken correct uit en moet niet talmen met goedkeuring."
+        },
+        {
+          "party": "Vooruit (Jan Bertels)",
+          "argument": "Het gaat om technische begrotingsaanpassingen (volume-effecten) die nuttig zijn voor de goede werking van de Federale Staat. De inhoudelijke discussie moet worden gereserveerd voor de echte begroting 2025."
+        },
+        {
+          "party": "Open Vld (Vincent Van Quickenborne)",
+          "argument": "Goedkeuring is belangrijk om continuïteit van staatsdiensten te waarborgen (douane tegen drugshandel, SHAPE). Het is positief dat de aanpassingen een uitgavevermindering van meer dan een miljard opleveren. Het getuigt van verantwoordelijkheidszin dat de staatssecretaris dit voorlegt in een periode van lopende zaken."
+        },
+        {
+          "party": "Les Engagés (Xavier Dubois)",
+          "argument": "Het gaat inderdaad om louter technische begrotingsaanpassingen. Gezien de dringende noodzaak moet de commissie niet wachten op een advies van het Rekenhof en moet overgaan tot stemming. Eventuele opmerkingen kunnen later in de plenaire vergadering worden behandeld."
+        },
+        {
+          "party": "PS (Hugues Bayet)",
+          "argument": "Sluit zich aan bij de vorige spreker (Les Engagés) om de begrotingsaanpassingen goed te keuren zonder te wachten op Rekenhof-advies."
+        },
+        {
+          "party": "Ecolo-Groen (Dieter Vanbesien)",
+          "argument": "Hoewel het advies van het Rekenhof belangrijk is, gaat het hier om een zuiver technische aanpassing. Vermoedelijk zal het Rekenhof maar zeer geringe opmerkingen hebben, dus het is niet noodzakelijk om af te wachten."
+        },
+        {
+          "party": "FOD BOSA (David De Bels)",
+          "argument": "Technische details: PHV-onder-raming komt door vertragingen bij Regie der Gebouwen en verschuivingen 2023-2024. Kerncentrales: 156 mln voor decommissioning dyssynergies (advies CNV) plus actualisatie en btw = 196,7 mln. Wereldbank-adviseur: kost verschuift van Buitenlandse Zaken naar Financiën volgens protocol. Voorlopige twaalfden moeten gebaseerd zijn op laatst goedgekeurde begroting (mei 2024) omdat FOD BOSA niet kan wachten op goedkeuring van deze aanpassing."
+        }
+      ],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": true
+    }
+  }
+}

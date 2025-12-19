@@ -1,0 +1,10 @@
+# Either duckdb OR (pandas + pyarrow) required for parquet reading
+duckdb>=0.9.0
+# Alternative: pandas>=2.0.0 pyarrow>=10.0.0
+pydantic>=2.0.0
+openai>=1.0.0
+anthropic>=0.18.0
+mistralai>=1.0.0
+google-generativeai>=0.3.0
+tiktoken>=0.5.0  # For token counting in cost estimation
+

@@ -1,0 +1,42 @@
+{
+  "30": {
+    "dossier_id": "30",
+    "title": "Voorstel tot herziening van artikel 22 van de Grondwet met het oog op de erkenning van het recht op vrijwillige zwangerschapsafbreking.",
+    "generated_title": "Abortusrecht sterker beschermen door opname in de Grondwet",
+    "model": "claude-haiku-4-5-20251001",
+    "model_name": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "fact_summary": {
+      "summary": "# Samenvatting voorstel tot herziening Grondwet artikel 22\n\n## Welk probleem lost dit op of wat is het doel?\n\nDit voorstel wil het recht op vrijwillige zwangerschapsafbreking in de Belgische Grondwet opnemen. Momenteel is abortus alleen beschermd door een gewone wet, die makkelijker kan worden afgeschaft dan een grondwettelijke regel. Het voorstel zorgt ervoor dat dit recht sterker wordt beveiligd. \n\nDit is belangrijk geworden na een Amerikaanse rechteruitspraak (juni 2022) waarin het recht op abortus werd afgeschaft. Dit toont aan dat rechten nooit zeker zijn als ze niet in de grondwet staan.\n\n## Wat verandert er concreet in de praktijk?\n\nEr verandert niet veel voor vrouwen die nu een abortus willen. Het blijft mogelijk onder dezelfde voorwaarden als nu. \n\nHet voornaamste verschil: de bescherming wordt sterker. Een toekomstig parlement kan het recht niet zomaar via een normale wet afschaffen. Er zou een grondwetswijziging nodig zijn, wat veel moeilijker is.\n\n## Wie wordt hierdoor geraakt?\n\nDit gaat vooral om **vrouwen** en hun recht op zelfbeschikking over hun eigen lichaam en beslissing of ze moeder willen worden.\n\nOok **toekomstige generaties** worden geraakt: hun recht op abortus is beter beschermd tegen politieke veranderingen.",
+      "document_type": "VoorstelTotHerziening",
+      "selection_reason": "Dit is een voorstel tot herziening. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": false
+    }
+  },
+  "200": {
+    "dossier_id": "200",
+    "title": "Voorstel van bijzondere wet tot wijziging van de bijzondere wet van 6 januari 1989 op het Grondwettelijk Hof voor wat de samenstelling van het Hof en de voorwaarden om benoemd te kunnen worden tot rechter betreft.",
+    "generated_title": "Hogere eisen voor rechters van het Grondwettelijk Hof",
+    "model": "claude-haiku-4-5-20251001",
+    "model_name": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "fact_summary": {
+      "summary": "# Samenvatting Wetsvoorstel: Grondwettelijk Hof\n\n## Welk probleem lost dit op of wat is het doel?\n\nHet Grondwettelijk Hof controleert of wetten en decreten opgesteld door verschillende beleidsniveaus in België aan de Grondwet voldoen. Dit voorstel past de regels aan zodat rechters van het Hof beter geschikt zijn voor deze complexe taak. De afgelopen jaren is het werk van het Hof veel ingewikkelder geworden door Europese rechtspraak en mensenrechten.\n\n## Wat verandert er concreet in de praktijk?\n\n**Voor toekomstige rechters geldt:**\n- Alle rechters moeten Nederlands EN Frans kunnen spreken (nu niet verplicht)\n- Alle rechters moeten een juridische opleiding hebben (nu niet voor politici verplicht)\n- Voor ex-parlementariërs stijgt de vereiste ervaring van 5 naar 8 jaar\n- Advocaten met 20 jaar ervaring in publiekrecht kunnen nu ook kandidaat zijn\n- Ervaring als minister/staatssecretaris telt nu mee voor de 8 jaar vereiste\n- De verhouding ex-politici mag tussen 1/3 en 1/2 zijn (nu altijd precies 1/2)\n\n**Voor benoemingen geldt:**\n- Kandidaten moeten verplicht gehoord worden door het Parlement (was niet wettelijk verplicht)\n\n## Wie wordt hierdoor geraakt?\n\n- **Toekomstige rechters van het Grondwettelijk Hof** – hogere eisen voor benoeming\n- **Advocaten** – krijgen nieuwe mogelijkheid om rechter te worden\n- **Parlementsleden** – moeten bij benoemingen kandidaten horen\n- **Burgers** – hopen op betere beslissingen van het Hof over grondrechten en bevoegdheidsverdeling",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": false
+    }
+  }
+}

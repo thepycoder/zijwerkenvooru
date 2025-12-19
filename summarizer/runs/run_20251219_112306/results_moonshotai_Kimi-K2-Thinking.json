@@ -1,0 +1,87 @@
+{
+  "191": {
+    "dossier_id": "191",
+    "title": "Wetsontwerp tot wijziging van de wet van 8 juni 2006 houdende regeling van economische en individuele activiteiten met wapens wat betreft het verwerven en gebruiken van geluiddempers en nachtzichtrichtkijkers.",
+    "generated_title": "Nieuwe regels voor geluiddempers en nachtzicht bij wapens",
+    "model": "moonshotai/Kimi-K2-Thinking",
+    "model_name": "Kimi K2 Thinking",
+    "provider": "nebius",
+    "fact_summary": {
+      "summary": " **Welk probleem lost dit op of wat is het doel?**\nWijzigen van de regels voor het verwerven en gebruiken van geluiddempers en nachtzichtrichtkijkers.\n\n**Wat verandert er concreet in de praktijk?**\nDe specifieke wijzigingen zijn niet opgenomen in dit document.\n\n**Wie wordt hierdoor geraakt?**\nDe doelgroep is niet vermeld in dit document.",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "cd&v",
+          "argument": "Everzwijnenoverlast is een reëel probleem: ze veroorzaken schade aan gewassen, tuinen en verkeersongevallen. Dit wetsvoorstel biedt een gecontroleerde oplossing met voldoende veiligheidsgaranties. De gewesten bepalen de praktische uitwerking, wat de bevoegdheidsverdeling respecteert."
+        },
+        {
+          "party": "Vlaams Belang",
+          "argument": "Nodig om de everzwijnenplaga en wildschade effectief aan te pakken. Maakt de jacht efficiënter en diervriendelijker door snellere, nauwkeurigere schoten. Criminelen hebben nu al toegang tot deze middelen via het buitenland, dus dit wetsvoorstel verandert weinig aan criminaliteit."
+        },
+        {
+          "party": "Vooruit",
+          "argument": "Everzwijnen richten grote schade aan in sommige gemeenten. Het wetsvoorstel biedt een evenwichtige oplossing die veiligheid en wildbeheer afweegt. Criminele bendes gebruiken zware wapens, geen jachtwapens. Registratie en controle zijn mogelijk onder de strikte voorwaarden."
+        },
+        {
+          "party": "Open Vld",
+          "argument": "Maakt de jacht veiliger door beter zicht in moeilijke omstandigheden en voorkomt onnodig dierenleed. Criminelen zullen zich niet registreren voor legale aankoop. Dit is een noodzakelijke eerste stap die de adviezen van veiligheidsdiensten voldoende tegemoetkomt."
+        },
+        {
+          "party": "N-VA",
+          "argument": "De amendementen lossen de meeste veiligheidsbezorgdheden op. De toegang voor criminelen verandert nauwelijks, aangezien deze middelen al in het buitenland verkrijgbaar zijn. De kritiek op het wetsvoorstel is overdreven."
+        },
+        {
+          "party": "MR en Les Engagés",
+          "argument": "Steunen het wetsvoorstel als evenwichtige maatregel die de everzwijnenproblematiek aanpakt met voldoende waarborgen."
+        }
+      ],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": true
+    }
+  },
+  "30": {
+    "dossier_id": "30",
+    "title": "Voorstel tot herziening van artikel 22 van de Grondwet met het oog op de erkenning van het recht op vrijwillige zwangerschapsafbreking.",
+    "generated_title": "Abortus wordt een grondwettelijk recht",
+    "model": "moonshotai/Kimi-K2-Thinking",
+    "model_name": "Kimi K2 Thinking",
+    "provider": "nebius",
+    "fact_summary": {
+      "summary": " **Welk probleem lost dit op of wat is het doel?**\n\nHet recht op abortus in België staat nu alleen in een gewone wet, niet in de Grondwet. Daardoor kan een toekomstige wet het recht beperken of afschaffen, zoals recent in de Verenigde Staten gebeurde. Dit voorstel wil dat voorkomen door het recht grondwettelijk te verankeren.\n\n**Wat verandert er concreet in de praktijk?**\n\nArtikel 22 van de Grondwet krijgt een extra zin: \"Dit recht omvat het recht op vrijwillige zwangerschapsafbreking.\" Abortus wordt daarmee een grondwettelijk recht. De voorwaarden blijven wel via de wet bepaald, maar het recht zelf is moeilijker af te schaffen.\n\n**Wie wordt hierdoor geraakt?**\n\nVrouwen in België die willen beslissen over hun zwangerschap krijgen een grondwettelijk gewaarborgd recht. De overheid krijgt de plicht om dit recht actief te waarborgen.",
+      "document_type": "VoorstelTotHerziening",
+      "selection_reason": "Dit is een voorstel tot herziening. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": false
+    }
+  },
+  "200": {
+    "dossier_id": "200",
+    "title": "Voorstel van bijzondere wet tot wijziging van de bijzondere wet van 6 januari 1989 op het Grondwettelijk Hof voor wat de samenstelling van het Hof en de voorwaarden om benoemd te kunnen worden tot rechter betreft.",
+    "generated_title": "Strengere kwaliteitseisen voor rechters Grondwettelijk Hof en nieuwe kans voor advocaten",
+    "model": "moonshotai/Kimi-K2-Thinking",
+    "model_name": "Kimi K2 Thinking",
+    "provider": "nebius",
+    "fact_summary": {
+      "summary": " **1. Welk probleem lost dit op of wat is het doel?**\nHet Grondwettelijk Hof moet beter toegerust worden voor complexe rechtszaken zoals EU-recht en mensenrechten. Nu zit de helft van de rechters gewezen parlementsleden zonder juridische opleiding. Het voorstel wil de kwaliteit en legitimiteit verhogen.\n\n**2. Wat verandert er concreet in de praktijk?**\n- Alle rechters moeten examen afleggen in de andere landstaal (Nederlands of Frans).\n- Gewezen parlementsleden moeten ook een diploma rechten hebben.\n- Advocaten met 20 jaar ervaring in publiekrecht kunnen nu rechter worden.\n- Parlementaire ervaring moet 8 jaar zijn (was 5), maar ministerschap telt voortaan mee.\n- Het Hof moet minstens 1/3 en maximaal 1/2 politici tellen (was strikt 1/2).\n- Alle kandidaten krijgen een verplichte hoorzitting in Kamer of Senaat.\n\n**3. Wie wordt hierdoor geraakt?**\n- Toekomstige kandidaten: politici zonder juridisch diploma kunnen geen rechter meer worden.\n- Ervaren advocaten krijgen een nieuwe kans om rechter te worden.\n- Gewezen ministers en staatssecretarissen kunnen hun ervaring nu meerekenen.\n- De Kamer en Senaat moeten voortaan hoorzittingen organiseren voor alle kandidaten.",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": null,
+      "has_debate": false
+    }
+  }
+}

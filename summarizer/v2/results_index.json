@@ -1,0 +1,12 @@
+{
+  "files": [
+    "results_claude-haiku-4-5-20251001.json",
+    "results_gemini-3-flash-preview.json",
+    "results_gemini-3-pro-preview.json",
+    "results_index.json",
+    "results_mistral-large-2512.json",
+    "results_mistral-medium-2508.json",
+    "results_moonshotai_Kimi-K2-Thinking.json"
+  ],
+  "count": 7
+}
