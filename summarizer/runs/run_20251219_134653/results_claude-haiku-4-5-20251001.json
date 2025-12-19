@@ -1,0 +1,206 @@
+{
+  "191": {
+    "dossier_id": "191",
+    "title": "Wetsontwerp tot wijziging van de wet van 8 juni 2006 houdende regeling van economische en individuele activiteiten met wapens wat betreft het verwerven en gebruiken van geluiddempers en nachtzichtrichtkijkers.",
+    "generated_title": "Nieuwe regels voor geluiddempers en nachtzichtrichtkijkers bij wapenbezit",
+    "model": "claude-haiku-4-5-20251001",
+    "model_name": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDeze wet past de bestaande regelgeving voor **wapenbezit** aan door nieuwe regels in te voeren voor **geluiddempers** (geluidsdempers voor vuurwapens) en **nachtzichtrichtkijkers**. Dit zorgt voor duidelijkheid over wie deze items mag aanschaffen en gebruiken.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- De regels voor het kopen en gebruiken van **geluiddempers** worden duidelijker gedefinieerd\n- De regels voor het kopen en gebruiken van **nachtzichtrichtkijkers** worden duidelijker gedefinieerd\n- Deze wijzigingen gelden voor personen en bedrijven die legaal met wapens werken",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "summary_debate": null,
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 3,
+      "json_parse_failed": true,
+      "json_parse_error": "Expecting ',' delimiter: line 44 column 6 (char 5107)"
+    },
+    "cost_info": {
+      "total_cost": 0.00938475,
+      "input_tokens": 27539,
+      "output_tokens": 2000,
+      "input_cost": 0.00688475,
+      "output_cost": 0.0025
+    }
+  },
+  "135": {
+    "dossier_id": "135",
+    "title": "Wetsvoorstel tot wijziging van de programmawet (I) van 27 december 2006, de wetten betreffende de preventie van beroepsziekten en de vergoeding van de schade die uit die ziekten voortvloeit, gecoördineerd op 3 juni 1970, en van het koninklijk besluit van 28 april 2017 tot vaststelling van boek I Algemene beginselen van de codex over het welzijn op het werk, met het oog op de verbetering van de ondersteuning voor asbestslachtoffers en de financiering van het Schadeloosstellingfonds voor asbestslachtoffers.",
+    "generated_title": "Betere bescherming en compensatie voor asbestslachtoffers",
+    "model": "claude-haiku-4-5-20251001",
+    "model_name": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDit wetsvoorstel versterkt de ondersteuning van **asbestslachtoffers** en zorgt voor betere financiering van het compensatiefonds. Asbest is een giftige stof waarvan de gezondheidsrisico's al meer dan een eeuw bekend waren, maar België verbood het pas zeer laat. Nu sterven veel mensen nog steeds aan asbestgerelateerde ziekten (zoals longkanker en mesothelioom) omdat ze jarenlang blootgesteld waren – met een latentieperiode tot 40 jaar. Het wetsvoorstel stelt werkgevers die het asbestrisico hebben vergroot meer verantwoordelijk en maakt het makkelijker voor slachtoffers om compensatie te eisen en juridische stappen te ondernemen.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- **Onverschoonbare fout**: Slachtoffers kunnen nu een rechtszaak instellen als bedrijven nalatig waren en het asbestgevaar kenden of hadden moeten kennen – niet alleen in uitzonderlijke gevallen van opzettelijkheid\n- **Gratis informatienummer**: Een speciaal telefoonnummer voor slachtoffers om makkelijker informatie en begeleiding te krijgen\n- **Centraal asbestregister**: Alle asbestinventarissen die bedrijven moeten bijhouden worden verzameld in één nationaal register, zodat blootstelling beter te traceren is\n- **Werkgevers betalen meer**: Bedrijven die schuldig bevonden worden voor asbestschade moeten een forfaitaire geldboete aan het compensatiefonds betalen\n- **Financiering zelfstandigen uitgebreid**: Het sociaal statuut van zelfstandigen financiert nu alle asbestgerelateerde ziekten, niet alleen asbestose\n- **Jaarlijkse rapportage**: Het fonds publiceert elk jaar een rapport over aantal slachtoffers, ziektetypes en hoe goed procedures werken\n- **Werknemers geïnformeerd**: Bedrijven moeten werknemers die vertrekken schriftelijk informeren over hun medische dossier met asbestgegevens",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "summary_debate": null,
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 3,
+      "json_parse_failed": true,
+      "json_parse_error": "Expecting ',' delimiter: line 76 column 10 (char 5810)"
+    },
+    "cost_info": {
+      "total_cost": 0.00690575,
+      "input_tokens": 17623,
+      "output_tokens": 2000,
+      "input_cost": 0.00440575,
+      "output_cost": 0.0025
+    }
+  },
+  "30": {
+    "dossier_id": "30",
+    "title": "Voorstel tot herziening van artikel 22 van de Grondwet met het oog op de erkenning van het recht op vrijwillige zwangerschapsafbreking.",
+    "generated_title": "Abortusrecht sterker beschermen door opname in de Grondwet",
+    "model": "claude-haiku-4-5-20251001",
+    "model_name": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDit voorstel wil het **recht op vrijwillige zwangerschapsafbreking** beschermen door het op te nemen in de Belgische **Grondwet**. Momenteel is abortus alleen geregeld in een normale wet, die gemakkelijk kan worden veranderd of afgeschaft. Door het in de Grondwet vast te leggen, wordt dit recht veel sterker beschermd voor de toekomst – net zoals Frankrijk dit in 2024 deed en wat andere landen mogelijk zullen volgen.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- Het recht op vrijwillige zwangerschapsafbreking krijgt **dezelfde sterke juridische bescherming als andere grondrechten** (zoals recht op privéleven en gezinsleven)\n- Een toekomstige regering kan dit recht niet zomaar weer afschaffen met een normale wettelijke maatregel\n- Belgium volgt het voorbeeld van Frankrijk en positioneert zich als **voortrekker in Europa** op dit terrein\n- De bestaande voorwaarden voor abortus (bepaald door de gewone wet) blijven gelden – er verandert niets aan hoe abortus nu in de praktijk werkt",
+      "document_type": "VoorstelTotHerziening",
+      "selection_reason": "Dit is een voorstel tot herziening. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "summary_debate": null,
+      "notable_changes": null,
+      "has_debate": false
+    },
+    "retry_info": null,
+    "cost_info": null
+  },
+  "200": {
+    "dossier_id": "200",
+    "title": "Voorstel van bijzondere wet tot wijziging van de bijzondere wet van 6 januari 1989 op het Grondwettelijk Hof voor wat de samenstelling van het Hof en de voorwaarden om benoemd te kunnen worden tot rechter betreft.",
+    "generated_title": "Strengere eisen voor rechters van het Grondwettelijk Hof",
+    "model": "claude-haiku-4-5-20251001",
+    "model_name": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDit voorstel wil de **samenstelling en benoemingseisen van het Grondwettelijk Hof** aanpassen. Het Hof controleert of wetgeving op alle beleidsniveaus (federaal, gemeenschaps- en gewestniveau) binnen hun bevoegdheden blijft. Omdat het Hof steeds complexere juridische vragen moet oplossen, worden hogere kwalificaties en betere voorbereiding van nieuwe rechters nodig geacht.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- **Alle rechters** moeten voortaan aantonen dat zij goed Nederlands **en** Frans kunnen spreken, niet alleen hun eigen taal\n- **Politieke rechters** (voormalige parlementsleden) moeten nu een diploma juridische studies hebben, net als de andere rechters\n- **Advocaten** kunnen zich aanmelden als rechter-jurist als zij minstens 20 jaar praktijk hebben en expertise in publiekrecht bezitten\n- De vereiste **parlementaire ervaring stijgt van 5 naar 8 jaar**, maar ministersposten tellen nu ook mee\n- De **verplichting van minstens de helft politieke rechters vervalt**: er hoeven voortaan enkel minstens één derde én maximaal de helft politieke rechters te zijn\n- **Kandidaat-rechters worden verplicht gehoord** door het parlement voordat zij benoemd worden\n- Eén **rechtsjurist moet Duitse taal** beheersen, via een examen",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "summary_debate": null,
+      "notable_changes": null,
+      "has_debate": false
+    },
+    "retry_info": null,
+    "cost_info": null
+  },
+  "1131": {
+    "dossier_id": "1131",
+    "title": "Resolutie tot ondersteuning van de kandidatuur voor de bouw van de Einsteintelescoop in de Euregio Maas-Rijn.",
+    "generated_title": "België, Nederland en Duitsland bouwen samen een geavanceerde zwaartekrachtgolf-observatorium",
+    "model": "claude-haiku-4-5-20251001",
+    "model_name": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nBelgië, Nederland en de Duitse deelstaat Noordrijn-Westfalen willen samen de **Einsteintelescoop** - een geavanceerd wetenschappelijk observatorium voor zwaartekrachtgolven - in hun grensgebied bouwen. Dit document steunt deze kandidatuur omdat het project **enorme voordelen oplevert voor wetenschap, innovatie, werkgelegenheid en het internationale imago van België**.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- De federale regering erkent de Einsteintelescoop als een **strategisch project van nationaal belang** en bevestigt haar actieve steun\n- België zet **diplomatieke inspanningen in** om andere landen te overtuigen deel te nemen aan het project en om met concurrenten (zoals Sardinië en Saksen) de vergelijking aan te gaan\n- De regering onderzoekt **financiële en praktische bijdragen**, zoals het beschikbaar stellen van terreinen en het treinstation van Montzen als logistiek centrum\n- Er wordt gewerkt aan **betere coördinatie** tussen universiteiten, onderzoekscentra en bedrijven in de grensregio om innovatie te versterken\n- De regering zorgt voor **transparante communicatie** met lokale bewoners en respecteert hun inspraak bij de voorbereiding",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "summary_debate": null,
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 3,
+      "json_parse_failed": true,
+      "json_parse_error": "Expecting ',' delimiter: line 68 column 10 (char 6343)"
+    },
+    "cost_info": {
+      "total_cost": 0.02393325,
+      "input_tokens": 85733,
+      "output_tokens": 2000,
+      "input_cost": 0.02143325,
+      "output_cost": 0.0025
+    }
+  },
+  "52": {
+    "dossier_id": "52",
+    "title": "Voorstel van resolutie betreffende de ondersteuning van de opschorting van de preferentiële associatieovereenkomst tussen de Europese Unie en Israël.",
+    "generated_title": "België stopt handelsprivilèges voor Israël wegens mensenrechtenbedenken",
+    "model": "claude-haiku-4-5-20251001",
+    "model_name": "Claude Haiku 4.5",
+    "provider": "anthropic",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDit voorstel vraagt de regering om de **preferentiële handelsovereenkomst tussen de EU en Israël op te schorten**. Het doel is om druk uit te oefenen op Israël wegens wat de indieners beschouwen als **ernstige schendingen van internationaal recht**: illegale nederzettingen in Palestijnse gebieden, een blokkade van Gaza, en vervolgingsacties die sinds oktober 2023 mogelijk genocide vormen. De auteurs stellen dat België niet mag deelnemen aan economische samenwerking met een land dat naar hun mening dergelijke misdaden pleegt.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- Als de opschorting wordt aangenomen, zou de handelsovereenkomst tussen de EU en Israël **tijdelijk worden stilgelegd**, waardoor Israëlische bedrijven geen preferentiële toegang meer tot de Europese markt hebben\n- **Economische missies naar Israël** (zoals door het Waals exportagentschap AWEX) zouden moeten stoppen\n- **Belgische investeringen en handel** met Israëlische ondernemingen zouden onder druk komen te staan\n- Een **volledig militair embargo** zou moeten worden ingesteld, waardoor geen wapens of militair materiaal meer via België naar Israël mogen worden doorvoerd",
+      "document_type": "VoorstelVanResolutie",
+      "selection_reason": "Dit is een voorstel van resolutie."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "PVDA-PTB",
+          "argument": "Israël schendt flagrant het **internationaal humanitair recht** en de fundamentele principes van de associatieovereenkomst, zoals bevestigd door een intern EU-rapport van juni 2025, rapporten van de VN en het Internationaal Gerechtshof. België mag niet medeplichtig zijn aan deze **schendingen van artikel 2 van het verdrag** (voorwaarde voor respect voor internationale rechtsregels en democratie)."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "Een EU-rapport sinds november 2024 bewijst dat Israël **oorlogsmisdaden** in Gaza heeft begaan. Het VN-rapport van 16 september 2025 beveelt maatregelen aan om een eind te maken aan de **genocide in Gaza**. België moet zijn **internationale verplichtingen** naleven en niet langer wachten op Europees initiatief."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "Spanje en Ierland hebben al aangetoond dat individuele EU-lidstaten kunnen handelen. België moet het **associatieverdrag opschorten** en een **militair embargo** instellen om zich niet langer medeplichtig te maken aan 'crimineel beleid' in Gaza."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "N-VA, MR (meerderheid in commissie)",
+          "argument": "De commissie verwierp alle consideransen en verzoeken van het voorstel met telkens grote meerderheid (11 tegen 4 stemmen meestal). Dit suggereert dat de meerderheidspartijen het voorstel niet steunen en prefereren dat **sancies op EU-niveau** worden genomen in plaats van unilaterale Belgische acties."
+        },
+        {
+          "party": "N-VA, MR (meerderheid in commissie)",
+          "argument": "De meerderheid steunt de bestaande, breder geformuleerde resolutie (DOC 56 0859/001-6) die eerder werd aangenomen. Het voorstel van PVDA-PTB wordt afgewezen als **onvoldoende gematigd** en te zeer gericht op directe sancties in plaats van **Europese coördinatie**."
+        },
+        {
+          "party": "N-VA, MR",
+          "argument": "De meerderheid accepteert niet de PVDA-PTB-karakterisering van **genocide** en weigert daarop gebaseerde radicale maatregelen. Slechts enkele leden van N-VA en MR erkennen de genocide-label als basis voor eenzijdige Belgische handelingen."
+        }
+      ],
+      "neutral_technical": [],
+      "summary_debate": "Dit dossier toont een **diepe kloof** tussen PVDA-PTB enerzijds en de meerderheidspartijen (N-VA, MR, en anderen) anderzijds. PVDA-PTB stelt dat **interne EU-rapporten en VN-onderzoeken** aantonen dat Israël **oorlogsmisdaden en mogelijk genocide** pleegt, en dat België niet langer mag wachten op Europese besluiten maar zelf het **associatieverdrag moet opschorten** en een **militair embargo** moet instellen. De meerderheid verzet zich echter tegen elk aspect van het voorstel door alle consideransen en verzoeken met grote meerderheid te verwerpen. Zij prefereren het **bestaande, gematigder geformuleerde voorstel** dat vertrouwt op **Europese coördinatie** en weigeren bovendien om expliciet van **genocide** te spreken als basis voor unilaterale Belgische sancties. Er is geen consensus: dit is een frontale **politieke en normatieve strijd** over hoe streng België moet reageren op de situatie in Gaza, en of individuele lidstaten moeten voorgaan of wachten op uniforme EU-actie.",
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": "Expecting value: line 1 column 1 (char 0)"
+    },
+    "cost_info": {
+      "total_cost": 0.00257425,
+      "input_tokens": 5132,
+      "output_tokens": 1033,
+      "input_cost": 0.001283,
+      "output_cost": 0.00129125
+    }
+  }
+}
