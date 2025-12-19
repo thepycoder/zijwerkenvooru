@@ -2276,6 +2276,30 @@
         "hash": "ba2764c2fd17f1386697a71bdfda0a1f12e753cb81ff4786d346f5d4f1b2aa47",
         "topic": "Geheel van het voorstel van resolutie betreffende het veroordelen van de schending van de legitieme rechten van Afghaanse vrouwen onder het Talibanregime en het oproepen van België en de Europese landen tot het verlenen van steun",
         "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mabvyslt7b2b"
+      },
+      {
+        "type": "Vote",
+        "hash": "4afcdbae331319f7f05de00b6c55734b68e0753ba5ba6514617acd8548bd89ad",
+        "topic": "(1177/9)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3maejmna2g32v"
+      },
+      {
+        "type": "Vote",
+        "hash": "741efbea8fc4409c8aa3144f4d98f5583669f25351e227f1df5c5a093600f644",
+        "topic": "( 1206/10)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3maejmqwkkg2v"
+      },
+      {
+        "type": "Vote",
+        "hash": "406915cd650b8a1ab74efd10b33f30bda1973e730e5387cff247d7afaac67fd4",
+        "topic": "( 1195/9)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3maejmuwdg62v"
+      },
+      {
+        "type": "Vote",
+        "hash": "f80b6562b49ef9c6359b790f8babcd18e4142f41d2b29682f5577dffae80e892",
+        "topic": "(1232/3)",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3maejmyychd2v"
       }
     ]
   }
