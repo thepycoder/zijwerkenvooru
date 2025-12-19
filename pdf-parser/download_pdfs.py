@@ -11,6 +11,41 @@ OUTPUT_DIR = os.path.join(BASE_DIR, 'downloads')
 def get_padded_id(id_val, length=4):
     return str(id_val).zfill(length)
 
+def is_valid_pdf(filepath):
+    """
+    Check if a file is a valid PDF (not empty and not an HTML error page).
+    Returns True if valid, False otherwise.
+    """
+    try:
+        if not os.path.exists(filepath):
+            return False
+        
+        # Check file size
+        file_size = os.path.getsize(filepath)
+        if file_size < 1000:  # Very small files are likely errors
+            return False
+        
+        # Read first few bytes to check PDF magic number
+        with open(filepath, 'rb') as f:
+            first_bytes = f.read(1024)
+            
+        # Check for PDF magic number
+        if not first_bytes.startswith(b'%PDF'):
+            # Might be HTML error page
+            try:
+                text = first_bytes.decode('utf-8', errors='ignore')
+                if 'Request Rejected' in text or 'not found' in text.lower() or '<html>' in text.lower():
+                    return False
+            except (UnicodeDecodeError, ValueError):
+                pass
+            # If it doesn't start with %PDF and isn't obviously HTML, still might be invalid
+            return False
+        
+        return True
+    except Exception as e:
+        print(f"    Warning: Error checking PDF validity: {e}")
+        return False
+
 def construct_url(session_id, dossier_id, subdoc_id):
     # Pattern: https://www.dekamer.be/FLWB/PDF/{session_id}/{dossier_id_padded_4}/{session_id}K{dossier_id_padded_4}{subdoc_id}.pdf
     
@@ -93,13 +128,27 @@ def main():
                 if response.status_code == 200:
                     with open(filepath, 'wb') as f:
                         f.write(response.content)
-                    # print(f"    Saved.")
+                    
+                    # Check if the downloaded file is valid
+                    if not is_valid_pdf(filepath):
+                        # Delete invalid file
+                        os.remove(filepath)
+                        print("    ERROR: Downloaded file is empty or contains error message")
+                        print("    Waiting 10 seconds before continuing...")
+                        time.sleep(10)  # Wait longer when error detected
+                    else:
+                        # Valid PDF downloaded
+                        pass
                 else:
                     print(f"    FAILED: Status {response.status_code}")
+                    # Wait a bit longer on HTTP errors
+                    time.sleep(5)
             except Exception as e:
                 print(f"    ERROR: {e}")
+                # Wait a bit longer on exceptions
+                time.sleep(5)
             
-            time.sleep(0.2) # Rate limit
+            time.sleep(1) # Rate limit
 
 if __name__ == "__main__":
     main()

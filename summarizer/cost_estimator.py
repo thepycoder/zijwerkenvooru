@@ -37,45 +37,8 @@ class ModelPricing:
 # Predefined model pricing configurations
 # Prices are per million tokens (as of common pricing models)
 MODEL_PRICING = {
-    # OpenAI models
-    "gpt-4o-mini": ModelPricing(
-        name="gpt-4o-mini",
-        input_price_per_million_tokens=0.15,
-        output_price_per_million_tokens=0.6,
-        encoding_name="o200k_base"
-    ),
-    "gpt-4o": ModelPricing(
-        name="gpt-4o",
-        input_price_per_million_tokens=2.5,
-        output_price_per_million_tokens=10.0,
-        encoding_name="o200k_base"
-    ),
-    "gpt-4-turbo": ModelPricing(
-        name="gpt-4-turbo",
-        input_price_per_million_tokens=10.0,
-        output_price_per_million_tokens=30.0,
-        encoding_name="cl100k_base"
-    ),
-    
-    # Anthropic models
-    "claude-3-5-sonnet-20241022": ModelPricing(
-        name="claude-3-5-sonnet-20241022",
-        input_price_per_million_tokens=3.0,
-        output_price_per_million_tokens=15.0,
-        encoding_name="cl100k_base"
-    ),
-    "claude-3-opus-20240229": ModelPricing(
-        name="claude-3-opus-20240229",
-        input_price_per_million_tokens=15.0,
-        output_price_per_million_tokens=75.0,
-        encoding_name="cl100k_base"
-    ),
-    "claude-3-haiku-20240307": ModelPricing(
-        name="claude-3-haiku-20240307",
-        input_price_per_million_tokens=0.25,
-        output_price_per_million_tokens=1.25,
-        encoding_name="cl100k_base"
-    ),
+
+
     
     # Mistral models
     "mistral-large-2512": ModelPricing(
@@ -94,14 +57,14 @@ MODEL_PRICING = {
     # Gemini models (approximate, using cl100k_base as proxy)
     "gemini-3-pro-preview": ModelPricing(
         name="gemini-3-pro-preview",
-        input_price_per_million_tokens=1.25,
-        output_price_per_million_tokens=5.0,
+        input_price_per_million_tokens=2,
+        output_price_per_million_tokens=12.0,
         encoding_name="cl100k_base"
     ),
     "gemini-3-flash-preview": ModelPricing(
         name="gemini-3-flash-preview",
-        input_price_per_million_tokens=0.075,
-        output_price_per_million_tokens=0.3,
+        input_price_per_million_tokens=0.5,
+        output_price_per_million_tokens=3,
         encoding_name="cl100k_base"
     ),
     
@@ -114,8 +77,8 @@ MODEL_PRICING = {
     ),
     "claude-haiku-4-5-20251001": ModelPricing(
         name="claude-haiku-4-5-20251001",
-        input_price_per_million_tokens=0.25,
-        output_price_per_million_tokens=1.25,
+        input_price_per_million_tokens=1,
+        output_price_per_million_tokens=5,
         encoding_name="cl100k_base"
     ),
     
@@ -124,6 +87,40 @@ MODEL_PRICING = {
         name="moonshotai/Kimi-K2-Thinking",
         input_price_per_million_tokens=0.5,
         output_price_per_million_tokens=2.0,
+        encoding_name="cl100k_base"
+    ),
+    
+    # OpenAI GPT-5 models
+    "gpt-5-nano-2025-08-07": ModelPricing(
+        name="gpt-5-nano-2025-08-07",
+        input_price_per_million_tokens=0.05,
+        output_price_per_million_tokens=0.4,
+        encoding_name="o200k_base"
+    ),
+    "gpt-5-mini-2025-08-07": ModelPricing(
+        name="gpt-5-mini-2025-08-07",
+        input_price_per_million_tokens=0.25,
+        output_price_per_million_tokens=2,
+        encoding_name="o200k_base"
+    ),
+    "gpt-5.2-2025-12-11": ModelPricing(
+        name="gpt-5.2-2025-12-11",
+        input_price_per_million_tokens=1.75,
+        output_price_per_million_tokens=14.0,
+        encoding_name="o200k_base"
+    ),
+    
+    # OpenRouter models
+    "deepseek/deepseek-v3.2": ModelPricing(
+        name="deepseek/deepseek-v3.2",
+        input_price_per_million_tokens=0.26,
+        output_price_per_million_tokens=0.38,
+        encoding_name="cl100k_base"
+    ),
+    "x-ai/grok-4-fast": ModelPricing(
+        name="x-ai/grok-4-fast",
+        input_price_per_million_tokens=0.4,
+        output_price_per_million_tokens=0.5,
         encoding_name="cl100k_base"
     ),
 }

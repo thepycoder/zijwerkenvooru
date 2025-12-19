@@ -107,7 +107,7 @@ def extract_tokens_from_response(response: Any, provider: str) -> Tuple[int, int
     output_tokens = 0
     
     try:
-        if provider == "openai" or provider == "nebius":
+        if provider == "openai" or provider == "nebius" or provider == "openrouter":
             # OpenAI-compatible API
             if hasattr(response, 'usage'):
                 usage = response.usage

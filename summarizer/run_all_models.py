@@ -36,6 +36,7 @@ def process_single_model(
         MistralLLMClient,
         GeminiLLMClient,
         NebiusLLMClient,
+        OpenRouterLLMClient,
     )
     
     # Map client class names to actual classes
@@ -45,6 +46,7 @@ def process_single_model(
         "MistralLLMClient": MistralLLMClient,
         "GeminiLLMClient": GeminiLLMClient,
         "NebiusLLMClient": NebiusLLMClient,
+        "OpenRouterLLMClient": OpenRouterLLMClient,
     }
     
     # Reconstruct config from dict (needed for multiprocessing)
@@ -108,18 +110,19 @@ def process_single_model(
                     retry_info = getattr(summary, '_retry_info', None)
                     cost_info = getattr(summary, '_cost_info', None)
                     
-                    # Calculate cost if we have pricing info and cost info
+                    # Calculate cost - always output cost info, even if 0
                     total_cost = 0.0
-                    cost_breakdown = {}
+                    cost_breakdown = {
+                        "input_tokens": cost_info.input_tokens if cost_info else 0,
+                        "output_tokens": cost_info.output_tokens if cost_info else 0,
+                        "input_cost": 0.0,
+                        "output_cost": 0.0,
+                    }
                     if cost_info and config.model in MODEL_PRICING:
                         pricing = MODEL_PRICING[config.model]
                         total_cost = pricing.cost(cost_info.input_tokens, cost_info.output_tokens)
-                        cost_breakdown = {
-                            "input_tokens": cost_info.input_tokens,
-                            "output_tokens": cost_info.output_tokens,
-                            "input_cost": pricing.cost(cost_info.input_tokens, 0),
-                            "output_cost": pricing.cost(0, cost_info.output_tokens),
-                        }
+                        cost_breakdown["input_cost"] = pricing.cost(cost_info.input_tokens, 0)
+                        cost_breakdown["output_cost"] = pricing.cost(0, cost_info.output_tokens)
                     
                     # Prepare retry info for JSON
                     retry_data = None
@@ -154,7 +157,7 @@ def process_single_model(
                         "cost_info": {
                             "total_cost": total_cost,
                             **cost_breakdown,
-                        } if cost_info else None,
+                        },
                     }
                     
                     # Update results and write immediately
@@ -181,13 +184,18 @@ def process_single_model(
         }
         
     except Exception as e:
-        print(f"\n[{config.name}] ✗ Fatal error: {e}")
+        print(f"\n[{config_dict.get('name', 'Unknown')}] ✗ Fatal error: {e}")
         import traceback
+        print("\n" + "="*80)
+        print("FULL STACKTRACE:")
+        print("="*80)
         traceback.print_exc()
+        print("="*80 + "\n")
         return {
             "config": config_dict,
             "success": False,
             "error": str(e),
+            "traceback": traceback.format_exc(),
         }
 
 
@@ -283,7 +291,25 @@ def create_run_summary(results_dir: Path, results: List[Dict]):
 
 
 def main():
-    """Run all configured models in parallel."""
+    """Run all configured models in parallel, or a single model if specified."""
+    import sys
+    import argparse
+    
+    parser = argparse.ArgumentParser(
+        description="Run model tests - all models or a single model for debugging"
+    )
+    parser.add_argument(
+        "--model",
+        type=str,
+        help="Run a single model by name (e.g., 'DeepSeek V3.2') or model ID (e.g., 'deepseek/deepseek-v3.2')",
+    )
+    parser.add_argument(
+        "--no-parallel",
+        action="store_true",
+        help="Run models sequentially instead of in parallel (useful for debugging)",
+    )
+    args = parser.parse_args()
+    
     # Configuration
     base_dir = Path(__file__).parent.parent
     subdocuments_path = str(base_dir / "web" / "src" / "data" / "subdocuments.parquet")
@@ -297,7 +323,11 @@ def main():
         "30": "Floating Amendment (Stalled) - Has Voorstel + Amendement, no Verslag",
         "200": "Various document types",
         "1131": "ET Telescoop",
-        "52": "Israel"
+        "52": "Israel",
+        "888": "Fiscale paradijzen",
+        "416": "Lange wet",
+        "1177": "Arbeidsongeschiktheid",
+        "433": "Personeelsschaarste in zorg"
     }
     
     # Create results directory with timestamp
@@ -329,6 +359,23 @@ def main():
         for dossier_id, description in reference_dossiers.items()
     }
     
+    # Filter to single model if specified
+    models_to_run = MODELS_TO_TEST
+    if args.model:
+        # Try to find by name first, then by model ID
+        matching_configs = [
+            config for config in MODELS_TO_TEST
+            if config.name.lower() == args.model.lower() or config.model == args.model
+        ]
+        if not matching_configs:
+            print(f"\n✗ Error: Model '{args.model}' not found in MODELS_TO_TEST")
+            print("Available models:")
+            for config in MODELS_TO_TEST:
+                print(f"  - {config.name} ({config.model})")
+            sys.exit(1)
+        models_to_run = matching_configs
+        print(f"\nRunning single model: {models_to_run[0].name} ({models_to_run[0].model})")
+    
     # Convert configs to dicts for multiprocessing
     config_dicts = [
         {
@@ -338,42 +385,72 @@ def main():
             "client_class": config.client_class.__name__,
             "api_key_env": config.api_key_env,
         }
-        for config in MODELS_TO_TEST
+        for config in models_to_run
     ]
     
-    # Run models in parallel
+    # Run models in parallel or sequentially
     results = []
-    max_workers = min(len(MODELS_TO_TEST), os.cpu_count() or 4)
     
-    print(f"\nRunning {len(MODELS_TO_TEST)} models with {max_workers} workers...\n")
-    
-    with ProcessPoolExecutor(max_workers=max_workers) as executor:
-        # Submit all tasks
-        # Convert results_dir to string for multiprocessing
-        results_dir_str = str(results_dir)
-        future_to_config = {
-            executor.submit(
-                process_single_model,
-                config_dict,
-                dossiers_data,
-                results_dir_str,
-            ): config_dict
-            for config_dict in config_dicts
-        }
-        
-        # Collect results as they complete
-        for future in as_completed(future_to_config):
-            config_dict = future_to_config[future]
+    if args.no_parallel or args.model:
+        # Run sequentially for debugging
+        print(f"\nRunning {len(models_to_run)} model(s) sequentially...\n")
+        for config_dict in config_dicts:
             try:
-                result = future.result()
+                result = process_single_model(
+                    config_dict,
+                    dossiers_data,
+                    str(results_dir),
+                )
                 results.append(result)
             except Exception as e:
                 print(f"\n✗ Fatal error processing {config_dict['name']}: {e}")
+                import traceback
+                traceback.print_exc()
                 results.append({
                     "config": config_dict,
                     "success": False,
                     "error": str(e),
+                    "traceback": traceback.format_exc(),
                 })
+    else:
+        # Run in parallel
+        max_workers = min(len(models_to_run), os.cpu_count() or 4)
+        print(f"\nRunning {len(models_to_run)} models with {max_workers} workers...\n")
+        
+        with ProcessPoolExecutor(max_workers=max_workers) as executor:
+            # Submit all tasks
+            # Convert results_dir to string for multiprocessing
+            results_dir_str = str(results_dir)
+            future_to_config = {
+                executor.submit(
+                    process_single_model,
+                    config_dict,
+                    dossiers_data,
+                    results_dir_str,
+                ): config_dict
+                for config_dict in config_dicts
+            }
+            
+            # Collect results as they complete
+            for future in as_completed(future_to_config):
+                config_dict = future_to_config[future]
+                try:
+                    result = future.result()
+                    results.append(result)
+                except Exception as e:
+                    print(f"\n✗ Fatal error processing {config_dict['name']}: {e}")
+                    import traceback
+                    print("\n" + "="*80)
+                    print("FULL STACKTRACE FROM MULTIPROCESSING:")
+                    print("="*80)
+                    traceback.print_exc()
+                    print("="*80 + "\n")
+                    results.append({
+                        "config": config_dict,
+                        "success": False,
+                        "error": str(e),
+                        "traceback": traceback.format_exc(),
+                    })
     
     # Create run summary
     create_run_summary(results_dir, results)

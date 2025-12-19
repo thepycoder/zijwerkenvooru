@@ -7,6 +7,7 @@ from .llm import (
     MistralLLMClient,
     GeminiLLMClient,
     NebiusLLMClient,
+    OpenRouterLLMClient,
     LLMClient,
 )
 
@@ -58,6 +59,36 @@ MODELS_TO_TEST = [
         provider="mistral",
         model="mistral-medium-2508",
         client_class=MistralLLMClient,
+    ),
+    ModelConfig(
+        name="GPT-5 nano",
+        provider="openai",
+        model="gpt-5-nano-2025-08-07",
+        client_class=OpenAILLMClient,
+    ),
+    ModelConfig(
+        name="GPT-5 mini",
+        provider="openai",
+        model="gpt-5-mini-2025-08-07",
+        client_class=OpenAILLMClient,
+    ),
+    ModelConfig(
+        name="GPT-5.2",
+        provider="openai",
+        model="gpt-5.2-2025-12-11",
+        client_class=OpenAILLMClient,
+    ),
+    ModelConfig(
+        name="DeepSeek V3.2",
+        provider="openrouter",
+        model="deepseek/deepseek-v3.2",
+        client_class=OpenRouterLLMClient,
+    ),
+    ModelConfig(
+        name="Grok 4 Fast",
+        provider="openrouter",
+        model="x-ai/grok-4-fast",
+        client_class=OpenRouterLLMClient,
     ),
     # ModelConfig(
     #     name="Kimi K2 Thinking",

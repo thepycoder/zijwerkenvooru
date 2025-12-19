@@ -20,7 +20,7 @@ use sha2::{Digest, Sha256};
 #[tokio::main]
 async fn main() {
     let model_name = "mistral";
-    let mistral_api_key = std::env::var("MISTRAL_API_TOKEN").expect("Missing MISTRAL_API_TOKEN");
+    let mistral_api_key = std::env::var("MISTRAL_API_KEY").expect("Missing MISTRAL_API_KEY");
     let client = Client::new();
 
     let root = PathBuf::from("./web/src/data");

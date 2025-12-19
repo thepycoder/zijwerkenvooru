@@ -1,0 +1,324 @@
+{
+  "191": {
+    "dossier_id": "191",
+    "title": "Wetsontwerp tot wijziging van de wet van 8 juni 2006 houdende regeling van economische en individuele activiteiten met wapens wat betreft het verwerven en gebruiken van geluiddempers en nachtzichtrichtkijkers.",
+    "generated_title": "Nieuwe regels voor het bezit en gebruik van geluiddempers en nachtzichtrichtkijkers",
+    "model": "gemini-3-flash-preview",
+    "model_name": "Gemini 3 Flash Preview",
+    "provider": "gemini",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDeze wet wijzigt de bestaande **Wapenwet** om de regels rondom het bezit en het gebruik van specifieke hulpstukken te verduidelijken. Het doel is om een wettelijk kader te scheppen voor het **verwerven en gebruiken** van **geluiddempers** en **nachtzichtrichtkijkers**, onderdelen die voorheen aan strikte of onduidelijke beperkingen onderhevig waren.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- Er komen duidelijke voorwaarden voor het **aankopen en bezitten** van geluiddempers voor vuurwapens.\n- De regels voor het gebruik van **nachtzichtrichtkijkers** (kijkers die restlicht versterken of infrarood gebruiken) worden officieel vastgelegd.\n- De wet bepaalt wie deze specifieke **wapentoebehoren** mag gebruiken en onder welke strikte omstandigheden dit is toegestaan.\n- De algemene **Wapenwet van 2006** wordt geactualiseerd om deze technische hulpmiddelen correct te categoriseren binnen de legale wapenhandel en het individueel gebruik.",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "cd&v, N-VA, VB, Vooruit",
+          "argument": "Het legaliseren van deze hulpmiddelen is essentieel om de groeiende overlast en schade door everzwijnen aan landbouw, tuinen en de verkeersveiligheid effectief aan te pakken."
+        },
+        {
+          "party": "Open Vld, VB",
+          "argument": "Nachtzichtrichtkijkers maken de jacht veiliger en diervriendelijker omdat de jager een beter zicht heeft in moeilijke omstandigheden, wat ongewilde doelwitten en onnodig dierenleed voorkomt."
+        },
+        {
+          "party": "cd&v, N-VA",
+          "argument": "Er wordt een strikt wettelijk kader gecreëerd met een registratieplicht, een verbod op verkoop via internet en de verplichting van serienummers om de traceerbaarheid te garanderen."
+        },
+        {
+          "party": "VB, N-VA",
+          "argument": "De impact op de criminaliteit zal minimaal zijn, aangezien criminele organisaties deze accessoires vandaag de dag al illegaal verwerven via buitenlandse markten waar ze reeds legaal verkrijgbaar zijn."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "Technisch advies (Federale Politie/Wapendienst), Ecolo-Groen, PS",
+          "argument": "Er bestaat een groot risico voor de openbare veiligheid omdat geluiddempers en nachtkijkers zeer gewild zijn in het criminele circuit en de georganiseerde misdaad."
+        },
+        {
+          "party": "Technisch advies (Juridische Dienst), PS, Ecolo-Groen",
+          "argument": "Het wetsvoorstel hanteert onduidelijke termen zoals serienummer en wapens met lange loop zonder deze wettelijk te definiëren, wat leidt tot juridische onzekerheid en handhavingsproblemen."
+        },
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Een toename van wapenonderdelen in de samenleving verhoogt de algemene onveiligheid en de risico's op wapengerelateerd geweld binnen de gezinssfeer, zoals feminicide."
+        },
+        {
+          "party": "Technisch advies (Centraal Wapenregister), Ecolo-Groen",
+          "argument": "De registratie van deze hulpstukken vereist complexe en dure aanpassingen aan de nationale wapendatabank, terwijl de praktische uitvoering door de politiediensten nagenoeg onmogelijk wordt geacht."
+        },
+        {
+          "party": "PS, Ecolo-Groen",
+          "argument": "Er is een vrees voor een hellend vlak waarbij deze instrumenten, onder het mom van de everzwijnenbestrijding, uiteindelijk voor alle vormen van jacht zullen worden ingezet."
+        }
+      ],
+      "neutral_technical": [],
+      "summary_debate": "Het debat over de wijziging van de **Wapenwet** is een scherpe confrontatie tussen de noodzaak voor **wildbeheer** en de bescherming van de **openbare veiligheid**. Voorstanders, waaronder een ruime meerderheid en het Vlaams Belang, zien de legalisering als een pragmatische oplossing voor de **everzwijnenplaag** en een middel voor een veiligere, nauwkeurigere jacht. Tegenstanders, aangevoerd door Ecolo-Groen en PS, steunen op vernietigende adviezen van de **federale politie** en de **wapendienst** die waarschuwen voor de aantrekkingskracht van deze middelen op de **georganiseerde misdaad**. Er is sprake van een diepe politieke strijd waarbij de oppositie de meerderheid verwijt de **jachtlobby** te dienen, terwijl technische bezorgdheden over **traceerbaarheid** en de definitie van **serienummers** de juridische afwikkeling bemoeilijken.",
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.002208,
+      "input_tokens": 25712,
+      "output_tokens": 932,
+      "input_cost": 0.0019283999999999998,
+      "output_cost": 0.00027959999999999997
+    }
+  },
+  "135": {
+    "dossier_id": "135",
+    "title": "Wetsvoorstel tot wijziging van de programmawet (I) van 27 december 2006, de wetten betreffende de preventie van beroepsziekten en de vergoeding van de schade die uit die ziekten voortvloeit, gecoördineerd op 3 juni 1970, en van het koninklijk besluit van 28 april 2017 tot vaststelling van boek I Algemene beginselen van de codex over het welzijn op het werk, met het oog op de verbetering van de ondersteuning voor asbestslachtoffers en de financiering van het Schadeloosstellingfonds voor asbestslachtoffers.",
+    "generated_title": "Betere ondersteuning voor asbestslachtoffers en versterking van de aansprakelijkheid van werkgevers",
+    "model": "gemini-3-flash-preview",
+    "model_name": "Gemini 3 Flash Preview",
+    "provider": "gemini",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDit wetsvoorstel beoogt de **ondersteuning van asbestslachtoffers** te verbeteren en de **aansprakelijkheid** van bedrijven die het risico op besmetting hebben verhoogd te versterken. Het voert het principe van **\"de vervuiler betaalt\"** in om de financiering van het **Asbestfonds** rechtvaardiger te maken en juridische drempels voor slachtoffers te verlagen.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- Introductie van het begrip **onverschoonbare fout**, waardoor slachtoffers makkelijker een rechtszaak kunnen aanspannen tegen werkgevers die op de hoogte waren van de gevaren maar geen voorzorgsmaatregelen namen.\n- Bedrijven die door een rechter veroordeeld worden voor asbestschade moeten een **forfaitaire burgerlijke boete** betalen aan het Asbestfonds.\n- Er komt een **centraal register** van alle asbestinventarissen van Belgische werkgevers om de traceerbaarheid van blootstelling te verbeteren.\n- Oprichting van een **gratis telefoonnummer** voor slachtoffers en nabestaanden voor medische en administratieve begeleiding.\n- Het Asbestfonds moet voortaan **jaarlijks rapporteren** over haar werking, de transparantie van schadevergoedingen en lopende onderzoeksprojecten.\n- De financiering voor **zelfstandigen** wordt uitgebreid, zodat zij voor alle erkende asbestziekten vergoed kunnen worden in plaats van enkel voor asbestose.\n- Werkgevers worden verplicht om werknemers die het bedrijf verlaten schriftelijk te informeren over hun recht op inzage in hun **medisch dossier**.",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "Ecolo-Groen, PS, PVDA",
+          "argument": "Het doorbreken van de burgerrechtelijke immuniteit van bedrijven is noodzakelijk om gerechtigheid te bieden aan slachtoffers van wie de werkgever bewust de risico's van asbest negeerde."
+        },
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Gezien de lange latentietijd van asbestziektes is een versterking van de wetgeving nu cruciaal om de verwachte piek in diagnoses tussen 2025 en 2030 op te vangen."
+        },
+        {
+          "party": "Ecolo-Groen, PS",
+          "argument": "Het voorstel heft de discriminatie op tussen verschillende categorieën slachtoffers, zoals zelfstandigen en personen die via het milieu zijn blootgesteld, door hen gelijke toegang tot vergoedingen te geven."
+        },
+        {
+          "party": "Technisch advies / Ecolo-Groen",
+          "argument": "De centralisatie van asbestinventarissen en de invoering van een jaarlijkse rapportageplicht verhogen de transparantie en verbeteren de preventieve opvolging van blootstelling."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "N-VA, Vooruit, cd&v, Open Vld",
+          "argument": "Er is een voorkeur om te wachten op een overkoepelend wetsontwerp van de federale regering om een juridisch robuust en breed gedragen kader te garanderen binnen de Arizona-coalitie."
+        },
+        {
+          "party": "Technisch advies / Raad van State",
+          "argument": "De introductie van het begrip onverschoonbare fout zorgt voor rechtsonzekerheid omdat de afbakening ten opzichte van gewone fouten en opzettelijkheid juridisch onvoldoende duidelijk is gedefinieerd."
+        },
+        {
+          "party": "PS / Technisch advies",
+          "argument": "Het ter discussie stellen van de immuniteit van bedrijven kan het delicate sociale compromis uit 2006 ondermijnen, wat het risico inhoudt dat het hele systeem van snelle schadeloosstelling wankelt."
+        },
+        {
+          "party": "Technisch advies / Raad van State",
+          "argument": "De voorgestelde burgerlijke boetes kunnen leiden tot nieuwe vormen van discriminatie, aangezien ze enkel van toepassing zijn op bedrijven die reeds door een rechter veroordeeld zijn."
+        }
+      ],
+      "neutral_technical": [],
+      "summary_debate": "Het parlementaire debat weerspiegelt een diepe verdeeldheid over de balans tussen **snelle schadevergoeding** en de **juridische aansprakelijkheid** van bedrijven. Hoewel er brede consensus is over de noodzaak om slachtoffers te ondersteunen, heerst er strijd over de methode: voorstanders eisen de toepassing van het **de vervuiler betaalt-principe** en het opheffen van de **immuniteit** voor grote asbestproducenten. Tegenstanders en twijfelaars vrezen echter voor **rechtsonzekerheid** en wijzen op de technische bezorgdheden van de **Raad van State** over het nieuwe concept van de **onverschoonbare fout**. Uiteindelijk werd het voorstel verworpen omdat een meerderheid de voorkeur geeft aan een initiatief vanuit de **federale regering** boven een parlementair voorstel.",
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.0014784,
+      "input_tokens": 16444,
+      "output_tokens": 817,
+      "input_cost": 0.0012332999999999999,
+      "output_cost": 0.0002451
+    }
+  },
+  "30": {
+    "dossier_id": "30",
+    "title": "Voorstel tot herziening van artikel 22 van de Grondwet met het oog op de erkenning van het recht op vrijwillige zwangerschapsafbreking.",
+    "generated_title": "Verankering van het recht op abortus in de Grondwet",
+    "model": "gemini-3-flash-preview",
+    "model_name": "Gemini 3 Flash Preview",
+    "provider": "gemini",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDit voorstel beoogt de **verankering van het recht op abortus** in de Belgische **Grondwet** om dit fundamentele recht te beschermen tegen toekomstige politieke verschuivingen. Omdat de toegang tot vrijwillige zwangerschapsafbreking momenteel enkel via een **gewone wet** is geregeld, wil men voorkomen dat dit recht eenvoudig kan worden ingeperkt of afgeschaft.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- **Artikel 22 van de Grondwet** wordt aangevuld met een expliciete zin die stelt dat het recht op een privéleven ook het recht op **vrijwillige zwangerschapsafbreking** omvat.\n- Het recht op abortus krijgt een **hogere juridische status**, waardoor het veel moeilijker wordt voor een toekomstig parlement om dit recht volledig te schrappen.\n- Er wordt een **standstill-effect** gecreëerd, wat betekent dat de overheid de huidige wettelijke bescherming en toegang tot abortus niet zomaar mag terugschroeven.\n- De wetgever behoudt de bevoegdheid om de **concrete voorwaarden** (zoals termijnen) te bepalen, maar de kern van het recht wordt onschendbaar in de Grondwet.",
+      "document_type": "VoorstelTotHerziening",
+      "selection_reason": "Dit is een voorstel tot herziening. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "summary_debate": null,
+      "notable_changes": null,
+      "has_debate": false
+    },
+    "retry_info": null,
+    "cost_info": null
+  },
+  "200": {
+    "dossier_id": "200",
+    "title": "Voorstel van bijzondere wet tot wijziging van de bijzondere wet van 6 januari 1989 op het Grondwettelijk Hof voor wat de samenstelling van het Hof en de voorwaarden om benoemd te kunnen worden tot rechter betreft.",
+    "generated_title": "Nieuwe regels voor de samenstelling en benoeming van rechters bij het Grondwettelijk Hof",
+    "model": "gemini-3-flash-preview",
+    "model_name": "Gemini 3 Flash Preview",
+    "provider": "gemini",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDit voorstel wil de werking en de **legitimiteit** van het **Grondwettelijk Hof** versterken door de benoemingsvoorwaarden voor rechters aan te scherpen en te moderniseren. Het doel is om te garanderen dat alle rechters over de nodige **juridische expertise** en **taalkennis** beschikken om de steeds complexere juridische geschillen in België correct te beoordelen.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- **Alle rechters** moeten voortaan via een officieel examen bewijzen dat ze de **tweede landstaal** (Nederlands of Frans) voldoende beheersen.\n- **Gewezen politici** die rechter willen worden, moeten voortaan verplicht een **diploma in de rechten** (master, licentiaat of doctor) bezitten.\n- De vereiste **ervaring voor politici** wordt opgetrokken van vijf naar **acht jaar**, waarbij ook jaren als minister of staatssecretaris worden meegeteld.\n- Ervaren **advocaten** (minstens 20 jaar actief) met expertise in het publiekrecht kunnen voortaan ook benoemd worden als rechter-jurist.\n- De strikte verdeling (helft juristen, helft politici) wordt soepeler: per taalgroep moet voortaan **één derde tot de helft** van de rechters een politieke achtergrond hebben.\n- Elke kandidaat-rechter moet voortaan verplicht verschijnen op een **hoorzitting** in het parlement voordat een benoeming kan plaatsvinden.\n- Het bewijs van kennis van de **Duitse taal** voor de Duitstalige rechter moet voortaan via een gestandaardiseerd examen bij de federale overheid worden geleverd.",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "summary_debate": null,
+      "notable_changes": null,
+      "has_debate": false
+    },
+    "retry_info": null,
+    "cost_info": null
+  },
+  "1131": {
+    "dossier_id": "1131",
+    "title": "Resolutie tot ondersteuning van de kandidatuur voor de bouw van de Einsteintelescoop in de Euregio Maas-Rijn.",
+    "generated_title": "Steun voor de bouw van de Einsteintelescoop in de grensregio Maas-Rijn",
+    "model": "gemini-3-flash-preview",
+    "model_name": "Gemini 3 Flash Preview",
+    "provider": "gemini",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDeze resolutie ondersteunt de gezamenlijke kandidatuur van België, Nederland en Duitsland om de **Einsteintelescoop** naar de **Euregio Maas-Rijn** te halen. Het doel is om dit grensgebied te transformeren tot een wereldtoplocatie voor **wetenschappelijk onderzoek** naar het heelal, wat een enorme impuls geeft aan de **economie, innovatie en werkgelegenheid** in de regio.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- De federale regering erkent de bouw van de telescoop officieel als een **strategisch project van nationaal belang**.\n- België zet **diplomatieke kanalen** in om de kandidatuur internationaal te promoten en andere landen te overtuigen om deel te nemen.\n- Er wordt onderzocht of de overheid **bijdragen in natura** kan leveren, zoals het beschikbaar stellen van het **rangeerterrein van Montzen** en hulp bij het transport van uitgegraven grond.\n- De overheid gaat de **samenwerking tussen universiteiten, onderzoekscentra en bedrijven** in de grensregio versterken om de technologische kansen optimaal te benutten.\n- Er komt een scherpe focus op de **internationale concurrentie** (zoals Sardinië) om de Belgische strategie voortdurend aan te scherpen.\n- Het project moet worden gerealiseerd met respect voor het **milieu** en via **transparante communicatie** met de lokale bevolking.",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "N-VA, MR, PS, Vooruit, cd&v, Open Vld, Les Engagés",
+          "argument": "Het project zorgt voor een enorme economische impuls met een investeringsmultiplicator van 3 tot 4, wat leidt tot duizenden jobs en technologische spinoffs in sectoren zoals de medische industrie en ruimtevaart."
+        },
+        {
+          "party": "Technisch advies (Prof. Nguyen & Prof. Hertog)",
+          "argument": "De Euregio Maas-Rijn beschikt over een unieke bodemstructuur waarbij een zachte toplaag menselijke trillingen dempt, wat technisch essentieel is voor de uiterst gevoelige metingen van zwaartekrachtgolven."
+        },
+        {
+          "party": "Alle fracties",
+          "argument": "De Einsteintelescoop versterkt de Europese strategische en technologische autonomie en plaatst België in het centrum van de wereldwijde fundamentele wetenschap."
+        },
+        {
+          "party": "POM Limburg, VB, Vooruit",
+          "argument": "Het project fungeert als een krachtig uithangbord voor STEM-opleidingen en zal generaties jongeren inspireren om te kiezen voor wetenschappelijke en technische carrières."
+        },
+        {
+          "party": "Meerderheidspartijen, Belspo",
+          "argument": "Door de grensoverschrijdende samenwerking met Nederland en Duitsland worden de hoge financiële kosten en risico's gespreid over meerdere landen."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "Technisch advies (Prof. Delnoy)",
+          "argument": "Het Belgische institutionele kader is uiterst complex, waardoor het risico op jarenlange vertragingen door procedures bij de Raad van State en conflicterende gewestelijke regels zeer groot is."
+        },
+        {
+          "party": "Ecolo-Groen, PS, Les Engagés",
+          "argument": "De constructiefase brengt enorme lokale hinder met zich mee, waaronder tienduizenden vrachtwagenbewegingen en mogelijke aantasting van het landelijke weefsel en milieu."
+        },
+        {
+          "party": "VB, PS",
+          "argument": "Er is grote onzekerheid over de uiteindelijke kostprijs, die inmiddels op 3 miljard euro wordt geschat, en over het uitblijven van een concreet federaal financieel engagement."
+        },
+        {
+          "party": "N-VA, MR, VB",
+          "argument": "De komst van de telescoop legt zware beperkingen op aan de regio, zoals een verbod op windturbines en andere trillingsintensieve economische activiteiten in een ruime perimeter."
+        },
+        {
+          "party": "VB, Open Vld",
+          "argument": "Er bestaat een reëel risico dat de investeringen in de voorbereiding verloren gaan als het project door politieke of wetenschappelijke redenen aan concurrenten zoals Sardinië wordt toegewezen."
+        }
+      ],
+      "neutral_technical": [],
+      "summary_debate": "Er heerst een brede **parlementaire consensus** over de enorme wetenschappelijke en economische waarde van de **Einsteintelescoop**. Het project wordt gezien als een **economische hefboom** die de regio kan transformeren tot een technologische wereldtop. De politieke strijd concentreert zich echter op de **financiële verdeelsleutel** tussen de federale overheid en de gewesten, en de noodzaak om de **lokale bevolking** mee te krijgen in het verhaal. Grote bezorgdheid is er over de **juridische kwetsbaarheid** van de vergunningsprocedures in België, die een nadeel kunnen vormen ten opzichte van de **internationale concurrentie** met Sardinië. Ondanks deze hindernissen is er een duidelijke wil om de **Euregio Maas-Rijn** als één blok te verdedigen.",
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.006007049999999999,
+      "input_tokens": 76374,
+      "output_tokens": 930,
+      "input_cost": 0.005728049999999999,
+      "output_cost": 0.000279
+    }
+  },
+  "52": {
+    "dossier_id": "52",
+    "title": "Voorstel van resolutie betreffende de ondersteuning van de opschorting van de preferentiële associatieovereenkomst tussen de Europese Unie en Israël.",
+    "generated_title": "Stopzetten van de Europese handelsvoordelen voor Israël wegens schendingen van het internationaal recht",
+    "model": "gemini-3-flash-preview",
+    "model_name": "Gemini 3 Flash Preview",
+    "provider": "gemini",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDit voorstel beoogt de opschorting van de **preferentiële associatieovereenkomst** tussen de Europese Unie en Israël vanwege aanhoudende schendingen van het **internationaal recht** en de **mensenrechten**. Het doel is om via economische en diplomatieke druk een einde te maken aan de **oorlogsmisdaden**, het **apartheidsregime** en het illegale **nederzettingenbeleid** in de Palestijnse gebieden.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- De Belgische regering moet op Europees niveau pleiten voor het stopzetten van de **bevoorrechte handelsrelatie** met Israël.\n- Er komt een volledig en onmiddellijk **militair embargo** op de export en doorvoer van wapens en munitie.\n- Het stopzetten van **economische missies** en financiële stimuli voor bedrijven die actief zijn in de bezette gebieden of de militaire sector.\n- België mag geen enkele vorm van hulp of erkenning verlenen aan de **onwettige situatie** die door de nederzettingen is gecreëerd.\n- De federale regering moet actief ijveren voor het voorkomen van een **genociderisico** in de Gazastrook door internationale druk uit te oefenen.",
+      "document_type": "VoorstelVanResolutie",
+      "selection_reason": "Dit is een voorstel van resolutie."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "PVDA-PTB",
+          "argument": "Israël schendt op flagrante wijze het internationaal humanitair recht en de fundamentele principes van de associatieovereenkomst, specifiek de clausule over respect voor mensenrechten in artikel 2."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "Interne rapporten van de Europese Unie en verslagen van de VN bevestigen het plegen van oorlogsmisdaden en wijzen op een reëel genociderisico in de Gazastrook."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "België moet stoppen met medeplichtigheid aan de Israëlische politiek door de preferentiële handelsstatus op te schorten en een volledig militair embargo in te stellen."
+        },
+        {
+          "party": "Technisch advies (VN/Internationaal Recht)",
+          "argument": "VN-verslagen bevelen aan om noodzakelijke maatregelen te nemen om een einde te maken aan de genocide en roepen de internationale gemeenschap op om verplichtingen uit het genocideverdrag na te komen."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "N-VA, MR",
+          "argument": "Er is binnen deze fracties geen bereidheid om de situatie in Gaza officieel als genocide te erkennen, wat de basis voor de in de resolutie voorgestelde sancties ondergraaft."
+        },
+        {
+          "party": "Meerderheidspartijen",
+          "argument": "De regering mag zich niet verschuilen achter het Europese niveau, maar de meerderheid verkiest in de praktijk een beleid dat aansluit bij bestaande resoluties en een gecoördineerde Europese aanpak."
+        },
+        {
+          "party": "Meerderheidspartijen",
+          "argument": "Het voorstel wordt als te verregaand beschouwd in vergelijking met eerdere parlementaire initiatieven die al een kader boden voor de Belgische houding in dit conflict."
+        }
+      ],
+      "neutral_technical": [],
+      "summary_debate": "Het debat over de opschorting van de **associatieovereenkomst** met Israël toont een diepe verdeeldheid in het parlement. De indieners (PVDA-PTB) eisen harde sancties, een **militair embargo** en economische isolatie vanwege de humanitaire crisis en vermeende **genocide**. De meerderheidspartijen en rechtse oppositie (N-VA, MR) blokkeren dit echter consequent, waarbij zij wijzen op de noodzaak van een **Europees kader** en de weigering om de situatie juridisch als genocide te bestempelen. Er is geen sprake van **consensus**; alle onderdelen van de resolutie werden systematisch weggestemd, wat wijst op een scherpe politieke strijd over de Belgische diplomatieke koers in het **Midden-Oostenconflict**.",
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.000582675,
+      "input_tokens": 4993,
+      "output_tokens": 694,
+      "input_cost": 0.000374475,
+      "output_cost": 0.0002082
+    }
+  }
+}

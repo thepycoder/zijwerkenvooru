@@ -1,0 +1,137 @@
+{
+  "191": {
+    "dossier_id": "191",
+    "title": "Wetsontwerp tot wijziging van de wet van 8 juni 2006 houdende regeling van economische en individuele activiteiten met wapens wat betreft het verwerven en gebruiken van geluiddempers en nachtzichtrichtkijkers.",
+    "generated_title": "[MOCK] Duidelijke titel voor: Wetsontwerp tot wijziging van de wet van 8 juni 20...",
+    "model": "mock",
+    "fact_summary": {
+      "summary": "[MOCK] Objectieve samenvatting van AangenomenTekst document 014.",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "Vooruit",
+          "argument": "[MOCK] Argument voor: dit voorstel verbetert..."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "N-VA",
+          "argument": "[MOCK] Argument tegen: dit kost te veel..."
+        }
+      ],
+      "neutral_technical": [
+        {
+          "source": "Raad van State",
+          "argument": "[MOCK] Technische opmerking: mogelijke schending..."
+        }
+      ],
+      "notable_changes": null,
+      "has_debate": true
+    }
+  },
+  "135": {
+    "dossier_id": "135",
+    "title": "Wetsvoorstel tot wijziging van de programmawet (I) van 27 december 2006, de wetten betreffende de preventie van beroepsziekten en de vergoeding van de schade die uit die ziekten voortvloeit, gecoördineerd op 3 juni 1970, en van het koninklijk besluit van 28 april 2017 tot vaststelling van boek I Algemene beginselen van de codex over het welzijn op het werk, met het oog op de verbetering van de ondersteuning voor asbestslachtoffers en de financiering van het Schadeloosstellingfonds voor asbestslachtoffers.",
+    "generated_title": "[MOCK] Duidelijke titel voor: Wetsvoorstel tot wijziging van de programmawet (I)...",
+    "model": "mock",
+    "fact_summary": {
+      "summary": "[MOCK] Objectieve samenvatting van WetsVoorstel document 001.",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "Vooruit",
+          "argument": "[MOCK] Argument voor: dit voorstel verbetert..."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "N-VA",
+          "argument": "[MOCK] Argument tegen: dit kost te veel..."
+        }
+      ],
+      "neutral_technical": [
+        {
+          "source": "Raad van State",
+          "argument": "[MOCK] Technische opmerking: mogelijke schending..."
+        }
+      ],
+      "notable_changes": null,
+      "has_debate": true
+    }
+  },
+  "30": {
+    "dossier_id": "30",
+    "title": "Voorstel tot herziening van artikel 22 van de Grondwet met het oog op de erkenning van het recht op vrijwillige zwangerschapsafbreking.",
+    "generated_title": "[MOCK] Duidelijke titel voor: Voorstel tot herziening van artikel 22 van de Gron...",
+    "model": "mock",
+    "fact_summary": {
+      "summary": "[MOCK] Objectieve samenvatting van VoorstelTotHerziening document 001.",
+      "document_type": "VoorstelTotHerziening",
+      "selection_reason": "Dit is een voorstel tot herziening. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": "[MOCK] Samenvatting van het dossier op basis van de beschikbare documenten.",
+      "has_debate": false
+    }
+  },
+  "449": {
+    "dossier_id": "449",
+    "title": "Wetsontwerp houdende de eerste aanpassing van de Middelenbegroting voor het begrotingsjaar 2024.",
+    "generated_title": "[MOCK] Duidelijke titel voor: Wetsontwerp houdende de eerste aanpassing van de M...",
+    "model": "mock",
+    "fact_summary": {
+      "summary": "[MOCK] Objectieve samenvatting van AangenomenTekst document 004.",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "Vooruit",
+          "argument": "[MOCK] Argument voor: dit voorstel verbetert..."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "N-VA",
+          "argument": "[MOCK] Argument tegen: dit kost te veel..."
+        }
+      ],
+      "neutral_technical": [
+        {
+          "source": "Raad van State",
+          "argument": "[MOCK] Technische opmerking: mogelijke schending..."
+        }
+      ],
+      "notable_changes": null,
+      "has_debate": true
+    }
+  },
+  "200": {
+    "dossier_id": "200",
+    "title": "Voorstel van bijzondere wet tot wijziging van de bijzondere wet van 6 januari 1989 op het Grondwettelijk Hof voor wat de samenstelling van het Hof en de voorwaarden om benoemd te kunnen worden tot rechter betreft.",
+    "generated_title": "[MOCK] Duidelijke titel voor: Voorstel van bijzondere wet tot wijziging van de b...",
+    "model": "mock",
+    "fact_summary": {
+      "summary": "[MOCK] Objectieve samenvatting van WetsVoorstel document 001.",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "notable_changes": "[MOCK] Samenvatting van het dossier op basis van de beschikbare documenten.",
+      "has_debate": false
+    }
+  }
+}

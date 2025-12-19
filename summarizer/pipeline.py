@@ -34,6 +34,7 @@ def summarize_dossier(
     fact_summary = llm_client.summarize_facts(
         document=core_doc,
         context=core_selection.selection_reason,
+        dossier_id=dossier.dossier_id,
     )
     
     # Step 2: Get debate and advice documents
@@ -61,7 +62,7 @@ def summarize_dossier(
     
     # Generate a clear title
     print(f"Step 3: Generating clear title...")
-    generated_title = llm_client.generate_title(dossier.title, fact_summary)
+    generated_title = llm_client.generate_title(dossier.title, fact_summary, dossier_id=dossier.dossier_id)
     
     summary = DossierSummary(
         dossier_id=dossier.dossier_id,

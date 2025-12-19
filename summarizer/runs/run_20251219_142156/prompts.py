@@ -106,8 +106,8 @@ BELANGRIJK - Formatting:
 
 Formatteer je antwoord als JSON met deze structuur:
 {{
-    "arguments_for": [{{"party": "Partij naam/namen of Technisch advies van...", "argument": "Argument tekst (geen vetgedrukt, gewone tekst)"}}],
-    "arguments_against": [{{"party": "Partij naam/namen of Technisch advies van...", "argument": "Argument tekst (geen vetgedrukt, gewone tekst)"}}],
+    "arguments_for": [{{"party": "Partij naam/namen of 'Technisch advies'", "argument": "Argument tekst (geen vetgedrukt, gewone tekst)"}}],
+    "arguments_against": [{{"party": "Partij naam/namen of 'Technisch advies'", "argument": "Argument tekst (geen vetgedrukt, gewone tekst)"}}],
     "summary_debate": "Vat de grote lijnen van de debatten samen in een alinea. Gebruik **vetgedrukt** voor belangrijke termen en concepten."
 }}
 
