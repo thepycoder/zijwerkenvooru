@@ -1,0 +1,96 @@
+{
+  "run_timestamp": "2025-12-19T19:52:43.664414",
+  "models_tested": 11,
+  "models_successful": 11,
+  "models_failed": 0,
+  "model_results": [
+    {
+      "name": "Claude Haiku 4.5",
+      "provider": "anthropic",
+      "model": "claude-haiku-4-5-20251001",
+      "success": true,
+      "results_count": 10,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251219_193917/results_claude-haiku-4-5-20251001.json"
+    },
+    {
+      "name": "Mistral Medium 2508",
+      "provider": "mistral",
+      "model": "mistral-medium-2508",
+      "success": true,
+      "results_count": 10,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251219_193917/results_mistral-medium-2508.json"
+    },
+    {
+      "name": "Grok 4 Fast",
+      "provider": "openrouter",
+      "model": "x-ai/grok-4-fast",
+      "success": true,
+      "results_count": 10,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251219_193917/results_x-ai_grok-4-fast.json"
+    },
+    {
+      "name": "Gemini 3 Flash Preview",
+      "provider": "gemini",
+      "model": "gemini-3-flash-preview",
+      "success": true,
+      "results_count": 10,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251219_193917/results_gemini-3-flash-preview.json"
+    },
+    {
+      "name": "GPT-5.2",
+      "provider": "openai",
+      "model": "gpt-5.2-2025-12-11",
+      "success": true,
+      "results_count": 10,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251219_193917/results_gpt-5.2-2025-12-11.json"
+    },
+    {
+      "name": "Claude Sonnet 4.5",
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-5-20250929",
+      "success": true,
+      "results_count": 10,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251219_193917/results_claude-sonnet-4-5-20250929.json"
+    },
+    {
+      "name": "Gemini 3 Pro Preview",
+      "provider": "gemini",
+      "model": "gemini-3-pro-preview",
+      "success": true,
+      "results_count": 10,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251219_193917/results_gemini-3-pro-preview.json"
+    },
+    {
+      "name": "Mistral Large 2512",
+      "provider": "mistral",
+      "model": "mistral-large-2512",
+      "success": true,
+      "results_count": 10,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251219_193917/results_mistral-large-2512.json"
+    },
+    {
+      "name": "GPT-5 mini",
+      "provider": "openai",
+      "model": "gpt-5-mini-2025-08-07",
+      "success": true,
+      "results_count": 10,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251219_193917/results_gpt-5-mini-2025-08-07.json"
+    },
+    {
+      "name": "DeepSeek V3.2",
+      "provider": "openrouter",
+      "model": "deepseek/deepseek-v3.2",
+      "success": true,
+      "results_count": 10,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251219_193917/results_deepseek_deepseek-v3.2.json"
+    },
+    {
+      "name": "GPT-5 nano",
+      "provider": "openai",
+      "model": "gpt-5-nano-2025-08-07",
+      "success": true,
+      "results_count": 10,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251219_193917/results_gpt-5-nano-2025-08-07.json"
+    }
+  ]
+}

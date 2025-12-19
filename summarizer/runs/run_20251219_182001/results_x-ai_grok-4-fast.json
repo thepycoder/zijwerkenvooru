@@ -1,0 +1,574 @@
+{
+  "191": {
+    "dossier_id": "191",
+    "title": "Wetsontwerp tot wijziging van de wet van 8 juni 2006 houdende regeling van economische en individuele activiteiten met wapens wat betreft het verwerven en gebruiken van geluiddempers en nachtzichtrichtkijkers.",
+    "generated_title": "Regels voor verkrijgen en gebruik van geluiddempers en nachtzichtkijkers bij wapens",
+    "model": "x-ai/grok-4-fast",
+    "model_name": "Grok 4 Fast",
+    "provider": "openrouter",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDeze wet wijzigt de **wapenswet** van 8 juni 2006 om de regels voor het **verwerven** en **gebruiken** van **geluiddempers** en **nachtzichtrichtkijkers** te reguleren in economische en individuele activiteiten met wapens, met als doel een duidelijke juridische kader te bieden voor deze specifieke hulpmiddelen.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- Aanpassing van de voorwaarden voor het verkrijgen van **geluiddempers** en **nachtzichtrichtkijkers** onder de bestaande **wapenswet**.\n- Wijziging van de regels rond het gebruik van deze hulpmiddelen in individuele en economische contexten.\n- Integratie van de nieuwe bepalingen in de wet van 2006, na goedkeuring door de plenaire vergadering en voorlegging aan de Koning.",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "cd&v (Steven Matheï)",
+          "argument": "Het voorstel pakt de overlast van everzwijnen aan, die schade veroorzaken aan gewassen, tuinen en verkeersveiligheid, en soms mensen aanvallen. Het maakt jacht effectiever en diervriendelijker door geluiddempers en nachtzichtkijkers toe te staan onder strikte voorwaarden."
+        },
+        {
+          "party": "VB (Alexander Van Hoecke)",
+          "argument": "Noodzakelijk om het overtal aan everzwijnen en de wildschade te bestrijden. De hulpmiddelen maken de jacht doeltreffender en diervriendelijker, zonder significante toename van crimineel gebruik, want deze zijn al illegaal beschikbaar."
+        },
+        {
+          "party": "Open Vld (Vincent Van Quickenborne, Katja Gabriëls)",
+          "argument": "Verbetert de veiligheid bij jacht door beter zicht in donkere omstandigheden, wat ongevallen met verkeerde doelwitten voorkomt en dierenleed vermindert door nauwkeurigere schoten. Kan breder toegepast worden op ander wild zoals vossen."
+        },
+        {
+          "party": "N-VA (Sophie De Wit) en Vooruit (Alain Yzermans)",
+          "argument": "Evenwichtig evenwicht tussen wildbeheer en veiligheid; everzwijnen vergen actieve bestrijding, en amendementen met registratie en meldingsplichten minimaliseren risico's, terwijl gewestelijke bevoegdheden gerespecteerd worden."
+        },
+        {
+          "party": "Technisch advies van Juridische Dienst en Raad van State",
+          "argument": "Amendementen lossen terminologie-inconsistenties op, zoals het gebruik van 'modérateurs de son' in plaats van 'silencieux', en zorgen voor uniforme woordkeuze om juridische duidelijkheid te bieden."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "PS (Khalil Aouasti, Pierre-Yves Dermagne)",
+          "argument": "Onduidelijke definities zoals 'serienummer' hinderen traceerbaarheid en openbare veiligheid; geen wettelijke definitie, wat controle bemoeilijkt en risico op misbruik vergroot, ondanks negatieve adviezen van Federale Wapendienst."
+        },
+        {
+          "party": "Ecolo-Groen (Stefaan Van Hecke, Sarah Schlitz)",
+          "argument": "Verhoogt risico op proliferatie van wapens en hulpmiddelen naar criminele kringen, wat geweld en feminicide bevordert; hypocriet voor natuurbescherming, want everzwijnen worden gevoed voor jacht, en adviezen van politie wijzen op oncontroleerbaarheid."
+        },
+        {
+          "party": "Ecolo-Groen (Stefaan Van Hecke)",
+          "argument": "In strijd met veiligheidsbeleid en Europese trend tot strengere wapenwetten; moeilijk te registreren in de databank, leidt tot parallelle markt en onveiligheid, met voorbeelden van stroperij en alcoholmisbruik onder jagers."
+        },
+        {
+          "party": "Technisch advies van Juridische Dienst en Federale Wapendienst",
+          "argument": "Geen definitie van 'serienummer' voor hulpmiddelen, wat verschilt van wapens; inconsistenties in terminologie en voorwaarden voor verwerving/overdracht, plus nood aan aanpassing van wapenregister, wat logistieke en veiligheidsrisico's creëert."
+        }
+      ],
+      "neutral_technical": [],
+      "summary_debate": "Het debat draait om de balans tussen het aanpakken van **everzwijnoverlast** via effectievere jacht en de **veiligheidsrisico's** van het legaliseren van **geluiddempers** en **nachtzichtrichtkijkers**. De meerderheid (cd&v, N-VA, VB, Open Vld, Vooruit, MR, Les Engagés) steunt het voorstel met amendementen voor registratie en gewestelijke voorwaarden, wat leidde tot goedkeuring met 12 tegen 2 stemmen. Oppositie (PS, Ecolo-Groen) uit felle kritiek op onduidelijke definities en criminele risico's, gebaseerd op negatieve adviezen van politie en wapendienst, maar er is geen consensus en de kloof blijft groot.",
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.0111003,
+      "input_tokens": 24222,
+      "output_tokens": 2823,
+      "input_cost": 0.009688800000000001,
+      "output_cost": 0.0014115
+    }
+  },
+  "135": {
+    "dossier_id": "135",
+    "title": "Wetsvoorstel tot wijziging van de programmawet (I) van 27 december 2006, de wetten betreffende de preventie van beroepsziekten en de vergoeding van de schade die uit die ziekten voortvloeit, gecoördineerd op 3 juni 1970, en van het koninklijk besluit van 28 april 2017 tot vaststelling van boek I Algemene beginselen van de codex over het welzijn op het werk, met het oog op de verbetering van de ondersteuning voor asbestslachtoffers en de financiering van het Schadeloosstellingfonds voor asbestslachtoffers.",
+    "generated_title": "Betere ondersteuning en financiering voor asbestslachtoffers",
+    "model": "x-ai/grok-4-fast",
+    "model_name": "Grok 4 Fast",
+    "provider": "openrouter",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDit wetsvoorstel pakt de beperkte ondersteuning en oneerlijke financiering aan voor **asbestslachtoffers**, die vaak worstelen met erkenning van **beroepsziekten**, immuniteit van werkgevers en gebrek aan centrale informatie over **asbestblootstelling**; het doel is de hulp te verbeteren via betere financiering van het **Schadeloosstellingfonds voor asbestslachtoffers (AFA)**, centralisatie van data en het mogelijk maken van juridische stappen tegen werkgevers met een **onverschoonbare fout**, zodat slachtoffers eerlijker gecompenseerd worden en risico's beter worden voorkomen.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- Het **AFA** krijgt extra taken, zoals een gratis telefoonnummer voor slachtoffers om info en begeleiding te krijgen over medische en administratieve stappen, en centralisatie van **asbestinventarissen** van werkgevers voor betere tracing van blootstelling.\n- Werkgevers die aansprakelijk worden gesteld voor **asbestblootstelling** moeten een forfaitaire boete betalen aan het AFA, gebaseerd op het principe **de vervuiler betaalt**, om de financiering eerlijker te verdelen.\n- Financiering via het sociaal statuut van zelfstandigen breidt uit naar vergoeding van alle **asbestziekten** (niet alleen asbestose), ongeacht of de blootstelling beroeps- of niet-beroepsgerelateerd is.\n- Slachtoffers kunnen juridische stappen ondernemen tegen werkgevers of derden bij een **onverschoonbare fout** (nalatigheid ondanks kennis van risico's), zonder opzettelijkheid te hoeven bewijzen, wat geldt voor zowel beroeps- als niet-beroepsblootstelling.\n- Het AFA moet jaarlijks rapporteren over werking, procedures, erkenningscriteria en compensaties, en werkgevers moeten werknemers bij vertrek informeren over hun **beroepsziektedossier** voor betere opvolging.",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Het voorstel verbetert de ondersteuning voor asbestslachtoffers door een gratis infolijn en centralisatie van asbestinventarissen, wat tracing van blootstelling vergemakkelijkt en preventie versterkt."
+        },
+        {
+          "party": "PS en PVDA-PTB",
+          "argument": "Door immuniteit op te heffen bij onverschoonbare fout, krijgen slachtoffers gelijke kansen op compensatie van werkgevers, wat de criminele nalatigheid van bedrijven aanpakt en eerlijker financiering via de vervuiler betaalt-principe mogelijk maakt."
+        },
+        {
+          "party": "VB",
+          "argument": "De inhoud van het voorstel is positief voor slachtoffers, met betere erkenning van ziekten en uitbreiding van vergoedingen naar alle asbestziekten, ongeacht beroeps- of niet-beroepsblootstelling."
+        },
+        {
+          "party": "Technisch advies van Raad van State (via amendementen)",
+          "argument": "Amendementen lossen technische problemen op, zoals betere integratie van financieringswijzigingen en verslaggeving, voor een soepelere werking van het Asbestfonds."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "N-VA, Vooruit, cd&v en Open Vld",
+          "argument": "Het voorstel riskeert het bestaande compensatiesysteem te ondermijnen; beter wachten op een juridisch solide regeringstekst na breder debat, om belangen van bedrijven en slachtoffers te balanceren."
+        },
+        {
+          "party": "Technisch advies van Raad van State",
+          "argument": "De definitie van onverschoonbare fout is onduidelijk en onderscheidt zich niet goed van opzettelijke fout, wat rechtsonzekerheid creëert en immuniteit te veel beperkt, mogelijk voor alle beroepsziekten."
+        },
+        {
+          "party": "Technisch advies van Raad van State",
+          "argument": "Forfaitaire boetes discrimineren tussen veroordeelde en niet-veroordeelde werkgevers, wat in strijd kan zijn met gelijkheid en niet-discriminatie, en nadere verduidelijking vereist."
+        },
+        {
+          "party": "Technisch advies van Raad van State",
+          "argument": "Amendementen zijn overbodig en onduidelijk, met discordantie in Franse en Nederlandse teksten en verkeerde plaatsing van bepalingen, wat de wet onnodig compliceert."
+        }
+      ],
+      "neutral_technical": [],
+      "summary_debate": "Het debat richt zich op de dringende behoefte aan betere hulp voor **asbestslachtoffers** via centralisatie, financiering en aansprakelijkheid, gesteund door progressieve partijen als Ecolo-Groen, PS en PVDA-PTB. Echter, centrum-rechtse partijen zoals N-VA en Open Vld pleiten voor uitstel tot een **regeringstekst** om juridische risico's en het **compensatiesysteem** te vermijden. Er is **geen consensus** maar duidelijke strijd, resulterend in verwerping van het voorstel met 9 tegen 6 stemmen.",
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.015338500000000001,
+      "input_tokens": 34985,
+      "output_tokens": 2689,
+      "input_cost": 0.013994000000000001,
+      "output_cost": 0.0013445
+    }
+  },
+  "30": {
+    "dossier_id": "30",
+    "title": "Voorstel tot herziening van artikel 22 van de Grondwet met het oog op de erkenning van het recht op vrijwillige zwangerschapsafbreking.",
+    "generated_title": "Het recht op abortus opnemen in de Belgische Grondwet",
+    "model": "x-ai/grok-4-fast",
+    "model_name": "Grok 4 Fast",
+    "provider": "openrouter",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDit voorstel wil het recht op **vrijwillige zwangerschapsafbreking** (abortus) expliciet opnemen in de **Belgische Grondwet** om het te beschermen tegen mogelijke afschaffing via een gewone wet, geïnspireerd door de kwetsbaarheid van zulke rechten zoals gezien in de Verenigde Staten en ondersteund door internationale mensenrechtenrechtspraak die dit verbindt aan het recht op **privéleven**.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- Artikel 22 van de Grondwet, dat het recht op eerbiediging van privéleven en gezinsleven beschermt, wordt uitgebreid met een zin die het recht op vrijwillige zwangerschapsafbreking expliciet omvat.\n- Dit versterkt de constitutionele bescherming van dit recht, onder voorwaarden bepaald door de wet, en creëert een 'standstill'-clausule die de staat verplicht om toegang te waarborgen.",
+      "document_type": "VoorstelTotHerziening",
+      "selection_reason": "Dit is een voorstel tot herziening. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "summary_debate": null,
+      "notable_changes": null,
+      "has_debate": false
+    },
+    "retry_info": null,
+    "cost_info": {
+      "total_cost": 0.0024922,
+      "input_tokens": 5258,
+      "output_tokens": 778,
+      "input_cost": 0.0021032,
+      "output_cost": 0.000389
+    }
+  },
+  "200": {
+    "dossier_id": "200",
+    "title": "Voorstel van bijzondere wet tot wijziging van de bijzondere wet van 6 januari 1989 op het Grondwettelijk Hof voor wat de samenstelling van het Hof en de voorwaarden om benoemd te kunnen worden tot rechter betreft.",
+    "generated_title": "Aanpassing samenstelling en benoemingsvoorwaarden Grondwettelijk Hof",
+    "model": "x-ai/grok-4-fast",
+    "model_name": "Grok 4 Fast",
+    "provider": "openrouter",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDit voorstel van bijzondere wet wil de **samenstelling** en **benoemingsvoorwaarden** van het **Grondwettelijk Hof** aanpassen om de deskundigheid, onafhankelijkheid en taalkennis van rechters te versterken, gezien de groeiende complexiteit van **federaal België**, **grondrechten** en **bevoegdheidsconflicten** tussen beleidsniveaus, zodat het Hof beter kan omgaan met juridische uitdagingen zonder afhankelijk te zijn van ondersteunend personeel.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- Alle rechters moeten **voldoende kennis** van de tweede landstaal bewijzen via een examen bij het **Selectiebureau van de Federale Overheid**.\n- Rechters-politici (gewezen parlementsleden) moeten een **diploma** in de rechten hebben (doctor, licentiaat of master).\n- Nieuwe categorie rechters-juristen: advocaten met minstens **20 jaar ervaring** als hoofdberoep en aantoonbare expertise in **publiekrecht**.\n- Parlementaire ervaring voor rechters-politici verhoogd naar **8 jaar**, inclusief tijd als federaal of deelstaatminister/staatssecretaris.\n- Per taalgroep: minstens **één derde** en maximaal **de helft** van de rechters zijn gewezen parlementsleden.\n- Bewijs van **kennis Duits** voor minstens één rechter-jurist via een specifieke **examencommissie** van het Selectiebureau.\n- Kandidaat-rechters (zowel juristen als politici) moeten verplicht gehoord worden door de **Kamer van volksvertegenwoordigers** of de **Senaat**.",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "summary_debate": null,
+      "notable_changes": null,
+      "has_debate": false
+    },
+    "retry_info": null,
+    "cost_info": {
+      "total_cost": 0.0054651000000000005,
+      "input_tokens": 12509,
+      "output_tokens": 923,
+      "input_cost": 0.0050036,
+      "output_cost": 0.0004615
+    }
+  },
+  "1131": {
+    "dossier_id": "1131",
+    "title": "Resolutie tot ondersteuning van de kandidatuur voor de bouw van de Einsteintelescoop in de Euregio Maas-Rijn.",
+    "generated_title": "Steun voor bouw van Einsteintelescoop in Euregio Maas-Rijn",
+    "model": "x-ai/grok-4-fast",
+    "model_name": "Grok 4 Fast",
+    "provider": "openrouter",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDeze resolutie ondersteunt de gezamenlijke **kandidatuur** van België, Nederland en de Duitse deelstaat Noordrijn-Westfalen voor de bouw van de **Einsteintelescoop**, een geavanceerd Europees observatorium voor het detecteren van **zwaartekrachtgolven** in de **Euregio Maas-Rijn** (het grensgebied rond het drielandenpunt), om de **wetenschappelijke**, **technologische**, **economische** en **educatieve ontwikkeling** van België te versterken en bij te dragen aan Europese innovatie en kennis over het heelal.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- De federale regering erkent de **EMR-kandidatuur** als strategisch nationaal project voor wetenschap, economie en internationale positionering.\n- De regering bevestigt actieve steun voor de kandidatuur en mobiliseert diplomatieke kanalen om deze te promoten op Europees en internationaal niveau, inclusief bij niet-gastlanden.\n- De regering bestudeert de concurrentie (zoals Sardinië en Saksen) en past de EMR-strategie aan om slaagkansen te maximaliseren.\n- De regering onderzoekt federale bijdragen in natura, zoals terreinen en infrastructuur in Montzen, spoorvervoer en verwerking van gronden, in overleg met gewesten en lokale besturen.\n- De regering bevordert coördinatie van O&O- en economische inspanningen op EMR-niveau en valorisatiestrategieën voor kenniscentra en bedrijven, complementair aan gewestelijke acties.",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "Meerderheidspartijen (N-VA, MR, Les Engagés, Vooruit, cd&v, Open Vld)",
+          "argument": "De Einsteintelescoop biedt enorme wetenschappelijke voordelen door het detecteren van zwaartekrachtgolven, wat ons begrip van het universum, zwarte gaten en de oerknal vergroot, en bijdraagt aan Europese innovatie en technologische autonomie."
+        },
+        {
+          "party": "Technisch advies van professoren (Nguyen ULiège, Hertog KU Leuven) en Belspo",
+          "argument": "De EMR-regio heeft unieke geologische voordelen zoals een stabiele ondergrond die trillingen dempt, plus een sterk ecosysteem van universiteiten en bedrijven, wat de slaagkansen verhoogt tegenover concurrenten als Sardinië en Saksen."
+        },
+        {
+          "party": "Valorisatie-experts (GRE-Liège, POM Limburg) en Econopolis-studie",
+          "argument": "Het project stimuleert economische groei met duizenden jobs, innovatie en spin-offs in sectoren als hightech en circulaire economie, met multiplicatoreffecten tot 3-4 keer de investering, vooral in Vlaanderen en Wallonië."
+        },
+        {
+          "party": "PS en Ecolo-Groen",
+          "argument": "Het bevordert grensoverschrijdende samenwerking in de EMR, versterkt STEM-opleidingen voor jongeren en trekt internationaal talent aan, wat België's imago en regionale aantrekkelijkheid opkrikt."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "PS",
+          "argument": "De federale overheid moet een concrete financiële bijdrage leveren, vergelijkbaar met de gewestelijke toezeggingen (Vlaanderen 500 miljoen euro, Wallonië 200 miljoen euro) en Nederland (870 miljoen euro), om de EMR-kandidatuur geloofwaardig te maken en druk van Nederland op te vangen."
+        },
+        {
+          "party": "Ecolo-Groen en PS",
+          "argument": "Er moet meer aandacht voor milieu-impact, zoals koolstofarme bouw en hergebruik van materialen, plus transparante inspraak voor burgers en lokale besturen om hinder tijdens de bouwfase te beperken en draagvlak te creëren."
+        },
+        {
+          "party": "VB",
+          "argument": "De complexe governance tussen federale, gewestelijke en internationale niveaus riskeert vertragingen; er is nood aan duidelijke coördinatie en mogelijke regelluwe zones om administratieve belemmeringen te vermijden."
+        },
+        {
+          "party": "Technisch advies van prof. Delnoy (ULiège)",
+          "argument": "Juridische procedures zoals onteigening, vergunningen en beroepen bij de Raad van State kunnen het project vertragen; vereenvoudiging via samenwerkingsakkoorden en hoger openbaar belang is essentieel om risico's op NIMBY-protest te minimaliseren."
+        },
+        {
+          "party": "Algemeen debat (EMR ET Project Office)",
+          "argument": "De afhankelijkheid van Duitse steun is cruciaal, aangezien Duitsland twee kandidaturen steunt (EMR en Saksen); zonder federale Duitse commitment dalen de slaagkansen, wat diplomatieke inspanningen vereist."
+        }
+      ],
+      "neutral_technical": [],
+      "summary_debate": "Het debat toont een brede **consensus** over de steun voor de EMR-kandidatuur, met unanieme goedkeuring van de resolutie in het adviescomité. Alle partijen benadrukken de **wetenschappelijke** en **economische** voordelen, maar er zijn lichte spanningen rond **federale financiering** en **milieu-inspraak**. VB pleit voor voorzichtigheid via amendementen, terwijl PS en Ecolo-Groen meer concrete federale bijdragen en participatie eisen. Technische adviezen waarschuwen voor **juridische complexiteit**, maar het algemene beeld is constructief en gericht op coördinatie om concurrentie te verslaan.",
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.0298496,
+      "input_tokens": 71599,
+      "output_tokens": 2420,
+      "input_cost": 0.0286396,
+      "output_cost": 0.00121
+    }
+  },
+  "52": {
+    "dossier_id": "52",
+    "title": "Voorstel van resolutie betreffende de ondersteuning van de opschorting van de preferentiële associatieovereenkomst tussen de Europese Unie en Israël.",
+    "generated_title": "Voorstel voor opschorting EU-handelsakkoord met Israël vanwege mensenrechtenschendingen",
+    "model": "x-ai/grok-4-fast",
+    "model_name": "Grok 4 Fast",
+    "provider": "openrouter",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDit voorstel van resolutie wil dat België de **opschorting** van de **preferentiële associatieovereenkomst** tussen de **Europese Unie** en **Israël** ondersteunt, om druk uit te oefenen tegen **Israël** voor herhaalde schendingen van het **internationaal recht**, zoals het **nederzettingenbeleid** op de **Westelijke Jordaanoever**, de **blokkade van Gaza**, het vermeende **apartheidsregime** tegen Palestijnen, en **oorlogsmisdaden** en **misdaden tegen de menselijkheid** in **Gaza** sinds 8 oktober 2023, inclusief bombardementen, hongersnood en gedwongen verhuizingen die mogelijk leiden tot **genocide**.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- De federale regering moet ijveren voor de **opschorting** van de **preferentiële associatieovereenkomst** tussen de EU en Israël, waardoor Israël geen speciale handelsvoordelen meer krijgt op de EU-markt.\n- België moet een **volledig militair embargo** tegen Israël steunen, inclusief het stoppen van wapenleveringen en doorvoer via Belgische havens en luchthavens.\n- De regering en deelstaten moeten economische missies en investeringen in Israël herzien om geen steun te geven aan nederzettingen of schendingen van mensenrechten.",
+      "document_type": "VoorstelVanResolutie",
+      "selection_reason": "Dit is een voorstel van resolutie."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "PVDA-PTB",
+          "argument": "Israël schendt herhaaldelijk het internationaal recht, inclusief oorlogsmisdaden en mogelijke genocide in Gaza sinds oktober 2023, zoals bevestigd door EU-rapporten, VN-verslagen en het Internationaal Gerechtshof, wat een opschorting van de associatieovereenkomst rechtvaardigt op basis van artikel 2."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "De EU is medeplichtig door het verbergen van schendingen en het handhaven van preferentiële handelsvoordelen voor Israël, ondanks bewijs van schendingen van humanitair recht en mensenrechten."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "België moet niet wachten op EU-actie maar zoals Spanje en Ierland pleiten voor onmiddellijke opschorting van de associatieovereenkomst en een volledig militair embargo om druk uit te oefenen en internationale verplichtingen na te komen."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "Economische banden, missies en investeringen met Israël moeten herzien worden om geen steun te geven aan nederzettingenbeleid of schendingen, en een eind te maken aan Belgische medeplichtigheid aan koloniale en genocidale praktijken."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "Meerderheidspartijen (N-VA, MR, Vooruit, cd&v, Open Vld)",
+          "argument": "Het voorstel is te confronterend; voorkeur voor een milder meerderheidsvoorstel dat zich richt op EU-coördinatie in plaats van unilaterale Belgische sancties of opschorting van de associatieovereenkomst."
+        },
+        {
+          "party": "N-VA en MR",
+          "argument": "Weigering om de situatie in Gaza expliciet als genocide te erkennen, wat de basisargumenten van het voorstel ondermijnt en leidt tot afwijzing van amendementen die dit incorporeren."
+        },
+        {
+          "party": "Meerderheidspartijen (N-VA, MR, etc.)",
+          "argument": "Geen noodzaak voor een militair embargo of herziening van economische relaties, omdat dit de Belgische positie zou isoleren en de voorkeur uitgaat naar bredere EU-benadering zonder directe confrontatie met Israël."
+        }
+      ],
+      "neutral_technical": [],
+      "summary_debate": "Het debat in de commissie voor Buitenlandse Betrekkingen draait om een **fundamentele kloof** tussen de oppositie (PVDA-PTB), die **strenge sancties** eist tegen Israël wegens **schendingen van internationaal recht**, en de meerderheid (N-VA, MR, Vooruit, cd&v, Open Vld), die vasthoudt aan **EU-geleide diplomatie** zonder unilaterale acties. Alle consideransen en verzoeken werden verworpen met ruime meerderheid, wat wijst op **geen consensus** maar een duidelijke overwinning voor de gematigde lijn, ondanks oproepen tot urgentie na recente VN- en EU-rapporten.",
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.007055100000000001,
+      "input_tokens": 14514,
+      "output_tokens": 2499,
+      "input_cost": 0.005805600000000001,
+      "output_cost": 0.0012495
+    }
+  },
+  "888": {
+    "dossier_id": "888",
+    "title": "Wetsvoorstel tot wijziging van de wet van 24 december 2002 tot wijziging van de vennootschapsregeling inzake inkomstenbelastingen en tot instelling van een systeem van voorafgaande beslissingen in fiscale zaken teneinde de lijst van belastingparadijzen waarvoor geen ruling kan worden aangevraagd aan te vullen.",
+    "generated_title": "Uitbreiding lijst belastingparadijzen zonder fiscale gunstelingen",
+    "model": "x-ai/grok-4-fast",
+    "model_name": "Grok 4 Fast",
+    "provider": "openrouter",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nHet document is een **wetsvoorstel** (ID: 001) geïnitieerd door parlementslid **Vincent Van Quickenborne**, gericht op een specifiek probleem of doel dat niet toegankelijk is vanwege een technische fout in de documentopslag; er is één **amendement** ingediend dat nog niet is behandeld in een verslag, wat wijst op een lopend parlementair proces zonder gedetailleerde inhoudsbeschrijving.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- De inhoud van het wetsvoorstel is niet beschikbaar door een afwijzingsmelding van de URL, met support ID <15035801435317730744>.\n- Er is één amendement ingediend, maar dit is nog niet verwerkt in een officieel verslag.\n- Geen concrete wijzigingen kunnen worden samengevat zonder toegang tot de documenttekst.",
+      "document_type": "WetsVoorstel",
+      "selection_reason": "Dit is een initiatief van een parlementslid. Er zijn 1 amendementen ingediend die nog niet zijn behandeld in een verslag."
+    },
+    "political_analysis": {
+      "arguments_for": [],
+      "arguments_against": [],
+      "neutral_technical": [],
+      "summary_debate": null,
+      "notable_changes": null,
+      "has_debate": false
+    },
+    "retry_info": null,
+    "cost_info": {
+      "total_cost": 0.0006064,
+      "input_tokens": 606,
+      "output_tokens": 728,
+      "input_cost": 0.0002424,
+      "output_cost": 0.000364
+    }
+  },
+  "416": {
+    "dossier_id": "416",
+    "title": "Wetsontwerp betreffende de openbaarmaking van duurzaamheidsinformatie door bepaalde vennootschappen en groepen en de assurance van duurzaamheidsinformatie en houdende diverse bepalingen.",
+    "generated_title": "Verplichting voor bedrijven om duurzaamheidsinformatie openbaar te maken en te controleren",
+    "model": "x-ai/grok-4-fast",
+    "model_name": "Grok 4 Fast",
+    "provider": "openrouter",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDeze wet verplicht **bepaalde vennootschappen en groepen** om gedetailleerde **duurzaamheidsinformatie** openbaar te maken, zoals hun impact op milieu, samenleving en governance, om transparantie te vergroten en investeerders en burgers beter te informeren over duurzame praktijken; het doel is de Belgische implementatie van EU-regels op **corporate sustainability reporting** te regelen, inclusief de verplichte **assurance** (controle) van deze informatie door onafhankelijke auditors.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- **Bepaalde vennootschappen en groepen** (zoals grote bedrijven en beursgenoteerde ondernemingen) moeten jaarlijks **duurzaamheidsrapporten** publiceren met informatie over milieu-impact, sociale verantwoordelijkheid en goed bestuur.\n- Deze **duurzaamheidsinformatie** moet verplicht worden geassureerd door een onafhankelijke auditor om de betrouwbaarheid te garanderen.\n- De wet bevat diverse aanvullende bepalingen, zoals regels voor de rapportering en mogelijke sancties bij niet-nakoming, die de administratieve lasten voor bedrijven verhogen maar transparantie bevorderen.",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "PS, MR, Les Engagés, cd&v, Ecolo-Groen, Open Vld, PVDA-PTB",
+          "argument": "Het wetsontwerp verhoogt de transparantie over de milieu-, sociale en governance-impact (ESG) van grote bedrijven, helpt investeerders en burgers duurzame praktijken te beoordelen en voorkomt greenwashing, wat bijdraagt aan een duurzamere economie en een sterker Europees speelveld."
+        },
+        {
+          "party": "Ecolo-Groen, cd&v",
+          "argument": "De CSRD is een mijlpaal in maatschappelijk verantwoord ondernemen, met gestandaardiseerde rapportage die bedrijven vergelijkbaar maakt en hun internationale concurrentiepositie versterkt in het kader van de Green Deal."
+        },
+        {
+          "party": "PS, MR, Les Engagés, cd&v, Open Vld",
+          "argument": "Amendementen verlichten de administratieve lasten voor kmo's in de waardeketen door informatieverzoeken te beperken tot Europese standaarden en assurance te verbieden, zonder de rapportageplicht van grote bedrijven aan te tasten."
+        },
+        {
+          "party": "Minister van Economie (Pierre-Yves Dermagne)",
+          "argument": "De verplichte assurance door onafhankelijke auditors garandeert de betrouwbaarheid van de duurzaamheidsinformatie, met een evaluatieclausule na drie jaar om de impact op bedrijven te beoordelen en aanpassingen mogelijk te maken."
+        },
+        {
+          "party": "Gegevensbeschermingsautoriteit (GBA)",
+          "argument": "Het kader voor verwerking van persoonsgegevens in assurance voldoet grotendeels aan de AVG, mits aanpassingen voor minimalisering van gegevens en transparantie, wat de privacy beschermt bij rapportage."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "N-VA",
+          "argument": "De CSRD legt extra administratieve lasten op aan grote bedrijven met een rimpeleffect op kmo's, zoals niet-gestandaardiseerde vragenlijsten en mogelijke assurance-eisen, wat ondernemen bemoeilijkt ondanks amendementen."
+        },
+        {
+          "party": "VB",
+          "argument": "De late omzetting veroorzaakt onzekerheid voor ondernemers, terwijl het onmogelijk is de volledige waardeketen in kaart te brengen, met hoge kosten en Europese regelneverij die de concurrentiekracht ondermijnt."
+        },
+        {
+          "party": "N-VA",
+          "argument": "Er is onduidelijkheid over de opening van de assurancemarkt, met een tijdelijk monopolie voor bedrijfsrevisoren, en beperkingen voor gecertificeerde belastingadviseurs bij het bijstaan van kmo's."
+        },
+        {
+          "party": "VB, N-VA",
+          "argument": "De hoge investeringskosten voor duurzaamheidsrapportage, zoals 38 miljard euro voor Belgische bedrijven, en het gebrek aan kennis over CO2-uitstoot bij kmo's maken de implementatie onrealistisch."
+        },
+        {
+          "party": "Gegevensbeschermingsautoriteit (GBA)",
+          "argument": "In artikelen over verwerking van persoonsgegevens ontbreekt minimering van gegevens, duidelijke bewaartermijnen en transparantie over rechten, wat risico's op privacyschendingen met zich meebrengt."
+        }
+      ],
+      "neutral_technical": [],
+      "summary_debate": "Het debat draait om de Belgische omzetting van de EU-**CSRD-richtlijn** voor **duurzaamheidsrapportage** door grote vennootschappen, met focus op transparantie en ESG-impact. Er is brede consensus onder PS, MR, Les Engagés, cd&v, Ecolo-Groen, Open Vld en PVDA-PTB voor de noodzaak van deze regels om greenwashing te bestrijden en een gelijk Europees speelveld te creëren, gesteund door amendementen die kmo's beschermen tegen overlast. N-VA onthoudt zich door bezorgdheid over administratieve lasten en rimpeleffecten op kmo's, terwijl VB fel tegen is wegens onhaalbaarheid, kosten en EU-regelneverij. De minister benadrukt rechtszekerheid en een evaluatie na drie jaar; technische adviezen zoals van de GBA roepen aanpassingen op voor privacy. Al bij al overheerst steun met gerichte aanpassingen, zonder diepe strijd.",
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.01573,
+      "input_tokens": 35895,
+      "output_tokens": 2744,
+      "input_cost": 0.014358000000000003,
+      "output_cost": 0.001372
+    }
+  },
+  "1177": {
+    "dossier_id": "1177",
+    "title": "Wetsontwerp tot uitvoering van een versterkt terug naar werk-beleid in geval van arbeidsongeschiktheid.",
+    "generated_title": "Versterkt beleid voor snellere terugkeer naar werk bij arbeidsongeschiktheid",
+    "model": "x-ai/grok-4-fast",
+    "model_name": "Grok 4 Fast",
+    "provider": "openrouter",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDeze wet voert een versterkt **terug-naar-werkbeleid** in bij **arbeidsongeschiktheid** om het probleem van langdurige uitkeringen en trage re-integratie aan te pakken, door de **verantwoordelijkheid** van uitkeringsgerechtigden, verzekeraars, werkgevers en artsen te verhogen op basis van het **arbeidspotentieel** van de persoon, zodat meer mensen met voldoende capaciteiten sneller terugkeren naar werk of een re-integratietraject.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- **Arbeidsongeschikte gerechtigden** moeten gegevens verstrekken, contacten bijwonen met artsen en re-integratiecoördinatoren, en zich binnen 14 dagen inschrijven bij regionale diensten voor begeleiding; niet-nakoming leidt tot stopzetting van de uitkering of 10% reductie.\n- Term \"resterende capaciteiten\" wordt vervangen door \"**arbeidspotentieel**\" in relevante wetten, en vermoedens van blijvende ongeschiktheid voor verzekeraars worden opgeheven om strengere evaluaties af te dwingen.\n- Een **GAOCIT-databank** wordt opgericht voor elektronische getuigschriften van arbeidsongeschiktheid, om voorschrijfgedrag van artsen te monitoren en rapporten te sturen; duur van voorgeschreven ongeschiktheid maximaal 3 maanden per kennisgeving.\n- Werkgevers betalen een trimestriële **solidariteitsbijdrage** van 30% op primaire ongeschiktheidsuitkeringen na 30 dagen voor werknemers onder 55 jaar (met vrijstellingen voor kleine bedrijven en bepaalde sectoren), om re-integratie te stimuleren.\n- In arbeidsovereenkomsten: werkgevers moeten contact houden met zieke werknemers, geneeskundig getuigschrift maximaal tweemaal per jaar, medische overmacht na 6 maanden i.p.v. 9, hervaltermijn voor gewaarborgd loon 8 weken i.p.v. 14 dagen, en neutralisatie van gewaarborgd loon geldt voor hele uitvoering i.p.v. 20 weken.\n- Sancties in Sociaal Strafwetboek voor werkgevers met 20+ werknemers die geen re-integratietraject starten binnen 6 maanden bij werknemers met arbeidspotentieel; toeslag op uitkeringen gerelateerd aan gewaarborgd loon wordt geschrapt.\n- Alle wijzigingen treden in werking op 1 januari 2026, met uitzondering van enkele bepalingen over bijdragen en opheffing van oude regels.",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "N-VA",
+          "argument": "Het voorstel introduceert moderniseringen zoals kortere termijnen voor medische overmacht en aanpassing van gewaarborgd loon bij herval, wat werkgevers vertrouwen geeft om zieke werknemers in dienst te houden en re-integratie stimuleert via een solidariteitsbijdrage die terugvloeit naar werkgevers."
+        },
+        {
+          "party": "MR",
+          "argument": "De wet bevordert een positieve aanpak door gedeelde verantwoordelijkheid tussen werknemers, werkgevers, artsen en ziekenfondsen, zodat langdurig zieken hun arbeidspotentieel kunnen benutten en terugkeren naar een volwaardige plaats in de samenleving."
+        },
+        {
+          "party": "Les Engagés",
+          "argument": "Door te focussen op arbeidspotentieel in plaats van beperkingen, creëert de wet een humaan beleid dat re-integratie mogelijk maakt zonder stigmatisering, met responsabilisering van mutualiteiten via performantie-indicatoren en werkgevers via bijdragen."
+        },
+        {
+          "party": "Vooruit en cd&v",
+          "argument": "Een cultuuromslag is nodig om talent van zieke werknemers te benutten; de wet versterkt begeleiding en preventie, houdt het sociale vangnet intact en responsabiliseert alle actoren om langdurige uitkeringen te verminderen."
+        },
+        {
+          "party": "Ministers Vandenbroucke en Clarinval",
+          "argument": "Het beleid balanceert solidariteit en verantwoordelijkheid om de stijgende kosten van invaliditeit (van 14,2 naar 18,1 miljard euro tegen 2030) te beteugelen, met maatregelen zoals afschaffing van vermoedens van ongeschiktheid en digitale monitoring voor betere evaluaties."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "PS",
+          "argument": "De wet viseert zieken met sancties en controles in plaats van oorzaken zoals slechte werkomstandigheden aan te pakken, wat stigmatisering veroorzaakt en leidt tot verschuiving naar werkloosheid, zonder investering in preventie of aantrekkelijkheid van artsenberoepen."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "Extra druk en sancties ondermijnen het vertrouwen tussen arts en patiënt, negeren werkgerelateerde oorzaken van ziekte en responsabiliseren werkgevers onvoldoende, terwijl precaire contracten worden gestimuleerd zonder vrijwillige re-integratie."
+        },
+        {
+          "party": "VB",
+          "argument": "De GAOCIT-databank riskeert privacy-schendingen en onevenredige datamining volgens de Gegevensbeschermingsautoriteit, met onduidelijke selectiecriteria voor 100.000 prioritaire zieken en ongelijke behandeling van bedrijven onder 50 werknemers."
+        },
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Te veel focus op sancties schendt mogelijk het gelijkheidsbeginsel (werknemers vs. zelfstandigen, kleine vs. grote bedrijven) en standstillbeginsel bij herval van gewaarborgd loon, zoals opgemerkt door de Raad van State, zonder echte preventie voor burn-out."
+        },
+        {
+          "party": "Open Vld",
+          "argument": "De solidariteitsbijdrage legt een onlogische last op werkgevers zonder hefbomen zoals toegang tot medische dossiers, en de GAOCIT-databank is juridisch kwetsbaar door vage doelen en privacy-risico's, volgens GBA-advies, zonder fundamentele systeemhervorming."
+        }
+      ],
+      "neutral_technical": [],
+      "summary_debate": "Het debat toont steun van de meerderheid voor een **versterkt terug-naar-werkbeleid** dat **arbeidspotentieel** benadrukt en alle actoren responsabiliseert om re-integratie te bevorderen en de sociale zekerheid betaalbaar te houden. Oppositie en delen van de meerderheid uiten kritiek op overmatige sancties, privacy-risico's bij de **GAOCIT-databank** en gebrek aan preventie, wat leidt tot een gespannen discussie zonder volledige consensus, maar met goedkeuring van de kernartikelen in eerste lezing.",
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.021052800000000003,
+      "input_tokens": 48772,
+      "output_tokens": 3088,
+      "input_cost": 0.019508800000000003,
+      "output_cost": 0.001544
+    }
+  },
+  "433": {
+    "dossier_id": "433",
+    "title": "Wetsontwerp tot verlenging van bepaalde maatregelen voorzien in de wet van 20 november 2022 houdende maatregelen aangaande de personeelsschaarste in de zorgsector.",
+    "generated_title": "Verlenging maatregelen tegen tekort aan zorgpersoneel",
+    "model": "x-ai/grok-4-fast",
+    "model_name": "Grok 4 Fast",
+    "provider": "openrouter",
+    "fact_summary": {
+      "summary": "## 1. Welk probleem lost dit op of wat is het doel?\n\nDeze wet verlengt **bepaalde maatregelen** uit de wet van 20 november 2022 om de **personeelsschaarste in de zorgsector** aan te pakken, zodat er meer zorgpersoneel beschikbaar blijft en de sector beter kan functioneren.\n\n## 2. Wat verandert er concreet in de praktijk?\n\n- **Verlenging van maatregelen**: Bepaalde regels en ondersteuning uit de 2022-wet worden langer geldig gehouden om de tekort aan zorgpersoneel te bestrijden.\n- **Geen nieuwe inhoud**: De wet bevat dezelfde tekst als het oorspronkelijke voorstel (document DOC 56 0433/001, pagina's 5-6), maar breidt de looptijd uit.\n- **Inwerkingtreding**: Na goedkeuring door de Koning worden de verlengde maatregelen direct van toepassing in de zorgsector.",
+      "document_type": "AangenomenTekst",
+      "selection_reason": "Dit is de definitieve, aangenomen wet."
+    },
+    "political_analysis": {
+      "arguments_for": [
+        {
+          "party": "Vooruit en cd&v",
+          "argument": "De verlenging biedt tijdelijke zekerheid aan 831 gepensioneerden die in de zorg werken en helpt het personeelstekort direct te verlichten, terwijl structurele oplossingen worden voorbereid."
+        },
+        {
+          "party": "N-VA en VB",
+          "argument": "Het inzetten van gepensioneerden met fiscale voordelen zoals vrijstelling van sociale bijdragen en een belastingtarief van 33% is cruciaal om de zorgsector te ondersteunen, maar vereist opvolging met bredere maatregelen."
+        },
+        {
+          "party": "Ecolo-Groen",
+          "argument": "Steun voor de verlenging om geen extra problemen te creëren in een sector met aanhoudend tekort, met nadruk op de nood aan opwaardering van het zorgberoep."
+        },
+        {
+          "party": "Open Vld",
+          "argument": "De maatregel heeft bewezen nut en verdient verlenging als brug naar structurele oplossingen, hoewel alternatieven zoals flexi-jobs effectiever kunnen zijn."
+        }
+      ],
+      "arguments_against": [
+        {
+          "party": "PS",
+          "argument": "De maatregelen brengen hoge kosten mee voor de sociale zekerheid en overheidsfinanciën, en het is tijd om te investeren in duurzame oplossingen voor de schaarste."
+        },
+        {
+          "party": "PVDA-PTB",
+          "argument": "Dit is geen echte vooruitgang maar een pleister op de wonde; het negeert onderliggende problemen zoals hoge werkdruk en slechte dienstverlening aan patiënten, zoals bleek uit recente stakingen."
+        },
+        {
+          "party": "Open Vld",
+          "argument": "De impact is beperkt met slechts 831 voltijdse equivalenten, de belastingdruk blijft hoog en flexi-jobs zouden een betere, structurele oplossing bieden zonder kwaliteitsverlies."
+        }
+      ],
+      "neutral_technical": [],
+      "summary_debate": "Het debat toont brede **consensus** voor de tijdelijke verlenging van de maatregelen om gepensioneerden in de zorg te houden, met steun van de meerderheid van de partijen om het acute **personeelstekort** niet te verergeren. Er is echter **strijd** over de duurzaamheid: linkse partijen zoals PS en PVDA-PTB onthouden zich door zorgen over kosten en gebrek aan structurele hervormingen, terwijl Open Vld de maatregel steunt maar pleit voor efficiëntere alternatieven zoals **flexi-jobs**. Algemeen heerst overeenstemming dat dit slechts een overgang is naar een breder **attractiviteitsplan** voor de zorgsector.",
+      "notable_changes": null,
+      "has_debate": true
+    },
+    "retry_info": {
+      "json_parse_retries": 0,
+      "json_parse_failed": false,
+      "json_parse_error": null
+    },
+    "cost_info": {
+      "total_cost": 0.0031885,
+      "input_tokens": 5390,
+      "output_tokens": 2065,
+      "input_cost": 0.002156,
+      "output_cost": 0.0010325
+    }
+  }
+}
