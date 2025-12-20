@@ -2393,6 +2393,18 @@
         "respondents": [
           "Jan Jambon"
         ]
+      },
+      {
+        "type": "Question",
+        "hash": "e8ecff33eb730ad722ab0c2aee33395aa3666eacf5d528e706ee0ce4360dc82a",
+        "topic": "De 400.000 spookbedrijven in België",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3magpk5gpxi2b",
+        "questioners": [
+          "Niels Tas"
+        ],
+        "respondents": [
+          "Jan Jambon"
+        ]
       }
     ]
   }
