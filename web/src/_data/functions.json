@@ -28,13 +28,15 @@
   "Bart De Wever": [
     {
       "function": "Eerste minister",
-      "start_date": "2025-02-03"
+      "start_date": "2025-02-03",
+      "party": "n-va"
     }
   ],
   "Jan Jambon": [
     {
       "function": "Minister van Financiën en Pensioenen",
-      "start_date": "2025-02-03"
+      "start_date": "2025-02-03",
+      "party": "n-va"
     }
   ],
   "David Clarinval": [
@@ -50,19 +52,22 @@
     },
     {
       "function": "Minister van Werk, Economie en Landbouw",
-      "start_date": "2025-02-03"
+      "start_date": "2025-02-03",
+      "party": "mr"
     }
   ],
   "Maxime Prévot": [
     {
       "function": "Minister van Buitenlandse Zaken, Europese Zaken en Ontwikkelingssamenwerking",
-      "start_date": "2025-02-03"
+      "start_date": "2025-02-03",
+      "party": "les engagés"
     }
   ],
   "Frank Vandenbroucke": [
     {
       "function": "Minister van Sociale Zaken en Volksgezondheid",
-      "start_date": "2025-02-03"
+      "start_date": "2025-02-03",
+      "party": "vooruit"
     },
     {
       "function": "Minister van Sociale Zaken en Volksgezondheid",
@@ -85,7 +90,8 @@
     },
     {
       "function": "Minister van Begroting",
-      "start_date": "2025-02-03"
+      "start_date": "2025-02-03",
+      "party": "cd&v"
     }
   ],
   "Paul Van Tigchelt": [
@@ -105,52 +111,62 @@
   "Theo Francken": [
     {
       "function": "Minister van Defensie",
-      "start_date": "2025-02-03"
+      "start_date": "2025-02-03",
+      "party": "n-va"
     }
   ],
-    "Anneleen Van Bossuyt": [
+  "Anneleen Van Bossuyt": [
     {
       "function": "Minister van Asiel en Migratie, en Maatschappelijke Integratie",
-      "start_date": "2025-02-03"
+      "start_date": "2025-02-03",
+      "party": "n-va"
     }
   ],
   "Bernard Quintin": [
     {
       "function": "Minister van Veiligheid en Binnenlandse Zaken",
-      "start_date": "2025-02-03"
+      "start_date": "2025-02-03",
+      "party": "mr"
     }
   ],
-  "Eléonore Simonet": {
-    "function": "Minister van Middenstand, Zelfstandigen en KMO’s",
-    "party": "MR"
-  },
+  "Eléonore Simonet": [
+    {
+      "function": "Minister van Middenstand, Zelfstandigen en KMO’s",
+      "start_date": "2025-02-03",
+      "party": "mr"
+    }
+  ],
   "Mathieu Bihet": [
     {
       "function": "Minister van Energie",
-      "start_date": "2025-02-03"
+      "start_date": "2025-02-03",
+      "party": "mr"
     }
   ],
   "Jean-Luc Crucke": [
     {
       "function": "Minister van Mobiliteit, Klimaat en Ecologische Transitie",
-      "start_date": "2025-02-03"
+      "start_date": "2025-02-03",
+      "party": "les engagés"
     }
   ],
   "Vanessa Matz": [
     {
       "function": "Minster van Modernisering van de overheid, Overheidsbedrijven, Ambtenarenzaken, Gebouwenbeheer van de Staat, Digitalisering en Wetenschapsbeleid",
-      "start_date": "2025-02-03"
+      "start_date": "2025-02-03",
+      "party": "les engagés"
     }
   ],
   "Rob Beenders": [
     {
       "function": "Minister van Consumentenbescherming, Sociale Fraudebestrijding, Personen met een handicap en Gelijke Kansen",
-      "start_date": "2025-02-03"
+      "start_date": "2025-02-03",
+      "party": "vooruit"
     }
   ],
   "Zakia Khattabi": [
     {
-      "function": "Minster van Klimaat, Milieu en Duurzame Ontwikkelin",
+      "function": "Minster van Klimaat, Milieu en Duurzame Ontwikkeling",
       "start_date": "2020-10-01",
       "end_date": "2025-02-03"
     }
@@ -158,9 +174,10 @@
   "Annelies Verlinden": [
     {
       "function": "Minister van Justitie",
-      "start_date": "2025-02-03"
+      "start_date": "2025-02-03",
+      "party": "cd&v"
     },
-     {
+    {
       "function": "Minister van Binnenlandse Zaken",
       "start_date": "2020-10-01",
       "end_date": "2025-02-03"

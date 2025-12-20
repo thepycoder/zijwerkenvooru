@@ -60,7 +60,7 @@
         <p>
             {% for respondent in params.question.respondents %}
             {% set function = params.functions[respondent.name] | getActive(params.question.date) %}
-            <span class="respondent">{{ respondent.name }}{% if function %} ({{ function.function }}){% endif %}</span>{% if not loop.last %}, {% endif %}
+            <span class="respondent"><a href="/government/">{{ respondent.name }}</a>{% if function %} ({{ function.function }}){% endif %}</span>{% if not loop.last %}, {% endif %}
             {% endfor %}
         </p>
         <p>op {{ params.question.date | date }}</p>
