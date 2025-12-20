@@ -1,9 +1,3 @@
-use std::collections::HashSet;
-use std::fs::File;
-use std::path::PathBuf;
-use std::sync::Arc;
-use std::time::Duration;
-
 use arrow::array::{Array, ArrayRef, StringArray};
 use arrow::datatypes::{DataType, Field};
 use arrow::{datatypes::Schema, record_batch::RecordBatch};
@@ -14,9 +8,26 @@ use reqwest::header::{ACCEPT, AUTHORIZATION, CONTENT_TYPE};
 use serde::{Deserialize, Serialize};
 use serde_json::json;
 use sha2::{Digest, Sha256};
+use std::collections::HashSet;
+use std::fs::File;
+use std::path::PathBuf;
+use std::sync::Arc;
+use std::time::Duration;
+
+/**
+ * A summarization task.
+ */
+struct SummarizationTask {
+    task_type: SummarizationTaskType,
+    model_name: String,
+    prompt: String,
+    column_name: String,
+    source_file: PathBuf,
+    target_file: PathBuf,
+}
 
 #[derive(Debug, Clone, Copy)]
-enum SummarizeTask {
+enum SummarizationTaskType {
     QuestionTopics,
     DossierTitle,
     QuestionDiscussion,
@@ -24,12 +35,12 @@ enum SummarizeTask {
 
 #[tokio::main]
 async fn main() {
-    let model_name = "mistral";
+    // load environment variables
+    dotenvy::dotenv().ok();
     let mistral_api_key = std::env::var("MISTRAL_API_TOKEN").expect("Missing MISTRAL_API_TOKEN");
     let client = Client::new();
 
     let root = PathBuf::from("./web/src/data");
-    let questions_path = root.join("questions.parquet");
     let commission_questions_path = root.join("commission_questions.parquet");
     let summaries_path = root.join("summaries.parquet");
 
@@ -56,145 +67,135 @@ async fn main() {
         }
     }
 
-    // Process files (limited for testing inside process_file).
-    let (rows_q, calls_q) = process_questions(
+    let question_titles_task = SummarizationTask {
+        task_type: SummarizationTaskType::QuestionTopics,
+        model_name: "mistral-large-latest".to_string(),
+        prompt: "The assistant will receive a comma-separated list of topics and generate a single, concise topic (no more than 20 words) that encompasses all the given topics. \
+            - The result must match the style of the input topics. \
+            - The result must be in Dutch. \
+            - Do not add explanations, clarifications, or extra words such as 'including' or 'such as'. \
+            - The output should fit naturally within the provided list. \
+            - Only return the summarized topic without any additional text.".to_string(),
+        column_name: "topics_nl".to_string(),
+        source_file: root.join("questions.parquet"),
+        target_file: root.join("summaries.parquet"),
+    };
+
+    let question_discussions_task = SummarizationTask {
+        task_type: SummarizationTaskType::QuestionDiscussion,
+        model_name: "mistral-medium-2508".to_string(),
+        prompt: "Je krijgt de volledige discussie (vraag en antwoord) als ruwe tekst. Vat de discussie samen in maximaal 4 zinnen, hoe korter hoe beter. Hou de informatiedensiteit heel hoog, geen onnodige woorden. \
+            - Schrijf in het Nederlands. \
+            - Benadruk het hoofdonderwerp en de belangrijkste standpunten/antwoorden. \
+            - Geen extra uitleg, geen opsommingen, enkel de samenvatting.".to_string(),
+        column_name: "discussion".to_string(),
+        source_file: root.join("questions.parquet"),
+        target_file: root.join("summaries.parquet"),
+    };
+
+    let dossier_titles_task = SummarizationTask {
+        task_type: SummarizationTaskType::DossierTitle,
+        model_name: "mistral-large-latest".to_string(),
+        prompt: "The assistant receives a formal legislative dossier title in Dutch and must generate a concise, summarized version (max. 20 words). \
+            - The summary should clearly convey the core purpose of the law in simple, formal language. \
+            - Focus on the key subject or change the law is addressing, using concise wording like \"Wetsontwerp ter...\" without extra introductory phrases. \
+            - Avoid abbreviations or overly technical jargon. \
+            - Return the summary as a clear and informative sentence without extra text or punctuation. \
+            - The summary should be written in Dutch.".to_string(),
+        column_name: "title".to_string(),
+        source_file: root.join("dossiers.parquet"),
+        target_file: root.join("summaries.parquet"),
+    };
+
+    let (question_title_rows, question_title_calls) = run_summarization_task(
+        question_titles_task,
         &client,
         &mistral_api_key,
-        &questions_path,
-        model_name,
         &existing_hashes,
-        &summaries_path,
     )
     .await;
-    let (rows_d, calls_d) = process_dossiers(
+
+    let (question_discussion_rows, question_discussion_calls) = run_summarization_task(
+        question_discussions_task,
         &client,
         &mistral_api_key,
-        &root.join("dossiers.parquet"),
-        model_name,
         &existing_hashes,
-        &summaries_path,
     )
     .await;
-    let (rows_q_disc, calls_q_disc) = process_question_discussions(
-        &client,
-        &mistral_api_key,
-        &questions_path,
-        model_name,
-        &existing_hashes,
-        &summaries_path,
-    )
-    .await;
-    let (rows_cq_disc, calls_cq_disc) = process_question_discussions(
-        &client,
-        &mistral_api_key,
-        &commission_questions_path,
-        model_name,
-        &existing_hashes,
-        &summaries_path,
-    )
-    .await;
-    let _all_rows = [rows_q, rows_d, rows_q_disc, rows_cq_disc].concat();
 
-    //   let existing_batches = [batches_q.clone(), batches_d.clone()].concat();
-    let mistral_calls = calls_q + calls_d + calls_q_disc + calls_cq_disc;
+    // let (dossier_title_rows, dossier_title_calls) =
+    //     run_summarization_task(dossier_titles_task, &client, api_key, &existing_hashes).await;
 
-    println!("Total Mistral API calls: {}", mistral_calls); // Print total number of API calls
+    // let (rows_cq_disc, calls_cq_disc) = process_question_discussions(
+    //     &client,
+    //     &mistral_api_key,
+    //     &commission_questions_path,
+    //     model_name,
+    //     &existing_hashes,
+    //     &summaries_path,
+    // )
+    // .await;
+    // let _all_rows = [rows_q, rows_d, rows_q_disc, rows_cq_disc].concat();
+
+    println!(
+        "Summarized with a total of {} Mistral API calls",
+        question_title_calls + question_discussion_calls
+    );
 }
 
-async fn process_questions(
-    client: &Client,
-    api_key: &str,
-    path: &PathBuf,
-    model_name: &str,
-    existing_hashes: &HashSet<String>,
-    summaries_path: &PathBuf,
-) -> (Vec<SummaryRow>, u32) {
-    process_file(
-        client,
-        api_key,
-        path,
-        "topics_nl",
-        model_name,
-        existing_hashes,
-        SummarizeTask::QuestionTopics,
-        summaries_path,
-    )
-    .await
-}
+// async fn process_question_discussions(
+//     client: &Client,
+//     api_key: &str,
+//     path: &PathBuf,
+//     model_name: &str,
+//     existing_hashes: &HashSet<String>,
+//     summaries_path: &PathBuf,
+// ) -> (Vec<SummaryRow>, u32) {
+//     run_summarization_task(
+//         client,
+//         api_key,
+//         path,
+//         "discussion",
+//         model_name,
+//         existing_hashes,
+//         SummarizationTaskType::QuestionDiscussion,
+//         summaries_path,
+//     )
+//     .await
+// }
 
-async fn process_dossiers(
+/**
+ * Run a summarization task.
+ */
+async fn run_summarization_task(
+    task: SummarizationTask,
     client: &Client,
     api_key: &str,
-    path: &PathBuf,
-    model_name: &str,
     existing_hashes: &HashSet<String>,
-    summaries_path: &PathBuf,
 ) -> (Vec<SummaryRow>, u32) {
-    process_file(
-        client,
-        api_key,
-        path,
-        "title",
-        model_name,
-        existing_hashes,
-        SummarizeTask::DossierTitle,
-        summaries_path,
-    )
-    .await
-}
-
-async fn process_question_discussions(
-    client: &Client,
-    api_key: &str,
-    path: &PathBuf,
-    model_name: &str,
-    existing_hashes: &HashSet<String>,
-    summaries_path: &PathBuf,
-) -> (Vec<SummaryRow>, u32) {
-    process_file(
-        client,
-        api_key,
-        path,
-        "discussion",
-        model_name,
-        existing_hashes,
-        SummarizeTask::QuestionDiscussion,
-        summaries_path,
-    )
-    .await
-}
-
-async fn process_file(
-    client: &Client,
-    api_key: &str,
-    path: &PathBuf,
-    column_name: &str,
-    model_name: &str,
-    existing_hashes: &HashSet<String>,
-    task: SummarizeTask,
-    summaries_path: &PathBuf,
-) -> (Vec<SummaryRow>, u32) {
-    let file = File::open(path).unwrap();
-    let builder = ParquetRecordBatchReaderBuilder::try_new(file).unwrap();
-    let file_reader = builder.build().unwrap();
+    let source_file = File::open(task.source_file).unwrap();
+    let source_file_reader = ParquetRecordBatchReaderBuilder::try_new(source_file)
+        .unwrap()
+        .build()
+        .unwrap();
 
     let mut summary_rows = Vec::new();
     let mut mistral_calls = 0;
     let mut processed_batches = Vec::new();
 
-    for batch_result in file_reader {
+    for batch_result in source_file_reader {
         let batch = batch_result.expect("Failed to read batch from file");
         processed_batches.push(batch.clone());
 
         let column = batch
-            .column_by_name(column_name)
+            .column_by_name(task.column_name.as_str())
             .expect("Missing expected column")
             .as_any()
             .downcast_ref::<StringArray>()
             .expect("Expected a StringArray");
 
-        let pb = ProgressBar::new(column.len() as u64);
-        pb.set_style(
+        let progress_bar = ProgressBar::new(column.len() as u64);
+        progress_bar.set_style(
             ProgressStyle::default_bar()
                 .template("{spinner:.green} [{elapsed_precise}] [{wide_bar:.cyan/blue}] {pos}/{len} ({eta})")
                 .unwrap()
@@ -211,69 +212,56 @@ async fn process_file(
             let raw_input = column.value(i);
             let prepared_input = raw_input.to_string();
             let input_hash = hash_text(&prepared_input);
-            let should_summarize = match task {
-                SummarizeTask::QuestionTopics => {
+            let should_summarize = match task.task_type {
+                SummarizationTaskType::QuestionTopics => {
                     prepared_input.contains(';') && !existing_hashes.contains(&input_hash)
                 }
-                SummarizeTask::DossierTitle => !existing_hashes.contains(&input_hash),
-                SummarizeTask::QuestionDiscussion => {
+                SummarizationTaskType::DossierTitle => !existing_hashes.contains(&input_hash),
+                SummarizationTaskType::QuestionDiscussion => {
                     let trimmed = raw_input.trim();
                     trimmed != "[]" && !trimmed.is_empty() && !existing_hashes.contains(&input_hash)
                 }
             };
 
             if should_summarize {
-                if let SummarizeTask::QuestionDiscussion = task {
+                if let SummarizationTaskType::QuestionDiscussion = task.task_type {
                     println!(
                         "Sending discussion to Mistral (chars={})",
                         prepared_input.len(),
                     );
                 }
-                let summary = match task {
-                    SummarizeTask::QuestionTopics => {
-                        summarize_question(client, api_key, &prepared_input, &mut mistral_calls)
-                            .await
-                    }
-                    SummarizeTask::DossierTitle => {
-                        summarize_dossier_title(
-                            client,
-                            api_key,
-                            &prepared_input,
-                            &mut mistral_calls,
-                        )
-                        .await
-                    }
-                    SummarizeTask::QuestionDiscussion => {
-                        summarize_question_discussion(
-                            client,
-                            api_key,
-                            &prepared_input,
-                            &mut mistral_calls,
-                        )
-                        .await
-                    }
-                };
+
+                let summary = mistral_complete(
+                    client,
+                    api_key,
+                    &prepared_input,
+                    &task.model_name,
+                    &task.prompt,
+                    &mut mistral_calls,
+                )
+                .await;
 
                 if let Some(summary) = summary {
                     let row = SummaryRow {
                         input_hash,
                         original: prepared_input.to_string(),
                         summary,
-                        model: model_name.to_string(),
+                        model: task.model_name.clone(),
                     };
                     // Persist incrementally by rewriting the summaries file with the new row appended.
-                    if let Err(err) = rewrite_summaries_file(summaries_path, &[row.clone()]) {
+                    if let Err(err) = rewrite_summaries_file(&task.target_file, &[row.clone()]) {
                         eprintln!("Failed to write summaries file: {}", err);
                     }
                     summary_rows.push(row);
                 }
             }
 
-            pb.inc(1);
-            println!("Mistral calls: {}", mistral_calls);
+            progress_bar.inc(1);
+            if mistral_calls != 0 {
+                println!("Mistral calls: {}", mistral_calls);
+            }
         }
-
-        pb.finish_with_message(format!("{} summarization complete!", column_name));
+        progress_bar.finish_with_message(format!("{} summarization complete!", task.column_name));
     }
 
     (summary_rows, mistral_calls)
@@ -295,136 +283,22 @@ struct ApiResponse {
     choices: Vec<Choice>,
 }
 
-async fn summarize_question(
+async fn mistral_complete(
     client: &Client,
     api_key: &str,
-    topic: &str,
+    content: &str,
+    model: &str,
+    prompt: &str,
     mistral_calls: &mut u32,
 ) -> Option<String> {
     let payload = &json!({
-        "model": "mistral-large-latest",
+        "model": model,
         "messages": [
             {
                 "role": "system",
-                "content": "The assistant will receive a comma-separated list of topics and generate a single, concise topic (no more than 20 words) that encompasses all the given topics. \
-                    - The result must match the style of the input topics. \
-                    - The result must be in Dutch. \
-                    - Do not add explanations, clarifications, or extra words such as 'including' or 'such as'. \
-                    - The output should fit naturally within the provided list. \
-                    - Only return the summarized topic without any additional text."
+                "content": prompt,
             },
-            { "role": "user", "content": topic }
-        ]
-    });
-
-    match client
-        .post("https://api.mistral.ai/v1/chat/completions")
-        .header(CONTENT_TYPE, "application/json")
-        .header(ACCEPT, "application/json")
-        .header(AUTHORIZATION, format!("Bearer {}", api_key))
-        .json(payload)
-        .send()
-        .await
-    {
-        Ok(resp) => {
-            if resp.status().is_success() {
-                let json_resp: ApiResponse = resp.json().await.unwrap();
-                *mistral_calls += 1;
-                tokio::time::sleep(Duration::from_secs(5)).await;
-                Some(strip_markdown(&json_resp.choices[0].message.content))
-            } else {
-                eprintln!(
-                    "HTTP Error: {} - {:?}",
-                    resp.status(),
-                    resp.text().await.unwrap_or_default()
-                );
-                None
-            }
-        }
-        Err(err) => {
-            eprintln!("Request Failed: {}", err);
-            None
-        }
-    }
-}
-
-async fn summarize_question_discussion(
-    client: &Client,
-    api_key: &str,
-    discussion_text: &str,
-    mistral_calls: &mut u32,
-) -> Option<String> {
-    println!(
-        "Mistral request (discussion) payload preview (chars={})",
-        discussion_text.len(),
-    );
-    let payload = &json!({
-        "model": "mistral-medium-2508",
-        "messages": [
-            {
-                "role": "system",
-                "content": "Je krijgt de volledige discussie (vraag en antwoord) als ruwe tekst. Vat de discussie samen in maximaal 4 zinnen, hoe korter hoe beter. Hou de informatiedensiteit heel hoog, geen onnodige woorden. \
-                    - Schrijf in het Nederlands. \
-                    - Benadruk het hoofdonderwerp en de belangrijkste standpunten/antwoorden. \
-                    - Geen extra uitleg, geen opsommingen, enkel de samenvatting."
-            },
-            { "role": "user", "content": discussion_text }
-        ]
-    });
-
-    match client
-        .post("https://api.mistral.ai/v1/chat/completions")
-        .header(CONTENT_TYPE, "application/json")
-        .header(ACCEPT, "application/json")
-        .header(AUTHORIZATION, format!("Bearer {}", api_key))
-        .json(payload)
-        .send()
-        .await
-    {
-        Ok(resp) => {
-            if resp.status().is_success() {
-                let json_resp: ApiResponse = resp.json().await.unwrap();
-                *mistral_calls += 1;
-                tokio::time::sleep(Duration::from_secs(5)).await;
-                let content = json_resp.choices[0].message.content.clone();
-                println!(
-                    "Mistral response (discussion) preview (chars={})",
-                    content.len(),
-                );
-                Some(strip_markdown(&content))
-            } else {
-                let status = resp.status();
-                let body = resp.text().await.unwrap_or_default();
-                eprintln!("HTTP Error (discussion): {}", status,);
-                None
-            }
-        }
-        Err(err) => {
-            eprintln!("Request Failed: {}", err);
-            None
-        }
-    }
-}
-
-async fn summarize_dossier_title(
-    client: &Client,
-    api_key: &str,
-    topic: &str,
-    mistral_calls: &mut u32,
-) -> Option<String> {
-    let payload = &json!({
-        "model": "mistral-large-latest",
-        "messages": [
-            {
-                "role": "system",
-                "content": "The assistant receives a formal legislative dossier title in Dutch and must generate a concise, summarized version (max. 20 words). \
-                    - The summary should clearly convey the core purpose of the law in simple, formal language. \
-                    - Focus on the key subject or change the law is addressing, using concise wording like \"Wetsontwerp ter...\" without extra introductory phrases. \
-                    - Avoid abbreviations or overly technical jargon. \
-                    - Return the summary as a clear and informative sentence without extra text or punctuation. \
-                    - The summary should be written in Dutch."
-            },
-            { "role": "user", "content": topic }
+            { "role": "user", "content": content }
         ]
     });
 
