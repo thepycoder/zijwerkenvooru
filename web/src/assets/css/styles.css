@@ -2487,3 +2487,22 @@ small {
     transform: translate(-50%, 0%);
     background: white;
 }
+
+.desktop-only {
+    display: block;
+}
+
+.mobile-only {
+    display: none;
+}
+
+/* PHONE ONLY: max-width: 599px */
+@media (max-width: 599px) {
+    .desktop-only {
+        display: none !important;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+}
