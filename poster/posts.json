@@ -2405,6 +2405,30 @@
         "respondents": [
           "Jan Jambon"
         ]
+      },
+      {
+        "type": "Question",
+        "hash": "3c7f74059bfa0639450b1cf25093434753bff4987276560cec374464b0598206",
+        "topic": "De impact van de indexdiefstal op het aanvullende pensioen",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3magq3zw4sa2v",
+        "questioners": [
+          "Roberto D'Amico"
+        ],
+        "respondents": [
+          "Jan Jambon"
+        ]
+      },
+      {
+        "type": "Question",
+        "hash": "819d52be245b26d233d348f208141a1ff47586a967ae18b95a9a32c43f47a6ec",
+        "topic": "Het advies van de Raad van State over de fusie van de politiezones",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3magq42hua62v",
+        "questioners": [
+          "@francoisdesmet.bsky.social"
+        ],
+        "respondents": [
+          "Bernard Quintin"
+        ]
       }
     ]
   }
