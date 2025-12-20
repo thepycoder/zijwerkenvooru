@@ -2325,6 +2325,74 @@
         "respondents": [
           "David Clarinval"
         ]
+      },
+      {
+        "type": "Question",
+        "hash": "bacfcfd207ac9c33b541297192027370faf95a6f6cb7cf9f48ba768b129f566a",
+        "topic": "Boerenprotesten en voedselsoevereiniteit in België",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3magp33ei4z2k",
+        "questioners": [
+          "Dieter Keuten",
+          "Benoît Lutgen",
+          "Natalie Eggermont",
+          "Leentje Grillaert",
+          "Charlotte Verkeyn",
+          "Youssef Handichi"
+        ],
+        "respondents": [
+          "David Clarinval"
+        ]
+      },
+      {
+        "type": "Question",
+        "hash": "6f3372dd7feecdefb3bac430029fb5881cb25c9e374ff8783a2052da652780d0",
+        "topic": "Toekomst van ziekenhuiszorg en hervormingen",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3magp342d3327",
+        "questioners": [
+          "@carodesir.bsky.social",
+          "Jean-François Gatelier"
+        ],
+        "respondents": [
+          "Frank Vandenbroucke"
+        ]
+      },
+      {
+        "type": "Question",
+        "hash": "be927656cb5407f0eeef8ece003081bb564e0b00028d04b18e938369cccc4789",
+        "topic": "De alarmsignalen met betrekking tot de erkenning van buitenlandse artsen",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3magp34bzxj23",
+        "questioners": [
+          "Irina De Knop"
+        ],
+        "respondents": [
+          "Frank Vandenbroucke"
+        ]
+      },
+      {
+        "type": "Question",
+        "hash": "e73047dfdd77f86cee09ecd550e93d74a7d98bd2cfc0f82a5b75d8417d802229",
+        "topic": "Auteursrechten en fiscale regelgeving voor journalisten en creatieven",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3magp353ni32p",
+        "questioners": [
+          "@pydermagne.bsky.social",
+          "@francoisdesmet.bsky.social"
+        ],
+        "respondents": [
+          "Jan Jambon"
+        ]
+      },
+      {
+        "type": "Question",
+        "hash": "ebb92fe3a59b9267a6d19ba09a2c7a88e275322ecba6a471288d1586de9af6cb",
+        "topic": "Btw- en accijnswijzigingen en financiële berekeningen door de minister van Financiën",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3magp35vtxi2v",
+        "questioners": [
+          "@vincentvq.bsky.social",
+          "@raoulhedebouw.bsky.social"
+        ],
+        "respondents": [
+          "Jan Jambon"
+        ]
       }
     ]
   }
