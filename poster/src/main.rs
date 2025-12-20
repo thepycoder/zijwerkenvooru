@@ -705,7 +705,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
                     rich_text.facets,
                     root_uri,
                     reply_to_uri,
-                    embed,
+                    None,
                 )
                 .await?;
 
@@ -814,7 +814,7 @@ pub async fn create_post(
         text,
         created_at: Datetime::now(),
         reply: None,
-        embed,
+        embed: None,
         langs: None,
         labels: None,
         tags: None,
