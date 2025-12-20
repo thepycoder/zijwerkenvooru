@@ -364,7 +364,8 @@ async fn main() -> Result<(), Box<dyn Error>> {
             formatted_date2, meeting_id
         ));
 
-        // TIME AND DATE
+        // INFO SUMMARY
+        md.push_str(&format!("---\n"));
         md.push_str(&format!(
             "📅 **Datum:** {} ({})\n\n",
             info.date, dutch_time_of_day
@@ -373,23 +374,32 @@ async fn main() -> Result<(), Box<dyn Error>> {
             "⏱ **Duur:** {}–{} ({} minuten)\n\n",
             info.start_time, info.end_time, duration_minutes
         ));
+        md.push_str(&format!(
+            "✅ **Aanwezigheid:** {}/150\n\n",
+            (150 - absentees.len())
+        ));
 
         // Add absentees
-        md.push_str("**Afwezigen**\n\n");
-        md.push_str("Dit is een schatting op basis van deelname aan de gevonden stemmingen. De Kamer publiceert geen aanwezigheden.\n\n");
+        md.push_str("De volgende kamerleden waren afwezig volgens een schatting op basis van deelname aan de gevonden stemmingen. De Kamer publiceert geen aanwezigheden.\n\n");
         if absentees.is_empty() {
             md.push_str("_Geen afwezigen_\n\n");
         } else {
-            for a in &absentees {
-                let party = member_infos
-                    .get(a)
-                    .map(|info| format!(" ({})", info.party))
-                    .unwrap_or_default();
-                let slug = a.to_lowercase().replace(' ', "-");
-                md.push_str(&format!("- {}{}\n", a, party));
-            }
+            let entries: Vec<String> = absentees
+                .iter()
+                .map(|a| {
+                    let party = member_infos
+                        .get(a)
+                        .map(|info| format!(" ({})", info.party))
+                        .unwrap_or_default();
+
+                    format!("{}{}", a, party)
+                })
+                .collect();
+
+            md.push_str(&entries.join(", "));
             md.push_str("\n");
         }
+        md.push_str(&format!("---\n\n\n"));
 
         // Questions
         md.push_str(&format!("❓Vragen ({} totaal)\n\n", qs.len()));
