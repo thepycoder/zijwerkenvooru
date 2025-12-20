@@ -62,8 +62,8 @@ jobs:
       - name: 🕷️ Run commission scraper
         run: ./target/release/commission-scraper
 
-      # - name: 🤖 Run summarizer
-      #   run: ./target/release/summarizer
+      - name: 🤖 Run summarizer
+        run: ./target/release/summarizer
 
       - name: ⚙️ Install packages
         run: |
