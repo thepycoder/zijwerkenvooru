@@ -74,6 +74,10 @@
         <p>
             {% for respondent in params.question.respondents %}
             {% set function = params.functions[respondent.name] | getActive(params.question.date) %}
+            {% set party = function.party %}
+            {% set primaryColor = params.partyColors[party | lower].primary or '#95a5a6' %}
+            {% set secondaryColor = params.partyColors[party | lower].secondary or '#95a5a6' %}
+            <a href="/parties/{{ party | slugify }}/" class="badge-link"><span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ party }}</span></a>
             <span class="respondent"><a href="/government/">{{ respondent.name }}</a>{% if function %} ({{ function.function }}){% endif %}</span>{% if not loop.last %}, {% endif %}
             {% endfor %}
         </p>
