@@ -226,8 +226,9 @@ async fn run_summarization_task(
             if should_summarize {
                 if let SummarizationTaskType::QuestionDiscussion = task.task_type {
                     println!(
-                        "Sending discussion to Mistral (chars={})",
+                        "Sending discussion to Mistral (chars={}, preview=\"{}\")",
                         prepared_input.len(),
+                        prepared_input.chars().take(100).collect::<String>()
                     );
                 }
 
