@@ -2429,6 +2429,18 @@
         "respondents": [
           "Bernard Quintin"
         ]
+      },
+      {
+        "type": "Question",
+        "hash": "79a4065494e611c1a4f5d57692d9d323059fa7c0ffe3eb1a99fe8ef713905041",
+        "topic": "De politie-interventies in Matonge",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mah4ndp4up2t",
+        "questioners": [
+          "Rajae Maouane"
+        ],
+        "respondents": [
+          "Bernard Quintin"
+        ]
       }
     ]
   }
