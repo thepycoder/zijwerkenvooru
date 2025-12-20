@@ -2300,6 +2300,31 @@
         "hash": "f80b6562b49ef9c6359b790f8babcd18e4142f41d2b29682f5577dffae80e892",
         "topic": "(1232/3)",
         "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3maejmyychd2v"
+      },
+      {
+        "type": "Question",
+        "hash": "693f9db68061f34dc3b8f048894f132aa2430705bf9534036d8748861d52062d",
+        "topic": "Duur van werkloosheid en uitkeringsbeperkingen",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3magljcihm42t",
+        "questioners": [
+          "Jeroen Van Lysebettens",
+          "@vincentvq.bsky.social"
+        ],
+        "respondents": [
+          "David Clarinval"
+        ]
+      },
+      {
+        "type": "Question",
+        "hash": "24b04e2e0b0c546ce1889288bd409484a6957003c625f5d8be1bead9ad726555",
+        "topic": "De evaluatie van de dagcontracten door de NAR",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3magljd37be2v",
+        "questioners": [
+          "@anjavanrobaeys.bsky.social"
+        ],
+        "respondents": [
+          "David Clarinval"
+        ]
       }
     ]
   }
