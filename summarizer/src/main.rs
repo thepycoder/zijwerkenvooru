@@ -1,4 +1,4 @@
-use arrow::array::{Array, ArrayRef, StringArray};
+use arrow::array::{Array, StringArray};
 use arrow::datatypes::{DataType, Field};
 use arrow::{datatypes::Schema, record_batch::RecordBatch};
 use indicatif::{ProgressBar, ProgressStyle};
@@ -9,7 +9,6 @@ use serde::{Deserialize, Serialize};
 use serde_json::json;
 use sha2::{Digest, Sha256};
 use std::collections::HashMap;
-use std::collections::HashSet;
 use std::fmt::Display;
 use std::fs::File;
 use std::path::PathBuf;
@@ -33,7 +32,6 @@ struct SummarizationTask {
     prompt: String,
     column_name: String,
     source_file: PathBuf,
-    target_file: PathBuf,
 }
 
 #[derive(Debug, Clone, Copy)]
@@ -63,18 +61,6 @@ impl Display for SummarizationTaskType {
     }
 }
 
-/**
- * A row in the summaries file.
- */
-#[derive(Debug, Clone)]
-struct SummaryRow {
-    input_hash: String,
-    original: String,
-    summary: String,
-    model: String,
-    meeting_id: Option<String>,
-}
-
 const MAX_RETRIES: u32 = 5;
 const INITIAL_BACKOFF_MS: u64 = 2_000;
 const MAX_BACKOFF_MS: u64 = 60_000;
@@ -89,7 +75,6 @@ async fn main() {
     let client = Client::new();
 
     let root = PathBuf::from("./web/src/data");
-    let commission_questions_path = root.join("commission_questions.parquet");
     let summaries_path = root.join("summaries.parquet");
 
     let mut existing: HashMap<String, ExistingSummary> = HashMap::new();
@@ -165,8 +150,7 @@ async fn main() {
             - The output should fit naturally within the provided list. \
             - Only return the summarized topic without any additional text.".to_string(),
         column_name: "topics_nl".to_string(),
-        source_file: root.join("questions.parquet"),
-        target_file: root.join("summaries.parquet"),
+        source_file: root.join("questions.parquet")
     };
 
     let plenary_question_discussions_task = SummarizationTask {
@@ -179,8 +163,7 @@ async fn main() {
             – Presenteer geen normatieve uitspraken als vaststaande feiten. \
             - Geen extra uitleg, geen opsommingen, enkel de samenvatting.".to_string(),
         column_name: "discussion".to_string(),
-        source_file: root.join("questions.parquet"),
-        target_file: root.join("summaries.parquet"),
+        source_file: root.join("questions.parquet")
     };
 
     let commission_question_titles_task = SummarizationTask {
@@ -193,12 +176,11 @@ async fn main() {
             - The output should fit naturally within the provided list. \
             - Only return the summarized topic without any additional text.".to_string(),
         column_name: "topics_nl".to_string(),
-        source_file: root.join("commission_questions.parquet"),
-        target_file: root.join("summaries.parquet"),
+        source_file: root.join("commission_questions.parquet")
     };
 
     let commission_question_discussions_task = SummarizationTask {
-        task_type: SummarizationTaskType::PlenaryQuestionDiscussion,
+        task_type: SummarizationTaskType::CommissionQuestionDiscussion,
         model_name: "mistral-medium-2508".to_string(),
         prompt: "Je krijgt de volledige discussie (vraag en antwoord) als ruwe tekst. Vat de discussie samen in maximaal 4 zinnen, hoe korter hoe beter. Hou de informatiedensiteit heel hoog, geen onnodige woorden. \
             - Schrijf in het Nederlands. \
@@ -207,23 +189,21 @@ async fn main() {
             – Presenteer geen normatieve uitspraken als vaststaande feiten. \
             - Geen extra uitleg, geen opsommingen, enkel de samenvatting.".to_string(),
         column_name: "discussion".to_string(),
-        source_file: root.join("commission_questions.parquet"),
-        target_file: root.join("summaries.parquet"),
+        source_file: root.join("commission_questions.parquet")
     };
 
-    let dossier_titles_task = SummarizationTask {
-        task_type: SummarizationTaskType::DossierTitle,
-        model_name: "mistral-large-latest".to_string(),
-        prompt: "The assistant receives a formal legislative dossier title in Dutch and must generate a concise, summarized version (max. 20 words). \
-            - The summary should clearly convey the core purpose of the law in simple, formal language. \
-            - Focus on the key subject or change the law is addressing, using concise wording like \"Wetsontwerp ter...\" without extra introductory phrases. \
-            - Avoid abbreviations or overly technical jargon. \
-            - Return the summary as a clear and informative sentence without extra text or punctuation. \
-            - The summary should be written in Dutch.".to_string(),
-        column_name: "title".to_string(),
-        source_file: root.join("dossiers.parquet"),
-        target_file: root.join("summaries.parquet"),
-    };
+    // let dossier_titles_task = SummarizationTask {
+    //     task_type: SummarizationTaskType::DossierTitle,
+    //     model_name: "mistral-large-latest".to_string(),
+    //     prompt: "The assistant receives a formal legislative dossier title in Dutch and must generate a concise, summarized version (max. 20 words). \
+    //         - The summary should clearly convey the core purpose of the law in simple, formal language. \
+    //         - Focus on the key subject or change the law is addressing, using concise wording like \"Wetsontwerp ter...\" without extra introductory phrases. \
+    //         - Avoid abbreviations or overly technical jargon. \
+    //         - Return the summary as a clear and informative sentence without extra text or punctuation. \
+    //         - The summary should be written in Dutch.".to_string(),
+    //     column_name: "title".to_string(),
+    //     source_file: root.join("dossiers.parquet")
+    // };
 
     let plenary_question_titles_calls = run_summarization_task(
         plenary_question_titles_task,
@@ -256,9 +236,6 @@ async fn main() {
         &mut existing,
     )
     .await;
-
-    // let (dossier_title_rows, dossier_title_calls) =
-    //     run_summarization_task(dossier_titles_task, &client, api_key, &existing_hashes).await;
 
     rewrite_summaries_file(&summaries_path, &existing).expect("Failed to write summaries");
 
@@ -524,36 +501,6 @@ async fn mistral_complete(
     }
 }
 
-/// Returns a preview of the given string of up to `limit` bytes, appending a truncated
-/// message if the string exceeds the limit. This is useful for debug logging purposes
-/// to avoid printing very long strings in full (such as LLM input payloads).
-///
-/// Ensures the slice ends on a valid UTF-8 boundary.
-///
-/// # Example
-/// ```
-/// let text = "Dit is een hele lange inputtekst die getoond moet worden...";
-/// println!("{}", preview_for_log(text, 20)); // Shows: "Dit is een hele lange… [truncated, 58 chars total]"
-/// ```
-fn preview_for_log(s: &str, limit: usize) -> String {
-    if s.len() <= limit {
-        s.to_string()
-    } else {
-        // Ensure we cut at a valid UTF-8 char boundary
-        let safe_end = if s.is_char_boundary(limit) {
-            limit
-        } else {
-            let mut idx = limit;
-            while idx > 0 && !s.is_char_boundary(idx) {
-                idx -= 1;
-            }
-            idx
-        };
-        let prefix = &s[..safe_end];
-        format!("{}… [truncated, {} chars total]", prefix, s.len())
-    }
-}
-
 fn hash_text(input: &str) -> String {
     let mut hasher = Sha256::new();
     hasher.update(input.as_bytes());
@@ -570,7 +517,7 @@ fn strip_markdown(input: &str) -> String {
 }
 
 /**
- * Rewrite the summaries file.
+ * Rewrite the summaries file. This overwrites the file.
  */
 fn rewrite_summaries_file(
     summaries_path: &PathBuf,
