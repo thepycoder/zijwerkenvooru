@@ -75,11 +75,17 @@ struct SummaryRow {
     meeting_id: Option<String>,
 }
 
+const MAX_RETRIES: u32 = 5;
+const INITIAL_BACKOFF_MS: u64 = 2_000;
+const MAX_BACKOFF_MS: u64 = 60_000;
+
 #[tokio::main]
 async fn main() {
     // load environment variables
     dotenvy::dotenv().ok();
     let mistral_api_key = std::env::var("MISTRAL_API_TOKEN").expect("Missing MISTRAL_API_TOKEN");
+
+    // set up http client
     let client = Client::new();
 
     let root = PathBuf::from("./web/src/data");
@@ -444,33 +450,76 @@ async fn mistral_complete(
         ]
     });
 
-    match client
-        .post("https://api.mistral.ai/v1/chat/completions")
-        .header(CONTENT_TYPE, "application/json")
-        .header(ACCEPT, "application/json")
-        .header(AUTHORIZATION, format!("Bearer {}", api_key))
-        .json(payload)
-        .send()
-        .await
-    {
-        Ok(resp) => {
-            if resp.status().is_success() {
+    let mut attempt: u32 = 0;
+    let mut backoff_ms = INITIAL_BACKOFF_MS;
+
+    loop {
+        attempt += 1;
+
+        let response = client
+            .post("https://api.mistral.ai/v1/chat/completions")
+            .header(CONTENT_TYPE, "application/json")
+            .header(ACCEPT, "application/json")
+            .header(AUTHORIZATION, format!("Bearer {}", api_key))
+            .json(&payload)
+            .send()
+            .await;
+
+        match response {
+            Ok(resp) if resp.status().is_success() => {
                 let json_resp: ApiResponse = resp.json().await.unwrap();
                 *mistral_calls += 1;
+
+                // Optional global throttle
                 tokio::time::sleep(Duration::from_secs(5)).await;
-                Some(strip_markdown(&json_resp.choices[0].message.content))
-            } else {
+
+                return Some(strip_markdown(&json_resp.choices[0].message.content));
+            }
+
+            Ok(resp) if resp.status().as_u16() == 429 || resp.status().is_server_error() => {
+                let status = resp.status(); // copy StatusCode (cheap, Copy)
+                let body = resp.text().await.unwrap_or_default();
+
+                if attempt >= MAX_RETRIES {
+                    eprintln!(
+                        "Mistral retry failed after {} attempts. Last error ({}): {}",
+                        attempt, status, body
+                    );
+                    return None;
+                }
+
                 eprintln!(
-                    "HTTP Error: {} - {:?}",
+                    "Mistral returned {} (attempt {}/{}). Retrying in {} ms...",
+                    status, attempt, MAX_RETRIES, backoff_ms
+                );
+
+                tokio::time::sleep(Duration::from_millis(backoff_ms)).await;
+                backoff_ms = (backoff_ms * 2).min(MAX_BACKOFF_MS);
+            }
+
+            Ok(resp) => {
+                eprintln!(
+                    "Mistral request failed with status {}: {}",
                     resp.status(),
                     resp.text().await.unwrap_or_default()
                 );
-                None
+                return None;
             }
-        }
-        Err(err) => {
-            eprintln!("Request Failed: {}", err);
-            None
+
+            Err(err) => {
+                if attempt >= MAX_RETRIES {
+                    eprintln!("Network error after {} attempts: {}", attempt, err);
+                    return None;
+                }
+
+                eprintln!(
+                    "Network error (attempt {}/{}): {}. Retrying in {} ms...",
+                    attempt, MAX_RETRIES, err, backoff_ms
+                );
+
+                tokio::time::sleep(Duration::from_millis(backoff_ms)).await;
+                backoff_ms = (backoff_ms * 2).min(MAX_BACKOFF_MS);
+            }
         }
     }
 }
