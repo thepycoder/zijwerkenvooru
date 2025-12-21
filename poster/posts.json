@@ -2441,6 +2441,19 @@
         "respondents": [
           "Bernard Quintin"
         ]
+      },
+      {
+        "type": "Question",
+        "hash": "dbc716fabac6db36e1623c0ccd37086f7d2664c2636b72bcbb82072877a4e904",
+        "topic": "Bestrijding van antisemitisme en veiligheid van de Joodse gemeenschap",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3maithmkedx2b",
+        "questioners": [
+          "Michael Freilich",
+          "Daniel Bacquelaine"
+        ],
+        "respondents": [
+          "Bernard Quintin"
+        ]
       }
     ]
   }
