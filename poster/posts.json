@@ -2454,6 +2454,18 @@
         "respondents": [
           "Bernard Quintin"
         ]
+      },
+      {
+        "type": "Question",
+        "hash": "7d00eb8f6082314cb4d35d17819409de6b12aabda7783a3d8c9a8b1225c5d39b",
+        "topic": "Het aanhoudende geweld in en om asielcentra",
+        "uri": "at://did:plc:koarzt5kpqronoeh45mofaqb/app.bsky.feed.post/3mam2y4g5la2t",
+        "questioners": [
+          "Francesca Van Belleghem"
+        ],
+        "respondents": [
+          "Anneleen Van Bossuyt"
+        ]
       }
     ]
   }
