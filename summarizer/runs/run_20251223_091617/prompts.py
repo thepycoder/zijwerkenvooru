@@ -101,7 +101,6 @@ BELANGRIJK:
 - Groepeer argumenten waar mogelijk: als dezelfde partijen meerdere gerelateerde argumenten hebben, combineer ze tot één samenhangend partijlabel (Partij A, Partij B, etc.)
 - Kwaliteit boven kwantiteit: liever 3 sterke, duidelijke argumenten dan 10 kleine details
 - Er is vaak heel veel achtergrond en context in de documenten, focus op de hoofdstukken waar echt debat wordt gevoerd.
-- Gebruik altijd bulletpoints voor de argumenten, geen nummering, geen volle teksten.
 
 Formatteer je antwoord als JSON met deze structuur:
 {{

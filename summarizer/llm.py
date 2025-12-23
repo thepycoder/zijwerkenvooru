@@ -240,6 +240,7 @@ class OpenAILLMClient(LLMClient):
             self._retry_info[key] = retry_info
             # Return empty analysis if JSON parsing fails after retries
             return PoliticalAnalysis(
+                arguments=None,
                 arguments_for=[],
                 arguments_against=[],
                 neutral_technical=[],
@@ -249,8 +250,9 @@ class OpenAILLMClient(LLMClient):
             )
         
         return PoliticalAnalysis(
-            arguments_for=result.get("arguments_for", []),
-            arguments_against=result.get("arguments_against", []),
+            arguments=result.get("arguments"),  # New format
+            arguments_for=result.get("arguments_for", []),  # Old format (backward compatibility)
+            arguments_against=result.get("arguments_against", []),  # Old format (backward compatibility)
             neutral_technical=result.get("neutral_technical", []),
             summary_debate=result.get("summary_debate"),
             notable_changes=result.get("notable_changes"),
@@ -378,6 +380,7 @@ class AnthropicLLMClient(LLMClient):
             self._retry_info[key] = retry_info
             # Return empty analysis if JSON parsing fails after retries
             return PoliticalAnalysis(
+                arguments=None,
                 arguments_for=[],
                 arguments_against=[],
                 neutral_technical=[],
@@ -387,8 +390,9 @@ class AnthropicLLMClient(LLMClient):
             )
         
         return PoliticalAnalysis(
-            arguments_for=result.get("arguments_for", []),
-            arguments_against=result.get("arguments_against", []),
+            arguments=result.get("arguments"),  # New format
+            arguments_for=result.get("arguments_for", []),  # Old format (backward compatibility)
+            arguments_against=result.get("arguments_against", []),  # Old format (backward compatibility)
             neutral_technical=result.get("neutral_technical", []),
             summary_debate=result.get("summary_debate"),
             notable_changes=result.get("notable_changes"),
@@ -513,6 +517,7 @@ class MistralLLMClient(LLMClient):
             self._retry_info[key] = retry_info
             # Return empty analysis if JSON parsing fails after retries
             return PoliticalAnalysis(
+                arguments=None,
                 arguments_for=[],
                 arguments_against=[],
                 neutral_technical=[],
@@ -522,8 +527,9 @@ class MistralLLMClient(LLMClient):
             )
         
         return PoliticalAnalysis(
-            arguments_for=result.get("arguments_for", []),
-            arguments_against=result.get("arguments_against", []),
+            arguments=result.get("arguments"),  # New format
+            arguments_for=result.get("arguments_for", []),  # Old format (backward compatibility)
+            arguments_against=result.get("arguments_against", []),  # Old format (backward compatibility)
             neutral_technical=result.get("neutral_technical", []),
             summary_debate=result.get("summary_debate"),
             notable_changes=result.get("notable_changes"),
@@ -680,6 +686,7 @@ class GeminiLLMClient(LLMClient):
             self._retry_info[key] = retry_info
             # Return empty analysis if JSON parsing fails after retries
             return PoliticalAnalysis(
+                arguments=None,
                 arguments_for=[],
                 arguments_against=[],
                 neutral_technical=[],
@@ -689,8 +696,9 @@ class GeminiLLMClient(LLMClient):
             )
         
         return PoliticalAnalysis(
-            arguments_for=result.get("arguments_for", []),
-            arguments_against=result.get("arguments_against", []),
+            arguments=result.get("arguments"),  # New format
+            arguments_for=result.get("arguments_for", []),  # Old format (backward compatibility)
+            arguments_against=result.get("arguments_against", []),  # Old format (backward compatibility)
             neutral_technical=result.get("neutral_technical", []),
             summary_debate=result.get("summary_debate"),
             notable_changes=result.get("notable_changes"),
@@ -834,6 +842,7 @@ class NebiusLLMClient(LLMClient):
             self._retry_info[key] = retry_info
             # Return empty analysis if JSON parsing fails after retries
             return PoliticalAnalysis(
+                arguments=None,
                 arguments_for=[],
                 arguments_against=[],
                 neutral_technical=[],
@@ -843,8 +852,9 @@ class NebiusLLMClient(LLMClient):
             )
         
         return PoliticalAnalysis(
-            arguments_for=result.get("arguments_for", []),
-            arguments_against=result.get("arguments_against", []),
+            arguments=result.get("arguments"),  # New format
+            arguments_for=result.get("arguments_for", []),  # Old format (backward compatibility)
+            arguments_against=result.get("arguments_against", []),  # Old format (backward compatibility)
             neutral_technical=result.get("neutral_technical", []),
             summary_debate=result.get("summary_debate"),
             notable_changes=result.get("notable_changes"),
@@ -985,6 +995,7 @@ class OpenRouterLLMClient(LLMClient):
             self._retry_info[key] = retry_info
             # Return empty analysis if JSON parsing fails after retries
             return PoliticalAnalysis(
+                arguments=None,
                 arguments_for=[],
                 arguments_against=[],
                 neutral_technical=[],
@@ -994,8 +1005,9 @@ class OpenRouterLLMClient(LLMClient):
             )
         
         return PoliticalAnalysis(
-            arguments_for=result.get("arguments_for", []),
-            arguments_against=result.get("arguments_against", []),
+            arguments=result.get("arguments"),  # New format
+            arguments_for=result.get("arguments_for", []),  # Old format (backward compatibility)
+            arguments_against=result.get("arguments_against", []),  # Old format (backward compatibility)
             neutral_technical=result.get("neutral_technical", []),
             summary_debate=result.get("summary_debate"),
             notable_changes=result.get("notable_changes"),

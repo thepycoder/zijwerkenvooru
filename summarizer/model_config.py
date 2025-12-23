@@ -24,24 +24,24 @@ class ModelConfig:
 
 # Define all models you want to test here
 MODELS_TO_TEST = [
-    ModelConfig(
-        name="Claude Sonnet 4.5",
-        provider="anthropic",
-        model="claude-sonnet-4-5-20250929",
-        client_class=AnthropicLLMClient,
-    ),
-    ModelConfig(
-        name="Claude Haiku 4.5",
-        provider="anthropic",
-        model="claude-haiku-4-5-20251001",
-        client_class=AnthropicLLMClient,
-    ),
-    ModelConfig(
-        name="Gemini 3 Pro Preview",
-        provider="gemini",
-        model="gemini-3-pro-preview",
-        client_class=GeminiLLMClient,
-    ),
+    # ModelConfig(
+    #     name="Claude Sonnet 4.5",
+    #     provider="anthropic",
+    #     model="claude-sonnet-4-5-20250929",
+    #     client_class=AnthropicLLMClient,
+    # ),
+    # ModelConfig(
+    #     name="Claude Haiku 4.5",
+    #     provider="anthropic",
+    #     model="claude-haiku-4-5-20251001",
+    #     client_class=AnthropicLLMClient,
+    # ),
+    # ModelConfig(
+    #     name="Gemini 3 Pro Preview",
+    #     provider="gemini",
+    #     model="gemini-3-pro-preview",
+    #     client_class=GeminiLLMClient,
+    # ),
     ModelConfig(
         name="Gemini 3 Flash Preview",
         provider="gemini",
@@ -54,42 +54,42 @@ MODELS_TO_TEST = [
         model="mistral-large-2512",
         client_class=MistralLLMClient,
     ),
-    ModelConfig(
-        name="Mistral Medium 2508",
-        provider="mistral",
-        model="mistral-medium-2508",
-        client_class=MistralLLMClient,
-    ),
-    ModelConfig(
-        name="GPT-5 nano",
-        provider="openai",
-        model="gpt-5-nano-2025-08-07",
-        client_class=OpenAILLMClient,
-    ),
+    # ModelConfig(
+    #     name="Mistral Medium 2508",
+    #     provider="mistral",
+    #     model="mistral-medium-2508",
+    #     client_class=MistralLLMClient,
+    # ),
+    # ModelConfig(
+    #     name="GPT-5 nano",
+    #     provider="openai",
+    #     model="gpt-5-nano-2025-08-07",
+    #     client_class=OpenAILLMClient,
+    # ),
     ModelConfig(
         name="GPT-5 mini",
         provider="openai",
         model="gpt-5-mini-2025-08-07",
         client_class=OpenAILLMClient,
     ),
-    ModelConfig(
-        name="GPT-5.2",
-        provider="openai",
-        model="gpt-5.2-2025-12-11",
-        client_class=OpenAILLMClient,
-    ),
-    ModelConfig(
-        name="DeepSeek V3.2",
-        provider="openrouter",
-        model="deepseek/deepseek-v3.2",
-        client_class=OpenRouterLLMClient,
-    ),
-    ModelConfig(
-        name="Grok 4 Fast",
-        provider="openrouter",
-        model="x-ai/grok-4-fast",
-        client_class=OpenRouterLLMClient,
-    ),
+    # ModelConfig(
+    #     name="GPT-5.2",
+    #     provider="openai",
+    #     model="gpt-5.2-2025-12-11",
+    #     client_class=OpenAILLMClient,
+    # ),
+    # ModelConfig(
+    #     name="DeepSeek V3.2",
+    #     provider="openrouter",
+    #     model="deepseek/deepseek-v3.2",
+    #     client_class=OpenRouterLLMClient,
+    # ),
+    # ModelConfig(
+    #     name="Grok 4 Fast",
+    #     provider="openrouter",
+    #     model="x-ai/grok-4-fast",
+    #     client_class=OpenRouterLLMClient,
+    # ),
     # ModelConfig(
     #     name="Kimi K2 Thinking",
     #     provider="nebius",

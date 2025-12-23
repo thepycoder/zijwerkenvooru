@@ -312,9 +312,27 @@
             margin-left: 1.5rem;
             margin-top: 0.5rem;
             margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .markdown-content ul {
+            list-style-type: disc;
+        }
+
+        .markdown-content ol {
+            list-style-type: decimal;
         }
 
         .markdown-content li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        .markdown-content ul ul,
+        .markdown-content ol ol,
+        .markdown-content ul ol,
+        .markdown-content ol ul {
+            margin-top: 0.25rem;
             margin-bottom: 0.25rem;
         }
 
@@ -453,6 +471,7 @@
             }
 
             // Populate dropdowns
+            console.log(`Loaded ${Object.keys(allResults).length} model results`);
             populateDropdowns();
         }
 
@@ -563,29 +582,39 @@
                 if (summary && summary.model_results) {
                     for (const modelResult of summary.model_results) {
                         if (modelResult.success && modelResult.output_file) {
-                            // Extract filename from full path
+                            // Extract filename from full path (handles both absolute and relative paths)
                             const filename = modelResult.output_file.split('/').pop();
                             const filePath = `${runPath}/${filename}`;
-                            await loadResultFile(filePath, runPath, metadata, modelResult);
+                            const loaded = await loadResultFile(filePath, runPath, metadata, modelResult);
+                            if (!loaded) {
+                                console.log(`Failed to load: ${filePath}`);
+                            }
                         }
                     }
                 } else {
-                    // Fallback: try common model patterns
-                    const commonModels = [
-                        'claude-sonnet-4-5-20250929',
-                        'claude-haiku-4-5-20251001',
-                        'gemini-3-pro-preview',
-                        'gemini-3-flash-preview',
-                        'mistral-large-2512',
-                        'mistral-medium-2508',
-                        'moonshotai_Kimi-K2-Thinking',
-                    ];
-                    
-                    for (const model of commonModels) {
-                        const safeModel = model.replace('/', '_').replace(':', '_');
-                        const filePath = `${runPath}/results_${safeModel}.json`;
-                        await loadResultFile(filePath, runPath, metadata);
-                    }
+                    console.log(`No summary found for ${runPath}, trying fallback patterns`);
+                }
+                
+                // Always try common model patterns as a fallback (even if summary exists, in case summary is incomplete)
+                const commonModels = [
+                    'claude-sonnet-4-5-20250929',
+                    'claude-haiku-4-5-20251001',
+                    'gemini-3-pro-preview',
+                    'gemini-3-flash-preview',
+                    'gpt-5-mini-2025-08-07',
+                    'gpt-5-nano-2025-08-07',
+                    'gpt-5.2-2025-12-11',
+                    'mistral-large-2512',
+                    'mistral-medium-2508',
+                    'moonshotai_Kimi-K2-Thinking',
+                    'deepseek_deepseek-v3.2',
+                    'x-ai_grok-4-fast',
+                ];
+                
+                for (const model of commonModels) {
+                    const safeModel = model.replace('/', '_').replace(':', '_');
+                    const filePath = `${runPath}/results_${safeModel}.json`;
+                    await loadResultFile(filePath, runPath, metadata);
                 }
             } catch (e) {
                 console.log(`Error loading run directory ${runPath}:`, e);
@@ -597,6 +626,12 @@
                 const response = await fetch(filePath);
                 if (response.ok) {
                     const data = await response.json();
+                    
+                    // Validate that we have dossier data
+                    if (!data || typeof data !== 'object' || Object.keys(data).length === 0) {
+                        console.log(`Empty or invalid data in: ${filePath}`);
+                        return false;
+                    }
                     
                     // Extract model identifier
                     let modelKey;
@@ -621,10 +656,14 @@
                         filePath: filePath,
                     };
                     
+                    console.log(`Loaded: ${modelKey} (${Object.keys(data).length} dossiers)`);
                     return true;
+                } else {
+                    console.log(`HTTP error ${response.status} loading: ${filePath}`);
                 }
             } catch (e) {
-                // File doesn't exist, continue
+                // File doesn't exist or other error
+                console.log(`Error loading ${filePath}:`, e.message);
             }
             return false;
         }
@@ -693,6 +732,20 @@
         }
 
         function renderDossier(dossierId, data) {
+            // Debug: log political_analysis structure for first dossier
+            if (dossierId === Object.keys(allResults[Object.keys(allResults)[0]])[0]) {
+                console.log('Sample political_analysis structure:', {
+                    has_arguments: !!data.political_analysis?.arguments,
+                    arguments_length: data.political_analysis?.arguments?.length,
+                    has_arguments_for: !!data.political_analysis?.arguments_for,
+                    arguments_for_length: data.political_analysis?.arguments_for?.length,
+                    has_arguments_against: !!data.political_analysis?.arguments_against,
+                    arguments_against_length: data.political_analysis?.arguments_against?.length,
+                    has_summary_debate: !!data.political_analysis?.summary_debate,
+                    full_structure: data.political_analysis
+                });
+            }
+            
             const html = `
                 <div class="dossier-section">
                     <div class="dossier-title">
@@ -727,6 +780,26 @@
                         <div class="has-debate ${data.political_analysis?.has_debate ? 'true' : 'false'}">
                             ${data.political_analysis?.has_debate ? 'Has Debate' : 'No Debate'}
                         </div>
+
+                        ${data.political_analysis?.arguments && Array.isArray(data.political_analysis.arguments) && data.political_analysis.arguments.length > 0 ? `
+                            <div style="margin-top: 1rem;">
+                                <strong style="color: #34495e;">Party Positions (${data.political_analysis.arguments.length}):</strong>
+                                <div class="arguments-list">
+                                    ${data.political_analysis.arguments.map(arg => {
+                                        if (!arg) return '';
+                                        const party = extractPartyOrSource(arg);
+                                        const text = extractArgumentText(arg);
+                                        if (!text || text.trim() === '') return '';
+                                        return `
+                                        <div class="argument-item neutral">
+                                            ${party ? `<div class="argument-party">${escapeHtml(party)}</div>` : ''}
+                                            <div class="argument-text markdown-content">${safeMarkdownParse(text)}</div>
+                                        </div>
+                                        `;
+                                    }).filter(Boolean).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
 
                         ${data.political_analysis?.arguments_for?.length > 0 ? `
                             <div style="margin-top: 1rem;">
@@ -764,8 +837,17 @@
                             </div>
                         ` : ''}
 
+                        ${(!data.political_analysis?.arguments || !Array.isArray(data.political_analysis.arguments) || data.political_analysis.arguments.length === 0) && 
+                          (!data.political_analysis?.arguments_for || data.political_analysis.arguments_for.length === 0) && 
+                          (!data.political_analysis?.arguments_against || data.political_analysis.arguments_against.length === 0) && 
+                          data.political_analysis?.summary_debate ? `
+                            <div style="margin-top: 1rem; padding: 0.75rem; background: #fff3cd; border-radius: 4px; border-left: 3px solid #f39c12; font-size: 0.9rem; color: #856404;">
+                                <strong>Note:</strong> No party positions or arguments found in the data, but debate summary is available below.
+                            </div>
+                        ` : ''}
+
                         ${data.political_analysis?.summary_debate ? `
-                            <div class="notable-changes">
+                            <div class="notable-changes" style="margin-top: 1rem;">
                                 <strong>Debate Summary:</strong>
                                 <div class="markdown-content" style="margin-top: 0.5rem;">
                                     ${safeMarkdownParse(data.political_analysis.summary_debate)}
@@ -865,6 +947,30 @@
             return div.innerHTML;
         }
 
+        function normalizeBulletPoints(text) {
+            // Normalize different bullet point formats to markdown-compatible format
+            if (!text || typeof text !== 'string') {
+                return text;
+            }
+            
+            // Split by newlines to process each line
+            const lines = text.split('\n');
+            const normalizedLines = lines.map(line => {
+                const trimmed = line.trim();
+                // Convert bullet character (•) to markdown hyphen (-)
+                if (trimmed.startsWith('•')) {
+                    return trimmed.replace(/^•\s*/, '- ');
+                }
+                // Ensure lines starting with - have proper spacing
+                if (trimmed.startsWith('-') && !trimmed.startsWith('- ')) {
+                    return trimmed.replace(/^-\s*/, '- ');
+                }
+                return line;
+            });
+            
+            return normalizedLines.join('\n');
+        }
+
         function safeMarkdownParse(value) {
             // Convert value to string safely
             if (value === null || value === undefined) {
@@ -876,15 +982,15 @@
             }
             if (typeof value !== 'string') {
                 // Convert other types to string
-                return marked.parse(String(value));
+                return marked.parse(normalizeBulletPoints(String(value)));
             }
-            return marked.parse(value);
+            return marked.parse(normalizeBulletPoints(value));
         }
 
         function extractArgumentText(arg) {
             // Handle different argument object structures
             if (typeof arg === 'string') {
-                return arg;
+                return normalizeBulletPoints(arg);
             }
             if (arg === null || arg === undefined) {
                 return '';
@@ -894,14 +1000,19 @@
                 return arg.map(item => extractArgumentText(item)).filter(Boolean).join('\n\n');
             }
             if (typeof arg !== 'object') {
-                return String(arg);
+                return normalizeBulletPoints(String(arg));
             }
             
             // Try common keys for argument text (in order of preference)
-            const textKeys = ['argument', 'observation', 'text', 'content', 'message', 'note', 'comment', 'description'];
+            const textKeys = ['arguments', 'argument', 'observation', 'text', 'content', 'message', 'note', 'comment', 'description'];
             for (const key of textKeys) {
                 if (arg[key] !== undefined && arg[key] !== null) {
-                    return String(arg[key]);
+                    const value = arg[key];
+                    // If it's an array, join with newlines to create a proper markdown list
+                    if (Array.isArray(value)) {
+                        return value.join('\n');
+                    }
+                    return normalizeBulletPoints(String(value));
                 }
             }
             

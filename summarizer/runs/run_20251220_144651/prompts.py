@@ -29,7 +29,7 @@ Document ID: {document.id}
 Auteurs: {authors_text}
 
 Taak: Vat dit document objectief samen in heldere taal voor een burger zonder juridische kennis.
-Gebruik geen onnodige tekst, kort en bondig. Gebruik zo weinig mogelijk jargon en technische termen.
+Gebruik geen onnodige tekst, kort en bondig.
 
 BELANGRIJK - Formatteer je samenvatting EXACT als volgt:
 
@@ -101,12 +101,11 @@ BELANGRIJK:
 - Groepeer argumenten waar mogelijk: als dezelfde partijen meerdere gerelateerde argumenten hebben, combineer ze tot één samenhangend partijlabel (Partij A, Partij B, etc.)
 - Kwaliteit boven kwantiteit: liever 3 sterke, duidelijke argumenten dan 10 kleine details
 - Er is vaak heel veel achtergrond en context in de documenten, focus op de hoofdstukken waar echt debat wordt gevoerd.
-- Gebruik altijd bulletpoints voor de argumenten, geen nummering, geen volle teksten.
 
 Formatteer je antwoord als JSON met deze structuur:
 {{
-    "summary_debate": "Vat de grote lijnen van de debatten heel kort samen. Gebruik in beperkte mate **vetgedrukt** voor belangrijke termen en concepten."
-    "arguments": [{{"party": "Partij naam of lijst van partijnamen / Raad van State / Technisch advies", "arguments": "Argumenten tekst in bulletpoints"}}],
+    "summary_debate": "Vat de grote lijnen van de debatten kort samen. Gebruik in beperkte mate **vetgedrukt** voor belangrijke termen en concepten."
+    "arguments": [{{"party": "Partij naam of lijst van partijnamen", "arguments": "Argumenten tekst in bulletpoints"}}],
 }}
 
 Zorg zeker voor een correcte JSON structuur en geen extra tekst.

@@ -84,12 +84,22 @@ class FactSummary:
 @dataclass
 class PoliticalAnalysis:
     """Output from Step 2: Political context and debate analysis."""
-    arguments_for: List[dict]  # [{"party": "...", "argument": "..."}]
-    arguments_against: List[dict]
-    neutral_technical: List[dict]  # [{"source": "...", "argument": "..."}]
+    arguments: Optional[List[dict]] = None  # New format: [{"party": "...", "arguments": "..."}]
+    arguments_for: List[dict] = None  # Old format: [{"party": "...", "argument": "..."}]
+    arguments_against: List[dict] = None
+    neutral_technical: List[dict] = None  # [{"source": "...", "argument": "..."}]
     summary_debate: Optional[str] = None  # Summary of the debate
     notable_changes: Optional[str] = None
     has_debate: bool = False
+    
+    def __post_init__(self):
+        """Initialize default values for backward compatibility."""
+        if self.arguments_for is None:
+            self.arguments_for = []
+        if self.arguments_against is None:
+            self.arguments_against = []
+        if self.neutral_technical is None:
+            self.neutral_technical = []
 
 
 @dataclass

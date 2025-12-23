@@ -146,8 +146,9 @@ def process_single_model(
                             "selection_reason": summary.fact_summary.selection_reason,
                         },
                         "political_analysis": {
-                            "arguments_for": summary.political_analysis.arguments_for,
-                            "arguments_against": summary.political_analysis.arguments_against,
+                            "arguments": summary.political_analysis.arguments,  # New format
+                            "arguments_for": summary.political_analysis.arguments_for,  # Old format (backward compatibility)
+                            "arguments_against": summary.political_analysis.arguments_against,  # Old format (backward compatibility)
                             "neutral_technical": summary.political_analysis.neutral_technical,
                             "summary_debate": summary.political_analysis.summary_debate,
                             "notable_changes": summary.political_analysis.notable_changes,

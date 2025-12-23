@@ -1,0 +1,32 @@
+{
+  "run_timestamp": "2025-12-23T09:51:13.942954",
+  "models_tested": 3,
+  "models_successful": 3,
+  "models_failed": 0,
+  "model_results": [
+    {
+      "name": "Gemini 3 Flash Preview",
+      "provider": "gemini",
+      "model": "gemini-3-flash-preview",
+      "success": true,
+      "results_count": 10,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251223_093943/results_gemini-3-flash-preview.json"
+    },
+    {
+      "name": "Mistral Large 2512",
+      "provider": "mistral",
+      "model": "mistral-large-2512",
+      "success": true,
+      "results_count": 10,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251223_093943/results_mistral-large-2512.json"
+    },
+    {
+      "name": "GPT-5 mini",
+      "provider": "openai",
+      "model": "gpt-5-mini-2025-08-07",
+      "success": true,
+      "results_count": 10,
+      "output_file": "/home/victor/Projects/zijwerkenvooru/summarizer/runs/run_20251223_093943/results_gpt-5-mini-2025-08-07.json"
+    }
+  ]
+}
