@@ -28,7 +28,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         .unwrap()
         .join("../web/src/data");
 
-    let commissions_path = root.join("commissions.parquet");
+    let commissions_path = root.join("commission_meetings.parquet");
     let questions_path = root.join("commission_questions.parquet");
 
     if let Some(parent) = commissions_path.parent() {
@@ -250,36 +250,30 @@ impl fmt::Display for Commission {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
             Commission::BinnenlandseZakenVeiligheidMigratieEnBestuurszaken => {
-                write!(f, "BinnenlandseZakenVeiligheidMigratieEnBestuurszaken")
+                write!(
+                    f,
+                    "binnenlandse zaken, veiligheid, migratie en bestuurszaken"
+                )
             }
-
-            Commission::Landsverdediging => write!(f, "Landsverdediging"),
-
-            Commission::Justitie => write!(f, "Justitie"),
-
-            Commission::BuitenlandseBetrekkingen => write!(f, "BuitenlandseBetrekkingen"),
-
-            Commission::FinancienEnBegroting => write!(f, "FinancienEnBegroting"),
-
-            Commission::SocialeZakenWerkEnPensioenen => write!(f, "SocialeZakenWerkEnPensioenen"),
-
+            Commission::Landsverdediging => write!(f, "landsverdediging"),
+            Commission::Justitie => write!(f, "justitie"),
+            Commission::BuitenlandseBetrekkingen => write!(f, "buitenlandse betrekkingen"),
+            Commission::FinancienEnBegroting => write!(f, "financiën en begroting"),
+            Commission::SocialeZakenWerkEnPensioenen => {
+                write!(f, "sociale zaken, werk en pensioenen")
+            }
             Commission::EconomieConsumentenBeschermingEnDigitalisering => {
-                write!(f, "EconomieConsumentenBeschermingEnDigitalisering")
+                write!(f, "economie, consumentenbescherming en digitalisering")
             }
-
             Commission::MobiliteitOverheidsbedrijvenEnFederaleInstellingen => {
-                write!(f, "MobiliteitOverheidsbedrijvenEnFederaleInstellingen")
+                write!(f, "mobiliteit, overheidsbedrijven en federale instellingen")
             }
-
-            Commission::GezondheidEnGelijkeKansen => write!(f, "GezondheidEnGelijkeKansen"),
-
-            Commission::EnergieLeefmilieuEnKlimaat => write!(f, "EnergieLeefmilieuEnKlimaat"),
-
+            Commission::GezondheidEnGelijkeKansen => write!(f, "gezondheid en gelijke kansen"),
+            Commission::EnergieLeefmilieuEnKlimaat => write!(f, "energie, leefmilieu en klimaat"),
             Commission::InterparlementaireKlimaatdialoog => {
-                write!(f, "InterparlementaireKlimaatdialoog")
+                write!(f, "interparlementaire klimaatdialoog")
             }
-
-            Commission::Onbekend => write!(f, "Onbekend"),
+            Commission::Onbekend => write!(f, "onbekend"),
         }
     }
 }

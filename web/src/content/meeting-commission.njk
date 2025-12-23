@@ -1,7 +1,7 @@
 ---
 layout: layouts/meeting
 pagination:
-    data: collections.localizedCommissions
+    data: collections.localizedCommissionMeetings
     size: 1
     alias: commission
     addAllPagesToCollections: true
@@ -29,57 +29,60 @@ eleventyComputed:
 <h1 data-pagefind-meta="title" class="capitalize-first">Commissievergadering op {{ commission.date | date }}</h1>
 
 <div class="flex column gap">
-    <!-- INFO -->
+    <!-- INFO CARD -->
     <div class="card info-list" style="gap: 0;">
         {% set ctype = commission.commission_type | default('', true) %}
-        {% set c = commissions[ctype] or {} %}
+        {% set c = commissionsMetadata[ctype] or {} %}
+        <div class="category" style="align-self: flex-start; max-width:80%; background-color: {{ c.secondary or '#555' }}; color: {{ c.primary or '#fff' }};">
+            {{ c.icon or '' }} {{ c.name or ctype }}
+        </div>
 
-
-            <div class="category" style="    align-self: flex-start; max-width:80%;
-                                         background-color: {{ c.background or '#555' }};
-                                         color: {{ c.color or '#fff' }};">
-              {{ c.icon or '' }} {{ c.name or ctype }}
+        <div class="padding info-list">
+            <div class="info-item">
+                <span class="icon-padded">{% icon "lucide:clock" %}</span>
+                <p>{{ languages['nl'].From }} {{ commission.start_time }} {{ languages['nl'].until }} {{ commission.end_time }} ({{ commission.start_time | duration(commission.end_time)}})</p>
             </div>
 
-    <div class="padding info-list">
+            <div class="info-item">
+                <span class="icon-padded">{% icon "lucide:message-circle-question" %}</span>
+                <p>{{ commission.questions.length }} {{ languages['nl'].questions }}</p>
+            </div>
 
-        <div class="info-item">
-             <span class="icon-padded">{% icon "lucide:clock" %}</span>
-            <p>{{ languages['nl'].From }} {{ commission.start_time }} {{ languages['nl'].until }} {{ commission.end_time }} ({{ commission.start_time | duration(commission.end_time)
-                }})</p>
-        </div>
-
-        <div class="info-item">
-              <span class="icon-padded">{% icon "lucide:message-circle-question" %}</span>
-            <p>{{ commission.questions.length }} {{ languages['nl'].questions }}</p>
-        </div>
-
-                <div class="info-item">
-                    <span class="icon-padded">{% icon "lucide:user" %}</span>
-                    <div>
-                        <p><span>Voorgezeten door </span></p>
-                        <p>
-                            {% for chair in commission.chairs %}
-                                {% set party = chair.party | lower %}
-                                {% set primaryColor = partyColors[party].primary or '#95a5a6' %}
-                                {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
-                                <span>
+            <div class="info-item">
+                <span class="icon-padded">{% icon "lucide:user" %}</span>
+                <div>
+                    <p><span>Voorgezeten door </span></p>
+                    <p>
+                        {% for chair in commission.chairs %}
+                            {% set party = chair.party | lower %}
+                            {% set primaryColor = partyColors[party].primary or '#95a5a6' %}
+                            {% set secondaryColor = partyColors[party].secondary or '#95a5a6' %}
+                            <span>
                                     <a href="/parties/{{ chair.party | slugify }}/" class="badge-link"><span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ chair.party }}</span></a>
                                     <a href="/members/{{ chair.name | slugify }}/">{{ chair.name }}</a>
                                 </span>
-                            {% endfor %}
-                        </p>
-                     </div>
+                        {% endfor %}
+                    </p>
                 </div>
+            </div>
 
-        <div class="info-item">
-              <span class="icon-padded">{% icon "lucide:file-digit" %}</span>
-            <p>{{ languages['nl'].source }} <a
+            <div class="info-item">
+                <span class="icon-padded">{% icon "lucide:file-digit" %}</span>
+                <p>{{ languages['nl'].source }} <a
                     href="https://www.dekamer.be/doc/CCRI/html/{{ commission.session_id }}/ic{{ commission.meeting_id | padLeft(3, '0') }}x.html"
                     target="_blank">dekamer.be</a></p>
-        </div>
+            </div>
         </div>
     </div>
+
+    <!-- COMMISSION CARD -->
+    <!--<div class="card" style="gap: 0;">
+        {% set ctype = commission.commission_type | default('', true) %}
+        {% set c = commissionsMetadata[ctype] or {} %}
+        <div class="category" style="align-self: flex-start; max-width:80%; background-color: {{ c.secondary or '#555' }}; color: {{ c.primary or '#fff' }};">
+            {{ c.icon or '' }} {{ c.name or ctype }}
+        </div>
+    </div>-->
 </div>
 
 <!-- SHARE BUTTON -->

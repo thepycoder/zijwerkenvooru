@@ -4,7 +4,7 @@ import { hashText } from "../lib/textUtils.js";
 export default async function () {
   try {
     const meetingsFilePath = "src/data/meetings.parquet";
-    const commissionsFilePath = "src/data/commissions.parquet";
+    const commissionsFilePath = "src/data/commission_meetings.parquet";
     const votesFilePath = "src/data/votes.parquet";
     const questionsFilePath = "src/data/questions.parquet";
     const commissionQuestionsFilePath = "src/data/commission_questions.parquet";

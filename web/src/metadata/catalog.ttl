@@ -15,7 +15,7 @@
   dct:publisher <https://zijwerkenvooru.be#org> ;
   foaf:homepage <https://zijwerkenvooru.be> ;
   dcat:dataset <https://zijwerkenvooru.be/dataset/federaal_parlement> .
-  
+
 <https://zijwerkenvooru.be/dataset/federaal_parlement>
   a dcat:Dataset ;
   dct:title "Parlementaire Data – Kamer van Volksvertegenwoordigers"@nl ;
@@ -27,7 +27,7 @@
   dct:issued "2025-07-11"^^xsd:date ;
   dct:temporal [
     a dct:PeriodOfTime ;
-	dcat:startDate "2024-07-04"^^xsd:date ; 
+	dcat:startDate "2024-07-04"^^xsd:date ;
 	dcat:endDate "2029-06-09"^^xsd:date ;
   ] ;
   dct:spatial <https://sws.geonames.org/2802361/> ;
@@ -111,7 +111,7 @@
   dct:title "Commissievergaderingen"@nl ;
   dct:description "Bevat alle commissievergaderingen (datum, voormiddag/nammidag/avond, start tijd, eind tijd, commissie, voorzitter)."@nl ;
   dcat:accessURL <https://zijwerkenvooru.be/nl/data/> ;
-  dcat:downloadURL <https://zijwerkenvooru.be/data/commissions.parquet> ;
+  dcat:downloadURL <https://zijwerkenvooru.be/data/commission_meetings.parquet> ;
   dcat:mediaType <https://www.iana.org/assignments/media-types/application/parquet> ;
   dct:format <http://publications.europa.eu/resource/authority/file-type/PARQUET> ;
   dct:license <http://publications.europa.eu/resource/authority/licence/CC0> ;
@@ -163,7 +163,7 @@
 
 
 <https://zijwerkenvooru.be#org>
-  a foaf:Agent ;  
+  a foaf:Agent ;
   a foaf:Group ;
   foaf:name "zijwerkenvooru"@nl ;
   dct:type admsp:PrivateIndividual%28s%29 .
@@ -173,19 +173,19 @@
   a skos:Concept ;
   skos:inScheme <http://publications.europa.eu/resource/authority/planned-availability> ;
   skos:prefLabel "beschikbaar"@nl .
- 
+
 <http://publications.europa.eu/resource/authority/language/NLD>
   a skos:Concept ;
   a dct:LinguisticSystem ;
   skos:inScheme <http://publications.europa.eu/resource/authority/language> ;
   skos:prefLabel "beschikbaar"@nl .
-	
-<http://publications.europa.eu/resource/authority/access-right/PUBLIC> 
+
+<http://publications.europa.eu/resource/authority/access-right/PUBLIC>
   a skos:Concept ;
   a dct:RightsStatement ;
   skos:inScheme <http://publications.europa.eu/resource/authority/access-right> ;
   skos:prefLabel "openbaar"@nl .
- 
+
 <http://publications.europa.eu/resource/authority/file-type/PARQUET>
   a skos:Concept;
   a dct:MediaTypeOrExtent ;
@@ -204,7 +204,7 @@
   skos:inScheme <http://publications.europa.eu/resource/authority/licence> ;
   skos:prefLabel "CC-Zero" .
 
-<http://publications.europa.eu/resource/authority/data-theme/GOVE> 
+<http://publications.europa.eu/resource/authority/data-theme/GOVE>
   a skos:Concept ;
   skos:inScheme <http://publications.europa.eu/resource/authority/data-theme> ;
   skos:prefLabel "Overheid en publieke sector"@nl .
@@ -213,8 +213,8 @@
   a skos:Concept ;
   a dct:Frequency ;
   skos:inScheme <http://publications.europa.eu/resource/authority/frequency> ;
-  skos:prefLabel "wekelijks"@nl .	
-	
+  skos:prefLabel "wekelijks"@nl .
+
 <https://sws.geonames.org/2802361/>
   a skos:Concept;
   a dct:Location ;

@@ -329,6 +329,19 @@ description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stel
                     {% icon "lucide:chevron-right" %}
                 </div>
             </a>
+
+            <a class="quick-link" href="/commissions/">
+                <div class="flex space-between align-center">
+                    <div class="flex column">
+                        <div class="flex align-center">
+                            <span class="icon-padded">{% icon "lucide:search" %}</span>
+                            <h3>Commissies</h3>
+                        </div>
+                        <p>Bekijk alle commissies en hun leden.</p>
+                    </div>
+                    {% icon "lucide:chevron-right" %}
+                </div>
+            </a>
         </div>
 
         <!-- TOPICS -->
@@ -391,7 +404,7 @@ description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stel
                         {% set commissionDate = "" %}
                         {% set commissionCount = 0 %}
 
-                        {% for commission in commissions.commissions %}
+                        {% for commission in commissionmeetings.commissions %}
                         {% if commission.date | dayIndex(2025) == day %}
                         {% set hasCommission = true %}
                         {% set commissionCount = commissionCount + 1 %}

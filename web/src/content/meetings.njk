@@ -102,7 +102,7 @@ eleventyComputed:
 
 
     {% set ctype = meeting.commission_type | default('', true) %}
-    {% set c = commissions[ctype] or {} %}
+    {% set c = commissionsMetadata[ctype | lower] or {} %}
 
         <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 0; margin: 0; align-items: flex-start;">
             {% if meeting.type == 'plenary' %}

@@ -113,6 +113,18 @@ export default function (eleventyConfig) {
     return value.toLowerCase();
   });
 
+  // Add this in your Eleventy config
+  eleventyConfig.addFilter("groupBy", function (array, property) {
+    if (!Array.isArray(array)) return {};
+
+    return array.reduce((acc, item) => {
+      const key = item[property] || "Unknown";
+      if (!acc[key]) acc[key] = [];
+      acc[key].push(item);
+      return acc;
+    }, {});
+  });
+
   eleventyConfig.addFilter("highlightWord", function (value, word) {
     if (!value || !word) return value || "";
 
