@@ -213,7 +213,7 @@ description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stel
         <h2 style="text-transform: capitalize; font-size: xx-large;">Snelle Links</h2>
 
         <div class="quick-links">
-            <a class="quick-link" href="/sessions/56/meetings">
+            <a class="quick-link" href="/sessions/56/meetings/">
                 <div class="flex space-between align-center">
                     <div class="flex column">
                         <div class="flex align-center">
@@ -226,7 +226,7 @@ description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stel
                 </div>
             </a>
 
-            <a class="quick-link" href="/members">
+            <a class="quick-link" href="/members/">
                 <div class="flex space-between align-center">
                     <div class="flex column">
                         <div class="flex align-center">
@@ -238,7 +238,7 @@ description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stel
                     {% icon "lucide:chevron-right" %}
                 </div>
             </a>
-            <a class="quick-link" href="/parties">
+            <a class="quick-link" href="/parties/">
                 <div class="flex space-between align-center">
                     <div class="flex column">
                         <div class="flex align-center">
@@ -251,7 +251,7 @@ description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stel
                 </div>
             </a>
 
-            <a class="quick-link" href="/questions">
+            <a class="quick-link" href="/questions/">
 
                 <div class="flex space-between align-center">
                     <div class="flex column">
@@ -265,7 +265,7 @@ description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stel
                 </div>
             </a>
 
-            <a class="quick-link" href="/propositions">
+            <a class="quick-link" href="/propositions/">
                 <div class="flex space-between align-center">
                     <div class="flex column">
                         <div class="flex align-center">
@@ -278,7 +278,7 @@ description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stel
                 </div>
             </a>
 
-            <a class="quick-link" href="/votes">
+            <a class="quick-link" href="/votes/">
                 <div class="flex space-between align-center">
                     <div class="flex column">
                         <div class="flex align-center">
@@ -291,7 +291,7 @@ description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stel
                 </div>
             </a>
 
-            <a class="quick-link" href="/topics">
+            <a class="quick-link" href="/topics/">
                 <div class="flex space-between align-center">
                     <div class="flex column">
                         <div class="flex align-center">
@@ -304,7 +304,7 @@ description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stel
                 </div>
             </a>
 
-            <a class="quick-link" href="/lobby">
+            <a class="quick-link" href="/lobby/">
                 <div class="flex space-between align-center">
                     <div class="flex column">
                         <div class="flex align-center">
@@ -312,6 +312,32 @@ description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stel
                             <h3>Lobbyregister</h3>
                         </div>
                         <p>Bekijk alle bedrijven en organisaties die het wetgevingsproces beïnvloeden.</p>
+                    </div>
+                    {% icon "lucide:chevron-right" %}
+                </div>
+            </a>
+
+            <a class="quick-link" href="/government/">
+                <div class="flex space-between align-center">
+                    <div class="flex column">
+                        <div class="flex align-center">
+                            <span class="icon-padded">{% icon "lucide:landmark" %}</span>
+                            <h3>Federale Regering</h3>
+                        </div>
+                        <p>Bekijk alle ministers in de federale regering.</p>
+                    </div>
+                    {% icon "lucide:chevron-right" %}
+                </div>
+            </a>
+
+            <a class="quick-link" href="/commissions/">
+                <div class="flex space-between align-center">
+                    <div class="flex column">
+                        <div class="flex align-center">
+                            <span class="icon-padded">{% icon "lucide:search" %}</span>
+                            <h3>Commissies</h3>
+                        </div>
+                        <p>Bekijk alle commissies en hun leden.</p>
                     </div>
                     {% icon "lucide:chevron-right" %}
                 </div>
@@ -378,7 +404,7 @@ description: "Ontdek hoe Belgische parlementsleden stemmen, welke vragen ze stel
                         {% set commissionDate = "" %}
                         {% set commissionCount = 0 %}
 
-                        {% for commission in commissions.commissions %}
+                        {% for commission in commissionmeetings.commissions %}
                         {% if commission.date | dayIndex(2025) == day %}
                         {% set hasCommission = true %}
                         {% set commissionCount = commissionCount + 1 %}

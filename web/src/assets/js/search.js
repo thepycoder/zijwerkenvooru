@@ -31,6 +31,7 @@ const input = searchModal
     .addEventListener(
         "show",
         () => { // if (window.bodyScrollLock.disableBodyScroll) { window.bodyScrollLock.disableBodyScroll(searchDialog) }
+            searchModal.removeAttribute("hidden");
             document.documentElement.removeEventListener("keydown", listenForShowShortcut)
             if (! isMobile || ! isApple) {
                 input.focus()
@@ -39,6 +40,7 @@ const input = searchModal
     )
     searchModal
     .addEventListener("hide", () => {
+        searchModal.setAttribute("hidden", "");
         input.value = ""
         input.dispatchEvent(new Event("input", {bubbles: true}));
         document.documentElement.addEventListener("keydown", listenForShowShortcut)

@@ -18,12 +18,24 @@ export default async function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "./src/assets/img": "assets/img" });
   eleventyConfig.addPassthroughCopy({ "./src/assets/js": "assets/js" });
   eleventyConfig.addPassthroughCopy({ "./src/assets/css": "assets/css" });
-  eleventyConfig.addPassthroughCopy({ "./src/data/members.parquet": "data/members.parquet" });
-  eleventyConfig.addPassthroughCopy({ "./src/data/meetings.parquet": "data/meetings.parquet" });
-  eleventyConfig.addPassthroughCopy({ "./src/data/questions.parquet": "data/questions.parquet" });
-  eleventyConfig.addPassthroughCopy({ "./src/data/propositions.parquet": "data/propositions.parquet" });
-  eleventyConfig.addPassthroughCopy({ "./src/data/votes.parquet": "data/votes.parquet" });
-  eleventyConfig.addPassthroughCopy({ "./src/data/remunerations.parquet": "data/remunerations.parquet" });
+  eleventyConfig.addPassthroughCopy({
+    "./src/data/members.parquet": "data/members.parquet",
+  });
+  eleventyConfig.addPassthroughCopy({
+    "./src/data/meetings.parquet": "data/meetings.parquet",
+  });
+  eleventyConfig.addPassthroughCopy({
+    "./src/data/questions.parquet": "data/questions.parquet",
+  });
+  eleventyConfig.addPassthroughCopy({
+    "./src/data/propositions.parquet": "data/propositions.parquet",
+  });
+  eleventyConfig.addPassthroughCopy({
+    "./src/data/votes.parquet": "data/votes.parquet",
+  });
+  eleventyConfig.addPassthroughCopy({
+    "./src/data/remunerations.parquet": "data/remunerations.parquet",
+  });
   eleventyConfig.addPassthroughCopy({ "./src/metadata/": "metadata" });
   eleventyConfig.addPassthroughCopy("robots.txt");
 
@@ -78,28 +90,33 @@ export default async function (eleventyConfig) {
   });
 
   // Collections.
-  eleventyConfig.addCollection("localizedMeetings", function (collectionApi) {
-    const localized = [];
-    const langs = ["nl"]; //,"fr"];
-    const meetings = collectionApi.items[0].data.meetings;
-    for (const meeting of meetings.meetings) {
-      if (meeting.type === "plenary") {
-        for (const lang of langs) {
-          localized.push({
-            ...meeting,
-            lang,
-            permalink:
-              `/meetings/${meeting.session_id}/${meeting.meeting_id}/`,
-          });
+  eleventyConfig.addCollection(
+    "localizedPlenaryMeetings",
+    function (collectionApi) {
+      // return [];
+      const localized = [];
+      const langs = ["nl"]; //,"fr"];
+      const meetings = collectionApi.items[0].data.meetings;
+      for (const meeting of meetings.meetings) {
+        if (meeting.type === "plenary") {
+          for (const lang of langs) {
+            localized.push({
+              ...meeting,
+              lang,
+              permalink:
+                `/meetings/${meeting.session_id}/${meeting.meeting_id}/`,
+            });
+          }
         }
       }
-    }
-    return localized;
-  });
+      return localized;
+    },
+  );
 
   eleventyConfig.addCollection(
-    "localizedCommissions",
+    "localizedCommissionMeetings",
     function (collectionApi) {
+      // return [];
       const localized = [];
       const langs = ["nl"]; //,"fr"];
       const meetings = collectionApi.items[0].data.meetings;
@@ -109,8 +126,6 @@ export default async function (eleventyConfig) {
             localized.push({
               ...commission,
               lang,
-              permalink:
-                `/commissions/${commission.session_id}/${commission.meeting_id}/`,
             });
           }
         }
@@ -140,6 +155,7 @@ export default async function (eleventyConfig) {
   });
 
   eleventyConfig.addCollection("localizedParties", function (collectionApi) {
+    // return [];
     const localized = [];
     const langs = ["nl"]; //, "fr", "de"];
     const parties = collectionApi.items[0].data.parties.parties;
@@ -157,6 +173,7 @@ export default async function (eleventyConfig) {
   });
 
   eleventyConfig.addCollection("localizedQuestions", function (collectionApi) {
+    // return [];
     const localized = [];
     const langs = ["nl"]; //, "fr", "de"];
     const questions = collectionApi.items[0].data.questions;
@@ -176,6 +193,7 @@ export default async function (eleventyConfig) {
   });
 
   eleventyConfig.addCollection("localizedDossiers", function (collectionApi) {
+    // return [];
     const localized = [];
     const langs = ["nl"]; //, "fr", "de"];
     const dossiers = collectionApi.items[0].data.dossiers;
@@ -195,6 +213,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addCollection(
     "localizedPlenaryVotes",
     function (collectionApi) {
+      // return [];
       //console.log(collectionApi.items[0].data.meetings);
       const localized = [];
       const langs = ["nl"]; //, "fr", "de"];
@@ -256,6 +275,7 @@ export default async function (eleventyConfig) {
   // });
 
   eleventyConfig.addCollection("localizedTopics", function (collectionApi) {
+    // return [];
     const localized = [];
     const langs = ["nl"]; // later also "fr", "de"
     const topicsData = collectionApi.items[0].data.topics;

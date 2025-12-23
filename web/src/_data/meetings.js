@@ -1,13 +1,13 @@
 import { DuckDBInstance } from "@duckdb/node-api";
 import fs from "fs";
-import crypto from "crypto";
+import { hashText } from "../lib/textUtils.js";
 export default async function () {
   try {
     const meetingsFilePath = "src/data/meetings.parquet";
-    const commissionsFilePath = "src/data/commissions.parquet";
+    const commissionsFilePath = "src/data/commission_meetings.parquet";
     const votesFilePath = "src/data/votes.parquet";
     const questionsFilePath = "src/data/questions.parquet";
-       const commissionQuestionsFilePath = "src/data/commission_questions.parquet";
+    const commissionQuestionsFilePath = "src/data/commission_questions.parquet";
     const propositionsFilePath = "src/data/propositions.parquet";
     const membersFilePath = "src/data/members.parquet";
     const summariesFilePath = "src/data/summaries.parquet";
@@ -55,7 +55,7 @@ export default async function () {
       readParquet(commissionsFilePath),
       readParquet(votesFilePath),
       readParquet(questionsFilePath),
-        readParquet(commissionQuestionsFilePath),
+      readParquet(commissionQuestionsFilePath),
       readParquet(propositionsFilePath),
       readParquet(membersFilePath),
       readParquet(summariesFilePath),
@@ -93,14 +93,14 @@ export default async function () {
 
     // all members
     const activeMembers = membersRows
-        .filter(row => row[12] === "true")
-        .map(row => {
-          const name = row[2] + " " + row[3];
-          return {
-            name,
-            party: row[9] || "Unknown"
-          };
-        });
+      .filter((row) => row[12] === "true")
+      .map((row) => {
+        const name = row[2] + " " + row[3];
+        return {
+          name,
+          party: row[9] || "Unknown",
+        };
+      });
 
     const meetingDateMap = new Map();
     meetingsRows.forEach((row) => {
@@ -147,7 +147,7 @@ export default async function () {
         propositions: [],
         votes: [],
         allVotes: [],
-        chair: "Peter De Roover"
+        chair: "Peter De Roover",
       });
     });
 
@@ -180,14 +180,14 @@ export default async function () {
         votes: [],
         allVotes: [],
         chairs: row[7]
-                    ? row[7].split(',').map(chair => {
-                        const name = chair.trim();
-                        return {
-                            name,
-                            party: (memberPartyLookup[name] || "Unknown").trim()
-                        };
-                    })
-                    : [],
+          ? row[7].split(",").map((chair) => {
+            const name = chair.trim();
+            return {
+              name,
+              party: (memberPartyLookup[name] || "Unknown").trim(),
+            };
+          })
+          : [],
       });
     });
 
@@ -201,7 +201,8 @@ export default async function () {
       // Find the meeting that corresponds to the session_id and meeting_id
       if (meetings[sessionId]) {
         const meeting = meetings[sessionId].find(
-          (meeting) => meeting.meeting_id === meetingId && meeting.type == "plenary",
+          (meeting) =>
+            meeting.meeting_id === meetingId && meeting.type == "plenary",
         );
         if (meeting) {
           const questioners = row[3].split(",").map((q) => {
@@ -228,19 +229,27 @@ export default async function () {
 
           const topics_summary_nl = summaryByHash[hash] || null;
 
-          const discussion = JSON.parse(row[7]).map(discussionItem => ({
+          const discussion = JSON.parse(row[7]).map((discussionItem) => ({
             speaker: {
               name: discussionItem.speaker,
-              party: memberPartyLookup[discussionItem.speaker] || "Unknown"
+              party: memberPartyLookup[discussionItem.speaker] || "Unknown",
             },
-            text: discussionItem.text
+            text: discussionItem.text,
           }));
 
+          const rawDiscussion = row[7] || "";
+          const rawDiscussionTrimmed = typeof rawDiscussion === "string"
+            ? rawDiscussion.trim()
+            : "";
+          const discussion_summary_nl =
+            rawDiscussionTrimmed && rawDiscussionTrimmed !== "[]"
+              ? (summaryByHash[hashText(rawDiscussion)] || null)
+              : null;
 
           const discussion_ids = row[8].split(",").map((d) => d.trim());
 
           meeting.questions.push({
-            type: 'plenary',
+            type: "plenary",
             question_id: row[0],
             session_id: sessionId,
             meeting_id: meetingId,
@@ -253,6 +262,7 @@ export default async function () {
             topics_summary_fr: topics_summary_nl,
             discussion: discussion,
             discussion_ids: discussion_ids,
+            discussion_summary_nl: discussion_summary_nl,
           });
         }
       }
@@ -262,7 +272,7 @@ export default async function () {
       const sessionId = row[1];
       const meetingId = row[2];
 
-      if (sessionId === '404') {
+      if (sessionId === "404") {
         return; // skip
       }
 
@@ -272,7 +282,8 @@ export default async function () {
       // Find the meeting that corresponds to the session_id and meeting_id
       if (meetings[sessionId]) {
         const meeting = meetings[sessionId].find(
-          (meeting) => meeting.meeting_id === meetingId && meeting.type == "commission",
+          (meeting) =>
+            meeting.meeting_id === meetingId && meeting.type == "commission",
         );
         if (meeting) {
           const questioners = row[3].split(",").map((q) => {
@@ -299,19 +310,27 @@ export default async function () {
 
           const topics_summary_nl = summaryByHash[hash] || null;
 
-          const discussion = JSON.parse(row[7]).map(discussionItem => ({
+          const discussion = JSON.parse(row[7]).map((discussionItem) => ({
             speaker: {
               name: discussionItem.speaker,
-              party: memberPartyLookup[discussionItem.speaker] || "Unknown"
+              party: memberPartyLookup[discussionItem.speaker] || "Unknown",
             },
-            text: discussionItem.text
+            text: discussionItem.text,
           }));
 
+          const rawDiscussion = row[7] || "";
+          const rawDiscussionTrimmed = typeof rawDiscussion === "string"
+            ? rawDiscussion.trim()
+            : "";
+          const discussion_summary_nl =
+            rawDiscussionTrimmed && rawDiscussionTrimmed !== "[]"
+              ? (summaryByHash[hashText(rawDiscussion)] || null)
+              : null;
 
           const discussion_ids = row[8].split(",").map((d) => d.trim());
 
           meeting.questions.push({
-            type: 'commission',
+            type: "commission",
             question_id: row[0],
             session_id: sessionId,
             meeting_id: meetingId,
@@ -323,7 +342,8 @@ export default async function () {
             topics_summary_nl: topics_summary_nl,
             topics_summary_fr: topics_summary_nl,
             discussion: discussion,
-            discussion_ids: discussion_ids
+            discussion_ids: discussion_ids,
+            discussion_summary_nl: discussion_summary_nl,
           });
         }
       }
@@ -338,19 +358,18 @@ export default async function () {
       const dossier_id = row[5];
 
       const rawTitleNl = row[3];
-      const hash = hashText(rawTitleNl + ".");
+      const hash = hashText(rawTitleNl);
       const title_summary_nl = summaryByHash[hash] || null;
 
       const dossierData = dossierById[dossier_id] || {};
 
-      const authors =
-        dossierData.authors?.split(",").map((q) => {
-          const name = q.trim();
-          return {
-            name: name,
-            party: memberPartyLookup[name] || "Unknown", // Same logic as in votes
-          };
-        }) || [];
+      const authors = dossierData.authors?.split(",").map((q) => {
+        const name = q.trim();
+        return {
+          name: name,
+          party: memberPartyLookup[name] || "Unknown", // Same logic as in votes
+        };
+      }) || [];
 
       if (meetings[sessionId]) {
         const meeting = meetings[sessionId].find(
@@ -502,7 +521,7 @@ export default async function () {
         ...meeting,
         session_id: sessionId,
         meeting_id: meeting.meeting_id,
-      })),
+      }))
     );
 
     // Sort by date descending, then by custom time_of_day order
@@ -553,12 +572,12 @@ export default async function () {
         const presentMembers = [
           ...firstVote.yes_members,
           ...firstVote.no_members,
-          ...firstVote.abstain_members
-        ].map(m => m.name);
-        
+          ...firstVote.abstain_members,
+        ].map((m) => m.name);
+
         meeting.absentees = activeMembers
-            .filter(m => !presentMembers.includes(m.name))
-            .sort((a, b) => a.party.localeCompare(b.party));
+          .filter((m) => !presentMembers.includes(m.name))
+          .sort((a, b) => a.party.localeCompare(b.party));
 
         meeting.attendance = {
           count: total,
@@ -579,7 +598,3 @@ export default async function () {
     return { meetings: [] };
   }
 }
-
-const hashText = (text) => {
-  return crypto.createHash("sha256").update(text).digest("hex");
-};

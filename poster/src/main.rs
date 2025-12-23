@@ -1,35 +1,35 @@
 use arrow::array::Array;
 use arrow::array::StringArray;
+use atrium_api::app::bsky::embed::images::ImageData;
 use atrium_api::app::bsky::feed::post::{RecordData, RecordEmbedRefs, ReplyRefData};
+use atrium_api::types::Union;
 use atrium_api::types::string::Datetime;
-use bsky_sdk::rich_text::RichText;
 use bsky_sdk::BskyAgent;
+use bsky_sdk::rich_text::RichText;
 use chrono::Datelike;
+use dotenv::dotenv;
+use headless_chrome::protocol::cdp::Page::Viewport;
+use headless_chrome::{Browser, LaunchOptionsBuilder};
 use parquet::arrow::arrow_reader::ParquetRecordBatchReaderBuilder;
+use parquet::data_type::AsBytes;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use std::collections::HashMap;
-use std::{
-    fs::{self, File},
-    path::Path,
-};
 use std::error::Error;
 use std::ffi::OsStr;
 use std::num::NonZeroU64;
 use std::path::PathBuf;
 use std::time::Duration;
-use atrium_api::app::bsky::embed::images::ImageData;
-use atrium_api::types::Union;
-use dotenv::dotenv;
+use std::{
+    fs::{self, File},
+    path::Path,
+};
 use unicode_segmentation::UnicodeSegmentation;
-use headless_chrome::{Browser, LaunchOptionsBuilder};
-use headless_chrome::protocol::cdp::Page::Viewport;
-use parquet::data_type::AsBytes;
 
 fn truncate_to_graphemes(s: &str, count: usize) -> String {
     let graphemes: Vec<&str> = UnicodeSegmentation::graphemes(s, true).collect();
     if graphemes.len() > count {
-        graphemes[..(count-1)].join("") + "…"
+        graphemes[..(count - 1)].join("") + "…"
     } else {
         s.to_string()
     }
@@ -57,14 +57,14 @@ struct BskyPost {
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-struct BskyReplyVote  {
+struct BskyReplyVote {
     pub hash: String,
     pub topic: String,
     pub uri: String,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
-struct BskyReplyQuestion  {
+struct BskyReplyQuestion {
     pub hash: String,
     pub topic: String,
     pub uri: String,
@@ -74,8 +74,19 @@ struct BskyReplyQuestion  {
 
 fn parse_dutch_date(date_str: &str) -> Option<chrono::NaiveDate> {
     let months = [
-        "", "januari", "februari", "maart", "april", "mei", "juni",
-        "juli", "augustus", "september", "oktober", "november", "december",
+        "",
+        "januari",
+        "februari",
+        "maart",
+        "april",
+        "mei",
+        "juni",
+        "juli",
+        "augustus",
+        "september",
+        "oktober",
+        "november",
+        "december",
     ];
 
     let parts: Vec<&str> = date_str.split_whitespace().collect();
@@ -91,10 +102,14 @@ fn parse_dutch_date(date_str: &str) -> Option<chrono::NaiveDate> {
     chrono::NaiveDate::from_ymd_opt(year, month as u32, day)
 }
 
-
 fn format_dutch_date(date_str: &str) -> Option<String> {
     if let Ok(date) = chrono::NaiveDate::parse_from_str(date_str, "%Y-%m-%d") {
-        Some(format!("{:02}/{:02}/{}", date.day(), date.month(), date.year()))
+        Some(format!(
+            "{:02}/{:02}/{}",
+            date.day(),
+            date.month(),
+            date.year()
+        ))
     } else {
         None
     }
@@ -127,7 +142,8 @@ fn get_data_dir() -> PathBuf {
 
     // From poster/ go up to repo root, then into web/src/data
     manifest_dir
-        .parent().unwrap() // go to root
+        .parent()
+        .unwrap() // go to root
         .join("web/src/data")
 }
 
@@ -141,8 +157,8 @@ async fn main() -> Result<(), Box<dyn Error>> {
     dotenv().ok();
     let username = std::env::var("BSKY_USERNAME").expect("Missing BSKY_USERNAME");
     let password = std::env::var("BSKY_PASSWORD").expect("Missing BSKY_PASSWORD");
-    let meeting_id_path = Path::new(env!("CARGO_MANIFEST_DIR"))
-        .join("../scraper/current_plenary_id.txt");
+    let meeting_id_path =
+        Path::new(env!("CARGO_MANIFEST_DIR")).join("../scraper/current_plenary_id.txt");
     let last_meeting_id = fs::read_to_string(&meeting_id_path)?;
     let target_meeting_id = last_meeting_id.trim();
 
@@ -181,7 +197,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         ("Bart De Wever", "@deweverbart.bsky.social"),
         ("Valérie Glatigny", "@valerieglatigny.bsky.social"),
         ("Vincent Van Peteghem", "@vincentvp.cdenv.be"),
-        ("Annelies Verlinden", "@anneliesverlinden.bsky.social")
+        ("Annelies Verlinden", "@anneliesverlinden.bsky.social"),
     ]);
 
     // Create bsky session.
@@ -197,9 +213,9 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 "--disable-blink-features=AutomationControlled",
                 "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64)...",
             ]
-                .iter()
-                .map(|s| OsStr::new(s))
-                .collect::<Vec<&OsStr>>(),
+            .iter()
+            .map(|s| OsStr::new(s))
+            .collect::<Vec<&OsStr>>(),
         )
         .build()
         .unwrap();
@@ -230,14 +246,23 @@ async fn main() -> Result<(), Box<dyn Error>> {
     for batch in &mut vote_reader {
         let batch = batch?;
         let vote_titles = batch
-            .column_by_name("title_nl").unwrap()
-            .as_any().downcast_ref::<StringArray>().unwrap();
+            .column_by_name("title_nl")
+            .unwrap()
+            .as_any()
+            .downcast_ref::<StringArray>()
+            .unwrap();
         let meeting_id_col = batch
-            .column_by_name("meeting_id").unwrap()
-            .as_any().downcast_ref::<StringArray>().unwrap();
+            .column_by_name("meeting_id")
+            .unwrap()
+            .as_any()
+            .downcast_ref::<StringArray>()
+            .unwrap();
         let date_col = batch
-            .column_by_name("date").unwrap()
-            .as_any().downcast_ref::<StringArray>().unwrap();
+            .column_by_name("date")
+            .unwrap()
+            .as_any()
+            .downcast_ref::<StringArray>()
+            .unwrap();
 
         for i in 0..vote_titles.len() {
             if meeting_id_col.value(i) == target_meeting_id {
@@ -255,11 +280,17 @@ async fn main() -> Result<(), Box<dyn Error>> {
     for batch in &mut questions_reader {
         let batch = batch?;
         let question_titles = batch
-            .column_by_name("topics_nl").unwrap()
-            .as_any().downcast_ref::<StringArray>().unwrap();
+            .column_by_name("topics_nl")
+            .unwrap()
+            .as_any()
+            .downcast_ref::<StringArray>()
+            .unwrap();
         let meeting_id_col = batch
-            .column_by_name("meeting_id").unwrap()
-            .as_any().downcast_ref::<StringArray>().unwrap();
+            .column_by_name("meeting_id")
+            .unwrap()
+            .as_any()
+            .downcast_ref::<StringArray>()
+            .unwrap();
 
         question_count += (0..question_titles.len())
             .filter(|&i| meeting_id_col.value(i) == target_meeting_id)
@@ -275,18 +306,23 @@ async fn main() -> Result<(), Box<dyn Error>> {
             main_post_uri = Some(existing.uri.clone());
         } else {
             let date_str = format_dutch_date(date.as_str()).unwrap();
-            let main_post_text = format!("🇧🇪 Vandaag in het Parlement ({})\n- {} stemmingen\n- {} vragen", date_str, vote_count, question_count);
-            let main_post = agent.create_record(RecordData {
-                created_at: Datetime::now(),
-                text: main_post_text,
-                facets: None,
-                embed: None,
-                entities: None,
-                labels: None,
-                langs: None,
-                reply: None,
-                tags: None,
-            }).await?;
+            let main_post_text = format!(
+                "🇧🇪 Vandaag in het Parlement ({})\n- {} stemmingen\n- {} vragen",
+                date_str, vote_count, question_count
+            );
+            let main_post = agent
+                .create_record(RecordData {
+                    created_at: Datetime::now(),
+                    text: main_post_text,
+                    facets: None,
+                    embed: None,
+                    entities: None,
+                    labels: None,
+                    langs: None,
+                    reply: None,
+                    tags: None,
+                })
+                .await?;
 
             let post = BskyPost {
                 id: meeting_id.to_string(),
@@ -301,145 +337,202 @@ async fn main() -> Result<(), Box<dyn Error>> {
     }
 
     // Re-open file for second pass (votes).
-    let vote_file = File::open(&votes_path)?;
-    let vote_reader = ParquetRecordBatchReaderBuilder::try_new(vote_file)?.build()?;
+    // let vote_file = File::open(&votes_path)?;
+    // let vote_reader = ParquetRecordBatchReaderBuilder::try_new(vote_file)?.build()?;
 
-    for batch in vote_reader {
-        let batch = batch?;
-        let vote_titles = batch.column_by_name("title_nl").unwrap().as_any().downcast_ref::<StringArray>().unwrap();
-        let yes_col = batch.column_by_name("yes").unwrap().as_any().downcast_ref::<StringArray>().unwrap();
-        let no_col = batch.column_by_name("no").unwrap().as_any().downcast_ref::<StringArray>().unwrap();
-        let abstain_col = batch.column_by_name("abstain").unwrap().as_any().downcast_ref::<StringArray>().unwrap();
-        let session_id_col = batch.column_by_name("session_id").unwrap().as_any().downcast_ref::<StringArray>().unwrap();
-        let meeting_id_col = batch.column_by_name("meeting_id").unwrap().as_any().downcast_ref::<StringArray>().unwrap();
-        let vote_id_col = batch.column_by_name("vote_id").unwrap().as_any().downcast_ref::<StringArray>().unwrap();
+    // NOTE: Votes disabled for now since when tons of votes is kind of spammy..
+    // for batch in vote_reader {
+    //     let batch = batch?;
+    //     let vote_titles = batch
+    //         .column_by_name("title_nl")
+    //         .unwrap()
+    //         .as_any()
+    //         .downcast_ref::<StringArray>()
+    //         .unwrap();
+    //     let yes_col = batch
+    //         .column_by_name("yes")
+    //         .unwrap()
+    //         .as_any()
+    //         .downcast_ref::<StringArray>()
+    //         .unwrap();
+    //     let no_col = batch
+    //         .column_by_name("no")
+    //         .unwrap()
+    //         .as_any()
+    //         .downcast_ref::<StringArray>()
+    //         .unwrap();
+    //     let abstain_col = batch
+    //         .column_by_name("abstain")
+    //         .unwrap()
+    //         .as_any()
+    //         .downcast_ref::<StringArray>()
+    //         .unwrap();
+    //     let session_id_col = batch
+    //         .column_by_name("session_id")
+    //         .unwrap()
+    //         .as_any()
+    //         .downcast_ref::<StringArray>()
+    //         .unwrap();
+    //     let meeting_id_col = batch
+    //         .column_by_name("meeting_id")
+    //         .unwrap()
+    //         .as_any()
+    //         .downcast_ref::<StringArray>()
+    //         .unwrap();
+    //     let vote_id_col = batch
+    //         .column_by_name("vote_id")
+    //         .unwrap()
+    //         .as_any()
+    //         .downcast_ref::<StringArray>()
+    //         .unwrap();
 
-        // Loop through votes.
-        for i in 0..vote_titles.len() {
-            // Only process votes for the target meeting.
-            let meeting_id = meeting_id_col.value(i);
-            if meeting_id != target_meeting_id {
-                continue;
-            }
+    //     // Loop through votes.
+    //     for i in 0..vote_titles.len() {
+    //         // Only process votes for the target meeting.
+    //         let meeting_id = meeting_id_col.value(i);
+    //         if meeting_id != target_meeting_id {
+    //             continue;
+    //         }
 
-            // Add vote.
-            let raw_vote_title = vote_titles.value(i);
-            let vote_title_with_handles = replace_names_with_handles(raw_vote_title, &name_to_handle);
-            let vote_hash = hash_text(raw_vote_title);
+    //         // Add vote.
+    //         let raw_vote_title = vote_titles.value(i);
+    //         let vote_title_with_handles =
+    //             replace_names_with_handles(raw_vote_title, &name_to_handle);
+    //         let vote_hash = hash_text(raw_vote_title);
 
-            if let Some(parent) = posts.iter_mut().find(|p| p.id == target_meeting_id) {
-                if parent.replies.iter().any(|r| match r {
-                    BskyReply::Vote(v) => v.hash == vote_hash,
-                    _ => false,
-                }) {
-                    continue;
-                }
+    //         if let Some(parent) = posts.iter_mut().find(|p| p.id == target_meeting_id) {
+    //             if parent.replies.iter().any(|r| match r {
+    //                 BskyReply::Vote(v) => v.hash == vote_hash,
+    //                 _ => false,
+    //             }) {
+    //                 continue;
+    //             }
 
-                let yes = yes_col.value(i).parse::<u32>().unwrap_or(0);
-                let no = no_col.value(i).parse::<u32>().unwrap_or(0);
-                let abstain = abstain_col.value(i).parse::<u32>().unwrap_or(0);
+    //             let yes = yes_col.value(i).parse::<u32>().unwrap_or(0);
+    //             let no = no_col.value(i).parse::<u32>().unwrap_or(0);
+    //             let abstain = abstain_col.value(i).parse::<u32>().unwrap_or(0);
 
-                let session_id = session_id_col.value(i);
-                let vote_id = vote_id_col.value(i);
+    //             let session_id = session_id_col.value(i);
+    //             let vote_id = vote_id_col.value(i);
 
-                // Take screenshot of vote and upload.
-                let vote_url = format!("https://zijwerkenvooru.pages.dev/sessions/{}/meetings/plenary/{}/votes/{}", session_id, meeting_id, vote_id);
-                let ScreenshotResult { png_data, viewport } = take_screenshot_of_element(&browser, &vote_url, "#screenshot-target")?;
-                let output = agent
-                    .api
-                    .com
-                    .atproto
-                    .repo
-                    .upload_blob(png_data.as_bytes().to_vec())
-                    .await?;
-                let width = viewport.width.round() as u64;
-                let height = viewport.height.round() as u64;
-                let aspect_ratio = Some(atrium_api::app::bsky::embed::defs::AspectRatioData {
-                    width: NonZeroU64::new(width).unwrap_or(NonZeroU64::new(1).unwrap()),
-                    height: NonZeroU64::new(height).unwrap_or(NonZeroU64::new(1).unwrap()),
-                }.into());
-                let image = ImageData {
-                    alt: "A screenshot of the vote results.".to_string(),
-                    image: output.data.blob,
-                    aspect_ratio,
+    //             // Take screenshot of vote and upload.
+    //             let vote_url = format!(
+    //                 "https://zijwerkenvooru.pages.dev/sessions/{}/meetings/plenary/{}/votes/{}",
+    //                 session_id, meeting_id, vote_id
+    //             );
+    //             let ScreenshotResult { png_data, viewport } =
+    //                 take_screenshot_of_element(&browser, &vote_url, "#screenshot-target")?;
+    //             let output = agent
+    //                 .api
+    //                 .com
+    //                 .atproto
+    //                 .repo
+    //                 .upload_blob(png_data.as_bytes().to_vec())
+    //                 .await?;
+    //             let width = viewport.width.round() as u64;
+    //             let height = viewport.height.round() as u64;
+    //             let aspect_ratio = Some(
+    //                 atrium_api::app::bsky::embed::defs::AspectRatioData {
+    //                     width: NonZeroU64::new(width).unwrap_or(NonZeroU64::new(1).unwrap()),
+    //                     height: NonZeroU64::new(height).unwrap_or(NonZeroU64::new(1).unwrap()),
+    //                 }
+    //                 .into(),
+    //             );
+    //             let image = ImageData {
+    //                 alt: "A screenshot of the vote results.".to_string(),
+    //                 image: output.data.blob,
+    //                 aspect_ratio,
+    //             }
+    //             .into();
+    //             let embed = Some(Union::Refs(RecordEmbedRefs::AppBskyEmbedImagesMain(
+    //                 Box::new(
+    //                     atrium_api::app::bsky::embed::images::MainData {
+    //                         images: vec![image],
+    //                     }
+    //                     .into(),
+    //                 ),
+    //             )));
 
-                }.into();
-                let embed = Some(Union::Refs(
-                    RecordEmbedRefs::AppBskyEmbedImagesMain(Box::new(
-                        atrium_api::app::bsky::embed::images::MainData {
-                            images: vec![image],
-                        }.into(),
-                    )),
-                ));
+    //             // Create vote post text.
+    //             let result = if yes > (no + abstain) {
+    //                 "Aangenomen"
+    //             } else {
+    //                 "Verworpen"
+    //             };
+    //             let total = yes + no + abstain;
+    //             let bar_len: usize = 14;
+    //             let scale =
+    //                 |count: u32| ((count as f64 / total as f64) * bar_len as f64).round() as usize;
+    //             let yes_blocks = scale(yes);
+    //             let no_blocks = scale(no);
+    //             let abstain_blocks = bar_len.saturating_sub(yes_blocks + no_blocks);
 
-                // Create vote post text.
-                let result = if yes > (no + abstain) { "Aangenomen" } else { "Verworpen" };
-                let total = yes + no + abstain;
-                let bar_len: usize = 14;
-                let scale = |count: u32| ((count as f64 / total as f64) * bar_len as f64).round() as usize;
-                let yes_blocks = scale(yes);
-                let no_blocks = scale(no);
-                let abstain_blocks = bar_len.saturating_sub(yes_blocks + no_blocks);
+    //             let bar = format!(
+    //                 "{}\n{}{}{}",
+    //                 result,
+    //                 "🟩".repeat(yes_blocks),
+    //                 "🟥".repeat(no_blocks),
+    //                 "🟧".repeat(abstain_blocks),
+    //             );
 
-                let bar = format!(
-                    "{}\n{}{}{}",
-                    result,
-                    "🟩".repeat(yes_blocks),
-                    "🟥".repeat(no_blocks),
-                    "🟧".repeat(abstain_blocks),
-                );
+    //             let vote_post_text = format!(
+    //                 "🗳️ Gestemd\n\"{}\"\n\n{}\n\nhttps://zijwerkenvooru.be/sessions/{}/meetings/plenary/{}/votes/{}",
+    //                 vote_title_with_handles, bar, session_id, meeting_id, vote_id
+    //             );
+    //             let truncated_post_text = truncate_to_graphemes(&vote_post_text, 300);
+    //             let rich_text = RichText::new_with_detect_facets(&truncated_post_text).await?;
 
-                let vote_post_text = format!(
-                    "🗳️ Gestemd\n\"{}\"\n\n{}\n\nhttps://zijwerkenvooru.be/sessions/{}/meetings/plenary/{}/votes/{}",
-                    vote_title_with_handles,
-                    bar,
-                    session_id, meeting_id, vote_id
-                );
-                let truncated_post_text = truncate_to_graphemes(&vote_post_text, 300);
-                let rich_text = RichText::new_with_detect_facets(&truncated_post_text).await?;
+    //             let reply_to_uri =
+    //                 if let Some(parent) = posts.iter().find(|p| p.id == target_meeting_id) {
+    //                     if let Some(last_reply) = parent.replies.last() {
+    //                         match last_reply {
+    //                             BskyReply::Vote(v) => Some(v.uri.clone()),
+    //                             BskyReply::Question(q) => Some(q.uri.clone()),
+    //                         }
+    //                     } else {
+    //                         // No replies yet, reply to main post
+    //                         main_post_uri.clone()
+    //                     }
+    //                 } else {
+    //                     // No parent found, fallback to main post URI
+    //                     main_post_uri.clone()
+    //                 };
 
-                let reply_to_uri = if let Some(parent) = posts.iter().find(|p| p.id == target_meeting_id) {
-                    if let Some(last_reply) = parent.replies.last() {
-                        match last_reply {
-                            BskyReply::Vote(v) => Some(v.uri.clone()),
-                            BskyReply::Question(q) => Some(q.uri.clone()),
-                        }
-                    } else {
-                        // No replies yet, reply to main post
-                        main_post_uri.clone()
-                    }
-                } else {
-                    // No parent found, fallback to main post URI
-                    main_post_uri.clone()
-                };
+    //             let root_uri = main_post_uri.clone();
 
-                let root_uri = main_post_uri.clone();
+    //             let vote_post_uri = create_post(
+    //                 &agent,
+    //                 rich_text.text,
+    //                 rich_text.facets,
+    //                 root_uri,
+    //                 reply_to_uri,
+    //                 embed,
+    //             )
+    //             .await?;
 
-                let vote_post_uri = create_post(&agent, rich_text.text, rich_text.facets, root_uri, reply_to_uri, embed).await?;
+    //             let vote_reply = BskyReply::Vote(BskyReplyVote {
+    //                 hash: vote_hash.clone(),
+    //                 topic: vote_title_with_handles.to_string(),
+    //                 uri: vote_post_uri.clone(),
+    //             });
 
-                let vote_reply = BskyReply::Vote(BskyReplyVote {
-                    hash: vote_hash.clone(),
-                    topic: vote_title_with_handles.to_string(),
-                    uri: vote_post_uri.clone(),
-                });
+    //             // Find parent post by meeting id and add the reply
+    //             if let Some(parent) = posts.iter_mut().find(|p| p.id == target_meeting_id) {
+    //                 parent.replies.push(vote_reply);
+    //             }
 
-                // Find parent post by meeting id and add the reply
-                if let Some(parent) = posts.iter_mut().find(|p| p.id == target_meeting_id) {
-                    parent.replies.push(vote_reply);
-                }
-
-                // Save updated posts to disk
-                fs::write(&posts_log_path, serde_json::to_string_pretty(&posts)?)?;
-            }
-        }
-    }
+    //             // Save updated posts to disk
+    //             fs::write(&posts_log_path, serde_json::to_string_pretty(&posts)?)?;
+    //         }
+    //     }
+    // }
 
     // Load summaries
     let summaries_path = data_dir.join("summaries.parquet");
     let hashes = read_string_column(&summaries_path, "input_hash")?;
     let summaries = read_string_column(&summaries_path, "summary")?;
-    let summary_map: HashMap<String, String> = hashes.into_iter().zip(summaries.into_iter()).collect();
-
+    let summary_map: HashMap<String, String> =
+        hashes.into_iter().zip(summaries.into_iter()).collect();
 
     // Re-open file for second pass (questions).
     let questions_file = File::open(&questions_path)?;
@@ -447,12 +540,42 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
     for batch in questions_reader {
         let batch = batch?;
-        let question_titles = batch.column_by_name("topics_nl").unwrap().as_any().downcast_ref::<StringArray>().unwrap();
-        let questioners_col = batch.column_by_name("questioners").unwrap().as_any().downcast_ref::<StringArray>().unwrap();
-        let respondents_col = batch.column_by_name("respondents").unwrap().as_any().downcast_ref::<StringArray>().unwrap();
-        let session_ids_col = batch.column_by_name("session_id").unwrap().as_any().downcast_ref::<StringArray>().unwrap();
-        let meeting_ids_col = batch.column_by_name("meeting_id").unwrap().as_any().downcast_ref::<StringArray>().unwrap();
-        let question_ids_col = batch.column_by_name("question_id").unwrap().as_any().downcast_ref::<StringArray>().unwrap();
+        let question_titles = batch
+            .column_by_name("topics_nl")
+            .unwrap()
+            .as_any()
+            .downcast_ref::<StringArray>()
+            .unwrap();
+        let questioners_col = batch
+            .column_by_name("questioners")
+            .unwrap()
+            .as_any()
+            .downcast_ref::<StringArray>()
+            .unwrap();
+        let respondents_col = batch
+            .column_by_name("respondents")
+            .unwrap()
+            .as_any()
+            .downcast_ref::<StringArray>()
+            .unwrap();
+        let session_ids_col = batch
+            .column_by_name("session_id")
+            .unwrap()
+            .as_any()
+            .downcast_ref::<StringArray>()
+            .unwrap();
+        let meeting_ids_col = batch
+            .column_by_name("meeting_id")
+            .unwrap()
+            .as_any()
+            .downcast_ref::<StringArray>()
+            .unwrap();
+        let question_ids_col = batch
+            .column_by_name("question_id")
+            .unwrap()
+            .as_any()
+            .downcast_ref::<StringArray>()
+            .unwrap();
 
         // Loop through questions.
         for i in 0..question_titles.len() {
@@ -467,7 +590,10 @@ async fn main() -> Result<(), Box<dyn Error>> {
             let question_hash = hash_text(question_title);
             let topics: Vec<&str> = question_title.split(';').collect();
             let summary = if topics.len() > 1 {
-                summary_map.get(&question_hash).cloned().unwrap_or_else(|| topics.join(", "))
+                summary_map
+                    .get(&question_hash)
+                    .cloned()
+                    .unwrap_or_else(|| topics.join(", "))
             } else {
                 topics[0].to_string()
             };
@@ -485,79 +611,103 @@ async fn main() -> Result<(), Box<dyn Error>> {
                         Some(handle) => {
                             format!("{}", handle)
                         }
-                        None =>  format!("{}", name)
+                        None => format!("{}", name),
                     }
                 };
 
                 let session_id = session_ids_col.value(i);
                 let question_id = question_ids_col.value(i);
-                let questioners: Vec<String> = questioners_col.value(i)
+                let questioners: Vec<String> = questioners_col
+                    .value(i)
                     .split(',')
                     .map(|s| format_name(s.trim())) // <-- trim here!
                     .collect();
 
-                let respondents: Vec<String> = respondents_col.value(i)
+                let respondents: Vec<String> = respondents_col
+                    .value(i)
                     .split(',')
                     .map(|s| format_name(s.trim()))
                     .collect();
 
                 // Take screenshot of question and upload.
-                let vote_url = format!("https://zijwerkenvooru.pages.dev/sessions/{}/meetings/plenary/{}/questions/{}", session_id, meeting_id, question_id);
-                let ScreenshotResult { png_data, viewport } = take_screenshot_of_element(&browser, &vote_url, "#screenshot-target")?;
-                let output = agent
-                    .api
-                    .com
-                    .atproto
-                    .repo
-                    .upload_blob(png_data.as_bytes().to_vec())
-                    .await?;
-                let width = viewport.width.round() as u64;
-                let height = viewport.height.round() as u64;
-                let aspect_ratio = Some(atrium_api::app::bsky::embed::defs::AspectRatioData {
-                    width: NonZeroU64::new(width).unwrap_or(NonZeroU64::new(1).unwrap()),
-                    height: NonZeroU64::new(height).unwrap_or(NonZeroU64::new(1).unwrap()),
-                }.into());
-                let image = ImageData {
-                    alt: "A screenshot of the question.".to_string(),
-                    image: output.data.blob,
-                    aspect_ratio,
-                }.into();
-                let embed = Some(Union::Refs(
-                    RecordEmbedRefs::AppBskyEmbedImagesMain(Box::new(
-                        atrium_api::app::bsky::embed::images::MainData {
-                            images: vec![image],
-                        }.into(),
-                    )),
-                ));
+                // NOTE: Disabled question screenshot for now since it did not work, dedicated question pages do not exist anymore, just in overview,
+                // NOTE: so should make targets there and be able to target screenshot-target-1 for example for question 1
+                // let question_url = format!(
+                //     "https://zijwerkenvooru.pages.dev/sessions/{}/meetings/plenary/{}/questions/{}",
+                //     session_id, meeting_id, question_id
+                // );
+                // let ScreenshotResult { png_data, viewport } =
+                //     take_screenshot_of_element(&browser, &question_url, "#screenshot-target")?;
+                // let output = agent
+                //     .api
+                //     .com
+                //     .atproto
+                //     .repo
+                //     .upload_blob(png_data.as_bytes().to_vec())
+                //     .await?;
+                // let width = viewport.width.round() as u64;
+                // let height = viewport.height.round() as u64;
+                // let aspect_ratio = Some(
+                //     atrium_api::app::bsky::embed::defs::AspectRatioData {
+                //         width: NonZeroU64::new(width).unwrap_or(NonZeroU64::new(1).unwrap()),
+                //         height: NonZeroU64::new(height).unwrap_or(NonZeroU64::new(1).unwrap()),
+                //     }
+                //     .into(),
+                // );
+                // let image = ImageData {
+                //     alt: "A screenshot of the question.".to_string(),
+                //     image: output.data.blob,
+                //     aspect_ratio,
+                // }
+                // .into();
+                // let embed = Some(Union::Refs(RecordEmbedRefs::AppBskyEmbedImagesMain(
+                //     Box::new(
+                //         atrium_api::app::bsky::embed::images::MainData {
+                //             images: vec![image],
+                //         }
+                //         .into(),
+                //     ),
+                // )));
 
                 // Create question post text.
                 let question_post_text = format!(
                     "❓Vraag\n\"{}\"\n\n{}\n\nDetails: https://zijwerkenvooru.be/sessions/{}/meetings/plenary/{}/questions/{}",
                     summary,
                     questioners.join(", "),
-                    session_id, meeting_id, question_id
+                    session_id,
+                    meeting_id,
+                    question_id
                 );
                 let truncated_post_text = truncate_to_graphemes(&question_post_text, 300);
                 let rich_text = RichText::new_with_detect_facets(&truncated_post_text).await?;
 
-                let reply_to_uri = if let Some(parent) = posts.iter().find(|p| p.id == target_meeting_id) {
-                    if let Some(last_reply) = parent.replies.last() {
-                        match last_reply {
-                            BskyReply::Vote(v) => Some(v.uri.clone()),
-                            BskyReply::Question(q) => Some(q.uri.clone()),
+                let reply_to_uri =
+                    if let Some(parent) = posts.iter().find(|p| p.id == target_meeting_id) {
+                        if let Some(last_reply) = parent.replies.last() {
+                            match last_reply {
+                                BskyReply::Vote(v) => Some(v.uri.clone()),
+                                BskyReply::Question(q) => Some(q.uri.clone()),
+                            }
+                        } else {
+                            // No replies yet, reply to main post
+                            main_post_uri.clone()
                         }
                     } else {
-                        // No replies yet, reply to main post
+                        // No parent found, fallback to main post URI
                         main_post_uri.clone()
-                    }
-                } else {
-                    // No parent found, fallback to main post URI
-                    main_post_uri.clone()
-                };
+                    };
 
                 let root_uri = main_post_uri.clone();
 
-                let question_post_uri = create_post(&agent, rich_text.text, rich_text.facets, root_uri, reply_to_uri, embed).await?;
+                let question_post_uri = create_post(
+                    &agent,
+                    rich_text.text,
+                    rich_text.facets,
+                    root_uri,
+                    reply_to_uri,
+                    None,
+                )
+                .await?;
 
                 let question_reply = BskyReply::Question(BskyReplyQuestion {
                     hash: question_hash.clone(),
@@ -583,10 +733,14 @@ async fn main() -> Result<(), Box<dyn Error>> {
 
 pub struct ScreenshotResult {
     pub png_data: Vec<u8>,
-    pub viewport: Viewport
+    pub viewport: Viewport,
 }
 
-pub fn take_screenshot_of_element(browser: &Browser, url: &str, selector: &str) -> anyhow::Result<ScreenshotResult> {
+pub fn take_screenshot_of_element(
+    browser: &Browser,
+    url: &str,
+    selector: &str,
+) -> anyhow::Result<ScreenshotResult> {
     let tab = browser.new_tab()?;
 
     let tab = tab.set_bounds(headless_chrome::types::Bounds::Normal {
@@ -595,7 +749,6 @@ pub fn take_screenshot_of_element(browser: &Browser, url: &str, selector: &str) 
         width: Some(500.0),
         height: Some(1400.0),
     })?;
-
 
     // eprintln!("🌐 Navigating to: {}", url);
     tab.navigate_to(url)?;
@@ -610,7 +763,8 @@ pub fn take_screenshot_of_element(browser: &Browser, url: &str, selector: &str) 
         })?;
 
     // Wait for target element
-    let element = tab.wait_for_element_with_custom_timeout(selector, Duration::from_secs(10))
+    let element = tab
+        .wait_for_element_with_custom_timeout(selector, Duration::from_secs(10))
         .map_err(|e| {
             eprintln!("❌ Failed to find {}: {:?}", selector, e);
             e
@@ -634,7 +788,12 @@ pub fn take_screenshot_of_element(browser: &Browser, url: &str, selector: &str) 
         scale: 3.0,
     });
 
-    let png_data = tab.capture_screenshot(headless_chrome::protocol::cdp::Page::CaptureScreenshotFormatOption::Png, None, adjusted_viewport, true)?;
+    let png_data = tab.capture_screenshot(
+        headless_chrome::protocol::cdp::Page::CaptureScreenshotFormatOption::Png,
+        None,
+        adjusted_viewport,
+        true,
+    )?;
 
     eprintln!("🌐 Captured screenshot for: {}", url);
     Ok(ScreenshotResult {
@@ -643,12 +802,19 @@ pub fn take_screenshot_of_element(browser: &Browser, url: &str, selector: &str) 
     })
 }
 
-pub async fn create_post(agent: &BskyAgent, text: String, facets: Option<Vec<atrium_api::app::bsky::richtext::facet::Main>>, root: Option<String>, reply_to: Option<String>, embed: Option<Union<RecordEmbedRefs>>) -> anyhow::Result<String> {
+pub async fn create_post(
+    agent: &BskyAgent,
+    text: String,
+    facets: Option<Vec<atrium_api::app::bsky::richtext::facet::Main>>,
+    root: Option<String>,
+    reply_to: Option<String>,
+    embed: Option<Union<RecordEmbedRefs>>,
+) -> anyhow::Result<String> {
     let mut record = RecordData {
         text,
         created_at: Datetime::now(),
         reply: None,
-        embed,
+        embed: None,
         langs: None,
         labels: None,
         tags: None,
@@ -658,26 +824,35 @@ pub async fn create_post(agent: &BskyAgent, text: String, facets: Option<Vec<atr
 
     // If this is a reply, set up the reply reference
     if let Some(reply_uri) = reply_to.clone() {
-     //   println!("GET PARENT POST: {}", reply_uri);
+        //   println!("GET PARENT POST: {}", reply_uri);
         // First get the post we're replying to
         let parent_post = get_post(agent, &reply_uri).await?;
 
-        record.reply = Some(ReplyRefData {
-            root: atrium_api::com::atproto::repo::strong_ref::MainData {
-                uri: root.unwrap().clone().try_into()?,
-                cid: parent_post.cid.clone(),
-            }.into(),
-            parent: atrium_api::com::atproto::repo::strong_ref::MainData {
-                uri: reply_uri.try_into()?,
-                cid: parent_post.cid.clone(),
-            }.into(),
-        }.into());
+        record.reply = Some(
+            ReplyRefData {
+                root: atrium_api::com::atproto::repo::strong_ref::MainData {
+                    uri: root.unwrap().clone().try_into()?,
+                    cid: parent_post.cid.clone(),
+                }
+                .into(),
+                parent: atrium_api::com::atproto::repo::strong_ref::MainData {
+                    uri: reply_uri.try_into()?,
+                    cid: parent_post.cid.clone(),
+                }
+                .into(),
+            }
+            .into(),
+        );
     }
     let created = agent.create_record(record).await?;
 
     match reply_to.clone() {
-        Some(_) => { println!("Created reply"); },
-        None => { println!("Created post"); }
+        Some(_) => {
+            println!("Created reply");
+        }
+        None => {
+            println!("Created post");
+        }
     }
 
     Ok(created.uri.clone())
@@ -688,12 +863,22 @@ pub async fn create_post(agent: &BskyAgent, text: String, facets: Option<Vec<atr
     // }
 }
 
-pub async fn get_post(agent: &BskyAgent, uri: &str) -> anyhow::Result<atrium_api::types::Object<atrium_api::app::bsky::feed::defs::PostViewData>> {
-    let get_posts_result = agent.api.app.bsky.feed.get_posts(
-        atrium_api::app::bsky::feed::get_posts::ParametersData {
-            uris: vec![uri.to_string()],
-        }.into()
-    ).await;
+pub async fn get_post(
+    agent: &BskyAgent,
+    uri: &str,
+) -> anyhow::Result<atrium_api::types::Object<atrium_api::app::bsky::feed::defs::PostViewData>> {
+    let get_posts_result = agent
+        .api
+        .app
+        .bsky
+        .feed
+        .get_posts(
+            atrium_api::app::bsky::feed::get_posts::ParametersData {
+                uris: vec![uri.to_string()],
+            }
+            .into(),
+        )
+        .await;
     if let Ok(post_data) = get_posts_result {
         return Ok(post_data.data.posts[0].clone());
     } else {

@@ -1,5 +1,6 @@
 import { DuckDBInstance } from "@duckdb/node-api";
 import fs from "fs";
+import { hashText } from "../lib/textUtils.js";
 
 import path from "path";
 import { fileURLToPath } from "url";
@@ -20,11 +21,13 @@ export default async function () {
     const questionsFilePath = "src/data/questions.parquet";
     const commissionQuestionsFilePath = "src/data/commission_questions.parquet";
     const meetingsFilePath = "src/data/meetings.parquet";
-    const commissionsFilePath = "src/data/commissions.parquet";
+    const commissionMeetingsFilePath = "src/data/commission_meetings.parquet";
+    const summariesFilePath = "src/data/summaries.parquet";
     const votesFilePath = "src/data/votes.parquet";
     const propositionsFilePath = "src/data/propositions.parquet";
     const dossiersFilePath = "src/data/dossiers.parquet";
     const subdocumentsFilePath = "src/data/subdocuments.parquet";
+    const commissionsFilePath = "src/data/commissions.parquet";
 
     if (
       !fs.existsSync(membersFilePath) ||
@@ -32,7 +35,9 @@ export default async function () {
       !fs.existsSync(questionsFilePath) ||
       !fs.existsSync(commissionQuestionsFilePath) ||
       !fs.existsSync(meetingsFilePath) ||
+      !fs.existsSync(commissionMeetingsFilePath) ||
       !fs.existsSync(commissionsFilePath) ||
+      !fs.existsSync(summariesFilePath) ||
       !fs.existsSync(propositionsFilePath) ||
       !fs.existsSync(dossiersFilePath) ||
       !fs.existsSync(votesFilePath) ||
@@ -70,10 +75,20 @@ export default async function () {
     );
     const meetingsRows = meetingsResult.getRows();
 
+    const commissionMeetingsResult = await connection.runAndReadAll(
+      `SELECT * FROM read_parquet('${commissionMeetingsFilePath}')`,
+    );
+    const commissionMeetingsRows = commissionMeetingsResult.getRows();
+
     const commissionsResult = await connection.runAndReadAll(
       `SELECT * FROM read_parquet('${commissionsFilePath}')`,
     );
     const commissionsRows = commissionsResult.getRows();
+
+    const summariesResult = await connection.runAndReadAll(
+      `SELECT * FROM read_parquet('${summariesFilePath}')`,
+    );
+    const summariesRows = summariesResult.getRows();
 
     const votesResult = await connection.runAndReadAll(
       `SELECT * FROM read_parquet('${votesFilePath}')`,
@@ -95,6 +110,12 @@ export default async function () {
     );
     const subdocumentsRows = subdocumentsResult.getRows();
 
+    // Summary lookup
+    const summaryByHash = {};
+    summariesRows.forEach((row) => {
+      summaryByHash[row[0]] = row[2]; // input_hash -> summary
+    });
+
     /* Date map for plenary meetings. */
     const meetingDateMap = new Map();
     meetingsRows.forEach((row) => {
@@ -107,7 +128,7 @@ export default async function () {
 
     /* Date map for commission meetings. */
     const commissionDateMap = new Map();
-    commissionsRows.forEach((row) => {
+    commissionMeetingsRows.forEach((row) => {
       const sessionId = row[0];
       const meetingId = row[1];
       const date = row[2];
@@ -137,7 +158,7 @@ export default async function () {
       const vote_date = convertDate(dossier[6]);
       const authors = dossier[3]
         ?.split(",")
-        .map((a) => a.trim().toLowerCase().replace(" ", "-")) || [];
+        .map((a) => a.trim().toLowerCase().replace(/\s+/g, "-")) || [];
       dossierMap.set(dossierId, { sessionId, title, authors });
 
       dossierById[id] = {
@@ -152,7 +173,10 @@ export default async function () {
     membersRows.forEach((row) => {
       const firstName = row[2];
       const lastName = row[3];
-      const key = `${firstName}-${lastName}`.toLowerCase();
+      const key = `${firstName} ${lastName}`.trim().toLowerCase().replace(
+        /\s+/g,
+        "-",
+      );
 
       if (!memberMap.has(key)) {
         const birthDate = new Date(row[5]);
@@ -189,6 +213,7 @@ export default async function () {
           commissionQuestions: [],
           votes: [],
           age: age,
+          commissions: [],
         });
       } else {
         const member = memberMap.get(key);
@@ -197,6 +222,55 @@ export default async function () {
         member.fractions.add(row[10]);
         if (member.language == null) member.language = row[6];
       }
+    });
+
+    // ADD COMMISSIONS TO MEMBERS
+    commissionsRows.forEach((commissionRow) => {
+      const commissionName = commissionRow[0];
+      const type = commissionRow[1];
+
+      const mapMembers = (str) =>
+        str ? str.split(",").map((m) => m.trim()) : [];
+
+      const chairs = mapMembers(commissionRow[2]);
+      const subchairs = mapMembers(commissionRow[3]);
+      const permanent_members = mapMembers(commissionRow[4]);
+
+      const formatMemberKey = (name) =>
+        name.trim().toLowerCase().replace(/\s+/g, "-");
+
+      chairs.forEach((name) => {
+        const key = formatMemberKey(name);
+        if (memberMap.has(key)) {
+          memberMap.get(key).commissions.push({
+            commission: commissionName,
+            type,
+            role: "chair",
+          });
+        }
+      });
+
+      subchairs.forEach((name) => {
+        const key = formatMemberKey(name);
+        if (memberMap.has(key)) {
+          memberMap.get(key).commissions.push({
+            commission: commissionName,
+            type,
+            role: "subchair",
+          });
+        }
+      });
+
+      permanent_members.forEach((name) => {
+        const key = formatMemberKey(name);
+        if (memberMap.has(key)) {
+          memberMap.get(key).commissions.push({
+            commission: commissionName,
+            type,
+            role: "member",
+          });
+        }
+      });
     });
 
     // ADD PROPOSITIONS TO MEMBERS
@@ -223,6 +297,15 @@ export default async function () {
         if (memberMap.has(authorKey)) {
           const member = memberMap.get(authorKey);
           if (!member.propositions) member.propositions = [];
+
+          // Deduplicate based on distinct content, not just ID
+          // The same ID (e.g. 0, 1, 2, 3) is reused for completely different propositions in the parquet file
+          // So we check if we already have this specific combination of ID AND dossier ID
+          if (
+            member.propositions.some((p) =>
+              p.proposition_id === propId && p.dossier_id === dossierId
+            )
+          ) return;
 
           member.propositions.push({
             proposition_id: propId,
@@ -267,7 +350,10 @@ export default async function () {
     remunerationsRows.forEach((remuneration) => {
       const firstName = remuneration[0];
       const lastName = remuneration[1];
-      const key = `${firstName}-${lastName}`.toLowerCase();
+      const key = `${firstName} ${lastName}`.trim().toLowerCase().replace(
+        /\s+/g,
+        "-",
+      );
 
       if (memberMap.has(key)) {
         const member = memberMap.get(key);
@@ -332,9 +418,22 @@ export default async function () {
         text: discussionItem.text,
       }));
 
+      const rawTopicsNl = question[5];
+      const topics_summary_nl =
+        (rawTopicsNl && summaryByHash[hashText(rawTopicsNl)]) || null;
+
+      const rawDiscussion = question[7] || "";
+      const rawDiscussionTrimmed = typeof rawDiscussion === "string"
+        ? rawDiscussion.trim()
+        : "";
+      const discussion_summary_nl =
+        rawDiscussionTrimmed && rawDiscussionTrimmed !== "[]"
+          ? summaryByHash[hashText(rawDiscussion)] || null
+          : null;
+
       // Add to questioners
       questioners.forEach((q, i) => {
-        const key = q.name.toLowerCase().replace(" ", "-");
+        const key = q.name.toLowerCase().replace(/\s+/g, "-");
         const topic_nl = topics_nl[i] || null;
         const topic_fr = topics_fr[i] || null;
 
@@ -348,11 +447,13 @@ export default async function () {
             type: "plenary",
             topic_nl,
             topic_fr,
-            topics_nl: [topic_nl],
-            topics_fr: [topic_fr],
+            topics_nl: topics_nl,
+            topics_fr: topics_fr,
+            topics_summary_nl: topics_summary_nl,
             questioners,
             respondents,
             discussion,
+            discussion_summary_nl: discussion_summary_nl,
             asRespondent: false,
           });
         }
@@ -360,7 +461,7 @@ export default async function () {
 
       // Add to respondents
       respondents.forEach((r) => {
-        const key = r.name.toLowerCase().replace(" ", "-");
+        const key = r.name.toLowerCase().replace(/\s+/g, "-");
         const topic_nl = topics_nl[0] || null;
         const topic_fr = topics_fr[0] || null;
 
@@ -374,11 +475,13 @@ export default async function () {
             type: "plenary",
             topic_nl,
             topic_fr,
-            topics_nl: [topic_nl],
-            topics_fr: [topic_fr],
+            topics_nl: topics_nl,
+            topics_fr: topics_fr,
+            topics_summary_nl: topics_summary_nl,
             questioners,
             respondents,
             discussion,
+            discussion_summary_nl: discussion_summary_nl,
             asRespondent: true,
           });
         }
@@ -421,9 +524,22 @@ export default async function () {
         text: discussionItem.text,
       }));
 
+      const rawTopicsNl = question[5];
+      const topics_summary_nl =
+        (rawTopicsNl && summaryByHash[hashText(rawTopicsNl)]) || null;
+
+      const rawDiscussion = question[7] || "";
+      const rawDiscussionTrimmed = typeof rawDiscussion === "string"
+        ? rawDiscussion.trim()
+        : "";
+      const discussion_summary_nl =
+        rawDiscussionTrimmed && rawDiscussionTrimmed !== "[]"
+          ? summaryByHash[hashText(rawDiscussion)] || null
+          : null;
+
       // Add to questioners
       questioners.forEach((q, i) => {
-        const key = q.name.toLowerCase().replace(" ", "-");
+        const key = q.name.toLowerCase().replace(/\s+/g, "-");
         const topic_nl = topics_nl[i] || null;
         const topic_fr = topics_fr[i] || null;
 
@@ -434,14 +550,16 @@ export default async function () {
             session_id: sessionId,
             meeting_id: meetingId,
             date: date,
-            type: "commission"
-              .topic_nl,
+            type: "commission",
+            topic_nl,
             topic_fr,
-            topics_nl: [topic_nl],
-            topics_fr: [topic_fr],
+            topics_nl: topics_nl,
+            topics_fr: topics_fr,
+            topics_summary_nl: topics_summary_nl,
             questioners,
             respondents,
             discussion,
+            discussion_summary_nl: discussion_summary_nl,
             asRespondent: false,
           });
         }
@@ -449,7 +567,7 @@ export default async function () {
 
       // Add to respondents
       respondents.forEach((r) => {
-        const key = r.name.toLowerCase().replace(" ", "-");
+        const key = r.name.toLowerCase().replace(/\s+/g, "-");
         const topic_nl = topics_nl[0] || null;
         const topic_fr = topics_fr[0] || null;
 
@@ -460,14 +578,16 @@ export default async function () {
             session_id: sessionId,
             meeting_id: meetingId,
             date: date,
-            type: "commission"
-              .topic_nl,
+            type: "commission",
+            topic_nl,
             topic_fr,
-            topics_nl: [topic_nl],
-            topics_fr: [topic_fr],
+            topics_nl: topics_nl,
+            topics_fr: topics_fr,
+            topics_summary_nl: topics_summary_nl,
             questioners,
             respondents,
             discussion,
+            discussion_summary_nl: discussion_summary_nl,
             asRespondent: true,
           });
         }
@@ -478,13 +598,13 @@ export default async function () {
     votesRows.forEach((vote) => {
       const membersYes = vote[9]
         .split(",")
-        .map((name) => name.trim().toLowerCase().replace(" ", "-"));
+        .map((name) => name.trim().toLowerCase().replace(/\s+/g, "-"));
       const membersNo = vote[10]
         .split(",")
-        .map((name) => name.trim().toLowerCase().replace(" ", "-"));
+        .map((name) => name.trim().toLowerCase().replace(/\s+/g, "-"));
       const membersAbstain = vote[11]
         .split(",")
-        .map((name) => name.trim().toLowerCase().replace(" ", "-"));
+        .map((name) => name.trim().toLowerCase().replace(/\s+/g, "-"));
 
       // Group members by their party
       const partyVotes = new Map();
@@ -553,6 +673,7 @@ export default async function () {
       parties: Array.from(member.parties),
       fractions: Array.from(member.fractions),
       votes: member.votes || [],
+      commissions: member.commissions || [],
     }));
 
     // Parties.

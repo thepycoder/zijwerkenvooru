@@ -1,6 +1,6 @@
 import { DuckDBInstance } from '@duckdb/node-api';
 import fs from 'fs';
-import crypto from 'crypto';
+import { hashText } from '../lib/textUtils.js';
 
 const meetingsFilePath = 'src/data/meetings.parquet';
 const votesFilePath = 'src/data/votes.parquet';
@@ -17,7 +17,8 @@ export default async function () {
       !fs.existsSync(questionsFilePath) ||
       !fs.existsSync(propositionsFilePath) ||
       !fs.existsSync(dossiersFilePath) ||
-      !fs.existsSync(meetingsFilePath)
+      !fs.existsSync(meetingsFilePath) ||
+      !fs.existsSync(summariesFilePath)
     ) {
       console.error('Required Parquet file(s) missing.');
       return {};
@@ -26,26 +27,46 @@ export default async function () {
     const instance = await DuckDBInstance.create(':memory:');
     const connection = await instance.connect();
 
-    const [membersRows, questionsRows, propositionsRows, dossiersRows, meetingsRows] = await Promise.all([
+    const [membersRows, questionsRows, propositionsRows, dossiersRows, meetingsRows, summariesRows] = await Promise.all([
       connection.runAndReadAll(`SELECT * FROM read_parquet('${membersFilePath}')`).then(r => r.getRows()),
       connection.runAndReadAll(`SELECT * FROM read_parquet('${questionsFilePath}')`).then(r => r.getRows()),
       connection.runAndReadAll(`SELECT * FROM read_parquet('${propositionsFilePath}')`).then(r => r.getRows()),
       connection.runAndReadAll(`SELECT * FROM read_parquet('${dossiersFilePath}')`).then(r => r.getRows()),
       connection.runAndReadAll(`SELECT * FROM read_parquet('${meetingsFilePath}')`).then(r => r.getRows()),
+      connection.runAndReadAll(`SELECT * FROM read_parquet('${summariesFilePath}')`).then(r => r.getRows()),
     ]);
 
     const parties = {};
     const memberPartyMap = {};
     const memberIdMap = {};
 
-     const meetingDateMap = new Map();
+    const convertDate = (rawDate) => {
+      if (!rawDate || typeof rawDate !== 'string') return null;
+
+      // Already YYYY-MM-DD
+      if (/^\d{4}-\d{2}-\d{2}$/.test(rawDate)) {
+        return rawDate;
+      }
+
+      const [day, month, year] = rawDate.split('/');
+      if (!day || !month || !year) return null;
+      return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+    };
+
+    const meetingDateMap = new Map();
       meetingsRows.forEach(row => {
           const sessionId = row[0];
           const meetingId = row[1];
-          const date = row[2];
+          const date = convertDate(row[2]);
           const key = `${sessionId}-${meetingId}`;
           meetingDateMap.set(key, date);
       });
+
+    // Summary lookup
+    const summaryByHash = {};
+    summariesRows.forEach((row) => {
+      summaryByHash[row[0]] = row[2]; // input_hash -> summary
+    });
 
     // Build member maps
     membersRows.forEach(row => {
@@ -88,13 +109,6 @@ export default async function () {
     });
 
     // Build dossier lookup for propositions (document type, status, vote date, authors)
-    const convertDate = (rawDate) => {
-      if (!rawDate || typeof rawDate !== 'string') return null;
-      const [day, month, year] = rawDate.split('/');
-      if (!day || !month || !year) return null;
-      return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
-    };
-
     const dossierById = {};
     dossiersRows.forEach((dossier) => {
       const id = dossier[1];
@@ -137,6 +151,14 @@ export default async function () {
         const party = memberPartyMap[trimmed];
       
         if (party && parties[party]) {
+          const rawTopicsNl = q[5] || '';
+          const topics_summary_nl = rawTopicsNl ? (summaryByHash[hashText(rawTopicsNl)] || null) : null;
+          const rawDiscussion = q[7] || '';
+          const rawDiscussionTrimmed = typeof rawDiscussion === 'string' ? rawDiscussion.trim() : '';
+          const discussion_summary_nl = rawDiscussionTrimmed && rawDiscussionTrimmed !== '[]'
+            ? (summaryByHash[hashText(rawDiscussion)] || null)
+            : null;
+
           // Check if the current index's party matches
           const questionDetails = {
             question_id: questionId,
@@ -151,10 +173,12 @@ export default async function () {
               name: name.trim(),
               party: memberPartyMap[name.trim().toLowerCase().replace(/\s+/g, '-')] || "Unknown"
             })),
-            topics_nl: [topicsNl[index]].filter(Boolean),  // Only include matching topic
-            topics_fr: [topicsFr[index]].filter(Boolean),
+            topics_nl: topicsNl,  // Use full topics list
+            topics_fr: topicsFr,
+            topics_summary_nl: topics_summary_nl,
             discussion: discussion,
             discussion_ids: discussionIds,
+            discussion_summary_nl: discussion_summary_nl,
             date: date
           };
       
@@ -196,9 +220,12 @@ export default async function () {
           };
         }
 
-        // Deduplicate per party by proposition_id
-        const alreadyHas = parties[partyName].propositions.some((p) => p.proposition_id === propId);
+        // Deduplicate per party by proposition_id AND dossier_id
+        // The parquet file reuses IDs (0, 1, 2...) for different propositions
+        const alreadyHas = parties[partyName].propositions.some((p) => p.proposition_id === propId && p.dossier_id === dossierId);
         if (alreadyHas) return;
+
+        const title_summary_nl = (titleNl && summaryByHash[hashText(titleNl)]) || null;
 
         parties[partyName].propositions.push({
           proposition_id: propId,
@@ -207,6 +234,7 @@ export default async function () {
           date: date,
           title_nl: titleNl,
           title_fr: titleFr,
+          title_summary_nl: title_summary_nl,
           dossier_id: dossierId,
           document_id: documentId,
           document_type: dossierData.document_type || null,

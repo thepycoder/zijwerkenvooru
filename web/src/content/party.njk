@@ -17,7 +17,7 @@ eleventyComputed:
 
 <!-- COMPONENTS -->
 {%- from "components/proposition-card.njk" import propositionCard -%}
-{%- from "components/question-card.njk" import questionCard -%}
+{%- from "components/question-card-complete.njk" import questionCardComplete -%}
 
 <h1>{{ party.name }}</h1>
 
@@ -30,11 +30,11 @@ eleventyComputed:
             <h2>{{ party.questions | length }}</h2>
             <p>vragen</p>
         </div>
-        <!-- <div class="card padding metric">
+        <div class="card padding metric">
             <h2>{{ party.propositions | length }}</h2>
             <p>voorstellen</p>
         </div>
-        <div class="card padding metric">
+        <!-- <div class="card padding metric">
             <h2>{{ party.votes | length }}</h2>
             <p>stemmingen</p>
         </div> -->
@@ -94,10 +94,10 @@ eleventyComputed:
     <div id="tab-1-content" class="tab-content padding">
         <div id="member-questions">
             <div id="question-list">
-            {% for question in party.questions | sort(attribute='date', true) %}
+            {% for question in party.questions | sortDate('date', 'desc') %}
             {% set allTopics = question.topics_nl | getMatchedTopics(topics) %}
             <div class="question-card-wrapper" data-topics="{{ allTopics | join(',') }}">
-            {{ questionCard({ question: question, topic: allTopics[0], topics: topics, functions: functions, translations: languages['nl'], language: nl, hideAuthors: "true", showCategory: "true" }) }}
+            {{ questionCardComplete({ question: question, topic: allTopics[0], topics: topics, functions: functions, partyColors: partyColors, translations: languages['nl'], language: nl, showCategory: "true" }) }}
             </div>
             {% endfor %}
             </div>
@@ -108,7 +108,7 @@ eleventyComputed:
     <div id="tab-2-content" class="tab-content padding">
         {% if party.propositions and (party.propositions | length) > 0 %}
         <div id="proposition-list">
-            {% for proposition in party.propositions | sort(attribute='date', true) %}
+            {% for proposition in party.propositions | sortDate('date', 'desc') %}
             {% set allTopics = proposition.title_nl | getMatchedTopics(topics) %}
             <div class="proposition-card-wrapper" data-topics="{{ allTopics | join(',') }}">
                 {{ propositionCard({ proposition: proposition, translations: languages['nl'], language: nl, hideAuthors: "true" }) }}

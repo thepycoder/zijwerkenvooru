@@ -107,3 +107,4 @@ pdf-parser/downloads
 pdf-parser/processed_markdown
 
 **/__pycache__/**
+.vscode

@@ -1,0 +1,54 @@
+---
+layout: layouts/page
+permalink: "/commissions/"
+title: "De commissies van het Belgische Parlement"
+description: "Ontdek alle commissies van het Belgische Parlement."
+---
+
+<h1 class="capitalize">De Commissies</h1>
+<p>Bekijk alle commissies en hun leden.</p>
+
+{% set commissionsByType = commissions.commissions | groupBy("type") %}
+
+{% for type, commissions in commissionsByType %}
+  <h2 class="capitalize">{{ type }}</h2>
+  <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.4rem;">
+      {% for commission in commissions %}
+        <div class="card" style="padding: 1rem; display: flex; flex-direction: column; gap: 1.5rem;">
+          <h3 style="margin: 0;">{{ commissionsMetadata[commission.name].icon }} {{ commissionsMetadata[commission.name].name }}</h3>
+
+          {% for role in ["chairs", "subchairs", "permanent_members"] %}
+            {% if commission[role] | length > 0 %}
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <p style="margin: 0 0 0.25rem 0; font-weight: bold;">
+                {% if role == "chairs" %}Voorzitter(s)
+                {% elif role == "subchairs" %}Ondervoorzitter(s)
+                {% else %}Vaste Leden{% endif %}
+              </p>
+
+              {% set grouped_members = commission[role] | groupBy("party") %}
+              {% set groupedArray = grouped_members | dictsort %}
+
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem;">
+                {% for party, members in groupedArray %}
+                  {% set party_key = party | lower %}
+                  {% set primaryColor = partyColors[party_key].primary or '#95a5a6' %}
+                  {% set secondaryColor = partyColors[party_key].secondary or '#f0f0f0' %}
+                  <div>
+                    <span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ party }}</span>
+                    <ul style="margin:0; padding-left:0; list-style:none; margin-top: 0.4rem;">
+                      {% for member in members %}
+                        <li style="margin: 0;"><p><a href="/members/{{ member.name | slugify }}/" style="text-decoration: none; color: inherit;">{{ member.name }}</a></p></li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+            {% endif %}
+          {% endfor %}
+
+        </div>
+      {% endfor %}
+  </div>
+{% endfor %}

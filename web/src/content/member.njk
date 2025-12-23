@@ -17,7 +17,7 @@ eleventyComputed:
 
 <!-- COMPONENTS -->
 {%- from "components/proposition-card.njk" import propositionCard -%}
-{%- from "components/question-card.njk" import questionCard -%}
+{%- from "components/question-card-complete.njk" import questionCardComplete -%}
 
 <!-- VARIABLES -->
 {% set imgSrc = "../content/members/img/" + (member.first_name | slugify) + "-" + (member.last_name | slugify) + ".jpg" %}
@@ -177,7 +177,7 @@ eleventyComputed:
 <button id="share-button">{{ languages['nl'].sharePage }}</button>
 
 <!-- ACTIVITIES -->
-<h2>Activiteit in De Kamer</h2>
+<h2>Activiteit in de plenaire vergaderingen</h2>
 
 <div class="tabbed">
     <input type="radio" name="tabset" id="tab-1" checked>
@@ -202,14 +202,14 @@ eleventyComputed:
         {% set topicCounts = [question] | countTopics(topics) %}
         {% set topic = topicCounts[0][0] %}
         <div>
-          {{ questionCard({
+          {{ questionCardComplete({
             question: question,
             topic: topic,
             topics: topics,
             functions: functions,
+            partyColors: partyColors,
             translations: languages['nl'],
-            language: nl,
-            hideAuthors: "true"
+            language: nl
           }) }}
         </div>
       {% endfor %}
@@ -328,6 +328,30 @@ eleventyComputed:
         {% endif %}
     </div>
 </div>
+
+<!-- ACTIVITIES -->
+<h2>Activiteit in de commissievergaderingen</h2>
+
+{% if member.commissions.length %}
+  <ul style="padding-left:0;">
+    {% for c in member.commissions %}
+      <li style="margin-bottom: 0.4rem;">
+        {% set metadata = commissionsMetadata[c.commission] or {} %}
+        {% if c.role == "chair" %}
+          Voorzitter van <a href="/commissions/" class="badge-link badge small" style="align-self: flex-start; background-color: {{ metadata.secondary or '#555' }}; color: {{ metadata.primary or '#fff' }};">{{ metadata.icon or '' }} {{ metadata.name  }}</a>
+        {% elif c.role == "subchair" %}
+          Ondervoorzitter van <a href="/commissions/" class="badge-link badge small" style="align-self: flex-start; background-color: {{ metadata.secondary or '#555' }}; color: {{ metadata.primary or '#fff' }};">{{ metadata.icon or '' }} {{ metadata.name  }}</a>
+        {% else %}
+          Lid van <a href="/commissions/" class="badge-link badge small" style="align-self: flex-start; background-color: {{ metadata.secondary or '#555' }}; color: {{ metadata.primary or '#fff' }};">{{ metadata.icon or '' }} {{ metadata.name  }}</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>Geen activiteiten in commissies.</p>
+{% endif %}
+
+
 
 <!-- REMUNERATIONS -->
 <h2>Ambten en Vergoedingen</h2>

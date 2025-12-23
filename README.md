@@ -129,7 +129,7 @@ There is a single GitHub Actions workflow for automatically scraping data, summa
 The `parquet` files are published under the `web/src/data` directory. They include the following data files:
 
 - `commission_questions.parquet` (questions asked during commission meetings)
-- `commissions.parquet` (commission meetings)
+- `commissions_meetings.parquet` (commission meetings)
 - `dossiers.parquet` (dossiers)
 - `lobby.parquet` (the lobbyregister)
 - `meetings.parquet` (plenary meetings)

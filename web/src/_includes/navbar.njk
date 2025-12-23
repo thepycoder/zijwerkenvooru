@@ -1,32 +1,48 @@
-
 <nav style="padding-bottom: 0">
   <div class="content" style="border-bottom: 2px solid black; margin-bottom: 0; padding-bottom: 0.8rem">
   <div class="flex row space-between align-center" style="width: 100%; position: relative;">
 
     <!-- LEFT SIDE: LOGO -->
-    <p style="margin: 0; display: flex; align-items: center; gap: 0.4rem;">
+    <h3 style="margin: 0; display: flex; align-items: center; gap: 0.4rem;">
       <img
         src="../assets/img/belgium.svg"
         alt="Icon description"
         style="display: flex; align-items: center; width: auto; height: 1.2rem; margin: 0; padding: 0;"/>
-      <a href="/" style="text-decoration: none; color: black; border-bottom: 0;">{{ languages['nl'].title }}
+      <a href="/" style="text-decoration: none; color: black; border-bottom: 0;">zijwerkenvooru
         <span
           style="padding: 0.1rem 0.2rem; margin-left: -0.3rem; border-radius: 6px; background: #8dcbff;">.be</span>
       </a>
-    </p>
+    </h3>
 
     <!-- RIGHT SIDE: CONTROLS -->
     <div style="display: flex; align-items: center;">
       <div class="flex align-center" style="gap: 1rem;">
 
+        <!-- AI SUMMARY TOGGLE (global) -->
+        <div class="desktop-only flex align-center" style="gap: 0.4rem; display: flex;">
+          <span style="font-size: 0.8rem;">{{ languages['nl'].summarizedVersion }}</span>
+          <label class="switch" aria-label="AI-samenvatting">
+            <input type="checkbox" id="summaryToggle" />
+            <span class="slider round"></span>
+          </label>
+          <script>
+            try {
+                if (localStorage.getItem('summaryToggleChecked.v2') === 'true') {
+                    document.getElementById('summaryToggle').checked = true;
+                }
+            } catch (e) {}
+          </script>
+        </div>
+
         <!-- SEARCH DESKTOP -->
-        <section id="search">
+        <section id="search" class="desktop-only ">
           <button
             class="flex"
             role="button"
             data-a11y-dialog-show="search-dialog"
             id="search-button"
-            type="button">
+            type="button"
+            style="margin-right: 1rem;">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="100%"
@@ -44,24 +60,12 @@
             <span style="margin-left: 2rem;" class="meta-key-symbol">⌘K</span>
           </button>
         </section>
+
       </div>
 
-      <!-- MENU -->
-      <button
-        id="menu-toggle"
-        class="menu-toggle-button"
-        type="button"
-        aria-controls="site-menu"
-        aria-expanded="false"
-        aria-label="Toggle menu"
-        data-text-show="Menu"
-        data-text-hide="Menu">
-        <h2 style="margin: 0; padding: 0; text-decoration: none;" class="menu-toggle-button-inner">Menu</h2>
-      </button>
-
       <!-- SEARCH MOBILE -->
-      <div id="search-mobile">
-        <button class="flex" role="button" data-a11y-dialog-show="search-dialog" id="search-button" type="button">
+      <div id="search-mobile" class="mobile-only ">
+        <button class="flex" role="button" data-a11y-dialog-show="search-dialog" id="search-button" type="button" style="border: 0;">
           <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="100%"
@@ -77,20 +81,30 @@
           </svg>
         </button>
       </div>
+
+      <!-- MENU -->
+      <button
+        id="menu-toggle"
+        class="menu-toggle-button"
+        type="button"
+        aria-controls="site-menu"
+        aria-expanded="false"
+        aria-label="Toggle menu"
+        style="padding: 0;">
+        <h2 style="margin: 0; padding: 0; text-decoration: none; height: 2rem;" class="menu-toggle-button-inner">{% lucide "menu" %}</h2>
+      </button>
     </div>
   </div>
-
-
 </div>
 </nav>
 
 <!-- MENU -->
 <div id="site-menu" class="site-menu" hidden>
-  <div class="site-menu__content content" role="dialog" aria-label="Main menu" style="  border-bottom: 2px solid black;     padding-top: 1.4rem;
+  <div class="site-menu__content content" role="dialog" aria-label="Main menu" style="border-bottom: 2px solid black; padding-top: 1.4rem;
     padding-bottom: 1rem;">
     <div class="menu-columns">
 
-      <!--   Column 1  -->
+      <!-- DE KAMER -->
       <div class="menu-column">
         <h3 class="menu-column__header">De Kamer</h3>
         <ul class="menu-column__links">
@@ -103,7 +117,7 @@
         </ul>
       </div>
 
-      <!--   Column 2  -->
+      <!-- WERK -->
       <div class="menu-column">
         <h3 class="menu-column__header">Werk</h3>
         <ul class="menu-column__links">
@@ -119,18 +133,16 @@
         </ul>
       </div>
 
+      <!-- DATA -->
       <div class="menu-column">
         <h3 class="menu-column__header">Data</h3>
         <ul class="menu-column__links">
           <li style="margin: 0;">
             <a href="/data" style="text-decoration: underline;">Open Data</a>
           </li>
-
         </ul>
       </div>
-
     </div>
-
   </div>
 </div>
 
@@ -146,18 +158,13 @@
         .remove('is-open');
       menu.hidden = true;
       toggleBtn.setAttribute('aria-expanded', 'false');
-      toggleBtn
-        .querySelector('.menu-toggle-button-inner')
-        .textContent = toggleBtn.dataset.textShow || 'Menu';
+
     } else {
       menu.hidden = false;
       menu
         .classList
         .add('is-open');
       toggleBtn.setAttribute('aria-expanded', 'true');
-      toggleBtn
-        .querySelector('.menu-toggle-button-inner')
-        .textContent = toggleBtn.dataset.textHide || 'Close';
       menu
           .querySelector('a')?.focus();
     }

@@ -9,13 +9,14 @@
     {% endif %}
     <div class="padding flex column gap">
         <p class="bold">
-
-           <span class="full">
+           <span class="full {% if params.question.topics_summary_nl %}ai-hide-when-summary{% endif %}">
             {% for topic in params.question.topics_nl %}
                 {{ topic }}<br>
             {% endfor %}
             </span>
-            <span class="summarized highlight" style="display: none;">{{ params.question.topics_summary_nl }}</span>
+            {% if params.question.topics_summary_nl %}
+            <span class="summarized highlight ai-show-when-summary">{{ params.question.topics_summary_nl }}</span>
+            {% endif %}
 
         </p>
         {% if params.hideAuthors !== "true"%}
@@ -44,24 +45,51 @@
                 <span class="questioner"><a href="/members/{{ params.question.questioners[0].name | slugify }}/">{{ params.question.questioners[0].name }}</a></span><br>
             </p>
             {% endif %}
-            <!-- RESPONDENTS -->
-            <p>Aan</p>
-            <p>
-                {% for respondent in params.question.respondents %}
-                {% set function = params.functions[respondent.name] | getActive(params.question.date) %}
-                <span class="respondent">{{ respondent.name }}{% if function %} ({{ function.function }}){% endif %}</span>{% if not loop.last %}, {% endif %}
-                {% endfor %}
-            </p>
         </div>
         {% endif %}
     </div>
 </div>
 
+{% if params.nolink != true and params.nolink != 'true' %}
+<a href="/sessions/{{ params.question.session_id }}/meetings/{{ params.question.type }}/{{ params.question.meeting_id }}/"
+   class="card padding straight"
+   style="border-top: none; display: flex; align-items: center; justify-content: space-between;">
+    <div style="display: flex; flex-direction: column">
+        <p>Gesteld aan</p>
+        <p>
+            {% for respondent in params.question.respondents %}
+            {% set function = params.functions[respondent.name] | getActive(params.question.date) %}
+            <span class="respondent">{{ respondent.name }}{% if function %} ({{ function.function }}){% endif %}</span>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+        <p>op {{ params.question.date | date }}</p>
+    </div>
+    {% lucide "chevron-right" %}
+</a>
+{% else %}
+<div class="card padding straight" style="border-top: none;">
+    <div style="display: flex; flex-direction: column">
+        <p>Gesteld aan</p>
+        <p>
+            {% for respondent in params.question.respondents %}
+            {% set function = params.functions[respondent.name] | getActive(params.question.date) %}
+            {% set party = function.party %}
+            {% set primaryColor = params.partyColors[party | lower].primary or '#95a5a6' %}
+            {% set secondaryColor = params.partyColors[party | lower].secondary or '#95a5a6' %}
+            <a href="/parties/{{ party | slugify }}/" class="badge-link"><span class="party small" style="font-weight: bold; color: {{ primaryColor }}; background-color: {{ secondaryColor }};">{{ party }}</span></a>
+            <span class="respondent"><a href="/government/">{{ respondent.name }}</a>{% if function %} ({{ function.function }}){% endif %}</span>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+        <p>op {{ params.question.date | date }}</p>
+    </div>
+</div>
+{% endif %}
+
 <!-- DISCUSSION TOGGLE -->
 <div class="card padding straight" style="border-top: none;">
     <div style="display: flex; gap: 1rem;">
         <p>Bekijk antwoord</p>
-        <button class="toggle-discussion" data-proposition="{{ loop.index }}">
+        <button class="toggle-discussion">
             {% lucide "chevron-down" %}
         </button>
     </div>
@@ -69,18 +97,27 @@
 
 <!-- DISCUSSION -->
 {% set respondent_names = params.question.respondents | map('name') | list %}
-<div class="discussion" style="display: flex; flex-direction: column; gap: 0.5rem;">
+<div class="discussion" style="display: flex; flex-direction: column; gap: 0.5rem; overflow-x: hidden;">
+    {% if params.question.discussion_summary_nl %}
+    <div class="message-container ai-discussion-summary ai-show-when-summary">
+        <div class="speech ai-summary">
+            <p style="font-weight: bold; margin: 0 0 0.25rem 0; display: flex; align-items:center; gap: 0.6rem;">AI Samenvatting <span class="tooltip" style="height: 16px;">{% lucide "info" %}<span class="tooltip-text">Deze samenvatting werd gegenereerd door een LLM (large language model). De samenvatting bevat dus geen uitspraken van echte mensen. De inhoud kan foutief zijn en/of aan nuanceverlies lijden ten opzichte van de originele tekst. De volledige discussie is te vinden onder de samenvatting.</span></span></p>
+            <div class="ai-summary-html"><p>{{ params.question.discussion_summary_nl }}</p></div>
+        </div>
+    </div>
+    {% endif %}
     {% for x in params.question.discussion %}
+    {% set speakerName = x.speaker.name if x.speaker and x.speaker.name else x.speaker %}
     <div class="message-container">
         <div class="speech
-                {% if x.speaker.name in respondent_names %}response
-                {% elif x.speaker.name == 'Voorzitter' %}moderator
+                {% if speakerName in respondent_names %}response
+                {% elif speakerName == 'Voorzitter' %}moderator
                 {% else %}question{% endif %}">
 
-            {% if x.speaker.name == 'Voorzitter' %}
+            {% if speakerName == 'Voorzitter' %}
             <p style="font-weight: bold; margin: 0;" class="capitalize-first">Voorzitter:</p>
             {% else %}
-            <p style="font-weight: bold; margin: 0;">{{ x.speaker.name }}:</p>
+            <p style="font-weight: bold; margin: 0;">{{ speakerName }}:</p>
             {% endif %}
 
             {% set paragraphs = x.text.trim().split("NEWPARAGRAPH") %}

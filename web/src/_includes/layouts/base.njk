@@ -3,6 +3,13 @@
     <!-- HEAD -->
     <head>
         {% include "head.njk" %}
+        <script>
+            try {
+                if (localStorage.getItem('summaryToggleChecked.v2') === 'true') {
+                    document.documentElement.classList.add('ai-summary-enabled');
+                }
+            } catch (e) {}
+        </script>
     </head>
 
     <!-- BODY -->
@@ -20,13 +27,13 @@
 
         <div
             id="search-modal"
-            class="aria-hidden:hidden page"
-            style="height: 0;"
+            hidden
+            class="page"
             tabindex="-1"
             role="dialog"
             aria-modal="true"
             aria-labelledby="title"
-            aria-hidden="false"
+            aria-hidden="true"
             data-a11y-dialog="search-dialog">
             <div
                 style="opacity: 0.5; background-color: rgba(0, 0, 0, 0.4); width: 100%; position: fixed; inset: 0;"
@@ -49,6 +56,7 @@
                 </div>
             </div>
         </div>
+        <script src="/assets/js/summary.js"></script>
         <script src="/assets/js/search.js"></script>
 	</body>
 </html>

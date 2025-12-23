@@ -12,6 +12,9 @@ run:
 scrape-members:
     rust-script "scraper/scrapers/members.rs"
 
+scrape-commissions:
+    rust-script "scraper/scrapers/commissions.rs"
+
 scrape-lobby:
     rust-script "scraper/scrapers/lobby.rs"
 
@@ -21,7 +24,7 @@ scrape-remunerations:
 scrape-plenary:
     cargo run --bin plenary-scraper
 
-scrape-commissions:
+scrape-commission:
     cargo run --bin commission-scraper
 
 scrape-dossiers:
