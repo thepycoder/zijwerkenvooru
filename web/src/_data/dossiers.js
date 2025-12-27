@@ -7,15 +7,16 @@ export default async function () {
         const subdocumentsFilePath = 'src/data/subdocuments.parquet';
         const membersFilePath = 'src/data/members.parquet';
         const votesFilePath = 'src/data/votes.parquet';
+        const summariesFilePath = 'src/data/dossier_summaries.parquet';
 
-        const allFilesExist = [
+        const requiredFilesExist = [
             dossiersFilePath,
             subdocumentsFilePath,
             membersFilePath,
             votesFilePath
         ].every(fs.existsSync);
 
-        if (!allFilesExist) {
+        if (!requiredFilesExist) {
             console.error('Parquet file(s) not found.');
             return { meetings: [] };
         }
@@ -24,6 +25,7 @@ export default async function () {
         const connection = await instance.connect();
 
         const readParquet = async (filePath) => {
+            if (!fs.existsSync(filePath)) return [];
             const result = await connection.runAndReadAll(`SELECT * FROM read_parquet('${filePath}')`);
             return result.getRows();
         };
@@ -32,12 +34,14 @@ export default async function () {
             dossiersRows,
             subdocumentsRows,
             membersRows,
-            votesRows
+            votesRows,
+            summariesRows
         ] = await Promise.all([
             readParquet(dossiersFilePath),
             readParquet(subdocumentsFilePath),
             readParquet(membersFilePath),
-            readParquet(votesFilePath)
+            readParquet(votesFilePath),
+            readParquet(summariesFilePath)
         ]);
 
         // Utility functions.
@@ -84,6 +88,31 @@ export default async function () {
             }
 
             votesByDossierAndDoc[key].push(vote);
+        });
+
+        // Lookup summaries by dossier_id
+        const summariesByDossier = {};
+        summariesRows.forEach(row => {
+            // Check column mapping based on Python script
+            // 0: dossier_id, 1: title, 2: generated_title, 3: fact_summary, 4: political_analysis, 
+            // 5: model, 6: timestamp, 7: tokens_input, 8: tokens_output, 9: cost_usd, 10: retry_count
+            const dossierId = row[0];
+            try {
+                summariesByDossier[dossierId] = {
+                    generated_title: row[2],
+                    fact_summary: JSON.parse(row[3]),
+                    political_analysis: JSON.parse(row[4]),
+                    model: row[5],
+                    timestamp: row[6],
+                    cost_info: {
+                        tokens_input: row[7],
+                        tokens_output: row[8],
+                        cost_usd: row[9]
+                    }
+                };
+            } catch (e) {
+                console.error(`Error parsing summary for dossier ${dossierId}:`, e);
+            }
         });
 
         // Map of dossier_id to its subdocuments
@@ -141,7 +170,8 @@ export default async function () {
                 vote_date: convertDate(row[6]),
                 document_type: row[7],
                 status: row[8],
-                subdocuments: subdocumentsByDossier[dossierId] || []
+                subdocuments: subdocumentsByDossier[dossierId] || [],
+                summary: summariesByDossier[dossierId] || null
             };
 
             if (!dossiersBySession[sessionId]) {

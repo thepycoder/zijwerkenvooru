@@ -22,7 +22,13 @@ eleventyComputed:
 
 <h1>Dossier {{ dossier.dossier_id }}</h1>
 
+{% if dossier.summary %}
+<h3 class="ai-hide-when-summary" style="font-weight: normal; margin-top: 0;">{{ dossier.title }}</h3>
+<h3 class="ai-show-when-summary" style="font-weight: normal; margin-top: 0;">{{ dossier.summary.generated_title }}</h3>
+{% else %}
 <h3 style="font-weight: normal; margin-top: 0;">{{ dossier.title }}</h3>
+{% endif %}
+
 
 <!-- DOSSIER OVERVIEW -->
 <div class="card padding info-list">
@@ -79,7 +85,28 @@ eleventyComputed:
 
 <!-- VOTE CONTENTS -->
 <h2>Waarover gaat dit</h2>
+{% if dossier.summary %}
+<div class="ai-show-when-summary">
+    {% set summaryParts = dossier.summary.fact_summary.summary | splitSummary %}
+    <div class="summary-fact-grid">
+        <div class="summary-card summary-fact-problem">
+            <span class="summary-ai-badge">AI</span>
+            <h3>Welk probleem lost dit op of wat is het doel?</h3>
+            <div class="summary-content">{{ summaryParts.problem | markdown | safe }}</div>
+        </div>
+        <div class="summary-card summary-fact-changes">
+            <span class="summary-ai-badge">AI</span>
+            <h3>Wat verandert er concreet in de praktijk?</h3>
+            <div class="summary-content">{{ summaryParts.changes | markdown | safe }}</div>
+        </div>
+    </div>
+</div>
+<div class="ai-hide-when-summary">
+    <p>Dit dossier gaat over "{{ dossier.title }}"</p>
+</div>
+{% else %}
 <p>Dit dossier gaat over "{{ dossier.title }}"</p>
+{% endif %}
 
 
 <!-- TIMELINE OF DOSSIER -->
@@ -235,4 +262,56 @@ eleventyComputed:
 </div>
 {% else %}
 <p>Er werden geen subdocumenten gevonden voor dit dossier.</p>
+{% endif %}
+
+{% if dossier.summary and dossier.summary.political_analysis.has_debate %}
+<div class="ai-show-when-summary" style="margin-top: 3rem;">
+    <h2>Politiek Debat</h2>
+    <div class="summary-debate-grid">
+        {% if dossier.summary.political_analysis.summary_debate %}
+        <div class="summary-card summary-debate">
+            <span class="summary-ai-badge">AI</span>
+            <h3>Debat Samenvatting</h3>
+            <div class="summary-content">{{ dossier.summary.political_analysis.summary_debate | markdown | safe }}</div>
+        </div>
+        {% endif %}
+
+        {% if dossier.summary.political_analysis.arguments_for and dossier.summary.political_analysis.arguments_for.length > 0 %}
+        {% for arg in dossier.summary.political_analysis.arguments_for %}
+        <div class="summary-argument-card summary-argument-for">
+            <span class="summary-ai-badge">AI</span>
+            <div class="summary-argument-header summary-arguments-for">Voor</div>
+            <div class="summary-argument-party">{{ arg.party }}</div>
+            <div class="summary-argument-content">{{ arg.argument | markdown | safe }}</div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {% if dossier.summary.political_analysis.arguments_against and dossier.summary.political_analysis.arguments_against.length > 0 %}
+        {% for arg in dossier.summary.political_analysis.arguments_against %}
+        <div class="summary-argument-card summary-argument-against">
+            <span class="summary-ai-badge">AI</span>
+            <div class="summary-argument-header summary-arguments-against">Tegen</div>
+            <div class="summary-argument-party">{{ arg.party }}</div>
+            <div class="summary-argument-content">{{ arg.argument | markdown | safe }}</div>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        {% if dossier.summary.political_analysis.arguments and dossier.summary.political_analysis.arguments.length > 0 %}
+        {% for arg in dossier.summary.political_analysis.arguments %}
+        <div class="summary-argument-card">
+            <span class="summary-ai-badge">AI</span>
+            <div class="summary-argument-party">{{ arg.party }}</div>
+            <div class="summary-argument-content">{{ arg.arguments | markdown | safe }}</div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="summary-meta">
+        <p><strong>AI-gegenereerde samenvatting</strong> (Model: {{ dossier.summary.model }})</p>
+        <p>Tokens: {{ dossier.summary.cost_info.tokens_input }} in, {{ dossier.summary.cost_info.tokens_output }} uit. Geschatte kost: ${{ dossier.summary.cost_info.cost_usd }}</p>
+    </div>
+</div>
 {% endif %}

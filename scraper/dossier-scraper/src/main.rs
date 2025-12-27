@@ -112,6 +112,18 @@ async fn main() -> Result<(), Box<dyn Error>> {
         }
     }
 
+    // PDF Download directory
+    let pdf_download_dir = Path::new(env!("CARGO_MANIFEST_DIR"))
+        .parent()
+        .unwrap()
+        .parent()
+        .unwrap()
+        .join("pdf-parser/downloads");
+    
+    if !pdf_download_dir.exists() {
+        fs::create_dir_all(&pdf_download_dir)?;
+    }
+
     loop {
         if consecutive_failures >= max_consecutive_failures {
             pb.finish_with_message(format!(
@@ -194,12 +206,50 @@ async fn main() -> Result<(), Box<dyn Error>> {
                 dossier_document_types.push(dossier.document_type.to_string());
                 dossier_statuses.push(dossier.status.to_string());
 
-                for subdocument in dossier.subdocuments {
-                    subdocument_dossier_ids.push(subdocument.dossier_id);
-                    subdocument_ids.push(subdocument.id);
-                    subdocument_dates.push(subdocument.date);
+                for subdocument in &dossier.subdocuments {
+                    subdocument_dossier_ids.push(subdocument.dossier_id.clone());
+                    subdocument_ids.push(subdocument.id.clone());
+                    subdocument_dates.push(subdocument.date.clone());
                     subdocument_types.push(subdocument.document_type.to_string());
                     subdocument_authors.push(subdocument.authors.join(",").to_string());
+
+                    // Download PDF
+                    let dossier_id_padded = format!("{:0>4}", dossier_id_str);
+                    let filename = format!("{}K{}{}.pdf", session_id, dossier_id_padded, subdocument.id);
+                    let url = format!(
+                        "https://www.dekamer.be/FLWB/PDF/{}/{}/{}",
+                        session_id, dossier_id_padded, filename
+                    );
+
+                    let dossier_pdf_dir = pdf_download_dir.join(&dossier_id_str);
+                    if !dossier_pdf_dir.exists() {
+                         let _ = fs::create_dir_all(&dossier_pdf_dir);
+                    }
+                    
+                    let pdf_path = dossier_pdf_dir.join(&filename);
+
+                    if !pdf_path.exists() {
+                        // pb.println(format!("Downloading {}", url)); // Optional: Log download
+                        match client.get(&url).await {
+                            Ok(response) => {
+                                if response.status().is_success() {
+                                    if let Ok(bytes) = response.bytes().await {
+                                        // Simple validation: Check if it starts with %PDF
+                                        if bytes.starts_with(b"%PDF") {
+                                            if let Err(e) = fs::write(&pdf_path, bytes) {
+                                                 eprintln!("Failed to write PDF {}: {}", filename, e);
+                                            }
+                                        } else {
+                                            // pb.println(format!("Invalid PDF (not %PDF) for {}", url));
+                                        }
+                                    }
+                                }
+                            },
+                            Err(e) => eprintln!("Failed to download {}: {}", url, e),
+                        }
+                        // Polite delay
+                        tokio::time::sleep(std::time::Duration::from_millis(100)).await;
+                    }
                 }
 
                 consecutive_failures = 0; // Reset counter on success

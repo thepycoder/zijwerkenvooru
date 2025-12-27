@@ -18,13 +18,14 @@
     "@duckdb/node-api": "^1.2.1-alpha.16",
     "@grimlink/eleventy-plugin-lucide-icons": "^2.1.4",
     "clean-css": "^5.3.3",
-            "pagefind": "^1.2.0",
     "d3-parliament-chart": "^0.0.6",
     "date-fns": "^4.1.0",
     "eleventy-plugin-icons": "^4.5.3",
     "html-minifier": "^4.0.0",
     "lucide-static": "^0.487.0",
     "luxon": "^3.2.1",
+    "marked": "^17.0.1",
+    "pagefind": "^1.2.0",
     "terser": "^5.39.0"
   },
   "devDependencies": {

@@ -38,3 +38,11 @@ post:
 
 newsletter:
     cargo run --bin newsletter
+
+convert-docs:
+    ./pdf-parser/venv/bin/python pdf-parser/convert_pdfs.py
+
+summarize-dossiers:
+    ./pdf-parser/venv/bin/python summarizer/update_dossier_summaries.py
+
+update-dossiers: scrape-dossiers convert-docs summarize-dossiers

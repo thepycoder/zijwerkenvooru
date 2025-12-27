@@ -132,28 +132,24 @@ def load_markdown_content(
     """
     # Try session_id 56 first (most common)
     for session_id in [56, 55, 57]:  # Try common session IDs
-        # Format: 56K0191011.md
-        filename = f"{session_id}K{dossier_id.zfill(4)}{doc_id.zfill(3)}.md"
-        file_path = Path(markdown_base_path) / dossier_id / filename
+        # Format: 56K0191011.md - Try various paddings
+        # In download script: {session_id}K{dossier_id_padded}{subdoc_id}.pdf
+        # dossier_id_padded is 4 chars. subdoc_id is variable.
         
-        if file_path.exists():
-            try:
-                return file_path.read_text(encoding='utf-8')
-            except Exception as e:
-                print(f"Warning: Could not read {file_path}: {e}")
-                return None
-    
-    # If not found, try without zero-padding
-    for session_id in [56, 55, 57]:
-        filename = f"{session_id}K{dossier_id}{doc_id}.md"
-        file_path = Path(markdown_base_path) / dossier_id / filename
-        
-        if file_path.exists():
-            try:
-                return file_path.read_text(encoding='utf-8')
-            except Exception as e:
-                print(f"Warning: Could not read {file_path}: {e}")
-                return None
+        candidates = [
+            f"{session_id}K{dossier_id.zfill(4)}{doc_id}.md",
+            f"{session_id}K{dossier_id.zfill(4)}{doc_id.zfill(3)}.md",
+            f"{session_id}K{dossier_id}{doc_id}.md"
+        ]
+
+        for filename in candidates:
+             file_path = Path(markdown_base_path) / dossier_id / filename
+             if file_path.exists():
+                try:
+                    return file_path.read_text(encoding='utf-8')
+                except Exception as e:
+                    print(f"Warning: Could not read {file_path}: {e}")
+                    return None
     
     return None
 

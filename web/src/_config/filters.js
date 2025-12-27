@@ -13,6 +13,7 @@ import {
 } from "date-fns";
 import { DateTime } from "luxon";
 import { minify } from "terser";
+import { marked } from "marked";
 
 export default function (eleventyConfig) {
   eleventyConfig.addNunjucksAsyncFilter("jsmin", async (code, callback) => {
@@ -581,5 +582,41 @@ export default function (eleventyConfig) {
     });
 
     return itemCount;
+  });
+
+  // Markdown filter - converts markdown text to HTML
+  eleventyConfig.addFilter("markdown", function (content) {
+    if (!content) return "";
+    // Handle arrays by joining them
+    if (Array.isArray(content)) {
+      content = content.join("\n\n");
+    }
+    // Ensure content is a string
+    if (typeof content !== "string") {
+      content = String(content);
+    }
+    
+    // Convert bullet points (•) to markdown list format
+    // Pattern: • at start of line (possibly with whitespace) followed by text
+    // Replace with markdown list item format
+    content = content.replace(/^(\s*)•\s+/gm, "$1- ");
+    
+    return marked.parse(content);
+  });
+
+  // Split summary into two sections: problem/goal and practical changes
+  eleventyConfig.addFilter("splitSummary", function (summaryText) {
+    if (!summaryText || typeof summaryText !== "string") {
+      return { problem: "", changes: "" };
+    }
+
+    // Try to find the two sections
+    const problemMatch = summaryText.match(/##\s*1\.\s*Welk probleem lost dit op of wat is het doel\?\s*\n([\s\S]*?)(?=##\s*2\.|$)/i);
+    const changesMatch = summaryText.match(/##\s*2\.\s*Wat verandert er concreet in de praktijk\?\s*\n([\s\S]*?)(?=##|$)/i);
+
+    return {
+      problem: problemMatch ? problemMatch[1].trim() : "",
+      changes: changesMatch ? changesMatch[1].trim() : "",
+    };
   });
 }
